@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Cassandra High Performance Cookbook]]></title>
+  <author>Edward Capriolo</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-05 00:21:58</submit-date-time>
+  <img-link>efa6b337e611437509ffc2470813c50e.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	Over 150 recipes to design and optimize large scale Apache Cassandra deploymentsGet the best out of <strong>Cassandra</strong> using this efficient recipe bankConfigure and tune Cassandra components to enhance performanceDeploy Cassandra in various environments and monitor its performanceWell illustrated, step-by-step recipes to make all tasks look easy!In Detail
+</p>
+<p>
+	Apache Cassandra is a fault-tolerant, distributed data store which offers linear scalability allowing it to be a storage platform for large high volume websites.
+</p>
+<p>
+	This book provides detailed recipes that describe how to use the features of Cassandra and improve its performance. Recipes cover topics ranging from setting up Cassandra for the first time to complex multiple data center installations. The recipe format presents the information in a concise actionable form.
+</p>
+<p>
+	The book describes in detail how features of Cassandra can be tuned and what the possible effects of tuning can be. Recipes include how to access data stored in Cassandra and use third party tools to help you out. The book also describes how to monitor and do capacity planning to ensure it is performing at a high level. Towards the end, it takes you through the use of libraries and third party applications with Cassandra and Cassandra integration with Hadoop.
+</p>
+<p>
+	What you will learn from this bookInteract with Cassandra using the command line interfaceWrite programs that access data in CassandraConfigure and tune Cassandra components to enhance performanceModel data to optimize storage and accessUse tunable consistency to optimize data accessDeploy Cassandra in single and multiple data center environmentsMonitor the performance of CassandraManage a cluster by joining and removing nodesUse libraries and third party applications with CassandraIntegrate Cassandra with HadoopApproach
+</p>
+<p>
+	This is a cookbook and all tasks are approached as recipes. A recipe describes a task and outlines the steps necessary to complete this task.
+</p>
+<p>
+	Some recipes in the book are examples of writing code. An example of this is a recipe that stores and accesses the entries of a phone book in Cassandra. The recipe consists of a description of the program, a full code example is given, the example is run, the output is displayed, and finally the how it works section describes the process or code in greater detail.
+</p>
+<p>
+	Other recipes in the book describe a task. An example of this is a recipe that takes a snapshot back up of data in Cassandra. This recipe contains a description of the process, it then shows how to run the snapshot command and confirm that it worked, it then explains what the snapshot command does behind the scenes, finally the \'see also\' section references other related recipes such as the recipe to restore a snapshot.
+</p>
+<p>
+	<strong>Who this book is written for</strong>
+</p>
+<p>
+	This book is designed for<strong> administrators, developers, and data architects</strong> who are interested in Apache Cassandra for redundant, highly performing, and scalable data storage. Typically these users should have experience working with a database technology, multiple node computer clusters, and high availability solutions.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

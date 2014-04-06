@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>选择dojo的三大理由</title>
+<content>&amp;lt;p&amp;gt;
+	1.dojo是一个很好的基础架构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它可以非常有效地分离页面中的Structure、Presentation、Behaviour，这对于实现Ajax组件unobtrusive的目标非常有帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有人问：那么，同样是基础架构，你为什么不选择Prototype呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然，Prototype对于开发一些Ajax效果也是非常有帮助的。但是Prototype的设计目标和dojo有很大的不同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Prototype&amp;nbsp;的设计目标是扩充JavaScript的功能，使得可以以类似于Ruby的方式来编写JavaScript。Prototype主要是对于JavaScript语言本身的一些底层的扩充，另外解决了一些跨浏览器的问题。但是Prototype还是太底层了，本身提供的功能非常少，基于它来建造复杂的Ajax组件（例如，一个功能完善的Grid组件）仍然非常困难。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	而Rico呢，仍然谈不上是一个框架，Rico和Scriptaculous都只是基于Prototype建造的Ajax效果库。Rico的Live&amp;nbsp;Grid太原始了，这也是我放弃Rico的一个原因，而且Rico这半年来就没有什么大的发展。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我并不是要否定Prototype，而是经过考察发现Prototype很难支持我的目标。我的目标就是建造一个全面的Ajax组件库，dojo恰好对于支持这个目标非常有帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo其实是一个组件模型，类似于Spring，用来支持大规模的组件化开发。组件模型的作用就是增强代码的重用，这对于提高开发效率是至关重要的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.dojo的背后有强大的支持。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo现在已经是众多开源框架的选择，包括：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;WebWork
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;Tapestry
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;Eclipse&amp;nbsp;ATF
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;MyFaces
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个列表还会随着时间的推移而扩大。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo的开发团队由Alex&amp;nbsp;Russell领军，人数众多，力量非常强大。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.dojo的组件比较丰富，而且目前的开发非常活跃。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里是一些组件列表，也可以在这里提出新的组件需求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	http://dojo.jot.com/WidgetWishlist
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有一个正在开发的Grid组件，按照功能描述来看非常强大，值得高度注意。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	http://dojo.jot.com/GridWidget
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样以来就可以减轻我的大量沉重的工作。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-26/1340724444.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

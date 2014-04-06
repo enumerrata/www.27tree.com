@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[高性能网站构建实战 ]]></title>
+  <author>刘鑫</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:10:22</submit-date-time>
+  <img-link>bf2f2a64202cc51894346ec0ce4a9788.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	目前，越来越多的网站采用Linux操作系统来提供各种服务，包括搭建Web服务器、文件存储、数据库等。人们对Linux服务器的可靠性、负载能力和计算能力也越来越关注。
+</p>
+<p>
+	本书从高性能站点的实际需求出发，详细介绍了如何使用当前流行的开源软件和工具构建Web站点所需的各种应用服务环境。全书共分为7篇16章和3个简短的附录。
+</p>
+<p>
+	第一篇是架构规划篇，也就是第1章，主要介绍了对企业网站架构的选型、系统的快速安装及初始化高性能系统的一些参数。第二篇为负载应用篇，包括第2章到第4章，分别介绍了LVS+KeepAlived、HAproxy、Nginx这3种负载开源软件的应用。第三篇为页面缓存篇，包括第5章、第6章和第7章；分别介绍了缓存软件Squid和Varnish，以及Nginx的缓存功能。第四篇为Web服务器篇，包括第8章和第9章，分别介绍了Apache、Lighttpd和Nginx这三款流行的Web服务器。第五篇为数据缓存篇（NoSQL），包括第10章、第11章和第12章，分别介绍了Memcached，以及两种当前非常流行的NoSQL数据库软件Redis和MongoDBC。第六篇为文件服务篇，包括第13章和第14章，介绍了MFS和Hadoop。第七篇监控应用篇，也是最后一篇，包括第15章和第16章，介绍了流量监控软件Cacti和系统监视软件Zabbix。附录部分，分别给出了使用ipvsadm命令、HAProxy和Squid的有用参考资料。
+</p>
+<p>
+	本书是作者多年Linux系统架构和运维经验的总结，兼具宏观性知识介绍和具体性实践技能，适合对系统架构、性能维护感兴趣的初级、中级读者学习，对于有经验的系统架构师和运维师也有一定的参考借鉴价值。
+</p>
+<p>
+	<strong>作者简介：</strong>
+</p>
+<p>
+	刘鑫，运维工程师，曾担任过系统讲师，喜欢讨论各种网站架构上的技术，特别是对系统级的优化。对整体网站架构的把握以及各种架构中运用的技术有一定的实施心得。对Python情有独钟，喜欢编写运维自动化工具。他是ChinaUnix社区集群和高可用版块资深版主，经常在社区内发起技术讨论，深受广大CU（ChinaUnix）社区会员喜爱。博客地址：liuxin1982.blog.chinaunix.net。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

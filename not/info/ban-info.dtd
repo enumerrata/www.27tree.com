@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/ban-info.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE art SYSTEM "ban-info.dtd">
+
+    <art>
+    ...
+    </art>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT art (info)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT info (#PCDATA)>
+<!ATTLIST info
+    type CDATA #IMPLIED
+  >

@@ -1,0 +1,1 @@
+default7.jpg

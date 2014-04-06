@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[亮剑Java Web项目开发案例导航]]></title>
+  <author>朱雪琴/常建功</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-30 16:13:53</submit-date-time>
+  <img-link>d11ef68e1324d728fd5e88b44aa1fd85.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	Java是目前最流行、发展最快的编程语言之一，其开放、跨平台的特点，吸引了众多的开发人员与软件公司。同时在众多软件公司及有志之士的共同努力下，出现了许多优秀的开源框架，为Java语言在企业级开发领域注入了新的血液。
+</p>
+<p>
+	本书共介绍了10个项目案例，具体地向读者介绍了Java EE开发的整个流程，涵盖了目前几个比较流行的开源框架，如Struts、JSF、Spring、Hibernate，同时还有用于分布式企业级开发的EJB技术。在项目的开发过程中，笔者还多次使用到了Ajax技术，以增强用户体验。在每一个项目案例中，笔者都是按照实际的开发步骤介绍的，对每一个模块的代码都进行了详细的介绍，还对核心代码进行了详细的注释，尽量让读者读懂代码中的每一行、每一个细节。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		第1章　预备知识
+	</p>
+	<p>
+		1.1　JDK的下载安装及环境配置
+	</p>
+	<p>
+		1.1.1　下载工具包JDK
+	</p>
+	<p>
+		1.1.2　安装工具包JDK
+	</p>
+	<p>
+		1.1.3　关于JDK的环境
+	</p>
+	<p>
+		1.2　Tomcat服务器的下载、安装及简单使用
+	</p>
+	<p>
+		1.2.1　Tomcat服务器的下载
+	</p>
+	<p>
+		1.2.2　Tomcat服务器的安装
+	</p>
+	<p>
+		1.2.3　Tomcat服务器的简单使用
+	</p>
+	<p>
+		1.3　WebLogic的使用
+	</p>
+	<p>
+		1.3.1　开发一个简单的EJB程序
+	</p>
+	<p>
+		1.3.2　Servlet的开发
+	</p>
+	<p>
+		1.3.3　开发前台JSP文件
+	</p>
+	<p>
+		1.3.4　部署应用
+	</p>
+	<p>
+		1.4　MySQL的下载安装及使用
+	</p>
+	<p>
+		1.4.1　MySQL的下载
+	</p>
+	<p>
+		1.4.2　MySQL的安装
+	</p>
+	<p>
+		1.4.3　MySQL的简单使用
+	</p>
+	<p>
+		1.5　Oracle数据库的使用
+	</p>
+	<p>
+		1.5.1　Oracle数据库的下载
+	</p>
+	<p>
+		1.5.2　安装数据库服务器Oracle
+	</p>
+	<p>
+		1.5.3　安装数据库服务器Oracle客户端
+	</p>
+	<p>
+		1.5.4　关于Oracle简单操作
+	</p>
+	<p>
+		1.6　JCreator的使用
+	</p>
+	<p>
+		1.6.1　JCreator的安装
+	</p>
+	<p>
+		1.6.2　JCreator的使用
+	</p>
+	<p>
+		1.7　MyEclipse的使用
+	</p>
+	<p>
+		1.7.1　集成开发环境安装——MyEclipse　9.0
+	</p>
+	<p>
+		1.7.2　关于MyEclipse的一些常用操作
+	</p>
+..........
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

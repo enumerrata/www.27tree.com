@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java2入门经典</title>
+  <author>Ivon Horton</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-28 17:06:32</submit-date-time>
+  <img-link>18898c46968994dab395e1e3a9abe9d1.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通过阅读本书，你可以借助J2SE&amp;nbsp;5．0这个最新、最出色的Java平台来学习Java编程。J2SE&amp;nbsp;5．0拥有强大的新特性和新功能，使Java性能产生了巨大的飞跃。　　新的Java平台所带来的丰富内涵使本书相比于过去的版本似乎稍厚了些，但是并不说明新的内容更复杂。当然，要想成为熟练的Java程序员，所需的基础知识会略有增多，但都不困难。只要有进取心和一点点对编程的领悟力，你就可以得到足够多的知识，成为一个高效的Java程序员。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书提供了规范化的学习方法，可帮助你事半功倍地完成学习。你不仅会学到一项相当流行的技术，而且做完一件值得做的事情将使人心旷神怡。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	尝试读本书吧，你肯定会喜欢的!
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作为理想的面向对象的程序设计语言，Java以自身的简单性和强大功能成为Internet编程和跨平台开发中最常用的开发语言。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书以规范化的方式讲解Java编程。在介绍Java语言各个方面的过程中，一边解释有关Java语言结构和工作原理的基本知识，一边以大量的代码实例讲述如何开发功能齐全的Java应用程序。本书系统全面、浅显易懂，涵盖了从入门到精通的所有知识，以期帮助读者掌握Java语言的最新特性和Java类库中主要的功能包，积累Java应用环境的使用经验，并在核心技术领域打下坚实的基础。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书主要内容：有关Java语言程序工作原理的基本知识；运用语言要素的方法；在程序中保存数据的方法；定义及实例化类的方法；在交互式Web网页中建立applet的方法；实现图形化用户程序的技术；利用JDBC功能使用关系型数据库；成为一个熟练的Java程序员所需的一切知识。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

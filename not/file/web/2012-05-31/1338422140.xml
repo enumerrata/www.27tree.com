@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用jQuery简化Ajax开发&lt;4&gt;</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;释放&amp;nbsp;jQuery&amp;nbsp;选择器的强大能量&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们经常会使用&amp;nbsp;ID&amp;nbsp;来选择元素，比如&amp;nbsp;#myid，或者通过类名，比如&amp;nbsp;div.myclass&amp;nbsp;来选择元素。然而，jQuery&amp;nbsp;提供了更为复杂和完整的选择器语法，允许我们在单个选择器中选择几乎所有的元素组合。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;的选择器语法主要是基于&amp;nbsp;CSS3&amp;nbsp;和&amp;nbsp;XPath&amp;nbsp;的。对&amp;nbsp;CSS3&amp;nbsp;和&amp;nbsp;XPath&amp;nbsp;了解的越多，使用&amp;nbsp;jQuery&amp;nbsp;时就越加得心应手。有关&amp;nbsp;jQuery&amp;nbsp;选择器的完整列表，包括&amp;nbsp;CSS&amp;nbsp;和&amp;nbsp;XPath，请参阅&amp;nbsp;参考资料&amp;nbsp;中的链接。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CSS3&amp;nbsp;包含一些并不是所有浏览器都支持的语法，因此我们很少使用它。然而，我们仍然可以在&amp;nbsp;jQuery&amp;nbsp;中使用&amp;nbsp;CSS3&amp;nbsp;选择元素，因为&amp;nbsp;jQuery&amp;nbsp;具备自己的自定义选择器引擎。比方说，要在表格中的每一个空列中都添加一个横杠，可以使用：:empty&amp;nbsp;伪选择器（pseudo-selector）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(&amp;nbsp;td:empty&amp;nbsp;).html(&amp;nbsp;-&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果需要找出所有不含特定类的元素呢？&amp;nbsp;CSS3&amp;nbsp;同样提供了一个语法可以完成这个目的，使用&amp;nbsp;:not&amp;nbsp;伪选择器：&amp;nbsp;如下代码显示了如何隐藏所有不含&amp;nbsp;required&amp;nbsp;类的输入内容：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(&amp;nbsp;input:not(.required)&amp;nbsp;).hide();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与在&amp;nbsp;CSS&amp;nbsp;中一样，可以使用逗号将多个选择器连接成一个。下面是一个同时隐藏页面上所有类型列表的简单示例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(&amp;nbsp;ul,&amp;nbsp;ol,&amp;nbsp;dl&amp;nbsp;).hide();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	XPath&amp;nbsp;是一种功能强大的语法，用于在文档中搜寻元素。它与&amp;nbsp;CSS&amp;nbsp;稍有区别，不过它能实现的功能略多于&amp;nbsp;CSS。要在所有复选框的父元素中添加一个边框，可以使用&amp;nbsp;XPath&amp;nbsp;的&amp;nbsp;/..&amp;nbsp;语法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(input:checkbox/..).css(&amp;nbsp;border&amp;nbsp;,&amp;nbsp;&amp;nbsp;1px&amp;nbsp;solid&amp;nbsp;#777&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;中也加入了一些&amp;nbsp;CSS&amp;nbsp;和&amp;nbsp;XPath&amp;nbsp;中没有的选择器。比方说，要使一个表更具可读性，通常可以在表格的奇数行或偶数行中附加一个不同的类名&amp;nbsp;——&amp;nbsp;也可以称作把表分段（striping）。使用&amp;nbsp;jQuery&amp;nbsp;不费吹灰之力就可以做到这点，这需要归功于&amp;nbsp;odd&amp;nbsp;伪选择器。下面这个例子使用&amp;nbsp;striped&amp;nbsp;类改变了表格中所有奇数行的背景颜色：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(&amp;nbsp;table.striped&amp;nbsp;&amp;amp;gt;&amp;nbsp;tr:odd&amp;nbsp;).css(&amp;nbsp;background&amp;nbsp;,&amp;nbsp;&amp;nbsp;#999999&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们可以看到强大的&amp;nbsp;jQuery&amp;nbsp;选择器是如何简化代码的。不论您想处理什么样的元素，不管这个元素是具体的还是模糊的，都有可能找到一种方法使用一个&amp;nbsp;jQuery选择器对它们进行定义。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-31/1338422140.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

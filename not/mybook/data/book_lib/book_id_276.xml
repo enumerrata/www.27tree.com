@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[OSGi实战]]></title>
+  <author>Richard S. Hall/Karl Pauls/Stuart Mcculloch/David Savage</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-30 16:12:07</submit-date-time>
+  <img-link>092520c99b42d47535bd799789bc8ea2.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>OSGi实战</strong>是学习OSGi的全面指导，利用与架构和开发人员相关的示例清楚地讲解OSGi概念，同时探讨了很多实践场景和技术，阐述了开发人员有多需要OSGi，怎么将OSGi嵌入其他容器中，将遗留系统移入OSGi的最佳实践，等等。理论与实践相结合，能指导实际开发。
+</p>
+<p>
+	2.本书作者Richard S. Hall是Apache Felix项目长期的代码提供者Sun公司GlassFish团队一员。
+</p>
+<p>
+	Karl Pauls也是Felix代码提供者。
+</p>
+<p>
+	Stuart McCulloch是CodeDragons的Java开发人员，OSGi解决方案组的领导，Felix代码提供者。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	为了弥补OSGi规范在应用指导方面的不足，四位活跃在OSGi开发第一线的技术专家联手打造了《OSGi实战》。《OSGi实战》面向OSGi规范的使用者，系统、全面、深入地阐述OSGi的重要特性及其使用方法。《OSGi实战》还介绍了某些技术的低层实现细节，引领读者畅游OSGi的世界。
+</p>
+<p>
+	《OSGi实战》面向OSGi规范的使用者，通过精彩的讲解和贴近实战的丰富示例，帮助读者完成“入门-进阶-提高”三级跳。
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

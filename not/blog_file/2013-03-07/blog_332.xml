@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[ShopEx 文件缓存系统 seCache]]></title>
+  <content><![CDATA[<p>
+	Secache是由ShopEx团队开发的一个文件型缓存解决方案
+</p>
+<p>
+	seCache是ShopEx设计的用于虚机等无法使用<strong>memCached</strong>等缓存机制情况下的由php编写的key-value单文件缓存系统,缓存数据文件是一个独立的二进制文件，事实上是一个<strong>key-value型数据库</strong>。
+</p>
+<p>
+	在虚拟主机不支持Memcached等高速缓存的情况下,可以采用Secache进行缓存
+</p>
+<p>
+	seCache机制的设计目标是在固定存储空间下实现对shopex缓存文件的快速查找、调度删除、更新机制。其目的是解决文件分散存储情况下小文件过多、空间无限膨胀、管理不方便的弊端。
+</p>
+<p>
+	seCache存储系统仅由一个文件组成，其中存储了缓存文件索引(seCache key )与缓存文件数据(seCache data)。这样我们可以方便地控制总缓存空间的大小.
+</p>
+<p>
+	其使用方式很简单:
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+require(\'../Secache/Secache.php\');
+$cache = new Secache;
+$cache-&gt;workat(\'cachedata\');
+$key = md5(\'test\');
+$value = \'tdata\';
+$cache-&gt;store($key, $value);
+if ($cache-&gt;fetch($key, $return)) {
+    echo $return;
+} else {
+    echo \'Data get failed!\';
+}
+?&gt;
+</pre>
+Secache使用了LRU缓存策略,当Secache data中某一存储区域数据超过限制时,会根据LRU算法得出该储存区需要淘汰的缓存文件供新文件存入.
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">Secache</span></strong><strong><span style=\"font-size:14px;\">项目地址：http://code.google.com/p/secache/</span></strong><strong><span style=\"font-size:14px;\"></span></strong>
+</p>]]></content>
+  <contentx><![CDATA[
+	Secache是由ShopEx团队开发的一个文件型缓存解决方案
+
+
+	seCache是ShopEx设计的用于虚机等无法使用memCached等缓存机制情况下的由php编写的key-value单文件缓存系统,缓存数据文件是一个独立的二进制]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,1553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php5配置文件phpini的配置指令详解</title>
+<content>&amp;lt;p&amp;gt;
+	这个文件必须命名为&amp;nbsp;&amp;nbsp;php.ini&amp;nbsp;&amp;nbsp;并放置在httpd.conf中的PHPIniDir指令指定的目录中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最新版本的php.ini可以在下面两个位置查看：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	http://cvs.php.net/viewvc.cgi/php-src/php.ini-recommended?view=co
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	http://cvs.php.net/viewvc.cgi/php-src/php.ini-dist?view=co
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	语法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该文件的语法非常简单。空白字符和以分号开始的行被简单地忽略。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	章节标题(例如:&amp;nbsp;[php])也被简单地忽略，即使将来它们可能有某种意义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设置指令的格式如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	directive&amp;nbsp;=&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指令名(directive)是大小写敏感的！所以\"foo=bar\"不同于\"FOO=bar\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	值(value)可以是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;用引号界定的字符串(如：\"foo\")
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;一个数字(整数或浮点数，如：0,&amp;nbsp;1,&amp;nbsp;34,&amp;nbsp;-1,&amp;nbsp;33.55)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;一个PHP常量(如：E_ALL,&amp;nbsp;M_PI)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;一个INI常量(On,&amp;nbsp;Off,&amp;nbsp;none)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;一个表达式(如：E_ALL&amp;nbsp;&amp;amp;&amp;nbsp;~E_NOTICE)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	INI文件中的表达式仅使用：位运算符、逻辑非、圆括号：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;brvbar;&amp;nbsp;位或
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;&amp;nbsp;位与
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~&amp;nbsp;位非
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	!&amp;nbsp;逻辑非
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	布尔标志用&amp;nbsp;On&amp;nbsp;表示打开，用&amp;nbsp;Off&amp;nbsp;表示关闭。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个空字符串可以用在等号后不写任何东西表示，或者用&amp;nbsp;none&amp;nbsp;关键字：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foo&amp;nbsp;=　　　　&amp;nbsp;;&amp;nbsp;将foo设为空字符串
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foo&amp;nbsp;=&amp;nbsp;none　　;&amp;nbsp;将foo设为空字符串
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foo&amp;nbsp;=&amp;nbsp;\"none\"　;&amp;nbsp;将foo设为字符串&amp;nbsp;&amp;nbsp;none&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你在指令值中使用动态扩展(PHP扩展或Zend扩展)中的常量，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么你只能在加载这些动态扩展的指令行之后使用这些常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	httpd.conf　;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	还可以在httpd.conf中覆盖php.ini的值，以进行更灵活的配置：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php_value&amp;nbsp;name&amp;nbsp;value　;设置非bool型的指令，将value设为none则清除先前的设定
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php_flag　name&amp;nbsp;on&amp;brvbar;off&amp;nbsp;;仅用于设置bool型的指令
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP常量(如E_ALL)仅能在php.ini中使用，在httpd.conf中必须使用相应的掩码值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	带\"SYS\"标志的指令只能在httpd.conf中的全局配置部分使用，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	带\"ini\"标志的指令不能在httpd.conf中使用，它们仅能用于php.ini中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	====================配置指令详解========================================
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下每个指令的设定值都与&amp;nbsp;PHP-5.2.0&amp;nbsp;内建的默认值相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	也就是说，如果&amp;nbsp;&amp;nbsp;php.ini&amp;nbsp;&amp;nbsp;不存在，或者你删掉了某些行，默认值与之相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	;;;;;;;;;;;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Apache　;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	;;;;;;;;;;;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Apache]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	仅在将PHP作为Apache模块时才有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	engine&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否启用PHP解析引擎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以在httpd.conf中基于目录或者虚拟主机来打开或者关闭PHP解析引擎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	last_modified&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在Last-Modified应答头中放置该PHP脚本的最后修改时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xbithack&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否不管文件结尾是什么，都作为PHP可执行位组来解析。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	child_terminate&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP脚本在请求结束后是否允许使用apache_child_terminate()函数终止子进程。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该指令仅在UNIX平台上将PHP安装为Apache1.3的模块时可用。其他情况下皆不存在。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	;;;;;;;;;;;;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP核心　;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	;;;;;;;;;;;;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-DateTime]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前四个配置选项目前仅用于date_sunrise()和date_sunset()函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date.default_latitude&amp;nbsp;=&amp;nbsp;31.7667
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认纬度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date.default_longitude&amp;nbsp;=&amp;nbsp;35.2333
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认经度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date.sunrise_zenith&amp;nbsp;=&amp;nbsp;90.583333
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认日出天顶
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date.sunset_zenith&amp;nbsp;=&amp;nbsp;90.583333
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认日落天顶
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date.timezone&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	未设定TZ环境变量时用于所有日期和时间函数的默认时区。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	中国大陆应当使用\"PRC\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应用时区的优先顺序为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;用date_default_timezone_set()函数设定的时区(如果设定了的话)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;TZ&amp;nbsp;环境变量(如果非空的话)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;该指令的值(如果设定了的话)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;PHP自己推测(如果操作系统支持)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;如果以上都不成功，则使用&amp;nbsp;UTC
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Assert]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	assert.active&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否启用assert()断言评估
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	assert.bail&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在发生失败断言时中止脚本的执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	assert.callback&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	发生失败断言时执行的回调函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	assert.quiet_eval&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否使用安静评估(不显示任何错误信息，相当于error_reporting=0)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若关闭则在评估断言表达式的时候使用当前的error_reporting指令值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	assert.warning&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否对每个失败断言都发出警告
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-SafeMode]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	安全模式是为了解决共享服务器的安全问题而设立的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但试图在PHP层解决这个问题在结构上是不合理的，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	正确的做法应当是修改web服务器层和操作系统层。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因此在PHP6中废除了安全模式，并打算使用open_basedir指令取代之。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否启用安全模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开时，PHP将检查当前脚本的拥有者是否和被操作的文件的拥有者相同，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相同则允许操作，不同则拒绝操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode_gid&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，默认在访问文件时会做UID比较检查。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但有些情况下严格的UID检查反而是不适合的，宽松的GID检查已经足够。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你想将其放宽到仅做GID比较，可以打开这个参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode_allowed_env_vars&amp;nbsp;=&amp;nbsp;\"PHP_\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，用户仅可以更改的环境变量的前缀列表(逗号分隔)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	允许用户设置某些环境变量，可能会导致潜在的安全漏洞。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意:&amp;nbsp;如果这一参数值为空，PHP将允许用户更改任意环境变量！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode_protected_env_vars&amp;nbsp;=&amp;nbsp;\"LD_LIBRARY_PATH\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，用户不能更改的环境变量列表(逗号分隔)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这些变量即使在safe_mode_allowed_env_vars指令设置为允许的情况下也会得到保护。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode_exec_dir&amp;nbsp;=&amp;nbsp;\"/usr/local/php/bin\"SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，只有该目录下的可执行程序才允许被执行系统程序的函数执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这些函数是：system,&amp;nbsp;escapeshellarg,&amp;nbsp;escapeshellcmd,&amp;nbsp;exec,&amp;nbsp;passthru,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	proc_close,&amp;nbsp;proc_get_status,&amp;nbsp;proc_nice,&amp;nbsp;proc_open,&amp;nbsp;proc_terminate,&amp;nbsp;shell_exec
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	safe_mode_include_dir&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，该组目录和其子目录下的文件被包含时，将跳过UID/GID检查。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	换句话说，如果此处的值为空，任何UID/GID不符合的文件都不允许被包含。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里设置的目录必须已经存在于include_path指令中或者用完整路径来包含。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	多个目录之间用冒号(Win下为分号)隔开。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定的限制实际上是一个前缀，而非一个目录名，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	也就是说\"/dir/incl\"将允许访问\"/dir/include\"和\"/dir/incls\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您希望将访问控制在一个指定的目录，那么请在结尾加上斜线。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sql.safe_mode&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否使用SQL安全模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果打开，指定默认值的数据库连接函数将会使用这些默认值代替支持的参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于每个不同数据库的连接函数，其默认值请参考相应的手册页面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Safe]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	allow_url_fopen&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许打开远程文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	allow_url_include&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许include/require远程文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	disable_classes&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该指令接受一个用逗号分隔的类名列表，以禁用特定的类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	disable_functions&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该指令接受一个用逗号分隔的函数名列表，以禁用特定的函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enable_dl&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许使用dl()函数。dl()函数仅在将PHP作为apache模块安装时才有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	禁用dl()函数主要是出于安全考虑，因为它可以绕过open_basedir指令的限制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下始终禁用dl()函数，而不管此处如何设置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	expose_php&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否暴露PHP被安装在服务器上的事实(在http头中加上其签名)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它不会有安全上的直接威胁，但它使得客户端知道服务器上安装了PHP。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	open_basedir&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将PHP允许操作的所有文件(包括文件自身)都限制在此组目录列表下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当一个脚本试图打开一个指定目录树之外的文件时，将遭到拒绝。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所有的符号连接都会被解析，所以不可能通过符号连接来避开此限制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	特殊值&amp;nbsp;&amp;nbsp;.&amp;nbsp;&amp;nbsp;指定了存放该脚本的目录将被当做基准目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但这有些危险，因为脚本的工作目录可以轻易被chdir()改变。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于共享服务器，在httpd.conf中灵活设置该指令将变得非常有用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Windows中用分号分隔目录，UNIX系统中用冒号分隔目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为Apache模块时，父目录中的open_basedir路径将自动被继承。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定的限制实际上是一个前缀，而非一个目录名，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	也就是说\"/dir/incl\"将允许访问\"/dir/include\"和\"/dir/incls\"，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您希望将访问控制在一个指定的目录，那么请在结尾加上一个斜线。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认是允许打开所有文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Error]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	error_reporting&amp;nbsp;=&amp;nbsp;E_ALL&amp;nbsp;&amp;amp;&amp;nbsp;~E_NOTICE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	错误报告级别是位字段的叠加，推荐使用&amp;nbsp;E_ALL&amp;nbsp;&amp;brvbar;&amp;nbsp;E_STRICT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1　E_ERROR　　　　　　&amp;nbsp;致命的运行时错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2　E_WARNING　　　　　&amp;nbsp;运行时警告(非致命性错误)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4　E_PARSE　　　　　　&amp;nbsp;编译时解析错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8　E_NOTICE　　　　　　运行时提醒(经常是bug，也可能是有意的)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16　E_CORE_ERROR　　　　PHP启动时初始化过程中的致命错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	32　E_CORE_WARNING　　　PHP启动时初始化过程中的警告(非致命性错)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	64　E_COMPILE_ERROR　　&amp;nbsp;编译时致命性错
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	128　E_COMPILE_WARNING　&amp;nbsp;编译时警告(非致命性错)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	256　E_USER_ERROR　　　　用户自定义的致命错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	512　E_USER_WARNING　　　用户自定义的警告(非致命性错误)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1024　E_USER_NOTICE　　　&amp;nbsp;用户自定义的提醒(经常是bug，也可能是有意的)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2048　E_STRICT　　　　　　编码标准化警告(建议如何修改以向前兼容)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4096　E_RECOVERABLE_ERROR&amp;nbsp;接近致命的运行时错误，若未被捕获则视同E_ERROR
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6143　E_ALL　　　　　　　&amp;nbsp;除E_STRICT外的所有错误(PHP6中为8191,即包含所有)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	track_errors&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在变量$php_errormsg中保存最近一个错误或警告消息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	display_errors&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否将错误信息作为输出的一部分显示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在最终发布的web站点上，强烈建议你关掉这个特性，并使用错误日志代替(参看下面)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在最终发布的web站点打开这个特性可能暴露一些安全信息，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如你的web服务上的文件路径、数据库规划或别的信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	display_startup_errors&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否显示PHP启动时的错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	即使display_errors指令被打开，关闭此参数也将不显示PHP启动时的错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	建议你关掉这个特性，除非你必须要用于调试中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	report_memleaks&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否报告内存泄漏。这个参数只在以调试方式编译的PHP中起作用，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并且必须在error_reporting指令中包含&amp;nbsp;E_WARNING
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	report_zend_debug&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尚无说明文档
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	html_errors&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在出错信息中使用HTML标记。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意:&amp;nbsp;不要在发布的站点上使用这个特性！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	docref_root&amp;nbsp;=　;\"http://localhost/phpmanual/\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	docref_ext&amp;nbsp;=　&amp;nbsp;;\".html\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果打开了html_errors指令，PHP将会在出错信息上显示超连接，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	直接链接到一个说明这个错误或者导致这个错误的函数的页面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你可以从http://www.php.net/docs.php下载php手册，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并将docref_root指令指向你本地的手册所在的URL目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你还必须设置docref_ext指令来指定文件的扩展名(必须含有&amp;nbsp;&amp;nbsp;.&amp;nbsp;&amp;nbsp;)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意:&amp;nbsp;不要在发布的站点上使用这个特性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	error_prepend_string&amp;nbsp;=　;\"&amp;amp;lt;font&amp;nbsp;color=#f00&amp;amp;gt;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于错误信息前输出的字符串
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	error_append_string&amp;nbsp;=　&amp;nbsp;;\"&amp;amp;lt;/font&amp;amp;gt;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于错误信息后输出的字符串
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xmlrpc_errors&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xmlrpc_error_number&amp;nbsp;=&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尚无文档
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Logging]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	define_syslog_variables&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否定义各种系统日志变量，如：$LOG_PID,&amp;nbsp;$LOG_CRON&amp;nbsp;等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	关掉它以提高效率的好主意。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你可以在运行时调用define_syslog_variables()函数来定义这些变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	error_log&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将错误日志记录到哪个文件中。该文件必须对Web服务器用户可写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	syslog&amp;nbsp;表示记录到系统日志中(NT下的事件日志,&amp;nbsp;Unix下的syslog(3))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果此处未设置任何值，则错误将被记录到Web服务器的错误日志中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	log_errors&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在日志文件里记录错误，具体在哪里记录取决于error_log指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强烈建议你在最终发布的web站点时使用日志记录错误而不是直接输出，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样可以让你既知道那里出了问题，又不会暴露敏感信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	log_errors_max_len&amp;nbsp;=&amp;nbsp;1024
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设置错误日志中附加的与错误信息相关联的错误源的最大长度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里设置的值对显示的和记录的错误以及$php_errormsg都有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设为&amp;nbsp;0&amp;nbsp;可以允许无限长度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ignore_repeated_errors&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	记录错误日志时是否忽略重复的错误信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	错误信息必须出现在同一文件的同一行才被被视为重复。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ignore_repeated_source&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否在忽略重复的错误信息时忽略重复的错误源。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Mail]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要使邮件函数可用，PHP必须在编译时能够访问sendmail程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果使用其它的邮件程序，如qmail或postfix，确保使用了相应的sendmail包装。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP首先会在系统的PATH环境变量中搜索sendmail，接着按以下顺序搜索：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/usr/bin:/usr/sbin:/usr/etc:/etc:/usr/ucblib:/usr/lib
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强烈建议在PATH中能够找到sendmail。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另外，编译PHP的用户必须能够访问sendmail程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SMTP&amp;nbsp;=&amp;nbsp;\"localhost\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mail()函数中用来发送邮件的SMTP服务器的主机名称或者IP地址。仅用于win32。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	smtp_port&amp;nbsp;=&amp;nbsp;25
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SMTP服务器的端口号。仅用于win32。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sendmail_from&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	发送邮件时使用的\"From:\"头中的邮件地址。仅用于win32
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该选项还同时设置了\"Return-Path:\"头。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sendmail_path&amp;nbsp;=&amp;nbsp;\"-t&amp;nbsp;-i\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	仅用于unix，也可支持参数(默认的是&amp;nbsp;&amp;nbsp;sendmail&amp;nbsp;-t&amp;nbsp;-i&amp;nbsp;&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sendmail程序的路径，通常为\"/usr/sbin/sendmail或/usr/lib/sendmail\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	configure脚本会尝试找到该程序并设定为默认值，但是如果失败的话，可以在这里设定。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不使用sendmail的系统应将此指令设定为sendmail替代程序(如果有的话)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如，Qmail用户通常可以设为\"/var/qmail/bin/sendmail\"或\"/var/qmail/bin/qmail-inject\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qmail-inject&amp;nbsp;不需要任何选项就能正确处理邮件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mail.force_extra_parameters&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为额外的参数传递给sendmail库的强制指定的参数附加值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这些参数总是会替换掉mail()的第5个参数，即使在安全模式下也是如此。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-ResourceLimit]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	default_socket_timeout&amp;nbsp;=&amp;nbsp;60
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认socket超时(秒)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	max_execution_time&amp;nbsp;=&amp;nbsp;30
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	每个脚本最大允许执行时间(秒)，0&amp;nbsp;表示没有限制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个参数有助于阻止劣质脚本无休止的占用服务器资源。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该指令仅影响脚本本身的运行时间，任何其它花费在脚本运行之外的时间，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如用system()/sleep()函数的使用、数据库查询、文件上传等，都不包括在内。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在安全模式下，你不能用ini_set()在运行时改变这个设置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	memory_limit&amp;nbsp;=&amp;nbsp;16M
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个脚本所能够申请到的最大内存字节数(可以使用K和M作为单位)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这有助于防止劣质脚本消耗完服务器上的所有内存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要能够使用该指令必须在编译时使用\"--enable-memory-limit\"配置选项。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果要取消内存限制，则必须将其设为&amp;nbsp;-1&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设置了该指令后，memory_get_usage()函数将变为可用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	max_input_time&amp;nbsp;=&amp;nbsp;-1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	每个脚本解析输入数据(POST,&amp;nbsp;GET,&amp;nbsp;upload)的最大允许时间(秒)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-1&amp;nbsp;表示不限制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	post_max_size&amp;nbsp;=&amp;nbsp;8M
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	允许的POST数据最大字节长度。此设定也影响到文件上传。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果POST数据超出限制，那么$_POST和$_FILES将会为空。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要上传大文件，该值必须大于upload_max_filesize指令的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果启用了内存限制，那么该值应当小于memory_limit指令的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	realpath_cache_size&amp;nbsp;=&amp;nbsp;16K
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定PHP使用的realpath(规范化的绝对路径名)缓冲区大小。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在PHP打开大量文件的系统上应当增大该值以提高性能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	realpath_cache_ttl&amp;nbsp;=&amp;nbsp;120
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	realpath缓冲区中信息的有效期(秒)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对文件很少变动的系统，可以增大该值以提高性能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-FileUpLoad]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	file_uploads&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许HTTP文件上传。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	参见upload_max_filesize,&amp;nbsp;upload_tmp_dir,&amp;nbsp;post_max_size指令
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	upload_max_filesize&amp;nbsp;=&amp;nbsp;2M
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	允许上传的文件的最大尺寸。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	upload_tmp_dir&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件上传时存放文件的临时目录(必须是PHP进程用户可写的目录)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果未指定则PHP使用系统默认的临时目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-MagicQuotes]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP6将取消魔术引号，相当于下列指令全部为&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	magic_quotes_gpc&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否对输入的GET/POST/Cookie数据使用自动字符串转义(&amp;nbsp;&amp;nbsp;&amp;nbsp;　\"　　NULL&amp;nbsp;)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里的设置将自动影响&amp;nbsp;$_GEST&amp;nbsp;$_POST&amp;nbsp;$_COOKIE&amp;nbsp;数组的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若将本指令与magic_quotes_sybase指令同时打开，则仅将单引号(&amp;nbsp;&amp;nbsp;)转义为(&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其它特殊字符将不被转义，即(&amp;nbsp;\"　　NULL&amp;nbsp;)将保持原样！！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	建议关闭此特性，并使用自定义的过滤函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	magic_quotes_runtime&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否对运行时从外部资源产生的数据使用自动字符串转义(&amp;nbsp;&amp;nbsp;&amp;nbsp;　\"　　NULL&amp;nbsp;)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若打开本指令，则大多数函数从外部资源(数据库,文本文件等)返回数据都将被转义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：用SQL查询得到的数据，用exec()函数得到的数据，等等---www.bianceng.cn
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若将本指令与magic_quotes_sybase指令同时打开，则仅将单引号(&amp;nbsp;&amp;nbsp;)转义为(&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其它特殊字符将不被转义，即(&amp;nbsp;\"　　NULL&amp;nbsp;)将保持原样！！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	建议关闭此特性，并视具体情况使用自定义的过滤函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	magic_quotes_sybase&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否采用Sybase形式的自动字符串转义(用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;表示&amp;nbsp;&amp;nbsp;&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-HighLight]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.bg&amp;nbsp;=&amp;nbsp;\"#FFFFFF\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.comment&amp;nbsp;=&amp;nbsp;\"#FF8000\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.default&amp;nbsp;=&amp;nbsp;\"#0000BB\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.html&amp;nbsp;=&amp;nbsp;\"#000000\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.keyword&amp;nbsp;=&amp;nbsp;\"#007700\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	highlight.string&amp;nbsp;=&amp;nbsp;\"#DD0000\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	语法高亮模式的色彩(通常用于显示&amp;nbsp;.phps&amp;nbsp;文件)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	只要能被&amp;amp;lt;font&amp;nbsp;color=xxx&amp;amp;gt;接受的东西就能正常工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Langue]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	short_open_tag&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许使用\"&amp;amp;lt;?&amp;nbsp;?&amp;amp;gt;\"短标识。否则必须使用\"&amp;amp;lt;?php&amp;nbsp;?&amp;amp;gt;\"长标识。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除非你的php程序仅在受控环境下运行，且只供自己使用，否则请不要使用短标记。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果要和XML结合使用PHP，可以选择关闭此选项以方便直接嵌入\"&amp;amp;lt;?xml&amp;nbsp;...&amp;nbsp;?&amp;amp;gt;\"，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不然你必须用PHP来输出：&amp;amp;lt;?&amp;nbsp;echo&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;?xml&amp;nbsp;version=\"1.0\"&amp;nbsp;&amp;nbsp;;&amp;nbsp;?&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本指令也会影响到缩写形式\"&amp;amp;lt;?=\"，它和\"&amp;amp;lt;?&amp;nbsp;echo\"等价，要使用它也必须打开短标记。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	asp_tags&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否允许ASP风格的标记\"&amp;amp;lt;%&amp;nbsp;%&amp;amp;gt;\"，这也会影响到缩写形式\"&amp;amp;lt;%=\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP6中将删除此指令
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	arg_separator.output&amp;nbsp;=&amp;nbsp;\"&amp;amp;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP所产生的URL中用来分隔参数的分隔符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另外还可以用\"&amp;amp;\"或\",\"等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	arg_separator.input&amp;nbsp;=&amp;nbsp;\"&amp;amp;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP解析URL中的变量时使用的分隔符列表。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符串中的每一个字符都会被当作分割符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另外还可以用\",&amp;amp;\"等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	allow_call_time_pass_reference&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否强迫在函数调用时按引用传递参数(每次使用此特性都会收到一条警告)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php反对这种做法，并在将来的版本里不再支持，因为它影响到了代码的整洁。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	鼓励的方法是在函数声明里明确指定哪些参数按引用传递。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们鼓励你关闭这一选项，以保证你的脚本在将来版本的语言里仍能正常工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	auto_globals_jit&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否仅在使用到$_SERVER和$_ENV变量时才创建(而不是在脚本一启动时就自动创建)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果并未在脚本中使用这两个数组，打开该指令将会获得性能上的提升。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要想该指令生效，必须关闭register_globals和register_long_arrays指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	auto_prepend_file&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	auto_append_file　=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定在主文件之前/后自动解析的文件名。为空表示禁用该特性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该文件就像调用了include()函数被包含进来一样，因此会使用include_path指令的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意：如果脚本通过exit()终止，那么自动后缀将不会发生。---www.bianceng.cn
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	variables_order&amp;nbsp;=&amp;nbsp;\"EGPCS\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP注册&amp;nbsp;Environment,&amp;nbsp;GET,&amp;nbsp;POST,&amp;nbsp;Cookie,&amp;nbsp;Server&amp;nbsp;变量的顺序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分别用&amp;nbsp;E,&amp;nbsp;G,&amp;nbsp;P,&amp;nbsp;C,&amp;nbsp;S&amp;nbsp;表示，按从左到右注册，新值覆盖旧值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	举例说，设为\"GP\"将会导致用POST变量覆盖同名的GET变量，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并完全忽略&amp;nbsp;Environment,&amp;nbsp;Cookie,&amp;nbsp;Server&amp;nbsp;变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	推荐使用\"GPC\"或\"GPCS\"，并使用getenv()函数访问环境变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	register_globals&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否将&amp;nbsp;E,&amp;nbsp;G,&amp;nbsp;P,&amp;nbsp;C,&amp;nbsp;S&amp;nbsp;变量注册为全局变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开该指令可能会导致严重的安全问题，除非你的脚本经过非常仔细的检查。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	推荐使用预定义的超全局变量：$_ENV,&amp;nbsp;$_GET,&amp;nbsp;$_POST,&amp;nbsp;$_COOKIE,&amp;nbsp;$_SERVER
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该指令受variables_order指令的影响。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP6中已经删除此指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	register_argc_argv&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否声明$argv和$argc全局变量(包含用GET方法的信息)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	建议不要使用这两个变量，并关掉该指令以提高性能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	register_long_arrays&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否启用旧式的长式数组(HTTP_*_VARS)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	鼓励使用短式的预定义超全局数组，并关闭该特性以获得更好的性能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP6中已经删除此指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	always_populate_raw_post_data&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否总是生成$HTTP_RAW_POST_DATA变量(原始POST数据)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否则，此变量仅在遇到不能识别的MIME类型的数据时才产生。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不过，访问原始POST数据的更好方法是&amp;nbsp;php://input&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$HTTP_RAW_POST_DATA对于enctype=\"multipart/form-data\"的表单数据不可用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unserialize_callback_func&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果解序列化处理器需要实例化一个未定义的类，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里指定的回调函数将以该未定义类的名字作为参数被unserialize()调用，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以免得到不完整的\"__PHP_Incomplete_Class\"对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果这里没有指定函数，或指定的函数不包含(或实现)那个未定义的类，将会显示警告信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以仅在确实需要实现这样的回调函数时才设置该指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若要禁止这个特性，只需置空即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	y2k_compliance&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否强制打开2000年适应(可能在非Y2K适应的浏览器中导致问题)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	zend.ze1_compatibility_mode&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否使用兼容Zend引擎I(PHP&amp;nbsp;4.x)的模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这将影响对象的复制、构造(无属性的对象会产生FALSE或0)、比较。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	兼容模式下，对象将按值传递，而不是默认的按引用传递。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	precision&amp;nbsp;=&amp;nbsp;14
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	浮点型数据显示的有效位数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	serialize_precision&amp;nbsp;=&amp;nbsp;100
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将浮点型和双精度型数据序列化存储时的精度(有效位数)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认值能够确保浮点型数据被解序列化程序解码时不会丢失数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-OutputControl]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输出控制函数很有用，特别是在已经输出了信息之后再发送HTTP头的情况下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输出控制函数不会作用于header()或setcookie()等函数发送的HTTP头，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	而只会影响类似于echo()函数输出的信息和嵌入在PHP代码之间的信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	implicit_flush&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否要求PHP输出层在每个输出块之后自动刷新数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这等效于在每个&amp;nbsp;print()、echo()、HTML块&amp;nbsp;之后自动调用flush()函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开这个选项对程序执行的性能有严重的影响，通常只推荐在调试时使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在CLI&amp;nbsp;SAPI的执行模式下，该指令默认为&amp;nbsp;On&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	output_buffering&amp;nbsp;=&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输出缓冲区大小(字节)。建议值为4096~8192。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输出缓冲允许你甚至在输出正文内容之后再发送HTTP头(包括cookies)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其代价是输出层减慢一点点速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设置输出缓冲可以减少写入，有时还能减少网络数据包的发送。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个参数的实际收益很大程度上取决于你使用的是什么Web服务器以及什么样的脚本。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	output_handler&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将所有脚本的输出重定向到一个输出处理函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	比如，重定向到mb_output_handler()函数时，字符编码将被透明地转换为指定的编码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一旦你在这里指定了输出处理程序，输出缓冲将被自动打开(output_buffering=4096)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意0:&amp;nbsp;此处仅能使用PHP内置的函数，自定义函数应在脚本中使用ob_start()指定。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意1:&amp;nbsp;可移植脚本不能依赖该指令，而应使用ob_start()函数明确指定输出处理函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用这个指令可能会导致某些你不熟悉的脚本出错。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意2:&amp;nbsp;你不能同时使用\"mb_output_handler\"和\"ob_iconv_handler\"两个输出处理函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你也不能同时使用\"ob_gzhandler\"输出处理函数和zlib.output_compression指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意3:&amp;nbsp;如果使用zlib.output_handler指令开启zlib输出压缩，该指令必须为空。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Directory]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	doc_root&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP的\"根目录\"。仅在非空时有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果safe_mode=On，则此目录之外的文件一概被拒绝。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果编译PHP时没有指定FORCE_REDIRECT，并且在非IIS服务器上以CGI方式运行，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	则必须设置此指令(参见手册中的安全部分)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	替代方案是使用的cgi.force_redirect指令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	include_path&amp;nbsp;=&amp;nbsp;\".:/path/to/php/pear\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定一组目录用于require(),&amp;nbsp;include(),&amp;nbsp;fopen_with_path()函数寻找文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	格式和系统的PATH环境变量类似(UNIX下用冒号分隔，Windows下用分号分隔)：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	UNIX:&amp;nbsp;\"/path1:/path2\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Windows:&amp;nbsp;\"path1;path2\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在包含路径中使用&amp;nbsp;&amp;nbsp;.&amp;nbsp;&amp;nbsp;可以允许相对路径，它代表当前目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	user_dir&amp;nbsp;=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	告诉php在使用&amp;nbsp;/~username&amp;nbsp;打开脚本时到哪个目录下去找，仅在非空时有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	也就是在用户目录之下使用PHP文件的基本目录名，例如：\"public_html\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	extension_dir&amp;nbsp;=&amp;nbsp;\"/path/to/php\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	存放扩展库(模块)的目录，也就是PHP用来寻找动态扩展模块的目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Windows下默认为\"C:/php5\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-HTTP]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	default_mimetype&amp;nbsp;=&amp;nbsp;\"text/html\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	default_charset&amp;nbsp;=　;\"gb2312\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP默认会自动输出\"Content-Type:&amp;nbsp;text/html\"&amp;nbsp;HTTP头。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果将default_charset指令设为\"gb2312\"，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么将会自动输出\"Content-Type:&amp;nbsp;text/html;&amp;nbsp;charset=gb2312\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Unicode]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	detect_unicode&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尚无文档
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Misc]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	auto_detect_line_endings&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否让PHP自动侦测行结束符(EOL)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果的你脚本必须处理Macintosh文件，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	或者你运行在Macintosh上，同时又要处理unix或win32文件，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开这个指令可以让PHP自动侦测EOL，以便fgets()和file()函数可以正常工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但同时也会导致在Unix系统下使用回车符(CR)作为项目分隔符的人遭遇不兼容行为。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cgi.rfc2616_headers&amp;nbsp;=&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指定PHP在发送HTTP响应代码时使用何种报头。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	0&amp;nbsp;表示发送一个\"Status:&amp;nbsp;\"报头，Apache和其它web服务器都支持。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	若设为1，则PHP使用RFC2616标准的头。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除非你知道自己在做什么，否则保持其默认值&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cgi.nph&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在CGI模式下是否强制对所有请求都发送\"Status:&amp;nbsp;200\"状态码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fastcgi.impersonate&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	IIS中的FastCGI支持模仿客户端安全令牌的能力。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这使得IIS能够定义运行时所基于的请求的安全上下文。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Apache中的mod_fastcgi不支持此特性(03/17/2002)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果在IIS中运行则设为On，默认为Off。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fastcgi.logging&amp;nbsp;=&amp;nbsp;On
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否记录通过FastCGI进行的连接。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[PHP-Core-Weirdy]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这些选项仅存在于文档中，却不存在于phpinfo()函数的输出中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	async_send&amp;nbsp;=&amp;nbsp;Off
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是否异步发送。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	from&amp;nbsp;=　;\"john@doe.com\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义匿名ftp的密码(一个email地址)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	近核心模块　;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Pcre]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Perl兼容正则表达式模块
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pcre.backtrack_limit&amp;nbsp;=&amp;nbsp;100000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PCRE的最大回溯(backtracking)步数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pcre.recursion_limit&amp;nbsp;=&amp;nbsp;100000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PCRE的最大递归(recursion)深度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你将该值设的非常高，将可能耗尽进程的栈空间，导致PHP崩溃。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Session]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除非使用session_register()或$_SESSION注册了一个变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否则不管是否使用了session_start()，都不会自动添加任何session记录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	包括resource变量或有循环引用的对象包含指向自身的引用的对象，不能保存在会话中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	register_globals指令会影响到会话变量的存储和恢复。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session.save_handler&amp;nbsp;=&amp;nbsp;\"files\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	存储和检索与会话关联的数据的处理器名字。默认为文件(\"files\")。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果想要使用自定义的处理器(如基于数据库的处理器)，可用\"user\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有一个使用PostgreSQL的处理器：http://sourceforge.net/projects/phpform-ext/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session.save_path&amp;nbsp;=&amp;nbsp;\"/tmp\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	传递给存储处理器的参数。对于files处理器，此值是创建会话数据文件的路径。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Windows下默认为临时文件夹路径。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你可以使用\"N;[MODE;]/path\"这样模式定义该路径(N是一个整数)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	N表示使用N层深度的子目录，而不是将所有数据文件都保存在一个目录下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[MODE;]可选，必须使用8进制数，默认600(=384)，表示每个目录下最多保存的会话文件数量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是一个提高大量会话性能的好主意。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-08/1336479268.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

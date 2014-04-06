@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-04-24 14:57:34</datetime>
+  <title><![CDATA[Ubuntu安装Google Chrome浏览器]]></title>
+  <content><![CDATA[<p>
+	Ubuntu 软件中心里面没有Google Chrome浏览器，而是其分支Chromium，如果你想用原汁原味的Chrome，可以在Google网站上下载。
+</p>
+<p>
+	下载地址：<strong>http://www.google.com/chrome</strong>
+</p>
+<p>
+	下载完成之后，可以使用下面的命令进行安装，也可以双击安装。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	cd Downloads/ 注：制定到下载目录下。
+</p>
+<p>
+	sudo dpkg -i google-chrome-*.deb 注：把*号换成版本号。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style=\"color:#E53333;\"><strong>运行如果出现错误，运行下面的命令：</strong></span>
+</p>
+<p>
+	sudo apt-get install libnspr4-0d libnss3-1d libxss1 libcurl3
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

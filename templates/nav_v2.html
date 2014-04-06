@@ -1,0 +1,38 @@
+<?php
+@define("DOMAIN", "http://www.itsrcs.com");
+@define("IMG_PATH_ROOT", "/img/");
+@define("IMG_PATH_USER", "/user/data/head-img/");
+@define("IMG_PATH_DEFAULT", "/minbbs/default/headimg/");
+?>
+<div class="Shadow" id="navWapper">
+    <div id="navswapper">
+        <a href="/" class="logo"></a>
+        <div style="height:58px;">
+            <div id="nav">
+                <ul>
+                    <li><a href="<?php echo DOMAIN;?>/"><img src="<?php echo IMG_PATH_ROOT;?>home-16.png" align="absmiddle"/>&#x4E3B;&#x9875;</a></li>
+                    <li><a href="<?php echo DOMAIN;?>/blog/index.html">最新博客</a></li>
+                    <li><a href="<?php echo DOMAIN;?>/q_a/">QA在线问答</a></li>
+                    <li><a style="cursor:default;" onmouseover="javascript:$('.nav-subBar').show();"><img src="<?php echo IMG_PATH_ROOT; ?>settings.png" align="absmiddle"/>编程开发</a></li>
+                    <li><a href="<?php echo DOMAIN; ?>/bookLib/"><img src="<?php echo IMG_PATH_ROOT; ?>Book-16.png" align="absmiddle"/>技术宅必备好书</a></li>
+                    <li style="border:none;"><a href="<?php echo DOMAIN; ?>/minbbs/"><img src="<?php echo IMG_PATH_ROOT; ?>bbs_ico_normal_new_16.png" align="absmiddle"/>讨论区</a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div>
+                    <ul class="nav-subBar">
+                        <li><a href="<?php echo DOMAIN; ?>/art/java/">JAVA</a></li>
+                        <li><a href="<?php echo DOMAIN; ?>/art/php/">PHP</a></li>
+                        <li><a href="<?php echo DOMAIN; ?>/art/c/">C/C++</a></li>
+                        <li><a href="<?php echo DOMAIN; ?>/art/mobile/">移动开发</a></li>
+                        <li><a href="<?php echo DOMAIN; ?>/art/database/">数据库</a></li>
+                        <li style="border:none;"><a href="<?php echo DOMAIN; ?>/art/web/">Web前端开发</a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear" style="height:3px;margin-bottom:15px;background:url('/img/shadow.png') bottom repeat-x;"></div>
+<!--[if lt IE 7]> <div class='atr' style='text-align:center; width:830px;background:#FFF;padding : 5px 0;clear: both; height:42px;margin:10 auto;position: relative;'> <a href="http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.cn/img/banner/upgrade.jpg" border="0" height="42" width="820" /></a></div> <![endif]-->

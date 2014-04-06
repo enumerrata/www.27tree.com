@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>HTML5高级程序设计</title>
+  <author>Peter Lubbers， Brian Albers，Frank Salim</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 11:03:58</submit-date-time>
+  <img-link>b890620c7943ec30d99e0797f0b16cb3.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《HTML5高级程序设计》首先介绍了HTML5的历史背景、新的语义标签及与以往HTML版本相比的根本变化，同时揭示了HTML5背后的设计原理。从第2章起，分别围绕构建令人神往的富Web应用，逐一讨论了HTML5的Canvas、Geolocation、Communication、WebSocket、Forms、Web&amp;nbsp;Workers、Storage等API的使用，辅以直观明了的客户端和服务器端示例代码，让开发人员能够迅速理解和掌握新一代Web标准所涵盖的核心技术。《HTML5高级程序设计》最后探索了离线Web应用并展望了HTML5未来的发展前景。　　&amp;nbsp;《HTML5高级程序设计》面向有一定经验的Web应用开发人员，对HTML5及未来Web应用技术发展抱有浓厚兴趣的读者也可以学习参考。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

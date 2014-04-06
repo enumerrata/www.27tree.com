@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[SEO入门培训文稿]]></title>
+  <content><![CDATA[<p>
+	培训大纲：
+</p>
+<p>
+	1、SEO基本概念和常用工具分享，
+</p>
+<p>
+	2、SEO实现过程，收录-&gt;排名-&gt;点击率。
+</p>
+<p>
+	一：SEO基本知识：
+</p>
+<p>
+	1 几点基础知识：PR，世界排名，百度权重，收录数
+</p>
+<p>
+	1.1 PR
+</p>
+<p>
+	1.1.1什么是PR?
+</p>
+<p>
+	PageRank(网页级别)，2001年9月被授予美国专利，专利人是Google创始人之一拉里·佩奇（Larry Page）。
+</p>
+<p>
+	因此，PageRank里的page不仅指网页，还指佩奇。
+</p>
+<p>
+	它是Google排名运算法则（排名公式）的一部分，是Google用于用来标识网页的等级/重要性的一种方法，是Google用来衡量一个网站的好坏的重要标准之一。
+</p>
+<p>
+	早几年，交换链接时几乎只看PR，因为没有其它的考察网站好坏的渠道。
+</p>
+<p>
+	1.1.2.哪里看PR?
+</p>
+<p>
+	IE浏览器：Google工具条：http://www.google.com/intl/zh-CN/toolbar/ie/
+</p>
+<p>
+	安装后在选项里启用Pagerank。
+</p>
+<p>
+	360浏览器：站长工具 的插件 http://open.se.360.cn/app2/detail/appid/183
+</p>
+<p>
+	Firebug浏览器：使用SearchStatus扩展。
+</p>
+<p>
+	Chrome浏览器、360极速浏览器，使用PageRank Status扩展。
+</p>
+<p>
+	网站上查询 站长站：http://pr.chinaz.com/
+</p>
+<p>
+	1.2 世界排名(Alexa)
+</p>
+<p>
+	网址：http://cn.alexa.com/siteinfo/cncn.com
+</p>
+<p>
+	国内：http://alexa.chinaz.com/?domain=cncn.com
+</p>
+<p>
+	1.3 百度权重
+</p>
+<p>
+	印象中，2010年下半年开始有的，第一个站是爱站。
+</p>
+<p>
+	http://www.aizhan.com/baidu/cncn.com/
+</p>
+<p>
+	http://mytool.chinaz.com/baidusort.aspx?host=cncn.com
+</p>
+<p>
+	1.4 百度指数
+</p>
+<p>
+	http://index.baidu.com
+</p>
+<p>
+	通过观察指数，了解搜索词的大致搜索量。
+</p>
+<p>
+	1.5 收录数
+</p>
+<p>
+	http://www.baidu.com/s?wd=site%3Acncn.com
+</p>
+<p>
+	http://www.baidu.com/s?wd=site%3Awww.cncn.com
+</p>
+<p>
+	如何查看某网页是否被收录？
+</p>
+<p>
+	直接把网址放到百度的搜索框里搜索。
+</p>
+<p>
+	1.6 百度快照
+</p>
+<p>
+	确实是时间越近越好，交换链接时许多人关注。
+</p>
+<p>
+	但与权重关系不大，有的页面是很老的百度快照，但不影响其排第一名。
+</p>
+<p>
+	1.6 搜索技巧：intitle,inurl
+</p>
+<p>
+	http://www.baidu.com/gaoji/advanced.html
+</p>
+<p>
+	按时间搜索，一天内收录lm=1、一周内收录lm=7等，baidu返回结果有Bug
+</p>
+<p>
+	总结：
+</p>
+<p>
+	tool.chinaz.com 输入网站域名后，点SEO综合查询，上面说的基本上都帮你查好了。
+</p>
+<p>
+	二：SEO实现过程
+</p>
+<p>
+	SEO实现整体分三部分：第一是收录；第二是排名；第三是点击率
+</p>
+<p>
+	3.1 收录：
+</p>
+<p>
+	内容原创性
+</p>
+<p>
+	要有良好的结构，使蜘蛛方便的找到新加的页面
+</p>
+<p>
+	3.2 排名三部分：
+</p>
+<p>
+	第一部分是页面基础的优化(页面实施细节，略过)
+</p>
+<p>
+	第二部分是关键词策略，通过百度搜索框的下拉提示和结果页面的相关搜索
+</p>
+<p>
+	第三部分是链接
+</p>
+<p>
+	3.3 点击率：
+</p>
+<p>
+	标题、描述要吸引人，促进用户点击，进而再次提高或稳持排名。
+</p>
+<p>
+	网页的描述对排名没有作用，但对吸引用户点击有用。
+</p>]]></content>
+  <contentx><![CDATA[
+	培训大纲：
+
+
+	1、SEO基本概念和常用工具分享，
+
+
+	2、SEO实现过程，收录-&gt;排名-&gt;点击率。
+
+
+	一：SEO基本知识：
+
+
+	1 几点基础知识：PR，世界排名，百度权重，收录数
+
+
+	1.1 PR
+
+
+	1.1]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

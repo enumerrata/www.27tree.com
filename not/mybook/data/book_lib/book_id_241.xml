@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[《Building Android Apps with HTML, CSS, and Java》]]></title>
+  <author>Jonathan Stark</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-06 18:42:23</submit-date-time>
+  <img-link>435b19ebbcaa34adb2d5ef2480a95045.jpg</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	If you know HTML, CSS, and JavaScript, you already have the tools you need to develop Android applications. This hands-on book shows you how to use these open source web standards to design and build apps that can be adapted for any Android device -- without having to use Java.
+</p>
+<p>
+	You\'ll learn how to create an Android-friendly web app on the platform of your choice, and then convert it to a native Android app with the free PhoneGap framework. Discover why device-agnostic mobile apps are the wave of the future, and start building apps that offer greater flexibility and a broader reach.&nbsp;
+</p>
+<p>
+	<ul>
+		<li>
+			Learn the basics for making a web page look great on the Android web browser
+		</li>
+		<li>
+			Convert a website into a web application, complete with progress indicators and more
+		</li>
+		<li>
+			Add animation with jQTouch to make your web app look and feel like a native Android app
+		</li>
+		<li>
+			Take advantage of client-side data storage with apps that run even when the Android device is offline
+		</li>
+		<li>
+			Use PhoneGap to hook into advanced Android features -- including the accelerometer, geolocation, and alerts
+		</li>
+		<li>
+			Test and debug your app on the Web under load with real users, and then submit the finished product to the Android Market
+		</li>
+	</ul>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>函数get_browser()的详细用法</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	get_browser()函数是用来分析USER_AGENT的，它的执行方法是自动获取客户端的USER_AGENT，然后调用browscap.ini库进行分析得到结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	get_browser&amp;nbsp;([&amp;nbsp;string&amp;nbsp;$user_agent&amp;nbsp;[,&amp;nbsp;bool&amp;nbsp;$return_array&amp;nbsp;=&amp;nbsp;false&amp;nbsp;]]&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第一个参数$user_agent默认是null，自动获取客户端的USER_AGENT，也可以指定$user_agent进行分析，第二个参数是true/false，true表示返回数组，&amp;nbsp;false返回对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般的，PHP中并没有带browscap.ini这个文件，所以直接使用这个函数会有错误提示，需要在http://browsers.garykeith.com/downloads.asp下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	载php_browscap.ini，然后在&amp;nbsp;php.ini&amp;nbsp;中指定php_browscap.ini的绝对路径，盘符可以省略，比如我是在
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php.ini&amp;nbsp;的Dynamic
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Extensions的最后加了一句browscap=/www/php5/ext/php_browscap.ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	。重启apache后，在phpinfo()中能看到下面这句
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	browscap&amp;nbsp;/www/php5/ext/php_browscap.ini&amp;nbsp;/www/php5/ext/php_browscap.ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在不方便操作&amp;nbsp;php.ini&amp;nbsp;时，下面的这个函数起同样的作用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(ini_get(\"browscap\"))&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;$browserinfo&amp;nbsp;=&amp;nbsp;get_browser(null,&amp;nbsp;true);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}else{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;$browserinfo&amp;nbsp;=&amp;nbsp;php_get_browser($agent&amp;nbsp;=&amp;nbsp;NULL);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//print_r($browserinfo);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"USER_AGENT&amp;nbsp;=&amp;amp;gt;&amp;nbsp;\".$_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;]&amp;nbsp;.&amp;nbsp;\"\r\n&amp;amp;lt;br&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foreach($browserinfo&amp;nbsp;as&amp;nbsp;$key=&amp;amp;gt;$value){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"$key&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$value&amp;nbsp;\r\n&amp;amp;lt;br&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;php_get_browser($agent&amp;nbsp;=&amp;nbsp;NULL){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$browscapini=&amp;nbsp;php_browscap.ini&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//*****************如果没有fnmatch()则建立该函数*****************//
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(!function_exists(&amp;nbsp;fnmatch&amp;nbsp;))&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;fnmatch($pattern,&amp;nbsp;$string)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;preg_match(\"#^\".strtr(preg_quote($pattern,&amp;nbsp;&amp;nbsp;#&amp;nbsp;),&amp;nbsp;array(&amp;nbsp;\*&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;.*&amp;nbsp;,&amp;nbsp;&amp;nbsp;\?&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;.&amp;nbsp;)).\"$#i\",&amp;nbsp;$string);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;//&amp;nbsp;end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//*****************分析php_browscap.ini，返回数组*****************//
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$agent=$agent?$agent:$_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$yu=array();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$q_s=array(\"#\.#\",\"#\*#\",\"#\?#\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$q_r=array(\"\.\",\".*\",\".?\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(file_exists($browscapini)==false)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//$bini=file_get_contents(&amp;nbsp;http://browsers.garykeith.com/stream.asp?PHP_BrowsCapINI&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//file_put_contents(&amp;nbsp;php_browscap.ini&amp;nbsp;,$bini);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;&amp;nbsp;php_browscap.ini&amp;nbsp;不存在，请从http://browsers.garykeith.com/stream.asp下载&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$brows=parse_ini_file($browscapini,true);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foreach($brows&amp;nbsp;as&amp;nbsp;$k=&amp;amp;gt;$t){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;if(fnmatch($k,$agent)){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;$yu[&amp;nbsp;browser_name_pattern&amp;nbsp;]=$k;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;$pat=preg_replace($q_s,$q_r,$k);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;$yu[&amp;nbsp;browser_name_regex&amp;nbsp;]=strtolower(\"^$pat$\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;foreach($brows&amp;nbsp;as&amp;nbsp;$g=&amp;amp;gt;$r){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(@$t[&amp;nbsp;Parent&amp;nbsp;]==$g){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;foreach($brows&amp;nbsp;as&amp;nbsp;$a=&amp;amp;gt;$b){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($r[&amp;nbsp;Parent&amp;nbsp;]==$a){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$yu=array_merge($yu,$b,$r,$t);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;foreach($yu&amp;nbsp;as&amp;nbsp;$d=&amp;amp;gt;$z){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$l=strtolower($d);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$hu[$l]=$z;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;@$hu;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	手册中的例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;]&amp;nbsp;.&amp;nbsp;\"\n\n\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$browser&amp;nbsp;=&amp;nbsp;get_browser(null,&amp;nbsp;true);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	print_r($browser);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上例的输出类似于：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Mozilla/5.0&amp;nbsp;(Windows;&amp;nbsp;U;&amp;nbsp;Windows&amp;nbsp;NT&amp;nbsp;5.1;&amp;nbsp;en-US;&amp;nbsp;rv:1.7)&amp;nbsp;Gecko/20040803&amp;nbsp;Firefox/0.9.3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Array
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[browser_name_regex]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;^mozilla/5\.0&amp;nbsp;(windows;&amp;nbsp;.;&amp;nbsp;windows&amp;nbsp;nt&amp;nbsp;5\.1;&amp;nbsp;.*rv:.*)&amp;nbsp;gecko/.*&amp;nbsp;firefox/0\.9.*$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[browser_name_pattern]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;Mozilla/5.0&amp;nbsp;(Windows;&amp;nbsp;?;&amp;nbsp;Windows&amp;nbsp;NT&amp;nbsp;5.1;&amp;nbsp;*rv:*)&amp;nbsp;Gecko/*&amp;nbsp;Firefox/0.9*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[parent]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;Firefox&amp;nbsp;0.9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[platform]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;WinXP
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[browser]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;Firefox
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[version]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;0.9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[majorver]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[minorver]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[cssversion]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[frames]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[iframes]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[tables]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[cookies]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[backgroundsounds]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[vbscript]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[javascript]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[javaapplets]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[activexcontrols]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[cdf]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[aol]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[beta]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[win16]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[crawler]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[stripper]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[wap]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;[netclr]&amp;nbsp;=&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	)
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339672095.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-16+12%3A04%3A01</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-15+21%3A31%3A40</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

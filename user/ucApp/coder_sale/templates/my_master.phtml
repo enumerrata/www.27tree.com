@@ -1,0 +1,23 @@
+<div style="margin:10px 15px;">
+    <span class="sdH"><?php if ($GLOBALS['G_mod'] == M_OWNER) echo '我'; else echo '他'; ?>的主人</span>
+    <div style="padding-top:5px;">
+        <a class="headwapper" style="margin:5px;">
+            <img src="<?php echo $params['ush']; ?>" width="64px" height="64px"/>
+        </a>
+        <div style="margin-left:64px;line-height:26px;font-size:13px;">
+            <a style="font-size:14px;" href="/user/ucApp/coder_sale/?uid=<?php echo $params['uid']; ?>" target="_blank"><?php echo $params['usn']; ?></a>
+            <span class="block"><g class="Gray">主人当前资产</g>:<?php echo $params['master_asset']; ?></span>
+            <span class="block">
+                <?php
+                if ($GLOBALS['G_mod'] == M_OWNER)
+                    echo '<a href="javascript:;" onclick="javascript:do_sl_command(0,', $params['uid'], ',this);">讨好主人</a> | ',
+                    '<a href="javascript:;" onclick="javascript:do_sl_command(1,', $params['uid'], ',this);">暗算主人</a> | ',
+                    '<a href="javascript:;" onclick="javascript:freeMyself();">赎身</a>';
+                if ($GLOBALS['G_mod'] == M_VISITER)
+                    echo '<a href="javascript:;" class="buyFreer" rel="', $GLOBALS['G_PUID'] , '" >购买TA</a>';
+                ?>
+            </span>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

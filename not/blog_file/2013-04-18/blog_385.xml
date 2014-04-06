@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[网站用户界面设计命名规范]]></title>
+  <content><![CDATA[<p>
+	大家分享一下我之前总结的一套Web UI 设计命名规范，也就是网站用户界面设计(俗称网页设计)命名规范。
+</p>
+<p>
+	这套规范并非单纯的CSS、html或JavaScript命名规范，它涉及了很多使用PhotoShop这类设计工具进行网页设计过程中的命名规范。(好久没写文章了，有点罗嗦，吼吼~)。首先我是出于公司几位美工的设计效果图源文件没有对图层命名而开始考虑总结一套的，还有一个原因就是网上大多命名规范都是关于编码的，也就是那些css、html、js和一些服务器端语言的，至于设计方面的命名规范实在是很少。但是毕竟设计师也是技术团队的成员，而且前端开发工程师是要使用设计师的效果图源文件的，所以统一命名规范和设计规范对于团队的协作和工作效率肯定是有好处的。
+</p>
+<p>
+	这套WebUI设计命名规范总结自我的一些Web设计经验和国外设计师的命名方式推荐。
+</p>
+<p>
+	Web UI 设计命名规范
+</p>
+<p>
+	一.网站设计及基本框架结构:
+</p>
+<p>
+	1. Container
+</p>
+<p>
+	“container“ 就是将页面中的所有元素包在一起的部分，这部分还可以命名为: “wrapper“, “wrap“, “page“.
+</p>
+<p>
+	2. Header
+</p>
+<p>
+	“header” 是网站页面的头部区域，一般来讲，它包含网站的logo和一些其他元素。这部分还可以命名为:“page-header” (或 pageHeader).
+</p>
+<p>
+	3. Navbar
+</p>
+<p>
+	“navbar“等同于横向的导航栏，是最典型的网页元素。这部分还可以命名为:“nav”, “navigation”, “nav-wrapper”.
+</p>
+<p>
+	4. Menu
+</p>
+<p>
+	“Menu”区域包含一般的链接和菜单，这部分还可以命名为: “subNav “, “links“，“sidebar-main”.
+</p>
+<p>
+	5. Main
+</p>
+<p>
+	“Main”是网站的主要区域，如果是博客的话它将包含的日志。这部分还可以命名为: “content“, “main-content” (或“mainContent”)。
+</p>
+<p>
+	6. Sidebar
+</p>
+<p>
+	“Sidebar” 部分可以包含网站的次要内容，比如最近更新内容列表、关于网站的介绍或广告元素等…这部分还可以命名为: “subNav “, “side-panel“, “secondary-content“.
+</p>
+<p>
+	7. Footer
+</p>
+<p>
+	“Footer”包含网站的一些附加信息，这部分还可以命名为: “copyright“.
+</p>
+<p>
+	二.需要注意的几点:
+</p>
+<p>
+	1.尽量考虑为元素命名其本身的作用或”用意”，达到语义化。不要使用表面形式的命名.
+</p>
+<p>
+	如:red/left/big等。
+</p>
+<p>
+	2.组合命名规则:
+</p>
+<p>
+	[元素类型]-[元素作用/内容]
+</p>
+<p>
+	如:搜索按钮: btn-search
+</p>
+<p>
+	登录表单:form-login
+</p>
+<p>
+	新闻列表:list-news
+</p>
+<p>
+	3.涉及到交互行为的元素命名:
+</p>
+<p>
+	凡涉及交互行为的元素通常会有正常、悬停、点击和已浏览等不同样式，命名可参考以下规则:
+</p>
+<p>
+	鼠标悬停:：hover 点击：click 已浏览：visited
+</p>
+<p>
+	如:搜索按钮: btn-search、btn-search-hover、btn-search-visited
+</p>
+<p>
+	三.Photoshop图层结构规范:
+</p>
+<p>
+	Photoshop图层命名遵循树形结构，凡某元素组成的图层大于3层，即可形成组，所有图层尽量避免使用默认命名(图层+编号)。
+</p>
+<p>
+	第一级图层结构如下图:
+</p>
+<p>
+	第二级结构图例(医院网站):
+</p>
+<p>
+	第三级结构图例及效果图对比(医院新闻栏目)：
+</p>
+<p>
+	效果图
+</p>
+<p>
+	图层命名结构
+</p>
+<p>
+	四.常用命名汇总:
+</p>
+<p>
+	页头:header
+</p>
+<p>
+	登录条:loginbar
+</p>
+<p>
+	标志:logo
+</p>
+<p>
+	侧栏:sidebar
+</p>
+<p>
+	广告条:banner
+</p>
+<p>
+	导航:nav
+</p>
+<p>
+	子导航:subNav
+</p>
+<p>
+	菜单:menu
+</p>
+<p>
+	子菜单:subMenu
+</p>
+<p>
+	下拉菜单:dropMenu
+</p>
+<p>
+	工具条: toolbar
+</p>
+<p>
+	表单:form
+</p>
+<p>
+	栏目:column
+</p>
+<p>
+	箭头:arrow
+</p>
+<p>
+	搜索:search
+</p>
+<p>
+	搜索按钮:btn-search
+</p>
+<p>
+	滚动条:scroll
+</p>
+<p>
+	内容:content
+</p>
+<p>
+	标签页:tab
+</p>
+<p>
+	文章列表:list
+</p>
+<p>
+	提示信息:msg
+</p>
+<p>
+	小技巧:tips
+</p>
+<p>
+	栏目标题:title
+</p>
+<p>
+	链接:links
+</p>
+<p>
+	页脚:footer
+</p>
+<p>
+	服务:service
+</p>
+<p>
+	热点:hot
+</p>
+<p>
+	新闻:news
+</p>
+<p>
+	下载:download
+</p>
+<p>
+	注册:regsiter
+</p>
+<p>
+	状态:status
+</p>
+<p>
+	按钮:btn
+</p>
+<p>
+	投票:vote
+</p>
+<p>
+	合作伙伴:partner
+</p>
+<p>
+	版权:copyright
+</p>
+<p>
+	网站地图: sitemap
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+	大家分享一下我之前总结的一套Web UI 设计命名规范，也就是网站用户界面设计(俗称网页设计)命名规范。
+
+
+	这套规范并非单纯的CSS、html或JavaScript命名规范，它涉及了很多使用PhotoShop这类设计工具进行网页设计]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

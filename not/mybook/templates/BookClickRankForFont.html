@@ -1,0 +1,19 @@
+<li class="clickRank">
+    <span class="clickRank-rankN">
+        <?php echo $param['Rank'];?>
+    </span>
+    <a class="clickRank-imgwapp" href="/bookLib/<?php echo $param['bookid'];?>">
+        <img src="<?php echo $param['bookimg'];?>" width="32px"/>
+    </a>
+    <span class="clickRank-title Elipsis">
+        <a href="/bookLib/<?php echo $param['bookid'];?>" target="_blank">
+            《<?php echo $param['title'];?>》
+        </a>
+    </span>
+    <span class="clickRank-author Elipsis">
+        <?php echo $param['author'];?>
+    </span>
+    <span class="clickRank-author Elipsis">
+        ><?php echo $param['click'];?>
+    </span>
+</li>

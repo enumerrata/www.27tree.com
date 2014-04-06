@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Python 核心编程 </title>
+  <author>（美）丘恩（Chun，W.J.）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 22:58:51</submit-date-time>
+  <img-link>5eff4b93169006e0f7311fd13e201482.png</img-link>
+  <book-area>py</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是经典的Python指导书，在第一版的基础上进行了全面升级。全书分为两个部分：第1部分占据了大约三分之二的篇幅，阐释这门语言的“核心”内容，包括基本的概念和语句、语法和风格、Python对象、数字类型、序列类型、映射和集合类型、条件和循环、文件和输入/输出、错误和异常、函数和函数式编程、模块、面向对象编程、执行环境等内容：第2部分则提供了各种高级主题来展示可以使用Python做些什么，包括正则表达式、网络编程、网络客户端编程、多线程编程、图形用户界面编程、Web编程、数据库编程、扩展Python&amp;nbsp;和一些其他材料。　　　本书适合Python初学者，以及已经入门但想继续学习和提高自身Python技巧的程序员。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

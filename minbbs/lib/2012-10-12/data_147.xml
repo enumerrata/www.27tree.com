@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-12 01:04:55</datetime>
+  <title><![CDATA[bShare 自定义分享内容，标题和图片]]></title>
+  <content><![CDATA[<p>
+	bShare一般会分享当前页面的链接、标题及摘要，摘要默认为Meta标签中Description部分的内容。不同的平台可能会接受不同的分享内容，比如有的社会化书签只接受链接和标题，不接受摘要。特别是对于微博类的分享平台，bShare提供了微博分享模板设置（链接到分享模板相关页面）的功能，站长可以修改用户分享到微博时的内容。站长也可以自定义分享的链接、标题、摘要及图片等内容，只需要在引入bShare的JS嵌入代码后（buttonLite.js或者button.js），加上bShare.addEntry()的调用即可。例如：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;script type=\"text/javascript\" charset=\"utf-8\"&gt;
+bShare.addEntry({
+    title: \"分享的标题，默认为当前页面标题\",
+    url: \"分享的链接，默认为当前页面URL\",
+    summary: \"分享的文本摘要，默认为页面Meta标签中description的内容或者用户高亮的内容\",
+    pic: \"指定分享的图片的链接，目前支持新浪微博，QQ空间，搜狐微博，网易微博，人人网， 嘀咕，腾讯微博和做啥。\"
+});
+&lt;/script&gt;</pre>
+注意调用此函数前必须已导入bShare的JS嵌入代码，否则会出错。另外一种指定分享摘要的方式是把要做为摘要的内容用id或class为BSHARE_TEXT的p元素包含，bShare会抓取此元素中的问题作为分享摘要。例如：
+</p>
+<p>
+	&lt;p class=\"BSHARE_TEXT\"&gt;分享的文本摘要。&lt;/p&gt;
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

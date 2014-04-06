@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-04 19:49:36</datetime>
+  <title><![CDATA[Web前端开发人员使用的 Chrome Canary]]></title>
+  <content><![CDATA[<p>
+	如果你已经将Chrome浏览器作为你前端开发的调试的浏览器，我强烈推荐你使用 Chrome Canary 。
+</p>
+<p align=\"center\">
+	<img src=\"/mod/kd/attached/image/20121204/20121204194241_79655.png\" alt=\"\" />
+</p>
+<p>
+	<strong>Chrome</strong><strong>开发</strong><strong>人员</strong><strong>工具</strong><strong>特性</strong>
+</p>
+<p>
+	支持 $_
+</p>
+<p>
+	美化的console结果界面
+</p>
+<p>
+	可以测试JPEG图片文件解析速度
+</p>
+<p>
+	<strong>Chrome Canary&nbsp;</strong><strong>可以</strong><strong>作为</strong><strong>插件</strong><strong>运行</strong>
+</p>
+<p>
+	Canary这么棒的另外一个原因就是它可以作为Chrome插件来运行，这就是为什么Canary的下载页面是sxs的原因。
+</p>
+<p align=\"center\">
+	<img src=\"/mod/kd/attached/image/20121204/20121204194443_81331.png\" alt=\"\" />
+</p>
+<p>
+	推荐使用插件的方式运行Canary，这样你就不用升级你的浏览器了。
+</p>
+<p>
+	Chrome&nbsp;Canary 11周就有了310万的用户 ，&nbsp;但是非常令人遗憾的是&nbsp;Canary&nbsp;只支持Mac和Windows哦。
+</p>
+<p>
+	赶紧下载一个吧
+</p>
+<p align=\"center\">
+	<span style=\"font-size:16px;\"><strong><a href=\"https://tools.google.com/dlpage/chromesxs\" target=\"_blank\">https://tools.google.com/dlpage/chromesxs</a></strong></span>
+</p>]]></content>
+  <contentx><![CDATA[如果你已经将Chrome浏览器作为你前端开发的调试的浏览器，我强烈推荐你使用 Chrome Canary 。]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

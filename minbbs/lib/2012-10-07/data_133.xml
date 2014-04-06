@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-07 20:10:57</datetime>
+  <title><![CDATA[FireFox 按钮点击bug修正]]></title>
+  <content><![CDATA[<p>
+	获取按钮对象采用了不兼容的方法，现在已经修正为
+</p>
+<p>
+	evt.srcElement || evt.currentTarget
+</p>
+<br />]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,254 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL 创建数据库和表</h1>
+</div>
+<div>
+
+<p><b>数据库存有一个或多个表。</b></p>
+
+<h1>创建数据库</h1>
+
+<p>CREATE DATABASE 语句用于在 MySQL 中创建数据库。</p>
+
+<h2>语法</h2>
+
+<code>CREATE DATABASE database_name</code>
+
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysql_query() 函数。此函数用于向 MySQL 连接发送查询或命令。</p>
+
+<h2>例子</h2>
+
+<p>在下面的例子中，我们创建了一个名为 "my_db" 的数据库：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+if&nbsp(mysql_query("CREATE&nbspDATABASE&nbspmy_db",$con))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Database&nbspcreated";<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Error&nbspcreating&nbspdatabase:&nbsp"&nbsp.&nbspmysql_error();<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<h1>创建表</h1>
+
+<p>CREATE TABLE 用于在 MySQL 中创建数据库表。</p>
+
+<h2>语法</h2>
+
+<code>
+CREATE TABLE table_name<br />
+(<br />
+column_name1 data_type,<br />
+column_name2 data_type,<br />
+column_name3 data_type,<br />
+.......<br />
+)
+</code>
+
+<p>为了执行此命令，我必须向 mysql_query() 函数添加 CREATE TABLE 语句。</p>
+
+<h2>例子</h2>
+
+<p>下面的例子展示了如何创建一个名为 "Persons" 的表，此表有三列。列名是 "FirstName", "LastName" 以及 "Age"：</p>
+
+<code>
+c&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+//&nbspCreate&nbspdatabase<br />
+if&nbsp(mysql_query("CREATE&nbspDATABASE&nbspmy_db",$con))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Database&nbspcreated";<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Error&nbspcreating&nbspdatabase:&nbsp"&nbsp.&nbspmysql_error();<br />
+&nbsp&nbsp}<br />
+<br />
+//&nbspCreate&nbsptable&nbspin&nbspmy_db&nbspdatabase<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+$sql&nbsp=&nbsp"CREATE&nbspTABLE&nbspPersons&nbsp<br />
+(<br />
+FirstName&nbspvarchar(15),<br />
+LastName&nbspvarchar(15),<br />
+Age&nbspint<br />
+)";<br />
+mysql_query($sql,$con);<br />
+<br />
+mysql_close($on);<br />
+?&gt;
+</code>
+
+<p><b>重要事项</b>：在创建表之前，必须首先选择数据库。通过 mysql_select_db() 函数选取数据库。</p>
+<p><b>注释</b>：当您创建 varchar 类型的数据库字段时，必须规定该字段的最大长度，例如：varchar(15)。</p>
+
+<h1>MySQL 数据类型</h1>
+
+<p>下面的可使用的各种 MySQL 数据类型：</p>
+
+<table class="dataintable">
+<tr>
+<th style="width:40%">数值类型</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>int(size)</li>
+<li>smallint(size)</li>
+<li>tinyint(size)</li>
+<li>mediumint(size)</li>
+<li>bigint(size)</li>
+</ul>
+</td>
+<td>仅支持整数。在 size 参数中规定数字的最大值。</td>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>decimal(size,d)</li>
+<li>double(size,d)</li>
+<li>float(size,d)</li>
+</ul>
+</td>
+<td>
+<p>支持带有小数的数字。</p>
+<p>在 size 参数中规定数字的最大值。在 d 参数中规定小数点右侧的数字的最大值。</p>
+</td>
+</tr>
+</table>
+ 
+<table class="dataintable">
+<tr>
+<th style="width:40%">文本数据类型</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>char(size)</td>
+<td>
+<p>支持固定长度的字符串。（可包含字母、数字以及特殊符号）。</p>
+<p>在 size 参数中规定固定长度。</p>
+</td>
+</tr>
+ 
+<tr>
+<td>varchar(size)</td>
+<td>
+<p>支持可变长度的字符串。（可包含字母、数字以及特殊符号）。</p>
+<p>在 size 参数中规定最大长度。</p>
+</td>
+</tr>
+ 
+<tr>
+<td>tinytext</td>
+<td>支持可变长度的字符串，最大长度是 255 个字符。</td>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>text</li>
+<li>blob</li>
+</ul>
+</td>
+<td>支持可变长度的字符串，最大长度是 65535 个字符。</td>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>mediumtext</li>
+<li>mediumblob</li>
+</ul>
+</td>
+<td>支持可变长度的字符串，最大长度是 16777215 个字符。</td>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>longtext</li>
+<li>longblob</li>
+</ul>
+</td>
+<td>支持可变长度的字符串，最大长度是 4294967295 个字符。</td>
+</tr>
+</table>
+ 
+<table class="dataintable">
+<tr>
+<th style="width:40%">日期数据类型</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>
+<ul>
+<li>date(yyyy-mm-dd)</li>
+<li>datetime(yyyy-mm-dd hh:mm:ss)</li>
+<li>timestamp(yyyymmddhhmmss)</li>
+<li>time(hh:mm:ss)</li>
+</ul>
+</td>
+<td>支持日期或时间</td>
+</tr>
+</table>
+ 
+<table class="dataintable">
+<tr>
+<th style="width:40%">杂项数据类型</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>enum(value1,value2,ect)</td>
+<td>ENUM 是 ENUMERATED 列表的缩写。可以在括号中存放最多 65535 个值。</td>
+</tr>
+ 
+<tr>
+<td>set</td>
+<td>SET 与 ENUM 相似。但是，SET 可拥有最多 64 个列表项目，并可存放不止一个 choice</td>
+</tr>
+</table>
+
+<h1>主键和自动递增字段</h1>
+
+<p>每个表都应有一个主键字段。</p>
+<p>主键用于对表中的行进行唯一标识。每个主键值在表中必须是唯一的。此外，主键字段不能为空，这是由于数据库引擎需要一个值来对记录进行定位。</p>
+<p>主键字段永远要被编入索引。这条规则没有例外。你必须对主键字段进行索引，这样数据库引擎才能快速定位给予该键值的行。</p>
+<p>下面的例子把 personID 字段设置为主键字段。主键字段通常是 ID 号，且通常使用 AUTO_INCREMENT 设置。AUTO_INCREMENT 会在新记录被添加时逐一增加该字段的值。要确保主键字段不为空，我们必须向该字段添加 NOT NULL 设置。</p>
+
+<h2>例子</h2>
+
+<code>
+$sql = "CREATE TABLE Persons<br />
+(<br />
+personID int NOT NULL AUTO_INCREMENT, <br />
+PRIMARY KEY(personID),<br />
+FirstName varchar(15),<br />
+LastName varchar(15),<br />
+Age int<br />
+)";<br />
+<br />
+mysql_query($sql,$con);
+</code>
+
+</div>

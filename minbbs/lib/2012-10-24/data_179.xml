@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-24 23:43:01</datetime>
+  <title><![CDATA[解决用ntfs-3g挂载ntfs文件系统时中文乱码]]></title>
+  <content><![CDATA[<p>
+	解决ntfs-3g挂载ntfs文件系统时中文乱码：
+</p>
+<p>
+	在挂分区时加入以下参数
+</p>
+<p>
+	locale=zh_CN.UTF-8
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

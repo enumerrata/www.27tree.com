@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php 缓存方案:Memcache 基础教程</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Memcache是什么&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Memcache是danga.com的一个项目，最早是为&amp;nbsp;LiveJournal&amp;nbsp;服务的，目前全世界不少人使用这个缓存项目来构建自己大负载的网站，来分担数据库的压力。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它可以应对任意多个连接，使用非阻塞的网络IO。由于它的工作机制是在内存中开辟一块空间，然后建立一个HashTable，Memcached自管理这些HashTable。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Memcache官方网站：http://www.danga.com/memcached，更多详细的信息可以来这里了解
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为什么会有Memcache和memcached两种名称？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其实Memcache是这个项目的名称，而memcached是它服务器端的主程序文件名，知道我的意思了把~~~~。一个是项目名称，一个是主程序文件名，在网上看到了很多人不明白，于是混用了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Memcache的安装&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分为两个过程：memcache服务器端的安装和memcached客户端的安装。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所谓服务器端的安装就是在服务器（一般都是linux系统）上安装Memcache实现数据的存储
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所谓客户端的安装就是指php（或者其他程序，Memcache还有其他不错的api接口提供）去使用服务器端的Memcache提供的函数，需要php添加扩展。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;PHP的Memcache&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;&amp;nbsp;?php
+//连接
+$mem&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Memcache;
+$mem-&amp;amp;gt;connect(\"192.168.0.200\",&amp;nbsp;12000);
+
+//保存数据
+$mem-&amp;amp;gt;set(&amp;nbsp;key1&amp;nbsp;,&amp;nbsp;&amp;nbsp;This&amp;nbsp;is&amp;nbsp;first&amp;nbsp;value&amp;nbsp;,&amp;nbsp;0,&amp;nbsp;60);
+$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key1&amp;nbsp;);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val&amp;nbsp;.\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";
+
+//替换数据
+$mem-&amp;amp;gt;replace(&amp;nbsp;key1&amp;nbsp;,&amp;nbsp;&amp;nbsp;This&amp;nbsp;is&amp;nbsp;replace&amp;nbsp;value&amp;nbsp;,&amp;nbsp;0,&amp;nbsp;60);
+$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key1&amp;nbsp;);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val&amp;nbsp;.&amp;nbsp;\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";
+
+//保存数组
+$arr&amp;nbsp;=&amp;nbsp;array(&amp;nbsp;aaa&amp;nbsp;,&amp;nbsp;&amp;nbsp;bbb&amp;nbsp;,&amp;nbsp;&amp;nbsp;ccc&amp;nbsp;,&amp;nbsp;&amp;nbsp;ddd&amp;nbsp;);
+$mem-&amp;amp;gt;set(&amp;nbsp;key2&amp;nbsp;,&amp;nbsp;$arr,&amp;nbsp;0,&amp;nbsp;60);
+$val2&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key2&amp;nbsp;);
+echo&amp;nbsp;\"Get&amp;nbsp;key2&amp;nbsp;value:&amp;nbsp;\";
+print_r($val2);
+echo&amp;nbsp;\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";
+
+//删除数据
+$mem-&amp;amp;gt;delete(&amp;nbsp;key1&amp;nbsp;);
+$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key1&amp;nbsp;);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val&amp;nbsp;.&amp;nbsp;\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";
+
+//清除所有数据
+$mem-&amp;amp;gt;flush();
+$val2&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key2&amp;nbsp;);
+echo&amp;nbsp;\"Get&amp;nbsp;key2&amp;nbsp;value:&amp;nbsp;\";
+print_r($val2);
+echo&amp;nbsp;\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";
+
+//关闭连接
+$mem-&amp;amp;gt;close();
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	如果正常的话，浏览器将输出：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;This&amp;nbsp;is&amp;nbsp;first&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;This&amp;nbsp;is&amp;nbsp;replace&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Get&amp;nbsp;key2&amp;nbsp;value:&amp;nbsp;Array&amp;nbsp;(&amp;nbsp;[0]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;aaa&amp;nbsp;[1]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;bbb&amp;nbsp;[2]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;ccc&amp;nbsp;[3]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;ddd&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Get&amp;nbsp;key1&amp;nbsp;value:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Get&amp;nbsp;key2&amp;nbsp;value:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	程序代码分析
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	初始化一个Memcache的对象：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Memcache;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	连接到我们的Memcache服务器端，第一个参数是服务器的IP地址，也可以是主机名，第二个参数是Memcache的开放的端口：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem-&amp;amp;gt;connect(\"192.168.0.200\",&amp;nbsp;12000);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	保存一个数据到Memcache服务器上，第一个参数是数据的key，用来定位一个数据，第二个参数是需要保存的数据内容，这里是一个字符串，第三个参数是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个标记，一般设置为0或者MEMCACHE_COMPRESSED就行了，第四个参数是数据的有效期，就是说数据在这个时间内是有效的，如果过去这个时
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	间，那么会被Memcache服务器端清除掉这个数据，单位是秒，如果设置为0，则是永远有效，我们这里设置了60，就是一分钟有效时间：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem-&amp;amp;gt;set(‘key1‘,&amp;nbsp;‘This&amp;nbsp;is&amp;nbsp;first&amp;nbsp;value&amp;nbsp;,&amp;nbsp;0,&amp;nbsp;60);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从Memcache服务器端获取一条数据，它只有一个参数，就是需要获取数据的key，我们这里是上一步设置的key1，现在获取这个数据后输出输出：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(&amp;nbsp;key1′);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在是使用replace方法来替换掉上面key1的值，replace方法的参数跟set是一样的，不过第一个参数key1是必须是要替换数据内容的key，最后输出了：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem-&amp;amp;gt;replace(‘key1′,&amp;nbsp;‘This&amp;nbsp;is&amp;nbsp;replace&amp;nbsp;value&amp;nbsp;,&amp;nbsp;0,&amp;nbsp;60);
+$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(‘key1′);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	同样的，Memcache也是可以保存数组的，下面是在Memcache上面保存了一个数组，然后获取回来并输出
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$arr&amp;nbsp;=&amp;nbsp;array(‘aaa&amp;nbsp;,&amp;nbsp;‘bbb&amp;nbsp;,&amp;nbsp;‘ccc&amp;nbsp;,&amp;nbsp;‘ddd&amp;nbsp;);
+$mem-&amp;amp;gt;set(‘key2′,&amp;nbsp;$arr,&amp;nbsp;0,&amp;nbsp;60);
+$val2&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(‘key2′);
+print_r($val2);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在删除一个数据，使用delte接口，参数就是一个key，然后就能够把Memcache服务器这个key的数据删除，最后输出的时候没有结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem-&amp;amp;gt;delete(‘key1′);
+$val&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(‘key1′);
+echo&amp;nbsp;\"Get&amp;nbsp;key1&amp;nbsp;value:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$val&amp;nbsp;.&amp;nbsp;\"&amp;amp;lt;br&amp;amp;gt;\";&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最后我们把所有的保存在Memcache服务器上的数据都清除，会发现数据都没有了，最后输出key2的数据为空，最后关闭连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$mem-&amp;amp;gt;flush();
+$val2&amp;nbsp;=&amp;nbsp;$mem-&amp;amp;gt;get(‘key2′);
+echo&amp;nbsp;\"Get&amp;nbsp;key2&amp;nbsp;value:&amp;nbsp;\";
+print_r($val2);
+echo&amp;nbsp;\"&amp;amp;lt;br&amp;amp;gt;\";&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Memcache的使用&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用Memcache的网站一般流量都是比较大的，为了缓解数据库的压力，让Memcache作为一个缓存区域，把部分信息保存在内存中，在前端能够迅速的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	进行存取。那么一般的焦点就是集中在如何分担数据库压力和进行分布式，毕竟单台Memcache的内存容量的有限的。我这里简单提出我的个人看法，未经实
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	践，权当参考。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;分布式应用&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Memcache本来支持分布式，我们客户端稍加改造，更好的支持。我们的key可以适当进行有规律的封装，比如以user为主的网站来说，每个用户都有User
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ID，那么可以按照固定的ID来进行提取和存取，比如1开头的用户保存在第一台Memcache服务器上，以2开头的用户的数据保存在第二台Mecache服务器上，存取数据都先按照User&amp;nbsp;ID来进行相应的转换和存取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是这个有缺点，就是需要对User&amp;nbsp;ID进行判断，如果业务不一致，或者其他类型的应用，可能不是那么合适，那么可以根据自己的实际业务来进行考虑，或者去想更合适的方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;减少数据库压力&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个算是比较重要的，所有的数据基本上都是保存在数据库当中的，每次频繁的存取数据库，导致数据库性能极具下降，无法同时服务更多的用户，比如MySQL，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	特别频繁的锁表，那么让Memcache来分担数据库的压力吧。我们需要一种改动比较小，并且能够不会大规模改变前端的方式来进行改变目前的架构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我考虑的一种简单方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	后端的数据库操作模块，把所有的Select操作提取出来（update/delete/insert不管），然后把对应的SQL进行相应的hash算法计
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	算得出一个hash数据key（比如MD5或者SHA），然后把这个key去Memcache中查找数据，如果这个数据不存在，说明还没写入到缓存中，那
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	么从数据库把数据提取出来，一个是数组类格式，然后把数据在set到Memcache中，key就是这个SQL的hash值，然后相应的设置一个失效时
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	间，比如一个小时，那么一个小时中的数据都是从缓存中提取的，有效减少数据库的压力。缺点是数据不实时，当数据做了修改以后，无法实时到前端显示，并且还
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有可能对内存占用比较大，毕竟每次select出来的数据数量可能比较巨大，这个是需要考虑的因素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Memcache的安全&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们上面的Memcache服务器端都是直接通过客户端连接后直接操作，没有任何的验证过程，这样如果服务器是直接暴露在互联网上的话是比较危险，轻则数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泄露被其他无关人员查看，重则服务器被入侵，因为Mecache是以root权限运行的，况且里面可能存在一些我们未知的bug或者是缓冲区溢出的情况，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这些都是我们未知的，所以危险性是可以预见的。为了安全起见，我做两点建议，能够稍微的防止黑客的入侵或者数据的泄露。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;内网访问&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最好把两台服务器之间的访问是内网形态的，一般是Web服务器跟Memcache服务器之间。普遍的服务器都是有两块网卡，一块指向互联网，一块指向内网，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么就让Web服务器通过内网的网卡来访问Memcache服务器，我们Memcache的服务器上启动的时候就监听内网的IP地址和端口，内网间的访问
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	能够有效阻止其他非法的访问。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;memcached&amp;nbsp;-d&amp;nbsp;-m&amp;nbsp;1024&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-l&amp;nbsp;192.168.0.200&amp;nbsp;-p&amp;nbsp;11211&amp;nbsp;-c&amp;nbsp;1024&amp;nbsp;-P&amp;nbsp;/tmp/memcached.pid
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Memcache服务器端设置监听通过内网的192.168.0.200的ip的11211端口，占用1024MB内存，并且允许最大1024个并发连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;设置防火墙&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	防火墙是简单有效的方式，如果却是两台服务器都是挂在网的，并且需要通过外网IP来访问Memcache的话，那么可以考虑使用防火墙或者代理程序来过滤非法访问。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般我们在Linux下可以使用iptables或者FreeBSD下的ipfw来指定一些规则防止一些非法的访问，比如我们可以设置只允许我们的Web服务器来访问我们Memcache服务器，同时阻止其他的访问。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;iptables&amp;nbsp;-F
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;iptables&amp;nbsp;-P&amp;nbsp;INPUT&amp;nbsp;DROP
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;iptables&amp;nbsp;-A&amp;nbsp;INPUT&amp;nbsp;-p&amp;nbsp;tcp&amp;nbsp;-s&amp;nbsp;192.168.0.2&amp;nbsp;–dport&amp;nbsp;11211&amp;nbsp;-j&amp;nbsp;ACCEPT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;iptables&amp;nbsp;-A&amp;nbsp;INPUT&amp;nbsp;-p&amp;nbsp;udp&amp;nbsp;-s&amp;nbsp;192.168.0.2&amp;nbsp;–dport&amp;nbsp;11211&amp;nbsp;-j&amp;nbsp;ACCEPT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的iptables规则就是只允许192.168.0.2这台Web服务器对Memcache服务器的访问，能够有效的阻止一些非法访问，相应的也可以增加一些其他的规则来加强安全性，这个可以根据自己的需要来做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-12/1339510001.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Java对于大小写敏感]]></title>
+  <content><![CDATA[<p>
+	注意：Java对于大小写敏感。你不能用一个大写字母P来输入public,否则该程序冷不会通过编译。若运行该小应用程序，将会显示一条信息。如何显示信息并不是此时所习介绍的，我们只关心一个小应用程序如何被嵌入到HTMZ.网页中。如果你将这段代码进于编译，并作为Java小应用程序代码存储在与前面说明的HTML.网页文件MyFirstApplet.htm!
+</p>
+<p>
+	同一个目录下，你就可以利用JDK中的appletviewer运行这段小应用程序。其命令为：
+</p>
+<p>
+	appletV}eweY MyFirstApplet .html
+</p>
+<p>
+	其结果将显示如下所示的窗口内容：
+</p>
+<p>
+	&nbsp;&nbsp;<img src=\"/mod/kd/attached/image/20130418/20130418135611_98951.gif\" alt=\"\" />
+</p>
+<p>
+	<p>
+		这是产生于Windows
+	</p>
+	<p>
+		95/98/NT下的窗曰。在其他操作系统中，可能略有不同。这是因为Java将服从运行平台的风格。由于小应用程序窗口的高度和宽度是以像素为单位说明的，所以窗口的物理大小将取决于显示器的分辨率和尺寸。圃在任何浏览器中运行小应用程序ITML3.2中介绍的APPLET标记在HTML4.0中己被oBJECT标记取代。然而，现在Internet
+	</p>
+	<p>
+		Explorer还支持这个标记，而IVetscape
+	</p>
+	<p>
+		NaVigator则使用EMBED标记。为了使内容更加有趣，你不能指望客户端浏览器拥有最新型的虚拟机，所以与上述代码等价的使用OBJECT标记的代码是：
+	</p>
+	<p>
+		WIDTH = 3000
+	</p>
+	<p>
+		HELGHT = 200&gt;
+	</p>
+	<p>
+		这段代码不能在Internet Explorer
+	</p>
+	<p>
+		4上运行，除非它有能找到JApplet类的虚拟机。JavaSoft发布了一个java插件产品，它能够把最新型的虚拟机插入Web网页浏览器中。使用该产品，可以确保小应用程序在客户端得到运行，即使在支持旧版本的Java浏览器中也是如此。为了使用插件技术制作一个Netscape和Internet
+	</p>
+	<p>
+		Explorer都能使用的HTML工网页，你应该使用下列代码：
+	</p>
+	<p>
+		Width = 300
+	</p>
+	<p>
+		<br />
+	</p>
+<img src=\"/mod/kd/attached/image/20130418/20130418135714_71794.gif\" alt=\"\" />
+</p>
+<p>
+	<p>
+		在这里，OBJECT标记有CLASSID和CDDEBASE属性，用来放置Window:平台的Java插件。在Internet
+	</p>
+	<p>
+		Explorer中，COMMENT标记允许EMBED标记在浏览器中被隐藏起来。
+	</p>
+	<p>
+		而Netscape
+	</p>
+	<p>
+		Navigator将读取它，并且从JavaSoft获得一个与之匹配的Java插件。Appletviewer不支持这三个标记。在本书的剩余部分，我们将根据需要使用APPLET标记。正像你希望看到的，原来在APPLET标记中的代码，可以被大批地剪切并粘贴到上面清单中的OBJECT和EMED标记内。
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	注意：Java对于大小写敏感。你不能用一个大写字母P来输入public,否则该程序冷不会通过编译。若运行该小应用程序，将会显示一条信息。如何显示信息并不是此时所习介绍的，我们只关心一个小应用程序如何被嵌入到HTMZ.网页中。如果你将这段]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

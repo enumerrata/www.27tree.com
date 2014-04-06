@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-02-15 22:27:46</datetime>
+  <title><![CDATA[html+jQ实现滑动解锁功能]]></title>
+  <content><![CDATA[<p>
+	二话不说放代码,有什么不懂得在下面回帖吧!
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"&gt;
+        &lt;style type=\"text/css\"&gt;
+            body{
+                background:#fbfbfb;
+            }
+            #dp-lock-wapp{
+                height:29px;position:relative;text-align:left;background:#fff;padding:3px;border:1px solid #ccc;
+            }
+            #dp-lock-btn{
+                background-attachment:fixed;
+                display:inline-block;height:29px;width:40px;border-left:1px solid #ccc;cursor:pointer;background:url(\'./arr-btn.png\') -42px 0px no-repeat;
+            }
+            #dp-lock-btn:hover{
+                background-position-y:-48px;
+            }
+        &lt;/style&gt;
+        &lt;script src=\"./jquery-min.js\"&gt;&lt;/script&gt;
+        &lt;script type=\"text/javascript\"&gt;
+            $(function(){
+                /**
+                 * @author koodo koodo@qq.com 二叉树社区出品
+                 * @qq 420175369
+                 * 预览 http://www.27tree.com/account/login/
+                 */
+                var fin = false; // 解锁完成判断
+                var i_x = 0;  // 初始鼠标x坐标
+                var max = $(\'#dp-lock-wapp\').width() - $(\'#dp-lock-btn\').width();
+                // 滑动解锁脚本
+                $(\'#dp-lock-btn\').mousedown(function(){
+                    if(!fin) listen = true; // 如果解锁未完成 监听鼠标
+                    document.onmousemove = function(e){
+                        if(listen){
+                            if(i_x == 0) i_x = e.x; // 初始化x坐标
+                            var ml = e.x - i_x; // 移动距离
+                            ml = ml &gt; 0 ? ml &gt; max ? max : ml : 0; // 距离判断
+                            $(\'#dp-lock-btn\').css(\'margin-left\',ml + \'px\');
+                            
+                            // ML == ,ax 时完成解锁
+                            if(ml == max) {
+                                fin = true;
+                                listen = false;
+                                
+                                // 解锁完毕,下面你爱干嘛干嘛
+                                // do something ...
+                            }
+                        }
+                    }
+                    $(document).mouseup(function(){
+                        listen = false;
+                    });
+                });
+            });
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div style=\"width:300px;margin:300px auto;\"&gt;
+            &lt;div id=\"dp-lock-wapp\"&gt;
+                &lt;a id=\"dp-lock-btn\"&gt;&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+http://www.27tree.com/account/login/
+</p>
+<p>
+	本站登陆界面可以试用一下哦
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

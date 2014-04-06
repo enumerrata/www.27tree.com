@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>318</uid>
+  <datetime>2013-01-17 16:56:03</datetime>
+  <title><![CDATA[Yii 多語言]]></title>
+  <content><![CDATA[<p>
+	views/layouts/main.php
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">&lt;?php echo CHtml:: link ( \' 中文 \' , array ( \'site/index\' , \'lang\' =&gt; \'zh_cn\' )) . \' | \' . CHtml:: link ( \'繁體\' , array ( \'site/index\' , \'lang\' =&gt; \'zh_tw\' )) .\' | \'. CHtml:: link ( \'English\' , array ( \'site/index\' , \'lang\' =&gt; \'en_us\' ));?&gt;</pre>
+<p>
+	Controller.php
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">public function init()
+	
+	{
+
+		if(isset($_GET[\'lang\'])&amp;&amp;$_GET[\'lang\']!=\"\"){					//當點擊轉換語言時
+			Yii::app()-&gt;user-&gt;setState(\"yuyan\",$_GET[\'lang\']);			//相當於與設置一個cookie
+			Yii::app()-&gt;language = Yii::app()-&gt;user-&gt;getState(\"yuyan\");	//轉換成相應的記錄語言
+		}
+		
+		if(Yii::app()-&gt;user-&gt;getState(\"yuyan\")){						//如果設置了有cookie記錄
+			Yii::app()-&gt;language = Yii::app()-&gt;user-&gt;getState(\"yuyan\");	//轉換成相應的記錄語言
+		}else{
+			Yii::app()-&gt;user-&gt;setState(\"yuyan\",\"en_us\");				//沒有cookie則設置一個cookie.默認語言為en_us
+			Yii::app()-&gt;language = Yii::app()-&gt;user-&gt;getState(\"yuyan\");	//轉換成相應的記錄語言
+		}
+	}</pre>
+<p>
+	<br />
+</p>
+<p>
+	messages/zh_cn/default.php
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">&lt;?php	
+return array(
+		\'username\'=&gt;\'用戶名\',
+		\'password\'=&gt;\'用戶密碼\',
+}
+//此處亦可以使用SQL語句,加載數據庫中的翻譯數據.偽CDbMessageSource方式啊- - #</pre>
+<p>
+	<br />
+</p>
+<p>
+	site/index
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\"></pre>
+<p>
+	&lt;?php
+</p>
+<p>
+	echo \"username =&gt;\".Yii::t(\'default\',\'username\').\"&lt;br&gt;\";&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+</p>
+<p>
+	echo \"password =&gt;\".Yii::t(\'default\', \'password\');
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	output:
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">username =&gt;用戶名
+password =&gt;用戶密碼</pre>
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[views/layouts/main.php
+
+
+	
+
+&lt;?php echo CHtml:: link ( \' 中文 \' , array ( \'site/index\' , \'lang\' =&gt; \'zh_cn\' )) . \' | \' . CHtml:: link ( \'繁體\' , array ( \'site/index\' , \'lang\' =&gt;]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

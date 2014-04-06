@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Python UNIX 和Linux 系统管理指南]]></title>
+  <author>基弗特</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-05-19 19:52:49</submit-date-time>
+  <img-link>c125545c8bd2c531ab86b6d12f9ba05d.png</img-link>
+  <book-area>py</book-area>
+  <book-intro><![CDATA[<p>
+	本书介绍了Python语言如何为管理uNIx和Linux服务器提供各种更加有效的任务处理方式。书中各章都提出了具体的管理问题，如并发或数据备份，然后通过Python示例提供了解决方案。通过本书，读者可以学习如何用Python开发自己的一套命令行工具来解决诸多问题。
+</p>
+<p>
+	作者建立了一个免费下载的Ubuntu虚拟机，其中包含本书的源代码和运行实例，也包括SNMP、IPython、SQLAlchemy及其他工具。通过本书，你可以发现Python在如下几个方面的作用：
+</p>
+<p>
+	· 读取文本文件并提取信息。
+</p>
+<p>
+	· 使用多线程和fork选项。
+</p>
+<p>
+	· 使用网络设备从一个进程获取另一个进程的信息。
+</p>
+<p>
+	· 创建可点击的、易于交互的GUl工具。
+</p>
+<p>
+	· 通过交互式SNMP编程实现监控大型主机集群。
+</p>
+<p>
+	· 掌握IPython shell，作为Bash、Korn或Z—Shell的替换或补充。
+</p>
+<p>
+	· 将云计算整合到基础设施中，编写Google App引擎的应用程序。
+</p>
+<p>
+	· 通过定制脚本解决独特数据备份的难题。
+</p>
+<p>
+	· 使用Djan90、SQLAlchemy和Storm ORM与数据库进行交互。
+</p>
+<p>
+	通过本书及其补充的虚拟机，你可以了解如何打包并部署Python应用程序和库，以及编写代码在类似的多个UNIXfH Linux平台上运行。作者简介Noah Gift使用UNIx和Linux系统十余年，曾就职于Caltech、Disney、Feature Animation和Turner Studios。他是Giftcs和Cloud Seed Software公司的合作伙伴。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,23 @@
+<div class="ct-i"><div class="ct-t-w"><tx></tx><t></t>
+        <em class="ct-t-whw"><img src="<?php echo $paramsx['headimg']; ?>" width="32px" height="32px"/></em>
+        <div class="ct-t-R">
+            <span class="block">
+                <?php echo $paramsx['fuid'] <= 0 ? $paramsx['username'] : "<a href='/user/$paramsx[fuid]'>$paramsx[username]</a>"; ?> :
+                <span class="Elipsis"><?php
+                if ($_scomm['lev'] == 2) {
+                    if ($_scomm['touid'] != '-1')
+                        echo "<a href=\"/user/" . $_scomm['touid'] . "\">@", urldecode($_scomm['tousn']), "</a>//";
+                    else
+                        echo "@", $_scomm['tousn'], "//";
+                }
+                ?></span>
+                <span class="autowarp"><?php echo $paramsx['content']; ?></span>
+            </span>
+            <span class="block Gray"><?php echo $paramsx['datetime']; ?>
+                <a href="javascript:;" class="repButton" relUID="<?php echo $paramsx['fuid']; ?>" relUSN="<?php echo $paramsx['username']; ?>" index="<?php echo $params['index']; ?>" onclick="loadEditCl(this.parentNode)"  rel="$2" style="font-size:12px;">回复</a>
+            </span>
+            <em class="editside"></em>
+        </div>
+        <span class="clear"></span>
+    </div>
+</div>

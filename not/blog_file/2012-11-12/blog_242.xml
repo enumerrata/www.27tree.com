@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-12 23:57:04</datetime>
+  <title><![CDATA[7个改变世界的Java项目]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	Java的开源生态系统是强大而健康的，这是我们（Oreilly）创建OSCON Java（Open Source Convention&nbsp;<span style=\"text-indent:2em;\">Java）的主要原因之一。在过去10年中，一些项目已经被广泛接受，并且已经统治了Java软件开发世界，一些甚至影响到了用户的日常生活。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">1. JUnit</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	Kent Beck先生关于Smalltalk的单元测试被Kent Beck 和Erich Gamma<span style=\"text-indent:2em;\">带进Java——JUnit。在这十年里，JUnit带来了测试驱动开发的普及浪潮。许多其它流行语言的单元测试版本也跟着被创造出来了，例如.NET、</span><span style=\"text-indent:2em;\">C、Python、Perl。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">2. Eclipse</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	刚进入20世纪，随着Java和它的API的成熟，Eclipse&nbsp;<span style=\"text-indent:2em;\">IDE（集成开发环境）为程序员提供了一个帮助他们提高生产效率和融入到成长中的Java社区的环境。Eclipse也是第一个用SWT UI&nbsp;</span><span style=\"text-indent:2em;\">工具包的大型项目。Eclipse已经逐步向成为一个普及的集成开发环境的目标发展。现在它为集成平台插件提供了丰富的基础平台。（SWT是SUN公司的&nbsp;</span><span style=\"text-indent:2em;\">Swing的强劲竞争者，它证明了Java 程序也可以提供丰富的本地接口。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">3. Spring</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	Spring&nbsp;<span style=\"text-indent:2em;\">框架在提高Java开发人员的生产效率方面扮演着一个重要的角色。它维持了简单和特点的平衡。Spring为Java开发人员提供了一套服务。这套服务提供了普遍使用的应用功能，例如数据访问和事务管理。作为Sun公司的企业JavaBean系统的竞争者，Spring为Java应用创造出了另外一个可选的简单的路径，同时也创造出了一个Java应用开发思想上的健康竞争。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">4. Solr</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	多年来，Solr服务器（集成了Lucene搜索引擎）已经为web和企业应用提供了一个简单实用的搜索功能的解决方案。Solr的特别之处在于它为强力和快速的Lucene搜索库提供了HTTP访问，使它能够成为任何系统的一部分，无论这系统是不是由Java实现。比其它项目好的地方，Solr已经使强力快速的搜索成为现代Web应用的一个可选项。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">5. Hudson and Jenkins</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	原名为Hudson，现在也叫Jenkins，这个持续集成工具是Java开发设置的关键部分。Jenkins为软件项目提供了自动构建和测试。随着&nbsp;<span style=\"text-indent:2em;\">JUnit的测试持续集成，Jenkins在Java的平台上是敏捷研发成为可能。虽然Hudson和Jenkins现在集成在一起，但并没有偏离 Kohsuke&nbsp;</span><span style=\"text-indent:2em;\">Kawaguchi的努力，Kohsuke使它成为世界级的持续集成平台，并提高了大部分Java研发的质量。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<strong><span style=\"font-size:14px;\">6. Hadoop</span></strong>
+</p>
+<p style=\"text-indent:2em;\">
+	Hadoop是著名的MapReduce模型的Java实现。它的强壮使得最大多数的“大数据”系统成为可能。通过降低从巨大的数据集合中抽取有价值的数据的成本，Hadoop&nbsp;<span style=\"text-indent:2em;\">已经被大量使用，如Facebook用它来做海量数据分析，Yahoo&nbsp;</span><span style=\"text-indent:2em;\">的个人和广告业务，还有很多其他的公司。就像Linux使大型网站能够构建在便宜的硬件上一样，Hadoop则通过在软件层的高容错性使大规模的分布式计算成为可能。Hadoop和上面提到的Lucene都是Doug&nbsp;</span><span style=\"text-indent:2em;\">Cutting的努力成果。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"text-indent:2em;font-size:14px;\"><strong>7. Android</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	Java的归属（Sun或者Oracle）争论一直持续着。Google却选择用Java语言作为它十分流行的Android移动操作系统的编程语言。这个选择在整个件研发人员的社区中引起了新的关注。Android&nbsp;<span style=\"text-indent:2em;\">程序编译过程比普通Java程序要多经过一个步骤，将JVM二进制码转换成Dalvik二进制码。（Dalvik是专门为移动设备优化的虚拟机）Google&nbsp;</span><span style=\"text-indent:2em;\">已经可以利用Eclipse 为软件研发人员提供一个成熟的编写Android应用的开发环境。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	Oracle和Google现在正卷入法律诉讼中，因为Oracle声明Android侵犯了Oracle的多项专利。无论这场诉讼的结果如何，Android都已经为研发人员的就业和延续客户端软件研发领域的Java的使用做了很大的贡献。
+</p>
+<p style=\"text-indent:2em;\">
+	编注：根据路透社7月25日最新消息，美国一家地方联邦法院法官威廉姆·阿索普周五驳回了甲骨文起诉GG侵害Java专利的索赔评估报告，认为61亿美元的索赔金额过高。而就在一天前，威廉姆&nbsp;<span style=\"text-indent:2em;\">曾警告称两家在Android平台的专利争端中没有占在合理立场。威廉姆表示，若Oracle希望推迟10月份的审判直到双方和解，这倒可以试一试。</span>
+</p>]]></content>
+  <contentx><![CDATA[Java的开源生态系统是强大而健康的，这是我们（Oreilly）创建OSCON Java（Open Source Convention Java）的主要原因之一。在过去10年中，一些项目已经被广泛接受，并且已经统治了Java软件开发世界，一些甚至影响到了用户的日常生活。
+
+
+	1. JUnit
+
+
+	Kent Beck先生关于Smalltalk的单元测试被K]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL架构 - MySQL存储引擎 -选择合适的引擎</title>
+<content>&amp;lt;p&amp;gt;
+	选择合适的引擎
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当设计基于MySQL的应用程序时，要考虑用什么存储引擎来保存数据。如果在设计&amp;amp;nbsp;阶段不考虑这个，你就会在以后的过程中遇到一些困难。你可能发现默认的存储引擎并没有提供一些你需&amp;amp;nbsp;要的功能。如事务管理或者读写的混合需要比MyISAM表锁更好的隔离级别的锁。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因为你可以为每个表都设置存储引擎。你必须清晰的知道每张表的用途和存储的数据。考虑这些也可&amp;amp;nbsp;以帮助你对应用有个更好的了解以及潜在的增长数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有了些信息，就可以开始选择引擎了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一些考虑
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	虽然有很多因素决定了你使用引擎的种类，但总的来说因素就那么几个。下面列出的是应&amp;amp;nbsp;该主要考虑的因素：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	事物
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你的引擎需要事物处理，InnoDB是稳定，易于集成，证明是没错的选择。然而，我们更期待和它&amp;amp;nbsp;竞争的引擎出现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果不需要事物和能使用主要的查询和插入语句，MyISAM是个很好的选择。一些应用的模块适用于它&amp;amp;nbsp;，如日志。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并发
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果最好的满足你的并发性需求取决你的工作量了。如果你仅仅是并发的插入和读取。不管相信与否&amp;amp;nbsp;，MyISAM是最好的了。如果你让这些操作互不干扰，就应该选择一个支持行锁的引擎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	备份
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有规律的备份也影响表的引擎选择。如果服务器关闭，并且定期的备份，存储引擎很容易处理。如果&amp;amp;nbsp;你需要在线备份并从一个格式转换为另一个。这个选择就不明智了。以后会详细说这部分。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要考虑多引擎所引起的备份和服务器调整的复杂性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	错误恢复
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你有很多数据，你要考虑错误恢复的时间。MyISAM相对于InnoDB非常容易崩溃而且从崩溃中恢复&amp;amp;nbsp;的时间非常慢，这就是为什么有的人即使不使用事务处理也要用InnoDB了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	特殊功能
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最终，你可能发现有的应用需要依靠一些MySQL存储引擎特殊的功能和优化，举个例子，有的应用程序&amp;amp;nbsp;非常依赖于集群的索引优化。这时候，你只能在InnoDB和solidDB选择了。另一方面，只有MyISAM支持全&amp;amp;nbsp;文索引。如果一个存储引擎遇到了一个或多个苛刻的需求，对于其他并不算是，那么你就要选一个折中的&amp;amp;nbsp;方案或者找到一个好的解决方案。通常你能从看上去不满足你的需求的存储引擎，找到你所需要的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你不必现在决定选择哪个引擎。在剩下的教程中会接着说各个引擎的优点和缺点。以及架构设计的提&amp;amp;nbsp;示。一般来说，现实中的方案比你知道的要多的多。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-26/1340725026.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

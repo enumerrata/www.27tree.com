@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-10 17:23:46</datetime>
+  <title><![CDATA[发现BUG]]></title>
+  <content><![CDATA[博客文章回复的时候乱码，中文名用户回复的时候乱码]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

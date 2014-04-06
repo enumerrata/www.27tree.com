@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Android Xml解析</title>
+<content>&amp;lt;p&amp;gt;
+	在Android程序中，Xml解析与Java中几乎相同，最常用的有SAX，DOM，PULL&amp;nbsp;三种解析方式。Android中内置了pull解析方式。这也是android推荐的解析方式。下面我们就看下这三种的用法，与不同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1）SAX：（Simple&amp;nbsp;API&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;for&amp;nbsp;XML）&amp;lt;/strong&amp;gt;这种解析方式基于事件的模型。通俗的讲就是XML文件在加载的过程中，加载到不同节点会相应触发不同方法来处理。它属于一次加载。它可以处理任意大小的XML文件，它对内存的要求非常低，因为SAX采用的是读取文件的方式,也就是当它是文本文件在读,读完就完了,什么信息都没有保存。当然它也有其缺点，解析过程中无法中断，只能读取XML文件而不能修改，编码上也相对复杂与难于理解。它的常用方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;void&amp;nbsp;startDocument()//文档开始时触发该方法
+
+void&amp;nbsp;endDocument()//文档结束时
+
+void&amp;nbsp;startElement(String&amp;nbsp;uri,&amp;nbsp;String&amp;nbsp;localName,&amp;nbsp;String&amp;nbsp;qName,&amp;nbsp;Attributes&amp;nbsp;atts)//元素开始
+
+void&amp;nbsp;endElement(String&amp;nbsp;uri,&amp;nbsp;String&amp;nbsp;localName,&amp;nbsp;String&amp;nbsp;qName)//元素结束
+
+void&amp;nbsp;characters(char[&amp;nbsp;]&amp;nbsp;ch,&amp;nbsp;int&amp;nbsp;start,&amp;nbsp;int&amp;nbsp;length)//文本节点&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	创建SAX解析器：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（1）用系统默认值来创建一个XMLReader（解析器）：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;XMLReader&amp;nbsp;reader&amp;nbsp;=
+
+XMLReaderFactory.createXMLReader();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	（2）从给定的类名称来创建一个XMLReader&amp;nbsp;：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;XMLReader&amp;nbsp;reader&amp;nbsp;=
+
+XMLReaderFactory.createXMLReader(org.apache.xerces.parsers.SAXParser);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	（3）使用javax.xml.parsers包中的SAXParserFactory类和SAXParser类创建：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;SAXParserFactory&amp;nbsp;spFactory&amp;nbsp;=
+
+SAXParserFactory.newInstance();
+
+SAXParser&amp;nbsp;sParser&amp;nbsp;=
+
+spFactory.newSAXParser();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2）DOM：（Document&amp;nbsp;Object&amp;nbsp;Model）&amp;lt;/strong&amp;gt;文档对象模型，它是基于对象的，又或者基于树的。它属于两次加载，首先把文档载入内存，第二次把文档解析形成一棵树。如果文档过大对内存占用是很大的。但它也有其优点，它可以解析的过程中修改文件树，可以随便存储文件树的任意部分，相对容易理解。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;3）Pull解析&amp;lt;/strong&amp;gt;：android中内置了pull解析包。这也是android程序中所推荐的xml解析方式。从它的字面上就可以看出来，其优点，pull,拉的意思。我要什么资源我就拿什么资源。我只需要xml文件中一部分，我就拉一部分。从而节省资源，提高效率。当然在J2EE中也可以使用Pull解析。Pull解析也非常易于理解。
+&amp;lt;/p&amp;gt;
+先上图：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://dl.iteye.com/upload/attachment/565990/b859d59f-ef32-3a9e-a517-7ff1e72a9059.gif\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们就用这三种方式对同一个XML文件进行解析:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;&amp;amp;lt;?xml&amp;nbsp;version=1.0?&amp;amp;gt;
+	&amp;amp;lt;persons&amp;amp;gt;
+		&amp;amp;lt;person&amp;nbsp;id=1&amp;amp;gt;
+			&amp;amp;lt;name&amp;amp;gt;tom&amp;amp;lt;/name&amp;amp;gt;
+			&amp;amp;lt;age&amp;amp;gt;13&amp;amp;lt;/age&amp;amp;gt;
+		&amp;amp;lt;/person&amp;amp;gt;
+		&amp;amp;lt;person&amp;nbsp;id=2&amp;amp;gt;
+			&amp;amp;lt;name&amp;amp;gt;jerry&amp;amp;lt;/name&amp;amp;gt;
+			&amp;amp;lt;age&amp;amp;gt;14&amp;amp;lt;/age&amp;amp;gt;
+		&amp;amp;lt;/person&amp;amp;gt;
+		&amp;amp;lt;person&amp;nbsp;id=3&amp;amp;gt;
+			&amp;amp;lt;name&amp;amp;gt;john&amp;amp;lt;/name&amp;amp;gt;
+			&amp;amp;lt;age&amp;amp;gt;34&amp;amp;lt;/age&amp;amp;gt;
+		&amp;amp;lt;/person&amp;amp;gt;
+	&amp;amp;lt;/persons&amp;amp;gt;&amp;lt;/pre&amp;gt;
+SAX:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;package&amp;nbsp;com.iteye.androidtoast.resolver;
+
+
+import&amp;nbsp;java.io.InputStream;
+import&amp;nbsp;java.util.ArrayList;
+import&amp;nbsp;java.util.List;
+
+import&amp;nbsp;javax.xml.parsers.SAXParser;
+import&amp;nbsp;javax.xml.parsers.SAXParserFactory;
+
+import&amp;nbsp;org.xml.sax.Attributes;
+import&amp;nbsp;org.xml.sax.SAXException;
+import&amp;nbsp;org.xml.sax.helpers.DefaultHandler;
+
+import&amp;nbsp;android.util.Log;
+
+import&amp;nbsp;com.iteye.androidtaost.model.Person;
+import&amp;nbsp;com.iteye.androidtaost.service.ParseService;
+
+public&amp;nbsp;class&amp;nbsp;Sax&amp;nbsp;implements&amp;nbsp;ParseService{
+	/*SAX解析，是基于事件的，一次性加载*/
+	private&amp;nbsp;SAXParser&amp;nbsp;parser;
+	
+	public&amp;nbsp;Sax(){
+		//实例化解析工厂
+		SAXParserFactory&amp;nbsp;f=SAXParserFactory.newInstance();
+		try&amp;nbsp;{
+			parser=f.newSAXParser();
+		}&amp;nbsp;catch&amp;nbsp;(Exception&amp;nbsp;e)&amp;nbsp;{
+			e.printStackTrace();
+			Log.i(Sax,e.getMessage());
+		}
+	}
+	@Override
+	public&amp;nbsp;List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;doParse(InputStream&amp;nbsp;in)&amp;nbsp;{
+		XmlHandler&amp;nbsp;h=new&amp;nbsp;XmlHandler();
+		try&amp;nbsp;{
+			parser.parse(in,&amp;nbsp;h);
+		}&amp;nbsp;catch&amp;nbsp;(Exception&amp;nbsp;e)&amp;nbsp;{
+			//&amp;nbsp;TODO&amp;nbsp;Auto-generated&amp;nbsp;catch&amp;nbsp;block
+			e.printStackTrace();
+		}&amp;nbsp;
+		return&amp;nbsp;h.getPersons();
+	}
+	
+	/*
+	&amp;nbsp;*&amp;nbsp;处理器
+	&amp;nbsp;*/
+	class&amp;nbsp;XmlHandler&amp;nbsp;extends&amp;nbsp;DefaultHandler{
+		List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;persons=null;
+		private&amp;nbsp;Person&amp;nbsp;p;
+		private&amp;nbsp;Object&amp;nbsp;currentEleName;
+		
+		
+		/**
+		&amp;nbsp;*&amp;nbsp;开始解析文档的时候实例化集合
+		&amp;nbsp;*/
+		@Override
+		public&amp;nbsp;void&amp;nbsp;startDocument()&amp;nbsp;throws&amp;nbsp;SAXException&amp;nbsp;{
+			persons=new&amp;nbsp;ArrayList&amp;amp;lt;Person&amp;amp;gt;();
+		}
+
+		@Override
+		public&amp;nbsp;void&amp;nbsp;endDocument()&amp;nbsp;throws&amp;nbsp;SAXException&amp;nbsp;{
+			//&amp;nbsp;TODO&amp;nbsp;Auto-generated&amp;nbsp;method&amp;nbsp;stub
+			super.endDocument();
+		}
+
+		/**
+		&amp;nbsp;*&amp;nbsp;元素开始
+		&amp;nbsp;*/
+		@Override
+		public&amp;nbsp;void&amp;nbsp;startElement(String&amp;nbsp;uri,&amp;nbsp;String&amp;nbsp;localName,&amp;nbsp;String&amp;nbsp;qName,
+				Attributes&amp;nbsp;attributes)&amp;nbsp;throws&amp;nbsp;SAXException&amp;nbsp;{
+			if(person.equals(localName)){
+				p&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Person();//节点开始的时候实例化person
+				p.id=new&amp;nbsp;Integer(attributes.getValue(0));//得到ID
+			}else&amp;nbsp;if(name.equals(localName)){
+				this.currentEleName=name;
+			}else&amp;nbsp;if(age.equals(localName)){
+				this.currentEleName=age;
+			}
+				
+		}
+
+		/**
+		&amp;nbsp;*&amp;nbsp;元素结束事件
+		&amp;nbsp;*/
+		@Override
+		public&amp;nbsp;void&amp;nbsp;endElement(String&amp;nbsp;uri,&amp;nbsp;String&amp;nbsp;localName,&amp;nbsp;String&amp;nbsp;qName)
+				throws&amp;nbsp;SAXException&amp;nbsp;{
+			//解析到文档末尾
+			if(person.equals(localName)){
+				//将解析完成的对象添加到集合
+				persons.add(p);
+			}else&amp;nbsp;if(name.equals(localName)&amp;brvbar;&amp;brvbar;age.equals(localName)){
+				this.currentEleName=;
+			}
+		}
+
+		/**)
+		&amp;nbsp;*&amp;nbsp;用户处理字符节点
+		&amp;nbsp;*/
+		@Override
+		public&amp;nbsp;void&amp;nbsp;characters(char[]&amp;nbsp;ch,&amp;nbsp;int&amp;nbsp;start,&amp;nbsp;int&amp;nbsp;length)
+				throws&amp;nbsp;SAXException&amp;nbsp;{
+			String&amp;nbsp;str=new&amp;nbsp;String(ch,start,length);
+			if(name.equals(currentEleName)){
+				p.name=str;
+			}else&amp;nbsp;if(age.equals(currentEleName)){
+				p.age=new&amp;nbsp;Integer(str);
+			}
+		}
+		
+		public&amp;nbsp;List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;getPersons(){
+			return&amp;nbsp;persons;
+		}
+		
+	}
+	
+}
+&amp;lt;/pre&amp;gt;
+DOM解析代码：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;package&amp;nbsp;com.iteye.androidtoast.resolver;
+
+import&amp;nbsp;java.io.IOException;
+import&amp;nbsp;java.io.InputStream;
+import&amp;nbsp;java.util.ArrayList;
+import&amp;nbsp;java.util.List;
+
+import&amp;nbsp;javax.xml.parsers.DocumentBuilder;
+import&amp;nbsp;javax.xml.parsers.DocumentBuilderFactory;
+import&amp;nbsp;javax.xml.parsers.ParserConfigurationException;
+
+import&amp;nbsp;org.w3c.dom.Document;
+import&amp;nbsp;org.w3c.dom.Element;
+import&amp;nbsp;org.w3c.dom.NodeList;
+import&amp;nbsp;org.xml.sax.SAXException;
+
+import&amp;nbsp;com.iteye.androidtaost.model.Person;
+import&amp;nbsp;com.iteye.androidtaost.service.ParseService;
+/*
+&amp;nbsp;*&amp;nbsp;DOM解析
+&amp;nbsp;*/
+public&amp;nbsp;class&amp;nbsp;Dom&amp;nbsp;implements&amp;nbsp;ParseService{
+
+	/**
+	&amp;nbsp;*&amp;nbsp;文档构建器
+	&amp;nbsp;*/
+	private&amp;nbsp;DocumentBuilder&amp;nbsp;builder;
+	private&amp;nbsp;Person&amp;nbsp;person;
+	
+	public&amp;nbsp;Dom(){
+		//获取构建器
+		DocumentBuilderFactory&amp;nbsp;f=DocumentBuilderFactory.newInstance();
+		try&amp;nbsp;{
+			builder=f.newDocumentBuilder();
+		}&amp;nbsp;catch&amp;nbsp;(ParserConfigurationException&amp;nbsp;e)&amp;nbsp;{
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public&amp;nbsp;List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;doParse(InputStream&amp;nbsp;in)&amp;nbsp;{
+		List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;persons=new&amp;nbsp;ArrayList&amp;amp;lt;Person&amp;amp;gt;();
+		try&amp;nbsp;{
+			Document&amp;nbsp;doc=builder.parse(in);
+			NodeList&amp;nbsp;list=doc.getElementsByTagName(person);
+			for(int&amp;nbsp;i=0;i&amp;amp;lt;list.getLength();i++){
+				//提取Person元素
+				Element&amp;nbsp;el=(Element)&amp;nbsp;list.item(i);
+				person&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Person();
+				//获取ID节点
+				person.id=new&amp;nbsp;Integer(el.getAttribute(id));
+				person.name=getSubelementTextContentByName(el,name);
+				person.age=new&amp;nbsp;Integer(getSubelementTextContentByName(el,age));
+				
+				persons.add(person);
+			}
+			return&amp;nbsp;persons;
+		}&amp;nbsp;catch&amp;nbsp;(SAXException&amp;nbsp;e)&amp;nbsp;{
+			e.printStackTrace();
+		}&amp;nbsp;catch&amp;nbsp;(IOException&amp;nbsp;e)&amp;nbsp;{
+			e.printStackTrace();
+		}
+		return&amp;nbsp;null;
+	}
+	/**
+	&amp;nbsp;*&amp;nbsp;得到指定元素的子元素文本&amp;nbsp;节点(
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;el&amp;nbsp;父元素
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;name&amp;nbsp;子元素名称&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	private&amp;nbsp;String&amp;nbsp;getSubelementTextContentByName(Element&amp;nbsp;el,&amp;nbsp;String&amp;nbsp;name)&amp;nbsp;{
+		NodeList&amp;nbsp;list=el.getElementsByTagName(name);
+		Element&amp;nbsp;e=(Element)&amp;nbsp;list.item(0);
+		return&amp;nbsp;e.getTextContent();&amp;nbsp;
+	}
+
+
+
+}
+&amp;lt;/pre&amp;gt;
+Pull解析代码：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;package&amp;nbsp;com.iteye.androidtoast.resolver;
+
+import&amp;nbsp;java.io.IOException;
+import&amp;nbsp;java.io.InputStream;
+import&amp;nbsp;java.util.ArrayList;
+import&amp;nbsp;java.util.List;
+
+import&amp;nbsp;org.xmlpull.v1.XmlPullParser;
+import&amp;nbsp;org.xmlpull.v1.XmlPullParserException;
+
+import&amp;nbsp;android.util.Xml;
+
+import&amp;nbsp;com.iteye.androidtaost.model.Person;
+import&amp;nbsp;com.iteye.androidtaost.service.ParseService;
+
+public&amp;nbsp;class&amp;nbsp;Pull&amp;nbsp;implements&amp;nbsp;ParseService{
+
+	private&amp;nbsp;String&amp;nbsp;tagName;
+
+	@Override
+	public&amp;nbsp;List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;doParse(InputStream&amp;nbsp;in)&amp;nbsp;{
+		List&amp;amp;lt;Person&amp;amp;gt;&amp;nbsp;persons=null;
+		Person&amp;nbsp;person=null;
+		
+		XmlPullParser&amp;nbsp;parser=Xml.newPullParser();
+		try&amp;nbsp;{
+			parser.setInput(in,&amp;nbsp;utf-8);
+			//获取事件类型
+			int&amp;nbsp;eventType=parser.getEventType();
+			
+			while(eventType!=XmlPullParser.END_DOCUMENT){
+				switch(eventType){
+				//文档开始
+				case&amp;nbsp;XmlPullParser.START_DOCUMENT:
+					&amp;nbsp;persons=new&amp;nbsp;ArrayList&amp;amp;lt;Person&amp;amp;gt;();
+					&amp;nbsp;break;
+				case&amp;nbsp;XmlPullParser.START_TAG:
+					tagName&amp;nbsp;=&amp;nbsp;parser.getName();
+					if(person.equals(tagName)){
+						person=new&amp;nbsp;Person();
+						person.id=new&amp;nbsp;Integer(parser.getAttributeValue(0));
+					}else&amp;nbsp;if(name.equals(tagName)){
+						person.name=parser.nextText();
+					}else&amp;nbsp;if(age.equals(tagName)){
+						person.age=new&amp;nbsp;Integer(parser.nextText());
+					}
+					break;
+				case&amp;nbsp;XmlPullParser.END_TAG:
+					if(person.equals(parser.getName())){
+						persons.add(person);
+					}
+					break;
+				}
+				eventType=parser.next();
+			}
+			
+		}&amp;nbsp;catch&amp;nbsp;(XmlPullParserException&amp;nbsp;e)&amp;nbsp;{
+			//&amp;nbsp;TODO&amp;nbsp;Auto-generated&amp;nbsp;catch&amp;nbsp;block
+			e.printStackTrace();
+		}&amp;nbsp;catch&amp;nbsp;(IOException&amp;nbsp;e)&amp;nbsp;{
+			//&amp;nbsp;TODO&amp;nbsp;Auto-generated&amp;nbsp;catch&amp;nbsp;block
+			e.printStackTrace();
+		}
+		return&amp;nbsp;persons;
+	}
+	
+}
+&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-11/1336668317.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

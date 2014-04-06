@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>在photoshop中创建一个透明玻璃按钮（强烈推荐）</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	在这一篇教程中，我将教给你怎样在photoshop中创建一个&amp;lt;strong&amp;gt;透明玻璃&amp;lt;/strong&amp;gt;效果的干净的网页用按钮。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	这就是我们最终的结果。好了，让我们开始吧。在photoshop中新建文档，尺寸为430x430，白色背景。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631234.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-01&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	新建图层，命名为&amp;nbsp;“box”。用圆角矩形工具&amp;nbsp;（U）创建一个圆角矩形。点击ctrl+回车创建选区，填充为白色。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631713.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-02&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	给这个形状创建图层属性-渐变叠加，内发光和描边。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-03&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	给这个形状创建渐变叠加。渐变颜色为-左边（#B1DB08）&amp;nbsp;中间（#66AB04）&amp;nbsp;右边（#B1DB08）。
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631741.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-04&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	添加内发光，设置颜色为（#D9FF4E）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631315.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	STEP-05
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	添加描边-设置边的颜色为（#A8D508）。
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631299.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-06&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	创建一个新的图层，命名为&amp;nbsp;“light”。创建一个圆角矩形选区。填充为白色。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631130.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-07&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	设置扭曲滤镜（滤镜“》扭曲》锯齿）。按照下面的参数进行设置。
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631962.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;STEP-08&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	设置图层透明度为40%。用橡皮工具（E）擦除边缘。最后你将会得到我们想要的结果。
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631735.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048631688.JPEG\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	好了，这就是我们最终的结果。很容易吧。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-10/1339259753.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-10+09%3A13%3A52</date-c>
+  <conf-c>叼啊，ps的发到这里</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

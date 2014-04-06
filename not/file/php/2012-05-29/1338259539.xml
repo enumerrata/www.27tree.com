@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>新浪微博API开发简介之PHP基础篇-用户授权</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	现在玩微博的人越来越多了，而关于微博的第三方应用开发也越来越多，自己在偶然间开始接触了新浪微博API开发，新浪微博API开发的资源比较多，新浪微博提供了一个开发者的平台，网址是：http://open.weibo.com，它里面有很全面的新浪微博开发的资料，包括开发者的使用和介绍，各种语言的API函数介绍文档，SDK等多种资料。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	自己在开发和学习的过程中，感觉虽然没有太大难度，但还是有一些问题是需要我们注意的，今天就我在开发和学习的过程中，简单的对利用PHP进行新浪微博API开发的内容进行一个整理和说明,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;新浪微博API开发前的准备工作&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	首先到新浪微博开放平台下载基于PHP的SDK开发包，下载地址是：&amp;lt;a&amp;nbsp;href=\"http://code.google.com/p/libweibo/downloads/detail?name=weibo-oauth-class-with-image-avatar-06-29.zip\"&amp;nbsp;target=\"_blank\"&amp;gt;http://code.google.com/p/libweibo/downloads/detail?name=weibo-oauth-class-with-image-avatar-06-29.zip&amp;lt;/a&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	下载完成后放到自己的开发环境中并解压，在其中也包含了demo演示程序，我们可以参考其样例程序进行编写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;新浪微博API开发最重要的用户授权过程&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	其实在开发过程中很多的问题都是集中在用户授权这个阶段，我开发的第三方应用，使用的是OAuth授权，关于OAuth授权的流程在新浪微博开放平台里有很清晰完整的介绍，我们可以到http://open.weibo.com/wiki/Oauth去查看，我这里从实例开发的角度进行介绍和说明。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;1.首先获取未授权的Request&amp;nbsp;Token&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$o&amp;nbsp;=&amp;nbsp;new&amp;nbsp;WeiboOAuth(&amp;nbsp;WB_AKEY&amp;nbsp;,&amp;nbsp;WB_SKEY&amp;nbsp;&amp;nbsp;);
+$keys&amp;nbsp;=&amp;nbsp;$o-&amp;amp;gt;getRequestToken();
+//echo($keys[&amp;nbsp;oauth_token&amp;nbsp;].&amp;nbsp;&amp;nbsp;:&amp;nbsp;&amp;nbsp;.$keys[&amp;nbsp;oauth_token_secret&amp;nbsp;]);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	我们需要在新浪微博开放平台中注册一个帐号，或直接使用我们的新浪微博帐号登录，进入我的应用，然后按照提示创建属于我们自己的第三方应用，创建完成之后我们可以得到两个授权的App&amp;nbsp;Key和App&amp;nbsp;Secret值，这两个值就是我们开发应用的关键。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	得到授权值后，我们就可以利用上面的代码获得未授权的Request&amp;nbsp;Token值了，它们会保存在$key数组变量中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;2.然后请求用户授权Token&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$_SESSION[&amp;nbsp;keys&amp;nbsp;]&amp;nbsp;=&amp;nbsp;$keys;
+$aurl&amp;nbsp;=&amp;nbsp;$o-&amp;amp;gt;getAuthorizeURL(&amp;nbsp;$keys[&amp;nbsp;oauth_token&amp;nbsp;]&amp;nbsp;,false&amp;nbsp;,&amp;nbsp;&amp;nbsp;http://localhost/callback.php&amp;nbsp;);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	得到未授权的Request&amp;nbsp;Token值后，我们就利用上面的代码可以开始准备去新浪微博授权页面进行授权，$aurl就是授权链接页面，我们得到$aurl后就可以利用header()直接跳转到该授权页面，然后用户输入新浪微博帐号和密码进行授权，授权完成后，自动跳回你在最后一个参数里面设置的回调页面：http://localhost/callback.php，该链接你可以设置为上一个页面，这样授权完成之后就会自动又跳转回去了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	需要注意的是设置session的keys的值是必须的，它在下面获取到授权的Access&amp;nbsp;Token中是需要用到的。很多的朋友可能会参考其开放平台上面的说明来进行授权时，可发现总是出错，一般都是这个问题，你并未设置session的keys值，在下面当然取不到Access&amp;nbsp;Token的值了，这个一定要记住了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	3.最后得到用户授权的Access&amp;nbsp;Token
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$o&amp;nbsp;=&amp;nbsp;new&amp;nbsp;WeiboOAuth(&amp;nbsp;WB_AKEY&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;WB_SKEY&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$_SESSION[&amp;nbsp;keys&amp;nbsp;][&amp;nbsp;oauth_token&amp;nbsp;]&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$_SESSION[&amp;nbsp;keys&amp;nbsp;][&amp;nbsp;oauth_token_secret&amp;nbsp;]&amp;nbsp;&amp;nbsp;);
+
+$last_key&amp;nbsp;=&amp;nbsp;$o-&amp;amp;gt;getAccessToken(&amp;nbsp;&amp;nbsp;$_REQUEST[&amp;nbsp;oauth_verifier&amp;nbsp;]&amp;nbsp;)&amp;nbsp;;
+echo($last_key[&amp;nbsp;oauth_token&amp;nbsp;]);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	上面的代码就最终获得了用户授权的Access&amp;nbsp;Token，共两个值，它们保存在$last_key数组变量里面，我们也可以看到，后面的两个参数就是前面我们设置的session值。到此就基本完成了，这就是新浪微博用户授权的一个完整的过程。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	授权完成后的工作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	在授权完成之后，我们就可以开始调用新浪微博提供的各类API函数接口进行实际应用的开发了，在这里我就获取最新微博记录这个接口进行一个简单说明，其他都类似。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	获取最新新浪微博信息的API接口函数是：public_timeline()，样例代码看下面：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;//获取前20条最新更新的公共微博消息
+$c&amp;nbsp;=&amp;nbsp;new&amp;nbsp;WeiboClient(&amp;nbsp;WB_AKEY&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;WB_SKEY&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$oauth_token&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$oauth_token_secret&amp;nbsp;&amp;nbsp;);
+
+$msg&amp;nbsp;&amp;nbsp;=&amp;nbsp;$c-&amp;amp;gt;public_timeline();
+if&amp;nbsp;($msg&amp;nbsp;===&amp;nbsp;false&amp;nbsp;&amp;brvbar;&amp;brvbar;&amp;nbsp;$msg&amp;nbsp;===&amp;nbsp;null){
+&amp;nbsp;echo&amp;nbsp;Error&amp;nbsp;occured;
+&amp;nbsp;return&amp;nbsp;false;
+}
+if&amp;nbsp;(isset($msg[&amp;nbsp;error_code&amp;nbsp;])&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;isset($msg[&amp;nbsp;error&amp;nbsp;])){
+&amp;nbsp;echo&amp;nbsp;(&amp;nbsp;Error_code:&amp;nbsp;&amp;nbsp;.$msg[&amp;nbsp;error_code&amp;nbsp;].&amp;nbsp;;&amp;nbsp;&amp;nbsp;Error:&amp;nbsp;&amp;nbsp;.$msg[&amp;nbsp;error&amp;nbsp;]&amp;nbsp;);
+&amp;nbsp;return&amp;nbsp;false;
+}
+print_r($msg);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	通常我们在得到用户授权的Access&amp;nbsp;Token值之后，就把它们保存在我们的用户表中，与我们的应用中的帐号进行对应，之后我们在调用新浪微博各api接口时就不用每次都去认证了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码很简单，实例化WeiboClient对象，然后直接调用接口函数public_timeline就可以得到返回的信息，如果没有错误的话。通常新浪微博api接口返回的数据格式一般为Json格式或xml格式，而我们在此是用php进行开发，则使用Json格式的数据就有先天的优势，如果返回Json格式数据的话，直接使用php函数json_decode()就可以转换为php常用的array数组格式了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	来源：红心草博客
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	原文地址：http://www.hongxincao.com/archives/579.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	感谢&amp;nbsp;红心草&amp;nbsp;的投稿
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-29/1338259539.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

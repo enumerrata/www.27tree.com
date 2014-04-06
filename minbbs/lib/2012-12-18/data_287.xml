@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-18 22:18:10</datetime>
+  <title><![CDATA[下载文件的下载次数回填]]></title>
+  <content><![CDATA[<p>
+	我们在下载软件时，经常会看到此软件的下载统计次数，而这些统计数给网站管理员分析软件的受欢迎程度带来了方便。其实现原理是：下载链接并不是直接连在文件上而是链接到一个脚本，由这个脚本对数据库中存放软件的记录进行修改，将下载数字段+1，然后再通过重定向到下载文件上正式开始下载。具体实例：
+</p>
+<p>
+	比如在软件表格download的记录中有一个字段downnum是用来记录下载次数的，默认值为0，如果要下载标识号id值为2的软件，其文件名是kfxd.zip，那么我们只需要把原来的下载链接
+</p>
+<p>
+	&lt;a href=\"download/kfxd.zip\" target=\"_blank\"&gt;改为&lt;a href=\"download.php?id=2\" target=\"_blank\"&gt;，
+</p>
+<p>
+	然后在脚本download.php中执行
+</p>
+<p>
+	<p>
+		mysql_query(\"update download set downnum=(downnum+1) where id=$id\");
+	</p>
+	<p>
+		header(\"location:$filename\");
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

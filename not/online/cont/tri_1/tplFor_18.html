@@ -1,0 +1,150 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">HTML 4.01 快速参考</h1>
+</div>
+<div>
+    <p><b>来自 itsrcs 的 HTML 快速参考。可以打印它，以备日常使用。</b></p>
+
+    <h1>HTML 基础文档</h1>
+
+    <code>
+        &lt;html&gt;<br />
+        &lt;head&gt;<br />
+        &lt;title&gt;Document name goes here&lt;/title&gt;<br />
+        &lt;/head&gt;<br />
+        &lt;body&gt;<br />
+        Visible text goes here<br />
+        &lt;/body&gt;<br />
+        &lt;/html&gt;
+    </code>
+
+    <h1>文字元素</h1>
+
+    <code>
+        &lt;p&gt;This is a paragraph&lt;/p&gt;<br />
+        &lt;br&gt; (line break)<br />
+        &lt;hr&gt; (horizontal rule)<br />
+        &lt;pre&gt;This text is preformatted&lt;/pre&gt;
+    </code>
+
+    <h1>逻辑样式</h1>
+
+    <code>
+        &lt;em&gt;This text is emphasized&lt;/em&gt;<br />
+        &lt;strong&gt;This text is strong&lt;/strong&gt;<br />
+        &lt;code&gt;This is some computer code&lt;/code&gt;
+    </code>
+
+    <h1>物理样式</h1>
+
+    <code>
+        &lt;b&gt;This text is bold&lt;/b&gt;<br />
+        &lt;i&gt;This text is italic&lt;/i&gt;
+    </code>
+
+    <h1>链接，锚和图像</h1>
+
+    <code>
+        &lt;a href="http://www.itsrcs.com/"&gt;This is a Link&lt;/a&gt;<br />
+        &lt;a href="http://www.itsrcs.com/"&gt;&lt;img src="URL"<br />
+        alt="Alternate Text"&gt;&lt;/a&gt;<br />
+        &lt;a href="mailto:webmaster@example.com"&gt;Send e-mail&lt;/a&gt;A named anchor:<br />
+        &lt;a name="tips"&gt;Useful Tips Section&lt;/a&gt;<br />
+        &lt;a href="#tips"&gt;Jump to the Useful Tips Section&lt;/a&gt;
+    </code>
+
+    <h1>无序列表ul</h1>
+
+    <code>
+        &lt;ul&gt;<br />
+        &lt;li&gt;First item&lt;/li&gt;<br />
+        &lt;li&gt;Next item&lt;/li&gt;<br />
+        &lt;/ul&gt;
+    </code>
+
+    <h1>有序列表ol</h1>
+
+    <code>
+        &lt;ol&gt;<br />
+        &lt;li&gt;First item&lt;/li&gt;<br />
+        &lt;li&gt;Next item&lt;/li&gt;<br />
+        &lt;/ol&gt;
+    </code>
+
+    <h1>定义列表dl</h1>
+
+    <code>
+        &lt;dl&gt;<br />
+        &lt;dt&gt;First term&lt;/dt&gt;<br />
+        &lt;dd&gt;Definition&lt;/dd&gt;<br />
+        &lt;dt&gt;Next term&lt;/dt&gt;<br />
+        &lt;dd&gt;Definition&lt;/dd&gt;<br />
+        &lt;/dl&gt;
+    </code>
+
+    <h1>表格</h1>
+
+    <code>
+        &lt;table&nbsp;border="1"&gt;<br />
+        &lt;tr&gt;<br />
+        &nbsp;&nbsp;&lt;th&gt;someheader&lt;/th&gt;<br />
+        &nbsp;&nbsp;&lt;th&gt;someheader&lt;/th&gt;<br />
+        &lt;/tr&gt;<br />
+        &lt;tr&gt;<br />
+        &nbsp;&nbsp;&lt;td&gt;sometext&lt;/td&gt;<br />
+        &nbsp;&nbsp;&lt;td&gt;sometext&lt;/td&gt;<br />
+        &lt;/tr&gt;<br />
+        &lt;/table&gt;
+    </code>
+
+    <h1>框架</h1>
+
+    <code>
+        &lt;frameset&nbsp;cols="25%,75%"&gt;<br />
+        &nbsp;&nbsp;&lt;frame&nbsp;src="page1.htm"&gt;<br />
+        &nbsp;&nbsp;&lt;frame&nbsp;src="page2.htm"&gt;<br />
+        &lt;/frameset&gt;
+    </code>
+
+    <h1>表单</h1>
+
+    <code>
+&lt;form&nbsp;action="http://www.itsrcs.com/test.asp"&nbsp;method="post/get"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="text"&nbsp;name="lastname"&nbsp;value="Nixon"&nbsp;size="30"&nbsp;maxlength="50"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="password"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="checkbox"&nbsp;checked="checked"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="radio"&nbsp;checked="checked"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="submit"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="reset"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="hidden"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&gt;Apples&lt;/option&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;selected&gt;Bananas&lt;/option&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&gt;Cherries&lt;/option&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&nbsp;name="Comment"&nbsp;rows="60"&nbsp;cols="20"&gt;&lt;/textarea&gt;<br />
+&lt;/form&gt;
+    </code>
+
+    <h1>实体</h1>
+
+    <code>
+        &amp;lt; 等价于 &lt;<br />
+        &amp;gt; 等价于 &gt;<br />
+        &amp;#169; 等价于 &#169;
+    </code>
+
+    <h1>其他元素</h1>
+
+    <code>
+        &lt;!-- This is a comment --&gt;<br />
+        &lt;blockquote&gt;<br />
+        Text quoted from some source.<br />
+        &lt;/blockquote&gt;<br />
+        &lt;address&gt;<br />
+        Address 1&lt;br&nbsp;/&gt;<br />
+        Address 2&lt;br&nbsp;/&gt;<br />
+        City&lt;br&nbsp;/&gt;<br />
+        &lt;/address&gt;
+    </code>
+
+</div>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>实用：生成简单的验证码</title>
+<content>&amp;lt;p&amp;gt;
+	这篇文章主要介绍生成一个自定义位数验证码的生成并且在表单中验证，还实现输入验证码不区分大小写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你可能觉得验证码很神奇，是怎么生成的呢？应该很难吧！其实没有你想象中的那么，其实很简单。这里只要你知道怎么生成一串字符串就能把她做出来，当然要实现验证输入是否正确，这需要你了解PHP的Session会话控制。废话不多说，直接上代码：（这里放在了一个文件中，当然你可以把其中的生成字符串的类拿到其他文件中，只需要做一点调整就可以良好运行！）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;session_start();
+
+if&amp;nbsp;($_POST[&amp;nbsp;check&amp;nbsp;]){
+	if(strtolower($_POST[&amp;nbsp;text&amp;nbsp;])==$_SESSION[&amp;nbsp;check&amp;nbsp;]){
+		echo&amp;nbsp;输入验证码正确！;
+	}else{
+		echo&amp;nbsp;输入验证码错误！;
+	}
+}
+
+class&amp;nbsp;GetChar{
+
+function&amp;nbsp;getCode&amp;nbsp;($length&amp;nbsp;=&amp;nbsp;6){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$str&amp;nbsp;=&amp;nbsp;&amp;nbsp;1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;nbsp;;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$result&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$l&amp;nbsp;=&amp;nbsp;strlen($str)-1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$num=0;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for($i&amp;nbsp;=&amp;nbsp;0;$i&amp;nbsp;&amp;amp;lt;&amp;nbsp;$length;$i&amp;nbsp;++){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$num&amp;nbsp;=&amp;nbsp;rand(0,&amp;nbsp;$l);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$a=$str[$num];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$result&amp;nbsp;=$result.$a;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+return&amp;nbsp;$result;
+}
+}
+?&amp;amp;gt;
+&amp;amp;lt;html&amp;amp;gt;
+	&amp;amp;lt;head&amp;amp;gt;
+		&amp;amp;lt;title&amp;amp;gt;验证码&amp;amp;lt;/title&amp;amp;gt;
+		&amp;amp;lt;style&amp;amp;gt;
+			.captcha{
+				background-color:#000;
+				color:#fff;
+			}
+		&amp;amp;lt;/style&amp;amp;gt;
+	&amp;amp;lt;/head&amp;amp;gt;
+	&amp;amp;lt;body&amp;amp;gt;
+		&amp;amp;lt;form&amp;nbsp;action=#&amp;nbsp;method=post&amp;amp;gt;
+			&amp;amp;lt;input&amp;nbsp;type=text&amp;nbsp;name=text&amp;nbsp;/&amp;amp;gt;
+			&amp;amp;lt;label&amp;nbsp;class&amp;nbsp;=&amp;nbsp;captcha&amp;amp;gt;&amp;amp;lt;?php
+
+				$code&amp;nbsp;=&amp;nbsp;new&amp;nbsp;GetChar;
+				$char&amp;nbsp;=&amp;nbsp;$code-&amp;amp;gt;getCode();
+
+				$_SESSION[&amp;nbsp;check&amp;nbsp;]&amp;nbsp;=&amp;nbsp;strtolower($char);
+				echo&amp;nbsp;$char;
+			?&amp;amp;gt;&amp;amp;lt;/label&amp;amp;gt;
+			&amp;amp;lt;br&amp;amp;gt;
+			&amp;amp;lt;input&amp;nbsp;type=submit&amp;nbsp;name=check/&amp;amp;gt;
+		&amp;amp;lt;/form&amp;amp;gt;
+	&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;
+&amp;lt;/pre&amp;gt;
+怎么样，是不是觉得很简单，当然你会觉得：这个有些简单，没有干扰的东西，那么你就需要学习PHP的GD库来做出更高级的验证码。本站曾经发表一个关于生成验证码的函数，那个是比较全的，你可以到简单的生成验证码函数中学习！
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338939900.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

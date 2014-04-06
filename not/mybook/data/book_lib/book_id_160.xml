@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android基础教程]]></title>
+  <author>（美）伯内特</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-04 10:51:09</submit-date-time>
+  <img-link>c35310d1a61489c978d79b310e06093c.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	你的第一本Android书
+</p>
+<p>
+	Pragmatic系列图书品质保证
+</p>
+<p>
+	从这里，开始一个新的梦想
+</p>
+<p>
+	“跟本书的2005版一样，我认为Louis的这本书写得非常好，信息量极其丰富而且实践性强。阅读过程中，你会觉得是在跟作者讨论问题。我喜欢这本书，还因为它有自己的观点，而非从在线图书中照搬过来……”
+</p>
+<p>
+	—— Amazon读者评论
+</p>
+<p>
+	这本书极其出色，不仅文笔流畅、浅显易懂，内容也妙趣横生。本书既恰到好处地讲解了Android独有的特性，同时也突出了高质量编程的原则。
+</p>
+<p>
+	——Anthony Stevens Pocket Journey创始人兼CTO，Google Android竞赛前20强
+</p>
+<p>
+	Ed Burnette的这本书虽然篇幅不长，但内容丰富，保持了Pragmatic（实用）系列图书的一贯风格。仅凭2D和3D图形方面的内容，本书就非常值得所有Android开发人员拥有。
+</p>
+<p>
+	——Mark Murphy Commons Ware创始人
+</p>
+<p>
+	我还记得第一次使用Android时的情景：当时感觉它就像是一座超大型迷宫。有了这本书，入门就不会那么痛苦了。我深信，通过阅读本书，上手开发Android应用程序将是一件非常轻松愉快的事。
+</p>
+<p>
+	——Gabor Paller On Relay公司高级软件架构师
+</p>
+<p>
+	<p>
+		Android是谷歌公司开发的全新开源手机平台。本书是一部关于Android开发的基础教程，采用由浅入深、循序渐进的方式讨论Android。书中还结合数独游戏等实例更加形象生动地讲解了Android开发的基本流程，且每章最后都有一个“快速阅读指南”，更加方便了读者的阅读。
+	</p>
+	<p>
+		本书内容完整丰富，具有较强的通用性，读者都能通过本书快速学习Android开发，提高相关技能。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

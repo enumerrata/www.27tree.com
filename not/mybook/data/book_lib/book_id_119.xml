@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>PHP设计模式</title>
+  <author>（美）萨莱</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-27 16:49:13</submit-date-time>
+  <img-link>e11d608db8ba6f3439c856c643ab3369.png</img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP通常被视为构建灵活和功能丰富的Web应用程序的基石。由于学习相对简单，因此初级编程人员能够方便地采用PHP从头开始创建应用程序。然而，考虑到这些应用程序的规模，其维护工作令人畏惧。幸运的是，成熟的编程社区已经提供了包括设计模式在内的一些解决方案。这些针对相同问题的可重复解决方案已在其他编程语言中应用了多年。《PHP设计模式》的目标是：通过将经过实践检验的设计模式应用于PHP应用程序，将PHP与早期的编程语言联系在一起。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《PHP设计模式》首先介绍了设计模式，讲述了设计模式的使用及重要性，并且详细说明了应用设计模式的场合。接下来，本书通过代码示例介绍了许多设计模式。最后，本书通过全面深入的案例分析说明了如何使用设计模式来计划新的应用程序，如何采用PHP语言编写这些模式，以及如何使用书中介绍的设计模式修正和重构已有的代码块。作者采用专业的、便于使用的格式来介绍相关的概念，自学成才的编程人员与经过更多正规培训的编程人员都会非常熟悉这种格式。
+&lt;/p&gt;</book-intro>
+</root>

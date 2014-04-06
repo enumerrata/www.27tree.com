@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-01 13:37:14</datetime>
+  <title>Javascript内存分配机制</title>
+  <content>&lt;p&gt;
+	&lt;strong&gt;原始值和引用值&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	在ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。原始值指的就是代表原始数据类型（基本数据类型）的值，即Undefined,Null,Number,String,Boolean类型所表示的值。引用值指的就是复合数据类型的值，即Object,Function,Array,以及自定义对象,等等。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;栈和堆&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	与原始值与引用值对应存在两种结构的内存即栈和堆。栈是一种后进先出的数据结构，在Javascript中可以通过Array.push和Array.pop来模拟栈的行为
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;var&amp;nbsp;arr&amp;nbsp;=&amp;nbsp;[];&amp;nbsp;//创建一个栈
+arr.push(\"apple\");//压入元素\"apple\"&amp;nbsp;[\"apple\"]
+arr.push(\"orange\");//压入元素\"orange\"&amp;nbsp;&amp;nbsp;&amp;nbsp;[\"apple\",\"orange\"]
+arr.pop();//弹出\"orange\"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;[\"apple\"]
+arr.push(\"banana\");//压入元素\"banana\"&amp;nbsp;&amp;nbsp;&amp;nbsp;[\"apple\",\"banana\"]&lt;/pre&gt;
+我们来看一下，与之对应的内存图：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120901/20120901133426_88074.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;原始值是存储在栈中的简单数据段，也就是说，他们的值直接存储在变量访问的位置。&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		堆是存放数据的基于散列算法的数据结构，在javascript中，引用值是存放在堆中的。引用值是存储在堆中的对象，也就是说，存储在变量处的值(即指向对象的变量，存储在栈中）是一个指针，指向存储在堆中的实际对象。
+	&lt;/p&gt;
+	&lt;p&gt;
+		例：var&amp;nbsp;obj&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Object();&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;obj存储在栈中它指向于new&amp;nbsp;Object()这个对象，而new&amp;nbsp;Object()是存放在堆中的。
+	&lt;/p&gt;
+	&lt;p&gt;
+		那为什么引用值要放在堆中，而原始值要放在栈中，不都是在内存中吗，为什么不放在一起呢?那接下来，让我们来探索问题的答案！
+	&lt;/p&gt;
+	&lt;p&gt;
+		我们来看一下代码：
+	&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;function&amp;nbsp;Person(id,name,age){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.id&amp;nbsp;=&amp;nbsp;id;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.name&amp;nbsp;=&amp;nbsp;name;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.age&amp;nbsp;=&amp;nbsp;age;
+}
+var&amp;nbsp;num&amp;nbsp;=&amp;nbsp;10;
+var&amp;nbsp;bol&amp;nbsp;=&amp;nbsp;true;
+var&amp;nbsp;str&amp;nbsp;=&amp;nbsp;\"abc\";
+var&amp;nbsp;obj&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Object();
+var&amp;nbsp;arr&amp;nbsp;=&amp;nbsp;[&amp;nbsp;a&amp;nbsp;,&amp;nbsp;b&amp;nbsp;,&amp;nbsp;c&amp;nbsp;];
+var&amp;nbsp;person&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Person(100,\"koodo\",25);&lt;/pre&gt;
+然后我们来看一下内存分析图：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120901/20120901133502_20375.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	变量num,bol,str为基本数据类型，它们的值，直接存放在栈中，obj,person,arr为复合数据类型，他们的引用变量存储在栈中，指向于存储在堆中的实际对象。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		由上图可知，我们无法直接操纵堆中的数据，也就是说我们无法直接操纵对象，但我们可以通过栈中对对象的引用来操作对象，就像我们通过遥控机操作电视机一样，区别在于这个电视机本身并没有控制按钮。
+	&lt;/p&gt;
+	&lt;p&gt;
+		现在让我们来回答为什么引用值要放在堆中，而原始值要放在栈中的问题：记住一句话：能量是守衡的，无非是时间换空间，空间换时间的问题。堆比栈大，栈比堆的运算速度快,对象是一个复杂的结构，并且可以自由扩展，如：数组可以无限扩充，对象可以自由添加属性。将他们放在堆中是为了不影响栈的效率。而是通过引用的方式查找到堆中的实际对象再进行操作。相对于简单数据类型而言，简单数据类型就比较稳定，并且它只占据很小的内存。不将简单数据类型放在堆是因为通过引用到堆中查找实际对象是要花费时间的，而这个综合成本远大于直接从栈中取得实际值的成本。所以简单数据类型的值直接存放在栈中。
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>原始值和引用值
+
+
+	在ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。原始值指的就是代表原始数据类型（基本数据类型）的值，即Undefined,Null,Number,String,Boolean类型所表示的值。引用值指的就是复合数据类型的值，即Object,Function,Array,以及自定义对象,等等。
+
+
+	栈和堆
+
+
+	与原</contentx>
+  <tags>_null_</tags>
+</root>

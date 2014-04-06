@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Php和MySQL Web开发]]></title>
+  <author>（澳）威利，（澳）汤姆森</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-16 22:33:28</submit-date-time>
+  <img-link>75e97ebab7d03ba7af48ad727a5af723.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	本书将PHP开发与MySQL应用相结合，分别对PHP和MySQL做了深入浅出的分析，不仅介绍PHP和MySQL的一般概念，而且对PHP和MySQL的Web应用做了较全面的阐述，并包括几个经典且实用的例子。
+</p>
+<p>
+	本书是第4版，经过了全面的更新、重写和扩展，包括PHP 5.3最新改进的特性（例如，更好的错误和异常处理），MySQL的存储过程和存储引擎，Ajax技术与Web 2.0以及Web应用需要注意的安全问题。
+</p>
+<p>
+	PHP平IEIMySQL是非常流行的开源技术，它们非常适合快速开发数据库驱动的Web应用。PHP是一种功能强大的脚本语言，专门用于快速创建高性能的Web应用，而MySQL则是一个快速而又可靠的数据库，它能很好地与PHP集成，适用于基于互联网的动态应用。
+</p>
+<p>
+	本书介绍了如何使用这些工具创建高效和交互式的Web应用。它清晰地介绍了PHP语言的基础，解释了如何设置和使用MySQL数据，以及如何使用PHP与数据库和服务器进行交互。
+</p>
+<p>
+	本书非常实用，包括大量实际应用中的例子。例如，用户验证、创建购物车、动态生成PDF文档和图像、发送和管理电子邮件、管理用户讨论、使用XML连接Web服务，以及使用基于Ajax的交互性开发Web 2.0应用。
+</p>
+<p>
+	与上一版相比，本书经过了更新、重写以及扩展，并涵盖了PHP 5到5.3的所有特性，例如命名空间和闭包以及MySQL 5.1引入的特性。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		“这是PHP和MySQL程序员的最佳参考书，隆重推荐。”
+	</p>
+	<p>
+		——《The Internet Writing Journal》
+	</p>
+	<p>
+		“最佳的PHP快速教程，最全面的MySQL介绍。”
+	</p>
+	<p>
+		——WebDynamic
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>203</uid>
+  <datetime>2012-11-03 17:15:01</datetime>
+  <title><![CDATA[Wordpress 自定义评论模块的默认头像]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	您是否想让您的博客评论模块更加漂亮呢？您是否已经对 Wordpress 自带的评论头像厌倦了呢？您是否想更换一下它呢？如果想，那您来对地方了！今天，小天就来教你如何自定义 Wordpress 自带的默认头像，方法有两种！
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">方法一、直接修改 Wordpress 自带的“空白”头像</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	通过查看 wp-admin/options-discussion.php 文件中的 214-222 行可知：
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">$avatar_defaults = array(
+ \'mystery\' =&gt; __(\'Mystery Man\'), //神秘人
+ \'blank\' =&gt; __(\'Blank\'), //空白
+ \'gravatar_default\' =&gt; __(\'Gravatar Logo\'), //Gravatar 标志
+ \'identicon\' =&gt; __(\'Identicon (Generated)\'), //抽象图形（自动生成）
+ \'wavatar\' =&gt; __(\'Wavatar (Generated)\'), //Wavatar（自动生成）
+ \'monsterid\' =&gt; __(\'MonsterID (Generated)\'), //小怪物（自动生成）
+ \'retro\' =&gt; __(\'Retro (Generated)\') ); //复古（自动生成）</pre>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	相信大家已经认出这五项分别就是代表 Wordpress 自带的默认的头像了。而我们要做的就是修改空白头像的这一栏，事实上，blank 项对应的图像就是 wp-includes/images 中的 blank.gif ，有人就想了，为什么不直接修改这个图像呢？经过小天的测试，这样是完全不可行的！至于为什么？会在文章的&lt;a href=\"#warn\"&gt;注意事项&lt;/a&gt;中给出答案。那该如何修改呢？其实很简单，我们只需将 \'blank\' =&gt; _(\'Blank\') 修改成下面的形式：
+</p>
+<p style=\"text-indent:2em;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">\'url\' =&gt; _(\'Blank\'),// url 代表头像的地址，可以是绝对地址，也可以是相对地址</pre>
+</p>
+<p style=\"text-indent:2em;\">
+	你可能已经想到，可以不修改 blank 这项，直接在 $avatar_defaults 数组中额外添加一项的方法，但以上的无论是修改还是添加都不是最佳的办法，因为这样修改的是 Wordpress 的系统文件 ，当 Wordpress 升级后又要重新修改，这样不利于管理，因此&lt;span style=\"color:red\"&gt;不推荐&lt;/span&gt;。那么，就有了以下的第二种方法了。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">方法二、将添加自定义头像的动作交给 Wordpress 主题执行</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	这种方法其实就是将上面讲到的添加的一项的方法交给主题文件来执行，只要将以下代码添加到主题文件下的 functions.php 文件中就 OK 了。
+</p>
+<p style=\"text-indent:2em;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">//自定义头像
+  add_filter( \'avatar_defaults\', \'xt_addgravatar\' );
+  function xt_addgravatar( $avatar_defaults ) {
+  $myavatar = get_bloginfo(\'template_directory\') . \'/images/xt_gravatar.jpg\';
+    $avatar_defaults[$myavatar] = \'自定义头像\';
+    return $avatar_defaults;
+  }</pre>
+</p>
+<p style=\"text-indent:2em;\">
+	最后只需将名为“xt_gravatar.jpg”的图像文件上传到上面填写的对应的目录下即可。这种方法是不是更加简单，优点就是不用修改系统文件，只要主题不变就算 Wordpress 升级也不会影响，是不是更方便站长的管理啦！因此这种方法&lt;span style=\"color:red\"&gt;绝对推荐&lt;/span&gt;。
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://www.tenderj.com/wp-content/uploads/2012/11/avatar.gif\" width=\"581\" height=\"324\" title=\"自定义头像效果图\" alt=\"自定义头像效果图\" />
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:18px;\"><br />
+</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:18px;\"><strong>※ 注意事项</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:18px;\"><strong><br />
+</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"text-indent:2em;\">1. 以上的方法在本地调试无效，必须应用在 WEB 服务器上。这点，小天就曾经浪费了很长的时间，当时在本地调试时无论怎么弄都不行，最后白白浪费了半天时间只能无奈放弃，后来在主题正式上线那天突然想到，之所以实现不了自定义头像效果的原因会不会是本地与服务器的区别呢！果断一试，才知道那半天时间确实是白白浪费了！因此，希望后来者不要步小天后尘啊！切记了！</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"text-indent:2em;\"><br />
+</span>
+</p>
+<p style=\"text-indent:2em;\">
+	2. 头像一旦使用，就算将该头像同名替换成另一个头像，最终显示出来的还是之前上传的那个头像。对于这个问题，小天也挺纳闷的，明明头像已经被我替换了，但显示出来的还是之前的那个，于是，我就将 images 文件中的所有头像删除，结果无论页面是刷新，强制刷新抑或退出Wordpress重新登陆都无法改变了。小天怀疑，头像使用后会上传到 gravatar 的服务器中，因此，修改本地的头像是无效的。这也就解释了，为什么在第一个方法中直接修改 wp-includes/images 中的 blank.gif 也无法改变“空白”头像的原因了。目前所知的解决方法是：改名，重新上传。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	更多精彩尽在<a href=\"http://www.tenderj.com\" target=\"_blank\">小天博客</a>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[您是否想让您的博客评论模块更加漂亮呢？您是否已经对 Wordpress 自带的评论头像厌倦了呢？您是否想更换一下它呢？如果想，那您来对地方了！今天，小天就来教你如何自定义 Wordpress 自带的默认头像，方法有两种！
+
+
+	
+
+
+	方法一、直接修改 Wordpress 自带的“空白”头像
+
+
+	
+
+
+	通过查看 wp-admin/options-disc]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

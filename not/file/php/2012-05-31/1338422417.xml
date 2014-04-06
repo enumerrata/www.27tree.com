@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP与AJAX的交互，构建部分页面刷新技术</title>
+<content>&amp;lt;p&amp;gt;
+	AJAX无疑是2005年炒的最热的Web开发技术之一，当然，这个功劳离不开Google。我只是一个普通开发者，使用AJAX的地方不是特别多，我就简单的把我使用的心得说一下。（本文假设用户已经具有JavaScript、HTML、CSS等基本的Web开发能力）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;[AJAX介绍]&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ajax是使用客户端脚本与Web服务器交换数据的Web应用开发方法。Web页面不用打断交互流程进行重新加裁，就可以动态地更新。使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	异步JavaScript和XML（AJAX）不是什么新技术，而是使用几种现有技术——包括级联样式表（CSS）、JavaScript、&amp;nbsp;XHTML、XML和可扩展样式语言转换（XSLT），开发外观及操作类似桌面软件的Web应用软件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;[AJAX执行原理]&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个Ajax交互从一个称为XMLHttpRequest的JavaScript对象开始。如同名字所暗示的，它允许一个客户端脚本来执行HTTP请求，并且将会解析一个XML格式的服务器响应。Ajax处理过程中的第一步是创建一个XMLHttpRequest实例。使用HTTP方法（GET或&amp;nbsp;POST）来处理请求，并将目标URL设置到XMLHttpRequest对象上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当你发送HTTP请求，你不希望浏览器挂起并等待服务器的响应，取而代之的是，你希望通过页面继续响应用户的界面交互，并在服务器响应真正到达后处理它们。要完成它，你可以向&amp;nbsp;XMLHttpRequest注册一个回调函数，并异步地派发XMLHttpRequest请求。控制权马上就被返回到浏览器，当服务器响应到达时，回调函数将会被调用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;[AJAX实际应用]&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;hr&amp;nbsp;/&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;初始化Ajax
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ajax实际上就是调用了XMLHttpRequest对象，那么首先我们的就必须调用这个对象，我们构建一个初始化Ajax的函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/**
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;初始化一个xmlhttp对象
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;InitAjax()
+{
+var&amp;nbsp;ajax=false;
+try&amp;nbsp;{
+ajax&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ActiveXObject(\"Msxml2.XMLHTTP\");
+}&amp;nbsp;catch&amp;nbsp;(e)&amp;nbsp;{
+try&amp;nbsp;{
+ajax&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ActiveXObject(\"Microsoft.XMLHTTP\");
+}&amp;nbsp;catch&amp;nbsp;(E)&amp;nbsp;{
+ajax&amp;nbsp;=&amp;nbsp;false;
+}
+}
+if&amp;nbsp;(!ajax&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;typeof&amp;nbsp;XMLHttpRequest!=&amp;nbsp;undefined&amp;nbsp;)&amp;nbsp;{
+ajax&amp;nbsp;=&amp;nbsp;new&amp;nbsp;XMLHttpRequest();
+}
+return&amp;nbsp;ajax;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你也许会说，这个代码因为要调用XMLHTTP组件，是不是只有IE浏览器能使，不是的经我试验，Firefox也是能使用的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么我们在执行任何Ajax操作之前，都必须先调用我们的InitAjax()函数来实例化一个Ajax对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;使用Get方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在我们第一步来执行一个Get请求，加入我们需要获取&amp;nbsp;/show.php?id=1的数据，那么我们应该怎么做呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设有一个链接：&amp;amp;lt;a&amp;nbsp;href=\"/show.php?id=1\"&amp;amp;gt;&amp;amp;lt;/a&amp;amp;gt;新闻1&amp;amp;lt;/a&amp;amp;gt;，我点该链接的时候，不想任何刷新就能够看到链接的内容，那么我们该怎么做呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//将链接改为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	＜a&amp;nbsp;href=\"#\"&amp;nbsp;onClick=\"getNews(1)\"＞新闻1＜/a＞
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//并且设置一个接收新闻的层，并且设置为不显示：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	＜div&amp;nbsp;id=\"show_news\"＞＜/div＞
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	同时构造相应的JavaScript函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;getNews(newsID)
+{
+//如果没有把参数newsID传进来
+if&amp;nbsp;(typeof(newsID)&amp;nbsp;==&amp;nbsp;&amp;nbsp;undefined&amp;nbsp;)
+{
+return&amp;nbsp;false;
+}
+//需要进行Ajax的URL地址
+var&amp;nbsp;url&amp;nbsp;=&amp;nbsp;\"/show.php?id=\"+&amp;nbsp;newsID;
+//获取新闻显示层的位置
+var&amp;nbsp;show&amp;nbsp;=&amp;nbsp;document.getElementById(\"show_news\");
+//实例化Ajax对象
+var&amp;nbsp;ajax&amp;nbsp;=&amp;nbsp;InitAjax();
+//使用Get方式进行请求
+ajax.open(\"GET\",&amp;nbsp;url,&amp;nbsp;true);
+//获取执行状态
+ajax.onreadystatechange&amp;nbsp;=&amp;nbsp;function()&amp;nbsp;{
+//如果执行是状态正常，那么就把返回的内容赋值给上面指定的层
+if&amp;nbsp;(ajax.readyState&amp;nbsp;==&amp;nbsp;4&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;ajax.status&amp;nbsp;==&amp;nbsp;200)&amp;nbsp;{
+show.innerHTML&amp;nbsp;=&amp;nbsp;ajax.responseText;
+}
+}
+//发送空
+ajax.send(null);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么当，当用户点击“新闻1”这个链接的时候，在下面对应的层将显示获取的内容，而且页面没有任何刷新。当然，我们上面省略了show.php这个文件，我们只是假设show.php文件存在，并且能够正常工作的从数据库中把id为1的新闻提取出来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这种方式适应于页面中任何元素，包括表单等等，其实在应用中，对表单的操作是比较多的，针对表单，更多使用的是POST方式，这个下面将讲述。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;使用POST方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其实POST方式跟Get方式是比较类似的，只是在执行Ajax的时候稍有不同，我们简单讲述一下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设有一个用户输入资料的表单，我们在无刷新的情况下把用户资料保存到数据库中，同时给用户一个成功的提示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//构建一个表单，表单中不需要action、method之类的属性，全部由ajax来搞定了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"xml\"&amp;gt;&amp;amp;lt;form&amp;nbsp;name=\"user_info\"&amp;amp;gt;
+姓名：&amp;amp;lt;input&amp;nbsp;type=\"text\"&amp;nbsp;name=\"user_name\"&amp;nbsp;/&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+年龄：&amp;amp;lt;input&amp;nbsp;type=\"text\"&amp;nbsp;name=\"user_age\"&amp;nbsp;/&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+性别：&amp;amp;lt;input&amp;nbsp;type=\"text\"&amp;nbsp;name=\"user_sex\"&amp;nbsp;/&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;input&amp;nbsp;type=\"button\"&amp;nbsp;value=\"提交表单\"&amp;nbsp;onClick=\"saveUserInfo()\"&amp;amp;gt;
+&amp;amp;lt;/form&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//构建一个接受返回信息的层：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;div&amp;nbsp;id=\"msg\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们看到上面的form表单里没有需要提交目标等信息，并且提交按钮的类型也只是button，那么所有操作都是靠onClick事件中的&amp;nbsp;saveUserInfo()函数来执行了。我们描述一下这个函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;saveUserInfo()
+{
+//获取接受返回信息层
+var&amp;nbsp;msg&amp;nbsp;=&amp;nbsp;document.getElementById(\"msg\");
+//获取表单对象和用户信息值
+var&amp;nbsp;f&amp;nbsp;=&amp;nbsp;document.user_info;
+var&amp;nbsp;userName&amp;nbsp;=&amp;nbsp;f.user_name.value;
+var&amp;nbsp;userAge&amp;nbsp;=&amp;nbsp;f.user_age.value;
+var&amp;nbsp;userSex&amp;nbsp;=&amp;nbsp;f.user_sex.value;
+//接收表单的URL地址
+var&amp;nbsp;url&amp;nbsp;=&amp;nbsp;\"/save_info.php\";
+//需要POST的值，把每个变量都通过&amp;amp;来联接
+var&amp;nbsp;postStr&amp;nbsp;=&amp;nbsp;\"user_name=\"+&amp;nbsp;userName&amp;nbsp;+\"&amp;amp;user_age=\"+&amp;nbsp;userAge&amp;nbsp;+\"&amp;amp;user_sex=\"+&amp;nbsp;userSex;
+//实例化Ajax
+var&amp;nbsp;ajax&amp;nbsp;=&amp;nbsp;InitAjax();
+//通过Post方式打开连接
+ajax.open(\"POST\",&amp;nbsp;url,&amp;nbsp;true);
+//定义传输的文件HTTP头信息
+ajax.setRequestHeader(\"Content-Type\",\"application/x-www-form-urlencoded\");
+//发送POST数据
+ajax.send(postStr);
+//获取执行状态
+ajax.onreadystatechange&amp;nbsp;=&amp;nbsp;function()&amp;nbsp;{
+//如果执行状态成功，那么就把返回信息写到指定的层里
+if&amp;nbsp;(ajax.readyState&amp;nbsp;==&amp;nbsp;4&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;ajax.status&amp;nbsp;==&amp;nbsp;200)&amp;nbsp;{
+msg.innerHTML&amp;nbsp;=&amp;nbsp;ajax.responseText;
+}
+}
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	大致使用POST方式的过程就是这样，当然，实际开发情况可能会更复杂，这就需要开发者去慢慢琢磨。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;异步回调（伪Ajax方式）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般情况下，使用Get、Post方式的Ajax我们都能够解决目前问题，只是应用复杂程度，当然，在开发中我们也许会碰到无法使用Ajax的时候，但是我们又需要模拟Ajax的效果，那么就可以使用伪Ajax的方式来实现我们的需求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	伪Ajax大致原理就是说我们还是普通的表单提交，或者别的什么的，但是我们却是把提交的值目标是一个浮动框架，这样页面就不刷新了，但是呢，我们又需要看到我们的执行结果，当然可以使用JavaScript来模拟提示信息，但是，这不是真实的，所以我们就需要我们的执行结果来异步回调，告诉我们执行结果是怎么样的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设我们的需求是需要上传一张图片，并且，需要知道图片上传后的状态，比如，是否上传成功、文件格式是否正确、文件大小是否正确等等。那么我们就需要我们的目标窗口把执行结果返回来给我们的窗口，这样就能够顺利的模拟一次Ajax调用的过程。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下代码稍微多一点，&amp;nbsp;并且涉及Smarty模板技术，如果不太了解，请阅读相关技术资料。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上传文件：upload.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//上传表单，指定target属性为浮动框架iframe1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;form&amp;nbsp;action=\"/upload.php\"&amp;nbsp;method=\"post\"&amp;nbsp;enctype=\"multipart/form-&amp;nbsp;data\"&amp;nbsp;name=\"upload_img\"&amp;nbsp;target=\"iframe1\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	选择要上传的图片：&amp;amp;lt;input&amp;nbsp;type=\"file\"&amp;nbsp;name=\"image\"&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;input&amp;nbsp;type=\"submit\"&amp;nbsp;value=\"上传图片\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/form&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//显示提示信息的层
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;div&amp;nbsp;id=\"message\"&amp;nbsp;style=\"display:none\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//用来做目标窗口的浮动框架
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;iframe&amp;nbsp;name=\"iframe1\"&amp;nbsp;width=\"0\"&amp;nbsp;height=\"0\"&amp;nbsp;scrolling=\"no\"&amp;amp;gt;&amp;amp;lt;/iframe&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	处理上传的PHP文件：upload.php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+/*&amp;nbsp;定义常量&amp;nbsp;*/
+//定义允许上传的MIME格式
+define(\"UPLOAD_IMAGE_MIME\",&amp;nbsp;\"image/pjpeg,image/jpg,image/jpeg,image/gif,image/x-png,image/png\");
+//图片允许大小，字节
+define(\"UPLOAD_IMAGE_SIZE\",&amp;nbsp;102400);
+//图片大小用KB为单位来表示
+define(\"UPLOAD_IMAGE_SIZE_KB\",&amp;nbsp;100);
+//图片上传的路径
+define(\"UPLOAD_IMAGE_PATH\",&amp;nbsp;\"./upload/\");
+//获取允许的图像格式
+$mime&amp;nbsp;=&amp;nbsp;explode(\",\",&amp;nbsp;USER_FACE_MIME);
+$is_vaild&amp;nbsp;=&amp;nbsp;0;
+//遍历所有允许格式
+foreach&amp;nbsp;($mime&amp;nbsp;as&amp;nbsp;$type)
+{
+if&amp;nbsp;($_FILES[&amp;nbsp;image&amp;nbsp;][&amp;nbsp;type&amp;nbsp;]&amp;nbsp;==&amp;nbsp;$type)
+{
+$is_vaild&amp;nbsp;=&amp;nbsp;1;
+}
+}
+//如果格式正确，并且没有超过大小就上传上去
+if&amp;nbsp;($is_vaild&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;$_FILES[&amp;nbsp;image&amp;nbsp;][&amp;nbsp;size&amp;nbsp;]&amp;amp;lt;=USER_FACE_SIZE&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;amp;&amp;nbsp;$_FILES[&amp;nbsp;image&amp;nbsp;][&amp;nbsp;size&amp;nbsp;]&amp;amp;gt;0)
+{
+if&amp;nbsp;(move_uploaded_file($_FILES[&amp;nbsp;image&amp;nbsp;][&amp;nbsp;tmp_name&amp;nbsp;],&amp;nbsp;USER_IMAGE_PATH&amp;nbsp;.&amp;nbsp;$_FILES[&amp;nbsp;image&amp;nbsp;][&amp;nbsp;name&amp;nbsp;]))
+{
+$upload_msg&amp;nbsp;=\"上传图片成功！\";
+}
+else
+{
+$upload_msg&amp;nbsp;=&amp;nbsp;\"上传图片文件失败\";
+}
+}
+else
+{
+$upload_msg&amp;nbsp;=&amp;nbsp;\"上传图片失败，可能是文件超过\".&amp;nbsp;USER_FACE_SIZE_KB&amp;nbsp;.\"KB、或者图片文件为空、或文件格式不正确\";
+}
+//解析模板文件
+$smarty-&amp;amp;gt;assign(\"upload_msg\",&amp;nbsp;$upload_msg);
+$smarty-&amp;amp;gt;display(\"upload.tpl\");
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	模板文件：upload.tpl
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;{if&amp;nbsp;$upload_msg&amp;nbsp;!=&amp;nbsp;\"\"}
+callbackMessage(\"{$upload_msg}\");
+{/if}
+//回调的JavaScript函数，用来在父窗口显示信息
+function&amp;nbsp;callbackMessage(msg)
+{
+//把父窗口显示消息的层打开
+parent.document.getElementById(\"message\").style.display&amp;nbsp;=&amp;nbsp;\"block\";
+//把本窗口获取的消息写上去
+parent.document.getElementById(\"message\").innerHTML&amp;nbsp;=&amp;nbsp;msg;
+//并且设置为3秒后自动关闭父窗口的消息显示
+setTimeout(\"parent.document.getElementById(&amp;nbsp;message&amp;nbsp;).style.display&amp;nbsp;=&amp;nbsp;&amp;nbsp;none&amp;nbsp;\",&amp;nbsp;3000);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用异步回调的方式过程有点复杂，但是基本实现了Ajax、以及信息提示的功能，如果接受模板的信息提示比较多，那么还可以通过设置层的方式来处理，这个随机应变吧。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[结束语]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是一种非常良好的Web开发技术，虽然出现时间比较长，但是到现在才慢慢火起来，也希望带给Web开发界一次变革，让我们朝RIA（富客户端）的开发迈进，当然，任何东西有利也有弊端，如果过多的使用JavaScript，那么客户端将非常臃肿，不利于用户的浏览体验，如何在做到快速的亲前提下，还能够做到好的用户体验，这就需要Web开发者共同努力了。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-31/1338422417.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

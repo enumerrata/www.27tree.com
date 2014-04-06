@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTML 5 Web开发：防止浏览器假死的方法</title>
+<content>&amp;lt;p&amp;gt;
+	一个浏览器至少存在三个线程：js引擎线程(处理js)、GUI渲染线程(渲染页面)、浏览器事件触发线程(控制交互)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	JavaScript引擎是基于事件驱动单线程执行的，JS引擎一直等待着任务队列中任务的到来然后加以处理，浏览器无论再什么时候都只有一个JS线程在运行JS程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GUI&amp;nbsp;渲染线程负责渲染浏览器界面，当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行。但需要注意&amp;nbsp;GUI渲染线程与JS引擎是互斥的，当JS引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	事件触发线程，当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可来自JavaScript引擎当前执行的代码块如setTimeOut、也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	了解了浏览器的内核处理方式就不难理解浏览器为什么会进入假死状态了，当一段JS脚本长时间占用着处理机就会挂起浏览器的GUI更新，而后面的事件响应&amp;nbsp;也被排在队列中得不到处理，从而造成了浏览器被锁定进入假死状态。另外JS脚本中进行了DOM操作，一旦JS调用结束就会马上进行一次GUI渲染，然后才&amp;nbsp;开始执行下一个任务，所以JS中大量的DOM操作也会导致事件响应缓慢甚至真正卡死浏览器，如在IE6下一次插入大量的HTML。而如果真的弹出了“脚本&amp;nbsp;运行时间过长“的提示框则说明你的JS脚本肯定有死循环或者进行过深的递归操作了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在如果遇到了这种情况，我们可以做的不仅仅是优化&amp;nbsp;代码，html5的webWorkers提供了js的后台处理线程的API，它允许将复杂耗时的单纯js逻辑处理放在浏览器后台线程中进行处理，让js线&amp;nbsp;程不阻塞UI线程的渲染。这个线程不能和页面进行交互，如获取元素、alert等。多个线程间也是可以通过相同的方法进行数据传递。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	直接看代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例子：用户输入一个数字，进行加法运算(+=)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以前的做法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;html&amp;nbsp;lang=\"en\"&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;head&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;meta&amp;nbsp;charset=\"UTF-8\"&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;title&amp;amp;gt;webworkers--calculate&amp;amp;lt;/title&amp;amp;gt;&amp;amp;lt;/head&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;body&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;input&amp;nbsp;id=\"num\"&amp;nbsp;name=\"num\"&amp;nbsp;type=\"text\"/&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;button&amp;nbsp;onclick&amp;nbsp;=&amp;nbsp;\"calculate()\"&amp;amp;gt;计算&amp;amp;lt;/button&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;div&amp;nbsp;id=\"result\"&amp;nbsp;style=\"color:red;\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;div&amp;nbsp;id=\"time\"&amp;nbsp;style=\"color:red;\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"calculate.js\"&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;calculate(){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;data1&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Date().getTime();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;num&amp;nbsp;=&amp;nbsp;document.getElementById(\"num\").value;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;val&amp;nbsp;=&amp;nbsp;parseInt(num,10);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;result&amp;nbsp;=0;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(var&amp;nbsp;i&amp;nbsp;=0;&amp;nbsp;i&amp;amp;lt;num;i++){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;result&amp;nbsp;+=&amp;nbsp;i;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;data2&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Date().getTime();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;document.getElementById(\"result\").innerHTML&amp;nbsp;=\"计算结果：\"+result;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;document.getElementById(\"time\").innerHTML&amp;nbsp;=\"普通&amp;nbsp;耗时：\"+&amp;nbsp;(data2&amp;nbsp;-&amp;nbsp;data1)+\"ms\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/body&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/html&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+使用webWorkers以后：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;html&amp;nbsp;lang=\"en\"&amp;amp;gt;&amp;amp;lt;head&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;meta&amp;nbsp;charset=\"UTF-8\"&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;title&amp;amp;gt;webworkers--calculate&amp;amp;lt;/title&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/head&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;body&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;input&amp;nbsp;id=\"num\"&amp;nbsp;name=\"num\"&amp;nbsp;type=\"text\"/&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;button&amp;nbsp;onclick&amp;nbsp;=&amp;nbsp;\"calculate()\"&amp;amp;gt;计算&amp;amp;lt;/button&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;div&amp;nbsp;id=\"result\"&amp;nbsp;style=\"color:red;\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;div&amp;nbsp;id=\"time\"&amp;nbsp;style=\"color:red;\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"calculate.js\"&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;amp;gt;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;worker&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Worker(\"calculate.js\");&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;data1&amp;nbsp;=0;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;data2&amp;nbsp;=0;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;worker.onmessage&amp;nbsp;=&amp;nbsp;function(event){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;data&amp;nbsp;=&amp;nbsp;event.data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;data2&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Date().getTime();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;document.getElementById(\"result\").innerHTML&amp;nbsp;=\"计算结果：\"+data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;document.getElementById(\"time\").innerHTML&amp;nbsp;=\"workers&amp;nbsp;耗时：\"+&amp;nbsp;(data2&amp;nbsp;-&amp;nbsp;data1)+\"ms\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;};&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;calculate(){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;data1&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Date().getTime();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;num&amp;nbsp;=&amp;nbsp;document.getElementById(\"num\").value;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;val&amp;nbsp;=&amp;nbsp;parseInt(num,10);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;worker.postMessage(val);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/body&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/html&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+calculate.js
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;onmessage&amp;nbsp;=&amp;nbsp;function(event){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;num&amp;nbsp;=&amp;nbsp;event.data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;result&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(var&amp;nbsp;i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;i&amp;amp;lt;num;i++){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;result&amp;nbsp;+=&amp;nbsp;i;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;postMessage(result);&amp;nbsp;&amp;nbsp;
+};&amp;nbsp;&amp;lt;/pre&amp;gt;
+ebWorker需要将代码放入web服务器中，&amp;nbsp;如果使用的是localhost请用高版本的chrome浏览器打开，firefox浏览器在处理localhost的时候会出现“Could&amp;nbsp;not&amp;nbsp;get&amp;nbsp;domain!”的错误，关于这个可以参考：https://bugzilla.mozilla.org/show_bug.cgi?id=682450&amp;nbsp;对比上面的两种实现方式，当计算值达到100亿的时候，普通做法耗时已经很长，且一般会卡死了。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-15/1339742574.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

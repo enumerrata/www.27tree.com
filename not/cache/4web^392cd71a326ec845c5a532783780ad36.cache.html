@@ -1,0 +1,441 @@
+<__cache@1389613463-@1389617063@4web__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            Web前端开发_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=web />
+                    <input type="hidden" id="pages" value=4/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/web/'>Web前端开发</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/web.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">web本意是蜘蛛网和网的意思。现广泛译作网络、互联网等技术领域。表现为三种形式，即超文本(Hypertext)、超媒体(Hypermedia)、超文本传输协议(Http)等。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-html5/>[HTML4/5]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-15/1339742777.html">
+        &nbsp;HTML发展历程    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;这篇文章...应该是用翻译器翻译的吧？还是...文章中的“得”频频出错，另外“欣赏器”这种说法，为什么不说是“浏览器”呢？</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-26/1340685984.html">
+        &nbsp;.Is() VS .HasClass()    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-11/1339350787.html">
+        &nbsp;Jquery的自适应宽度圆角按钮    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/266">%E5%95%8A%E5%93%A6</a>:&nbsp;按钮我都没有看到哦？</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/web-css/" class="borderR15 sband">CSS2/3</a><a href="/art/web-html5/" class="borderR15 sband">HTML4/5</a><a href="/art/web-jquery/" class="borderR15 sband">JQuery</a><a href="/art/web-dojo/" class="borderR15 sband">Dojo</a><a href="/art/web-ext/" class="borderR15 sband">Ext</a><a href="/art/web-ajax/" class="borderR15 sband">RIA/AJAX</a><a href="/art/web-regex/" class="borderR15 sband">Regex正则</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-31/1338422043.html>使用jQuery简化Ajax开发<3></a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">为 HTML 添加动画 
+
+
+	可以使用 jQuery 处理基本的动画和显示效果。animate() 函数是动画代码的核心，它用于更改任何随时间变化的数值型的 CSS 样式值。比方说，您可以变化高度、宽度、不透明度和位置。还可以指定动画的速度，定为毫秒或者预定义的速度：慢速，中速或快速。
+
+
+	下面是一个同时变化某个元素高度和宽度的示例。请注意，这些参数没有...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(418)</span>
+                           <em>2012年5月31日 07:54</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-31/1338422078.html>使用jQuery简化Ajax开发<2></a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">使用 jQuery 将使 Ajax 变得及其简单。jQuery 提供有一些函数，可以使简单的工作变得更加简单，复杂的工作变得不再复杂。
+
+
+	Ajax 最常见的用法就是把一块 HTML 代码加载到页面的某个区域中去。为此，只需简单地选择所需的元素，然后使用 load() 函数即可。下面是一个用于更新统计信息的示例：
+
+
+	$( #stats ).load( ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(425)</span>
+                           <em>2012年5月31日 07:53</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-31/1338421991.html>使用jQuery简化Ajax开发<1></a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一些简单的代码简化
+
+
+	下面是一个简单示例，它说明了 jQuery 对代码的影响。要执行一些真正简单和常见的任务，比方说为页面的某一区域中的每个链接附加一个单击（click）事件，您可以使用纯 JavaScript 代码和 DOM 脚本来实现，如 清单 1 所示。
+
+
+	清单 1 ：没有使用 jQuery 的 DOM 脚本
+
+
+	
+
+var externa...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(401)</span>
+                           <em>2012年5月31日 07:52</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-30/1338359003.html>网站分析系统性方法与策略：为什么要建立网站</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">接触互联网N年了，真正接触网站分析也有3年的时间，工作中碰到一些临时问题的时候只能采用临时的方法解决，因为没有积累系统性的网站分析方法和策略，所以老是觉得零散，最后的总结和归纳总是杂乱无章和零碎的，于是想整理下网站分析的框架和策略，此想法的产生受到书籍《思考的整理术》和《思维版图》的影响，书中强调思维的整理应该有清晰的脉络和系统。
+
+
+	虽然一个重大的问题要...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(344)</span>
+                           <em>2012年5月30日 14:23</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-30/1338358921.html>全球75%网站采用开源技术 4成用阿帕奇服务器</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp"> 
+
+
+	全球75%网站采用开源技术（腾讯科技配图）
+
+
+	 
+
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(342)</span>
+                           <em>2012年5月30日 14:20</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-26/1338043944.html>Javascript：使用命名空间</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在引入命名空间之前，一个令开发人员头疼的问题就是如何防止函数名/类名和其他人的冲突，在一个公司内部项目组之间可以通过命名预定（比如加前缀等）解决这个问题，但是把视线放到整个软件开发领域，在当今协作开发相当盛行的时代，这个问题却依然存在。在使用多个第三方框架或类库的时候，你唯一能作的就是祈祷它们的命名不要冲突，如果真正发生这种灾难的话，你唯一能作的就是放弃其中...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(372)</span>
+                           <em>2012年5月26日 22:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-25/1337926379.html>Javascript:跨浏览器解析XML</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">首先介绍简单的理论：
+
+
+	对于XML，我们可以理解它是一种树结构，它包含根，元素，属性，文本等内容。不同浏览器都有自己的解析器，把XML读入内存，并把它转换为可被 JavaScript 访问的 XML DOM 对象。
+
+
+	微软的 XML 解析器与其他浏览器中的解析器是有差异的。微软的解析器支持对 XML 文件和 XML 字符串（文本）的加载，而其他浏览器...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(628)</span>
+                           <em>2012年5月25日 14:12</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-ajax/>[RIA/AJAX]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-23/1337775133.html>RIA发展态势及RIA相关客户端开发技术</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在过去的两到三年中，Web开发人员一直是想构建一种比传统HTML更丰富的客户端：这是一个用户接口，它比用HTML能实现的接口更加健壮、反应更加灵敏和更具有令人感兴趣的可视化特性。RIA技术的出现允许我们在因特网上以一种像使用Web一样简单的方式来部署富客户端程序。无论将来RIA是否能够如人们所猜测的那样完全代替HTML应用系统，对于那些采用C/S架构的胖客户...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(635)</span>
+                           <em>2012年5月23日 20:11</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-23/1337774896.html>RIA技术的产生背景</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">基于HTML的应用程序之所以变得流行是由于应用系统的部署成本低、结构简单，且HTML易于学习和使用。很多用户和开发人员都乐于放弃由桌面计算机带来的用户界面改进，来实现对新数据和应用系统的快速访问。与丧失一些重要的UI功能相比，基于Web的方式所带来的好处要更大得多。
+
+
+	然而，某些应用系统并不完全适合采用HTML技术。复杂的应用系统可能要求多次提取网页来完...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(421)</span>
+                           <em>2012年5月23日 20:06</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-ajax/>[RIA/AJAX]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-20/1337509960.html>Web前端/RIA开发必备：11 个最常用的 AJAX 开发框架</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">AJAX（Asynchronous JavaScript and XML，异步JavaScript和XML)，是创建交互式Web应用的主要开发技术。互联网中也有大量的关于AJAX的框架，本文汇总了最常用的11个框架。
+
+
+	1.  jQuery
+
+
+	jQuery是一个轻量级的Javascript库，兼容CSS3，还兼容各种浏览器。jQuery使用户能更方便...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(721)</span>
+                           <em>2012年5月20日 18:31</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-19/1337388185.html>RIA简介及RIA的优势</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">RIA是Rich Internet Applications的缩写，翻译成中文为丰富的因特网应用程序（Macromedia中文网站翻译为Rich Internet应用程序）
+
+
+	传统网络程序的开发是基于页面的、服务器端数据传递的模式，把网络程序的表示层建立于HTML
+
+
+	页面之上，而HTML是适合于文本的，传统的基于页面的系统已经渐渐不能满足网络浏览者的...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(537)</span>
+                           <em>2012年5月19日 08:42</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-ajax/>[RIA/AJAX]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-19/1337388092.html>RIA未来的发展预测</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">就目前RIA的使用情况来说，离RIA时代还有很远的一段距离。今后几年时间内传统的Web应用程序和RIA将会共存。笔者认为真正具有实力担当起普及丰富客户端应用重任的只有基于FlashPlayer的Flash/Flex应用程序和Microsoft的基于Avalon的应用程序。短期时间内（估计2-3年时间）可能是Flash/Flex应用程序在新兴的网络应用程序市场...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(559)</span>
+                           <em>2012年5月19日 08:41</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-18/1337319176.html>学习之响应式Web设计：Media Queries和Viewports</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">前言 
+
+
+	现在使用移动设备人越来越多，移动版的Website随之也越来越重要；但是移动端设备的大小不一，屏幕分辨率各不相同，我们不可能为
+
+
+	BlackBerry，iPhone，  
+
+
+	iPad等等每个都做单独的页面设计。所以我们需要的Website设计要能迎合多种device的要求并且兼容所有的屏幕分辨率，这种设计就叫响应式
+
+
+	Web设计
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(408)</span>
+                           <em>2012年5月18日 13:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-18/1337298759.html>HTML5本地存储不完全指南</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">编辑推荐：这篇文章来自于黑客志，对HTML5的本次存储方式进行了非常全面的介绍和分析，对于学习HTML5的开发者来说，不容错过哦。
+
+
+	
+
+
+	在HTML5本地存储之前，如果我们想在客户端保存持久化数据，有这么几个选择：
+
+
+	HTTP cookie。HTTP cookie的缺点很明显，最多只能存储4KB的数据，每个HTTP请求都会被传送回服务器，明文传输...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(534)</span>
+                           <em>2012年5月18日 07:52</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-16/1337143554.html>开启MySQL 数据库远程登陆帐号</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在工作实践和学习中，如何开启 MySQL 数据库的远程登陆帐号算是一个难点的问题，以下内容便是在工作和实践中总结出来的两大步骤，能帮助DBA们顺利的完成开启 MySQL 数据库的远程登陆帐号。
+
+
+	1、确定服务器上的防火墙没有阻止 3306 端口
+
+
+	MySQL 默认的端口是 3306 ，需要确定防火墙没有阻止 3306 端口，否则远程是无法通过 330...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(377)</span>
+                           <em>2012年5月16日 12:44</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>Web前端开发</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/285">
+    <img src="/not/mybook/data/book_image_lib/2f1fa2622593ad315a393d4a41164393.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/285">
+    《Dart in Action》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/48">
+    <img src="/not/mybook/data/book_image_lib/b462a21b49f1436d9ab831ebd09d5f6d.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/48">
+    《JavaScript权威指南》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/288">
+    <img src="/not/mybook/data/book_image_lib/bc21b7a5447b78f1320b865144626990.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/288">
+    《JavaScript DOM高级程序设计》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/113">
+    <img src="/not/mybook/data/book_image_lib/default/chmDefault.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/113">
+    《XmlHttp对象参考》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/93">
+    <img src="/not/mybook/data/book_image_lib/ee862139b17253e06101cc8d9e11643e.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/93">
+    《SEO艺术》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/web/0'>1</a></li><li><a href='http://www.27tree.com/art/web/1'>2</a></li><li><a href='http://www.27tree.com/art/web/2'>3</a></li><li><a href='http://www.27tree.com/art/web/3'>4</a></li><li><a href='http://www.27tree.com/art/web/4'>5</a></li><li><a href='http://www.27tree.com/art/web/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

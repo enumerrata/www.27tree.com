@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-10 12:46:28</datetime>
+  <title><![CDATA[一站式 Java Web 框架 firefly-2.0_03 发布]]></title>
+  <content><![CDATA[<p>
+	Firefly是一个高性能一站式Web框架。 涵盖了web开发的主要技术栈。 包含Template engine、IOC、MVC framework、HTTP Server、Common tools、Log、Json parser等模块。
+</p>
+<p>
+	firefly-2.0_03相比firefly-2.0_rc版修正了HTTP Server的安全漏洞，供了新的HTTP Server参数，并修复了一些MVC框架的bug。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	修复任意文件访问漏洞
+</p>
+<p>
+	新增HTTP Server pipeline参数控制是否启动HTTP管线化请求，默认关闭
+</p>
+<p>
+	修正资源访问模糊匹配bug
+</p>
+<p>
+	nettool<span style=\"line-height:1.5;\">修改时间轮为静态成员</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">ConcurrentLRUHashMap增加参数和listener泛型支持</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">新增HTTP Server启动接口，可以通过firefly.xml配置HTTP Server的参数</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">模版数组导航NPE异常问题</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">解决Controller多个HTTP Method匹配问题</span><span style=\"line-height:1.5;\"></span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\"><br />
+</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">
+	<p>
+		源码：https://github.com/hypercube1024/firefly
+	</p>
+	<p>
+		主页：http://www.fireflysource.com
+	</p>
+	<p>
+		文档：http://code.google.com/p/firefly/w/list
+	</p>
+	<p>
+		下载地址：http://firefly.googlecode.com/files/firefly-2.0_03.zip<span style=\"line-height:1.5;\"></span>
+	</p>
+</span>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-25 00:18:57</datetime>
+  <title>Javascript核心Element对象</title>
+  <content>&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;一、操纵Element对象的属性&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	getAttribute(name)&amp;nbsp;-&amp;nbsp;基于一个字符串形式的属性名称取得相应属性的值
+&lt;/p&gt;
+&lt;p&gt;
+	setAttribute(name,value)&amp;nbsp;-&amp;nbsp;基于一个字符串形式的属性名称设置相应属性的值
+&lt;/p&gt;
+&lt;p&gt;
+	removeAttribute(name)&amp;nbsp;-&amp;nbsp;基于一个字符串形式的属性名称删除相应属性的值
+&lt;/p&gt;
+&lt;p&gt;
+	getAttributeNode(name)&amp;nbsp;-&amp;nbsp;取得指定属性的Attr节点
+&lt;/p&gt;
+&lt;p&gt;
+	setAttributeNode(newAttr)&amp;nbsp;-&amp;nbsp;基于新的Attr对象实例设置属性
+&lt;/p&gt;
+&lt;p&gt;
+	removeAttributeNode(oldAttr)&amp;nbsp;-&amp;nbsp;删除指定的属性节点
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;二、在Element对象中查找Element对象&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	getElementsByTagName(&amp;nbsp;标签名称&amp;nbsp;)&amp;nbsp;-&amp;nbsp;返回一个NodeList对象,包含与给定标签名称匹配的所有祖先元素的引用（也可以使用*作为通配符来匹配所有元素的标签名称）
+&lt;/p&gt;</content>
+  <contentx>一、操纵Element对象的属性
+
+
+	getAttribute(name) - 基于一个字符串形式的属性名称取得相应属性的值
+
+
+	setAttribute(name,value) - 基于一个字符串形式的属性名称设置相应属性的值
+
+
+	removeAttribute(name) - 基于一个字符串形式的属性名称删除相应属性的值
+
+
+	getAttribu</contentx>
+  <tags>_null_</tags>
+</root>

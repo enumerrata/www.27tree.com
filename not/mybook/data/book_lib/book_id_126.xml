@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>深入JAVA虚拟机</title>
+  <author>（美）文纳斯 </author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-27 19:44:53</submit-date-time>
+  <img-link>b5c97811a0f8523fc49299b091bfc822.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书作者曾因本书荣获专业技术杂志《Java&amp;nbsp;Report》评选的优秀作者奖，细心的读者可以从网上找到许多对本书第1版的赞誉。作者以易于理解的方式深入揭示了Java虚拟机的内部工作原理，深入理解这些内容，将对读者更快速地编写更高效的程序大有裨益！
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书共分20章，第1-4章解释了Java虚拟机的体系结构，包括Java栈、堆、方法区、执行引擎等；第5-20章深入描述了Java技术的内部细节，包括垃圾收集、Java安全模型、Java的连接模型和动态扩展机制、class文件、运算及流程控制等等，其中第6章和附录A-C安全可以作为class文件和指令集的参考手册。本书还附带光盘，光盘中包含用以辅助说明正文内容的交互式例示applet及示例源代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Bill&amp;nbsp;Venners有14年编写软件专著的经验。他在硅谷的Artima软件公司提供软件咨询和培训服务。自1996年以来，他已经编写了40多篇有关Java技术的文章。他在《Java&amp;nbsp;World杂志》辟有热闹专栏，介绍Java内部细节、面向对象设计技术和Jini技术。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		今天，获得更廉价、更快速、更强大硬件的势头仍在继续，软件复杂度不断增长的势头也在继续。在C和C++基础上，Java帮助程序员解决了一些复杂性，因为一些在C和C++中常见的固定类型的bug不再存在了。Java与生俱来的内存安全性——垃圾收集、取消了指针算法、在使用引用的时候进行运行时检查，避免了可能曾出现在Java程序中的大多数内存bug。Java的内存安全性使程序员生产效率更高，并在复杂度管理方面给他们提供了帮助。
+	&lt;/p&gt;
+	&lt;p&gt;
+		除了持续增长的硬件能力之外，另外一个基础的硬件环境变化就是网络。网络把越来越多的计算机和设备连接起来，对软件提出了新的要求。随着网络的兴起，平台无关性和安全性也变得更加重要了。
+	&lt;/p&gt;
+	&lt;p&gt;
+		Java虚拟机负责Java程序设计语言的内存安全、平台无关和安全特性。虽然虚拟机在Java之前已经出现一段时间了，但是没有进入主流。然而，在今天不断变化的硬件环境现实面前，软件开发者需要一种使用虚拟机的编程语言。Sun用Java打开了这个市场的窗口。
+	&lt;/p&gt;
+	&lt;p&gt;
+		也就是说，Java虚拟机为未来数年装备了正确的软件特性。本书会帮助读者理解Java虚拟机以及密切相关的几种Java&amp;nbsp;API。有了这些知识，再通过自己的努力，就能使Java独一无二的体系结构发挥出更大的效能。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书读者对象
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书主要是针对想了解Java技术的专业软件开发者和学生编写的。我假设读者对Java语言已经比较熟悉(但不需要精通)，阅读本书会帮助读者深入理解Java编程知识。如果你是编写Java编译器或者编写Java虚拟机实现的少数精英之一，本书可以看作是对Java虚拟机规范的补充，书中对规范做出了解释。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

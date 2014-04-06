@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-14 21:22:14</datetime>
+  <title><![CDATA[JVM程序员的阅读清单]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	前些天，我发现我和几个同行进行的一系列讨论中，有部分话题是关于在Linux系统JVM上运行大量线程的性能问题。我并不是说我是这个主题的专家，但我曾经以为掌握得很好的一些知识点却并没有我想的那么无懈可击。之后，我阅读了一些别人推荐的有关这个主题的书，我不得不承认我原来很多知识点都不知道。这样的情况经常发生，我通常会记下来少数一些我觉得值得研究的资源。
+</p>
+<p style=\"text-indent:2em;\">
+	所以，这里是我推荐的阅读列表，给那些正在学习基于JVM开发的程序员们阅读，他们需要了解环境的特性，尤其是当遇到和性能以及同步相关的问题时。老实说，我也不能说我阅读了所有的材料。但经过上面提到的和同事的对话后，我决定下功夫去弥补我知识体系上的缺陷，尽可能多的阅读下面每一本书。并且我认为如果你想学会某一门技艺的话，你必须持续不断的学习和钻研。
+</p>
+<p style=\"text-indent:2em;\">
+	● 《Jave Performance》是这个领域的一本新书，十月份刚出版，却一本不可多得的好书。它涵盖了工具和技术(性能测评，建立基准，性能调试等等)，也涵盖了更深的但很少被考虑的技术（如操作系统层次的工具、JIT、垃圾回收等等），甚至包含了处理基于JAX-RS的网络应用。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《Java Concurrency in Practice | Java并发编程实战 》</strong>对于任何一个想要了解Java标准库中内建的并发基础与结构的程序员来说，具有很好的指导作用。即使你不直接处理并发，你也需要了解这本书中阐述的原理。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《What Every Programmer Should Know About Memory 》</strong>(这里有HTML版本)是一本关于系统内存的系统介绍。你将会学到比你想象得多得多的知识，但也是个痛苦的过程。相信我 ;~)
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《Linux Kernel Development (3rd Edition) 》</strong>归纳在这个主题内似乎并不恰当，但事实上如果你开发服务器端的应用的话，系统通常都会在Linux系统上运行。它似乎是最这个主题的书，虽然我不是这个方面的专家。不管怎样，都值得探索Linux内核发生了什么。我不建议你一口气读完这本书，除非你非常想要这么做–毕竟这是一本写的很好的书——至少读一读关于进程管理和进程调度。还有虚拟操作系统以及I/O的章节也非常值得浏览。
+</p>
+<p style=\"text-indent:2em;\">
+	有一些似乎不应该归在这个主题，但依然非常有用，请阅读：
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《Effective Java &nbsp;| &nbsp;Effective Java 中文版》</strong>虽然是基于Java而写的，但甚至对Scala来说都非常有用，同样的，对于其他基于JVM的语言来说同样适用。许多对Java适用的知识是很有用处的，至少，会影响你设计系统时的选择。当你评估第三方库时，你会从中获取许多有用的信息。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《Inside the Machine 》</strong>虽然已经过时几年了，但可能是最好的现代处理器架构的入门材料。虽然它并没有涵盖最前沿的技术，但它是一本非常好的介绍x86处理器以及大的发展方向(2006年底)的入门资料。这本书不再印刷了，你可以买它的电子版本。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《The Java Virtual Machine Specification | Java虚拟机规范（Java SE 7 中文版）》</strong>也许不是一本想轻松阅读的第一选择，但它包含许多非常关键的需要掌握的知识。
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>● 《JSR 133(Java Memory Model) FAQ 》</strong>在很长一段时间里，它都是获取关于Java内存模型知识的最好的方法，并且你不需要深入到细枝末节。
+</p>
+<p style=\"text-indent:2em;\">
+	有了这些资料，你应该需要忙一阵了。我非常欢迎关于其他材料的建议，我希望将来会增加增补阅读列表的博文。
+</p>]]></content>
+  <contentx><![CDATA[前些天，我发现我和几个同行进行的一系列讨论中，有部分话题是关于在Linux系统JVM上运行大量线程的性能问题。我并不是说我是这个主题的专家，但我曾经以为掌握得很好的一些知识点却并没有我想的那么无懈可击。之后，我阅读了一些别人推荐的有关这个主题的书，我不得不承认我原来很多知识点都不知道。这样的情况经常发生，我通常会记下来少数一些我觉得值得研究的资源。
+
+
+	所]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

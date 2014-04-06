@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[提问和发帖必读]]></title>
+  <content><![CDATA[<p>
+	<ul>
+		<li>
+			上传真实头像，可使问题获更好排位
+		</li>
+		<li>
+			模糊或过于简单的标题会被降低排位
+		</li>
+		<li>
+			提问1小时后且有人回答即不允许修改和删除
+		</li>
+		<li>
+			可插入代码
+		</li>
+		<li>
+			图片上传请勿超过200K
+		</li>
+		<li>
+			请勿在此处发布招聘信息
+		</li>
+	</ul>
+</p>]]></content>
+  <tags>技术问题|Web开发|JavaScript</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

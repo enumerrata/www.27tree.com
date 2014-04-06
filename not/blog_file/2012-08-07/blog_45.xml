@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-07 11:24:28</datetime>
+  <title>php截取html摘要，自动检查html标签闭合</title>
+  <content>&lt;p&gt;
+	今天发现主页因为截断html标记，导致显示错误。
+&lt;/p&gt;
+&lt;p&gt;
+	所以找了一个这个函数：
+&lt;/p&gt;
+&lt;p&gt;
+	不多说，放代码
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&gt;/**
+&amp;nbsp;*&amp;nbsp;生成摘要
+&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;(string)&amp;nbsp;$body
+&amp;nbsp;*&amp;nbsp;&amp;nbsp;正文
+&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;(int)&amp;nbsp;$size
+&amp;nbsp;*&amp;nbsp;&amp;nbsp;摘要长度
+&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;(int)&amp;nbsp;$format
+&amp;nbsp;*&amp;nbsp;&amp;nbsp;输入格式&amp;nbsp;id
+&amp;nbsp;*/
+function&amp;nbsp;blog_summary($body,&amp;nbsp;$size,&amp;nbsp;$format&amp;nbsp;=&amp;nbsp;NULL){
+&amp;nbsp;&amp;nbsp;$_size&amp;nbsp;=&amp;nbsp;mb_strlen($body,&amp;nbsp;&amp;nbsp;utf-8&amp;nbsp;);
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;if($_size&amp;nbsp;&amp;lt;=&amp;nbsp;$size)&amp;nbsp;return&amp;nbsp;$body;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;输入格式中有&amp;nbsp;PHP&amp;nbsp;过滤器
+&amp;nbsp;&amp;nbsp;if(!isset($format)&amp;nbsp;&amp;&amp;&amp;nbsp;filter_is_php($format)){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$body;
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;$strlen_var&amp;nbsp;=&amp;nbsp;strlen($body);
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;不包含&amp;nbsp;html&amp;nbsp;标签
+&amp;nbsp;&amp;nbsp;if(strpos($body,&amp;nbsp;&amp;nbsp;&amp;lt;&amp;nbsp;)&amp;nbsp;===&amp;nbsp;false){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;mb_substr($body,&amp;nbsp;0,&amp;nbsp;$size);
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;包含截断标志，优先
+&amp;nbsp;&amp;nbsp;if($e&amp;nbsp;=&amp;nbsp;strpos($body,&amp;nbsp;&amp;nbsp;&amp;lt;!--&amp;nbsp;break&amp;nbsp;--&amp;gt;&amp;nbsp;)){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;mb_substr($body,&amp;nbsp;0,&amp;nbsp;$e);
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;html&amp;nbsp;代码标记
+&amp;nbsp;&amp;nbsp;$html_tag&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;摘要字符串
+&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;数组用作记录摘要范围内出现的&amp;nbsp;html&amp;nbsp;标签
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;开始和结束分别保存在&amp;nbsp;left&amp;nbsp;和&amp;nbsp;right&amp;nbsp;键名下
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;如字符串为：&amp;lt;h3&amp;gt;&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;a&amp;lt;/b&amp;gt;&amp;lt;/h3&amp;gt;，假设&amp;nbsp;p&amp;nbsp;未闭合
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;数组则为：array(&amp;nbsp;left&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;array(&amp;nbsp;h3&amp;nbsp;,&amp;nbsp;&amp;nbsp;p&amp;nbsp;,&amp;nbsp;&amp;nbsp;b&amp;nbsp;),&amp;nbsp;&amp;nbsp;right&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;&amp;nbsp;b&amp;nbsp;,&amp;nbsp;&amp;nbsp;h3&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;仅补全&amp;nbsp;html&amp;nbsp;标签，&amp;lt;?&amp;nbsp;&amp;lt;%&amp;nbsp;等其它语言标记，会产生不可预知结果
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;$html_array&amp;nbsp;=&amp;nbsp;array(&amp;nbsp;left&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;array(),&amp;nbsp;&amp;nbsp;right&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;array());
+&amp;nbsp;&amp;nbsp;for($i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$i&amp;nbsp;&amp;lt;&amp;nbsp;$strlen_var;&amp;nbsp;++$i)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!$size){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$current_var&amp;nbsp;=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;1);
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($current_var&amp;nbsp;==&amp;nbsp;&amp;nbsp;&amp;lt;&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;html&amp;nbsp;代码开始
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_tag&amp;nbsp;=&amp;nbsp;1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array_str&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else&amp;nbsp;if($html_tag&amp;nbsp;==&amp;nbsp;1){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;一段&amp;nbsp;html&amp;nbsp;代码结束
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($current_var&amp;nbsp;==&amp;nbsp;&amp;nbsp;&amp;gt;&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;去除首尾空格，如&amp;nbsp;&amp;lt;br&amp;nbsp;/&amp;nbsp;&amp;nbsp;&amp;gt;&amp;nbsp;&amp;lt;&amp;nbsp;img&amp;nbsp;src=\"\"&amp;nbsp;/&amp;nbsp;&amp;gt;&amp;nbsp;等可能出现首尾空格
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array_str&amp;nbsp;=&amp;nbsp;trim($html_array_str);
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;判断最后一个字符是否为&amp;nbsp;/，若是，则标签已闭合，不记录
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(substr($html_array_str,&amp;nbsp;-1)&amp;nbsp;!=&amp;nbsp;&amp;nbsp;/&amp;nbsp;){
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;判断第一个字符是否&amp;nbsp;/，若是，则放在&amp;nbsp;right&amp;nbsp;单元
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$f&amp;nbsp;=&amp;nbsp;substr($html_array_str,&amp;nbsp;0,&amp;nbsp;1);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($f&amp;nbsp;==&amp;nbsp;&amp;nbsp;/&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;去掉&amp;nbsp;/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array[&amp;nbsp;right&amp;nbsp;][]&amp;nbsp;=&amp;nbsp;str_replace(&amp;nbsp;/&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;,&amp;nbsp;$html_array_str);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else&amp;nbsp;if($f&amp;nbsp;!=&amp;nbsp;&amp;nbsp;?&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;判断是否为&amp;nbsp;?，若是，则为&amp;nbsp;PHP&amp;nbsp;代码，跳过
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;判断是否有半角空格，若有，以空格分割，第一个单元为&amp;nbsp;html&amp;nbsp;标签
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;如&amp;nbsp;&amp;lt;h2&amp;gt;&amp;nbsp;&amp;lt;p&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(strpos($html_array_str,&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&amp;nbsp;!==&amp;nbsp;false){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;分割成2个单元，可能有多个空格，如：&amp;lt;h2&amp;nbsp;class=\"\"&amp;nbsp;id=\"\"&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array[&amp;nbsp;left&amp;nbsp;][]&amp;nbsp;=&amp;nbsp;strtolower(current(explode(&amp;nbsp;&amp;nbsp;&amp;nbsp;,&amp;nbsp;$html_array_str,&amp;nbsp;2)));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;*&amp;nbsp;若没有空格，整个字符串为&amp;nbsp;html&amp;nbsp;标签，如：&amp;lt;b&amp;gt;&amp;nbsp;&amp;lt;p&amp;gt;&amp;nbsp;等
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;统一转换为小写
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array[&amp;nbsp;left&amp;nbsp;][]&amp;nbsp;=&amp;nbsp;strtolower($html_array_str);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;字符串重置
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array_str&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_tag&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;将&amp;lt;&amp;nbsp;&amp;gt;之间的字符组成一个字符串
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;用于提取&amp;nbsp;html&amp;nbsp;标签
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array_str&amp;nbsp;.=&amp;nbsp;$current_var;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;非&amp;nbsp;html&amp;nbsp;代码才记数
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;--$size;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$ord_var_c&amp;nbsp;=&amp;nbsp;ord($body{$i});
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;switch&amp;nbsp;(true)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;(($ord_var_c&amp;nbsp;&amp;&amp;nbsp;0xE0)&amp;nbsp;==&amp;nbsp;0xC0):
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;2&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;2);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$i&amp;nbsp;+=&amp;nbsp;1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;(($ord_var_c&amp;nbsp;&amp;&amp;nbsp;0xF0)&amp;nbsp;==&amp;nbsp;0xE0):
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;3&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;3);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$i&amp;nbsp;+=&amp;nbsp;2;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;(($ord_var_c&amp;nbsp;&amp;&amp;nbsp;0xF8)&amp;nbsp;==&amp;nbsp;0xF0):
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;4&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;4);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$i&amp;nbsp;+=&amp;nbsp;3;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;(($ord_var_c&amp;nbsp;&amp;&amp;nbsp;0xFC)&amp;nbsp;==&amp;nbsp;0xF8):
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;5&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;5);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$i&amp;nbsp;+=&amp;nbsp;4;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;(($ord_var_c&amp;nbsp;&amp;&amp;nbsp;0xFE)&amp;nbsp;==&amp;nbsp;0xFC):
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;6&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;substr($body,&amp;nbsp;$i,&amp;nbsp;6);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$i&amp;nbsp;+=&amp;nbsp;5;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;default:
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;1&amp;nbsp;字节
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;$current_var;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;if($html_array[&amp;nbsp;left&amp;nbsp;]){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;比对左右&amp;nbsp;html&amp;nbsp;标签，不足则补全
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;交换&amp;nbsp;left&amp;nbsp;顺序，补充的顺序应与&amp;nbsp;html&amp;nbsp;出现的顺序相反
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;如待补全的字符串为：&amp;lt;h2&amp;gt;abc&amp;lt;b&amp;gt;abc&amp;lt;p&amp;gt;abc
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;补充顺序应为：&amp;lt;/p&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/h2&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$html_array[&amp;nbsp;left&amp;nbsp;]&amp;nbsp;=&amp;nbsp;array_reverse($html_array[&amp;nbsp;left&amp;nbsp;]);
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;foreach($html_array[&amp;nbsp;left&amp;nbsp;]&amp;nbsp;as&amp;nbsp;$index&amp;nbsp;=&amp;gt;&amp;nbsp;$tag){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;判断该标签是否出现在&amp;nbsp;right&amp;nbsp;中
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$key&amp;nbsp;=&amp;nbsp;array_search($tag,&amp;nbsp;$html_array[&amp;nbsp;right&amp;nbsp;]);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($key&amp;nbsp;!==&amp;nbsp;false){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;出现，从&amp;nbsp;right&amp;nbsp;中删除该单元
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;unset($html_array[&amp;nbsp;right&amp;nbsp;][$key]);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;没有出现，需要补全
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$summary_string&amp;nbsp;.=&amp;nbsp;&amp;nbsp;&amp;lt;/&amp;nbsp;.$tag.&amp;nbsp;&amp;gt;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;return&amp;nbsp;$summary_string;
+}
+&lt;/pre&gt;
+&lt;/p&gt;</content>
+  <contentx>今天发现主页因为截断html标记，导致显示错误。
+
+
+	所以找了一个这个函数：
+
+
+	不多说，放代码
+
+
+/**
+ * 生成摘要
+ * @param (string) $body
+ *  正文
+ * @param (int) $size
+ *  摘要长度
+ * @param (int) $format
+ *  输入格式 id
+ */
+function blo</contentx>
+  <tags>_null_</tags>
+</root>

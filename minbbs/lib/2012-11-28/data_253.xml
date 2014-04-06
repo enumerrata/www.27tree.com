@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-28 13:42:15</datetime>
+  <title><![CDATA[几个方法解决IE6边框短线现象]]></title>
+  <content><![CDATA[<p>
+	今天在工作中碰到一个很奇怪的问题，在测试兼容性的时候，出现了在IE6下面拖动滚动条，两边边框的线会出现断开的现象，很是奇怪。
+</p>
+<p>
+	查阅了网上资料终于了解明白：IE6边框属性左右出现断线现象原因条件：容器内有两个浮动，并用CLEAR清除浮动，父元素中没有定义高度宽度。
+</p>
+<p>
+	症状：在ie下拖动滚动条时最外层的border会消失, 情况如下
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121128/20121128134108_85365.png\" alt=\"\" />
+</p>
+<p>
+	<p>
+		HTML代码&lt;div style=”margin:500px 100px 10px 100px;padding:50px;border:1px solid #ccc;line-height:300%”&gt;&lt;div style=”float:left”&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		&lt;/div&gt;
+	</p>
+	<p>
+		&lt;div style=”float:right”&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		测试测试测试测试&lt;br /&gt;
+	</p>
+	<p>
+		&lt;/div&gt;
+	</p>
+	<p>
+		&lt;div style=”clear:both”&gt;&lt;/div&gt;
+	</p>
+	<p>
+		&lt;/div&gt;药方：方法1.在父元素中加入height:1%(在设计中不允许加入高度时对IE6使用的HACK技术，如_height:1%;)
+	</p>
+	<p>
+		方法2.加入一个宽度
+	</p>
+	<p>
+		方法3.加入一个背景色
+	</p>
+	<p>
+		方法4.用其它方法清除浮动, 如zoon:1; overflow:hidden;
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

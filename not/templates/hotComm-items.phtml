@@ -1,0 +1,15 @@
+<li class="hotcomm-items Elipsis">
+     <?php echo $param['stype']?>
+    <a class="hotCommA" href="<?php echo $param['href']?>">
+        &nbsp;<?php echo $param['title']?>
+    </a><span class="Gray">(<?php echo $param['commi']?>)</span>
+    <ul>
+          <?php
+          if(count($param['commlist'])){
+              foreach($param['commlist'] as $index => $comm){
+                  if($index == 3) break;
+                  echo "<li class=\"Elipsis\"><a href=\"/user/$comm[fuid]\">$comm[un]</a>:&nbsp;" . strip_tags(G::article_content_conv($comm[ct])) . "</li>";}
+          }
+          ?>
+    </ul>
+</li>

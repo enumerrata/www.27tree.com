@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP核心技术与最佳实践]]></title>
+  <author>列旭松，陈文</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-01-23 18:18:14</submit-date-time>
+  <img-link>3a86e3db6d6125dafe7e28268bb1f2cd.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>《PHP核心技术与最佳实践》</strong>是一本致力于为希望成为中高级PHP程序员的读者提供高效而有针对性指导的经典著作。本书系统归纳和深刻解读了PHP开发中的编程思想、底层原理、核心技术、开发技巧、编码规范和最佳实践。
+</p>
+<p>
+	<strong>《PHP核心技术与最佳实践》</strong>全书分为5个部分：第一部分（1～2章）从不同的角度阐述了面向对象软件设计思想的核心概念、技术和原则，分析了面向对象的特性、设计模式的理念，指出了如何设计低耦合、高可扩展性的软件，等等；第二部分（3～6章）详细讲解了PHP中正则表达式的规范和使用技巧，PHP网络编程的原理、方法、技巧和一些重要的操作，PDO、数据库应用优化，数据库设计和MySQL的高级应用，PHP扩展引擎的原理与实践；第三部分（第7章）拨云见日，围绕PHP扩展开发进行了细致而深入的探讨，解析了PHP的底层实现和Zend虚拟机API，并用PHP扩展开发的实例带领读者走进PHP的底层世界，旨在让读者对PHP性能优化、底层原理进行深入的理解。第四部分（8～11章）重点讨论了缓存的设计、Memcached的原理与实践、NoSQL数据库Redis源码分析与应用实践、高性能PHP网站的架构和设计等内容；第五部分（12～14章）详细讲解了PHP代码的调试和测试、Hash算法和数据库的实现，以及PHP的编码规范，旨在帮助读者提高开发效率，养成良好编程习惯。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		<strong>列旭松</strong>，资深PHP技术工程师，精通PHP及其相关技术，对PHP内核原理有较深入的理解，开发经验丰富。曾自主开发了关键字匹配服务器（http://code.google.com/p/sensitive-filter-server/）和消息队列SquirrelMQ（http://code.google.com/p/squirrel-message-queue/）。平时喜欢开发一些实用的PHP扩展，如PHP字典扩展（红黑树算法）（http://code.google.com/p/php-dict/）和PHP索引扩展（B+树算法）（http://code.google.com/p/php-mini-database/）。精通C语言，同时对Web服务器的架构和优化、高并发服务端编程、Redis和Memcached等技术有深入的研究和认识。活跃于PHPChina和ChinaUnix等专业社区，担任PHPChina论坛内核版块版主。
+	</p>
+	<p>
+		<strong>陈文</strong>，资深PHP技术工程师，精通PHP及其相关技术，尤其擅长于PHP框架开发和应用架构。他还是一位资深的Java开发工程师，具有Fortran、Scala和C++语言的开发和使用背景，在传统软件和互联网开发领域都有丰富的实战经验。此外，他还擅长TCP/IP编程、多线程与并发程序设计、网络协议分析、数据库性能优化以及各种缓存技术，熟悉MySQL和Oracle等关系数据库产品。现从事网络安全软件开发，以及移动SI业务开发。对语言特性和软件设计思想有独到的见解，追求代码之美和高效率程序开发，爱好钻研底层技术，崇尚和提倡“以理论指导实践”。尤其爱好数学，认为数学是培养和锻炼思维和逻辑能力的重要工具，对算法有一定研究。长期活跃在PHPChina、ITeye和看雪论坛等社区，在PHPChina社区担任版主。
+	</p>
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

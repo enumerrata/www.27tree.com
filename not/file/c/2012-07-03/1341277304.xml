@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言的三个声明及高级声明</title>
+<content>&amp;lt;p&amp;gt;
+	const有关的变量声明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;（1）const&amp;amp;nbsp;==&amp;amp;nbsp;read-only
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const修饰的变量被许多人错误的认为是常量，但是const所修饰的变量应该是只读变量检验这个结论可以用下面这个方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;two&amp;amp;nbsp;=&amp;amp;nbsp;2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;switch（i）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{&amp;amp;nbsp;case&amp;amp;nbsp;1:&amp;amp;nbsp;printf（\"case&amp;amp;nbsp;1.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;case&amp;amp;nbsp;two:printf（\"case&amp;amp;nbsp;2.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;case&amp;amp;nbsp;3:&amp;amp;nbsp;printf（\"case&amp;amp;nbsp;3.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;default:&amp;amp;nbsp;&amp;amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;two&amp;amp;nbsp;=&amp;amp;nbsp;2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;switch（i）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;case&amp;amp;nbsp;1:&amp;amp;nbsp;printf（\"case&amp;amp;nbsp;1.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;case&amp;amp;nbsp;two:printf（\"case&amp;amp;nbsp;2.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;case&amp;amp;nbsp;3:&amp;amp;nbsp;printf（\"case&amp;amp;nbsp;3.\n\"）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;default:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;break;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;这段代码会产生一个编译时的错误，switch的i必须用常量或常量表达式，这里在用two&amp;amp;nbsp;代替的时候出现error,很明显，two并不是常量，它是一个只读变量，实质还是变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;（2）const修饰指针
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;看这四个声明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;const&amp;amp;nbsp;*i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;*i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;const&amp;amp;nbsp;*i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;*i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;到底const的修饰对指针i起只读作用，还是对i所指向的int值起只读作用呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;这里有一种直观的做法来认清它的真面目：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;const&amp;amp;nbsp;*i;&amp;amp;nbsp;const&amp;amp;nbsp;int&amp;amp;nbsp;*i;int&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;constint&amp;amp;nbsp;*&amp;amp;nbsp;const&amp;amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;结果是不是一目了然？将数据类型直接划掉即可最后一个声明保证了指针i和i指向的对象都为只读变量。const最有用之处就是用它来限定函数的形参，比如strcpy函数的原型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;typedef与define的区别
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;（3）纠结的结构标签和结构类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;typedef&amp;amp;nbsp;struct&amp;amp;nbsp;foo{int&amp;amp;nbsp;i;}foo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;struct&amp;amp;nbsp;foo{int&amp;amp;nbsp;i;}foo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;typedef&amp;amp;nbsp;struct&amp;amp;nbsp;foo{int&amp;amp;nbsp;i;}foo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;struct&amp;amp;nbsp;foo{int&amp;amp;nbsp;i;}foo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;我们如果用sizeof（foo）的话，编译器是不是肯定会报错的？这当时肯定是的。第一个定义中，声明了结构标签foo（第一个）和有typedef声明的结构类型foo（第二个）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;使用结构标签的foo效果：struct&amp;amp;nbsp;foo&amp;amp;nbsp;value;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;使用结构类型的foo效果：foo&amp;amp;nbsp;value;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;第二个定义中，声明了结构标签foo和变量foo.只有结构标签能够在以后的声明中使用：struct&amp;amp;nbsp;foo&amp;amp;nbsp;value.这就是利用typedef来定义类型的新名字带来的头疼之事，所以建议。不要用typedef来做这种复杂的事，下面来看看它与define的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;（4）typedef与define
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;typedef等价于一种彻底的\"封装\":声明之后不能再次增加其他内容
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;（5）typedef的适用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1、数组、结构、指针已经函数的组合类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2、可移植类型（将数据类型改一下就可以轻松适应不同的平台了）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3、也可以用在强制类型转换时提供一个简单的名字
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;各种括号组成的复杂声明。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;下面给出读懂复杂的函数声明的要诀：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;最重要的是弄懂各种操作符的优先级，其次先通过最后一对操作符来判断是函数还是数组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;在函数的高级声明中，主要用到（）、[]和*操作符，只需记住（）[]-&amp;amp;gt;.四个操作符的优先级最高即可以第三个为例，来分析一下高级声明该怎么理解：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1、有三对圆括号，最后一对是方括号，说明是一个指向数组的指针吧，数组长度为6;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2、（这里有重大修改，先前写的是从最里层开始分析）先从最外层开始分析，int&amp;amp;nbsp;*（A）[6],我们可以确定是一个A是一个指向数据为int&amp;amp;nbsp;*型数组的指针，数组长度为6,再分析A
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3、A为（*（*abc）（）），从里层的两个圆括号看，其中一个圆括号为空，说明肯定是一个函数，也就是说整个的最外层int&amp;amp;nbsp;*（）[6]肯定是一个函数的返回值了，在看（*abc）这是一个abc指向的函数指针，返回值是什么？通过两个并排的原括号前面的*决定，这里（*abc）之所以没有先于*一起结合看而先于（）一起结合看作一个函数，是因为*的优先级没（）高
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;4、*决定了里层的函数指针的返回值，它的内容当然就是外层的那些个东东，即是：指向int型数组的一个指针
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;整个过程总结为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;A、先取最外层的，抽出里层内容，对里层的从它的名字开始读取，按照优先级顺序依次读取
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;B、优先级顺序：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1、声明中被圆括号括起来的部分
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2、后缀操作符：（）函数、[]数组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3、前缀操作符：*指向什么的指针
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;C、如果还有const、volatile关键字在类型说明符前面说明它作用于类型说明符，如前面讲的const的修饰作用，其他情况他俩一般作用于它左边紧挨的*操作符很明显，如果用typedef来为这些个圆括号重新命名的话，再复杂的函数声明你剖析的时候都会游刃有余的。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-07-03/1341277304.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

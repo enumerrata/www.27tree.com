@@ -1,0 +1,474 @@
+<__cache@1389768830-@1389772430@database__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            数据库_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=database />
+                    <input type="hidden" id="pages" value=0/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/database/'>数据库</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/database.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，它产生于距今五十年前，随着信息技术和市场的发展，特别是二十世纪九十年代以后，数据管理不再仅仅是存储和管理数据，而转变成用户所需要的各种数据管理的方式。数据库有很多种类型，从最简单的存储有各种数据的表格到能够进行海量数据存储的大型数据库系统都在各个方面得到了广泛的应用。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-06-19/1340096247.html">
+        &nbsp;MySQL触发器介绍    </a><span class="Gray">(2)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-06-26/1340725026.html">
+        &nbsp;MySQL架构 - MySQL存储引擎 -选择合适的引擎    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-09-22/1348300395.html">
+        &nbsp;如何Kill掉没用的事务？    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/database-sql/" class="borderR15 sband">SQL技术</a><a href="/art/database-optim/" class="borderR15 sband">性能调优</a><a href="/art/database-mysql/" class="borderR15 sband">MySQL</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-sql/>[SQL技术]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-11-16/1353068992.html>数据库系统的基本概念 </a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">数据：实际上就是描述事物的符号记录。
+
+
+	数据的特点：有一定的结构，有型与值之分，如整型、实型、字符型等。而数据的值给出了符合定型的值，如整型值15。
+
+
+	数据库：是数据的集合，具有统一的结构形式并存放于统一的存储介质内，是多种应用数据的集成，并可被各个应用程序共享。
+
+
+	数据库存放数据是按数据所提供的数据模式存放的，具有集成与共享的特点。
+
+
+	数据</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/29'>human</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(806)</span>
+                           <em>2012年11月16日 09:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-optim/>[性能调优]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-10-24/1351067477.html>使用事务和组合SQL优化MySQL insert性能</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">对于一些数据量较大的系统，面临的问题除了是查询效率低下，还有一个很重要的问题就是插入时间长。我们就有一个业务系统，每天的数据导入需要4-5个钟。这种费时的操作其实是很有风险的，假设程序出了问题，想重跑操作那是一件痛苦的事情。因此，提高大数据量系统的MySQL insert效率是很有必要的。
+
+
+	经过对MySQL的测试，发现一些可以提高insert效率的方法</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(802)</span>
+                           <em>2012年10月24日 16:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-09-22/1348300395.html>如何Kill掉没用的事务？</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">我们经常遇到一个情况，就是网络断开或程序Bug导致COMMIT/ROLLBACK语句没有传到数据库，也没程，但是线上事务锁定等待严重，连接数暴涨，尤其在测试库这种情况很多，线上也偶有发生，于是想为MySQL增加一个杀掉空闲事务的功能。
+
+
+	那么如何实现呢，通过MySQLServer层有很多不确定因素，最保险还是在存储引擎层实现，我们用的几乎都是InnoDB</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(724)</span>
+                           <em>2012年8月19日 17:45</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-sql/>[SQL技术]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-09-22/1348300343.html>SQL Server插入记录后获取自动增长的列值</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在关系数据库中，我们经常会给一个表的主键设置为自增列，而在开发过程中，有时又会需要在插入一条记录后获得它的主键值，我们可以通过创建带有输出参数的 存储过程来完成这一任务。在T-SQL中，有三个函数可以用来检索标识列值：SCOPE_IDENTITY, @@IDENTITY, IDENT_CURRENT.
+
+
+	      其中，SCOPE_IDENTITY为微</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(907)</span>
+                           <em>2012年9月18日 10:37</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-sql/>[SQL技术]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-09-22/1348300417.html>SQL Server 数据库中触发器的安全隐患</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">1.触发器权限和所有权
+
+
+	create TRIGGER权限默认授予定义触发器的表所有者、sysadmin 固定服务器角色成员以及 db_owner 和 db_ddladmin 固定数据库角色成员，并且不可转让。
+
+
+	2.需要的环境
+
+
+	本文需要的环境是已经获取了sql服务器的以上其中一个权限，目的是为了留下隐蔽的后门，不被管理员发现。即使发现了也是加</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(650)</span>
+                           <em>2012年9月18日 10:41</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340096247.html>MySQL触发器介绍</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、什么是触发器？
+
+
+	触发器（trigger）是为了响应某个预订时间执行的任务。具体地，此事件包括插入、修改、删除表数据，任务可以发生在事件之前、或紧随其后。这是MySQL 5新增的特性之一。虽然此功能目前很有限，但是开发人员正在努力的提高这个功能，比如最近发布的MySQL 5.1就加强了这个特性。熟悉web前台的人应该知道，javascript中有类似...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(577)</span>
+                           <em>2012年6月19日 16:56</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-08-15/1344987901.html>MySQL的服务器关机进程</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">服务器关闭进程可以概括为：
+
+
+	1.启动关闭进程
+
+
+	2.服务器根据需要创建关闭线程
+
+
+	3.服务器停止接收新连接
+
+
+	4.服务器终止当前的活动
+
+
+	5.存储引擎被停掉或关闭
+
+
+	6.服务器退出
+
+
+	下面是更详细的描述：
+
+
+	1.启动关闭进程
+
+
+	可以用多种方法启动服务器的关闭。例如，拥有SHUTDOWN权限的用户可以执行MySQLadmi</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(690)</span>
+                           <em>2012年8月14日 23:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-26/1340725026.html>MySQL架构 - MySQL存储引擎 -选择合适的引擎</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">选择合适的引擎
+
+
+	当设计基于MySQL的应用程序时，要考虑用什么存储引擎来保存数据。如果在设计 阶段不考虑这个，你就会在以后的过程中遇到一些困难。你可能发现默认的存储引擎并没有提供一些你需 要的功能。如事务管理或者读写的混合需要比MyISAM表锁更好的隔离级别的锁。
+
+
+	因为你可以为每个表都设置存储引擎。你必须清晰的知道每张表的用途和存储的数据。考虑这...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(1449)</span>
+                           <em>2012年6月26日 23:36</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-23/1340443087.html>MySQL数据库锁机制相关原理简介</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">不同于行级或页级锁定的选项：
+
+
+	· 版本(例如，为并行的插入在MySQL中使用的技术)，其中可以一个写操作，同时有许多读取操作。这明数据库或表支持数据依赖的不同视图，取决于访问何时开始。其它共同的术语是“时间跟踪”、“写复制”或者“按需复制”。
+
+
+	· 按需复制在许多情况下优先于页级或行级锁定。然而，在最坏的情况下，它可能比使用常规锁定使用多的内存。
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(478)</span>
+                           <em>2012年6月23日 17:17</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-optim/>[性能调优]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340106441.html>建立索引提升MySQL查询速度</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">索引是提高查询速度的最重要的工具。当然还有其它的一些技术可供使用，但是一般来说引起最大性能差异的都是索引的正确使用。在MySQL邮件列表中，人们经常询问那些让查询运行得更快的方法。在大多数情况下，我们应该怀疑数据表上有没有索引，并且通常在添加索引之后立即解决了问题。当然，并不总是这样简单就可以解决问题的，因为优化技术本来就并非总是简单的。然而，如果没有使用索...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(925)</span>
+                           <em>2012年6月19日 19:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340106387.html>MySQL dump 的用法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">MySQL有很多可以导入数据的方法，然而这些只是数据传输中的一半，另外的一般是从MySQL数据库中导出数据。有许多的原因我们需要导出数据。一个重要的原因是用于备份数据库。数据的造价常常是昂贵的，需要谨慎处理它们。经常地备份可以帮助防止宝贵数据地丢失；另外一个原因是，也许您希望导出数据来共享。 在这个信息技术不断成长的世界中，共享数据变得越来越常见。
+
+
+	比...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(439)</span>
+                           <em>2012年6月19日 19:45</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340105515.html>MySQL 触发器，存储过程实例演示</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">以下的文章主要是介绍MySQL 触发器，存储过程以及函数与视图的实例演示过程，以下就是触发器，存储过程以及函数与视图的具体操作方案的描述，希望在你今后的学习中会对你有所帮助。
+
+
+	MySQL 触发器，存储过程以及函数与视图的实例演示：
+
+
+	0.test数据库有userinfo用户信息表 和userinfolog用户信息日志表
+
+
+	1.建立一个useri...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(537)</span>
+                           <em>2012年6月19日 19:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340095860.html>MySQL触发器的创建与删除</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">下面的文章主要描述的是MySQL触发器的正确创建步骤，MySQL触发器的删除，你如果对MySQL触发器的正确创建步骤，MySQL触发器的删除有兴趣的话你就可以点击以下的文章进行观看了。
+
+
+	1、创建MySQL触发器:
+
+
+	语法:
+
+
+	CREATE TRIGGER trigger_name trigger_time trigger_event ON tb...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(535)</span>
+                           <em>2012年6月19日 16:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340095900.html>Mysql LIMIT如何正确对其进行优化</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">以下的文章主要是对Mysql LIMIT简单介绍，我们大家都知道LIMIT子句一般是用来限制SELECT语句返回的实际行数。LIMIT取1个或是2个数字参数，如果给定的是2个参数，第一个指定要返回的第一行的偏移量，第二个指定返回行的最大数目。
+
+
+	初始行的偏移
+
+
+	量是0(不是1)。
+
+
+	mysql&gt; select * from table LI...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(446)</span>
+                           <em>2012年6月19日 16:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340095783.html>MYSQL与SQLITE重置AUTO_INCREMENT初始值</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">MYSQL重置AUTO_INCREMENT初始值的方法很简单
+
+
+	可就是SQLITE的重置方法在国内还极少人有记载（至少本人找了很久没找到）
+
+
+	于是到美国漫游了一下，终于功夫不负有心人……
+
+
+	
+
+
+	SQLITE AUTO_INCREMENT 复位：
+
+
+	DELETE FROM sqlite_sequence WHERE name =  your...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1242)</span>
+                           <em>2012年6月19日 16:49</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>数据库</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/71">
+    <img src="/not/mybook/data/book_image_lib/2ddb6485713a495aea208a4a069d54ba.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/71">
+    《Oracle Database 10g性能调整与优化》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/68">
+    <img src="/not/mybook/data/book_image_lib/9314b8dfd0648f0adf42342f621d3a31.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/68">
+    《Oracle Database 9i/10g/11g编程艺术：深入数据库体系结构》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/89">
+    <img src="/not/mybook/data/book_image_lib/f09b817f670851ba83555e97882a8009.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/89">
+    《Oracle SQL必备参考》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/114">
+    <img src="/not/mybook/data/book_image_lib/default/chmDefault.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/114">
+    《MySQL5.1参考手册官方简体中文版》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/35">
+    <img src="/not/mybook/data/book_image_lib/cc42c4da9bc0d4e073cbad6f99d0c81b.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/35">
+    《深入理解MySQL》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=2 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/database/0'>1</a></li><li><a href='http://www.27tree.com/art/database/1'>2</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

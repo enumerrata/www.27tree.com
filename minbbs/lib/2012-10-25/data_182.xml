@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-25 08:43:06</datetime>
+  <title><![CDATA[vi替换示例 行号 跳转至文件末尾]]></title>
+  <content><![CDATA[<p>
+	:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+</p>
+<p>
+	:s/vivian/sky/g 替换当前行所有 vivian 为 sky
+</p>
+<p>
+	:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+</p>
+<p>
+	:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
+</p>
+<p>
+	n 为数字，若 n 为 .，表示从当前行开始到最后一行
+</p>
+<p>
+	:%s/vivian/sky/(等同于 :g/vivian/s//sky/) 替换每一行的第一个 vivian 为 sky
+</p>
+<p>
+	:%s/vivian/sky/g(等同于 :g/vivian/s//sky/g) 替换每一行中所有 vivian 为 sky
+</p>
+<p>
+	可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+</p>
+<p>
+	:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+</p>
+<p>
+	:%s+/oradata/apras/+/user01/apras1+ (使用+ 来 替换 / )： /oradata/apras/替换成/user01/apras1/
+</p>
+<p>
+	打开文件后输入 ：set number 即可显示行号
+</p>
+<p>
+	打开文件后 G可跳至文件末尾 <strong>记住是大型的G 小写g是跳至文件头部</strong>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

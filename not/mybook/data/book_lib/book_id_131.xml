@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Hadoop权威指南</title>
+  <author>(美)怀特(White, T.)</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-29 09:37:07</submit-date-time>
+  <img-link>fc24572eedb39e2fb4b952920534484f.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书从Hadoop的缘起开始，由浅入深，结合理论和实践，全方位地介绍Hadoop这一高性能处理海量数据集的理想工具。全书共16章，3个附录，涉及的主题包括：Haddoop简介；MapReduce简介；Hadoop分布式文件系统；Hadoop的I/O、MapReduce应用程序开发；MapReduce的工作机制；MapReduce的类型和格式；MapReduce的特性；如何构建Hadoop集群，如何管理Hadoop；Pig简介；Hbase简介；Hive简介；ZooKeeper简介；开源工具Sqoop，最后还提供了丰富的案例分析。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是Hadoop权威参考，程序员可从中探索如何分析海量数据集，管理员可以从中了解如何安装与运行Hadoop集群。
+&lt;/p&gt;</book-intro>
+</root>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:38:47</datetime>
+  <title>从编译到工具：几种mysql的优化方法</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;一、在编译时优化mysql&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你从源代码分发安装mysql，要注意，编译过程对以后的目标程序性能有重要的影响，不同的编译方式可能得到类似的目标文件，但性能可能相差很大，因此，在编译安装mysql适应仔细根据你的应用类型选择最可能好的编译选项。这种定制的mysql可以为你的应用提供最佳性能。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	技巧：选用较好的编译器和较好的编译器选项，这样应用可提高性能10-30%。（mysql文档如是说）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.1、使用pgcc（pentium　gcc)编译器&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	该编译器（http://www.goof.com/pcg/）针对运行在奔腾处理器系统上的程序进行优化，用pgcc编译mysql源代码，总体性能可提高10%。当然如果你的服务器不是用奔腾处理器，就不必用它了，因为它是专为奔腾系统设计的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.2、仅使用你想使用的字符集编译mysql&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql目前提供多达24种不同的字符集，为全球用户以他们自己的语言插入或查看表中的数据。却省情况下，mysql安装所有者这些字符集，热然而，最好的选择是指选择一种你需要的。如，禁止除latin1字符集以外的所有其它字符集：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	%&amp;gt;./configure　-with-extra-charsets=none　[--other-configuration-options]
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.3、将mysqld编译成静态执行文件&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	将mysqld编译成静态执行文件而无需共享库也能获得更好的性能。通过在配置时指定下列选项，可静态编译mysqld。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	%&amp;gt;./configure　-with-mysqld-ldflags=-all-static　[--other-configuration-options]
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.4、配置样本&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	下列配置命令常用于提高性能：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	%&amp;gt;cflags=\"-o6　-mpentiumpro　-fomit-frame-pointer\"　cxx=gcc　cxxflags=\"-o6　-mpentiumpro　-fomit-frame-pointer　-felide-constructors　-fno-exceptions　-fno-rtti\"　./configure　--prefix=/usr/local　--enable-assembler　--with-mysqld-ldflags=-all-static　--disable-shared
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;二、调整服务器&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	确保运用正确的编译固然重要，但这只是成功的第一步，配置众多的mysql变量同样对服务器的正常运行起关键作用。你可以将这些变量的赋值存在一个配置文件中，以确保它们在每次启动mysql时均起作用，这个配置文件就是my.cnf文件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql已经提供了几个my.cnf文件的样本，可在/usr/local/mysqld/share/mysql/目录下找到。这些文件分别命名为my-small.cnf、　my-medium.cnf、my-large.cnf和my-huge.cnf，规模说明可在描述配置文件适用的系统类型标题中找到。如果在只有相当少内存的系统上运行mysql，而且只是偶尔的用一下，那么my-small.cnf会比较理想，因为它命令mysqld只使用最少的资源。类似地，如果你计划构建电子商务超市，而且系统拥有2g内存，那么你可能要用到mysql-huge.cnf文件了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	为了利用这些文件中的一个，你需要复制一个最适合需求的文件，改名为my.cnf。你可以选择使用配置文件三种作用范围的一种：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	global：将my.cnf文件复制到服务器的/etc目录下，这使得配置文件中的变量作用于全局，即对所有服务器上的mysql数据库服务器有效。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	local：将my.cnf文件复制到[mysql-install-dir]/var/目录下，使得my.cnf作用于特定的服务器。[mysql-install-dir]表示mysql安装目录。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	user：你可以再限制作用于特定的用户，将my.cnf复制到用户的根目录下。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	究竟如何设置my.cnf中的这些变量呢？更进一步说，你可以设置哪一个变量。虽然所用变量对mysql服务器相对通用，每一个变量与mysql的的某些组件有更特定的关系。如变量max_connects归在mysqld类别下。执行下列命令即可知道：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	%&amp;gt;/usr/local/mysql/libexec/mysqld　--help
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	它显示大量的选项及与mysqld相关的变量。你可以很容易地在该行文字之下找出变量：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	possible　variables　for　option　--set-variable　(-o)　are
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	然后你可以如下设置my.cnf中的那些变量：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	set-variable　=　max_connections=100
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	它设置mysql服务器的最大并发连接数为100。要确保在my.cnf文件中的[mysqld]标题下插入变量设置。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;三、表类型&amp;nbsp;&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	很多mysql用户可能很惊讶，mysql确实为用户提供5种不同的表类型，称为dbd、heap、isam、merge和myiasm。dbd归为事务安全类，而其他为非事务安全类。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.1、事务安全&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	dbd
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	berkeley　db(dbd)表是支持事务处理的表，由sleepycat软件公司(http://www.sleepycat.com)开发。它提供mysql用户期待已久的功能-事务控制。事务控制在任何数据库系统中都是一个极有价值的功能，因为它们确保一组命令能成功地执行。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.2、非事务安全&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	heap
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	heap表是mysql中存取数据最快的表。这是因为他们使用存储在动态内存中的一个哈希索引。另一个要点是如果mysql或服务器崩溃，数据将丢失。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	isam
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	isam表是早期mysql版本的缺省表类型，直到myiasm开发出来。建议不要再使用它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	merge
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	merge是一个有趣的新类型，在3.23.25之后出现。一个merge表实际上是一个相同myisam表的集合，合并成一个表，主要是为了效率原因。这样可以提高速度、搜索效率、修复效率并节省磁盘空间。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	myiasm
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这是mysql的缺省表类型。它基于iasm代码，但有很多有用的扩展。myiasm比较好的原因：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	myiasm表小于iasm表，所以使用较少资源。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	myiasm表在不同的平台上二进制层可移植。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	更大的键码尺寸，更大的键码上限。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.3、指定表类型&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你可在创建表时指定表的类型。下例创建一个heap表：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql&amp;gt;create　table　email_addresses　type=heap　(
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	-&amp;gt;email　char(55)　not　null,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	-&amp;gt;name　char(30)　not　null,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	-&amp;gt;primary　key(email)　);
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	bdb表需要一些配置工作，参见http://www.mysql.com/doc/b/d/bdb_overview.html。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.4、更多的表类型&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	为了使mysql管理工作更有趣，即将发布的mysql　4.0将提供两种新的表类型，称为innobase和gemeni。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;&lt;strong&gt;四、优化工具&lt;/strong&gt;&amp;nbsp;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql服务器本身提供了几条内置命令用于帮助优化。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4.1、show&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你可能有兴趣知道mysql服务器究竟更了什么，下列命令给出一个总结：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql&amp;gt;show　status;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	------------------------------------------------------------------------------
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	它给出了一个相当长的状态变量及其值的列表。有些变量包含了异常终止客户的数量、异常终止连接的数量、连接尝试的次数、最大并发连接数和大量其他有用的信息。这些信息对找出系统问题和低效极具价值。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	show还能做更多的事情。它可以显示关于日志文件、特定数据库、表、索引、进程和权限表中有价值的信息。详见mysql手册。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4.2、explain&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当你面对select语句时，explain解释select命令如何被处理。这不仅对决定是否应该增加一个索引，而且对决定一个复杂的join如何被mysql处理都是有帮助的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4.3、optimize&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	optimize语句允许你恢复空间和合并数据文件碎片，对包含变长行的表进行了大量更新和删除后，这样做特别重要。optimize目前只工作于myiasm和bdb表。
+&lt;/p&gt;</content>
+  <contentx>一、在编译时优化mysql 
+
+
+	如果你从源代码分发安装mysql，要注意，编译过程对以后的目标程序性能有重要的影响，不同的编译方式可能得到类似的目标文件，但性能可能相差很大，因此，在编译安装mysql适应仔细根据你的应用类型选择最可能好的编译选项。这种定制的mysql可以为你的应用提供最佳性能。
+
+
+	技巧：选用较好的编译器和较好的编译器选项，这样应用可</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-23 20:48:51</datetime>
+  <title><![CDATA[对数组的“自然排序”]]></title>
+  <content><![CDATA[<p>
+	PHP对于“字母数字”字符串的排序结果是不确定的。举个例子，假定你有很多图片名称存放于数组中：
+</p>
+<p>
+	<p>
+		$arr = array(
+	</p>
+	<p>
+		0=&gt;\'madden2011.png\',
+	</p>
+	<p>
+		1=&gt;\'madden2011-1.png\',
+	</p>
+	<p>
+		2=&gt;\'madden2011-2.png\',
+	</p>
+	<p>
+		3=&gt;\'madden2012.png\'
+	</p>
+	<p>
+		);
+	</p>
+	<p>
+		你怎样对这个数组进行排序呢？如果你用sort()对该数组排序，结果是这样的：
+	</p>
+	<p>
+		<p>
+			Array
+		</p>
+		<p>
+			(
+		</p>
+		<p>
+			&nbsp; &nbsp;[0] =&gt; madden2011-1.png
+		</p>
+		<p>
+			&nbsp; &nbsp;[1] =&gt; madden2011-2.png
+		</p>
+		<p>
+			&nbsp; &nbsp;[2] =&gt; madden2011.png
+		</p>
+		<p>
+			&nbsp; &nbsp;[3] =&gt; madden2012.png
+		</p>
+		<p>
+			)
+		</p>
+		<p>
+			有时候这就是我们想要的，但是我们想保留原来的下标怎么办？解决该问题可以使用natsort()函数，该函数用一种自然的方法对数组排序：
+		</p>
+		<p>
+			<p>
+				&lt;?php
+			</p>
+			<p>
+				$arr = array(
+			</p>
+			<p>
+				0=&gt;\'madden2011.png\',
+			</p>
+			<p>
+				1=&gt;\'madden2011-1.png\',
+			</p>
+			<p>
+				2=&gt;\'madden2011-2.png\',
+			</p>
+			<p>
+				3=&gt;\'madden2012.png\'
+			</p>
+			<p>
+				);
+			</p>
+			<p>
+				natsort($arr);
+			</p>
+			<p>
+				echo \"&lt;pre&gt;\"; print_r($arr); echo \"&lt;/pre&gt;\";
+			</p>
+			<p>
+				?&gt;
+			</p>
+运行结果：
+		</p>
+		<p>
+			<p>
+				Array
+			</p>
+			<p>
+				(
+			</p>
+			<p>
+				&nbsp; &nbsp;[1] =&gt; madden2011-1.png
+			</p>
+			<p>
+				&nbsp; &nbsp;[2] =&gt; madden2011-2.png
+			</p>
+			<p>
+				&nbsp; &nbsp;[0] =&gt; madden2011.png
+			</p>
+			<p>
+				&nbsp; &nbsp;[3] =&gt; madden2012.png
+			</p>
+			<p>
+				)
+			</p>
+		</p>
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

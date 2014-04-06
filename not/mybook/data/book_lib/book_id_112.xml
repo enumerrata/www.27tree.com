@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>高性能网站建设进阶指南：Web开发者性能优化最佳实践</title>
+  <author>口碑网前端团队</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-19 07:43:34</submit-date-time>
+  <img-link>3513f0310f253fef5c351d60b9fdb89e.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是《高性能网站建设指南》姊妹篇。作者Steve&amp;nbsp;Souders是Google&amp;nbsp;Web性能布道者和Yahoo！前首席性能工程师。在本书中，Souders与8位专家分享了提升网站性能的最佳实践和实用建议，主要包括：理解Ajax性能，编写高效的JavaScript，创建快速响应的应用程序、无阻塞加载脚本，&amp;nbsp;跨域共享资源，无损压缩图片大小，使用块编码加快网页渲染；避免或取代iframe的方法，简化CSS选择符，以及其他技术。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	性能是任何一个网站成功的关键，然而，如今日益丰富的内容和大量使用Ajax的Web应用程序已迫使浏览器达到其处理能力的极限。Steve&amp;nbsp;Souders是GoogleWeb&amp;nbsp;哇能布道者和前Yahoo!首席性能工程师，他在本书中提供了宝贵的技术来帮助你优化网站性能。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Souders的上一本畅销书《高性能网站建设指南》&amp;nbsp;(High&amp;nbsp;Performance&amp;nbsp;Web&amp;nbsp;Sites)震惊了Web开发界，它揭示了在客户端加载一个网页的时间大约占用了总时耗的80％。在《高性能网站建设进阶指南》&amp;nbsp;(Even&amp;nbsp;Faster&amp;nbsp;Web&amp;nbsp;Sites)这本书中，Souders与另外8位专家级特约作者提供了提升网站性能的最佳实践和实用建议，主要包括以下3个关键领域。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·JavaScript——你将获得忠告：理解Ajax性能、编写高效的JavaScript、创建快速响应的应用程序、无阻塞加载脚本等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		“《高性能网站建设进阶指南》，有最新的研究成果，能激发你的智慧，让网站快如闪电。我喜欢这本书的风格——许多主题的作者都是在该领域进行过深入研究的最受尊敬的权威专家。我们团队中每个人都需要有一本。”
+	&lt;/p&gt;
+	&lt;p&gt;
+		——Bill&amp;nbsp;Scott，Netflix总监和UI工程师
+	&lt;/p&gt;
+	&lt;p&gt;
+		作者简介：Steve&amp;nbsp;Souders在Google从事网络性能和开放源码计划方面的工作。他是YSlow(Firebug性能分析扩展)的创造者，并且担任Velocity(O&amp;nbsp;Reilly的网络性能和业务运营会议)的联合主席。Steve经常在会议上或者高级别公司中发言，包括微软、亚马逊、MySpace、LinkedIn、Facebook。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

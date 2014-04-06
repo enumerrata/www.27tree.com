@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>学习之响应式Web设计：Media Queries和Viewports</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;前言&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在使用移动设备人越来越多，移动版的Website随之也越来越重要；但是移动端设备的大小不一，屏幕分辨率各不相同，我们不可能为
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BlackBerry，iPhone，&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	iPad等等每个都做单独的页面设计。所以我们需要的Website设计要能迎合多种device的要求并且兼容所有的屏幕分辨率，这种设计就叫响应式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Web设计
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;什么是响应式Web设计（Responsive&amp;nbsp;Web&amp;nbsp;design）？&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	响应式Web设计是一种Web设计和开发能够根据屏幕大小、平台和方向对用户的行为和环境做出响应的设计。它包括了灵活的网格和布局，图像和智能使
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用CSS的media&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries特性。当用户从Laptop切换到iPad上时，该网站应能自动地切换CSS规则以适应Device分辨率，图像尺寸和脚本执行。换句话
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说，响应式Web设计是具备能够自动响应用户喜好的技术。这将一劳永逸的满足对每个新上市的移动终端都要进行不同设计和开发的需求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	需要注意的是：响应式Web设计不仅仅是可调屏幕分辨率和可自动调整大小的图像，而且更是一种采用全新思考的Website设计方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;响应式Web设计的用途&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	随着越来越多的设备而来的是各式各样的屏幕分辨率、定义和方向。每天都有正在开发的新屏幕尺寸的设备。每个设备都可以拥有不同的尺寸、功能、甚至颜色。有些是横向，有些是纵向，甚至还有些完全是正方形的。如图所示：
+&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0425/1335325598144.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下图列出了一些最常见的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0425/1335325598142.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以，如果你要使你的客户满意，你必须让你的网站能够自动调整并适合上述设备的屏幕。例如，你应该为不同的设备定制不同的布局结构：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;定制布局&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0425/1335325598313.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	同样，有些时候，根据需要显示或隐藏一些内容：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0425/1335325598581.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;很明显，我们不能为每一种设备定制一个页面。所以，我们应该如何处理这种情况呢？&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Media&amp;nbsp;queries&amp;nbsp;&amp;amp;&amp;nbsp;Viewport
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	解决问题的关键就是Media&amp;nbsp;queries和Viewports。下面的内容是关于如何最好的使用Media&amp;nbsp;&amp;nbsp;queries和Viewports的。但是我并不会深入的讲怎样增强响应的细节，如果感兴趣，可以查看这篇博文的最后一部分：“参考文章”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;@media&amp;nbsp;queries&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为一个网页设计师或前端开发者，我们希望我们的网页总能很容易的自适应不同的设备和屏幕尺寸，不管我们用户使用的是21″台式显示器，13″笔记
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本电脑，10″的iPad或者更小的智能手机。响应式网页设计使用@media&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries根据浏览器的宽度和CSS来改变页面的布局。我们可以这样使用的CSS：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;Default&amp;nbsp;wide-screen&amp;nbsp;styles&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(max-width:&amp;nbsp;1024px)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;styles&amp;nbsp;for&amp;nbsp;narrow&amp;nbsp;desktop&amp;nbsp;browsers&amp;nbsp;and&amp;nbsp;iPad&amp;nbsp;landscape&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(max-width:&amp;nbsp;768px)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;styles&amp;nbsp;for&amp;nbsp;narrower&amp;nbsp;desktop&amp;nbsp;browsers&amp;nbsp;and&amp;nbsp;iPad&amp;nbsp;portrait&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(max-width:&amp;nbsp;480px)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;styles&amp;nbsp;for&amp;nbsp;iPhone/Android&amp;nbsp;landscape&amp;nbsp;(and&amp;nbsp;really&amp;nbsp;narrow&amp;nbsp;browser&amp;nbsp;windows)&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(max-width:&amp;nbsp;320px)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;styles&amp;nbsp;for&amp;nbsp;iPhone/Android&amp;nbsp;portrait&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(max-width:&amp;nbsp;240px)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;styles&amp;nbsp;for&amp;nbsp;smaller&amp;nbsp;devices&amp;nbsp;*/&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	是的，我们可以设置更小的width，或者中间尺寸。我待会再讨论。CSS&amp;nbsp;media&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries是非常强大和复杂的，在这里不想过多的讨论，因为上面的代码已经足够应付响应式Web设计了。如果你想要知道更多关于Media&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Queries的细节，请阅读参考文献里的相关文章。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;viewports&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在，当我们调整我们浏览器的大小时，上面的代码已经可以非常不错的完成工作了。但这并不能满足移动端的浏览器。原因是移动端浏览器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（iPhone/Safari，&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android/Chrome和Fennec）会默认页面是为宽屏幕设计的，所以将它缩小整个页面来适应小屏幕。这就表明了上面的代码完全不足于适应移动
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	端的浏览器，因为设备无法识别正确的宽度。解决方法：在文档的头部使用苹果提供的viewport&amp;nbsp;&amp;nbsp;meta标签，并结合@media
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;meta&amp;nbsp;name=\"viewport\"&amp;nbsp;content=\"...\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	以上的代码中，content为空，因为我觉得有必要详细讲一下，而不是直接给出来，这样我们就能更清楚的记住，并且知道content里应该填些什么，并且为什么这样填
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;width=device-width&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们看见很多网站都建议把content属性的值设置为width=device-width。这相当于告诉浏览器将页面宽度假设为设备宽度。不幸
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	的是，只有当设备是纵向时假设才是正确的。当我们把设备旋转成横向时，device-width还是和纵向的一样（比如，320px），这意味着，即使我
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	们把页面设计成适应了480px横向设备，它还是会返回320px的效果。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	曾经尝试在media&amp;nbsp;query里使用orientation来解决这个问题，但是orientation不会真正的告诉我们实际的设备宽度，因为它只告诉我们设备的宽度是大于还是小于设备的高度。正如有人指出，由于大部分网页往往垂直滚动，所以这是无关紧要的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果我们的页面在纵向和横向设备中样式相同，那么我们就可以用width=device-width就足够了，需要注意的是这个是唯一告诉android设备使用设备宽度的方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;initial-scale=1.0，maximum-scale=1.0&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	initial-scale=1设置告诉浏览器初始化页面时不要对页面进行缩放。解决了没有使用viewport时出现的页面缩放问题。但还是有
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bug，当我们把移动端设备从纵向转成横向时，你就会发现这个问题了。这是因为initial-scale只在页面完全加载后有作用。在我们把移动设备从
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	纵向转成横向的过程中，浏览器就会认为页面不变，但scales会设置为1.5，为了使320px的页面适应480px。但是，因为我们在@media
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries中设置了480px这个宽度，那么页面CSS规则也会是适应480px的。结果就是，页面CSS规则是适应480px的，另外scale还
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是1.5。这个结果并不可怕，但是不可取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为解决这个bug，我们可以添加maximum-scale=1这个设置。它的作用是阻止页面在旋转时放大，但它同时带来了更严重的问题：也阻止了
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用户手动放大或缩小页面。同样user-scalable=no设置也会让用户不能缩放页面。所以一般情况下，不要使用以上俩个设置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是不是无法解决这个bug了？首先这个bug最多只是在显示层面，带来的后果一点不严重，因为即使页面自动缩放了，它还是成比例的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;width=&amp;amp;lt;actual&amp;nbsp;width&amp;amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有些人建议在viewport里使用特定的width，并且也按这个width设计页面。如果你可以为每个种类的device编写页面的话，这个设
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	置是可行的，但需要我们明白的是它不是响应式设计。打印时，使用固定宽度布局是必要的，但我们网页应该适应用户的各种样式的设备。总之，不要这样使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;●&amp;nbsp;@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(device-width:480)&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是个media&amp;nbsp;query而不是viewport标签里的选项，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我在很多地方看到过这样的代码，但我并不认为这是好的做法。为什么？根据CSS3对media
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	queries的描述，device-width在media&amp;nbsp;queries里表示的是输出设备表面渲染的宽度。对于continuous
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	media来说，device-width就是屏幕的宽度；对于paged
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	media来说，device-width就是页面尺寸的宽度。以continuous
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	media为例，device-width就是设备屏幕的宽度。除非浏览器最大化，它始终大于viewport的width。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	测试表明，大多数桌面浏览器把device-width和width当作同义词。而移动端浏览器对此会有点混淆。至于viewport标签
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	里，device-width只在纵向时等于设备的width。例如，一个320*480的设备，device-width总是320px，不论方向。然
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	而对于CSS&amp;nbsp;media&amp;nbsp;queries，device-width是基于其目前方向上屏幕的width。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你一定要这样使用，请和orientation一起使用。但绝对不要使用max-device-width和min-device-width，因为用max-width和min-width替换会比较好。同样需要注意的是，新型号设备的宽度可能会改变。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;●&amp;nbsp;中间尺寸&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面我提到过，我们可以为任意数量的width来设计页面。最重要的是在不同width的浏览器中测试他们，通过调整window浏览器的大小来测
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	试是最简单的方法。随着设计页面的width越来越小，我们可以去掉（Display：none；）一些不重要的内容，比如
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	footer，sidebars，menu等，为主要内容留足够大的空间。我们的网站也许需要一个可以在所有width屏幕上运行良好的布局，也许只需要
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	满足两到三个布局。这是非常容易设计和测试的，所以没有理由不做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;●&amp;nbsp;推荐设置&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最后，是我推荐的做法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;使用viewport标签
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;使用media&amp;nbsp;queries来选择最适合页面尺寸的CSS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;在viewport标签里，使用width=device-width,initial-scale=1或者单独使用width=device-width
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;不要使用maximum-scale=1和user-scalable=no
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;不要使用width=&amp;amp;lt;specific&amp;nbsp;width&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;不要使用@media&amp;nbsp;all&amp;nbsp;and&amp;nbsp;(*-device-width:&amp;nbsp;xxx)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作者：yan.h
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文章来源：博客园
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-18/1337319176.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

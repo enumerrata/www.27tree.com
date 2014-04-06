@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Hash算法类]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+class Hash {
+    public static function DJBHash($str) { // 0.22
+        $hash = 0;
+        $n = strlen($str);
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash += ($hash &lt;&lt; 5 ) + ord($str[$i]);
+        }
+        return $hash % 701819;
+    }
+
+    public static function ELFHash($str) { // 0.35
+        $hash = $x = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash = ($hash &lt;&lt; 4) + ord($str[$i]);
+            if (($x = $hash &amp; 0xf0000000) != 0) {
+                $hash ^= ($x &gt;&gt; 24);
+                $hash &amp;= ~$x;
+            }
+        }
+        return $hash % 701819;
+    }
+
+    public static function JSHash($str) { // 0.23
+        $hash = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash ^= (($hash &lt;&lt; 5) + ord($str[$i]) + ($hash &gt;&gt; 2));
+        }
+        return $hash % 701819;
+    }
+
+    public static function SDBMHash($str) { // 0.23
+        $hash = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash = ord($str[$i]) + ($hash &lt;&lt; 6 ) + ($hash &lt;&lt; 16 ) - $hash;
+        }
+        return $hash % 701819;
+    }
+
+    public static function APHash($str) { // 0.30
+        $hash = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            if (($i &amp; 1 ) == 0) {
+                $hash ^= (($hash &lt;&lt; 7 ) ^ ord($str[$i]) ^ ($hash &gt;&gt; 3 ));
+            } else {
+                $hash ^= ( ~ (($hash &lt;&lt; 11 ) ^ ord($str[$i]) ^ ($hash &gt;&gt; 5)));
+            }
+        }
+        return $hash % 701819;
+    }
+
+    public static function DEKHash($str) { // 0.23
+        $n = strlen($str);
+        $hash = $n;
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash = (($hash &lt;&lt; 5) ^ ($hash &gt;&gt; 27)) ^ ord($str[$i]);
+        }
+        return $hash % 701819;
+    }
+
+    public static function FNVHash($str) { // 0.31
+        $hash = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash *= 0x811C9DC5;
+            $hash ^= ord($str[$i]);
+        }
+        return $hash % 701819;
+    }
+
+    public static function PJWHash($str) { // 0.33
+        $hash = $test = 0;
+        $n = strlen($str);
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash = ($hash &lt;&lt; 4) + ord($str[$i]);
+
+            if (($test = $hash &amp; -268435456) != 0) {
+                $hash = (( $hash ^ ($test &gt;&gt; 24)) &amp; (~-268435456));
+            }
+        }
+
+        return $hash % 701819;
+    }
+
+    public static function PHPHash($str) { // 0.34
+        $hash = 0;
+        $n = strlen($str);
+
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash = ($hash &lt;&lt; 4) + ord($str[$i]);
+            if (($g = ($hash &amp; 0xF0000000))) {
+                $hash = $hash ^ ($g &gt;&gt; 24);
+                $hash = $hash ^ $g;
+            }
+        }
+        return $hash % 701819;
+    }
+
+    public static function OpenSSLHash($str) { // 0.22
+        $hash = 0;
+        $n = strlen($str);
+        for ($i = 0; $i &lt; $n; $i++) {
+            $hash ^= (ord($str[$i]) &lt;&lt; ($i &amp; 0x0f));
+        }
+        return $hash % 701819;
+    }
+
+    public static function MD5Hash($str) { // 0.050
+        $hash = md5($str);
+        $hash = $hash[0] | ($hash[1] &lt;&lt; 8 ) | ($hash[2] &lt;&lt; 16) | ($hash[3] &lt;&lt; 24) | ($hash[4] &lt;&lt; 32) | ($hash[5] &lt;&lt; 40) | ($hash[6] &lt;&lt; 48) | ($hash[7] &lt;&lt; 56);
+        return $hash % 701819;
+    }
+
+}
+?&gt;
+</pre>]]></content>
+  <contentx><![CDATA[&lt;?php
+class Hash {
+    public static function DJBHash($str) { // 0.22
+        $hash = 0;
+        $n = strlen($str);
+ ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

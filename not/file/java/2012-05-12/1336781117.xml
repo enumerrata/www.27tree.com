@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVASE官方教程:继承之概述(6)</title>
+<content>&amp;lt;p&amp;gt;
+	在前面的课程中,你多次看到继承被提及.在java语言中,类可以派生于其它的类,包括其它类中的属性和方法.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	声明:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	继承类叫做子类(也叫做派生类,扩展类).被继承的类叫做超类(也叫做基类,父类).
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除了Object没有父类,其它的类都有且只有一个父类(单继承).在定义一个类时若没有父类,则隐含继承Object,每一个类都是Object类的子类.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	继承的思想是简单并且强大的:当你想创建一个新类,并且已经存在的类中有你想要的代码,你可以从已经存在的类派生出新类.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个子类从父类继承所有的成员(members).构造函数不是成员,所以不被继承,但是可以在子类中调用父类构造方法.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;strong&amp;gt;Java平台的类继承&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;在java.lang包中的Object类定义并且实现了所有类的共同行为.在Java平台,大多数类直接派生与Object类,下面是类继承结构.&amp;lt;/span&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;&amp;lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120512/20120512075827_40423.gif\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Object类是通用的,在继承结构的最顶端.靠近底端的类则提供更加具体的行为.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个继承的例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;class&amp;nbsp;Bicycle&amp;nbsp;{
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//Bicycle类有三个属性
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;cadence;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;gear;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;speed;
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//Bicycle类有一个构造方法
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;Bicycle(int&amp;nbsp;startCadence,&amp;nbsp;int&amp;nbsp;startSpeed,&amp;nbsp;int&amp;nbsp;startGear)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;gear&amp;nbsp;=&amp;nbsp;startGear;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cadence&amp;nbsp;=&amp;nbsp;startCadence;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;speed&amp;nbsp;=&amp;nbsp;startSpeed;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//Bicycle有四个方法
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;setCadence(int&amp;nbsp;newValue)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cadence&amp;nbsp;=&amp;nbsp;newValue;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;setGear(int&amp;nbsp;newValue)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;gear&amp;nbsp;=&amp;nbsp;newValue;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;applyBrake(int&amp;nbsp;decrement)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;speed&amp;nbsp;-=&amp;nbsp;decrement;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;speedUp(int&amp;nbsp;increment)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;speed&amp;nbsp;+=&amp;nbsp;increment;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	
+}
+&amp;lt;/pre&amp;gt;
+声明一个MountainBike类是Bicycle的子类:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;class&amp;nbsp;MountainBike&amp;nbsp;extends&amp;nbsp;Bicycle&amp;nbsp;{
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;the&amp;nbsp;MountainBike&amp;nbsp;subclass&amp;nbsp;adds&amp;nbsp;one&amp;nbsp;field
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;seatHeight;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;the&amp;nbsp;MountainBike&amp;nbsp;subclass&amp;nbsp;has&amp;nbsp;one&amp;nbsp;constructor
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;MountainBike(int&amp;nbsp;startHeight,&amp;nbsp;int&amp;nbsp;startCadence,&amp;nbsp;int&amp;nbsp;startSpeed,&amp;nbsp;int&amp;nbsp;startGear)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;super(startCadence,&amp;nbsp;startSpeed,&amp;nbsp;startGear);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;seatHeight&amp;nbsp;=&amp;nbsp;startHeight;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}	
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;the&amp;nbsp;MountainBike&amp;nbsp;subclass&amp;nbsp;adds&amp;nbsp;one&amp;nbsp;method
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;setHeight(int&amp;nbsp;newValue)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;seatHeight&amp;nbsp;=&amp;nbsp;newValue;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}	
+
+}&amp;lt;/pre&amp;gt;
+MountainBike继承了Bycycle的所有属性和方法,并且增加了一个属性seatHeight和一个方法.除了构造方法,你就想重新写了一个完整的包含4个属性5个方法的类.如果Bycycle类的方法非常复杂并且需要花大量时间调试,那这样做是非常有价值的.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;你能在子类里做什么&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;不管子类在哪个包里,一个子类从父类继承所有的public和protected成员.如果子类跟父类在相同的包(package)中,他也继承具有包权限的成员.你可以使用,覆盖,改写这些成员:&amp;lt;/span&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+	&amp;lt;li&amp;gt;
+		继承的属性可以像其他属性一样直接使用.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		可以声明一个与继承的属性同名的属性来隐藏(hidding)继承的属性(不推荐)
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		可以声明一个父类中没有的属性
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;继承的方法&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;可以直接使用
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		可以写一个新的方法与继承的方法有相同的标签来重写(overriding)它.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		可以写一个静态(static)方法与继承的方法具有相同的标签来隐藏(hidding)它.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		你可以声明一个新的方法.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		可以在子类的构造方法中调用父类的构造方法,隐式或者用关键字super.
+	&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面的部分将扩展这些话题.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;父类中的私有成员&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	子类不会继承父类中的私有成员.然而,如果父类中有public或者protected方法访问了它的私有属性,那些方法仍然是可以使用的.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个对它的封装类具有全部的访问权限,即使是私有成员.那么一个public或者protected的嵌套类被某个类继承,这个类对封装类的所有成员都具有间接的访问权限.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;对象转换&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果我们写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;MountainBike&amp;nbsp;myBike&amp;nbsp;=&amp;nbsp;new&amp;nbsp;MountainBike();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	那么myBike是MountainBike类型的.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MountainBike是Bicycle类和Object类的后代.所以,一个MountainBike是一个Bicycle也是一个Object,他可以被用在所有Bicycle或者Object类型的的地方.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	反过来就不一定是对的了:一个Bicycle可能是一个MountainBike,也可能不是.转换(Casting)展示了一种类型替代另一种类型的用法,例如:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Object&amp;nbsp;obj&amp;nbsp;=&amp;nbsp;new&amp;nbsp;MountainBike();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	obj既是一个Object,也是一个MountainBike.这叫做隐式转换.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另一方面,我们写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;MountainBike&amp;nbsp;myBike&amp;nbsp;=&amp;nbsp;obj;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们将会得到一个编译时错误,因为编译器不知道obj是一个MountainBike.然而,我们可以用现实类型转换告诉编译器我们保证给obj赋值的MountainBike:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;MountainBike&amp;nbsp;myBike&amp;nbsp;=&amp;nbsp;(MountainBike)obj;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这种转换将对obj的赋值插入一个运行时检查(runtime&amp;nbsp;check)让编译器能够安全地认为obj是一个MountainBike.如果obj在运行时不是一个MountainBike,将抛出一个异常.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意:你可以用instanceof操作符测试一个特定对象的类型.可以让你避免因为一个不合适的转换而发生运行时错误.例如:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;if&amp;nbsp;(obj&amp;nbsp;instanceof&amp;nbsp;MountainBike)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;MountainBike&amp;nbsp;myBike&amp;nbsp;=&amp;nbsp;(MountainBike)obj;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-12/1336781117.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

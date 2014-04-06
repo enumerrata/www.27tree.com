@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>在JDBC设计中加速JSP访问数据库</title>
+<content>&amp;lt;p&amp;gt;
+	Jsp程序序都是模块，并且具有强大的表达-请求(presentation-request)功能。建立一个完美的数据库访问是一个具有挑战的过程，而JDBC接口能够很好地完成这一过程。然而，嵌入于JSP代码中的JDBC代码，与SQL命令嵌入在JDBC一样，可以充分利用JSP的功能，为客户端建立一个整洁而简便的API。为了达到这一目的，我们可以考虑到使用JSP操作来建立数据库接口组件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	完美的JSP设计模式是Model-View-Controller&amp;amp;nbsp;(MVC)。传统三层体系为：Model为程序逻辑和数据;View为查看;以及Controller为请求处理。遵循这一模型，一个JSP程序包含客户端-服务器“对话框”的每一“行”的页面。在一个典型的程序中，你可以看到一个查询页面，一个验证页面，一个数据库插入页面，一个数据库更新页面，等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如何在每一页面中嵌入JDBC，以保证程序的结构更加合理。然而，建立可执行的SQL命令，正如变量通过JDBC命令而传递一样，也有可能会增加程序的复杂性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	JDBC设计的JSP操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	JSP数据库操作的另一方法是，在不使用JDBC的情况下为数据库建立一些操作的集合。使用这种方法，你可以得到两种好处：第一，你可以消除使用JDBC的必要，这就使得很多工作得以简化;第二，你的设计和代码的组织更加合理(比如可读性，灵活性，以及可维护性)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你仍然需要一些驱动程序，但你首先简化以上的操作。JSP程序中的操作都是一些逻辑块，通常被其它的JSP程序开发者编写和利用，但你可以把它们当成子程序来使用。使用JSP操作的意义是标准化某些功能，以及最大程度地减少嵌入在JSP的java代码数量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	JSP提供了一套标准扩展的类。通过这些类，你可以通过一个标签管理器(tag&amp;amp;nbsp;handler)定义一个操作。这里有两个JSP定义的Java接口：Tag接口和BodyTag接口，分别是由TagSupport类和BodyTagSupport类执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你可以建立通用JSP用途的一个标签库，并且你也可以执行标签管理器(tag&amp;amp;nbsp;handler)以扩展类的支持。以下是实现这些过程的步骤。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先，执行一个标签管理器的类：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	packagecom.myactions;&amp;amp;nbsp;(import&amp;amp;nbsp;statements&amp;amp;nbsp;go&amp;amp;nbsp;here)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;amp;nbsp;class&amp;amp;nbsp;MyActionTag&amp;amp;nbsp;extends&amp;amp;nbsp;TagSupport&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	...}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	接着，编译这段代码，并将类文件放置在程序的类库中。然后，你将需要一个Tag&amp;amp;nbsp;Library&amp;amp;nbsp;Descriptor&amp;amp;nbsp;(TLD)文件，这是一个XML文件，以匹配你的操作名称和相应的标签管理器的类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;tag&amp;amp;gt;&amp;amp;nbsp;&amp;amp;lt;&amp;amp;nbsp;name&amp;amp;gt;MyAction&amp;amp;lt;&amp;amp;nbsp;/name&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;tagclass&amp;amp;gt;com.myactions.MyActionTag&amp;amp;lt;&amp;amp;nbsp;/tagclass&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;bodycontent&amp;amp;gt;&amp;amp;nbsp;(whatever)　&amp;amp;lt;&amp;amp;nbsp;/bodycontent&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;attribute&amp;amp;gt;myData&amp;amp;lt;&amp;amp;nbsp;/attribute&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;/tag&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;nbsp;/tag&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设你已经建立一个名为MyAction的操作，这是一个与com.myactions.MyActionTag类匹配的TLD。TLD文件必须位于程序的TLDs路径。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当你从一个JSP页调用操作时，TLD告诉JSP正确的类以使用操作。这就带来极大的方便，而且只需要少量的代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是，从何引入SQL?首先，你需要建立具有连接功能的数据库访问。你可以使用javax接口来完成，而javax可见于JDBC&amp;amp;nbsp;2.0&amp;amp;nbsp;Optional工具箱。JDBC&amp;amp;nbsp;2.0的javax.sql.DataSource类提供了你所需要的连接。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此时，SQL位于什么地方?它在bean中。你可以使用JDBCcreateStatement和PreparedStatement在bean中建立一个方法。将这一方法成为一个公共的Vector，并正确地将你的SQL声明传递到这一方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你的数据库bean执行一个嵌入在操作体的SQL语句，你可以传递一个语句给SQL语句，或者使用它来执行一个预先的操作。可以通过标签管理器来执行你的操作。由于JDBC被嵌入于库代码中，你将不能在JSP程序中明确地使用它。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	初次使用这种方法会觉得它比JDBC中的嵌入SQL，以及JSP中的嵌入JDBC更加复杂，但是，你建立SQL操作并将它们存放在一个TLD，你只需做一次，在所有的JSP程序中就可以访问这些操作。这就是这种方法的优点。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-07-03/1341277648.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

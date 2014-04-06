@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-03-30 00:53:37</datetime>
+  <title><![CDATA[PHP 关闭魔术引号]]></title>
+  <content><![CDATA[<p>
+	<strong>magic_quotes_gpc 指令只能在系统级关闭，不能在运行时。也就是说不能用 ini_set()。</strong>
+</p>
+<p>
+	<p>
+		<br />
+	</p>
+如果不能修改服务器端的配置文件，<strong>使用 .htaccess 也可以</strong>。范例如下：
+</p>
+<p>
+	php_flag magic_quotes_gpc Off
+</p>
+<p>
+	不过在虚拟主机这个貌似不可以，会导致500+错误
+</p>
+<p>
+	<br />
+</p>
+<p>
+	为了能写出移植性较强的代码（可以运行于任何环境），例如不能修改服务器配置的情况，下面的例子可以在<strong>运行时关闭 magic_quotes_gpc</strong>。但是这样做比较低效，适当的修改配置才是更好的办法。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+if (get_magic_quotes_gpc()) {
+    function stripslashes_deep($value)
+    {
+        $value = is_array($value) ?
+                    array_map(\'stripslashes_deep\', $value) :
+                    stripslashes($value);
+
+        return $value;
+    }
+
+    $_POST = array_map(\'stripslashes_deep\', $_POST);
+    $_GET = array_map(\'stripslashes_deep\', $_GET);
+    $_COOKIE = array_map(\'stripslashes_deep\', $_COOKIE);
+    $_REQUEST = array_map(\'stripslashes_deep\', $_REQUEST);
+}
+?&gt;</pre>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>PHP内容管理系统_Joomla快速建站指南</title>
+  <author>陈红飞</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-27 19:37:44</submit-date-time>
+  <img-link>39eb69b8a36ae3516770e6708444e051.png</img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	国内第一本详细讲解Joomla的书
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	详细讲解Joomla的安装和应用，掌握快速建站的方法
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	分析Joomla强大的后台管理，轻松管理网站内容
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	探讨模板设计、开发和外部模板应用，打造个性化网站
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	结合最流行的MVC开发架构讲解，分析Joomla的设计和工作机制
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		Joomla内容管理系统是目前最流行的内容管理系统之一。本书由浅入深，循序渐进地讲授如何使用Joomla架构网站。全书内容包括认识Joomla和内容管理系统、开发工具安装和Joomla安装、后台管理系统学习、内容管理学习、模板开发应用、组件开发应用、插件开发应用、模块开发应用、常见模块应用、架构和源码剖析、综合网站实例开发。
+	&lt;/p&gt;
+	&lt;p&gt;
+		为了便于读者学习，本书有一章综合了Joomla中几乎所有的知识点，对一个完整网站进行架构，实例具有很强的实用价值，具体讲解了开发环境和开发软件安装、用户注册登录模块、内容管理模块、评论系统、首页模板开发、产品展示模块、相册模块、积分模块、用户系统开发、论坛模块和站内短信模块应用。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书适合广大Web网站开发人员、网站管理维护人员、个人站点和企业门户创建者、大专院校学生阅读，尤其是有一定PHP网站编程技术的人员。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

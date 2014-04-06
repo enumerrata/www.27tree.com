@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:42:56</datetime>
+  <title>怎样使MySQL安全以对抗解密高手</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当你连接一个MySQL服务器时，你通常应该使用一个口令。口令不以明文在连接上传输。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	所有其它信息作为能被任何人读懂的文本被传输。如果你担心这个，你可使用压缩协议(MySQL3.22和以上版本)使事情变得更难。甚至为了使一切更安全，你应该安装ssh（见http://www.irsrcs.com)。用它，你能在一个MySQL服务器与一个MySQL客户之间得到一个加密的TCP/IP连接。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	为了使一个MySQL系统安全，强烈要求你考虑下列建议：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对所有MySQL用户使用口令。记住，如果other_user没有口令，任何人能简单地用mysql&amp;nbsp;-u&amp;nbsp;other_user
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	db_name作为任何其它的人登录。对客户机/服务器应用程序，客户可以指定任何用户名是常见的做法。在你运行它以前，你可以通过编辑mysql_install_db脚本改变所有用户的口令，或仅仅MySQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	root的口令，象这样：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	shell&amp;gt;&amp;nbsp;mysql&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;mysql
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql&amp;gt;&amp;nbsp;UPDATE&amp;nbsp;user&amp;nbsp;SET
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Password=PASSWORD(&amp;nbsp;new_password&amp;nbsp;)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	WHERE&amp;nbsp;user=&amp;nbsp;root&amp;nbsp;;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysql&amp;gt;&amp;nbsp;FLUSH
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PRIVILEGES;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不要作为Unix的root用户运行MySQL守护进程。mysqld能以任何用户运行，你也可以创造一个新的Unix用户mysql使一切更安全。如果你作为其它Unix用户运行mysqld，你不需要改变在user表中的root用户名，因为MySQL用户名与Unix
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	用户名没关系。你可以作为其它Unix用户编辑mysql.server启动脚本mysqld。通常这用su命令完成。对于更多的细节，见18.8
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	怎样作为一个一般用户运行MySQL。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你把一个Unix&amp;nbsp;root用户口令放在mysql.server脚本中，确保这个脚本只能对root是可读的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	检查那个运行mysqld的Unix用户是唯一的在数据库目录下有读/写权限的用户。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不要把process权限给所有用户。mysqladmin&amp;nbsp;processlist的输出显示出当前执行的查询正文，如果另外的用户发出一个UPDATE
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	user&amp;nbsp;SET
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	password=PASSWORD(&amp;nbsp;not_secure&amp;nbsp;)查询，被允许执行那个命令的任何用户可能看得到。mysqld为有process权限的用户保留一个额外的连接,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	以便一个MySQL&amp;nbsp;root用户能登录并检查，即使所有的正常连接在使用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不要把file权限给所有的用户。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	有这权限的任何用户能在拥有mysqld守护进程权限的文件系统那里写一个文件！为了使这更安全一些，用SELECT&amp;nbsp;...&amp;nbsp;INTO
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	OUTFILE生成的所有文件对每个人是可读的，并且你不能覆盖已经存在的文件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	file权限也可以被用来读取任何作为运行服务器的Unix用户可存取的文件。这可能被滥用，例如，通过使用LOAD
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DATA装载“/etc/passwd”进一个数据库表，然后它能用SELECT被读入。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你不信任你的DNS，你应该在授权表中使用IP数字而不是主机名。原则上讲，--secure选项对mysqld应该使主机名更安全。在任何情况下，你应该非常小心地使用包含通配符的主机名。
+&lt;/p&gt;</content>
+  <contentx>当你连接一个MySQL服务器时，你通常应该使用一个口令。口令不以明文在连接上传输。
+
+
+	所有其它信息作为能被任何人读懂的文本被传输。如果你担心这个，你可使用压缩协议(MySQL3.22和以上版本)使事情变得更难。甚至为了使一切更安全，你应该安装ssh（见http://www.irsrcs.com)。用它，你能在一个MySQL服务器与一个MySQL客户之间得</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[社交网站的数据挖掘与分析]]></title>
+  <author>（美）罗塞尔</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:17:35</submit-date-time>
+  <img-link>1a041b04976991ffb13d1e4634dd4d9b.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>2011年Jolt生产效率大奖获奖图书</strong>
+</p>
+<p>
+	<strong>新一代在线数据资源挖掘技术指南</strong>
+</p>
+<p>
+	<strong>社交数据挖掘、分析、可视化必备参考书</strong>
+</p>
+<p>
+	<p>
+		Facebook、Twitter和LinkedIn产生了大量宝贵的社交数据，但是怎样才能找出谁通过社交媒介正在进行联系?他们在讨论些什么?或者他们在哪儿?本书简洁而且具有可操作性，它将揭示如何回答这些问题甚至更多的问题。你将学到如何组合社交网络数据、分析技术，如何通过可视化帮助你找到你一直在社交世界中寻找的内容，以及你闻所未闻的有用信息。
+	</p>
+	<p>
+		本书每章都介绍了在社交网络的不同领域挖掘数据的技术，这些领域包括博客和电子邮件。你所需要具备的就是一定的编程经验和学习基本的Python工具的意愿。
+	</p>
+	<p>
+		通过本书，你将
+	</p>
+	<p>
+		. 获得对社交网络世界的直观认识
+	</p>
+	<p>
+		. 使用GitHub上灵活的脚本来获取从诸如Twitter、Facebook和LinkedIn等社交网络API中的数据
+	</p>
+	<p>
+		&nbsp;　. 学习如何应用便捷的Python工具来交叉分析你所收集的数据
+	</p>
+	<p>
+		. 通过XFN探讨基于微格式的社交联系
+	</p>
+	<p>
+		. 应用诸如TF-IDF、余弦相似性、搭配分析、文档摘要、派系检测之类的先进挖掘技术
+	</p>
+	<p>
+		. 通过基于HTML 5和JavaScript工具包的网络技术建立交互式可视化
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

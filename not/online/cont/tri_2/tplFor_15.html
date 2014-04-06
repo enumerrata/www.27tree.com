@@ -1,0 +1,90 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP Date()</h1>
+</div>
+<div>
+
+<p><b>PHP 的 date() 函数用于格式化时间或日期。</b></p>
+
+<h1>PHP Date() 函数</h1>
+
+<p>PHP Date() 函数可把时间戳格式化为可读性更好的日期和时间。</p>
+
+<h2>语法</h2>
+
+<code>date(format,timestamp)</code>
+
+<table class="dataintable">
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>format</td>
+<td>必需。规定时间戳的格式。</td>
+</tr>
+ 
+<tr>
+<td>timestamp</td>
+<td>可选。规定时间戳。默认是当前的日期和时间。</td>
+</tr>
+</table>
+
+<h1>PHP 日期 - 什么是时间戳（Timestamp）？</h1>
+
+<p>时间戳是自 1970 年 1 月 1 日（00:00:00 GMT）以来的秒数。它也被称为 Unix 时间戳（Unix Timestamp）。</p>
+
+<h1>PHP 日期 - 格式化日期</h1>
+
+<p>date() 函数的第一个参数规定了如何格式化日期/时间。它使用字母来表示日期和时间的格式。这里列出了一些可用的字母：</p>
+
+<ul>
+<li>d - 月中的天 (01-31)</li> 
+<li>m - 当前月，以数字计 (01-12)</li> 
+<li>Y - 当前的年（四位数）</li>
+</ul>
+<p>您可以在我们的 PHP Date 参考手册中，找到格式参数中可以使用的所有字母。</p>
+<p>可以在字母之间插入其他字符，比如 "/"、"." 或者 "-"，这样就可以增加附加格式了：</p>
+
+<code>
+&lt;?php<br />
+echo date("Y/m/d");<br />
+echo "&lt;br /&gt;";<br />
+echo date("Y.m.d");<br />
+echo "&lt;br /&gt;";<br />
+echo date("Y-m-d");<br />
+?&gt;
+</code>
+
+<p>以上代码的输出类似这样：</p>
+
+<code>
+2006/07/11<br />
+2006.07.11<br />
+2006-07-11
+</code>
+
+<h1>PHP 日期 - 添加时间戳</h1>
+
+<p>date() 函数的第二个参数规定了一个时间戳。此参数是可选的。如果您没有提供时间戳，当前的时间将被使用。</p>
+<p>在我们的例子中，我们将使用 mktime() 函数为明天创建一个时间戳。</p>
+<p>mktime() 函数可为指定的日期返回 Unix 时间戳。</p>
+
+<h2>语法</h2>
+
+<code>mktime(hour,minute,second,month,day,year,is_dst)</code>
+
+<p>如需获得某一天的时间戳，我们只要设置 mktime() 函数的 day 参数就可以了：</p>
+
+<code>
+&lt;?php<br />
+$tomorrow = mktime(0,0,0,date("m"),date("d")+1,date("Y"));<br />
+echo "明天是 ".date("Y/m/d", $tomorrow);<br />
+?&gt;
+</code>
+
+<p>以上代码的输出类似这样：</p>
+
+<code>明天是 2006/07/12</code>
+
+</div>

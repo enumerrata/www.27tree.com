@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-24 08:23:41</datetime>
+  <title>如何避免SQL Server中的DBCC堵塞问题</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本文说明为何应该了解数据库一致性检测（DBCC），还解释如何运行DBCC及应用它的五个扩展。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在危急时刻，数据库一致性检测（DBCC）可能是你最重要的工具。本文向你简单介绍DBCC的功能，它们包括：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆检测表和相关目录的完整性。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆检测整个数据库。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆检测数据库页的完整性。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆重建任何指定表中的目录。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你为何需要学习DBCC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你甚至还不知道为何使用DBCC，下面提供一些原因：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆需要不断分割数据库页（表和目录），这可能会破坏分配。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆目录可能遭到破坏，或效率降低。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆SQL&amp;nbsp;Server引擎有时会误解你的意图。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆需要大量更新时，事情可能会很麻烦（记住，任何指定的更新实际为删除和插入）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆单个页面，虽然仍然“健康”，但可能会失去它们的最优存储足迹。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如何运行DBCC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你可以用两种方法运行DBCC：通过命令行窗口或查询分析器（Query&amp;nbsp;Analyzer）窗口。如果你认为必要，你还可以确定其操作的时间。（我从未感到有必要这样做，因为在微软的所有产品中，我对SQL&amp;nbsp;Server的稳定性最为自信。我认为它是雷蒙德推出的最佳产品。但是，感觉也可能出错。）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC命令包括以下扩展：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆CheckDB：检测整个数据库的一致性，是检查数据库破坏的基本方法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆CheckTable：检测特定表的问题。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆CheckAlloc：检测数据库的单个页面，包括表和目录。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆Reindex：重建某个特定表的目录。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆CacheStats：说明当前存储在内存缓存中的对象。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆DropCleanBuffers：释放当前存储在缓冲区中的所有数据，这样你就可以继续进行检测，而不必使用前面的结果。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆Errorlog：删除（缩短）当前日志。你可以考虑确定包含这个命令的操作的时间，一个星期左右运行一次。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆FlushProclnDB：清除特定数据库的存储过程缓存（使用它的数据库id而不是名称）。使用下列代码找出id：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SELECT&amp;nbsp;dbid&amp;nbsp;FROM&amp;nbsp;master.dbo.sysdatabases
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	IndexDefrag：减少目录分裂，但不给文件加锁，以便用户能够继续应用数据库。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CheckCatalog：检测特定数据库表及表之间的一致性（后者意味着使用外键等。）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如何使用这五个扩展
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC首先建立一个数据库快照（在某些情况下，如应用一个Master、TempDB或只读数据库时）。附带条件：要使用DBCC，数据库必须处于单用户模式。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用DBCC&amp;nbsp;CheckDB
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	此命令保证：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆数据与目录页正确连接。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆目录被正确分类，并保持最新。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆指针一致。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆每个页面的数据保持最新。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	◆页面偏移值保持最新。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	以下是使用CheckDB的最常见方法：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKDB&amp;nbsp;(&amp;nbsp;AdventureWorks&amp;nbsp;,&amp;nbsp;REPAIR_FAST)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKDB&amp;nbsp;(&amp;nbsp;AdventureWorks&amp;nbsp;,&amp;nbsp;REPAIR_REBUILD)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKDB&amp;nbsp;(&amp;nbsp;AdventureWorks&amp;nbsp;,&amp;nbsp;REPAIR_ALLOW_DATA_LOSS)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你还可以指定其它几个选项，但以上是三个最重要的选项。我按顺序列出这些DBCC命令,&amp;nbsp;你应该先运行它们，然后检查结果。前两个选项不会造成数据损失，但第三个选项会引起数据损失。因此建议把第三个命令放在一个事务内，如果数据损失不可接受，你可以执行一次回滚（ROLLBACK）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用DBCC&amp;nbsp;CheckTable
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	大多数情况下，你遇到的问题往往与数据库中的一个或几个表，而不是整个数据库有关。这时即可运行CheckTable。首先，使用相关数据库，然后运行DBCC&amp;nbsp;CheckTable命令。下面是两个例子：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CheckTable&amp;nbsp;(&amp;nbsp;Sales,SalesOrderHeader&amp;nbsp;)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CheckTable&amp;nbsp;(&amp;nbsp;Sales,SalesOrderHeader&amp;nbsp;,&amp;nbsp;REPAIR_REBUILD)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用DBCC&amp;nbsp;CheckAlloc
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这个命令检测数据页及其目录的一致性。下面是两个例子：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKALLOC&amp;nbsp;(&amp;nbsp;Sales.SalesOrderDetails&amp;nbsp;)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKALLOC&amp;nbsp;(&amp;nbsp;Sales.SalesOrderDetails&amp;nbsp;,&amp;nbsp;REPAIR_REBUILD)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用DBCC&amp;nbsp;CheckCatalog
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用这个命令来验证一个数据库系统表的一致性。你指定数据库的名称进行检查，自变量WITH&amp;nbsp;NO_INFOMSGS可选。下面是一个例子：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;CHECKCATALOG&amp;nbsp;(&amp;nbsp;AdventureWorks&amp;nbsp;)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用DBCC&amp;nbsp;ReIndex
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这个命令促使某个特定的表或视图中的一个或几个目录进行重建。你还可以应用某个特定目录的名称和填充系数。列表A中包含两个例子。第三个自变量说明我希望使用重建目录中的一个90%的填充系数。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;REINDEX&amp;nbsp;(&amp;nbsp;AdventureWorks.Sales.SalesOrderHeader&amp;nbsp;,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PK_SalesOrderHeader_SalesOrderID&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DBCC&amp;nbsp;REINDEX&amp;nbsp;(&amp;nbsp;AdventureWorks.Sales.SalesOrderHeader&amp;nbsp;,　PK_SalesOrderHeader_SalesOrderID&amp;nbsp;,&amp;nbsp;90)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	补充信息
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	现在你已经了解到DBCC的大多数常用法，你可以通过查询在线书学习每个命令的其它自变量和选项。
+&lt;/p&gt;</content>
+  <contentx>本文说明为何应该了解数据库一致性检测（DBCC），还解释如何运行DBCC及应用它的五个扩展。
+
+
+	在危急时刻，数据库一致性检测（DBCC）可能是你最重要的工具。本文向你简单介绍DBCC的功能，它们包括：
+
+
+	◆检测表和相关目录的完整性。
+
+
+	◆检测整个数据库。
+
+
+	◆检测数据库页的完整性。
+
+
+	◆重建任何指定表中的目录。
+
+
+	你为何需要学习DBC</contentx>
+  <tags>_null_</tags>
+</root>

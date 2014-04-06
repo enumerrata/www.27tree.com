@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-08 22:53:28</datetime>
+  <title><![CDATA[让表单input等文本框为只读不可编辑的方法]]></title>
+  <content><![CDATA[<p>
+	有时候，我们希望表单中的文本框是只读的，让用户不能修改其中的信息，如使&lt;input type=\"text\" name=\"input1\" value=\"中国\"&gt; 的内容，\"中国\"两个字不可以修改。实现的方式归纳一下，有如下几种。
+</p>
+<p>
+	方法1: onfocus=this.blur()
+</p>
+<p>
+	&lt;input type=\"text\" name=\"input1\" value=\"中国\" onfocus=this.blur()&gt;
+</p>
+<p>
+	方法2:readonly
+</p>
+<p>
+	&lt;input type=\"text\" name=\"input1\" value=\"中国\" readonly&gt;
+</p>
+<p>
+	&lt;input type=\"text\" name=\"input1\" value=\"中国\" readonly=\"true\"&gt;
+</p>
+<p>
+	方法3: disabled
+</p>
+<p>
+	&lt;input type=\"text\" name=\"input1\" value=\"中国\" disabled&gt;
+</p>]]></content>
+  <contentx><![CDATA[有时候，我们希望表单中的文本框是只读的，让用户不能修改其中的信息，如使&lt;input type=\"text\" name=\"input1\" value=\"中国\"&gt; 的内容，\"中国\"两个字不可以修改。实现的方式归纳一下，有如下几种。
+
+
+	方法1: onfocus=this.blur()
+
+
+	&lt;input type=\"text\" name=\"i]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Chrome浏览器刷新网站Favicon图标]]></title>
+  <content><![CDATA[<p>
+	尝试了半天之后终于找到了解决办法：
+</p>
+<p>
+	1、直接在URL里访问Favicon图标，例如我的就是 http://www.27tree.com/favicon.ico ；
+</p>
+<p>
+	2、此时看到的应该是之前的旧Favicon图标；
+</p>
+<p>
+	3、按Ctrl+F5刷新，这时新的Favicon图标应该会出现了；
+</p>
+<p>
+	4、关闭页面，回到网站首页，按Ctrl+F5刷新，搞定了！
+</p>
+<p>
+	另外之前猜想Chrome是不是用Google缓存的Favicon图标，但后来测试发现不是，因为至我发文时，Google缓存我网站的Favicon图标依然是旧的。
+</p>
+<p>
+	再给一下Google缓存Favicon图标的地址，后面直接输入域名即可。
+</p>
+<p>
+	http://www.google.com/s2/favicons?domain_url=http://27tree.com
+</p>
+<p>
+	http://www.google.com/s2/favicons?domain=27tree.com
+</p>]]></content>
+  <contentx><![CDATA[
+	尝试了半天之后终于找到了解决办法：
+
+
+	1、直接在URL里访问Favicon图标，例如我的就是 http://www.27tree.com/favicon.ico ；
+
+
+	2、此时看到的应该是之前的旧Favicon图标；
+
+
+	3、]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

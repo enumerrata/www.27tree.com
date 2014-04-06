@@ -1,0 +1,388 @@
+<__cache@1389759368-@1389762968@1database__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            数据库_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=database />
+                    <input type="hidden" id="pages" value=1/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/database/'>数据库</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/database.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">数据库（Database）是按照数据结构来组织、存储和管理数据的仓库，它产生于距今五十年前，随着信息技术和市场的发展，特别是二十世纪九十年代以后，数据管理不再仅仅是存储和管理数据，而转变成用户所需要的各种数据管理的方式。数据库有很多种类型，从最简单的存储有各种数据的表格到能够进行海量数据存储的大型数据库系统都在各个方面得到了广泛的应用。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-06-19/1340096247.html">
+        &nbsp;MySQL触发器介绍    </a><span class="Gray">(2)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-06-26/1340725026.html">
+        &nbsp;MySQL架构 - MySQL存储引擎 -选择合适的引擎    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/database-mysql/>[MySQL]</a>    <a class="hotCommA" href="http://www.27tree.com/art/database/content/2012-09-22/1348300395.html">
+        &nbsp;如何Kill掉没用的事务？    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/database-sql/" class="borderR15 sband">SQL技术</a><a href="/art/database-optim/" class="borderR15 sband">性能调优</a><a href="/art/database-mysql/" class="borderR15 sband">MySQL</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-19/1340095777.html>使用mysql触发器获得新增id</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">我们平时使用AUTO_INCREMENT 来给id赋值，这个方法的好处就是方便，快捷，我们不用想怎么样来递增id，但是这个方法有一个坏处：就是你不知道这个值是多少，我们一般会关联几个表，我们用这个id来关联，所以我们要知道这个值。
+
+
+	为了获得这个值，我一般是使用 mysql 函数：insert_id() 这个mysql函数来获得数据库新添加的值，刚刚上课...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(571)</span>
+                           <em>2012年6月19日 16:48</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-18/1339993764.html>如何进行文章分类和标签的数据库设计</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">几乎在所有web项目中，都涉及文章分类和标签的设计，应该说这是一个比较常见、典型的案例。站长并不保证我的思路就是最好的，只是分享出来大家一起交流一下，互相促进与提高。
+
+
+	我们假设的开发项目是一个博客系统，最核心的部分就是与文章相关的，那么我们今天讨论如何设计博客系统的文章分类和标签。
+
+
+	1、首先，分类和标签都是要和具体的文章相关联的，当然也可能一些文...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(501)</span>
+                           <em>2012年6月18日 12:27</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-13/1339544559.html>Twitter宣布开源其MySQL优化成果</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">消息称，Twitter决定开放其MySQL数据库源代码。Twitter DBA和DB开发组的成员Jeremy Cole和Davi Arnaut表示，大部分Twitter数据都采用了MySQL作为持久化存储，包括兴趣图、时间线、Tweets以及用户数据。
+
+
+	由于Twitter的数据规模和访问规模，他们不得不对MySQL源码进行修改优化以适应这种级别的应用。...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(418)</span>
+                           <em>2012年6月13日 07:42</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-sql/>[SQL技术]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-13/1339544421.html>使用MySQLi中的预处理，防止SQL注入攻击</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">使用MySQLi中的预处理，可以很好的防止SQL注入攻击。Mysqli中的预处理使用“？”作为占位符，传进数据库的不会被当作SQL语句来执行，只会被当作字符串来处理。所以使用Mysqli的预处理更加安全，另外使用预处理效率更高，速度更快。
+
+
+	直接看代码，其中的数据库比较简单，这里就不说明数据库的建立了。另外大部分需要注意事项已经写在代码注释中了。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(711)</span>
+                           <em>2012年6月13日 07:39</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-optim/>[性能调优]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-12/1339509772.html>MemCache在中型网站中的应用</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">使用Memcache的网站一般流量都是比较大的，为了缓解数据库的压力，让Memcache作为一个缓存区域，把部分信息保存在内存中，在前端能够迅速
+
+
+	的进行存取。那么一般的焦点就是集中在如何分担数据库压力和进行分布式，毕竟单台Memcache的内存容量的有限的。我这里简单提出我的个人看法，未经
+
+
+	实践，权当参考。
+
+
+	[ 分布式应用]
+
+
+	Memc...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(724)</span>
+                           <em>2012年6月12日 22:02</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-12/1339499915.html>什么是Mysql？</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">MySQL是一个开放源码的小型关联式数据库管理系统，开发者为瑞典MySQL
+
+
+	AB公司。目前MySQL被广泛地应用在Internet上的中小型网站中。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，许多中小型
+
+
+	网站为了降低网站总体拥有成本而选择了MySQL作为网站数据库。
+
+
+	MySQL的特性 
+
+
+	
+
+
+	
+		使用C和C++编...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(449)</span>
+                           <em>2012年6月12日 19:17</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-12/1339499841.html>MySQL 严重 Bug - 用户登陆漏洞</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Security vulnerability in MySQL/MariaDB 在知道用户名的情况下（如root），直接反复重试（平均大约256次）即可登入。
+
+
+	受影响的版本：
+
+
+	All MariaDB and MySQL versions up to 5.1.61, 5.2.11, 5.3.5, 5.5.22 are vulnerable.
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(298)</span>
+                           <em>2012年6月12日 19:16</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-08/1339117025.html>配置 Mysql 允许远程连接</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">MySql-Server 出于安全方面考虑只允许本机(localhost, 127.0.0.1)来连接访问. 这对于 Web-Server 与 MySql-Server 都在同一台服务器上的网站架构来说是没有问题的. 但随着网站流量的增加, 后期服务器架构可能会将 Web-Server 与 MySql-Server 分别放在独立的服务器上, 以便得到更大性能...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1525)</span>
+                           <em>2012年6月8日 08:56</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-sql/>[SQL技术]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-07/1339038233.html>不当编写SQL语句导致系统不安全</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在一般的多用户应用系统中，只有拥有正确的用户名和密码的用户才能进入该系统。我们通常需要编写用户登录窗口来控制用户使用该系统，这里以Visual Basic+ADO为例：
+
+
+	一、漏洞的产生
+
+
+	用于登录的表
+
+
+	Users(name,pwd)
+
+
+	建立一个窗体Frmlogin，其上有两个文本框Text1，Text2和两个命令按钮cmdok，cmdex...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(395)</span>
+                           <em>2012年6月7日 11:03</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/database-mysql/>[MySQL]</a>&nbsp;<a href=http://www.27tree.com/art/database/content/2012-06-06/1338940228.html>三种东西永远不要放到数据库里</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">1、   图片，文件，二进制数据
+
+
+	既然数据库支持BLOB类型的数据，把文件塞进BLOB字段里一定没有错了!?错，不是这样的!别的先不提，在很多数据库语言里，处理大字段都不是很容易。
+
+
+	把文件存放在数据库里有很多问题：
+
+
+	对数据库的读/写的速度永远都赶不上文件系统处理的速度
+
+
+	数据库备份变的巨大，越来越耗时间
+
+
+	对文件的访问需要穿越你的应...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(459)</span>
+                           <em>2012年6月6日 07:49</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>数据库</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/114">
+    <img src="/not/mybook/data/book_image_lib/default/chmDefault.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/114">
+    《MySQL5.1参考手册官方简体中文版》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/226">
+    <img src="/not/mybook/data/book_image_lib/22b0353fd06ce19e84f3894f4ae9d52e.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/226">
+    《Mastering Oracle SQL》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/201">
+    <img src="/not/mybook/data/book_image_lib/bcbd29a305019a436aaacd31727500ac.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/201">
+    《SQL基础教程》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/213">
+    <img src="/not/mybook/data/book_image_lib/1a041b04976991ffb13d1e4634dd4d9b.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/213">
+    《社交网站的数据挖掘与分析》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/258">
+    <img src="/not/mybook/data/book_image_lib/1a4ae88a0e3d63c75b245886b148126b.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/258">
+    《Oracle性能诊断艺术》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=2 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/database/0'>1</a></li><li><a href='http://www.27tree.com/art/database/1'>2</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

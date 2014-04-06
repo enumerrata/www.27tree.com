@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-09 15:23:40</datetime>
+  <title>常见控件:SimpleAdapter</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SimpleAdapter是一个简单的适配器，可以将静态数据映射到XML文件中定义&amp;nbsp;好的视图。你可以指定数据支持的列表如ArrayList组成的Map。在ArrayList中&amp;nbsp;的每个条目对应List中的一行。Maps包含每行数据。你可以指定一个定义了被用&amp;nbsp;于显示行的视图XML文件，通过关键字映射到指定的视图。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	构造函数
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	public&amp;nbsp;SimpleAdapter&amp;nbsp;(Context&amp;nbsp;context,&amp;nbsp;List&amp;lt;?&amp;nbsp;extends&amp;nbsp;Map&amp;lt;String,&amp;nbsp;?&amp;gt;&amp;gt;&amp;nbsp;data,&amp;nbsp;int&amp;nbsp;resource,&amp;nbsp;String[]&amp;nbsp;from,&amp;nbsp;int[]&amp;nbsp;to)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;ul&gt;
+		&lt;li&gt;
+			&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;context&amp;nbsp;关联SimpleAdapter运行着的视图的上下文。&lt;/span&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;data&amp;nbsp;一个Map的列表。在列表中的每个条目对应列表中的一行，应该包含所&amp;nbsp;有在from中指定的条目&lt;/span&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;resource&amp;nbsp;一个定义列表项目的视图布局的资源唯一标识。布局文件将至少应&amp;nbsp;包含哪些在to中定义了的名称。&lt;/span&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;from&amp;nbsp;一个将被添加到Map上关联每一个项目的列名称的列表&lt;/span&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;to&amp;nbsp;应该在参数from显示列的视图。这些应该全是TextView。在列表中最初的&amp;nbsp;N视图是从参数from中最初的N列获取的值。&lt;/span&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一个SimlpleAdapter是这样工作的。假设将SimpleAdapter用于ListView。那&amp;nbsp;么ListView的每一个列表项就是&amp;nbsp;resource参数值指定的布局。而data参数就是&amp;nbsp;要加载到ListView中的数据。我们先看每一个列表项，假设列表项所对应的布局&amp;nbsp;文件中包含了两个组件：TextView和EditText，id分别为textview和edittext。&amp;nbsp;那么在加载列表项时，需要通过组件的id和data参数中&amp;nbsp;List元素中的Map对象对&amp;nbsp;应。因此，from参数Map对象的key，而to表示组件的id，例如，本例中的参数值&amp;nbsp;为from&amp;nbsp;=&amp;nbsp;new&amp;nbsp;String[]{\"userId\",&amp;nbsp;\"userName\"}，to&amp;nbsp;=&amp;nbsp;new&amp;nbsp;int[]{R.id.userId，R.id.userName}。意思就是将Map对象中key为userId&amp;nbsp;的value绑定到&amp;nbsp;R.id.userId上，userName也类似。现在来看data参数，一个&amp;nbsp;ListView由多个列表项组成。每一个列表项由一个Map对象提供数据，而多个列&amp;nbsp;表项则由List对象提供多个&amp;nbsp;Map对象。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>SimpleAdapter是一个简单的适配器，可以将静态数据映射到XML文件中定义 好的视图。你可以指定数据支持的列表如ArrayList组成的Map。在ArrayList中 的每个条目对应List中的一行。Maps包含每行数据。你可以指定一个定义了被用 于显示行的视图XML文件，通过关键字映射到指定的视图。
+
+
+	构造函数
+
+
+	public Simple</contentx>
+  <tags>_null_</tags>
+</root>

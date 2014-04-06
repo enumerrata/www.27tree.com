@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-19 17:45:00</datetime>
+  <title>如何Kill掉没用的事务？</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我们经常遇到一个情况，就是网络断开或程序Bug导致COMMIT/ROLLBACK语句没有传到数据库，也没程，但是线上事务锁定等待严重，连接数暴涨，尤其在测试库这种情况很多，线上也偶有发生，于是想为&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/database/\"&amp;nbsp;target=\"_blank\"&gt;MySQL&lt;/a&gt;增加一个杀掉空闲事务的功能。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	那么如何实现呢，通过&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/database/\"&amp;nbsp;target=\"_blank\"&gt;MySQL&lt;/a&gt;Server层有很多不确定因素，最保险还是在存储引擎层实现，我们用的几乎都是InnoDB/XtraDB，所以就基于Percona来修改了，Oracle版的&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/database/\"&amp;nbsp;target=\"_blank\"&gt;MySQL&lt;/a&gt;也可以照着修改。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	需求：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	①一个事务启动，如果事务内最后一个语句执行完超过一个时间(innodb_idle_trx_timeout)，就应该关闭链接。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	mysqlupdate②如果事务是纯读事务，因为不加锁，所以无害，不需要关闭，保持即可。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	虽然这个思被Percona的指出AlexeyKopytov可能存在“EventhoughSELECTqueriesdonotplacerowlocksbydeult(thereareexceptions),theycanstillblockundologrecordsfrombeingpurged.”的问题，但是我们确实有场景SELECT是绝对不能kill的，除非之后的INSERT/UPDATE/DELETE发生了，所以我根据我们的业务特点来修改。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	跟Percona的YasufumiKinoa和AlexeyKopytov提出过纯SELECT事务不应被kill，但通过一个参数控制的方案还没有被AlexeyKopytov接受，作为通用处理我提出了用两个变量分别控制纯读事务的空闲超时时间和有锁事务的空闲超时时间，还在等待Percona的回复，因为这个方案还在测试，就先不修改了，当然如果你很熟悉MYSQL源码，我提出这个思你肯定知道怎么分成这两个参数控制了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	根据这两个需求我们来设计方法，首先想到这个功能肯定是放在InnoDBMasterThread最方便，MasterThread每秒调度一次，可以顺便检查空闲事务，然后关闭，因为在事务中操作trx-&amp;gt;mysql_thd并不安全，所以一般来说最好在InnoDB层换成ThreadID操作，并且InnoDB中除了ha_innodb.cc，其他地方不能饮用THD，所以MasterThread中需要的线程数值，都需要在ha_innodb中计算好传递整型或布尔型返回值给masterthread调用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	首先，我们要增加一个参数：idle_trx_timeout，它表示事务多久没有下一条语句发生就超时关闭。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在storage/innodb_plugin/srv/srv0srv.c的“/pluginoptions/”注释下增加如下代码注册idle_trx_timeout变量。
+&lt;/p&gt;</content>
+  <contentx>我们经常遇到一个情况，就是网络断开或程序Bug导致COMMIT/ROLLBACK语句没有传到数据库，也没程，但是线上事务锁定等待严重，连接数暴涨，尤其在测试库这种情况很多，线上也偶有发生，于是想为MySQL增加一个杀掉空闲事务的功能。
+
+
+	那么如何实现呢，通过MySQLServer层有很多不确定因素，最保险还是在存储引擎层实现，我们用的几乎都是InnoDB</contentx>
+  <tags>_null_</tags>
+</root>

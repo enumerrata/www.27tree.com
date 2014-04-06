@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP 5.4 for Apache 安装]]></title>
+  <content><![CDATA[<p>
+	1、下载解压
+</p>
+<p>
+	&nbsp; &nbsp;下载地址：http://windows.php.net/download/
+</p>
+<p>
+	&nbsp; &nbsp;需下载：VC9 x86 Thread Safe (2012-Feb-29 21:16:12)，zip版的，否则没有php5apache2_2.dll文件。
+</p>
+<p>
+	&nbsp; &nbsp;暂时无法配置php5apache2_3.dll的！还没有找到解决方法╮(╯▽╰)╭ ~ 不过5.4自带2_2和2_3的。
+</p>
+<p>
+	2、修改配置文件
+</p>
+<p>
+	&nbsp; &nbsp;先备份php.ini-development文件，然后再将原文件改名为：php.ini。打开php.ini修改以下参数：
+</p>
+<p>
+	（1）、211行：short_open_tag = On；
+</p>
+<p>
+	（2）、215行：asp_tags = On；
+</p>
+<p>
+	（3）、867行（如果868行是extension=**.dll的开始行），增加一行，并注意不要分号注释：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;extension_dir=\"D:\\Program Files\\PHP 5.4\\ext\"
+</p>
+<p>
+	（我的PHP安装地址是D:\\Program Files\\PHP 5.4\\，配置此项时，请根据实际情况配置）
+</p>
+<p>
+	（4）、将868行开始的以下几个dll前的分号去掉，使其功能开启：
+</p>
+<p>
+	extension=php_bz2.dll
+</p>
+<p>
+	extension=php_gd2.dll
+</p>
+<p>
+	extension=php_gettext.dll
+</p>
+<p>
+	extension=php_mbstring.dll
+</p>
+<p>
+	extension=php_mysql.dll
+</p>
+<p>
+	extension=php_mysqli.dll
+</p>
+<p>
+	extension=php_openssl.dll
+</p>
+<p>
+	extension=php_pdo_mysql.dll
+</p>
+<p>
+	extension=php_sockets.dll
+</p>
+<p>
+	extension=php_xmlrpc.dll
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;当然也可以直接把上面一段复制，粘贴进去，这样比较方便，也不会有任何的问题产生，还能保存原始参数形态~
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如果还有其他需要，根据实际情况取消注释即可。
+</p>
+<p>
+	（5）、920行，设置中国时区：date.timezone = prc ；
+</p>
+<p>
+	（6）、保存php.ini，并复制到C:\\Windows 。
+</p>
+<p>
+	3、让Apache支持php5.4
+</p>
+<p>
+	打开\\Apache2.2\\conf\\httpd.conf ，编辑：
+</p>
+<p>
+	（1）、130行（是一堆LoadModule **.so的末尾行），增加一行：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;LoadModule php5_module \"D:\\Program Files\\PHP 5.4\\php5apache2_2.dll\"
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;（我的PHP安装地址是D:\\Program Files\\PHP 5.4\\，配置此项时，请根据实际情况配置）
+</p>
+<p>
+	（2）、搜索AddType，并在最后这个字段的下一行空白处添加如下信息：
+</p>
+<p>
+	AddType application/x-httpd-php .php
+</p>
+<p>
+	AddType application/x-httpd-php .php3
+</p>
+<p>
+	AddType application/x-httpd-php .php4
+</p>
+<p>
+	AddType application/x-httpd-php .php5
+</p>
+<p>
+	（3）、保存并关闭httpd.conf。
+</p>
+<p>
+	4、复制文件
+</p>
+<p>
+	&nbsp; &nbsp;复制：
+</p>
+<p>
+	&nbsp; （1）、D:\\Program Files\\PHP 5.4 下的：libeay32.dll、php5ts.dll、ssleay32.dll，和
+</p>
+<p>
+	&nbsp; （2）、D:\\Program Files\\PHP 5.4\\ext 下的：php_curl.dll、php_openssl.dll ；
+</p>
+<p>
+	&nbsp; &nbsp;到：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;C:\\Windows\\System32 文件下，这个是为了防止出现找不到一些dll文件的情况。
+</p>
+<p>
+	5、重启apache
+</p>
+<p>
+	6、Test
+</p>
+<p>
+	&nbsp; &nbsp;在\\Apache2.2\\htdocs下新建一个test.php，里面输入：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;&lt;?php phpinfo(); ?&gt;
+</p>
+<p>
+	&nbsp; &nbsp;打开浏览器，输入：http://localhost/test.php 。
+</p>]]></content>
+  <contentx><![CDATA[1、下载解压
+
+
+	&nbsp; &nbsp;下载地址：http://windows.php.net/download/
+
+
+	&nbsp; &nbsp;需下载：VC9 x86 Thread Safe (2012-Feb-29 21:1]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

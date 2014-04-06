@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-12 23:42:58</datetime>
+  <title><![CDATA[Java编程中影响性能的一些特点 ]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	文中将提供一些在Java编程中影响性能的一些特点，为了能够提高Java程序的性能，而经常采用的一些方法和技巧。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>1.尽量使用final修饰符。</strong>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String。为String类指定final防止了使用者覆盖length()方法。另外，如果一个类是final的，则该类所有方法都是final的。java编译器会寻找机会内联(inline)所有的final方法(这和具体的编译器实现有关)。此举能够使性能平均提高50%。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>2.尽量重用对象。</strong>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	特别是String对象的使用中，出现字符串连接情况时应使用StringBuffer代替，由于系统不仅要花时间生成对象，以后可能还需要花时间对这些对象进行垃圾回收和处理。因此生成过多的对象将会给程序的性能带来很大的影响。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	<strong>3.尽量使用局部变量。</strong>
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p style=\"text-indent:2em;\">
+	调用方法时传递的参数以及在调用中创建的临时变量都保存在栈(Stack)中，速度较快。其他变量，如静态变量，实例变量等，都在堆(Heap)中创建，速度较慢。
+</p>
+<p style=\"text-indent:2em;\">
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

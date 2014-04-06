@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>JS实现Trim()</title>
+  <content>&lt;pre name=\"code\" id=\"prettyprint\" class=\"javascript\"&gt;//js去除空格函数
+//此处为string类添加三个成员
+String.prototype.Trim = function(){ return Trim(this);}
+String.prototype.LTrim = function(){return LTrim(this);}
+String.prototype.RTrim = function(){return RTrim(this);}
+
+//此处为独立函数
+function LTrim(str)
+{
+    var i;
+    for(i=0;i&amp;lt;str.length;i++)
+    {
+        if(str.charAt(i)!=\" \"&amp;amp;&amp;amp;str.charAt(i)!=\" \")break;
+    }
+    str=str.substring(i,str.length);
+    return str;
+}
+function RTrim(str)
+{
+    var i;
+    for(i=str.length-1;i&amp;gt;=0;i--)
+    {
+        if(str.charAt(i)!=\" \"&amp;amp;&amp;amp;str.charAt(i)!=\" \")break;
+    }
+    str=str.substring(0,i+1);
+    return str;
+}
+function Trim(str)
+{
+    return LTrim(RTrim(str));
+}&lt;/pre&gt;</content>
+  <contentx>//js去除空格函数
+//此处为string类添加三个成员
+String.prototype.Trim = function(){ return Trim(this);}
+String.prototype.LTrim = function(</contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

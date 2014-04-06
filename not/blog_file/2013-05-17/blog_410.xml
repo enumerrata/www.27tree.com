@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[CodeIgniter Disallowed Key Characters 的解决方法]]></title>
+  <content><![CDATA[<p>
+	相信很多人遇到 Disallowed Key Characters 这样的问题，即使是在访问 CSDN 的时候，因为 CSDN 的那部分网页是用 CI 写的，这个问题就出在 CI 的处理提交字符串的类上面。即使只是输入域名。没什么特殊字符，这问题还是如影随形，为什么呢？
+</p>
+<p>
+	&nbsp; &nbsp;这和 CI 的字符串处理类设计有关，是这样的，通过get、post方法提交的字符串，CI 都交给 system/core/Input.php 这个类去处理，那很多人就问了，看url并没有特殊符号，为什么也报这样的错误，因为你忽略了一点，cookie 和 session 传输的字符串，也是由这个类统一处理的，也就是说，get、post、cookie、session 的数据都是由这个类处理的，问题往往也出现在 cookie 和 session 上面，所以网上有很多人提供方法就是，清除一下缓存和 cookie ，确实就没问题了，但是隔一段时间就又有问题了，因为新生成的 cookie 里面含有不被匹配通过的字符串，该怎么解决呢？
+</p>
+<p>
+	&nbsp; &nbsp;解铃还需系铃人，既然问题出现在 Input.php 这个类上面，就修改他就好，把 _clean_input_keys 方法：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function _clean_input_keys($str)
+{
+    if ( ! preg_match(\"/^[a-z0-9:_\\/-]+$/i\", $str))
+    {
+        exit(\'Disallowed Key Characters.\');
+    }
+ 
+    // Clean UTF-8 if supported
+    if (UTF8_ENABLED === TRUE)
+    {
+        $str = $this-&gt;uni-&gt;clean_string($str);
+    }
+ 
+    return $str;
+}</pre>
+改为：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function _clean_input_keys($str)
+{
+    /*if ( ! preg_match(\"/^[a-z0-9:_\\/-]+$/i\", $str))
+    {
+        exit(\'Disallowed Key Characters.\');
+    }*/
+    $config = &amp;get_config(\'config\');  
+    if (!emptyempty($config[\'permitted_uri_chars\']))
+    {
+        if ( ! preg_match(\"/^[\".$config[\'permitted_uri_chars\'].\"]+$/i\", rawurlencode($str)))   
+        {   
+            exit(\'Disallowed Key Characters.\');   
+        }  
+    }
+ 
+    // Clean UTF-8 if supported
+    if (UTF8_ENABLED === TRUE)
+    {
+        $str = $this-&gt;uni-&gt;clean_string($str);
+    }
+ 
+    return $str;
+}</pre>
+然后把 config/config.php 里面的：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$config[\'permitted_uri_chars\'] = \'a-z 0-9~%.:_\\-\';</pre>
+改为：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$config[\'permitted_uri_chars\'] = \'\';<span style=\"font-family:\'sans serif\', tahoma, verdana, helvetica;font-size:12px;line-height:1.5;\"></span></pre>
+</p>]]></content>
+  <contentx><![CDATA[相信很多人遇到 Disallowed Key Characters 这样的问题，即使是在访问 CSDN 的时候，因为 CSDN 的那部分网页是用 CI 写的，这个问题就出在 CI 的处理提交字符串的类上面。即使只是输入域名。没什么特殊字]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

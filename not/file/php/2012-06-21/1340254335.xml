@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>三种方法实现跳转</title>
+<content>&amp;lt;p&amp;gt;
+	方法一：使用PHP自带函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Header(\"Location:网址\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明：必须在网页没有任何输出的时候执行，要特别要注意空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法二：利用meta
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"&amp;amp;lt;meta.&amp;nbsp;http-equiv=refresh&amp;nbsp;content=&amp;nbsp;0;&amp;nbsp;url=网址&amp;nbsp;&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明：没有方法一的限制，但是如果前面有输出，则输出的内容会闪烁一下然后进入跳转到的页面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法三：利用Javascript语言
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"&amp;amp;lt;script.&amp;nbsp;language=&amp;nbsp;javascript&amp;nbsp;&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"&amp;nbsp;location=&amp;nbsp;网址&amp;nbsp;;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;\"&amp;amp;lt;/script&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-21/1340254335.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

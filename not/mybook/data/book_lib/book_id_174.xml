@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[iOS开发实战体验]]></title>
+  <author>DevDiv移动开发社区</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-09 09:25:32</submit-date-time>
+  <img-link>d737e9348c7f38ca78a465811e6c288a.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	iOS是移动开发三大平台之一。本书是DevDiv移动开发社区版主、资深会员继成功推出《移动开发全平台解决方案——Android/iOS/Windows Phone》和《Windows Phone开发实战体验（应用+游戏）》后的又一力作。该书章节设置全面涵盖iOS应用开发技术要点，原创案例细致呈现作者实际开发经验。具体包括iOS开发框架、Object-C高级知识、MVC设计和Push消息、视图高级使用技巧、数据持久化、TableView使用、文件I/O、硬件和通信、iOS多媒体、定位和地图、网络编程、连接到互联网、多线程编程、2D和3D绘图编程、调试和优化等内容。
+</p>
+<p>
+	DevDiv覆盖移动开发主流平台Android、iOS、Windows Phone、Windows 8、HTML5和Symbian等，集资讯、论坛、博客、猎头服务、技术培训于一体，是国内最具人气的综合性移动开发社区。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

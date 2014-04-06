@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HTML5程序设计(第2版)]]></title>
+  <author>(荷) Lubbers，P.，(美) (Albers，B.)，(美) (Salim，F.)</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-18 19:37:14</submit-date-time>
+  <img-link>34edcf0a50e02e97ceefbd5051e6f212.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	超级畅销书《HTML5高级程序设计》升级版
+</p>
+<p>
+	引领下一代Web开发潮流
+</p>
+<p>
+	全面涵盖开创性HTML5 API
+</p>
+<p>
+	《深入HTML5编程(第2版)》首先介绍了HTML5的历史背景、新的语义标签及与以往HTML版本相比的根本变化，同时揭示了HTML5背后的设计原理。本书在上一版的基础上新增了SVG和拖放API相关内容，并对部分内容进行了更新。从第2章起，分别围绕构建令人神往的富Web 应用，逐一讨论了HTML5的Canvas、Geolocation、Communication、WebSocket、Forms、WebWorkers、Storage等API的使用，辅以直观明了的客户端和服务器端示例代码，让开发人员能够迅速理解和掌握新一代Web标准所涵盖的核心技术。《深入HTML5编程(第2版)》最后探索了离线Web应用并展望了HTML5未来的发展前景。 　　《深入HTML5编程(第2版)》面向有一定经验的Web应用开发人员，对HTML5及未来Web应用技术发展有浓厚兴趣的读者也可以学习参考。
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">作者简介</span></strong>
+</p>
+<p>
+	Peter Lubbers Kaazing技术交流资深总监，旧金山HTML5用户组创建人。作为HTML5和WebSocket的狂热爱好者，Peter经常在国际大会上发言，还在全球范围内开展HTML5的技术培训。在加盟Kaazing前，Peter在Oracle担任了近十年的资深信息架构师，获得过两项软件专利。 Brian Albers Kaazing研发中心副总裁。他有数十年的Web开发经验，曾在Oracle担任高级开发经理。Brian经常在Web 2.0博览会、AJAXWorld博览会和Web JavaOne等国际性会议上做讲演。 Frank Salim Kaazing的元老级工程师，曾参与过WebSocket网关和客户端策略项目。他毕业于波莫纳学院计算机专业，除了编程之外，还喜欢阅读、绘画和轮滑。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

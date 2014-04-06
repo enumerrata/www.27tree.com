@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Scaling CouchDB]]></title>
+  <author>Bradley Holt</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-01-05 14:19:18</submit-date-time>
+  <img-link>a23270976c8aea12ae759f576fc95cba.png</img-link>
+  <book-area>nosql</book-area>
+  <book-intro><![CDATA[<p>
+	A practical guide to web developers who need to scale their <strong>CouchDB database</strong> instances. The basic concepts behind CouchDB\'s scalability (i.e. its distributed shared nothing architecture) will be covered as well as: * Replicating using both Futon and CouchDB\'s RESTful API * Continuous replication * Conflict resolution * Load balancing * Clustering with CouchDB Lounge
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		<strong>Bradley Holt</strong> is a web developer and entrepreneur. He has ten years of experience with PHP and MySQL and started using CouchDB soon before version 1.0 was released. He is the co-founder of Found Line, a creative services firm located in Burlington, Vermont. He has been the primary organizer of his local PHP users group since its inception in 2007. He is a Board Member at Vermont Community Access Media (VCAM), a non-profit community media and technology center. He is a minor contributor of source code and bug reports to Zend Framework and an active member of the PHP community. He blogs at http://bradley-holt.com/ and can be found on Twitter as @BradleyHolt [http://twitter.com/BradleyHolt]
+	</p>
+	<p>
+		<br />
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

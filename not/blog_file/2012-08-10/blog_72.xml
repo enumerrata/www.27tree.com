@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-10 07:47:59</datetime>
+  <title>学习CSS,六个要点</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	1.&amp;nbsp;CSS的要点是在你的页面中使用简洁的HTML代码,然后编写CSS\"控制规则\"来样式化页面中的对象.页面保持清晰有条不紊看上去非常棒.这样你的Html页面可以在移动设备和标准浏览器中运行.这就是CSS的要点.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不过CSS的艺术在于能够利用CSS控制规则快速有效地操纵页面对象.把CSS规则与HTML标记匹配起来的操做就好像是一种对话:两者需要条理清楚且保持同步,否则的话他们将答非所问,搞得你头大.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	2.&amp;nbsp;常规操作还是灵活匹配:假设你要样式化页面中一个header,可选择操作有:
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	*用CSS规则h1{...定义所有的标记
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	*在对象实际位置进行样式定义,举个例子:位于标记&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;的内部,在定义的时候你应该这样p&amp;nbsp;b{...*针对某个特定的类型进行定义,为你想定义的标记添加class=\"myheader\",然后使用CSS规则&amp;nbsp;.myheader{...&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	*仅仅定义个别header,你可以为标记添加id=\"myheader\",然后使用CSS规则#myheader{...
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当然你也可通过不同的方式混合使用上面的规则:
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	要定义所有位于类型为\"magicform\"的表单中的类型为\"barleymash\"的标记,你可以这样form.magicform&amp;nbsp;h1.barleymash&amp;nbsp;{...
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	3.&amp;nbsp;获取目标:匹配规则出错会浪费很多的时间,这里有个小窍门:在打算实施你的规则之前,不妨先使用color:red;这个属性,它既书写简便又利于观察.&amp;nbsp;一旦你看到HTML页面中的文本变为红色,说明规则匹配正确.这时你会知道你的规则可以在文档中正确的部分生效,然后,删除color:red;替换成原来你想实施的规则语句.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	4.&amp;nbsp;掌握专利技术JM3&amp;nbsp;Gasbag&amp;nbsp;Model:一个CSS布局设计就好比一个装满对象的大袋子.每一个对象均能够对外施加压力(联想一下煤气泄露,如同你的布局设计)大多数情况下,压力表现出来(margins,&amp;nbsp;padding,以及float都是跟\"推\"密切相关的属性)通过修改CSS规则,你判断压力,在浏览器中观察你的页面好比是摇晃一下袋子,会显现出压力集中在什么区域产生影响,这就是CSS-管理压力对象保持平衡的秘密.对付压力,一次性应用过多的属性,冲突就会导致你的对象到处拥挤,对象相互之间以及袋子会被扎出许多洞来.页面漏洞百出,实在是没劲.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	5.&amp;nbsp;JM3&amp;nbsp;Gasbag&amp;nbsp;Model只适用于使用默认的CSS\"telative\"定位模式.当然也可能适用于\"absolute\"的定位模式(通过给定精确的坐标定位每个模块的布局方式),但是千万不要轻易这样做,一旦文本或者图象的数量有所变动它会花费你很长时间来重新布局并且使你的页面看上去很糟糕.只有那些怪异的出版设计师愿意那样做.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	6.&amp;nbsp;所谓技巧（hacks）其实是愚蠢的，你不需要他们：许多关于CSS的书都一再强调“要使你的页面跨浏览器运行，你应当学习很多“CSS技巧”。诸如此类都是废话。它对你来说毫无用处。
+&lt;/p&gt;</content>
+  <contentx>1. CSS的要点是在你的页面中使用简洁的HTML代码,然后编写CSS\"控制规则\"来样式化页面中的对象.页面保持清晰有条不紊看上去非常棒.这样你的Html页面可以在移动设备和标准浏览器中运行.这就是CSS的要点.
+
+
+	不过CSS的艺术在于能够利用CSS控制规则快速有效地操纵页面对象.把CSS规则与HTML标记匹配起来的操做就好像是一种对话:两者需要条理清楚</contentx>
+  <tags>_null_</tags>
+</root>

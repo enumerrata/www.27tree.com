@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>什么是DWR？</title>
+<content>&amp;lt;p&amp;gt;
+	亿柿网为您解答：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DWR（Direct&amp;amp;nbsp;Web&amp;amp;nbsp;Remoting）是一个用于改善web页面与Java类交互的远程服务器端Ajax开源框架，可以帮助开发人员开发包含AJAX技术的网站。这可不是DreamWaver啊。它可以允许在浏览器里的代码使用运行在WEB服务器上的JAVA函数，就像它就在浏览器里一样。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它包含两个主要的部分:允许JavaScript从WEB服务器上一个遵循了AJAX原则的Servlet中获取数据.另外一方面一个JavaScript库可以帮助网站开发人员轻松地利用获取的数据来动态改变网页的内容.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DWR采取了一个类似AJAX的新方法来动态生成基于JAVA类的JavaScript代码。这样WEB开发人员就可以在JavaScript里使用Java代码，就像它们是浏览器的本地代码(客户端代码)一样；但是Java代码运行在WEB服务器端而且可以自由访问WEB&amp;amp;nbsp;服务器的资源。出于安全的理由，WEB开发者必须适当地配置哪些Java类可以安全的被外部使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个从JAVA到JavaScript的远程功能方法给DWR的用户带来非常像传统的RPC机制,就像RMI或者SOAP一样,而且拥有运行在WEB上但是不需要浏览器插件的好处.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DWR不认为浏览器/WEB服务器协议是重要的,而更乐于保证编程界面的简单自然.对此最大的挑战就是把AJAX的异步特性和正常JAVA方法调用的同步特性相结合.在异步模式下,结果数据在开始调用之后的一段时间之后才可以被异步访问获取到.DWR允许WEB开发人员传递一个回调函数,来异步处理Java函数调用过程.　　另处&amp;amp;nbsp;.dwr还是文件的一种格式：&amp;amp;nbsp;比如以Dreamweaver软件里有查找和替换，经常用的查找和替换内容可以保存，保存的文件就是以&amp;amp;nbsp;.dwr结尾的文件。这种文件用记事本打开后可以看到它的内容。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-30/1341026689.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

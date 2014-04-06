@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP 5.4 数组新特性 JavaScript式数组声明]]></title>
+  <content><![CDATA[<p>
+	自 5.4 起可以使用短数组定义语法，用 [] 替代 array()。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+$array = array(
+    \"foo\" =&gt; \"bar\",
+    \"bar\" =&gt; \"foo\",
+);
+
+// 自 PHP 5.4 起
+$array = [
+    \"foo\" =&gt; \"bar\",
+    \"bar\" =&gt; \"foo\",
+];
+?&gt;</pre>
+	<p>
+		key 可以是 integer 或者 string。value 可以是任意类型。
+	</p>
+	<p>
+		<br />
+	</p>
+此外 key 会有如下的强制转换：
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\">包含有合法整型值的字符串会被转换为整型。例如键名 \"8\" 实际会被储存为 8。但是 \"08\" 则不会强制转换，因为其不是一个合法的十进制数值。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">浮点数也会被转换为整型，意味着其小数部分会被舍去。例如键名 8.7 实际会被储存为 8。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">布尔值也会被转换成整型。即键名 true 实际会被储存为 1 而键名 false 会被储存为 0。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Null 会被转换为空字符串，即键名 null 实际会被储存为 \"\"。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">数组和对象不能被用为键名。坚持这么做会导致警告：Illegal offset type。</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+</p>]]></content>
+  <contentx><![CDATA[自 5.4 起可以使用短数组定义语法，用 [] 替代 array()。
+
+
+&lt;?php
+$array = array(
+    \"foo\" =&gt; \"bar\",
+    \"bar\" =&gt; \"foo\",
+)]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

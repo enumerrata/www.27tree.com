@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用PHP和GZip压缩网站JS/CSS文件加速网站访问速度</title>
+<content>&amp;lt;p&amp;gt;
+	一些泛WEB&amp;nbsp;2.0网站为了追求用户体验，可能会大量使用CSS和JS文件。这就导致在服务器带宽一定的情况下，多用户并发访问速度变慢。如何加快网页响应速度？解决办法之一就是：依照Yahoo性能优化小组提出的N条性能优化建议对前端程序进行优化和重构，关于此文的讨论很多，在这里不再赘述。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这篇文章主要分享一下我个人在实际项目中，对于使用PHP对JS和CSS进行压缩的经验，在这里假设服务器仅支持GZIP压缩，不支持.htaccess（符合很多站长的租用的虚拟主机实际情况）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先说说对CSS和JS文件进行性能优化的几个小技巧：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将多个CSS/JS文档合并成一个文件，以减少HTTP请求
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对合并后的文件进行文档压缩，比如分别使用js&amp;nbsp;compressor和CSS&amp;nbsp;compress
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果使用到一些主流的JavaScript框架，比如JQuery，&amp;nbsp;Mootools或者YUI，强烈推荐直接使用Google&amp;nbsp;AJAX&amp;nbsp;Library以外部链接的形式导入基库。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最后，就是本文所提到的，使用GZIP在服务器端对JS/CSS文档进行压缩。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里提到的方法对系统来说是无侵入式的，也就是说不管你的程序是新编写的，还是已经上线了很久，均适用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	先看我对图标吾爱进行优化的实例截图（YSlow）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/upimg/allimg/090830/2034080.gif\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在这个例子中，我分别对服务器输出的HTML文档、JS文档和CSS文档使用了GZIP压缩，可以看到压缩效果非常明显，文件体积减小了70%以上。页面加载速度明显加快。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实际上，用PHP使用GZIP压缩非常简单，其核心是使用ob_gzhandler，不过需要注意的一点是，并不是所有浏览器都支持GZIP传送到客户端的数据，所以要进行一定的容错处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面是使用PHP通过GZIP压缩CSS的实例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在存放CSS的文件夹中新建一个style.php文件，在此文件中加入以下代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;if(extension_loaded(&amp;nbsp;zlib&amp;nbsp;)){//检查服务器是否开启了zlib拓展
+ob_start(&amp;nbsp;ob_gzhandler&amp;nbsp;);
+}
+header&amp;nbsp;(\"content-type:&amp;nbsp;text/css;&amp;nbsp;charset:&amp;nbsp;gb2312\");//注意修改到你的编码
+header&amp;nbsp;(\"cache-control:&amp;nbsp;must-revalidate\");
+$offset&amp;nbsp;=&amp;nbsp;60&amp;nbsp;*&amp;nbsp;60&amp;nbsp;*&amp;nbsp;24;//css文件的距离现在的过期时间，这里设置为一天
+$expire&amp;nbsp;=&amp;nbsp;\"expires:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;gmdate&amp;nbsp;(\"D,&amp;nbsp;d&amp;nbsp;M&amp;nbsp;Y&amp;nbsp;H:i:s\",&amp;nbsp;time()&amp;nbsp;+&amp;nbsp;$offset)&amp;nbsp;.&amp;nbsp;\"&amp;nbsp;GMT\";
+header&amp;nbsp;($expire);
+ob_start(\"compress\");
+function&amp;nbsp;compress($buffer)&amp;nbsp;{//去除文件中的注释
+$buffer&amp;nbsp;=&amp;nbsp;preg_replace(&amp;nbsp;!/\\*[^*]*\\*+([^/][^*]*\\*+)*/!&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;,&amp;nbsp;$buffer);
+return&amp;nbsp;$buffer;
+}
+&amp;nbsp;
+//包含你的全部css文档
+include(&amp;nbsp;global.css&amp;nbsp;);
+include(&amp;nbsp;layout.css&amp;nbsp;);
+&amp;nbsp;
+if(extension_loaded(&amp;nbsp;zlib&amp;nbsp;)){
+ob_end_flush();//输出buffer中的内容，即压缩后的css文件
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你处理的是JavaScript文件，你需要将上面代码中的第5行的Content-type修改成以下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;header&amp;nbsp;(\"content-type:application/x-javascript;&amp;nbsp;charset:&amp;nbsp;gb2312\");&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	同样需要注意的是文件的编码，这里我用的是gb2312，如果你采用的是&amp;lt;strong&amp;gt;UTF-8&amp;lt;/strong&amp;gt;或其他编码，修改成对应的即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	修改完成之后，在原引入CSS和JS文件的地方，将.css后缀/.js后缀的文件更换成这个style.php文件即可，如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"http://www.icon52.net/scripts/autoSuggest.js.php?v=121&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于上面代码中使用到了HTTP的Expires（过期）属性用于在客户端缓存CSS/JS代码，所以，如果过期时间设置的太长（比如2020&amp;nbsp;年），当你在服务器端修改了JS/CSS代码时，客户端可能不会立即生效。解决办法是：在php文件后面添加一个随机参数，如上面例子中的v=121，当下次修改了文件时，记得相应修改此随机参数即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-09/1336565625.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

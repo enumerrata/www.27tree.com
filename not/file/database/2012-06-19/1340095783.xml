@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MYSQL与SQLITE重置AUTO_INCREMENT初始值</title>
+<content>&amp;lt;p&amp;gt;
+	MYSQL重置AUTO_INCREMENT初始值的方法很简单
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可就是SQLITE的重置方法在国内还极少人有记载（至少本人找了很久没找到）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	于是到美国漫游了一下，终于功夫不负有心人……
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQLITE&amp;nbsp;AUTO_INCREMENT&amp;nbsp;复位：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DELETE&amp;nbsp;FROM&amp;nbsp;sqlite_sequence&amp;nbsp;WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;&amp;nbsp;your_table_name&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MYSQL&amp;nbsp;AUTO_INCREMENT&amp;nbsp;复位：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ALTER&amp;nbsp;TABLE&amp;nbsp;your_table_name&amp;nbsp;AUTO_INCREMENT&amp;nbsp;=&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340095783.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <command command-code="AC_writeCode" cn="0">抓去写一万行代码</command>
+    <command command-code="AC_doAnyview" cn="1">抓去做AnyView</command>
+    <command command-code="AC_suffInBar" cn="2">带去网吧上网</command>
+</root>

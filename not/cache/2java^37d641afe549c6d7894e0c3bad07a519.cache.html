@@ -1,0 +1,442 @@
+<__cache@1389696242-@1389699842@2java__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            JAVA_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=java />
+                    <input type="hidden" id="pages" value=2/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/java/'>JAVA</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/java.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">Java是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由Sun Microsystems公司于1995年5月推出的Java程序设计语言和Java平台（即JavaSE, JavaEE, JavaME）的总称。Java 技术具有卓越的通用性、高效性、平台移植性和安全性，广泛应用于个人PC、数据中心、游戏控制台、科学超级计算机、移动电话和互联网，同时拥有全球最大的开发者专业社群。在全球云计算和移动互联网的产业环境下，Java更具备了显著优势和广阔前景。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-19/1340075902.html">
+        &nbsp;JavaBean使用技巧    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/73">%E5%90%8E%E8%A7%89%E3%82%9B</a>:&nbsp;怎么转载和分享</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-13/1339599144.html">
+        &nbsp;JVM内存分配机制    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;sdadasd</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-27/1340804315.html">
+        &nbsp;利用URLConnection读取HTTP头信息    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;呵呵</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/java-basejava/" class="borderR15 sband">开发基础</a><a href="/art/java-netjava/" class="borderR15 sband">网络编程</a><a href="/art/java-jdbc/" class="borderR15 sband">JDBC/JDO</a><a href="/art/java-thread/" class="borderR15 sband">多线程</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-15/1337035910.html>Java 语言中的 volatile 变量</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Java 语言中的 volatile 变量可以被看作是一种 “程度较轻的 synchronized”；与 synchronized 块相比，volatile 变量所需的编码较少，并且运行时开销也较少，但是它所能实现的功能也仅是 synchronized 的一部分。本文介绍了几种有效使用 volatile 变量的模式，并强调了几种不适合使用 volatile ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(634)</span>
+                           <em>2012年5月15日 06:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336781391.html> Android访问php取回json数据</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">php代码：
+
+
+$array = array(
+  \'username\'=&gt;\'杨铸\',
+  \'password\'=&gt;\'123456\',
+  \'user_id\'=&gt;1
+);
+echo json_encode($array); 
+Java代码:
+
+
+private void startUrlCheck(String username,Stri...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(435)</span>
+                           <em>2012年5月12日 08:08</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336781161.html>JAVASE官方教程:继承之重写和隐藏方法(7)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">实例方法 
+
+
+	一个与父类中的实例方法有相同标签(名字,参数个数和类型)和返回类型的子类实例方法会重写父类中的方法.
+
+
+	子类重写的方法具有修改对象的行为的能力,他也可以返回被重写方法返回类型的子类型.这叫做协变返回类型(covariant return type).
+
+
+	在重写某个方法时,你可能想用@Override注解来告诉编译器你打算重写父类中的...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(610)</span>
+                           <em>2012年5月12日 08:05</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336781117.html>JAVASE官方教程:继承之概述(6)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在前面的课程中,你多次看到继承被提及.在java语言中,类可以派生于其它的类,包括其它类中的属性和方法.
+
+
+	声明:
+
+
+	继承类叫做子类(也叫做派生类,扩展类).被继承的类叫做超类(也叫做基类,父类).
+
+
+	除了Object没有父类,其它的类都有且只有一个父类(单继承).在定义一个类时若没有父类,则隐含继承Object,每一个类都是Object类的子类...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(452)</span>
+                           <em>2012年5月12日 08:03</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336780664.html>JAVASE官方教程:接口之重写接口(5)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">考虑你曾经开发的某个接口DoIt:
+
+
+public interface DoIt {
+   void doSomething(int i, double x);
+   int doSomethingElse(String s);
+}
+
+
+	假如,在将来的某个时候,你想为接口增加第三个方法,所以接口变成了:
+
+
+public interface DoIt {...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(556)</span>
+                           <em>2012年5月12日 07:56</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336780589.html>JAVASE官方教程:接口之把接口作为类型使用(4)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">当你定义了一个接口,你也定义了一种引用数据类型(reference data type).你可以在任何可以使用其他数据类型名的地方使用接口名称.如果你定义了一个接口类型的变量,你只能用实现了这个接口的类的实例来给他赋值.
+
+
+	例如,有一个在两个对象之中找出最大的方法,每一个对象都必须从实现了Relatable的类实例化:
+
+
+public Object f...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(525)</span>
+                           <em>2012年5月12日 07:55</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336780533.html>JAVASE官方教程:接口之实现接口(3)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在你的类声名中包含一个implements子句用来实现一个接口.一个类可以在implements关键字后跟一个以逗号分隔的接口列表来实现多个接口
+
+
+	.按照惯例,implements子句跟在extends子句后(如果有).
+
+
+	一个例子,Relatable:
+
+
+public interface Relatable {
+	
+   // this (调用i...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(786)</span>
+                           <em>2012年5月12日 07:54</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-12/1336780408.html>JAVASE官方教程:接口之定义接口(2)</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一个接口的声明由修饰符,关键字interface,接口名,一个逗号分隔的父接口列表(如果有),和接口体组成.例如:
+
+
+public interface GroupedInterface extends Interface1,
+                                        Interface2, Interface3 {
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(482)</span>
+                           <em>2012年5月12日 07:53</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-11/1336668317.html>Android Xml解析</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在Android程序中，Xml解析与Java中几乎相同，最常用的有SAX，DOM，PULL 三种解析方式。Android中内置了pull解析方式。这也是android推荐的解析方式。下面我们就看下这三种的用法，与不同
+
+
+	
+
+
+	1）SAX：（Simple API for XML）这种解析方式基于事件的模型。通俗的讲就是XML文件在加载的过程中，加载到不同...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(379)</span>
+                           <em>2012年5月11日 00:44</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-08/1336479388.html>打印JAVA虚拟机的系统属性</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">/**
+*打印JAVA虚拟机的系统属性
+*/
+import java.util.*;
+class  Jproperties
+{
+public static void main(String[] args)
+{
+ Properties p = System.getProperties();
+ Enumeration e = p.propertyNames();...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(554)</span>
+                           <em>2012年5月8日 20:14</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-06/1336310452.html>JAVASE官方教程接口之把接口作为类型使用</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">当你定义了一个接口,你也定义了一种引用数据类型(reference data type).你可以在任何可以使用其他数据类型名的地方使用接口名称.如果你定义了一个接口类型的变量,你只能用实现了这个接口的类的实例来给他赋值.
+
+
+	例如,有一个在两个对象之中找出最大的方法,每一个对象都必须从实现了Relatable的类实例化:
+
+
+	Java代码:
+
+
+	
+
+p...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(510)</span>
+                           <em>2012年5月6日 21:20</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-06/1336309956.html>JDBC连接数据库经验技巧集萃</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Java数据库连接（JDBC）由一组用 Java 编程语言编写的类和接口组成。JDBC 为工具/数据库开发人员提供了一个标准的 API，使他们能够用纯Java API 来编写数据库应用程序。
+
+
+	然而各个开发商的接口并不完全相同，所以开发环境的变化会带来一定的配置变化。本文主要集合了不同数据库的连接方式。
+
+
+	一、连接各种数据库方式速查表
+
+
+	下面罗列...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(498)</span>
+                           <em>2012年5月6日 21:11</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-05-06/1336309621.html>如何快速学习Java</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">1．如何学习程序设计？
+
+
+	JAVA是一种平台，也是一种程序设计语言，如何学好程序设计不仅仅适用于JAVA，对C++等其他程序设计语言也一样管用。有编程高手认 为，JAVA也好C也好没什么分别，拿来就用。为什么他们能达到如此境界？我想是因为编程语言之间有共通之处，领会了编程的精髓，自然能够做到一通百通。 如何学习程序设计理所当然也有许多共通的地方。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(446)</span>
+                           <em>2012年5月6日 21:06</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>JAVA</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/276">
+    <img src="/not/mybook/data/book_image_lib/092520c99b42d47535bd799789bc8ea2.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/276">
+    《OSGi实战》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/198">
+    <img src="/not/mybook/data/book_image_lib/default/pdfDefault.png_vbook128" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/198">
+    《Servlet 3.0实战：异步Servlet与Comet风格应用程序》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/17">
+    <img src="/not/mybook/data/book_image_lib/8cddb9a8790f0ac8cb9874c04482a4c3.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/17">
+    《JAVA编程思想》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/91">
+    <img src="/not/mybook/data/book_image_lib/18898c46968994dab395e1e3a9abe9d1.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/91">
+    《Java2入门经典》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/144">
+    <img src="/not/mybook/data/book_image_lib/4185312271afce9c77c70a5dc4926a0e.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/144">
+    《精通Spring——开发专家之Sun ONE》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=3 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/java/0'>1</a></li><li><a href='http://www.27tree.com/art/java/1'>2</a></li><li><a href='http://www.27tree.com/art/java/2'>3</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

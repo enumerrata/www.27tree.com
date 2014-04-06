@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用MySQLi中的预处理，防止SQL注入攻击</title>
+<content>&amp;lt;p&amp;gt;
+	使用MySQLi中的预处理，可以很好的防止SQL注入攻击。Mysqli中的预处理使用“？”作为占位符，传进数据库的不会被当作SQL语句来执行，只会被当作字符串来处理。所以使用Mysqli的预处理更加安全，另外使用预处理效率更高，速度更快。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	直接看代码，其中的数据库比较简单，这里就不说明数据库的建立了。另外大部分需要注意事项已经写在代码注释中了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;/*
+*		使用MySQLi预处理示例Demo
+*/
+header(\"Content-type:&amp;nbsp;text/html;&amp;nbsp;charset=utf-8\");&amp;nbsp;&amp;nbsp;&amp;nbsp;//设置页面编码为UTF-8
+$conn&amp;nbsp;=&amp;nbsp;new&amp;nbsp;mysqli&amp;nbsp;(&amp;nbsp;localhost&amp;nbsp;,&amp;nbsp;root&amp;nbsp;,&amp;nbsp;password&amp;nbsp;,&amp;nbsp;test&amp;nbsp;);&amp;nbsp;&amp;nbsp;//连接数据库
+
+&amp;nbsp;if&amp;nbsp;(mysqli_connect_errno())&amp;nbsp;{
+//检查连接错误
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;printf(\"连接失败:&amp;nbsp;%s&amp;amp;lt;br&amp;amp;gt;\",&amp;nbsp;mysqli_connect_error());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;exit();
+}
+//INSERT语句&amp;nbsp;Demo
+
+/*
+	向数据库中插入多条记录，使用prepare()预处理语句只需要声明一条SQL命令，
+	并向MYSQL数据库服务器发送一次，以后插入记录的时候，只要改变参数即可
+*/
+$sql&amp;nbsp;=&amp;nbsp;\"insert&amp;nbsp;into&amp;nbsp;empinfo(name,address,phone)&amp;nbsp;values&amp;nbsp;(?,?,?)\";&amp;nbsp;&amp;nbsp;//声明SQL语句
+
+$stmt&amp;nbsp;=&amp;nbsp;$conn&amp;nbsp;-&amp;amp;gt;prepare($sql);&amp;nbsp;&amp;nbsp;//使用prepare()方法对打算执行SQL语句进行处理
+//将3个占位符号（?）对应的参数绑定到3个PHP变量中
+$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;bind_param(&amp;nbsp;sss&amp;nbsp;,$name,$address,$phone);
+
+$name&amp;nbsp;=&amp;nbsp;\"陈某某\";	//为第一个参数绑定值
+$address&amp;nbsp;=&amp;nbsp;\"雁塔区\";//为第二个参数绑定值
+$phone&amp;nbsp;=&amp;nbsp;\"15637892345\";//为第三个参数绑定值
+$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;execute();//执行预处理的SQL命令，向服务器发送数据
+echo&amp;nbsp;\"插入的函数：\".$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;affected_rows.\"&amp;amp;lt;br&amp;amp;gt;\";//返回插入行数
+echo&amp;nbsp;\"自动增长的ID到：\".$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;insert_id.\"&amp;amp;lt;br&amp;amp;gt;\";//返回最后生成的AUTO_INCREMENT值
+
+//以下几条代码重新为参数赋值，可以随时重复这个过程继续插入记录。
+$name&amp;nbsp;=&amp;nbsp;\"杨某某\";
+$address&amp;nbsp;=&amp;nbsp;\"临潼区\";
+$phone&amp;nbsp;=&amp;nbsp;\"15678953421\";
+$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;execute();
+echo&amp;nbsp;\"插入的函数：\".$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;affected_rows.\"&amp;amp;lt;br&amp;amp;gt;\";//返回插入行数
+echo&amp;nbsp;\"自动增长的ID到：\".$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;insert_id.\"&amp;amp;lt;br&amp;amp;gt;\";//返回最后生成的AUTO_INCREMENT值
+
+$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;close();&amp;nbsp;//释放mysqli_stmt对象占用的资源
+/*
+	使用上边的方法可以执行INSERT、UPDATE、DELETE命令。在命令执行之后，可以通过
+	mysqli_stmt对象中的affected_rows属性返回影响的记录数。如果是INSERT命令，也可以
+	通过MySQLi对象中的insert_id属性返回最后生成的auto_increment值。
+*/
+
+//SELECT&amp;nbsp;Demo
+$sql&amp;nbsp;=&amp;nbsp;\"select&amp;nbsp;name,address,phone&amp;nbsp;from&amp;nbsp;empinfo\";
+
+if($stmt&amp;nbsp;=&amp;nbsp;$conn-&amp;amp;gt;prepare($sql)){	//打算执行SQL语句
+
+	$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;execute();		//执行SQL语句
+
+	$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;store_result();	//取出全部查询结果
+
+	echo&amp;nbsp;\"&amp;amp;lt;br&amp;amp;gt;记录个数：\".$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;num_rows.\"行.&amp;amp;lt;br&amp;amp;gt;\";	//输出查询的记录个数
+
+	$stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;bind_result&amp;nbsp;($name,$address,$phone);	//将查询结果绑定到变量中
+
+	while&amp;nbsp;($stmt&amp;nbsp;-&amp;amp;gt;&amp;nbsp;fetch()){		//逐条从MySQL服务器中取出数据
+		printf(\"%s&amp;nbsp;(%s,%s)&amp;amp;lt;br&amp;amp;gt;\",$name,$address,$phone);		//格式化结果输出
+	}
+
+	$stmt&amp;nbsp;-&amp;amp;gt;close();	//释放mysqli_stmt对象占用的资源
+}
+$conn&amp;nbsp;-&amp;amp;gt;&amp;nbsp;close();	//关闭与MySQL数据库的连接
+&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-13/1339544421.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

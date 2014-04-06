@@ -1,0 +1,107 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">HTML 脚本</h1>
+</div>
+<div>
+
+<p><b>向 HTML 添加脚本（Script），使其动态性和交互性更强。</b></p>
+
+<h1>将脚本插入 HTML 页</h1>
+
+<p>HTML 中的脚本使用 &lt;script&gt; 标签进行定义。请注意你可以使用 type 属性来指定脚本语言。</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;script type="text/javascript"&gt;<br />
+document.write("Hello World!")<br />
+&lt;/script&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>上面的脚本输出以下结果：</p>
+<p>Hello World!</p>
+
+<h1>如何应付老式的浏览器</h1>
+
+<p>如果浏览器压根没法识别 &lt;script&gt; 标签，那么 &lt;script&gt; 标签所包含的内容将以文本方式显示在页面上。为了避免这种情况发生，你应该将脚本隐藏在注释标签当中。那些老的浏览器（无法识别 &lt;script&gt; 标签的浏览器）将忽略这些注释，所以不会将标签的内容显示到页面上。而那些新的浏览器将读懂这些脚本并执行它们，即使代码被嵌套在注释标签内。</p>
+
+<p><b>实例</b></p>
+
+<h2>JavaScript:</h2>
+
+<code>
+&lt;script type="text/javascript"&gt;<br />
+&lt;!--<br />
+document.write("Hello World!")<br />
+//--&gt;<br />
+&lt;/script&gt;
+</code>
+
+<h2>VBScript:</h2>
+
+<code>
+&lt;script type="text/vbscript"&gt;<br />
+&lt;!--<br />
+document.write("Hello World!")<br />
+'--&gt;<br />
+&lt;/script&gt;
+</code>
+
+<h1>&lt;noscript&gt; 标签</h1>
+
+<p>除了将脚本隐藏于注释中，你还可以添加 &lt;noscript&gt; 标签。&lt;noscript&gt; 标签用于定义假如脚本没有执行时的替代文本。这个标签被用于以下情况：如果浏览器能够识别 &lt;script&gt; 标签，但是不支持其中的脚本，那么这些浏览器将显示出 &lt;noscript&gt; 标签内部的文本。不过，如果浏览器支持 &lt;script&gt; 内的脚本，那么浏览器将忽略 &lt;noscript&gt; 标签。</p>
+
+<h2>JavaScript:</h2>
+
+<code>
+&lt;script type="text/javascript"&gt;<br />
+&lt;!--<br />
+document.write("Hello World!")<br />
+//--&gt;<br />
+&lt;/script&gt;<br />
+&lt;noscript&gt;Your browser does not support JavaScript!&lt;/noscript&gt;
+</code>
+
+<h2>VBScript:</h2>
+
+<code>
+&lt;script type="text/vbscript"&gt;<br />
+&lt;!--<br />
+document.write("Hello World!")<br />
+'--&gt;<br />
+&lt;/script&gt;<br />
+&lt;noscript&gt;Your browser does not support VBScript!&lt;/noscript&gt;
+</code>
+
+<table class="dataintable">
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>&lt;script&gt;</td>
+<td>定义脚本。</td>
+</tr>
+<tr>
+<td>&lt;noscript&gt;</td>
+<td>定义在脚本无法执行的情况下的替代文本。</td>
+</tr>
+<tr>
+<td>&lt;object&gt;</td>
+<td>定义嵌入的对象。</td>
+</tr>
+<tr>
+<td>&lt;param&gt;</td>
+<td>为对象定义 run-time 设置(参数)。</td>
+</tr>
+<tr>
+<td>&lt;applet&gt;</td>
+<td>不赞成使用。请使用 &lt;object&gt;。</td>
+</tr>
+</table>
+</div>

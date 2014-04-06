@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Qita短网址API]]></title>
+  <content><![CDATA[<p>
+	APIGET and POST 双接口：http://qita.in/_app.php 参数url:长网址1.简单模式
+</p>
+<p>
+	请求 qita.in/_app.php?type=text&amp;url=http://www.baidu.com 返回txt明文
+</p>
+<p>
+	http://qita.in/bFG2.json
+</p>
+<p>
+	请求 qita.in/_app.php?url=http://www.baidu.com 返回json数据 status=0 表示成功
+</p>
+<p>
+	{\"short\":\"http:\\/\\/qita.in\\/bFG\",\"status\":\"0\"}3.jsonp
+</p>
+<p>
+	请求方式同json，要指定callback,例如:qita.in/_app.php?url=http://www.baidu.com&amp;callback=qita
+</p>
+<p>
+	qita({\"short\":\"http:\\/\\/qita.in\\/bFG\",\"status\":\"0\"})在jQuery中使用的例子:
+</p>
+<p>
+	$.getJSON(\'http://qita.in/_app.php?url=\' + encodeURIComponent(\'http://baidu.com\')+\'&amp;callback=?\',function(data){
+</p>
+<p>
+	alert(data.short);
+</p>
+<p>
+	});
+</p>
+<p>
+	在PHP中使用的例子:
+</p>
+<p>
+	$content = file_get_contents(\"http://qita.in/_app.php?type=text&amp;url=\" . urlencode(\'http://www.baidu.com\'));
+</p>
+<p>
+	echo $content;
+</p>]]></content>
+  <contentx><![CDATA[
+	APIGET and POST 双接口：http://qita.in/_app.php 参数url:长网址1.简单模式
+
+
+	请求 qita.in/_app.php?type=text&amp;url=http://www.baidu.]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-09 15:34:11</datetime>
+  <title>CSS清除浮动的三个方法</title>
+  <content>&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&gt;.clr&amp;nbsp;{clear:&amp;nbsp;both;}&lt;/pre&gt;
+一般在要清除的位置插入&amp;lt;div&amp;nbsp;class=\"clr\"&amp;gt;&amp;lt;/div&amp;gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&gt;#layout&amp;nbsp;{overflow:auto;&amp;nbsp;zoom:1;}&lt;/pre&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&gt;#layout:after{
+display:&amp;nbsp;block;
+clear:&amp;nbsp;both;&amp;nbsp;content:&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+visibility:hidden;&amp;nbsp;height:&amp;nbsp;0;
+}&lt;/pre&gt;
+&lt;/p&gt;</content>
+  <contentx>.clr {clear: both;}
+一般在要清除的位置插入&lt;div class=\"clr\"&gt;&lt;/div&gt;
+
+	
+
+
+	
+
+
+#layout {overflow:auto; zoom:1;}
+#layout:after{
+display: block;
+clear: both; content: \'\';
+visibility:hid</contentx>
+  <tags>_null_</tags>
+</root>

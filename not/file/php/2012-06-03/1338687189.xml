@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>影响PHP+MySQL网站打开速度的几个因素</title>
+<content>&amp;lt;p&amp;gt;
+	最近经常听朋友说网站打开很慢，导致每天会损失很多IP。网站打开速度慢，原因是多方面的，除去网络本身的原因不说，服务器及程序本身的原因也是影响网站打开慢的重要原因。下面结合自己的一些经验，谈谈PHP+MySQL网站的哪些因素会影响网站打开慢。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1、数据库表结构不合理&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在创建MySQL数据库表时，把经常作为查询条件的字段设置为索引，这样可以提高数据的查询速度，从而提高网站的打开速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2、数据库查询语句不合理&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对&amp;nbsp;于PHP+MySQL动态网站，经常使用数据库select操作。在使用select操作时，切忌不要轻易使用select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;tablename，因为这样的查询速度慢，并会占用较多内存，影响PHP程序的整体运行速度，进而影响网站的打开速度。建议使用针对特定字段&amp;nbsp;select查询语句，例如&amp;nbsp;select&amp;nbsp;fieldname&amp;nbsp;from&amp;nbsp;tablename。这样的查询方式会降低MySQL执行时间，提高效率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;3、PHP程序冗余&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	搭建PHP+MySQL网站时，会发现有些程序中存在大量冗余，延长了程序执行时间。例如重复的SQL查询操作，反复的变量赋值等。出现这样的情况时，最好找专业人士帮你优化一下程序，提高程序整体运行时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;4、PHP程序大量读写磁盘&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有&amp;nbsp;些PHP+MySQL网站程序会大量执行磁盘的读写操作，尤其是磁盘的写操作，将占用大量的磁盘IO，导致程序运行缓慢。情况严重的还会使服务器死机。当&amp;nbsp;遇到这样情况时，应尽量减少不必要的磁盘写操作，并且对磁盘进行相关优化操作，例如磁盘整理，从而提高磁盘整体运行效率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;5、尽量使用静态页面&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在使用PHP+MySQL搭建网站时，尽量使用可以生成静态页面的开源程序，例如DEDECMS。打开静态页面的时间远小于打开动态页面的时间，因为静态页面中不存在上面提到的4点原因。但是它会使你消耗比较多的磁盘空间，因为生成的静态页面将占用大量磁盘空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;6、网页上存在大量图片或flash&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果网页上存在大量图片或flash时，也会影响网站的打开速度。减少网页上的图片或flash，或者优化减小图片的大小，以提高网页的打开速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;7、服务器软件&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	之前遇到一个朋友在VPS上了装了好几个防火墙，VPS服务器是安全了，但是网页的打开速度很慢。尽量避免在VPS或者独立服务器上安装不必要的软件，防止服务器运行速度慢，导致网站打开速度慢。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;8、网页上存在大量JS代码&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	大量的JS代码也是引起网站打开速度慢的一个重要原因，尤其是一些不知名的联盟广告代码，对网站打开速度的影响非常明显。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;9、过多的引用了其他网站内容&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	包括你引用其他网站的图片、视频文件等，如果直接在页面引用别的网站的东西，而那个网站的速度又慢，或者那个网站的该页面已经不存在了，那么你打开的速度就会非常慢。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面结合笔者实际体会分析了PHP+MySQL网站打开速度慢的各个因素，站长在实际建站的过程中应该结合自己的实际情况进行分析排查，尽可能提高网站打开速度。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-03/1338687189.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

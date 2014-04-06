@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<comment-list>
+	<num>6</num>
+ 
+<c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-14 22:26:49</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-05-16/1337143520.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;揭秘：C++编译器的函数编译流程&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-14 22:27:09</date-c>
+  <conf-c>s</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-05-16/1337143520.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;揭秘：C++编译器的函数编译流程&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-15 00:20:09</date-c>
+  <conf-c>C语言的位运算功能是其区别于其他大多数高级程序设计语言的特色之一，用它可以方便实现一些特殊功能，灵活掌握是用C程序编写系统程序的基础。&amp;nbsp;</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-06-14/1339661096.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;在Ｃ语言使用位运算实现循环移位&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-21 08:28:08</date-c>
+  <conf-c>这种宏定义实际上是一个非常有用的功能</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-06-12/1339500256.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;Objective-C在LLVM 3.1中的新特性&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <date-c>2012-07-03 22:30:00</date-c>
+  <conf-c>dsfsdsdsd</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-05-19/1337358990.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;C语言复习资料2&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <date-c>2012-07-18 18:07:41</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <url-c>http://www.itsrcs.com/art/c/content/2012-07-03/1341277416.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;C++程序员进阶必读书本列举&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

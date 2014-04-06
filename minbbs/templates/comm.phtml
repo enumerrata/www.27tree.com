@@ -1,0 +1,33 @@
+<div class="atr bbs-tips-items borderR5">
+    <?php if ($template['owner']) echo "<a class=\"delPostCommButton\" style=\"position:absolute;right:10px;top:10px;\" href=\"javascript:;\" rel=\"$template[index]\">删除</a>"; ?>
+    <div class="tip-top-left">
+        <a class="headwapper" href="/user/<?php echo $template['comment_uid']; ?>">
+            <img src="<?php echo $template['comment_head-img']; ?>_64x" class="block" height="64px" width="64px" />
+        </a>
+        <span class="comm-username">
+            <a href="/user/<?php echo $template['comment_uid']; ?>">
+                <?php echo $template['comment_username']; ?>
+            </a>
+        </span>
+    </div>
+    <div class="tip-top-right">
+        <div class="tip-content">
+            <?php echo $template['comment_content']; ?>
+            <div class="cms">
+                <?php
+                if (is_array($template['sub'])) {
+                    foreach ($template['sub'] as $index => &$subc) {
+                        $subc['index'] = $index;
+                        include 'subComm.phtml';
+                    }
+                }
+                ?>
+            </div>
+        </div>
+        <div class="tip-content-info">
+            <span class="comm-date">跟帖发表于 : <?php echo $template['comment_date_time']; ?></span>
+            <?php if ($showRepButton) echo "<a href=\"javascript:;\" onclick=\"javascript:rep(this,1);\" rel=\"{$template['index']}\" actUID=\"{$template['comment_uid']}\">回复</a>"; ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[好学的Objective-C]]></title>
+  <author>德沃</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-02-04 10:27:00</submit-date-time>
+  <img-link>4bb14984911db39e64e8403c56caf571.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	《好学的Objective-C》共分为4部分。第一部分介绍了Objective-C的基础知识，包括Objective-C的基本语法、对象、内存管理等；第二部分深入挖掘Objective-C提供的一些功能，包括如何使用代码块，使用键值编码和键值观察，使用协议，扩展现有类的功能，编写宏以及处理错误和异常；第三部分介绍了Foundation框架及其相关知识；第四部分介绍了一些高级主题，包括多线程处理、Objective-C设计模式、利用NSCoder读写数据以及在其他平台上使用Objective-C等内容。 《好学的Objective-C》适合对Objective-C程序设计感兴趣的人阅读。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		Objetive-C在IT行业可谓受到了不公平的对待。尽管它很强大，并且是动态的面向对象语言，但却没有像C++、Java等语言一样得到足够认可。
+	</p>
+	<p>
+		在为iPhone OS 3写Cocoa Touch时，我意识到了需要写一本配套的书，以帮助新手们在接触Cocoa和Cocoa Touch等高层框架之前克服学习Objective-C的障碍。
+	</p>
+	<p>
+		所以当有人请我写一本专门介绍Objective-C语言的书时，我欣然接受了。
+	</p>
+	<p>
+		最后，我感觉到可以通过这本书向Mac、iPhone和iPad开发新手们介绍基础知识，因此万分激动。我期待这本书可以催化Objective-C在更多不同平台上发展。Objective-C完全有理由在Unix、Windows等平台上使用。
+	</p>
+	<p>
+		读者只需具备有限的计算机知识。我会从最基础的知识开始阐述，但是你至少需要懂得一些操作计算机的基础知识。
+	</p>
+	<p>
+		如果你已经熟悉了其他一些编程语言，这也不会有任何负面影响。我介绍的一些东西对你而言可能是一种回顾，不要担心，你会学到很多关于Objective-C的细节。
+	</p>
+	<p>
+		如果你接触过Objective-C，希望你可以在本书中发现一些有价值的新信息。我会努力将这些知识设计得便于你查找。这样一来，你无需逐页浏览，就能跳到某一部分并了解如何完成你想完成的任务。
+	</p>
+	<p>
+		对于本书中使用的一些约定，我尽量确保一致，同时尽量遵照苹果的约定。唯一一个比较明显的例外就是使用“方法”来表示实例和类的函数。苹果通常会倾向于使用“消息”。某种程度上这是缘于Objective-C受到Smalltalk的影响。
+	</p>
+	<p>
+		关于键盘快捷方式，我选用“Command键”这一术语来表示多数苹果键盘上空格键左侧的键。大家可能知道它也叫苹果键，因为就在几年前它上面会印有一个苹果标志。此外Command键旁边的键称为Option键，Option键旁边的就是Control键。这些是和苹果文档的约定保持一致的。
+	</p>
+	<p>
+		关于存储对象的变量，我通常会把它们称作“实例变量”。有些书会习惯用该术语或者其缩写“ivar”来指代作为类的一部分的变量。对此，我喜欢使用“成员变量”。在我看来，成员变量可以是实例变量，但不是所有的实例变量都是成员变量。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

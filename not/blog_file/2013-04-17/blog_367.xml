@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP采集远程图片]]></title>
+  <content><![CDATA[<p>
+	当我们需要采集网络上的某个网页内容时，如果目标网站上的图片做了防盗链的话，我们直接采集过来的图片在自己网站上是不可用的。那么我们使用程序将目标网站上的图片下载到我们网站服务器上，然后就可调用图片了。
+</p>
+<p>
+	本文将使用PHP实现采集远程图片功能。基本流程：
+</p>
+<p>
+	1、获取目标网站图片地址。
+</p>
+<p>
+	2、读取图片内容。
+</p>
+<p>
+	3、创建要保存图片的路径并命名图片名称。
+</p>
+<p>
+	4、写入图片内容。
+</p>
+<p>
+	5、完成。
+</p>
+<p>
+	我们通过写几个函数来实现这一过程。
+</p>
+<p>
+	函数make_dir()建立目录。判断要保存的图片文件目录是否存在，如果不存在则创建目录，并且将目录设置为可写权限。
+</p>
+<p>
+	function make_dir($path){
+</p>
+<p>
+	&nbsp; &nbsp;if(!file_exists($path)){//不存在则建立
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$mk=@mkdir($path,0777); //权限
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;@chmod($path,0777);
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;return true;
+</p>
+<p>
+	}
+</p>
+<p>
+	函数read_filetext()取得图片内容。使用fopen打开图片文件，然后fread读取图片文件内容。
+</p>
+<p>
+	function read_filetext($filepath){
+</p>
+<p>
+	&nbsp; &nbsp;$filepath=trim($filepath);
+</p>
+<p>
+	&nbsp; &nbsp;$htmlfp=@fopen($filepath,\"r\");
+</p>
+<p>
+	&nbsp; &nbsp;//远程
+</p>
+<p>
+	&nbsp; &nbsp;if(strstr($filepath,\"://\")){
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;while($data=@fread($htmlfp,500000)){
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$string.=$data;
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;//本地
+</p>
+<p>
+	&nbsp; &nbsp;else{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$string=@fread($htmlfp,@filesize($filepath));
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;@fclose($htmlfp);
+</p>
+<p>
+	&nbsp; &nbsp;return $string;
+</p>
+<p>
+	}
+</p>
+<p>
+	函数write_filetext()写文件，将图片内容fputs写入文件中，即保存图片文件。
+</p>
+<p>
+	function write_filetext($filepath,$string){
+</p>
+<p>
+	&nbsp; &nbsp;//$string=stripSlashes($string);
+</p>
+<p>
+	&nbsp; &nbsp;$fp=@fopen($filepath,\"w\");
+</p>
+<p>
+	&nbsp; &nbsp;@fputs($fp,$string);
+</p>
+<p>
+	&nbsp; &nbsp;@fclose($fp);
+</p>
+<p>
+	}
+</p>
+<p>
+	函数get_filename()获取图片名称，也可以自定义要保存的文件名。
+</p>
+<p>
+	function get_filename($filepath){
+</p>
+<p>
+	&nbsp; &nbsp;$fr=explode(\"/\",$filepath);
+</p>
+<p>
+	&nbsp; &nbsp;$count=count($fr)-1;
+</p>
+<p>
+	&nbsp; &nbsp;return $fr[$count];
+</p>
+<p>
+	}
+</p>
+<p>
+	然后将几个函数组合，在函数save_pic()中调用，最后返回保存后的图片路径。
+</p>
+<p>
+	function save_pic($url,$savepath=\'\'){
+</p>
+<p>
+	&nbsp; &nbsp;//处理地址
+</p>
+<p>
+	&nbsp; &nbsp;$url=trim($url);
+</p>
+<p>
+	&nbsp; &nbsp;$url=str_replace(\" \",\"%20\",$url);
+</p>
+<p>
+	&nbsp; &nbsp;//读文件
+</p>
+<p>
+	&nbsp; &nbsp;$string=read_filetext($url);
+</p>
+<p>
+	&nbsp; &nbsp;if(empty($string)){
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;echo \'读取不了文件\';exit;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;//文件名
+</p>
+<p>
+	&nbsp; &nbsp;$filename = get_filename($url);
+</p>
+<p>
+	&nbsp; &nbsp;//存放目录
+</p>
+<p>
+	&nbsp; &nbsp;make_dir($savepath); //建立存放目录
+</p>
+<p>
+	&nbsp; &nbsp;//文件地址
+</p>
+<p>
+	&nbsp; &nbsp;$filepath = $savepath.$filename;
+</p>
+<p>
+	&nbsp; &nbsp;//写文件
+</p>
+<p>
+	&nbsp; &nbsp;write_filetext($filepath,$string);
+</p>
+<p>
+	&nbsp; &nbsp;return $filepath;
+</p>
+<p>
+	}
+</p>
+<p>
+	最后一步就是调用save_pic()函数保存图片，我们使用以下代码做测试。
+</p>
+<p>
+	//目标图片地址
+</p>
+<p>
+	$pic = \"/program/UploadPic/2013-4/201343155341353.jpg\";
+</p>
+<p>
+	//保存目录
+</p>
+<p>
+	$savepath = \"images/\";
+</p>
+<p>
+	echo save_pic($pic,$savepath);
+</p>
+<p>
+	实际应用中，我们可能会采集某个站点的内容，比如产品信息，包括采集防盗链的图片保存到网站上服务器上。这时我们可以使用正则匹配页面内容，将页面中相匹配的图片都找出来，然后分别下载到网站服务器上，完成图片的采集。以下代码仅供测试：
+</p>
+<p>
+	function get_pic($cont,$path){
+</p>
+<p>
+	&nbsp; &nbsp;$pattern_src = \'/&lt;[imgIMG].*?src=http://www.php100.com/html/webkaifa/PHP/PHPyingyong/2013/0401/[/\'/\"](.*?(?:[/.gif/.jpg]))[\\\'\\\"].*?[\\/]?&gt;/\';
+</p>
+<p>
+	&nbsp; &nbsp;$num = preg_match_all($pattern_src, $cont, $match_src);
+</p>
+<p>
+	&nbsp; &nbsp;$pic_arr = $match_src[1]; //获得图片数组
+</p>
+<p>
+	&nbsp; &nbsp;foreach ($pic_arr as $pic_item) { //循环取出每幅图的地址
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;save_pic($pic_item,$path); //下载并保存图片
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;echo \"[OK]..!\";
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	然后我们通过分析页面内容，将主体内容找出来，调用get_pic()实现图片的保存。
+</p>
+<p>
+	//我们采集太平洋电脑网上一篇关于手机报道内容页的图片
+</p>
+<p>
+	$url = \"http://gz.pconline.com.cn/321/3215791.html\";
+</p>
+<p>
+	$content = file_get_contents($url);//获取网页内容
+</p>
+<p>
+	$preg = \'#&lt;div class=\"art_con\"&gt;(.*)&lt;div class=\"ivy620 ivy620Ex\"&gt;&lt;/div&gt;#iUs\';
+</p>
+<p>
+	preg_match_all($preg, $content, $arr);
+</p>
+<p>
+	$cont = $arr[1][0]; &nbsp;
+</p>
+<p>
+	get_pic($cont,\'img/\');
+</p>
+<p>
+	以上代码笔者亲测，可以采集图片，但是还有些场景没考虑进去，比如目标网站做了302多次跳转的，目标网站做了多种防采集的，留给喜欢折腾的同学去试试吧
+</p>]]></content>
+  <contentx><![CDATA[
+	当我们需要采集网络上的某个网页内容时，如果目标网站上的图片做了防盗链的话，我们直接采集过来的图片在自己网站上是不可用的。那么我们使用程序将目标网站上的图片下载到我们网站服务器上，然后就可调用图片了。
+
+
+	本文将使用PHP实现采集远程图]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

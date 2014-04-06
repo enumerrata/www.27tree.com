@@ -1,0 +1,61 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP Switch 语句</h1>
+</div>
+<div>
+
+<P><b>PHP 中的 Switch 语句用于执行基于多个不同条件的不同动作。</b></P>
+
+<h1>Switch 语句</h1>
+
+<p>如果您希望有选择地执行若干代码块之一，请使用 Switch 语句。</p>
+<p>使用 Switch 语句可以避免冗长的 if..elseif..else 代码块。</p>
+
+<p><b>语法</b></p>
+
+<code>
+switch&nbsp(expression)<br />
+{<br />
+case&nbsplabel1:<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspexpression&nbsp=&nbsplabel1;<br />
+&nbsp&nbspbreak;&nbsp&nbsp<br />
+case&nbsplabel2:<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspexpression&nbsp=&nbsplabel2;<br />
+&nbsp&nbspbreak;<br />
+default:<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted<br />
+&nbsp&nbspif&nbspexpression&nbspis&nbspdifferent&nbsp<br />
+&nbsp&nbspfrom&nbspboth&nbsplabel1&nbspand&nbsplabel2;<br />
+}
+</code>
+
+<p><b>实例</b></p>
+
+<p>工作原理：</p>
+<p>1.对表达式（通常是变量）进行一次计算</p>
+<p>2.把表达式的值与结构中 case 的值进行比较</p>
+<p>3.如果存在匹配，则执行与 case 关联的代码</p>
+<p>4.代码执行后，break 语句阻止代码跳入下一个 case 中继续执行</p>
+<p>5.如果没有 case 为真，则使用 default 语句</p>
+
+<code>
+&lt;?php<br />
+switch&nbsp($x)<br />
+{<br />
+case&nbsp1:<br />
+&nbsp&nbspecho&nbsp"Number&nbsp1";<br />
+&nbsp&nbspbreak;<br />
+case&nbsp2:<br />
+&nbsp&nbspecho&nbsp"Number&nbsp2";<br />
+&nbsp&nbspbreak;<br />
+case&nbsp3:<br />
+&nbsp&nbspecho&nbsp"Number&nbsp3";<br />
+&nbsp&nbspbreak;<br />
+default:<br />
+&nbsp&nbspecho&nbsp"No&nbspnumber&nbspbetween&nbsp1&nbspand&nbsp3";<br />
+}<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+</div>

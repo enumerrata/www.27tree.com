@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Jquery的自适应宽度圆角按钮</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"color:\"&amp;nbsp;rgb(17,=\"\"&amp;nbsp;17,=\"\"&amp;nbsp;17);=\"\"&amp;nbsp;font-family:=\"\"&amp;nbsp;宋体,=\"\"&amp;nbsp;微软雅黑,=\"\"&amp;nbsp;verdana,=\"\"&amp;nbsp;helvetica;=\"\"&amp;nbsp;line-height:=\"\"&amp;nbsp;25px;=\"\"&amp;gt;Jquery的自适应宽度圆角按钮，给你提供一个思路，按钮的长度随你的文字多少自动伸长，用着更省心。而且鼠标放在按钮上，按钮还会变颜色呢，漂亮吧。兼容性貌似也不错，感谢作者的分享。原理很简单，就是在input的前后各追加一个DIV来实现圆角&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"color:\"&amp;nbsp;rgb(17,=\"\"&amp;nbsp;17,=\"\"&amp;nbsp;17);=\"\"&amp;nbsp;font-family:=\"\"&amp;nbsp;宋体,=\"\"&amp;nbsp;微软雅黑,=\"\"&amp;nbsp;verdana,=\"\"&amp;nbsp;helvetica;=\"\"&amp;nbsp;line-height:=\"\"&amp;nbsp;25px;=\"\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Transitional//EN&amp;nbsp;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&amp;amp;gt;
+&amp;amp;lt;html&amp;nbsp;xmlns=http://www.w3.org/1999/xhtml&amp;amp;gt;
+&amp;amp;lt;head&amp;amp;gt;
+&amp;amp;lt;meta&amp;nbsp;http-equiv=Content-Type&amp;nbsp;content=text/html;&amp;nbsp;charset=gb2312&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;title&amp;amp;gt;基于Jquery的自适应宽度圆角按钮&amp;amp;lt;/title&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;language=JavaScript&amp;nbsp;type=text/javascript&amp;nbsp;src=http://code.jquery.com/jquery-1.4.2.min.js&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;style&amp;nbsp;type=text/css&amp;amp;gt;
+.left&amp;nbsp;{background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152705293.jpg)&amp;nbsp;left&amp;nbsp;no-repeat;&amp;nbsp;height:26px;&amp;nbsp;margin:0&amp;nbsp;4px;&amp;nbsp;padding:0&amp;nbsp;0&amp;nbsp;0&amp;nbsp;6px;&amp;nbsp;*padding:0;&amp;nbsp;font-size:12px;}
+.leftHover&amp;nbsp;{background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152706285.jpg)&amp;nbsp;left&amp;nbsp;no-repeat;}
+.right&amp;nbsp;{background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152706428.jpg)&amp;nbsp;right&amp;nbsp;no-repeat;&amp;nbsp;height:26px;&amp;nbsp;width:6px;&amp;nbsp;float:left;}
+.rightHover&amp;nbsp;{&amp;nbsp;background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152707177.jpg)&amp;nbsp;right&amp;nbsp;no-repeat;}
+.bot&amp;nbsp;{float:left;border:none;&amp;nbsp;border:0;&amp;nbsp;line-height:26px;&amp;nbsp;color:#fff;&amp;nbsp;font-family:微软雅黑;&amp;nbsp;cursor:pointer;&amp;nbsp;height:26px;&amp;nbsp;background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152707742.jpg)&amp;nbsp;repeat-x;}
+.botHover&amp;nbsp;{background:url(http://www.poluoluo.com/jzxy/UploadFiles_333/201108/20110806152707187.jpg)&amp;nbsp;repeat-x;}
+
+&amp;amp;lt;/style&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;type=text/javascript&amp;amp;gt;
+$(document).ready(function(){
+$(:input[type=&amp;nbsp;button&amp;nbsp;]).wrap(&amp;amp;lt;div&amp;nbsp;class=&amp;nbsp;left&amp;nbsp;&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;).after(&amp;amp;lt;div&amp;nbsp;class=&amp;nbsp;right&amp;nbsp;&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;).addClass(bot);
+$(&amp;nbsp;.left&amp;nbsp;).hover(function(){
+$(this).addClass(leftHover);
+$(this).find(&amp;nbsp;.bot&amp;nbsp;).addClass(botHover);
+$(this).find(&amp;nbsp;.right&amp;nbsp;).addClass(rightHover);
+},
+function(){$(this).removeClass(leftHover);
+$(this).find(&amp;nbsp;.right&amp;nbsp;).removeClass(rightHover);
+$(this).find(&amp;nbsp;.bot&amp;nbsp;).removeClass(botHover);});&amp;nbsp;
+}
+);
+&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;/head&amp;amp;gt;
+&amp;amp;lt;body&amp;amp;gt;
+&amp;amp;lt;input&amp;nbsp;name=&amp;nbsp;type=button&amp;nbsp;value=我很短，但可以适合长的&amp;nbsp;/&amp;amp;gt;&amp;amp;lt;input&amp;nbsp;name=&amp;nbsp;type=button&amp;nbsp;value=我要很长，很长再长，我喜欢长的&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;input&amp;nbsp;name=&amp;nbsp;type=button&amp;nbsp;value=这个太短了&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-11/1339350787.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

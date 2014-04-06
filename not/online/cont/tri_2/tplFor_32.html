@@ -1,0 +1,78 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL Order By 关键词</h1>
+</div>
+<div>
+
+<p><b>ORDER BY 关键词用于对记录集中的数据进行排序。</b></p>
+
+<h1>ORDER BY 关键词</h1>
+
+<p>ORDER BY 关键词用于对记录集中的数据进行排序。</p>
+
+<h2>语法</h2>
+
+<code>
+SELECT column_name(s)<br />
+FROM table_name<br />
+ORDER BY column_name
+</code>
+
+<p><b>注释</b>：SQL 对大小写不敏感。ORDER BY 与 order by 等效。</p>
+
+<h2>例子</h2>
+
+<p>下面的例子选取 "Persons" 表中的存储的所有数据，并根据 "Age" 列对结果进行排序：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+$result&nbsp=&nbspmysql_query("SELECT&nbsp*&nbspFROM&nbspPersons&nbspORDER&nbspBY&nbspage");<br />
+<br />
+while($row&nbsp=&nbspmysql_fetch_array($result))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp$row['FirstName'];<br />
+&nbsp&nbspecho&nbsp"&nbsp"&nbsp.&nbsp$row['LastName'];<br />
+&nbsp&nbspecho&nbsp"&nbsp"&nbsp.&nbsp$row['Age'];<br />
+&nbsp&nbspecho&nbsp"&lt;br&nbsp/&gt;;";<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_close($con);<br />
+?&lt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>
+Glenn Quagmire 33<br />
+Peter Griffin 35
+</code>
+
+<h1>升序或降序的排序</h1>
+
+<p>如果您使用 ORDER BY 关键词，记录集的排序顺序默认是升序（1 在 9 之前，"a" 在 "p" 之前）。</p>
+<p>请使用 DESC 关键词来设定降序排序（9 在 1 之前，"p" 在 "a" 之前）：</p>
+
+<code>
+SELECT column_name(s)<br />
+FROM table_name<br />
+ORDER BY column_name DESC
+</code>
+
+<h1>根据两列进行排序</h1>
+
+<p>可以根据多个列进行排序。当按照多个列进行排序时，只有第一列相同时才使用第二列：</p>
+
+<code>
+SELECT column_name(s)<br />
+FROM table_name<br />
+ORDER BY column_name1, column_name2
+</code>
+
+</div>

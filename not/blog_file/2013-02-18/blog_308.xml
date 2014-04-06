@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[ScheduledThreadPoolExecutor实现原理]]></title>
+  <content><![CDATA[<p>
+	自jdk1.5开始，Java开始提供ScheduledThreadPoolExecutor类来支持周期性任务的调度，在这之前，这些工作需要依靠Timer/TimerTask或者其它第三方工具来完成。但Timer有着不少缺陷，如Timer是单线程模式，调度多个周期性任务时，如果某个任务耗时较久就会影响其它任务的调度；如果某个任务出现异常而没有被catch则可能导致唯一的线程死掉而所有任务都不会再被调度。ScheduledThreadPoolExecutor解决了很多Timer存在的缺陷。
+</p>
+<p>
+	先来看看ScheduledThreadPoolExecutor的实现模型，它通过继承ThreadPoolExecutor来重用线程池的功能，里面做了几件事情：
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\">为线程池设置了一个DelayedWorkQueue，该queue同时具有PriorityQueue（优先级大的元素会放到队首）和DelayQueue（如果队列里第一个元素的getDelay返回值大于0，则take调用会阻塞）的功能</span><span style=\"line-height:1.5;\"></span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">将传入的任务封装成ScheduledFutureTask，这个类有两个特点，实现了java.lang.Comparable和java.util.concurrent.Delayed接口，也就是说里面有两个重要的方法：compareTo和getDelay。ScheduledFutureTask里面存储了该任务距离下次调度还需要的时间（使用的是基于System#nanoTime实现的相对时间，不会因为系统时间改变而改变，如距离下次执行还有10秒，不会因为将系统时间调前6秒而变成4秒后执行）。getDelay方法就是返回当前时间（运行getDelay的这个时刻）距离下次调用之间的时间差；compareTo用于比较两个任务的优先关系，距离下次调度间隔较短的优先级高。那么，当有任务丢进上面说到的DelayedWorkQueue时，因为它有DelayQueue（DelayQueue的内部使用PriorityQueue来实现的）的功能，所以新的任务会与队列中已经存在的任务进行排序，距离下次调度间隔短的任务排在前面，也就是说这个队列并不是先进先出的；另外，在调用DelayedWorkQueue的take方法的时候，如果没有元素，会阻塞，如果有元素而第一个元素的getDelay返回值大于0（前面说过已经排好序了，第一个元素的getDelay不会大于后面元素的getDelay返回值），也会一直阻塞。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">ScheduledFutureTask提供了一个run的实现，线程池执行的就是这个run方法。看看run的源码（本文的代码取自hotspot1.5.0_22，jdk后续版本的代码可能已经不一样了，如jdk1.7中使用了自己实现的DelayedWorkQueue，而不再使用PriorityQueue作为存储，不过从外面看它们的行为还是一样的，所以并不影响对ScheduledThreadPoolExecutor调度机制的理解）：</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+	<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">public void run() {
+    if (isPeriodic())
+        runPeriodic();
+    else
+        ScheduledFutureTask.super.run();
+}</pre>
+如果不是周期性任务就直接执行任务（也就是else部分），这个主要是用于实现ScheduledThreadPoolExecutor#schedule(Callable callable, long delay, TimeUnit unit)和ScheduledThreadPoolExecutor#schedule(Runnable command, long delay, TimeUnit unit)，后面会讲到它们的实现，这里先关注周期任务的执行方式。周期性任务执行的是runPeriodic(),看下它的实现：
+	</p>
+	<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">private void runPeriodic() {
+    boolean ok = ScheduledFutureTask.super.runAndReset();
+    boolean down = isShutdown();
+    // Reschedule if not cancelled and not shutdown or policy allows
+    if (ok &amp;&amp; (!down ||
+               (getContinueExistingPeriodicTasksAfterShutdownPolicy() &amp;&amp;
+                !isTerminating()))) {
+        long p = period;
+        if (p &gt; 0)
+            time += p;
+        else
+            time = triggerTime(-p);
+        ScheduledThreadPoolExecutor.super.getQueue().add(this);
+    }
+    // This might have been the final executed delayed
+    // task.  Wake up threads to check.
+    else if (down)
+        interruptIdleWorkers();
+}</pre>
+这里可以看到，先执行了任务本身（ScheduledFutureTask.super.runAndReset），这个调用有一个返回值，来看下它的实现：
+	</p>
+	<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">protected boolean runAndReset() {
+    return sync.innerRunAndReset();
+}</pre>
+跟进去看下innerRunAndReset():
+	</p>
+	<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">boolean innerRunAndReset() {
+    if (!compareAndSetState(0, RUNNING))
+        return false;
+    try {
+        runner = Thread.currentThread();
+        callable.call(); // don\'t set result
+        runner = null;
+        return compareAndSetState(RUNNING, 0);
+    } catch(Throwable ex) {
+        innerSetException(ex);
+        return false;
+    }
+}</pre>
+		<p>
+			可以发现，这里需要关注的是第三个return，也就是如果任务执行出现了异常，会被catch且返回false.
+		</p>
+		<p>
+			继续看runPeriodic()方法，if里面，如果刚才任务执行的返回值是true且线程池还在运行就在if块中的操作，如果线程池被关闭了就做else if里的操作。也就是说，如果之前的任务执行出现的异常返回了false，那么if里以及else if里的代码都不会执行了，那有什么影响？接下来看看if里做了什么。
+		</p>
+		<p>
+			if里的代码很简单，分为两部分，一是计算这个任务下次调度的间隔，二是将任务重新放回队列中。回到出现异常的情况，如果刚才的任务执行出现了异常，就不会将任务再放回队列中，换而言之，也就是这个任务再也得不到调度了！但是，这并不影响其它周期任务的调度。综上，可以看到，ScheduledThreadPoolExecutor执行周期性任务的模型就是：调度一次任务，计算并设置该任务下次间隔，将任务放回队列中供线程池执行。这里的队列起了很大的作用，且有一些特点：距离下次调度间隔短的任务总是在队首，队首的任务若距离下次调度的间隔时间大于0就无法从该队列的take()方法中拿到任务。
+		</p>
+		<p>
+			接下来看看ScheduledThreadPoolExecutor#schedule(Callable callable, long delay, TimeUnit unit)和ScheduledThreadPoolExecutor#schedule(Runnable command, long delay, TimeUnit unit)这两个非周期性任务的实现方式，先看看它们的源码：
+		</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">public ScheduledFuture&lt;?&gt; schedule(Runnable command,long delay,TimeUnit unit) {
+    if (command == null || unit == null)
+        throw new NullPointerException();
+    ScheduledFutureTask&lt;?&gt; t =
+        new ScheduledFutureTask&lt;Boolean&gt;(command, null, triggerTime(delay, unit));
+    delayedExecute(t);
+    return t;
+}
+public &lt;V&gt; ScheduledFuture&lt;V&gt; schedule(Callable&lt;V&gt; callable,long delay,TimeUnit unit) {
+    if (callable == null || unit == null)
+        throw new NullPointerException();
+    ScheduledFutureTask&lt;V&gt; t =
+        new ScheduledFutureTask&lt;V&gt;(callable, triggerTime(delay, unit));
+    delayedExecute(t);
+    return t;
+}
+private void delayedExecute(Runnable command) {
+    if (isShutdown()) {
+        reject(command);
+        return;
+    }
+    // Prestart a thread if necessary. We cannot prestart it
+    // running the task because the task (probably) shouldn\'t be
+    // run yet, so thread will just idle until delay elapses.
+    if (getPoolSize() &lt; getCorePoolSize())
+        prestartCoreThread();
+ 
+    super.getQueue().add(command);
+}</pre>
+		<p>
+			实现方式也很简单，在创建ScheduledThreadPoolExecutor内部任务（即ScheduledFutureTask）的时候就将调度间隔计算并设置好，如果当前线程数小于设置的核心线程数，就启动一个线程（可能是线程池刚启动里面还没有线程，也可能是里面的线程执行任务时挂掉了。如果线程池中的线程挂掉了而又没有调用这些schedule方法谁去补充挂掉的线程？不用担心，线程池自己会处理的）去监听队列里的任务，然后将任务放到队列里，在任务执行间隔不大于0的时候，线程就可以拿到这个任务并执行。
+		</p>
+		<p>
+			周期性任务的入口（ScheduledThreadPoolExecutor#scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)和ScheduledThreadPoolExecutor#scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)）与非周期性任务是类似的，它们处理方式不同的地方在于前文说到的ScheduledFutureTask#run()中。
+		</p>
+<a href=\"http://www.ticmy.com/?p=329\" target=\"_blank\">http://www.ticmy.com/?p=329</a>
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	自jdk1.5开始，Java开始提供ScheduledThreadPoolExecutor类来支持周期性任务的调度，在这之前，这些工作需要依靠Timer/TimerTask或者其它第三方工具来完成。但Timer有着不少缺陷，如Timer]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

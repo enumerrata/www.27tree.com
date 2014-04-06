@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>MySQL5.1参考手册官方简体中文版</title>
+  <author>MySQL AB</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-22 16:08:39</submit-date-time>
+  <img-link></img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这是MySQL参考手册的翻译版本，关于MySQL参考手册，请访问dev.mysql.com。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	原始参考手册为英文版，与英文版参考手册相比，本翻译版可能不是最新的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	是关于5.1版至5.1.2-alpha版MySQL数据库系统的参考手册。该手册不适用于旧版本MySQL软件，这是因为在MySQL5.1和以前的版本存在很多功能性差异和其他差异。如果正在使用MySQL软件的较旧版本，请参阅MySQL5.0参考手册，该手册涵盖了MySQL&amp;nbsp;5.0，或参阅MySQL4.1参考手册，该手册涵盖了MySQL4.1以及MySQL的所有早期版本。在手册的文本中，通过引用发布版本号（5.1.x），注明了MySQL&amp;nbsp;5.1的二级版本。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		MySQL数据库软件始终在发展，参考手册也会相应地频繁更新。本手册的最新版本以在线方式提供，请使用http://dev.mysql.com/doc/上的搜索表单。也提供多重其他格式，包括HTML、PDF、和Windows&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;CHM版本。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		主要文档是DocBook&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;XML文件的集合。对于HTML版本和其他格式，它们是使用DocBook&amp;nbsp;XSL&amp;nbsp;stylesheets自动生成的。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		如果你有任何关于本手册应增加内容或更正内容方面的建议，请将其发送给文档编制团队：docs@mysql.com。本手册最初是由
+	&lt;/p&gt;
+	&lt;p&gt;
+		David&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Axmark和Michael&amp;nbsp;“Monty”&amp;nbsp;&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Widenius编制的。由MySQL文档编制团队负责维护，团队成员包括Paul&amp;nbsp;DuBois、Stefan&amp;nbsp;Hinz、Mike&amp;nbsp;Hillyer和Jon&amp;nbsp;&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Stephens。关于中多其他贡献人，请参见附录C：感谢。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		本手册的版权归瑞典公司MySQL&amp;nbsp;AB所有。MySQL®和MySQL徽标均是MySQL
+	&lt;/p&gt;
+	&lt;p&gt;
+		AB的注册商标。本手册中引用的其他商标和注册商标是相应所有人的财产，在本手册中仅将其用于辨识目的。&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+</root>

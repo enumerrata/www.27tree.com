@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>程序员必备技能</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;熟练开发工具&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	做为一名程序员至少熟练掌握两到三种开发工具的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用，这是程序员的立身之本，其中C/C++和JAVA是重点推荐的开发工具，C/C++以其高效率和高度的灵活性成为开发工具中的利器，很多系统级的软
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	件还是用C/C++编写。而JAVA的跨平台和与WEB很好的结合是JAVA的优势所在，而JAVA即其相关的技术集JAVAOne很可能会成为未来的主
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	流开发工具之一。其次，能掌握一种简便的可视化开发工具，如VB，PowerBuilder，Delphi，CBuilder，则更好，这些开发工具减小
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	了开发难度，并能够强化程序员对象模型的概念。另外，需要掌握基本的脚本语言，如shell，perl等，至少能读懂这些脚本代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;熟知数据库&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为什么数据库是如此重要？作为程序员，他们自然有自己的理由：很多应用程序都是以数据库的数据为中心，而数据库的产品也有不少，其中关系型数据库仍是主流形式，所以程序员至少熟练掌握一两种数据库，对关系型数据库的关键元素要非常清楚，要熟练掌握SQL的基本语法。虽然很多数据库产品提供了可视化的数据库管理工具，但SQL是基础，是通用的数据库操作方法。如果没有机会接触商业数据库系统，可以使用免费的数据库产品是一个不错的选择，如mySQL，Postgres等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;了解操作系统&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当前主流的操作系统是Windows，Linux/Unix，熟练地使用这些操作系统是必须的，但只有这些还远远不够。要想成为一个真正的编程高手，需要深入了解操作系统，了解它的内存管理机制、进程/线程调度、信号、内核对象、系统调用、协议栈实现等。Linux作为开发源码的操作系统，是一个很好的学习平台，Linux几乎具备了所有现代操作系统的特征。虽然Windows系统的内核实现机制的资料较少，但通过互联网还是能获取不少资料。懂得网络协议TCP/IP。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在互联网如此普及的今天，如果您还没有对互联网的支撑协议TCP/IP协议栈
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有很好的掌握，就需要迅速补上这一课，网络技术已改变了软件运行的模式，从最早的客户/服务器结构，到今天的WEBServices，再到未来的网格计
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	算，这一切都离不开以TCP/IP协议栈为基础的网络协议支持，深入掌握TCP/IP协议是非常必要的。至少，需要了解ISO七层协议模型，IP/UDP
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/TCP/HTTP等常用协议的原理和三次握手机制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;明白DCOM/CORBA/XML/WEBServices存在的意义&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	随着技术的发展，软件与网络的无缝结合是必然趋势，软件系统的位置无关性是未来计算模式的重要特征之一，DCOM/CORBA是当前两大主流的分布计算的中间平台，DCOM是微软COM(组件对象模型)的扩展，而CORBA是OMG支持的规范。XML/WebServices重要性不言而喻，XML以其结构化的表示方法和超强的表达能力被喻为互联网上的“世界语”，是分布式计算的基石之一。不要将软件工程与CMM分开　　大型软件系统的开发中，工程化的开发控制取代个人英雄主义，成为软件系统成功的保证，一个编程高手并不一定是一个优秀的程序员，一个优秀的程序员是将出色的编程能力和开发技巧同严格的软件工程思想有机结合，编程只是软件生命周期中的其中一环，优秀的程序员应该掌握软件开发各个阶段的基本技能，如市场分析，可行性分析，需求分析，结构设计，详细设计，软件测试等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;需求理解能力&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	程序员要能正确理解任务单中描述的需求。在这里要明确一点，程序员不仅仅要注意到软件的功能需求，还应注意软件的性能需求，要能正确评估自己的模块对整
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	个项目中的影响及潜在的威胁，如果有着两到三年项目经验的熟练程序员对这一点没有体会的话，只能说明他或许是认真工作过，但是没有用心工作。&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;模块化思维能力&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为一个优秀的程序员，他的思想不能局限在当前的工作任务里面，要想想看自己写的模块是否可以脱离当前系统存在，通过简单的封装在其他系统中或其他模块
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	中直接使用。这样做可以使代码能重复利用，减少重复的劳动，也能使系统结构越趋合理。模块化思维能力的提高是一个程序员的技术水平提高的一项重要指标。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-05-19/1337397450.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-20+13%3A49%3A21</date-c>
+  <conf-c>54654556231</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

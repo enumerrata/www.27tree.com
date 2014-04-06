@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>手机连不上wifi，一直显示正在获取ip地址的解决办法</title>
+<content>&amp;lt;p&amp;gt;
+	打开设置-无线和网路-WLAN设置，按menu键，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	进入高级选项设置，在ip设置中勾选\"使用静态IP\"。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后再\"IP地址\"中填入\"192.168.1.X\"，一般家庭使用无线路由，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	网段是192.168.1.2--192.168.1.255，X值代表的范畴是2-255之间的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后再\"网关\"中填入192.168.1.1，或者是192.168.0.1，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	两个网关分别取决于你无线路由器的IP地址是多少。\"网络掩码\"中填入255.255.255.0，在\"域名1\"中填入192.168.1.1，\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	域名2\"中填入192.168.1.1。DNS也称为域名系统，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	填一个也能够，填两个也是可以的。最后按menu键保存，这样就设置好了
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-06-24/1340544584.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-26+16%3A22%3A30</date-c>
+  <conf-c>谁点这么多</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

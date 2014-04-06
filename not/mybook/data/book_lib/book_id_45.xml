@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>DOJO构建AJAX应用程序</title>
+  <author>（美）哈蒙（Harmon,J.E）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-07 09:21:37</submit-date-time>
+  <img-link>3a58a237faf480e25722c9a77d2ca722.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	编辑推荐
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Dojo向web开发者和设计者提供了一个强大的JavaScript工具集用以快速开发健壮的Ajax应用。本书是第一本完整的、具有丰富示例的Dojo开发指南。同时还介绍TOojo&amp;nbsp;Widget&amp;nbsp;Dojo基金会（即Dojo的创建者们）审阅了本书，你可以从书中找到开发指南和大量经过测试的代码示例。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Web开发专家James&amp;nbsp;E，Harmon在书中首先介绍了如何Dojo“Ajax化”现有的应用和页面，如何快速增加一些Aiax特性且不打断用户的操作，如客户端和服务器端验证。接下来，本书深入讲解了Doj0的用户界面、表单、布局和专门的widget，展示其工作方式并探讨如何最有效地利用这些特性。本书详细地介绍了widget，如日期选择器、富文本编辑器，组合框及可扩展的视图等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	最后，Harmon介绍了Dojo&amp;nbsp;Too用以简化Aiax开发的强大功能。他详细地介绍了DDojo的辅助功能、快捷方式及特殊方法，在介绍每个特性肘展示了它所能解决的Javascript的问题。这一部分内容涵盖了字符串、JSON、事件处理、Ajax&amp;nbsp;Remoting、DojoZSDOM、测试及调试，等等。你可以从本书的w曲站点hnp：//www.objecI
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TrainingGroup&amp;nbsp;com，dojob00k下载所有的代码示例，包括完整教程示例的源代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	James&amp;nbsp;E&amp;nbsp;Harmon是ObIect&amp;nbsp;Training&amp;nbsp;Group公司的创建者和讲师，主要从事Java和Aiax的培洲。其培训主题涵盖Ajx、Struts、Hibernate、spring，JavaServer&amp;nbsp;Faces。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容简介
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书系统论述了利用Dojo构建Ajax应用程序的方法和实践。全书内容主要由三部分组成：Dojo教程、Dojo&amp;nbsp;Widget、Dojo详解。其中备部分自成一个知识模块，相互之间又恰当衔接。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书编写体系完整．撰写风格生动、配合大量的代码示例和操作步骤，非常适合Dojo开发者学习参考。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

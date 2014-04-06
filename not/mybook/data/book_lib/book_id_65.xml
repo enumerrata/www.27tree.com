@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>编写高质量代码改善Java程序的151个建议</title>
+  <author>秦小波</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:13:14</submit-date-time>
+  <img-link>210be5a7d3f55a42f01ca5a7306d03f2.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在通往“java技术殿堂”的路上，本书将为你指点迷津！内容全部由java编码的最佳实践组成，从语法、程序设计和架构、工具和框架、编码风格和编程思想等五大方面，对java程序员遇到的各种棘手的疑难问题给出了经验性的解决方案，为java程序员如何编写高质量的java代码提出了151条极为宝贵的建议。对于每一个问题，不仅以建议的方式从正反两面给出了被实践证明为十分优秀的解决方案和非常糟糕的解决方案，而且还分析了问题产生的根源，犹如醍醐灌顶，让人豁然开朗。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书一共12章，第1～3章针对java语法本身提出了51条建议，例如覆写变长方法时应该注意哪些事项、final修饰的常量不要在运行期修改、匿名类的构造函数特殊在什么地方等；第4～9章重点针对jdk&amp;nbsp;api的使用提出了80条建议，例如字符串的拼接方法该如何选择、枚举使用时有哪些注意事项、出现nullpointerexception该如何处理、泛型的多重界限该如何使用、多线程编程如何预防死锁，等等；第10～12章针对程序性能、开源的工具和框架、编码风格和编程思想等方面提出了20条建议。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书针对每个问题所设计的应用场景都非常典型，给出的建议也都与实践紧密结合。书中的每一条建议都可能在你的下一行代码、下一个应用或下一个项目中崭露头角，建议你将此书搁置在手边，随时查阅，一定能使你的学习和开发工作事半功倍。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

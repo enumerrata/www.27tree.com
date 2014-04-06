@@ -1,0 +1,49 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">CSS3 阴影</h1>
+</div>
+<div>
+
+    <p>阴影在很多设计中都有应用，在过去我们只能通过图片来实现在Web上显示阴影，但是这样做对不太利于SEO，所以在CSS3中，text-shadow 和 box -shadow 就来了。</p>
+    <h1>text-shadow：</h1>
+    <p>text -shadow属性用于设置文本内容的阴影效果或模糊效果。 </p>
+    <p>目前，text -shadow属性已经得到 Safari 浏览器、Firefox 浏览器、Chrome浏览器和Opera浏览器的支持。IE8 版本以下的 IE 浏览器都不支持该特性。从 Web 浏览器支持的情况来看，大部分移动平台的 Web 浏览器都能得到很好的支持。</p>
+    <p>text -shadow的语法和 box-shadow的语法基本上一致： </p>
+    <code>text -shadow:&lt;length&gt; &lt;length&gt; &lt;length&gt; || color </code>
+    <h2>如下代码为使用 text -shadow的简单示例：</h2>
+    <code>
+        &lt;style&nbsp;type=&nbsp;"text/css"&gt;&nbsp;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;div{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-shadow:5px&nbsp;-10px&nbsp;5px&nbsp;red;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:#666;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &lt;/style&gt;&nbsp;
+    </code>
+
+    <h1>box -shadow</h1>
+    <p>CSS3的box-shadow属性是让元素具有阴影效果，其语法是：</p>
+    <code>box -shadow:&lt;length&gt; &lt;length&gt; &lt;length&gt; || color; </code>
+    <p>其中，第一个 length 值是阴影水平偏移值；第二个 length 值是阴影垂直偏移值；第三个length 值是阴影模糊值。水平和垂直偏移值都可取正负值，如 4px 或-4px。 </p>
+    <p>目前，box-shadow已经得到 Firefox 3.5+、Chrome 2.0+、Safari 4+ 等现代浏览器的支持。 </p>
+    <p>可是，当我们在基于 Webk it 的Chrome和Safari 等浏览器上使用 box-shadow属性时，需要将属性的名称写成-webkit-box -shadow 的形式。Firefox 浏览器则需要写成-moz-box-shadow的形式。 </p>
+    <p>从浏览器支持的情况来看，基于 Android 和iOS 的移动Web 浏览器也完全支持box-shadow属性。因此，我们在编写 CSS 样式时可以使用box-shadow属性来修饰移动</p>
+    <p>下面代码为使用 box-shadow的简单示例，该示例兼容 Chrome浏览器、Safari 浏览器及Firefox 浏览器：</p>
+    <code>
+        &lt;style&nbsp;type=&nbsp;"text/css"&gt;&nbsp;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;div&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;/*其他浏览器*/<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;-shadow:3px&nbsp;4px&nbsp;2px&nbsp;#000;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;/*webkit&nbsp;浏览器*/<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;-webkit-box&nbsp;-shadow:3px&nbsp;4px&nbsp;2px&nbsp;#000;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;/*Firefox&nbsp;浏览器*/<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;-moz&nbsp;-box&nbsp;-shadow:3px&nbsp;4px&nbsp;2px&nbsp;#000;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;padding:5px&nbsp;4px;&nbsp;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+        &lt;/style&gt;&nbsp;
+    </code>
+    <h2>效果如下(如果你看不见阴影效果,麻烦你换Chrome浏览器):</h2>
+    <div style="border:1px solid #ccc;height:120px;box-shadow:3px 4px 2px #000;-webkit-box-shadow:3px 4px 2px #000;-moz-box-shadow:3px 4px 2px #000;width:220px;margin:5px auto;"></div>
+    <h2>下面代码这个实例比较多人用(如果你看不见阴影效果,麻烦你换Chrome浏览器):</h2>
+    <code>box-shadow:0 0 5px 5px black;</code>
+    <div style="border:1px solid #ccc;height:120px;box-shadow:0 0 5px 5px black;width:220px;margin:15px auto;"></div>
+</div>

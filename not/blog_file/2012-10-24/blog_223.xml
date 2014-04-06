@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-24 22:39:57</datetime>
+  <title><![CDATA[使用Apache FtpServer搭建FTP服务器]]></title>
+  <content><![CDATA[<p>
+	Apache FtpServer是纯Java写的开源FTP服务器。 http://mina.apache.org/ftpserver/
+</p>
+<p>
+	<br />
+</p>
+<p>
+	下面简单讲一下配置安装过程
+</p>
+<p>
+	1. 从 http://mina.apache.org/ftpserver/ 下载apache-ftpserver-1.0.0
+</p>
+<p>
+	2. 解压缩到本地
+</p>
+<p>
+	3. 在安装目录的res\\conf目录中找到users.properties，复制一份为myusers.properties
+</p>
+<p>
+	修改成自己的用户名
+</p>
+<p>
+	ftpserver.user.myusername.userpassword=12345678
+</p>
+<p>
+	ftpserver.user.myusername.homedirectory=./ftp_space
+</p>
+<p>
+	ftpserver.user.myusername.enableflag=true
+</p>
+<p>
+	ftpserver.user.myusername.writepermission=true
+</p>
+<p>
+	ftpserver.user.myusername.maxloginnumber=3
+</p>
+<p>
+	ftpserver.user.myusername.maxloginperip=3
+</p>
+<p>
+	ftpserver.user.myusername.idletime=0
+</p>
+<p>
+	ftpserver.user.myusername.uploadrate=0
+</p>
+<p>
+	ftpserver.user.myusername.downloadrate=0
+</p>
+<p>
+	<br />
+</p>
+<p>
+	这里指定 ./ftp_space 路径为ftp的home目录，就是说客户端上传的文件都放在这里。
+</p>
+<p>
+	4. 在res\\conf目录中找到ftpd-typical.xml文件，复制一份，改名为 my-ftpd-typical.xml
+</p>
+<p>
+	修改内容为
+</p>
+<p>
+	<br />
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;  
+&lt;server xmlns=\"http://mina.apache.org/ftpserver/spring/v1\"  
+    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"  
+    xsi:schemaLocation=\"  
+       http://mina.apache.org/ftpserver/spring/v1 http://mina.apache.org/ftpserver/ftpserver-1.0.xsd      
+       \"  
+    id=\"myServer\"  
+    max-logins=\"5\"  
+    anon-enabled=\"false\"  
+    max-anon-logins=\"0\"  
+    max-login-failures=\"3\"  
+    login-failure-delay=\"30000\"&gt;  
+      
+    &lt;listeners&gt;  
+        &lt;nio-listener name=\"default\" port=\"21\"&gt;  
+            &lt;ssl&gt;  
+                &lt;keystore file=\"./res/ftpserver.jks\" password=\"password\" /&gt;  
+            &lt;/ssl&gt;  
+        &lt;/nio-listener&gt;  
+    &lt;/listeners&gt;  
+    &lt;file-user-manager file=\"./res/conf/myusers.properties\" encrypt-passwords=\"clear\"/&gt;  
+&lt;/server&gt;  </pre>
+	<p>
+		主要是修改端口号，修改登录用户文件，修改最大连接用户数以及匿名用户规则
+	</p>
+	<p>
+		5. 在安装目录中创建run_ftp.bat文件，内容如下
+	</p>
+	<p>
+		.bat文件 写道e:
+	</p>
+	<p>
+		cd E:\\ftp_server\\apache-ftpserver-1.0.0
+	</p>
+	<p>
+		bin/ftpd.bat res/conf/my-ftpd-typical.xml 以后双击就可以运行了
+	</p>
+	<p>
+		可以使用你的FTP客户端访问 ftp://localhost:21 了, 用户名是myusers.properties里设置的myusername
+	</p>
+	<p>
+		推荐一个免费的FTP客户端 FileZilla http://filezilla-project.org/
+	</p>
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[Apache FtpServer是纯Java写的开源FTP服务器。 http://mina.apache.org/ftpserver/
+
+
+	
+
+
+	下面简单讲一下配置安装过程
+
+
+	1. 从 http://mina.apache.org/ftpserver/ 下载apache-ftpserver-1.0.0
+
+
+	2. 解压缩到本地
+
+
+	3. 在安装目录]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,16 @@
+<div class="slave-item borderR10" style="width:49%;border:1px solid #ccc;background:url('/img/box-bj.png');float:left;margin-left:5px;margin-bottom:10px;">
+    <a class="headwapper borderR5" style="margin:5px;">
+        <img class="borderR5" src="<?php echo $params['ush'] ?>" width="64px" height="64px"/>
+    </a>
+    <div style="margin-left:75px;line-height:22px;margin-top:2px;font-size:13px;">
+        <span class="block">
+            <a class="my-slave-usn" style="font-size:14px;" href="/user/ucApp/coder_sale/?uid=<?php echo $params['uid'] ?>"><?php echo $params['usn'] ?></a>
+        </span>
+        <span class="block"><span class="Gray">目前身价</span>：<?php echo $params['spc'];?></span>
+        <span class="block" style="margin-top:5px;line-height:20px;">
+            <?php if($GLOBALS['G_mod'] == 0) include dirname(__FILE__) . DIRECTORY_SEPARATOR .'command-btn-mod-owner.html';?>
+            <?php if($GLOBALS['G_mod'] == 1) include dirname(__FILE__) . DIRECTORY_SEPARATOR .'command-btn-mod-visitor.html';?>
+        </span>
+    </div>
+    <div class="clear"></div>
+</div>

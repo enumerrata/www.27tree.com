@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Javascript实现继承]]></title>
+  <content><![CDATA[<p>
+	原型链继承是最常用的一种方式：‘
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function Video(){};   
+function Movie(){};   
+Movie.prototype = new Video();   
+Movie.prototype.constructor = Movie; //不要忘了构造器</pre>
+啰嗦一句，如果我拿到的是方法的实例，一样可以实现继承：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function Video(){};   
+function Movie(){};   
+   
+var video = new Video();   
+video.size = 3;   
+video.toString = function(){   
+  return \"video\";   
+};   
+video.getName = function(){   
+  return \"VideoXXX\";   
+};   
+var movie = new Movie();   
+(function inherit(parent,child){   
+  for(var ele in parent){   
+    if(!child[ele]) //在child不包含该属性或者方法的时候，才会拷贝parent的一份   
+      child[ele] = parent[ele];   
+    }   
+})(video,movie); //匿名函数调用的方式   
+   
+alert(movie.size); //3   
+alert(movie.toString()); //[object Object]   
+alert(movie.getName()); //VideoXXX</pre>
+</p>]]></content>
+  <contentx><![CDATA[
+	原型链继承是最常用的一种方式：‘
+
+
+function Video(){};   
+function Movie(){};   
+Movie.prototype = new Video();   
+Movie.prototype.con]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-06 23:35:08</datetime>
+  <title>2012-9-6 23:30 {bug修正}</title>
+  <content>&lt;p&amp;nbsp;align=\"center\"&gt;
+	360和IE浏览器的问题
+&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;
+		留言板不兼容360和IE浏览器。点已经有文章收藏而且板块收藏的个人中心·可以打开留言框·其他人的都不行。原因是Chrome和IE识别空节点不一致，Chrome识别为null，IE识别为undefined，没有完全判断，导致脚本中断运行。
+	&lt;/li&gt;
+	&lt;li&gt;
+		进去会员个人中心·不显示动态·刷新也不行·要点动态那里才会出现，进去某个会员中心一样的问题。原因同上。
+	&lt;/li&gt;
+	&lt;li&gt;
+		帖子回复要刷新才可以看自己回复的内容。!$.browser.msie判断忘记添加ie特定脚本。
+	&lt;/li&gt;
+	&lt;li&gt;
+		博文留言问题·要卡很久·而且要刷新才可以看到·点那个（点我发表文章评论）会弹出一小框，框内的内容是一个感叹号和一个X字母。alert调试脚本未删除。
+	&lt;/li&gt;
+	&lt;li&gt;
+		编程开发那块以下的和博文的情况一样、
+	&lt;/li&gt;
+	&lt;li&gt;
+		随便进一个页面，点右边的那个发表文章的图标·会直接弹进个人中心动态那页面，而且要在个人中心那里点发表文章才可以发表新的文章。同bug(1)。
+	&lt;/li&gt;
+&lt;/ol&gt;</content>
+  <state>0</state>
+</root>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Oracle VM实现与管理实战]]></title>
+  <author>Edward Whalen</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-09 14:11:35</submit-date-time>
+  <img-link>aeb3daa411286357c349aa970e2251e1.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	本书提供了在企业中构建和维护动态的虚拟化平台的详尽信息。本书阐述了关键的虚拟化概念、操作指令、示例以及最佳实践。探寻如何设计Oracle VM服务器农场、构建和部署虚拟机、处理自动部署和克隆。在这本全面的指南中还包含了监视、调优和安全方面的技术。
+</p>
+<p>
+	主要内容
+</p>
+<p>
+	●安装、配置和管理所有的Oracle VM组件
+</p>
+<p>
+	●设置Oracle VM服务器农场和服务器池
+</p>
+<p>
+	●通过Oracle Enterprise Manager Grid Control、Oracle VM Manager和Oracle VM命令行界面控制资源
+</p>
+<p>
+	●通过Oracle VMI具管理网络驱动程序和虚拟存储
+</p>
+<p>
+	●手工创建虚拟机或通过Oracle模板库创建虚拟机
+</p>
+<p>
+	●将其他系统上现有的虚拟机转换为Oracle VM虚拟机
+</p>
+<p>
+	●生成运行在多个服务器池中的虚拟机克隆
+</p>
+<p>
+	●通过Oracle Enterprise Manager Grid Control的Management Pack维护客户操作系统和软件
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

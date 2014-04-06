@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[oledb读写excel出现“操作必须使用一个可更新的查询”的解决]]></title>
+  <content><![CDATA[<p>
+	&nbsp; &nbsp;&nbsp;前两天使用oledb连接excel的办法为单位某部门从一个excel的多个sheet中作连选抽出需要的数据，程序非常简单，结果很快就出来，原来手工需要很长时间才能选出的结果现在几乎一点击就有了结果。使用人员非常满意，由于是多人使用，开始只是将结果显示在一个页面上。后来他们要求将结果写入该xls文件的另一个sheet中，我随便写了个语句以为可以立马搞掂，没想到居然出现了“操作必须使用一个可更新的查询”。因为读取结果正常，我开始以为是excel文件所处的文件夹没有写权限所致。增加了相应权限后，结果依然如故。没办法还是检查程序吧，仔细检查了一下，问题发现了，原来开始只是为了读取excel我将连接写成了如下格式：
+</p>
+<p>
+	&nbsp; Private filename As String = Server.MapPath(\".\") + \"\\test.xls;Extended Properties=\'Excel 8.0;HDR=yes;IMEX=1\'\"
+</p>
+<p>
+	&nbsp; &nbsp;Dim constr As String = \"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\" + filename
+</p>
+<p>
+	特别注意
+</p>
+<p>
+	&nbsp; &nbsp;Extended Properties=\'Excel 8.0;HDR=yes;IMEX=1\'
+</p>
+<p>
+	&nbsp; &nbsp; A： HDR ( HeaDer Row )设置
+</p>
+<p>
+	&nbsp; &nbsp;若指定值为Yes，代表 Excel 档中的工作表第一行是栏位名称
+</p>
+<p>
+	&nbsp; &nbsp;若指定值為 No，代表 Excel 档中的工作表第一行就是資料了，沒有栏位名称
+</p>
+<p>
+	&nbsp; &nbsp;B：IMEX ( IMport EXport mode )设置
+</p>
+<p>
+	&nbsp; &nbsp; IMEX 有三种模式，各自引起的读写行为也不同，容後再述：
+</p>
+<p>
+	&nbsp; &nbsp; 0 is Export mode
+</p>
+<p>
+	&nbsp; &nbsp; 1 is Import mode
+</p>
+<p>
+	&nbsp; &nbsp; 2 is Linked mode (full update capabilities)
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;我这里特别要说明的就是 IMEX 参数了，因为不同的模式代表著不同的读写行为：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;当 IMEX=0 时为“汇出模式”，这个模式开启的 Excel 档案只能用来做“写入”用途。
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;当 IMEX=1 时为“汇入模式”，这个模式开启的 Excel 档案只能用来做“读取”用途。
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;当 IMEX=2 时为“连結模式”，这个模式开启的 Excel 档案可同时支援“读取”与“写入”用途。
+</p>
+<p>
+	&nbsp; &nbsp; 看完这些大家就不用再说我的写入为什么有问题了吧。我将连接改为如下：
+</p>
+<p>
+	Private filename As String = Server.MapPath(\".\") + \"\\test.xls;Extended Properties=\'Excel 8.0;HDR=yes;IMEX=2\'\"
+</p>
+<p>
+	&nbsp; &nbsp;Dim constr As String = \"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\" + filename
+</p>
+<p>
+	&nbsp; &nbsp; 文章转载自http://www.csharpwin.com/csharpspace/11788r8743.shtml
+</p>]]></content>
+  <contentx><![CDATA[
+	&nbsp; &nbsp;&nbsp;前两天使用oledb连接excel的办法为单位某部门从一个excel的多个sheet中作连选抽出需要的数据，程序非常简单，结果很快就出来，原来手工需要很长时间才能选出的结果现在几乎一点击就有了结果。]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

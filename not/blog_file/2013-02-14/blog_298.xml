@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[比file_get_contents稳定的curl_get_contents]]></title>
+  <content><![CDATA[<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function curl_get_contents($url,$timeout=1) {
+  $curlHandle = curl_init();
+  curl_setopt( $curlHandle , CURLOPT_URL, $url );
+  curl_setopt( $curlHandle , CURLOPT_RETURNTRANSFER, 1 );
+  curl_setopt( $curlHandle , CURLOPT_TIMEOUT, $timeout );
+  $result = curl_exec( $curlHandle );
+  curl_close( $curlHandle );
+  return $result;
+}
+$hx = curl_get_contents(\'http://www.27tree.com\');</pre>
+	<p>
+		相信使用过file_get_contents函数的朋友都知道，当获取的$url访问不了时，会导致页面漫长的等待，甚至还能导致PHP进程占用CPU达100%，因此这个函数就诞生了。curl的一些常识介绍
+	</p>
+	<p>
+		保留原file_get_contents函数的原因是当读取本地文件时，用原生的file_get_contents显然更合适。
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		同样是设置超时时间来解决这个问题。如果没装curl，就必须得用这个方式了。
+	</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$ctx = stream_context_create(array(   
+   \'http\' =&gt; array(   
+       \'timeout\' =&gt; 1 //设置一个超时时间，单位为秒   
+       )   
+   )   
+);   
+file_get_contents(\"http://www.27tree.com/\", 0, $ctx);</pre>
+另外，据不完全测试，使用curl获取页面比用file_get_contents稳定的多。
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[
+function curl_get_contents($url,$timeout=1) {
+  $curlHandle = curl_init();
+  curl_setopt( $curlHandle , CURLOPT_URL, $u]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

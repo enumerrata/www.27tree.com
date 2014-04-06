@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-15 15:38:00</datetime>
+  <title><![CDATA[计算utf8字符集中英混合，字符串长度]]></title>
+  <content><![CDATA[<p>
+	PHP对中文字符串的处理一直困扰于刚刚接触PHP开发的新手程序员。下面简要的剖析一下PHP对中文字符串长度的处理：
+</p>
+<p>
+	PHP自带的函数如strlen()、mb_strlen()都是通过计算字符串所占字节数来统计字符串长度的，一个英文字符占1字节。例：
+</p>
+<p>
+	<p>
+		$enStr = ‘Hello,China!’;
+	</p>
+	<p>
+		echo strlen($enStr); // 输出：12
+	</p>
+	<p>
+		<br />
+	</p>
+中文则不然，做中文网站一般会选择两种编码：gbk/gb2312或是utf-8。utf-8能兼容更多的字符，所以受到很多站长的喜爱。gbk与utf-8对中文的编码不同，导致中文在gbk与utf-8编码下所占字节也有差异。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	gbk编码下每个中文字符所占字节为2，例：
+</p>
+<p>
+	<p>
+		$zhStr = ‘您好，中国！’;
+	</p>
+	<p>
+		echo strlen($zhStr); // 输出：12
+	</p>
+	<p>
+		<br />
+	</p>
+utf-8编码下每个中文字符所占字节为3，例：
+</p>
+<p>
+	<p>
+		$zhStr = ‘您好，中国！’;
+	</p>
+	<p>
+		echo strlen($zhStr); // 输出：18
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<p>
+			那么如何计算这组中文字符串的长度呢？有人可能会说gbk下获取中文字符串长度除以2，utf-8编码下除以3不就行了吗？但是您要考虑字符串并不老实，99%的情况会以中英混合的情况出现。
+		</p>
+		<p>
+			这是WordPress中的一段代码，主要思想就是先用正则将字符串分解为个体单元，然后再计算单元的个数即字符串的长度，代码如下（只能处理utf-8编码下的字符串）：
+		</p>
+		<p>
+			<br />
+		</p>
+		<p>
+			$zhStr = ‘您好，中国！’;
+		</p>
+		<p>
+			$str = ‘Hello,中国！’;
+		</p>
+		<p>
+			// 计算中文字符串长度
+		</p>
+		<p>
+			function utf8_strlen($string = null) {
+		</p>
+		<p>
+			// 将字符串分解为单元
+		</p>
+		<p>
+			preg_match_all(“/./us”, $string, $match);
+		</p>
+		<p>
+			// 返回单元个数
+		</p>
+		<p>
+			return count($match[0]);
+		</p>
+		<p>
+			}
+		</p>
+		<p>
+			echo utf8_strlen($zhStr); // 输出：6
+		</p>
+		<p>
+			echo utf8_strlen($str); // 输出：9
+		</p>
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

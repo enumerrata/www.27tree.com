@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP实现gzip页面压缩方法</title>
+<content>&amp;lt;p&amp;gt;
+	示例一（用php的内置压缩函数）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?PHP&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(Extension_Loaded(’zlib’))&amp;nbsp;Ob_Start(’ob_gzhandler’);&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Header(\"Content-type:&amp;nbsp;text/html\");&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Transitional//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;html&amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;head&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;meta&amp;nbsp;http-equiv=\"Content-Type\"&amp;nbsp;content=\"text/html;&amp;nbsp;charset=gb2312\"&amp;nbsp;/&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;title&amp;amp;gt;无标题文档&amp;amp;lt;/title&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/head&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;body&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?php&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for($i=0;$i&amp;amp;lt;10000;$i++){&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;’Hello&amp;nbsp;World!’;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/body&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/html&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?PHP&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(Extension_Loaded(’zlib’))&amp;nbsp;Ob_End_Flush();&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	示例二（自写函数）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?php&amp;nbsp;ob_start(’ob_gzip’);&amp;nbsp;?&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Transitional//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;html&amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;head&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;meta&amp;nbsp;http-equiv=\"Content-Type\"&amp;nbsp;content=\"text/html;&amp;nbsp;charset=gb2312\"&amp;nbsp;/&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;title&amp;amp;gt;无标题文档&amp;amp;lt;/title&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/head&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;body&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/body&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/html&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;?php&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ob_end_flush();&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//压缩函数&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;ob_gzip($content){&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(!headers_sent()&amp;amp;&amp;amp;extension_loaded(\"zlib\")&amp;amp;&amp;amp;strstr($_SERVER[\"HTTP_ACCEPT_ENCODING\"],\"gzip\")){&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$content&amp;nbsp;=&amp;nbsp;gzencode($content,9);&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	header(\"Content-Encoding:&amp;nbsp;gzip\");&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	header(\"Vary:&amp;nbsp;Accept-Encoding\");&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	header(\"Content-Length:&amp;nbsp;\".strlen($content));&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;$content;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338950564.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

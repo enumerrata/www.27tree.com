@@ -1,0 +1,77 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL Delete From</h1>
+</div>
+<div>
+
+<p><b>DELETE FROM 语句用于从数据库表中删除行。</b></p>
+
+<h1>删除数据库中的数据</h1>
+
+<p>DELETE FROM 语句用于从数据库表中删除记录。</p>
+
+<p>语法</p>
+
+<code>
+DELETE FROM table_name<br />
+WHERE column_name = some_value
+</code>
+
+<p><b>注释</b>：SQL 对大小写不敏感。DELETE FROM 与 delete from 等效。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysql_query( 函数。该函数用于向 SQL 连接发送查询和命令。</p>
+
+<p>例子</p>
+
+<p>稍早时，我们在本教程中创建了一个名为 "Persons" 的表。它看起来类似这样：</p>
+
+<table class="dataintable">
+	<tr>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<td>Peter</td>
+		<td>Griffin</td>
+		<td>35</td>
+	</tr>
+	<tr>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>33</td>
+	</tr>
+</table>
+
+<p>下面的例子删除 "Persons" 表中所有 LastName='Griffin' 的记录：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+mysql_query("DELETE&nbspFROM&nbspPersons&nbspWHERE&nbspLastName='Griffin'");<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<p>在这次删除之后，表是这样的：</p>
+
+<table class="dataintable">
+	<tr>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>33</td>
+	</tr>
+</table>
+
+</div>

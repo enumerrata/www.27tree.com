@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>37</uid>
+  <datetime>2012-09-17 18:57:07</datetime>
+  <title>KindEditor 编辑器使用方法</title>
+  <content>&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;1.&amp;nbsp;下载&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;KindEditor&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;编辑器&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	下载&amp;nbsp;KindEditor&amp;nbsp;最新版本，下载之后打开&amp;nbsp;examples/index.html&amp;nbsp;就可以看到演示。
+&lt;/p&gt;
+&lt;p&gt;
+	下载页面:&amp;nbsp;http://www.kindsoft.net/down.php
+&lt;/p&gt;
+&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;2.&amp;nbsp;部署&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;KindEditor&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;编辑器&lt;/span&gt;&lt;/strong&gt;
+
+&lt;p&gt;
+	解压&amp;nbsp;kindeditor-x.x.x.zip&amp;nbsp;文件，将所有文件上传到您的网站程序目录里，例如：http://您的域名/editor/
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;3.&amp;nbsp;修改你的HTML页面&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;在需要显示编辑器的位置添加textarea输入框。&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	&lt;pre&amp;nbsp;name="code"&amp;nbsp;id="prettyprint"&amp;nbsp;class="javascript"&gt;&amp;lt;textarea&amp;nbsp;id=\"editor_id\"&amp;nbsp;name=\"content\"&amp;nbsp;style=\"width:700px;height:300px;\"&amp;gt;&amp;lt;/textarea&amp;gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;在该HTML页面添加以下脚本。&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;pre&amp;nbsp;name="code"&amp;nbsp;id="prettyprint"&amp;nbsp;class="javascript"&gt;&amp;lt;script&amp;nbsp;charset=\"utf-8\"&amp;nbsp;src=\"/editor/kindeditor.js\"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;nbsp;
+	&amp;lt;script&amp;nbsp;charset=\"utf-8\"&amp;nbsp;src=\"/editor/lang/zh_CN.js\"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;nbsp;
+	&amp;lt;script&amp;gt;
+&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;editor;
+&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;KindEditor.ready(function(K)&amp;nbsp;{
+&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;editor&amp;nbsp;=&amp;nbsp;K.create(&amp;nbsp;#editor_id&amp;nbsp;);
+&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;
+	&amp;lt;/script&amp;gt;
+&amp;nbsp;
+	var&amp;nbsp;options&amp;nbsp;=&amp;nbsp;{
+&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cssPath&amp;nbsp;:&amp;nbsp;&amp;nbsp;/css/index.css&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;filterMode&amp;nbsp;:&amp;nbsp;true&amp;nbsp;};
+	&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	第一个参数可用其它&lt;strong&gt;CSS选择器&lt;/strong&gt;，匹配多个textarea时只在第一个元素上加载编辑器。通过K.create函数的第二个参数，可以对KindEditor编辑器进行配置;
+&lt;/p&gt;
+&lt;p&gt;
+	var&amp;nbsp;editor&amp;nbsp;=&amp;nbsp;K.create(&amp;nbsp;textarea[name=\"content\"]&amp;nbsp;,&amp;nbsp;options);
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;4.&amp;nbsp;获取HTML数据&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		html&amp;nbsp;=&amp;nbsp;editor.html();
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;同步数据后可以直接取得textarea的值
+	&lt;/p&gt;
+	&lt;p&gt;
+		editor.sync();
+	&lt;/p&gt;
+	&lt;p&gt;
+		html&amp;nbsp;=&amp;nbsp;document.getElementById(&amp;nbsp;editor_id&amp;nbsp;).value;&amp;nbsp;//&amp;nbsp;原生API
+	&lt;/p&gt;
+	&lt;p&gt;
+		html&amp;nbsp;=&amp;nbsp;K(&amp;nbsp;#editor_id&amp;nbsp;).val();&amp;nbsp;//&amp;nbsp;KindEditor&amp;nbsp;Node&amp;nbsp;API
+	&lt;/p&gt;
+	&lt;p&gt;
+		html&amp;nbsp;=&amp;nbsp;$(&amp;nbsp;#editor_id&amp;nbsp;).val();&amp;nbsp;//&amp;nbsp;jQuery
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;设置HTML内容
+	&lt;/p&gt;
+	&lt;p&gt;
+		editor.html(&amp;nbsp;HTML内容&amp;nbsp;);
+	&lt;/p&gt;
+&lt;/p&gt;
+
+</content>
+  <contentx>1. 下载KindEditor编辑器
+	下载 KindEditor 最新版本，下载之后打开 examples/index.html 就可以看到演示。
+	下载页面: http://www.kindsoft.net/down.php
+2. 部署KindEditor编辑器
+	解压 kindeditor-x.x.x.zip 文件，将所有文</contentx>
+  <tags>_null_</tags>
+</root>

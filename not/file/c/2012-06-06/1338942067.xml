@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C++强大的背后</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:center;text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;哪些程序适宜使用C++？&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	C++并非万能丹，我按经验举出一些C++的适用时机。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	C++适合构造程序中需求较稳定的部分，需求变化较大的部分可使用脚本语言；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	程序须尽量发挥硬件的最高性能，且性能瓶颈在于CPU和内存；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	程序须频繁地与操作系统或硬件沟通；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	程序必须使用C++框架/库，如大部分游戏引擎（如Unreal/Source）及中间件（如Havok/FMOD），虽然有些C++库提供其他语言的绑定，但通常原生的API性能最好、最新；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	项目中某个目标平台只提供C++编译器的支持。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	按应用领域来说，C++适用于开发服务器软件、桌面应用、游戏、实时系统、高性能计算、嵌入式系统等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;为何C++性能可优于其他语言？&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相对运行于虚拟机语言（如C#/Java），C/C++直接以静态形式把源程序编译为目标平台的机器码。一般而言，C/C++程序在编译及链接时可
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	进行的优化最丰富，启动时的速度最快，运行时的额外内存开销最少。而C/C++相对动态语言（如Python/Lua）也减少了运行时的动态类型检测。此
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	外，C/C++的运行行为是确定的，且不会有额外行为（例如C#/Java必然会初始化变量），也不会有如垃圾收集（GC）而造成的不确定性延迟，而且C
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/C++的数据结构在内存中的布局也是确定的。有时C++的一些功能会使程序性能优于C，当中以内联和模版最为突出，这两项功能使C++标准库的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sort()通常比C标准库的qsort()快多倍（C可用宏或人手编码去解决此问题）。另一方面，C/C++能直接映射机器码，之间没有另一层中间语
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	言，因此可以做底层优化，例如使用内部（intrinsic）函数和嵌入汇编语言。然而，许多C++的性能优点并非免费午餐，代价包括较长的编译链接时间
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	和较易出错，因而增加开发时间和成本
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-06/1338942067.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

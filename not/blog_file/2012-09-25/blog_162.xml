@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-25 14:08:30</datetime>
+  <title>CSS 强制换行&amp;强制不换行</title>
+  <content>&lt;p&gt;
+	在CSS网页布局中，常常会遇到这样的问题，强制文字换行，而不是在一行内显示撑开容器影响布局。而有些时候可能会强制内容不换行，多出的部分隐藏掉即可，关于强制不换行与强制换行的一些CSS属性&lt;a&amp;nbsp;href=\"http://www.itsrcs.com\"&amp;nbsp;target=\"_blank\"&gt;www.itsrcs.com&lt;/a&gt;作一些整理，希望能给大家的工作和学习提供参考。
+&lt;/p&gt;
+&lt;p&gt;
+	先了解以下几个属性：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		强制不换行
+	&lt;/p&gt;
+	&lt;p&gt;
+		p&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		white-space:nowrap;
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		自动换行
+	&lt;/p&gt;
+	&lt;p&gt;
+		p&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		word-wrap:&amp;nbsp;break-word;
+	&lt;/p&gt;
+	&lt;p&gt;
+		word-break:&amp;nbsp;normal;
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		强制英文单词断行
+	&lt;/p&gt;
+	&lt;p&gt;
+		p&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		word-break:break-all;
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		CSS设置不换行：
+	&lt;/p&gt;
+	&lt;p&gt;
+		overflow:hidden&amp;nbsp;溢出隐藏
+	&lt;/p&gt;
+	&lt;p&gt;
+		white-space:nowrap&amp;nbsp;不换行
+	&lt;/p&gt;
+	&lt;p&gt;
+		pre&amp;nbsp;换行和其他空白字符都将受到保护
+	&lt;/p&gt;
+	&lt;p&gt;
+		nowrap&amp;nbsp;强制在同一行内显示所有文本，直到文本结束或者遭遇br对象
+	&lt;/p&gt;
+	&lt;p&gt;
+		CSS设置强制换行：
+	&lt;/p&gt;
+	&lt;p&gt;
+		word-break:break-all&amp;nbsp;强制断开实现转行
+	&lt;/p&gt;
+	&lt;p&gt;
+		normal&amp;nbsp;;&amp;nbsp;依照亚洲语言和非亚洲语言的文本规则，允许在字内换行
+	&lt;/p&gt;
+	&lt;p&gt;
+		break-all&amp;nbsp;:&amp;nbsp;该行为与亚洲语言的normal相同。也允许非亚洲语言文本行的任意字内断开。该值适合包含一些非亚洲文本的亚洲文本
+	&lt;/p&gt;
+	&lt;p&gt;
+		keep-all&amp;nbsp;:&amp;nbsp;与所有非亚洲语言的normal相同。对于中文，韩文，日文，不允许字断开。适合包含少量亚洲文本的非亚洲文本与之间的高度解决办法
+	&lt;/p&gt;
+	&lt;p&gt;
+		设置或检索对象内文本的字内换行行为。尤其在出现多种语言时。对于中文，应该使用break-all&amp;nbsp;。
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>在CSS网页布局中，常常会遇到这样的问题，强制文字换行，而不是在一行内显示撑开容器影响布局。而有些时候可能会强制内容不换行，多出的部分隐藏掉即可，关于强制不换行与强制换行的一些CSS属性www.itsrcs.com作一些整理，希望能给大家的工作和学习提供参考。</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[使用navigator.userAgent.indexOf来判断浏览器类型]]></title>
+  <content><![CDATA[<br>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function getBs() {
+         var OsObject = \"\";
+         if (navigator.userAgent.indexOf(\"MSIE\") &gt; 0) {
+             return \"MSIE\";
+         }
+         if (isFirefox = navigator.userAgent.indexOf(\"Firefox\") &gt; 0) {
+             return \"Firefox\";
+         }
+         if (isSafari = navigator.userAgent.indexOf(\"Safari\") &gt; 0) {
+             return \"Safari\";
+         }
+         if (isCamino = navigator.userAgent.indexOf(\"Camino\") &gt; 0) {
+             return \"Camino\";
+         }
+         if (isMozilla = navigator.userAgent.indexOf(\"Gecko/\") &gt; 0) {
+             return \"Gecko\";
+         }
+}</pre>
+<br>]]></content>
+  <contentx><![CDATA[
+function getBs() {
+         var OsObject = \"\";
+         if (navigator.userAgent.indexOf(\"MSIE\") &gt; 0) {
+         ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

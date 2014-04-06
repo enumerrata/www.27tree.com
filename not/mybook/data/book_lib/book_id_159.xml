@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[深入PHP：面向对象、模式与实践(第3版)]]></title>
+  <author>（美）赞德斯彻</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-01 21:42:29</submit-date-time>
+  <img-link>4c9d482c8f0801f95af2f8ffc38eadac.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	赞德斯编著的《深入PHP：面向对象、模式与实践（第3版）》全面深入地剖析了面向对象的PHP编程与设计。书中首先介绍了PHP的对象特性（包括抽象类、反射、接口和错误处理等）及可帮助开发人员了解类、对象和方法的对象工具，然后介绍了设计模式。阐述了模式的概念，展示了如何在PHP中实现一些关键的模式。并用专门的章节介绍了企业模式和数据库模式。最后，本书围绕PHP应用程序开发。详细介绍了一批极为实用的辅助开发工具。讨论了具有普遍意义的最佳开发实践。另外，这一版中还新增了闭包、命名空间、持续集成等内容。 本书适合每位PHP开发人员进阶参考。可帮助他们掌握PHP面向对象设计和开发的精髓，并最终跻身高端PHP开发人员之列。
+</p>
+<p>
+	<p>
+		《深入PHP：面向对象、模式与实践（第3版）》是PHP专家赞德斯经典力作的最新版本。书中主要介绍了如何使用面向对象技术和设计模式编写稳定的、可维护的代码，如何使用Subversion管理多个开发人员，如何使用Phing和PEAR进行构建和安装，以及将构建和测试过程自动化的策略，包括持续集成。
+	</p>
+	<p>
+		&nbsp; &nbsp; 《深入PHP：面向对象、模式与实践（第3版）》适合中高级PHP程序员阅读。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

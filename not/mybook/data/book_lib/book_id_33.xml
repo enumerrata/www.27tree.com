@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>C++STL程序员开发指南</title>
+  <author> 彭木根，王淑凌 </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:08:22</submit-date-time>
+  <img-link>13b5004e89213133976989202486ca1e.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在C++的最新发展过程中，新增了模板这个新特性，通过使用模板，程序具备更好的代码重用性能。STL是在加利福尼亚州的惠普实验室中开发的一系列软件的系统，开发者主要为Alexander
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Stepanov、David&amp;nbsp;R&amp;nbsp;Musser和MengLee三位大师，其中Stepanov更被誉为“STL之父”。在1994年7月，美国国家标准研究所（ANSI）通过投票决定，将STL纳入C++标准，使之成为C++库的重要组成部分。目前我们所讲的C++标准是经过多次修改的结果，最后一次的修改在1997年11月，其官方名称为ISO14882，其最重要的修改来自于把模板引入到标准库，并且使用模板类代替C++中传统的类格式，这完全符合STL的概念。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书通过对大量程序实例的分析，深入浅出地讲解了C++STL高级编程技术。全书首先介绍了C++语言的基本知识、C++语言编程核心技术和C++关键库类，然后逐步过渡到C++STL编程技术，用较大的篇幅对它们进行了深入的剖析和源码解析。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书由大量的源程序实例组成，融合并提炼了许多人多年开发C++程序积累下来的成熟经验，意在展现深澳及抽象的C++编程技术，特别是令人望而生畏的强大的STL技术。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

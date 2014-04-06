@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[指定eclipse的启动jdk]]></title>
+  <content><![CDATA[<p>
+	在大部分时候，我们都使用PATH中指定的jdk来启动eclipse，但有些开发的时候需要多个jdk版本，比如ant要使用jdk1.5，某个eclipse需要用jdk1.6来启动（如开发android用的），这样在PATH里换来换去，好不麻烦。
+</p>
+<p>
+	这时候就需要指定eclipse的启动jdk功能了，只需在启动快捷方式改成这样即可：
+</p>
+<p>
+	eclipse.exe -vm D:\\program\\java\\jdk1.6.0_26\\bin\\javaw.exe。即通过-vm参数指定具体的javaw.exe的路径。
+</p>]]></content>
+  <contentx><![CDATA[
+	在大部分时候，我们都使用PATH中指定的jdk来启动eclipse，但有些开发的时候需要多个jdk版本，比如ant要使用jdk1.5，某个eclipse需要用jdk1.6来启动（如开发android用的），这样在PATH里换来换去，好不]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

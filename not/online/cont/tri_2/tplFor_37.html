@@ -1,0 +1,130 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP XML DOM</h1>
+</div>
+<div>
+	
+<p><b>内建的 DOM 解析器使在 PHP 中处理 XML 文档成为可能。</b></p>
+
+<h1>什么是 DOM？</h1>
+
+<p>W3C DOM 提供了针对 HTML 和 XML 文档的标准对象集，以及用于访问和操作这些文档的标准接口。</p>
+<p>W3C DOM 被分为不同的部分 (Core, XML 和 HTML) 和不同的级别 (DOM Level 1/2/3)：</p>
+<ul>
+<li>Core DOM - 为任何结构化文档定义标准的对象集</li>
+<li>XML DOM - 为 XML 文档定义标准的对象集</li>
+<li>HTML DOM - 为 HTML 文档定义标准的对象集</li>
+</ul>
+
+<h1>XML 解析</h1>
+
+<p>如需读取和更新 - 创建创建并处理 - 一个 XML 文档，您需要 XML 解析器。</p>
+<p>有两种基本的 XML 解析器类型：</p>
+<ul>
+<li><b>基于树的解析器</b>：这种解析器把 XML 文档转换为树型结构。它分析整篇文档，并提供了 API 来访问树种的元素，例如文档对象模型 (DOM)。</li>
+<li><b>基于事件的解析器</b>：将 XML 文档视为一系列的事件。当某个具体的事件发生时，解析器会调用函数来处理。</li>
+</ul>
+
+<p>DOM 解析器是基于树的解析器。</p>
+<p>请看下面的 XML 文档片段：</p>
+
+<code>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br />
+&lt;from&gt;John&lt;/from&gt;
+</code>
+
+<p>XML DOM 把 XML 视为一个树形结构：</p>
+<ul>
+<li>Level 1: XML 文档</li>
+<li>Level 2: 根元素: <from></li>
+<li>Level 3: 文本元素: "John"</li>
+</ul>
+
+<h1>安装</h1>
+
+<p>DOM XML 解析器函数是 PHP 核心的组成部分。无需安装就可以使用这些函数。</p>
+
+<h1>XML 文件</h1>
+
+<p>将在我们的例子中使用下面的 XML 文件：</p>
+
+<code>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br />
+&lt;note&gt;<br />
+&lt;to&gt;George&lt;/to&gt;<br />
+&lt;from&gt;John&lt;/from&gt;<br />
+&lt;heading&gt;Reminder&lt;/heading&gt;<br />
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;<br />
+&lt;/note&gt;
+</code>
+
+<h1>加载和输出 XML</h1>
+
+<p>我们需要初始化 XML 解析器，加载 XML，并把它输出：</p>
+
+<h2>例子</h2>
+
+<code>
+&lt;?php<br />
+$xmlDoc = new DOMDocument();<br />
+$xmlDoc->load("note.xml");<br />
+<br />
+print $xmlDoc->saveXML();<br />
+?&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>George John Reminder Don't forget the meeting!</code>
+
+<p>假如您在浏览器窗口中查看源代码，会看到下面这些 HTML：</p>
+
+<code>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br />
+&lt;note&gt;<br />
+&lt;to&gt;George&lt;/to&gt;<br />
+&lt;from&gt;John&lt;/from&gt;<br />
+&lt;heading&gt;Reminder&lt;/heading&gt;<br />
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;<br />
+&lt;/note&gt;
+</code>
+
+<p>上面的例子创建了一个 DOMDocument-Object，并把 "note.xml" 中的 XML 载入这个文档对象中。</p>
+<p>saveXML() 函数把内部 XML 文档放入一个字符串，这样我们就可以输出它。</p>
+
+<h1>循环 XML</h1>
+
+<p>我们要初始化 XML 解析器，加载 XML，并循环 <note> 元素的所有元素：</p>
+
+<h2>例子</h2>
+
+<code>
+&lt;?php<br />
+$xmlDoc&nbsp=&nbspnew&nbspDOMDocument();<br />
+$xmlDoc-&gt;load("note.xml");<br />
+<br />
+$x&nbsp=&nbsp$xmlDoc-&gt;documentElement;<br />
+foreach&nbsp($x-&gt;childNodes&nbspAS&nbsp$item)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspprint&nbsp$item-&gt;nodeName&nbsp.&nbsp"&nbsp=&nbsp"&nbsp.&nbsp$item-&gt;nodeValue&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+?&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>
+#text = <br />
+to = George<br />
+#text = <br />
+from = John<br />
+#text = <br />
+heading = Reminder<br />
+#text = <br />
+body = Don't forget the meeting!<br />
+#text = 
+</code>
+
+<p>在上面的例子中，您看到了每个元素之间存在空的文本节点。</p>
+<p>当 XML 生成时，它通常会在节点之间包含空白。XML DOM 解析器把它们当作普通的元素，如果您不注意它们，有时会产生问题。</p>
+
+</div>

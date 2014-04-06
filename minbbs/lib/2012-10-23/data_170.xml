@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-23 00:11:50</datetime>
+  <title><![CDATA[程序员老鸟写sql语句的经验之谈]]></title>
+  <content><![CDATA[<p>
+	做管理系统的，无论是bs结构的还是cs结构的，都不可避免的涉及到数据库表结构的设计，sql语句的编写等。因此在开发系统的时候，表结构设计是否合理，sql语句是否标准，写出的sql性能是否优化往往会成为公司衡量程序员技术水平的标准。
+</p>
+<p>
+	我们程序员不是dba，不需要时刻关注sql运行时间，想方设法优化表结构，存储空间，优化表读取速度等等，但是在开发系统时，时刻保持优良的写sql语句的作风是很有必要的，这关乎到个人在公司的声誉，嘿嘿，你懂的。。。
+</p>
+<p>
+	新来的程序员老鸟，在一个开发团队中，需要表现一下自己的水平，奠定在公司的地位，需要努力表现一把，最简单的从写的sql语句就很容易表现出来，曾经就有一次，一个老程序员，上面定位是要做团队领导的，先历练一下做个制单的模块，列表sql中有一列这位老鸟直接写了个select语句从别的表中取之，而不是用表之间关联得到，一下破坏自己程序员老鸟光辉形象。
+</p>
+<p>
+	做技术的还是要注重自己的内涵，提升内功，哈哈。
+</p>
+<p>
+	闲话少说，总结一点程序员老鸟写sql顺手拈来的功夫吧：
+</p>
+<p>
+	1. 不论一个sql中涉及到多个表，每次都用两个表（结果集）操作，得到新的结果后，再和下一个表（结果集）操作。
+</p>
+<p>
+	2. 避免在select f1,(select f2 from tableB ).... from tableA
+</p>
+<p>
+	这样得到字段列。直接用tableA和tableB关联得到A.f1,B.f2就可以了。
+</p>
+<p>
+	3.避免隐含的类型转换
+</p>
+<p>
+	如
+</p>
+<p>
+	select id from employee where emp_id=\'8\' （错） &nbsp; select id from employee where emp_id=8 （对） &nbsp;
+</p>
+<p>
+	emp_id是整数型，用\'8\'会默认启动类型转换，增加查询的开销。
+</p>
+<p>
+	4. 尽量减少使用正则表达式，尽量不使用通配符。
+</p>
+<p>
+	5. 使用关键字代替函数
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where UPPER(dept) like \'TECH_DB\' （错） &nbsp; select id from employee where SUBSTR(dept,1,4)=\'TECH\' （错） &nbsp; select id from employee where dept like \'TECH%\' （对） &nbsp;
+</p>
+<p>
+	6.不要在字段上用转换函数，尽量在常量上用
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where to_char(create_date,\'yyyy-mm-dd\')=\'2012-10-31\' （错） &nbsp; select id from employee where create_date=to_date(\'2012-10-31\',\'yyyy-mm-dd\') （对） &nbsp;
+</p>
+<p>
+	7.不使用联接做查询
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where first_name || last_name like \'Jo%\' （错）
+</p>
+<p>
+	8. 尽量避免前后都用通配符
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where dept like \'%TECH%\' (错） &nbsp; select id from employee where dept like \'TECH%\' （对） &nbsp;
+</p>
+<p>
+	9. 判断条件顺序
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where creat_date-30&gt;to_date(\'2012-10-31\',\'yyyy-mm-dd\') （错） &nbsp; select id from employee where creat_date &gt;to_date(\'2012-10-31\',\'yyyy-mm-dd\')+30 （对） &nbsp;
+</p>
+<p>
+	10. 尽量使用exists而非in
+</p>
+<p>
+	当然这个也要根据记录的情况来定用exists还是用in, 通常的情况是用exists
+</p>
+<p>
+	select id from employee where salary in (select salary from emp_level where....) （错） &nbsp; select id from employee where salary exists(select \'X\' from emp_level where ....) （对） &nbsp;
+</p>
+<p>
+	11. 使用not exists 而非not in
+</p>
+<p>
+	和上面的类似
+</p>
+<p>
+	12. 减少查询表的记录数范围
+</p>
+<p>
+	13.正确使用索引
+</p>
+<p>
+	索引可以提高速度，一般来说，选择度越高，索引的效率越高。
+</p>
+<p>
+	14. 索引类型
+</p>
+<p>
+	唯一索引，对于查询用到的字段，尽可能使用唯一索引。
+</p>
+<p>
+	还有一些其他类型，如位图索引，在性别字段，只有男女的字段上用。
+</p>
+<p>
+	15. 在经常进行连接，但是没有指定为外键的列上建立索引
+</p>
+<p>
+	16. 在频繁进行排序会分组的列上建立索引，如经常做group by 或 order by 操作的字段。
+</p>
+<p>
+	17.
+</p>
+<p>
+	在条件表达式中经常用到的不同值较多的列上建立检索，在不同值少的列上不建立索引。如性别列上只有男，女两个不同的值，就没必要建立索引（或建立位图索引）。如果建立索引不但不会提高查询效率，反而会严重降低更新速度。
+</p>
+<p>
+	18. 在值比较少的字段做order by时，翻页会出现记录紊乱问题，要带上id字段一起做order by.
+</p>
+<p>
+	19. 不要使用空字符串进行查询
+</p>
+<p>
+	如：
+</p>
+<p>
+	select id from employee where emp_name like \'%%\' （错）
+</p>
+<p>
+	20. 尽量对经常用作group by的关键字段做索引。
+</p>
+<p>
+	21. 正确使用表关联
+</p>
+<p>
+	利用外连接替换效率十分低下的not in运算，大大提高运行速度。
+</p>
+<p>
+	如：
+</p>
+<p>
+	select a.id from employee a where a.emp_no not in (select emp_no from employee1 where job =\'SALE\') （错）
+</p>
+<p>
+	22. 使用临时表
+</p>
+<p>
+	在必要的情况下，为减少读取次数，可以使用经过索引的临时表加快速度。
+</p>
+<p>
+	如：
+</p>
+<p>
+	select e.id from employee e ,dept d where e.dept_id=d.id and e.empno&gt;1000 order by e.id （错） &nbsp; &nbsp;select id,empno from employee into temp_empl where empno&gt;1000 order by id &nbsp; select m.id from temp_emp1 m,dept d where m.empno=d.id （对） &nbsp;
+</p>
+<p>
+	对于大数据量sql语句性能优化更多的工作就交给dba去实践，我们程序员做好这些基本功就好了。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

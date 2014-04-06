@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-19 17:43:34</datetime>
+  <title>如何禁止 PHP 执行某些系统命令</title>
+  <content>&lt;p&gt;
+	很多命令如&amp;nbsp;shell_exec、system、passthru、popen&amp;nbsp;等都是系统相关的合作，如果虚拟主机开放给使用者使用，或是在系统权限没设定完整的情况下，必然会造成很大的伤害。
+&lt;/p&gt;
+&lt;p&gt;
+	要达到这个需求，只要在&amp;nbsp;&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/php/\"&amp;nbsp;target=\"_blank\"&gt;php&lt;/a&gt;.ini&amp;nbsp;里设定&amp;nbsp;disble_function&amp;nbsp;这个选项就能设定禁止执行的指令了。
+&lt;/p&gt;
+&lt;p&gt;
+	范例:
+&lt;/p&gt;
+&lt;p&gt;
+	disble_function&amp;nbsp;=&amp;nbsp;phpinfo
+&lt;/p&gt;
+&lt;p&gt;
+	要多个指令的话，用逗点隔开，如:
+&lt;/p&gt;
+&lt;p&gt;
+	disble_function&amp;nbsp;=&amp;nbsp;shell_exec,&amp;nbsp;system,&amp;nbsp;passthru,&amp;nbsp;popen
+&lt;/p&gt;</content>
+  <contentx>很多命令如 shell_exec、system、passthru、popen 等都是系统相关的合作，如果虚拟主机开放给使用者使用，或是在系统权限没设定完整的情况下，必然会造成很大的伤害。
+
+
+	要达到这个需求，只要在 php.ini 里设定 disble_function 这个选项就能设定禁止执行的指令了。
+
+
+	范例:
+
+
+	disble_function</contentx>
+  <tags>_null_</tags>
+</root>

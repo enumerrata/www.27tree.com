@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用XMLWriter类生成XML数据</title>
+<content>&amp;lt;p&amp;gt;
+	在现今的Web编程中，创建XML文档已经成为非常关键的一部分。通常，你需要使用XML格式导出数据。可以采用几种方式创建XML文档，比如SimpleXML方式或者具有完整功能的文档对象模型（DOM）创建方式。然而，这些方法有很多限制，有时会使API变得混乱。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP&amp;nbsp;6中引入了XMLWriter类，它提供了一种简单、直截了当并且容易使用的方法去创建XML文档。这一组件的API还没有开发完成，并且有可能发生变化。在http://www.php.net/xmlwriter中可以发现最新的参考信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面的代码试图演示这一API最终是如何操作的，但这里的语法并不一定是精确的。这段代码为输出流创建了一个基本的XHTML文档。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+//实例化对象并设置对齐选项
+$xml&amp;nbsp;=&amp;nbsp;new&amp;nbsp;XMLWriter();
+$xml-&amp;amp;gt;openURI(&amp;nbsp;php://output&amp;nbsp;);
+$xml-&amp;amp;gt;setIndentString(&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;);
+$xml-&amp;amp;gt;setIndent(true);
+//开始创建文档并设置DTD
+$xml-&amp;amp;gt;startDocument(&amp;nbsp;1.0&amp;nbsp;,&amp;nbsp;&amp;nbsp;UTF-8&amp;nbsp;);
+$xml-&amp;amp;gt;startDtd(&amp;nbsp;html&amp;nbsp;,&amp;nbsp;-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Strict//EN&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&amp;nbsp;);
+$xml-&amp;amp;gt;endDtd();
+//创建HTML文档
+$xml-&amp;amp;gt;startElement(&amp;nbsp;html&amp;nbsp;);
+$xml-&amp;amp;gt;writeAttribute(&amp;nbsp;xmlns&amp;nbsp;,&amp;nbsp;&amp;nbsp;http://www.w3.org/1999/xhtml&amp;nbsp;);
+$xml-&amp;amp;gt;writeAttribute(&amp;nbsp;xml:lang&amp;nbsp;,&amp;nbsp;&amp;nbsp;en&amp;nbsp;);
+$xml-&amp;amp;gt;writeAttribute(&amp;nbsp;lang&amp;nbsp;,&amp;nbsp;&amp;nbsp;en&amp;nbsp;);
+$xml-&amp;amp;gt;startElement(&amp;nbsp;head&amp;nbsp;);
+$xml-&amp;amp;gt;writeElement(&amp;nbsp;title&amp;nbsp;,&amp;nbsp;&amp;nbsp;An&amp;nbsp;example&amp;nbsp;XHTML&amp;nbsp;document.&amp;nbsp;);
+$xml-&amp;amp;gt;endElement();
+$xml-&amp;amp;gt;startElement(&amp;nbsp;body&amp;nbsp;);
+$xml-&amp;amp;gt;writeElement(&amp;nbsp;p&amp;nbsp;,&amp;nbsp;&amp;nbsp;Hello,&amp;nbsp;World!&amp;nbsp;);
+$xml-&amp;amp;gt;startElement(&amp;nbsp;p&amp;nbsp;);
+$xml-&amp;amp;gt;text(&amp;nbsp;This&amp;nbsp;paragraph&amp;nbsp;contains&amp;nbsp;an&amp;nbsp;inline&amp;nbsp;&amp;nbsp;);
+$xml-&amp;amp;gt;startElement(&amp;nbsp;a&amp;nbsp;);
+$xml-&amp;amp;gt;writeAttribute(&amp;nbsp;href&amp;nbsp;,&amp;nbsp;http://www.example.org&amp;nbsp;);
+$xml-&amp;amp;gt;text(&amp;nbsp;link.&amp;nbsp;);
+$xml-&amp;amp;gt;endElement();&amp;nbsp;//a
+$xml-&amp;amp;gt;endElement();&amp;nbsp;//p
+$xml-&amp;amp;gt;endElement();&amp;nbsp;//body
+$xml-&amp;amp;gt;endElement();&amp;nbsp;//html
+$xml-&amp;amp;gt;endDocument();
+$xml-&amp;amp;gt;flush();&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;下面是产生的XML数据&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"xml\"&amp;gt;&amp;amp;lt;?xml&amp;nbsp;version=\"1.0\"&amp;nbsp;encoding=\"UTF-8\"?&amp;amp;gt;
+&amp;amp;lt;!DOCTYPE&amp;nbsp;html
+PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Strict//EN\"
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"&amp;amp;gt;
+&amp;amp;lt;html&amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;nbsp;xml:lang=\"en\"&amp;nbsp;lang=\"en\"&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;head&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;title&amp;amp;gt;An&amp;nbsp;example&amp;nbsp;XHTML&amp;nbsp;document.&amp;amp;lt;/title&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;/head&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;body&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;p&amp;amp;gt;Hello,&amp;nbsp;World!&amp;amp;lt;/p&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;p&amp;amp;gt;This&amp;nbsp;paragraph&amp;nbsp;contains&amp;nbsp;an&amp;nbsp;inline
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;a&amp;nbsp;href=\"http://www.example.org\"&amp;amp;gt;link.&amp;amp;lt;/a&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;/p&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-23/1340439566.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

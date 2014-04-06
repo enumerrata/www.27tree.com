@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/convlist.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE root SYSTEM "convlist.dtd">
+
+    <root>
+    ...
+    </root>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT root (wlw|movie|web|c|php|java|news)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT news (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT java (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT php (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT c (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT web (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT movie (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT wlw (#PCDATA)>

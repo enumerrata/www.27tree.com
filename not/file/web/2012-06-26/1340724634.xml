@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Hello World ！ Dojo入门</title>
+<content>&amp;lt;p&amp;gt;
+	经过了解几种Ajax框架，最后选择了Dojo框架。因为Ext不稳定，GWT觉得太浪费时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一：下载Dojo，地址是：http://dojotoolkit.org/downloads
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二：做开发，当然要工具库的&amp;nbsp;API&amp;nbsp;帮助文档，就在下载地址的其它菜单中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三：入门程序&amp;nbsp;Hello&amp;nbsp;Dojo&amp;nbsp;。一个简单的入门，可以增加兴趣与信心，同时，对&amp;nbsp;Dojo&amp;nbsp;有了简单的了解。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;MyEclipse&amp;nbsp;中新建工程&amp;nbsp;ToDojo&amp;nbsp;；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;WebRoot&amp;nbsp;中新建一个文件夹&amp;nbsp;dojoroot&amp;nbsp;，把&amp;nbsp;Dojo&amp;nbsp;相关的开发&amp;nbsp;lib&amp;nbsp;放到下面，包括&amp;nbsp;dijit&amp;nbsp;,&amp;nbsp;dojo,dojox&amp;nbsp;,&amp;nbsp;util&amp;nbsp;；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	新建一个&amp;nbsp;hello.html&amp;nbsp;文件；(之前在&amp;nbsp;jsp&amp;nbsp;中，但总是运行不成功，不知为什么？)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〈head〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈title〉Dojo:&amp;nbsp;Hello&amp;nbsp;World!〈/title〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈!--&amp;nbsp;SECTION&amp;nbsp;1&amp;nbsp;--〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈style&amp;nbsp;type=\"text/css\"〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@import&amp;nbsp;\"dojoroot/dijit/themes/tundra/tundra.css\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@import&amp;nbsp;\"dojoroot/dojo/resources/dojo.css\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈/style〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"dojoroot/dojo/dojo.js\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;djConfig=\"parseOnLoad:&amp;nbsp;true\"〉〈/script〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〈script&amp;nbsp;type=\"text/javascript\"〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;Load&amp;nbsp;Dojo&amp;nbsp;s&amp;nbsp;code&amp;nbsp;relating&amp;nbsp;to&amp;nbsp;the&amp;nbsp;Button&amp;nbsp;widget
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dojo.require(\"dijit.form.Button\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;〈/script〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;〈/head〉在&amp;nbsp;body&amp;nbsp;中加入以下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〈button&amp;nbsp;dojoType=\"dijit.form.Button\"&amp;nbsp;id=\"helloButton\"〉Hello&amp;nbsp;Dojo!
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〈script&amp;nbsp;type=\"dojo/method\"&amp;nbsp;event=\"onClick\"〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alert(&amp;nbsp;You&amp;nbsp;pressed&amp;nbsp;the&amp;nbsp;button&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;〈/script〉
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〈/button〉这样，可以看到一个比较美观的按钮，按上去后弹出一个&amp;nbsp;messagebox&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	接下来，可以参考&amp;nbsp;dijit/demos&amp;nbsp;下的例子，如&amp;nbsp;form.html&amp;nbsp;,&amp;nbsp;mail.html&amp;nbsp;开学习。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-26/1340724634.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-09 09:33:58</datetime>
+  <title>Dojo特效教程：Wiping</title>
+  <content>&lt;p&gt;
+	&amp;nbsp;另外一个效果你可能看到的是Wiping（擦拭）:改变一个节点的高度,同时使得内容独立起来。这使它看起来像有人正在使用一个雨刷在刷那个节点。通常,Wiping可以在某些场合很有用，例如在页面很少被访问的内容上创建一个下拉菜单；
+&lt;/p&gt;
+&lt;p&gt;
+	下面是实例：
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&gt;&amp;lt;button&amp;nbsp;id=\"wipeOutButton\"&amp;gt;Wipe&amp;nbsp;block&amp;nbsp;out&amp;lt;/button&amp;gt;
+&amp;lt;button&amp;nbsp;id=\"wipeInButton\"&amp;gt;Wipe&amp;nbsp;block&amp;nbsp;in&amp;lt;/button&amp;gt;
+&amp;nbsp;
+&amp;lt;div&amp;nbsp;id=\"wipeTarget\"&amp;nbsp;class=\"red-block&amp;nbsp;wipe\"&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A&amp;nbsp;red&amp;nbsp;block
+&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;require([\"dojo/fx\",&amp;nbsp;\"dojo/on\",&amp;nbsp;\"dojo/dom\",&amp;nbsp;\"dojo/domReady!\"],&amp;nbsp;function(fx,&amp;nbsp;on,&amp;nbsp;dom)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;wipeOutButton&amp;nbsp;=&amp;nbsp;dom.byId(\"wipeOutButton\"),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wipeInButton&amp;nbsp;=&amp;nbsp;dom.byId(\"wipeInButton\"),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wipeTarget&amp;nbsp;=&amp;nbsp;dom.byId(\"wipeTarget\");
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;on(wipeOutButton,&amp;nbsp;\"click\",&amp;nbsp;function(evt){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fx.wipeOut({&amp;nbsp;node:&amp;nbsp;wipeTarget&amp;nbsp;}).play();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;on(wipeInButton,&amp;nbsp;\"click\",&amp;nbsp;function(evt){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fx.wipeIn({&amp;nbsp;node:&amp;nbsp;wipeTarget&amp;nbsp;}).play();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+&lt;/p&gt;</content>
+  <contentx>另外一个效果你可能看到的是Wiping（擦拭）:改变一个节点的高度,同时使得内容独立起来。这使它看起来像有人正在使用一个雨刷在刷那个节点。通常,Wiping可以在某些场合很有用，例如在页面很少被访问的内容上创建一个下拉菜单。</contentx>
+  <tags>_null_</tags>
+</root>

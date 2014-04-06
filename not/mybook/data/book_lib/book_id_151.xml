@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Python参考手册(第4版)</title>
+  <author>（美）比兹利</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-21 13:49:47</submit-date-time>
+  <img-link>d19149aa771a18f5a6261c0ff0e02f77.png</img-link>
+  <book-area>py</book-area>
+  <book-intro>&lt;p&gt;
+	本书是python 编程语言的权威参考指南，书中详尽解释了python 核心语言和python 库中最重要的部分，涉及类型和对象、操作符和表达式、编程结构和控制流、输入和输出、测试、调试等，也包括一些python官方文档或其他参考资料中未提及的高级主题。
+&lt;/p&gt;
+&lt;p&gt;
+	本书面向python 程序员，或有其他编程语言经验的开发人员。
+&lt;/p&gt;
+&lt;p&gt;
+	本书是权威的python语言参考指南，内容涉及核心python语言和python库的最重要部分。本书内容简洁扼要、可读性强，书中还包括了一些没有在python官方文档或其他资料中出现过的一些高级的主题。
+&lt;/p&gt;
+&lt;p&gt;
+	这一版在内容上进行了全面更新，介绍了python 2．6和python 3新引入的编程语言特性和库模块，同时还分析了python程序员面临的如下难题：是应继续使用现有的python代码，还是应制定计划将其移植到python 3？
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;经典著作全面升级&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;Python程序员案头必备&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;涵盖Python2和Python 3共有特性&lt;/strong&gt;
+&lt;/p&gt;</book-intro>
+</root>

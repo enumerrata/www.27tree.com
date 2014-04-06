@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP引号的正确使用方式介绍</title>
+<content>&amp;lt;p&amp;gt;
+	对于没有多少编码经验的新手来说，PHP引号的正确使用是一个比较头疼的事情，经常会因为PHP引号的错误使用导致程序的出错。下面我们就向大家具体介绍一下有关PHP引号的正确使用方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;一.首先想想PHP里所有的单词(其实应该叫符号)有几类.&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+	&amp;lt;li&amp;gt;
+		PHP,mysql两方的关键词与函数.例如echo,print,mysql_connect等等.这些肯定不加引号的.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		常量.新手可能用得不多,常量的好处是全局性,穿透函数.速度也快些不过新手可以暂时不管常量这玩意儿.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		变量.前面带\"$\"号的就是变量.可以为变量设一个\"值\",例如一串字符,一个数字,逻辑(真/假)值等.也可以表示一组值(数组,对象等)
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		值.通常要给常量与变量设置值.赋值语句$a=\\&amp;nbsp;abc\\&amp;nbsp;中,右边的\\&amp;nbsp;abc\\&amp;nbsp;即为值.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		函数的参数(在括号里的).可以是常量,变量,值三种.
+	&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;
+	变量(常量)与值的关系正如下列各种情况:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\"颜色\"与\"红\",
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\"长度\"与100,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\"日期\"与2007年10月25号\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;nbsp;二.什么情况下用PHP引号&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其实只有第4项\"值\"需要用到引号,函数的里也只有值要用引号.并且只有字符串(日期值可以当成字符串)内容需要用到引号.数字(可用可不用),真假(不能用)例外.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;nbsp;三.单引号与双引号的区别&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般情况下两者是通用的.但双引号内部变量会解析,单引号则不解析.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以如果内部只有纯字符串的时候,用单引号(速度快),内部有别的东西(如变量)的时候,用双号引更好点.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;四.字符串内部如果出现PHP引号怎么办--关于转义&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	比如我们想输出:&amp;nbsp;我\"是\\&amp;nbsp;天才
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这时候就必须用到转义了.转义即把本来有作用的符号转成无意义的字符.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样就正常了,因为号把它后面的任何字符都转成无意义的符号.在这里来说,PHP解析器根本没把号后面的引号当成引号来看待.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	同样的,还可以转义分号,$符号等特殊符号.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;五.字符串的连接&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是个麻烦的问题.一般来说,变量值,直接包含在双引号中就可以了.另外字符串的叠加用\".\"字符.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在复杂的情况里可以用大括号来包含,PHP便知道这是一个完整的东西,里面的引号不会影响到外面的引号关系.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与html的混合也很简单,最好养成HTML中全部用双引号,PHP中尽量用单引号的习惯.这样方便把大段的HTML代码复制过来,只要头尾加上单引号就是一个正确的字符串了.几百行的HTML代码也不用担心PHP引号错乱.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;总结一下PHP引号使用原则&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.字符串的值用引号
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.PHP中尽量用单引号,HTML代码全部用双引号
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.在包含变量的时候,用双引号可以简化操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.复杂的情况下用大括号包起来
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP引号还有一个用处就是，有的时候需要用php生成文本文件，换行符\\n需要用双引号才能好使，单引号则会直接把\\n当成字符输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-23/1337775404.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-20 00:30:54</datetime>
+  <title>div模拟textarea文本域标签,实现拓展性强的编辑器</title>
+  <content>&lt;p&gt;
+	有一个标签属性，为contenteditable，这个属性允许用户编辑元素内容包含的任意文本，包括子元素。
+&lt;/p&gt;
+&lt;p&gt;
+	应用了此属性后，普通的div标签也会像文本域一样可以获得焦点，同时有一个光标在不断闪。Web&amp;nbsp;QQ&amp;nbsp;的聊天对话框的输入框就是应用了contenteditable属性。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120820/20120820002711_80615.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	使用很简单，一个普通的block元素上加个contenteditable=\"true\"就ok了，如下：
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;div&amp;nbsp;contenteditable=\"true\"&amp;gt;&amp;lt;/div&amp;gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		contenteditable属性虽然是&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/web-html5/\"&amp;nbsp;target=\"_blank\"&gt;HTML5&lt;/a&gt;里面的内容，但是IE一直支持此标签属性了。所以，兼容性没问题。
+	&lt;/p&gt;
+	&lt;p&gt;
+		最麻烦的模拟textarea的可编辑效果已经解决了，现在想要使用div实现高度自适应那就像是给花花草草松松土一样容易的。于是，假设我们要实现默认200像素高度，高度可随内容自适应的效果，直接下面两个样式就可以了：
+	&lt;/p&gt;
+{&amp;nbsp;min-height:&amp;nbsp;200px;&amp;nbsp;_height:&amp;nbsp;200px;&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&gt;
+	IE6不支持min-height,所以IE6直接固定高度.
+&lt;/p&gt;</content>
+  <contentx>有一个标签属性，为contenteditable，这个属性允许用户编辑元素内容包含的任意文本，包括子元素。
+	应用了此属性后，普通的div标签也会像文本域一样可以获得焦点，同时有一个光标在不断闪。Web QQ 的聊天对话框的输入框就是应用了contenteditable属性。</contentx>
+  <tags>_null_</tags>
+</root>

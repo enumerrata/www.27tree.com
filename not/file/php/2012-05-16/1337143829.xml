@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP获文件扩展名的三种方法</title>
+<content>&amp;lt;p&amp;gt;
+	方法一：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+function&amp;nbsp;extend_1($file_name)
+{
+$retval=\"\";
+$pt=strrpos($file_name,&amp;nbsp;\".\");
+if&amp;nbsp;($pt)&amp;nbsp;$retval=substr($file_name,&amp;nbsp;$pt+1,&amp;nbsp;strlen($file_name)&amp;nbsp;-&amp;nbsp;$pt);
+return&amp;nbsp;($retval);
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	方法二：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;extend_2($file_name)
+{
+$extend&amp;nbsp;=&amp;nbsp;pathinfo($file_name);
+$extend&amp;nbsp;=&amp;nbsp;strtolower($extend[\"extension\"]);
+return&amp;nbsp;$extend;
+}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;span&amp;nbsp;id=\"__kindeditor_bookmark_start_7__\"&amp;nbsp;style=\"display:none;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法三：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;extend_3($file_name)
+{
+$extend&amp;nbsp;=explode(\".\"&amp;nbsp;,&amp;nbsp;$file_name);
+$va=count($extend)-1;
+return&amp;nbsp;$extend[$va];
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-16/1337143829.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-20+17%3A48%3A00</date-c>
+  <conf-c>sdasdasdasd</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>深度探索C++对象模型</title>
+  <author>（美）Stanley B. Lippman  </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-16 10:50:50</submit-date-time>
+  <img-link>7a396e885ef9a30925b3bcfeb8ba0bed.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Inside&amp;nbsp;The&amp;nbsp;C++&amp;nbsp;Object&amp;nbsp;Model专注于C++对象导向程序设计的底层机制，包括结构式语意、暂时性对象的生成、封装、继承，以及虚拟——虚拟函数和虚拟继承。这本书让你知道：一旦你能够了解底层实现模型，你的程序代码将获得多么大的效率。Lippman澄清了那些关于C++额外负荷与复杂度的各种错误信息和迷思，但也指出其中某些成本和利益交换确实存在。他阐述了各式各样的实现模型，指出它们的进化之道及其本质因素。本书涵盖了C++对象模型的语意暗示，并指出这个模型是如何影响你的程序的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书重点：探索“对象导向程序所支持的C++对象模型”下的程序行为。对于“对象导向性质之基础实现技术”以及“各种性质背后的隐含利益交换”提供一个清楚的认识。检验由程序变形所带来的效率冲击。提供丰富的程序范例、图片，以及对象导向观念和底层对象模型之间的效率测量。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C++成山似海的书籍堆中，这一本不是婴幼儿奶粉，也不是较大婴儿奶粉，它是成人专用的低脂高钙特殊奶粉。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对于C++底层机制感兴趣的读者，这本书会给你“漫卷诗书喜欲狂”的感觉。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	了解C++&amp;nbsp;Object
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Model，是学习Component&amp;nbsp;Object&amp;nbsp;Model的最短路线。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你是一位C++程序员，渴望对于底层知识获得一个完整的了解，那么Inside&amp;nbsp;The
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C++&amp;nbsp;Object&amp;nbsp;Model正适合你。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

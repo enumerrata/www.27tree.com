@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[WPS for Linux Beta 版发布]]></title>
+  <content><![CDATA[<p>
+	经过一段时间的努力开发后，WPS 社区正式发布 WPS for Linux Beta 版本，Linux 版除延续 Windows 版相同体验外，更加尊重 Linux 用户特定的使用习惯；深度兼容；自带方正字体集；在线模板和素材使文档创作更加轻松高效。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">原生跨平台：</span></strong>
+</p>
+<p>
+	<p>
+		高效（效率）
+	</p>
+	<p>
+		更快的启动速度
+	</p>
+	<p>
+		更快的处理速度
+	</p>
+	<p>
+		更低的内存占用
+	</p>
+	<p>
+		更低的 CPU 占用
+	</p>
+	<p>
+		稳定
+	</p>
+	<p>
+		没有中间干扰，减少运行中不可预料的异常
+	</p>
+	<p>
+		美观
+	</p>
+	<p>
+		更加原生的界面风格
+	</p>
+	<p>
+		<br />
+	</p>
+<strong><span style=\"font-size:14px;\">深度平台整合：</span></strong>
+</p>
+<p>
+	<p>
+		实时备份
+	</p>
+	<p>
+		Ubuntu 全局菜单
+	</p>
+	<p>
+		自动转换 Windows 格式的路径
+	</p>
+	<p>
+		中键剪贴板（全局选择剪贴板）
+	</p>
+	<p>
+		针对主流发行版提供相应安装包（DEB，RPM）
+	</p>
+	<p>
+		提供绿色版，直接解压即可运行
+	</p>
+	<p>
+		针对 Linux 复杂的系统环境提供环境检查机制并给出解决指导<span style=\"line-height:1.5;\"></span>
+	</p>
+	<p>
+		<span style=\"line-height:1.5;\"><br />
+</span>
+	</p>
+	<p>
+		<span style=\"line-height:1.5;\">下载： http://community.wps.cn/download/<br />
+</span>
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	经过一段时间的努力开发后，WPS 社区正式发布 WPS for Linux Beta 版本，Linux 版除延续 Windows 版相同体验外，更加尊重 Linux 用户特定的使用习惯；深度兼容；自带方正字体集；在线模板和素材使文档创作]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

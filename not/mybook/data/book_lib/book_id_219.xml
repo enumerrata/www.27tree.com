@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android应用开发揭秘]]></title>
+  <author>杨丰盛</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-03 10:31:16</submit-date-time>
+  <img-link>86c1959e0e6d55586e39646f81e1ae70.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	国内第一本基于Android 2.0的经典著作，5大专业社区联袂推荐，权威性毋庸置疑！
+</p>
+<p>
+	本书内容全面，不仅详细讲解了Android框架、Android组件、用户界面开发、游戏开发、数据存储、多媒体开发和网络开发等基础知识，而且还深入阐述了传感器、语音识别、桌面组件开发、Android游戏引擎设计、Android应用优化、OpenGL等高级知识，最重要的是还全面介绍了如何利用原生的C/C++（NDK）和Python、Lua等脚本语言（Android Scripting Environment）来开发Android应用；本书实战性强，书中的每个知识点都有配精心设计的示例，尤为值得一提的是，它还以迭代的方式重现了各种常用的Android应用和经典Android游戏的开发全过程，既可以以它们为范例进行实战演练，又可以将它们直接应用到实际开发中去。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		本书内容全面，不仅详细讲解了Android框架、Android组件等基础知识，而且还深入阐述了传感器、语音识别、桌面组件开发等高级知识，最重要的是还全面介绍了如何利用原生的C/C++（NDK）和Python、Lua等脚本语言来开发Android应用。
+	</p>
+	<p>
+		本书实战性强，书中的每个知识点都有配精心设计的示例。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

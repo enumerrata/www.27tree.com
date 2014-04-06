@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP引号转义原理</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	我们在运用PHP对数据库进行操作时，可能会用到PHP引号转义。那么什么是PHP引号转义呢？对于新手来说可能还是比较陌生的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP中有三个设置可以实现自动对’（单引号），”（双引号），\（反斜线）和&amp;nbsp;NULL&amp;nbsp;字符转移。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP称之为魔术引号，这三项设置分别是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	magic_quotes_gpc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	影响到&amp;nbsp;HTTP&amp;nbsp;请求数据（GET，POST&amp;nbsp;和&amp;nbsp;COOKIE）。不能在运行时改变。在&amp;nbsp;PHP&amp;nbsp;中默认值为&amp;nbsp;on。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	magic_quotes_runtime
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	如果打开的话，大部份从外部来源取得数据并返回的函数，包括从数据库和文本文件，所返回的数据都会被反斜线转义。该选项可在运行的时改变，在&amp;nbsp;PHP&amp;nbsp;中的默认值为&amp;nbsp;off。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	magic_quotes_sybase
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	如果打开的话，将会使用单引号对单引号进行PHP引号转义而非反斜线。此选项会完全覆盖&amp;nbsp;magic_quotes_gpc。如果同时打开两个选项的话，单引号将会被转义成&amp;nbsp;”。而双引号、反斜线&amp;nbsp;和&amp;nbsp;NULL&amp;nbsp;字符将不会进行转义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	虽然方便的实现了对特殊符号的自动PHP引号转义，但是这样会使得程序效率降低，并导致程序可移植变得麻烦。在不知道服务器ini设置的情况下，还需要调用get_magic_quotes_gpc()&amp;nbsp;,get_magic_quotes_runtime()&amp;nbsp;或ini_get()来检测状态。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660326.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

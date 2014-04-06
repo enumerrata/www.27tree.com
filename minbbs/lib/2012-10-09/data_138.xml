@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-09 16:18:47</datetime>
+  <title><![CDATA[使用setTimeout检查DOM元素，确定DOM已经完全加载]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;html&gt;
+    &lt;head&gt;
+        &lt;script type=\"text/javascript\"&gt;
+            function domReady(nodeId){
+                this.n = typeof(this.n) == \'undefined\' ? 0 : this.n + 1;
+                var maxwait = 60;
+                if(typeof($)!=null &amp;&amp; $(nodeId) != \'undefined\'){
+                    alert(\'the dom is ready!\')
+                } else if(this.n &lt; maxwait){
+                    setTimeout(function(){domReady(nodeId)},50);
+                }
+            }    
+            domReady(\"loading\");
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=\"loading\"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

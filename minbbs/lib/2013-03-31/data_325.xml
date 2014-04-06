@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>22</uid>
+  <datetime>2013-03-31 21:42:01</datetime>
+  <title><![CDATA[使用ETags减少Web应用带宽和负载]]></title>
+  <content><![CDATA[<p>
+	<strong>介绍</strong>
+</p>
+<p>
+	最近，大众对于REST风格应用架构表现出强烈兴趣，这表明Web的优雅设计开始受到人们的注意。现在，我们逐渐理解了“3W架构（Architecture of the World Wide Web）”内在所蕴含的可伸缩性和弹性，并进一步探索运用其范式的方法。本文中，我们将探究一个可被Web开发者利用的、鲜为人知的工具，不引人注意的“ETag响应头（ETag Response Header）”，以及如何将它集成进基于Spring和Hibernate的动态Web应用，以提升应用程序性能和可伸缩性。
+</p>
+<p>
+	我们将要使用的Spring框架应用是基于“宠物诊所（petclinic）”的。下载文件中包含了关于如何增加必要的配置及源码的说明，你可以自己尝试。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>什么是“ETag”？</strong>
+</p>
+<p>
+	HTTP协议规格说明定义ETag为“被请求变量的实体值” （参见http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html —— 章节 14.19）。 另一种说法是，ETag是一个可以与Web资源关联的记号（token）。典型的Web资源可以一个Web页，但也可能是JSON或XML文档。服务器单独负责判断记号是什么及其含义，并在HTTP响应头中将其传送到客户端。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>ETag如何帮助提升性能？</strong>
+</p>
+<p>
+	聪明的服务器开发者会把ETags和GET请求的“If-None-Match”头一起使用，这样可利用客户端（例如浏览器）的缓存。因为服务器首先产生ETag，服务器可在稍后使用它来判断页面是否已经被修改。本质上，客户端通过将该记号传回服务器要求服务器验证其（客户端）缓存。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>其过程如下：</strong>
+</p>
+<ol>
+	<li>
+		客户端请求一个页面（A）。
+	</li>
+	<li>
+		服务器返回页面A，并在给A加上一个ETag。
+	</li>
+	<li>
+		客户端展现该页面，并将页面连同ETag一起缓存。
+	</li>
+	<li>
+		客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。
+	</li>
+	<li>
+		服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304（未修改——Not Modified）和一个空的响应体。
+	</li>
+</ol>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

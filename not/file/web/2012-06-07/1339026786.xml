@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Javascript 实现页面模板化：JS也可以MVC</title>
+<content>&amp;lt;p&amp;gt;
+	介绍
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	今天遇到一个问题，这个问题也是我以前遇到的问题，以前的方式，也是大多数人使用的方式。大家可以看看我的文章。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从前的方式——我估计也是大多数人使用的方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	比如以下的代码——摘自新浪首页的一段js代码，这种方式也是大多数人使用的方式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566259.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码，你看完有什么反应？你也许会把+=这种形式改成数组的push形式，有人说push比这种字符链接要快，但是也快不了多少。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果这种嵌入的html代码很多，你也要这样处理吗？如果修改（添加或者删除）某个html，那么你就要不断的翻代码，找对应的标签，然后在找结束标签，你不觉得麻烦吗？也许有人会这样写（这个是我早期写的，也是我最惯于使用的方式）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566869.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码，我维护起来也是非常费劲的，很多时候如果ui那边添加了个标签，或者修改了下html结构，那我就头疼了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566152.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	页面模板化——全新的方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是我最近看了facebook的js代码，偶然间发现以下的方式看起来不错，希望与大家分享。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	看我的index.html代码
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566393.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	看我的js代码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566503.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	维护上面的html代码我们是很容易的，下次无论html代码结构有什么变动，改起来都很方便。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0606/1338946566369.png\"&amp;nbsp;alt=\"/\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码有很多问题，大家不要见怪，这个只是我的简易版。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当前的模板只支持简单的变量替换，有很多功能未开发出来，比如if标签，for标签，如果大家有兴趣，可以试着做一下，如果做的比较成功，告知一下。如果能做个类似smarty的开源框架，呵呵，咱们也可以为开源事业做点贡献不是。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文章来源：川山甲的博客
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-07/1339026786.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

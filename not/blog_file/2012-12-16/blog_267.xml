@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>276</uid>
+  <datetime>2012-12-16 23:12:16</datetime>
+  <title><![CDATA[PHP 服务器环境变量 $_ENV 详解]]></title>
+  <content><![CDATA[<p>
+	$_ENV 是一个包含服务器端环境变量的数组。
+</p>
+<p>
+	$_ENV它是PHP中的一个超级全局变量，我们可以在运行 PHP 程序的任何地方直接访问它。
+</p>
+<p>
+	$_ENV 只是被动的接受服务器端的环境变量并把它们转换为数组元素，你可以尝试直接打印它：
+</p>
+<p>
+	print_r($_ENV);
+</p>
+<p>
+	下面就不全部列出打印的结果啦，而且在不同的服务器上，打印出的结果是完全不同的。
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">$_ENV 数组元素</span></strong>
+</p>
+<p>
+	$_ENV 数组中的元素（数组单元）随服务器环境不同而有较大差异，所以无法像 $_SERVER 那样列出完整的列表。
+</p>
+<p>
+	以下是 $_ENV 数组包含的比较通用的元素：
+</p>
+<p>
+	$_SERVER[\'PATH\']：环境变量 PATH 路径。
+</p>
+<p>
+	$_SERVER[\'CLASSPATH\']：系统的 CLASSPATH 路径。
+</p>
+<p>
+	$_SERVER[\'LIB\']：系统的 LIB 库路径。
+</p>
+<p>
+	$_SERVER[\'INCLUDE\']：系统的 Include 路径，注意与 PHP 的包含路径是不一样的。
+</p>
+<p>
+	$_SERVER[\'OS\']：操作系统类型。
+</p>
+<p>
+	$_SERVER[\'LANG\']：系统语言，如 en_US 或 zh_CN。
+</p>
+<p>
+	$_SERVER[\'PWD\']：当前的工作目录。
+</p>
+<p>
+	$_SERVER[\'TEMP\']：系统的 TEMP 路径。
+</p>
+<p>
+	$_SERVER[\'AP_PARENT_PID\']：当前进程的 ID 号。
+</p>
+<p>
+	$_SERVER[\'NUMBER_OF_PROCESSORS\']：系统的 CPU 数目。
+</p>]]></content>
+  <contentx><![CDATA[$_ENV 是一个包含服务器端环境变量的数组。
+
+
+	$_ENV它是PHP中的一个超级全局变量，我们可以在运行 PHP 程序的任何地方直接访问它。
+
+
+	$_ENV 只是被动的接受服务器端的环境变量并把它们转换为数组元素，你可以尝试直接打印它：
+
+
+	print_r($_ENV);
+
+
+	下面就不全部列出打印的结果啦，而且在不同的服务器上，打印出的结果是完全]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

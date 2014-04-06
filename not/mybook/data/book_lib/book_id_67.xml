@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java网络编程</title>
+  <author>（英）哈诺德</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:15:41</submit-date-time>
+  <img-link>6990b460387659bb6f7edb25dab49054.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Java网络编程》第三版会为你介绍Java网络API的最新特性。本书讨论了JDK&amp;nbsp;1.4和1.5（现在已命名为J2SE&amp;nbsp;5）中所做的所有修改和增补。本书内容全面，涵盖了从网络基础知识到远程方法调用（RMI）等各方面的内容，书中章节涉及到TCP和UDP&amp;nbsp;socket、服务器socket、URL和URI、组播以及特殊用途的API（如JavaMail）等等。本书展示了如何使用JSSE编写安全的网络应用程序，解释了如何使用NIO&amp;nbsp;API编写超高性能的服务器。它还涵盖了Java对网络代理、Web&amp;nbsp;cookie和URL缓存的支持。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Java网络编程》不仅仅是对API的解释：它还展示了如何使用API。本书有很多示例，包含了几千行可以实际工作的代码（所有代码都可以在线获得），实现了功能完整的网络客户端和服务器。无论是希望编写特殊用途的Web服务器、安全的在线订单接收程序、简单的组播代理还是电子邮件客户端，都会找到可供学习和借用的代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	无论你是经验丰富的网络开发人员、Java程序员新手，还是只希望对Java网络编程稍有些了解的人，都会发现《Java编程（第三版）》将成为你的书库中一个重要的部分。一旦开始使用Java网络API，只要你能想到它就能够做得到。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

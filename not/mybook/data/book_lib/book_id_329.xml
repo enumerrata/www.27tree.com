@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Symfony Book 2.2]]></title>
+  <author>Symfony 官方</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-04-10 23:36:57</submit-date-time>
+  <img-link>2279dbf196ba2e9471520a7fafbd722d.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	简单的模板功能symfony是一个开源的PHP Web框架。基于最佳Web开 &nbsp;发实践，已经有多个网站完全采用此框架开发，symfony的目的是加速Web应用的创建与维护
+</p>
+<p>
+	同时，它还包含了很多工具和类用以缩短开发复杂的网络应用的时间。基于最佳Web开发实践，已经有多个网站完全采用此框架开发，symfony的目的是加速Web应用的创建与维护。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	无论你是一个php5的专家还是一个在网络应用编程方面的新手都没有问题，影响你决定的最主要因素是你项目的大小。如果你只是想要开发一个简易的5-10页的站点，只需要有限的访问数据库和几乎不考虑性能、可用性或文档，那么你只需要单独使用PHP。你将不会从网络应用的框架结构的特征中获的太多的益处，使用面向对象或MVC模式只会使你的开发变慢。
+</p>
+<p>
+	Symfony运行在一个只有CGI支持的共享主机上将不会高效优异的运行。另一方面，如果你开发大型的web应用，其中有大量的事务逻辑，那么单独使用PHP是不够的。如果你计划将来维护和扩展你的应用，你需要编写轻量级、易读的和高性能的的代码。如果你想直接使用最友好的用户交互界面（AJAX），你不能只写上数百行的Javascrīpt代码。如果你想享受并且快速的开发，那么单独使用PHP将是令人失望的。介于上述这些原因，symfony非常适合你。当然，如果你是一个专业的web开发人员，你已经知道了web应用框架的所有优点，并且你需要一个成熟的，具有详细文档和一个大的团体支持。那么不要再犹豫，symfony就是你的解决方案。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Symfony变化太大了，国内又没出什么新书，什么时候才有，一定买。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

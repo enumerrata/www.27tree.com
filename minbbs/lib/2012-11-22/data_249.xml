@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>66</uid>
+  <datetime>2012-11-22 22:45:20</datetime>
+  <title><![CDATA[你最常用的十条命令]]></title>
+  <content><![CDATA[<br />
+<pre name=\"code\" id=\"prettyprint\" class=\"bsh\">history | awk \'{CMD[$2]++;count++;} END { for (a in CMD )print CMD \" \" CMD/count*100 \"% \" a }\' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl | head -n10 </pre>
+<p>
+	<span style=\"font-size:24px;\">&nbsp;&nbsp;&nbsp;&nbsp;
+运行这行脚本可以找出统计出你最常用的十条命令，原作者甚至说通过这一行脚本可以洞察出你是一个怎样的程序员。</span> 
+</p>
+<p>
+	<span style=\"font-size:24px;\">&nbsp;&nbsp;&nbsp; </span><span style=\"font-size:24px;\">运行了一下，输出结果相当神奇。</span> 
+</p>
+<p>
+	<span style=\"font-size:24px;\">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=\"font-size:24px;\">感谢原创作者</span><img src=\"/mod/kd/plugins/emoticons/images/jx2/j_0003.gif\" alt=\"\" border=\"0\" /> 
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

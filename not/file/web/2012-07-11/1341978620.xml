@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>CSS实现图片在容器居中</title>
+<content>&amp;lt;p&amp;amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	对于如何用纯CSS实现未知尺寸的图片在容器中水平垂直居中这个问题，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	首先，我们不要去追究是否有这样做的必要，因为有的时候图片大小不一，这时候为了不让图片大小不一而破坏了页面的美观性，其实就有必要这么做了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	下面是css代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"css\"&amp;gt;.outer{
+&amp;amp;nbsp;display:table;
+&amp;amp;nbsp;*display:inline;
+&amp;amp;nbsp;*position:relative;
+&amp;amp;nbsp;width:300px;
+&amp;amp;nbsp;height:300px;
+}
+.outer&amp;amp;nbsp;p{
+&amp;amp;nbsp;display:table-cell;
+&amp;amp;nbsp;*position:absolute;
+&amp;amp;nbsp;*top:50%;
+&amp;amp;nbsp;*left:50%;
+&amp;amp;nbsp;vertical-align:middle;
+}
+.outer&amp;amp;nbsp;p&amp;amp;nbsp;img{
+&amp;amp;nbsp;*position:relative;
+&amp;amp;nbsp;*top:-50%;
+&amp;amp;nbsp;*left:-50%;
+&amp;amp;nbsp;vertical-align:middle;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;!DOCTYPE&amp;amp;nbsp;html&amp;amp;nbsp;PUBLIC&amp;amp;nbsp;\"-//W3C//DTD&amp;amp;nbsp;XHTML&amp;amp;nbsp;1.0&amp;amp;nbsp;Strict//EN\"&amp;amp;nbsp;
+&amp;amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"&amp;amp;gt;
+&amp;amp;lt;html&amp;amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;amp;nbsp;xml:lang=\"zh-cn\"&amp;amp;nbsp;lang=\"zh-cn\"&amp;amp;gt;
+&amp;amp;lt;head&amp;amp;gt;
+&amp;amp;lt;meta&amp;amp;nbsp;http-equiv=\"Content-Type\"&amp;amp;nbsp;content=\"text/html;&amp;amp;nbsp;charset=utf-8\"&amp;amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;meta&amp;amp;nbsp;http-equiv=\"Content-Language\"&amp;amp;nbsp;content=\"zh-cn\"&amp;amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;title&amp;amp;gt;Vertical&amp;amp;nbsp;Centering&amp;amp;nbsp;in&amp;amp;nbsp;CSS&amp;amp;lt;/title&amp;amp;gt;
+&amp;amp;lt;meta&amp;amp;nbsp;name=\"description\"&amp;amp;nbsp;content=\"纯CSS实现未知尺寸的图片的水平垂直居中演示\"&amp;amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;meta&amp;amp;nbsp;name=\"keywords\"&amp;amp;nbsp;content=\"纯css,&amp;amp;nbsp;垂直居中\"&amp;amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;meta&amp;amp;nbsp;name=\"Author\"&amp;amp;nbsp;content=\"Doyoe(飘零雾雨),&amp;amp;nbsp;dooyoe@gmail.com\"&amp;amp;nbsp;/&amp;amp;gt;&amp;amp;lt;/head&amp;amp;gt;
+&amp;amp;lt;body&amp;amp;gt;
+&amp;amp;lt;h1&amp;amp;gt;Vertical&amp;amp;nbsp;Centering&amp;amp;nbsp;in&amp;amp;nbsp;CSS&amp;amp;lt;/h1&amp;amp;gt;
+&amp;amp;lt;ul&amp;amp;nbsp;class=\"dybox\"&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;li&amp;amp;nbsp;class=\"outer\"&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;lt;p&amp;amp;gt;&amp;amp;lt;img&amp;amp;nbsp;src=\"1.gif\"&amp;amp;nbsp;alt=\"图片水平垂直居中\"&amp;amp;nbsp;/&amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;/li&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;li&amp;amp;nbsp;class=\"outer\"&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;lt;p&amp;amp;gt;&amp;amp;lt;img&amp;amp;nbsp;src=\"2.gif\"&amp;amp;nbsp;alt=\"图片水平垂直居中\"&amp;amp;nbsp;/&amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;/li&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;li&amp;amp;nbsp;class=\"outer\"&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;lt;p&amp;amp;gt;&amp;amp;lt;img&amp;amp;nbsp;src=\"3.gif\"&amp;amp;nbsp;alt=\"图片水平垂直居中\"&amp;amp;nbsp;/&amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;
+&amp;amp;nbsp;&amp;amp;lt;/li&amp;amp;gt;
+&amp;amp;lt;/ul&amp;amp;gt;
+&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	假设上面XHTML中的图片1.gif和2.gif就是从数据库读取出来的（可以使用本地机器上现有的图片测试），它们的尺寸规格不同。我们可以看到的效果为：它们都在容器outer里垂直居中了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其实对于支持display:table&amp;amp;nbsp;|&amp;amp;nbsp;table-cell的浏览器来说，远不需要如此多的步骤就可以实现未知高度的图片的垂直居中了。而CSS部分里的Hack都是为不支持这些属性的IE准备的。为了测试，可以将以上的Hack部分都注释掉，然后看看效果。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-07-11/1341978620.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

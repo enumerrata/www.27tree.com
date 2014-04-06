@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tutorial-desc>HTML教程</tutorial-desc>
+    <tutorial-menu>
+        <sector desc="学习 Zend Framework">
+            <atom title="Zend Framework Quick Start"/>
+            <atom title="Autoloading in Zend Framework"/>
+            <atom title="Plugins in Zend Framework"/>
+            <atom title="Getting Started with Zend_Layout"/>
+            <atom title="Getting Started Zend_View Placeholders"/>
+            <atom title="Understanding and Using Zend Form Decorators"/>
+            <atom title="Getting Started with Zend_Session, Zend_Auth, and Zend_Acl"/>
+            <atom title="Getting Started with Zend_Search_Lucene"/>
+            <atom title="Getting Started with Zend_Paginator"/>
+        </sector>
+        <sector desc="Zend Framework 参考手册">
+            <atom title="Zend_Acl"/>
+            <atom title="Zend_Amf"/>
+            <atom title="Zend_Application"/>
+            <atom title="Zend_Auth"/>
+            <atom title="Zend_Barcode"/>
+            <atom title="Zend_Cache"/>
+            <atom title="Zend_Captcha"/>
+            <atom title="Zend_Cloud"/>
+            <atom title="Zend_CodeGenerator"/>
+            <atom title="Zend_Config"/>
+            <atom title="Zend_Config_Writer"/>
+            <atom title="Zend_Console_Getopt"/>
+            <atom title="Zend_Controller"/>
+            <atom title="Zend_Currency"/>
+            <atom title="Zend_Date"/>
+            <atom title="Zend_Db"/>
+            <atom title="Zend_Debug"/>
+            <atom title="Zend_Dojo"/>
+            <atom title="Zend_Dom"/>
+            <atom title="Zend_EventManager"/>
+            <atom title="Zend_Exception"/>
+            <atom title="Zend_Feed"/>
+            <atom title="Zend_File"/>
+            <atom title="Zend_Filter"/>
+            <atom title="Zend_Form"/>
+            <atom title="Zend_Gdata"/>
+            <atom title="Zend_Http"/>
+            <atom title="Zend_InfoCard"/>
+            <atom title="Zend_Json"/>
+            <atom title="Zend_Layout"/>
+            <atom title="Zend_Ldap"/>
+            <atom title="Zend_Loader"/>
+            <atom title="Zend_Locale"/>
+            <atom title="Zend_Log"/>
+            <atom title="Zend_Mail"/>
+            <atom title="Zend_Markup"/>
+            <atom title="Zend_Measure"/>
+            <atom title="Zend_Memory"/>
+            <atom title="Zend_Mime"/>
+            <atom title="Zend_Mobile_Push"/>
+            <atom title="Zend_Navigation"/>
+            <atom title="Zend_Oauth"/>
+            <atom title="Zend_OpenId"/>
+            <atom title="Zend_Paginator"/>
+            <atom title="Zend_Pdf"/>
+            <atom title="Zend_ProgressBar"/>
+            <atom title="Zend_Queue"/>
+            <atom title="Zend_Reflection"/>
+            <atom title="Zend_Registry"/>
+            <atom title="Zend_Rest"/>
+            <atom title="Zend_Search_Lucene"/>
+            <atom title="Zend_Serializer"/>
+            <atom title="Zend_Server"/>
+            <atom title="Zend_Service"/>
+            <atom title="Zend_Session"/>
+            <atom title="Zend_Soap"/>
+            <atom title="Zend_Tag"/>
+            <atom title="Zend_Test"/>
+            <atom title="Zend_Text"/>
+            <atom title="Zend_TimeSync"/>
+            <atom title="Zend_Tool"/>
+            <atom title="Zend_Tool_Framework"/>
+            <atom title="Zend_Tool_Project"/>
+            <atom title="Zend_Translate"/>
+            <atom title="Zend_Uri"/>
+            <atom title="Zend_Validate"/>
+            <atom title="Zend_Version"/>
+            <atom title="Zend_View"/>
+            <atom title="Zend_Wildfire"/>
+            <atom title="Zend_XmlRpc"/>
+        </sector>
+    </tutorial-menu>
+</root>

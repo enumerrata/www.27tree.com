@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java经典实例</title>
+  <author>（美）达尔文（Darwin,F.I）　</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:08:03</submit-date-time>
+  <img-link>228124d54b55c9b440d8d6b9f37cb7f9.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书收集了Java开发人员经常遇到的成百个问题的解决方案，涵盖了Java应用的方方面面，堪称讲述Java应用的百科全书。书中的实例从正确设置CLASSPATH和读取环境信息这样的简单任务，到应用XML，或者使用JDK&amp;nbsp;1.5所带的并发性工具实现多线程编程的完整程序，几乎无所不包。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	无论你是否直接使用书中的实例，作为灵感的源泉，作为学习Java的工具，或者用于其他用途，本书都将成为你图书收藏中的珍品。还没有一本书能够如此全面地讲述Java的诸多功能，并能够如此容易地运用到实践当中去。作为第二版，本书更像是一部秘笈，指引你获取最新的第三方资源，以及提供实用的“招式”。本书展现了JDK&amp;nbsp;1.5中许多新的编程语言与API特性，这些都包括在那些实例中。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

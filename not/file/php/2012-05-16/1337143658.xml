@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>生成随机密码的几种方法</title>
+<content>&amp;lt;p&amp;gt;
+	使用PHP开发应用程序，尤其是网站程序，常常需要生成随机密码，如用户注册生成随机密码，用户重置密码也需要生成一个随机的密码。随机密码也就是一串固定长度的字符串，这里我收集整理了几种生成随机字符串的方法，以供大家参考。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;方法一：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、在&amp;nbsp;33&amp;nbsp;–&amp;nbsp;126&amp;nbsp;中生成一个随机整数，如&amp;nbsp;35，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、将&amp;nbsp;35&amp;nbsp;转换成对应的ASCII码字符，如&amp;nbsp;35&amp;nbsp;对应&amp;nbsp;#
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、重复以上&amp;nbsp;1、2&amp;nbsp;步骤&amp;nbsp;n&amp;nbsp;次，连接成&amp;nbsp;n&amp;nbsp;位的密码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该算法主要用到了两个函数，mt_rand&amp;nbsp;(&amp;nbsp;int&amp;nbsp;$min&amp;nbsp;,&amp;nbsp;int&amp;nbsp;$max&amp;nbsp;)函数用于生成随机整数，其中&amp;nbsp;$min&amp;nbsp;–&amp;nbsp;$max&amp;nbsp;为&amp;nbsp;ASCII&amp;nbsp;码的范围，这里取&amp;nbsp;33&amp;nbsp;-126&amp;nbsp;，可以根据需要调整范围，如ASCII码表中&amp;nbsp;97&amp;nbsp;–&amp;nbsp;122&amp;nbsp;位对应&amp;nbsp;a&amp;nbsp;–&amp;nbsp;z&amp;nbsp;的英文字母，具体可参考&amp;nbsp;ASCII码表；&amp;nbsp;chr&amp;nbsp;(&amp;nbsp;int&amp;nbsp;$ascii&amp;nbsp;)函数用于将对应整数&amp;nbsp;$ascii&amp;nbsp;转换成对应的字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;create_password($pw_length&amp;nbsp;=&amp;nbsp;8)
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$randpwd&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;($i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$i&amp;nbsp;&amp;amp;lt;&amp;nbsp;$pw_length;&amp;nbsp;$i++)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$randpwd&amp;nbsp;.=&amp;nbsp;chr(mt_rand(33,&amp;nbsp;126));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$randpwd;
+}
+
+//&amp;nbsp;调用该函数，传递长度参数$pw_length&amp;nbsp;=&amp;nbsp;6
+echo&amp;nbsp;create_password(6);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;方法二：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、预置一个的字符串&amp;nbsp;$chars&amp;nbsp;，包括&amp;nbsp;a&amp;nbsp;–&amp;nbsp;z，A&amp;nbsp;–&amp;nbsp;Z，0&amp;nbsp;–&amp;nbsp;9，以及一些特殊字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、在&amp;nbsp;$chars&amp;nbsp;字符串中随机取一个字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、重复第二步&amp;nbsp;n&amp;nbsp;次，可得长度为&amp;nbsp;n&amp;nbsp;的密码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;generate_password(&amp;nbsp;$length&amp;nbsp;=&amp;nbsp;8&amp;nbsp;)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;密码字符集，可任意添加你需要的字符
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$chars&amp;nbsp;=&amp;nbsp;&amp;nbsp;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;amp;*()-_&amp;nbsp;[]{}&amp;amp;lt;&amp;amp;gt;~`+=,.;:/?&amp;brvbar;&amp;nbsp;;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$password&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;(&amp;nbsp;$i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$i&amp;nbsp;&amp;amp;lt;&amp;nbsp;$length;&amp;nbsp;$i++&amp;nbsp;)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;这里提供两种字符获取方式
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;第一种是使用&amp;nbsp;substr&amp;nbsp;截取$chars中的任意一位字符；
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;第二种是取字符数组&amp;nbsp;$chars&amp;nbsp;的任意元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;$password&amp;nbsp;.=&amp;nbsp;substr($chars,&amp;nbsp;mt_rand(0,&amp;nbsp;strlen($chars)&amp;nbsp;-&amp;nbsp;1),&amp;nbsp;1);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$password&amp;nbsp;.=&amp;nbsp;$chars[&amp;nbsp;mt_rand(0,&amp;nbsp;strlen($chars)&amp;nbsp;-&amp;nbsp;1)&amp;nbsp;];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$password;
+}
+&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;方法三：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、预置一个的字符数组&amp;nbsp;$chars&amp;nbsp;，包括&amp;nbsp;a&amp;nbsp;–&amp;nbsp;z，A&amp;nbsp;–&amp;nbsp;Z，0&amp;nbsp;–&amp;nbsp;9，以及一些特殊字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、通过array_rand()从数组&amp;nbsp;$chars&amp;nbsp;中随机选出&amp;nbsp;$length&amp;nbsp;个元素
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、根据已获取的键名数组&amp;nbsp;$keys，从数组&amp;nbsp;$chars&amp;nbsp;取出字符拼接字符串。该方法的缺点是相同的字符不会重复取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;make_password(&amp;nbsp;$length&amp;nbsp;=&amp;nbsp;8&amp;nbsp;)
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;密码字符集，可任意添加你需要的字符
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$chars&amp;nbsp;=&amp;nbsp;array(&amp;nbsp;a&amp;nbsp;,&amp;nbsp;&amp;nbsp;b&amp;nbsp;,&amp;nbsp;&amp;nbsp;c&amp;nbsp;,&amp;nbsp;&amp;nbsp;d&amp;nbsp;,&amp;nbsp;&amp;nbsp;e&amp;nbsp;,&amp;nbsp;&amp;nbsp;f&amp;nbsp;,&amp;nbsp;&amp;nbsp;g&amp;nbsp;,&amp;nbsp;&amp;nbsp;h&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;i&amp;nbsp;,&amp;nbsp;&amp;nbsp;j&amp;nbsp;,&amp;nbsp;&amp;nbsp;k&amp;nbsp;,&amp;nbsp;&amp;nbsp;l&amp;nbsp;,&amp;nbsp;m&amp;nbsp;,&amp;nbsp;&amp;nbsp;n&amp;nbsp;,&amp;nbsp;&amp;nbsp;o&amp;nbsp;,&amp;nbsp;&amp;nbsp;p&amp;nbsp;,&amp;nbsp;&amp;nbsp;q&amp;nbsp;,&amp;nbsp;&amp;nbsp;r&amp;nbsp;,&amp;nbsp;&amp;nbsp;s&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t&amp;nbsp;,&amp;nbsp;&amp;nbsp;u&amp;nbsp;,&amp;nbsp;&amp;nbsp;v&amp;nbsp;,&amp;nbsp;&amp;nbsp;w&amp;nbsp;,&amp;nbsp;&amp;nbsp;x&amp;nbsp;,&amp;nbsp;&amp;nbsp;y&amp;nbsp;,&amp;nbsp;z&amp;nbsp;,&amp;nbsp;&amp;nbsp;A&amp;nbsp;,&amp;nbsp;&amp;nbsp;B&amp;nbsp;,&amp;nbsp;&amp;nbsp;C&amp;nbsp;,&amp;nbsp;&amp;nbsp;D&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;E&amp;nbsp;,&amp;nbsp;&amp;nbsp;F&amp;nbsp;,&amp;nbsp;&amp;nbsp;G&amp;nbsp;,&amp;nbsp;&amp;nbsp;H&amp;nbsp;,&amp;nbsp;&amp;nbsp;I&amp;nbsp;,&amp;nbsp;&amp;nbsp;J&amp;nbsp;,&amp;nbsp;&amp;nbsp;K&amp;nbsp;,&amp;nbsp;&amp;nbsp;L&amp;nbsp;,&amp;nbsp;M&amp;nbsp;,&amp;nbsp;&amp;nbsp;N&amp;nbsp;,&amp;nbsp;&amp;nbsp;O&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;P&amp;nbsp;,&amp;nbsp;&amp;nbsp;Q&amp;nbsp;,&amp;nbsp;&amp;nbsp;R&amp;nbsp;,&amp;nbsp;&amp;nbsp;S&amp;nbsp;,&amp;nbsp;&amp;nbsp;T&amp;nbsp;,&amp;nbsp;&amp;nbsp;U&amp;nbsp;,&amp;nbsp;&amp;nbsp;V&amp;nbsp;,&amp;nbsp;&amp;nbsp;W&amp;nbsp;,&amp;nbsp;&amp;nbsp;X&amp;nbsp;,&amp;nbsp;&amp;nbsp;Y&amp;nbsp;,&amp;nbsp;Z&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;0&amp;nbsp;,&amp;nbsp;&amp;nbsp;1&amp;nbsp;,&amp;nbsp;&amp;nbsp;2&amp;nbsp;,&amp;nbsp;&amp;nbsp;3&amp;nbsp;,&amp;nbsp;&amp;nbsp;4&amp;nbsp;,&amp;nbsp;&amp;nbsp;5&amp;nbsp;,&amp;nbsp;&amp;nbsp;6&amp;nbsp;,&amp;nbsp;&amp;nbsp;7&amp;nbsp;,&amp;nbsp;&amp;nbsp;8&amp;nbsp;,&amp;nbsp;&amp;nbsp;9&amp;nbsp;,&amp;nbsp;&amp;nbsp;!&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@&amp;nbsp;,&amp;nbsp;#&amp;nbsp;,&amp;nbsp;&amp;nbsp;$&amp;nbsp;,&amp;nbsp;&amp;nbsp;%&amp;nbsp;,&amp;nbsp;&amp;nbsp;^&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;amp;&amp;nbsp;,&amp;nbsp;&amp;nbsp;*&amp;nbsp;,&amp;nbsp;&amp;nbsp;(&amp;nbsp;,&amp;nbsp;&amp;nbsp;)&amp;nbsp;,&amp;nbsp;&amp;nbsp;-&amp;nbsp;,&amp;nbsp;&amp;nbsp;_&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;[&amp;nbsp;,&amp;nbsp;&amp;nbsp;]&amp;nbsp;,&amp;nbsp;&amp;nbsp;{&amp;nbsp;,&amp;nbsp;&amp;nbsp;}&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;amp;lt;&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;amp;gt;&amp;nbsp;,&amp;nbsp;&amp;nbsp;~&amp;nbsp;,&amp;nbsp;&amp;nbsp;`&amp;nbsp;,&amp;nbsp;&amp;nbsp;+&amp;nbsp;,&amp;nbsp;&amp;nbsp;=&amp;nbsp;,&amp;nbsp;&amp;nbsp;,&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;.&amp;nbsp;,&amp;nbsp;&amp;nbsp;;&amp;nbsp;,&amp;nbsp;&amp;nbsp;:&amp;nbsp;,&amp;nbsp;&amp;nbsp;/&amp;nbsp;,&amp;nbsp;&amp;nbsp;?&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;brvbar;&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;在&amp;nbsp;$chars&amp;nbsp;中随机取&amp;nbsp;$length&amp;nbsp;个数组元素键名
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$keys&amp;nbsp;=&amp;nbsp;($chars,&amp;nbsp;$length);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$password&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for($i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$i&amp;nbsp;&amp;amp;lt;&amp;nbsp;$length;&amp;nbsp;$i++)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;将&amp;nbsp;$length&amp;nbsp;个数组元素连接成字符串
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$password&amp;nbsp;.=&amp;nbsp;$chars[$keys[$i]];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$password;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-16/1337143658.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

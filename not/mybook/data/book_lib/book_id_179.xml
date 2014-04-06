@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Objective-C基础教程]]></title>
+  <author>（美）达尔林普尔，（美）纳斯特</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-13 00:33:07</submit-date-time>
+  <img-link>0e821172e89c4898329f04f157e7f752.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p style=\"text-indent:2em;\">
+	Amazon超级畅销书，好评如潮，全面解读Objective-C语言及Cocoa特性，用最通俗的语言阐释深奥的知识。
+</p>
+<p style=\"text-indent:2em;\">
+	Objective-C是扩展C的面向对象编程语言，也是iPhone开发用到的主要语言。
+</p>
+<p style=\"text-indent:2em;\">
+	本书结合理论知识与示例程序，全面而系统地讲述Objective-C编程的相关内容，包括Objective-C在C的基础上引入的特性和Cocoa工具包的功能及其中的框架，以及继承、复合、源文件组织等众多重要的面向对象编程技术。附录中还介绍了如何从其他语言过渡到Objective-C。
+</p>
+<p style=\"text-indent:2em;\">
+	本书适合各类开发人员阅读。
+</p>
+<p style=\"text-indent:2em;\">
+	Objective-C是创建Mac OS应用和iPhone应用的主要语言，优雅的面向对象编程环境与C语言特性珠联璧合，造就了它的不俗表现。
+</p>
+<p style=\"text-indent:2em;\">
+	本书全面而系统地讲述Objective-C语言的基础知识和面向对象编程的重要概念，结合实例介绍了Cocoa工具包的优秀特性和其中的框架，以及继承、复合、源文件组织、内存管理、对象初始化和类别创建等众多重要的面向对象编程技术。书中还阐述了如何利用Cocoa进行数据的保存、检索和操作等。
+</p>
+<p style=\"text-indent:2em;\">
+	通过阅读本书，再结合《iPhone开发基础教程》和《iPhone开发秘籍》，定能在iPhone开发进程中所向披靡！
+</p>
+<p style=\"text-indent:2em;\">
+	<p>
+		Objective-C是扩展C的面向对象编程语言，也是iPhone开发用到的主要语言。本书结合理论知识与示例程序，全面而系统地讲述Objective-C编程的相关内容，包括Objective-C在C的基础上引入的特性和Cocoa工具包的功能及其中的框架，以及继承、复合、源文件组织等众多重要的面向对象编程技术。附录中还介绍了如何从其他语言过渡到Objective-C。
+	</p>
+	<p>
+		本书适合各类开发人员阅读。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

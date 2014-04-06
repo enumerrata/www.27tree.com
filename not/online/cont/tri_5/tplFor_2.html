@@ -1,0 +1,57 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">CSS3 圆角</h1>
+</div>
+<div>
+    <p>CSS3有了圆角属性不得不说是CSS3中的亮点之一，过去我们有很多方法实现圆角，如：图片实现，插件实现,js实现等各种方法，有的方法不但增加了带宽还不利于SEO，增加了多余的代码，非常不好。下面我们来看一下CSS3如何实现圆角。</p>
+    <h1>border-radius</h1>
+    <h2>此属性值是以像素为单位的圆角半径，比如：</h2>
+    <code>
+        border-radius:3px;<br/>
+        border-radius:5px;<br/>
+        border-radius:8px;<br/>
+        border-radius:10px;
+    </code>
+    <h2>但是在不同内核的浏览器下，其写法也有的差别，比如：</h2>
+    <code>
+        Chrome & Safari:-webkit-border-radius:5px;<br/>
+        FireFox:-moz-border-radius:5px;<br/>
+        Opera:-o-border-radius:5px;<br/>
+        IE9+:border-radius:5px;</code>
+    <p>这么多种写法，对于过去对CSS掌握不熟练或者刚入门的童鞋感觉有些难以记忆，没关系，现在这些浏览器比较新的版本均支持border-radius:5px;这种写法。</p>
+    <p>嗯，通过上面的代码测试后觉得圆角还非常不错，但是如果我想将某一个角设置为圆角怎么办呢？很简单，border-radius它有设置四个边的属性，就像border-left,border-right似的。</p>
+    <h2>设置某一个角为圆角的写法在不同浏览器下有很大的差别，比如：</h2>
+    <code>
+        <b class="cRed">Chrome & Safari:</b><br/>
+        左上角：-webkit-border-top-left-radius:5px;<br/>
+        右上角：-webkit-border-top-right-radius:5px;<br/>
+        左下角：-webkit-border-bottom-left-radius:5px;<br/>
+        右下角：-webkit-border-bottom-right-radius:5px;<br/><br/>
+
+        <b class="cRed">FireFox:</b><br/>
+        左上角：-moz-border-radius-topleft:5px;<br/>
+        右上角：-moz-border-radius-topright:5px;<br/>
+        左下角：-moz-border-radius-bottomleft:5px;<br/>
+        右下角：-moz-border-radius-bottomright:5px;<br/><br/>
+
+        <b class="cRed">Opera:</b><br/>
+        左上角：-o-border-radius-topleft:5px;<br/>
+        右上角：-o-border-radius-topright:5px;<br/>
+        左下角：-o-border-radius-bottomleft:5px;<br/>
+        右下角：-o-border-radius-bottomright:5px;<br/><br/>
+
+        <b class="cRed">IE9+:</b><br/>
+        左上角：border-radius-topleft:5px;<br/>
+        右上角：border-radius-topright:5px;<br/>
+        左下角：border-radius-bottomleft:5px;<br/>
+        右下角：border-radius-bottomright:5px;
+    </code>
+
+    <p>我的天，居然有这么多种写法，让咱们如何记忆啊？不过没关系，与上面一样，现在这些浏览器比较新的版本统一了如下这种写法，不过并不代表上面这些写法均被浏览器废除（注意带有浏览器自身前缀的属性不属于W3C标准属性），可以一如既往的使用，按照这种复杂的写法可以兼容这些比较低版本的浏览器，向下兼容性比较强。</p>
+    <h2>统一的写法：</h2>
+    <code>
+        左上角：border-top-left-radius:5px;<br/>
+        右上角：border-top-right-radius:5px;<br/>
+        左下角：border-bottom-left-radius:5px;<br/>
+        右下角：border-bottom-right-radius:5px;
+    </code>
+</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP5应用实例详解：使用Zend Framework&Smarty构筑真正的MVC模式应用]]></title>
+  <author>王志刚 / 朱蕾</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-04-02 15:38:22</submit-date-time>
+  <img-link>8d46a8750ef981e74442e3f37ec5e248.jpg</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	本书除了提供许多可以立即导入到自己的应用程序中使用的应用实例外，花了大量的篇幅(第4章的一部分，第5章)介绍如何使用Zend Framework &amp; Smarty构筑真正的MVC模式应用系统—书签共享系统。整个论述从基础知识开始，包括系统分析、共通功能的提炼，到最后的系统合成，循序渐进。相信只要理解了本书实例以及其中介绍的内容，应该可以使用Zend Framework &amp; Smarty来构筑自己的MVC模式的应用程序了。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		<strong>PHP5现在的性能可以说已经超过上一个版本PHP4了</strong>，它强化了面向对象编程的概念，同时有了Zend Framework &amp; Smarty这个强大的组合，使用PHP也可以构筑MVC模式的应用系统了。本书突破以往的写作手法，直接从33个可以立即导入到自己的应用程序中非常实用的应用实例入手，从浅到深，将每个实例细致地剖解，让读者真正地从实践当中学习如何用PHP构筑网络应用系统，而且本书还花了大量的篇幅介绍如何使用Zend Framework &amp; Smarty构筑真正的MVC模式应用系统——书签共享系统。
+	</p>
+	<p>
+		本书讲述简单、直接且有效，更可贵的是非常注重实用性，所以它适合所有PHPer当做案头必备学习参考用书。无论您是刚刚入门的新兵，还是有一定编程基础的中级读者，一定会从这本书中收获良多。
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<strong>王志刚</strong> 1998年大学毕业后进入青岛海尔集团，经历过中国IT泡沫那个激动人心的时代。二十世纪初由于工作的原因渡日，历经程序员、系统工程师、项目经理、开发部长等职务，在十二年的开发生涯中，参加过日立，富士通等公司主导的大型项目开发，也取得过如获得日本国专利等
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

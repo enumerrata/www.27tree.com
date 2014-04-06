@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Zend Framework技术大全]]></title>
+  <author>陈营辉</author>
+  <submiter-uid>309</submiter-uid>
+  <submit-date-time>2013-01-08 00:59:28</submit-date-time>
+  <img-link>8927539d248891430a2b4ebb10e6fce0.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	Zend Framework是Zend公司推出的一套PHP开发框架，该框架技术在PHP业界已经受到越来越多的关注。本书全面、系统、深入地介绍了Zend Framework的5大类30多类组件，全书内容涵盖Zend Framework安装调试、MVC组件、核心类组件、数据操作组件、Web服务组件、国际化组件等。另外，本书最后一章还通过一个以Zend Framework的MVC为架构的新闻管理系统演示了Zend Framework的实际MVC开发流程。
+</p>
+<p>
+	本书适合广大PHP网站开发人员、PHP Web应用程序开发人员和希望全面了解Zend Framework这一新兴技术的Internet编程技术人员。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		第一篇 Zend Framework 简介
+	</p>
+	<p>
+		第1章 Zend Framework简介
+	</p>
+	<p>
+		第2章 安装调试环境
+	</p>
+	<p>
+		第二篇 MVC组件
+	</p>
+	<p>
+		第3章 MVC控制器
+	</p>
+	<p>
+		第4章 MVC视图
+	</p>
+	<p>
+		第5章 JSON操作
+	</p>
+	<p>
+		第三篇 核心组件
+	</p>
+	<p>
+		第6章 动态加载类与文件
+	</p>
+	<p>
+		第7章 对象注册表
+	</p>
+	<p>
+		第8章 使用配置数据
+	</p>
+	<p>
+		第9章 命令的设置与参数
+	</p>
+	<p>
+		第10章 过滤器
+	</p>
+	<p>
+		第11章 校验器
+	</p>
+	<p>
+		第12章 调试与异常处理
+	</p>
+	<p>
+		第13章 处理URL
+	</p>
+	<p>
+		第14章 数据缓存
+	</p>
+	<p>
+		第15章 会话处理
+	</p>
+	<p>
+		第16章 访问控制列表
+	</p>
+	<p>
+		第17章 访问认证适配器
+	</p>
+	<p>
+		第18章 限制内存环境下管理数据
+	</p>
+	<p>
+		第19章 邮件操作
+	</p>
+	<p>
+		第20章 MIME处理
+	</p>
+	<p>
+		第21章 Log处理
+	</p>
+	<p>
+		第22章 Zend_Version
+	</p>
+	<p>
+		第四篇 数据操作组件
+	</p>
+	<p>
+		第23章 文本搜索引擎
+	</p>
+	<p>
+		第24章 数据库操作
+	</p>
+	<p>
+		第25章 PDF文件操作
+	</p>
+	<p>
+		第五篇 Web服务组件
+	</p>
+	<p>
+		第26章 RSS与FEED
+	</p>
+	<p>
+		第27章 服务组件
+	</p>
+	<p>
+		第28章 HTTP服务
+	</p>
+	<p>
+		第29章 XML-RPC
+	</p>
+	<p>
+		第30章 REST服务
+	</p>
+	<p>
+		第31章 其他Web服务
+	</p>
+	<p>
+		第32章 Google服务
+	</p>
+	<p>
+		第六篇 国际化组件
+	</p>
+	<p>
+		第33章 本地化
+	</p>
+	<p>
+		第34章 多语言
+	</p>
+	<p>
+		第35章 日期时间
+	</p>
+	<p>
+		第36章 Zend_Measure
+	</p>
+	<p>
+		第七篇 综合应用
+	</p>
+	<p>
+		第37章 MVC新闻管理系统
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

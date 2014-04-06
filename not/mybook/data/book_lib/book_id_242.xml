@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[50 Tips and Tricks for MongoDB Developers]]></title>
+  <author>Kristina Chodorow</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-01-07 00:06:02</submit-date-time>
+  <img-link>75d56b9355e2013ad65e5b04e4838517.png</img-link>
+  <book-area>nos</book-area>
+  <book-intro><![CDATA[<p>
+	A collection of tips, tricks, and hacks to help MongoDB developers get the most out of the software. The tips cover everything from application design to data safety and monitoring.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>Kristina Chodorow</strong>, a software engineer at 10gen, is a core contributor to the MongoDB project and has worked on the database server, PHP driver, Perl driver, and many other areas. She\'s given talks at conferences around the world, including OSCON, LinuxCon, FOSDEM, and Latinoware.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

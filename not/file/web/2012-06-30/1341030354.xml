@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JavaScript编码规范</title>
+<content>&amp;lt;p&amp;gt;
+	在多年开发邮箱webmail过程中，网易邮箱前端团队积累了不少心得体会，我们开发了很多基础js库，实现了大量前端效果组件，开发了成熟的opoa框架以及api组件，在此向大家做一些分享。今天想先和大家聊聊javascript的编码规范。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总所周知，javascript是一种语法极其灵活的语言。javascript在设计之初就只是用来为HTML添加动态效果的。由于他动态，弱类型等特性，以及不同浏览器的兼容性问题，造成了开发成本要比java等语言要高很多。正因为它太灵活，我们制定了适用于网易邮箱的javascript编码规范，尽可能多的降低由于语法灵活造成的问题。以下将具体介绍：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;hr&amp;amp;nbsp;&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;amp;nbsp;style=font-size:16px;&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;amp;nbsp;style=font-size:14px;&amp;gt;1.&amp;amp;nbsp;变量命&amp;lt;span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;span&amp;amp;nbsp;style=font-size:14px;&amp;gt;名规范&amp;lt;/span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;/span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;/span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/span&amp;amp;nbsp;style=font-size:16px;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量名包括全局变量，局部变量，类变量，函数参数等等，他们都属于这一类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本规范
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量命名都以类型前缀+有意义的单词组成，单词首字母都需要大写。例如：sUserName，nCount。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前缀规范
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	每个局部变量都需要有一个类型前缀，按照类型可以分为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s：表示字符串。例如：sName，sHtml；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	n：表示数字。例如：nPage，nTotal；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b：表示逻辑。例如：bChecked，bHasLogin；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a：表示数组。例如：aList，aGroup；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	r：表示正则表达式。例如：rDomain，rEmail；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	f：表示函数。例如：fGetHtml，fInit；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	o：表示以上未涉及到的其他对象，例如：oButton，oDate；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例外情况：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1：作用域不大临时变量可以简写，比如：str，num，bol，obj，fun，arr。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2：循环变量可以简写，比如：i，j，k等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为什么需要这样强制定义变量前缀？正式因为javascript是弱语言造成的。在定义大量变量的时候，我们需要很明确的知道当前变量是什么属性，如果只通过普通单词，是很难区分的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;var&amp;amp;nbsp;group&amp;amp;nbsp;=&amp;amp;nbsp;[];&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+group.name&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;myGroup&amp;amp;nbsp;;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+/****&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+some&amp;amp;nbsp;code&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+***/&amp;amp;nbsp;
+//这时候你还能一眼就看出来group是什么吗？&amp;amp;nbsp;
+又例如：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;var&amp;amp;nbsp;checked&amp;amp;nbsp;=&amp;amp;nbsp;false;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+var&amp;amp;nbsp;check&amp;amp;nbsp;=&amp;amp;nbsp;function(){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;true;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+/**&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+some&amp;amp;nbsp;code&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+**/&amp;amp;nbsp;
+if(check){//可能将checked写成check，由于不能很快速的发现check是函数，造成逻辑错误&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//do&amp;amp;nbsp;some&amp;amp;nbsp;thing&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;
+如果我们写成：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;var&amp;amp;nbsp;bChecked&amp;amp;nbsp;=&amp;amp;nbsp;false;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+var&amp;amp;nbsp;fCheck&amp;amp;nbsp;=&amp;amp;nbsp;function(){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;true;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+/**&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+some&amp;amp;nbsp;code&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+**/&amp;amp;nbsp;
+if(bChecked){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;do&amp;amp;nbsp;some&amp;amp;nbsp;thing&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+if(fCheck()){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;do&amp;amp;nbsp;other&amp;amp;nbsp;thing&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;
+就清楚很多了。
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	全局变量以及常量规范
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	网易邮箱前端是基于“类”的概念来来开发javascript的（稍后会专门介绍），每个类定义都是在一个闭包函数中，除了在window下有类的定义而外，只允许有两种变量定义在全局，那就是全局变量和常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	全局变量使用g作为前缀，定义在window下。例如gUserName，gLoginTime。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	某些作为不允许修改值的变量认为是常量，全部字母都大写。例如：COPYRIGHT，PI。常量可以存在于函数中，也可以存在于全局。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	看个例子就&amp;amp;nbsp;很容易明白为什么要这样定义了：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;var&amp;amp;nbsp;userName&amp;amp;nbsp;=&amp;amp;nbsp;dongua;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+function&amp;amp;nbsp;checkName(userName){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//存在函数参数userName以及全局变量userName,如果要比较两个值是否相等，必需写为&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;window.userName&amp;amp;nbsp;==&amp;amp;nbsp;userName&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;
+&amp;lt;p&amp;gt;
+	如果使用了全局变量的前缀，就十分清晰了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;strong&amp;gt;2.&amp;amp;nbsp;函数命名规范&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/span&amp;amp;nbsp;style=font-size:14px;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	统一使用动词或者动词[＋名词]形式，例如：fGetVersion()，fSubmitForm()，fInit()；涉及返回逻辑值的函数可以使用is，has等表示逻辑的词语代替动词。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果有内部函数，使用__f+动词[+名词]形式，内部函数必需在函数最后定义。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;function&amp;amp;nbsp;fGetNumber(nTotal){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if(nTotal&amp;amp;lt;100){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;nTotal&amp;amp;nbsp;=&amp;amp;nbsp;100;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;return&amp;amp;nbsp;__fAdd(nTotal);&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;function&amp;amp;nbsp;__fAdd(nNumber){&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;nNumber++;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;nNumber;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;amp;nbsp;}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+}&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+alert(fGetNumber(30));//alert&amp;amp;nbsp;101&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;
+&amp;lt;p&amp;gt;
+	对象方法实现
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对象方法命名使用&amp;amp;nbsp;f+对象类名+动词[+名词]形式；例如&amp;amp;nbsp;fAddressGetEmail
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	事件响应函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	某事件响应函数命名方式为触发事件对象名＋事件名或者模块名＋触发事件对象名＋事件名，例如：fDivClick()，fAddressSubmitButtonClick()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;amp;nbsp;style=font-size:14px;&amp;gt;&amp;lt;strong&amp;gt;3.其他注意事项&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/span&amp;amp;nbsp;style=font-size:14px;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1：所有命名最好使用英语表示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2：所有变量名应该明确而必要，尽量避免不必要的容易混淆的缩写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3：netease.events.mouse.Handler，而不是&amp;amp;nbsp;netease.events.mouse.MouseEventHandler。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4：对应的方法应该使用对应的动词，例如：get/set,&amp;amp;nbsp;add/remove,&amp;amp;nbsp;create/destroy,&amp;amp;nbsp;start/stop,&amp;amp;nbsp;insert/delete,&amp;amp;nbsp;begin/end。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5：应该避免双重否定意义的变量，例如：bIsNotError,&amp;amp;nbsp;bIsNotFound，不可取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6：变量应该在最小的范围内定义，并尽可能的保持最少的活动时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7：循环变量最好在循环中定义。例如for(var&amp;amp;nbsp;i=0,m=10;i&amp;amp;lt;m;i++){&amp;amp;nbsp;do&amp;amp;nbsp;something}。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8：尽量避免复杂的条件语句，可以使用临时的boolean变量代替。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9：一定要避免在条件中执行语句，例如：if((i=3)&amp;amp;gt;2){}，不可取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10：不要在代码中重复使用相同意义的数字，用一个变量代替，比如&amp;amp;nbsp;nTotal=100;&amp;amp;nbsp;num=&amp;amp;nbsp;total。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;/pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;&amp;lt;/pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;&amp;lt;/pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;&amp;lt;/pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;&amp;lt;/pre&amp;amp;nbsp;name=code&amp;amp;nbsp;id=prettyprint&amp;amp;nbsp;class=javascript&amp;gt;&amp;lt;/hr&amp;amp;nbsp;&amp;gt;</content>
+<json-link>./file/web/2012-06-30/1341030354.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-17 20:11:20</datetime>
+  <title><![CDATA[360内部的 php 防SQL注入的代码]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+
+//Code By Safe3  
+function customError($errno, $errstr, $errfile, $errline) {
+    echo \"&lt;b&gt;Error number:&lt;/b&gt; [$errno],error on line $errline in $errfile&lt;br /&gt;\";
+    die();
+}
+
+set_error_handler(\"customError\", E_ERROR);
+$getfilter = \"\'|(and|or)\\\\b.+?(&gt;|&lt;|=|in|like)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?Select|Update.+?SET|Insert\\\\s+INTO.+?VALUES|(Select|Delete).+?FROM|(Create|Alter|Drop|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+$postfilter = \"\\\\b(and|or)\\\\b.{1,6}?(=|&gt;|&lt;|\\\\bin\\\\b|\\\\blike\\\\b)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?Select|Update.+?SET|Insert\\\\s+INTO.+?VALUES|(Select|Delete).+?FROM|(Create|Alter|Drop|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+$cookiefilter = \"\\\\b(and|or)\\\\b.{1,6}?(=|&gt;|&lt;|\\\\bin\\\\b|\\\\blike\\\\b)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?Select|Update.+?SET|Insert\\\\s+INTO.+?VALUES|(Select|Delete).+?FROM|(Create|Alter|Drop|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+
+function StopAttack($StrFiltKey, $StrFiltValue, $ArrFiltReq) {
+
+    if (is_array($StrFiltValue)) {
+        $StrFiltValue = implode($StrFiltValue);
+    }
+    if (preg_match(\"/\" . $ArrFiltReq . \"/is\", $StrFiltValue) == 1) {
+        //slog(\"&lt;br&gt;&lt;br&gt;操作IP: \".$_SERVER[\"REMOTE_ADDR\"].\"&lt;br&gt;操作时间: \".strftime(\"%Y-%m-%d %H:%M:%S\").\"&lt;br&gt;操作页面:\".$_SERVER[\"PHP_SELF\"].\"&lt;br&gt;提交方式: \".$_SERVER[\"REQUEST_METHOD\"].\"&lt;br&gt;提交参数: \".$StrFiltKey.\"&lt;br&gt;提交数据: \".$StrFiltValue);  
+        print \"360websec notice:Illegal operation!\";
+        exit();
+    }
+}
+
+//$ArrPGC=array_merge($_GET,$_POST,$_COOKIE);  
+foreach ($_GET as $key =&gt; $value) {
+    StopAttack($key, $value, $getfilter);
+}
+foreach ($_POST as $key =&gt; $value) {
+    StopAttack($key, $value, $postfilter);
+}
+foreach ($_COOKIE as $key =&gt; $value) {
+    StopAttack($key, $value, $cookiefilter);
+}
+if (file_exists(\'update360.php\')) {
+    echo \"请重命名文件update360.php，防止黑客利用&lt;br/&gt;\";
+    die();
+}
+
+function slog($logs) {
+    $toppath = $_SERVER[\"DOCUMENT_ROOT\"] . \"/log.htm\";
+    $Ts = fopen($toppath, \"a+\");
+    fputs($Ts, $logs . \"\\r\\n\");
+    fclose($Ts);
+}
+</pre>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

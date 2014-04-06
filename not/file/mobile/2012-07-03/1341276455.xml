@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Android应用程序开发入门</title>
+<content>&amp;lt;p&amp;gt;
+	Android会同一个核心应用程序包一起发布，该应用程序包包括email客户端，SMS短消息程序，日历，地图，浏览器，联系人管理程序等。所有的应用程序都是用JAVA编写的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;应用程序框架开发者也完全可以访问核心应用程序所使用的API框架。该应用程序架构用来简化组件软件的重用；任何一个应用程序都可以发布它的功能块并且任何其它的应用程序都可以使用其所发布的功能块（不过得遵循框架的安全性限制）。该应用程序重用机制使得组件可以被用户替换。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下所有的应用程序都由一系列的服务和系统组成，包括：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·一个可扩展的视图（Views&amp;amp;nbsp;）可以用来建应用程序，包括列表（lists），网格（grids），文本框（text&amp;amp;nbsp;boxes），按钮（buttons），甚至包括一个可嵌入的web浏览器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·内容管理器（Content&amp;amp;nbsp;Providers&amp;amp;nbsp;）使得应用程序可以访问另一个应用程序的数据（如联系人数据库），或者共享它们自己的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·一个资源管理器&amp;amp;nbsp;（Resource&amp;amp;nbsp;Manager）提供非代码资源的访问，如本地字符串，图形，和分层文件（&amp;amp;nbsp;layout&amp;amp;nbsp;files&amp;amp;nbsp;）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·一个通知管理器&amp;amp;nbsp;（Notification&amp;amp;nbsp;Manager）使得应用程序可以在状态栏中显示客户通知信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·一个活动类管理器&amp;amp;nbsp;（Activity&amp;amp;nbsp;Manager）用来管理应用程序生命周期并提供常用的导航回退功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有关更多的细节和怎样从头写一个应用程序，请参考&amp;amp;nbsp;写一个&amp;amp;nbsp;Android&amp;amp;nbsp;应用程序&amp;amp;nbsp;部分。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;程序库Android&amp;amp;nbsp;包括一个被&amp;amp;nbsp;Android&amp;amp;nbsp;系统中各种不同组件所使用的&amp;amp;nbsp;C/C++&amp;amp;nbsp;库集。该库通过&amp;amp;nbsp;Android&amp;amp;nbsp;应用程序框架为开发者提供服务。以下是一些主要的核心库：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	系统&amp;amp;nbsp;C&amp;amp;nbsp;库&amp;amp;nbsp;-&amp;amp;nbsp;一个从&amp;amp;nbsp;BSD&amp;amp;nbsp;继承来的标准&amp;amp;nbsp;C&amp;amp;nbsp;系统函数库（&amp;amp;nbsp;libc&amp;amp;nbsp;），专门为基于&amp;amp;nbsp;embedded&amp;amp;nbsp;linux&amp;amp;nbsp;的设备定制。&amp;amp;nbsp;媒体库&amp;amp;nbsp;-&amp;amp;nbsp;基于&amp;amp;nbsp;PacketVideo&amp;amp;nbsp;OpenCORE；该库支持录放，并且可以录制许多流行的音频视频格式，还有静态印像文件包括MPEG4,&amp;amp;nbsp;H.264,&amp;amp;nbsp;MP3,&amp;amp;nbsp;AAC,&amp;amp;nbsp;AMR,&amp;amp;nbsp;JPG,&amp;amp;nbsp;PNG。&amp;amp;nbsp;Surface&amp;amp;nbsp;Manager&amp;amp;nbsp;-&amp;amp;nbsp;对显示子系统的管理，并且为多个应用程序提供2D和3D图层的无缝融合。&amp;amp;nbsp;LibWebCore&amp;amp;nbsp;-&amp;amp;nbsp;一个最新的web浏览器引擎用来支持Android浏览器和一个可嵌入的web视图。&amp;amp;nbsp;SGL&amp;amp;nbsp;-&amp;amp;nbsp;一个内置的2D图形引擎&amp;amp;nbsp;3D&amp;amp;nbsp;libraries&amp;amp;nbsp;-&amp;amp;nbsp;基于OpenGL&amp;amp;nbsp;ES&amp;amp;nbsp;1.0&amp;amp;nbsp;APIs实现；该库可以使用硬件3D加速（如果可用）或者使用高度优化的3D软加速。&amp;amp;nbsp;FreeType&amp;amp;nbsp;-&amp;amp;nbsp;位图（bitmap）和向量（vector）字体显示。&amp;amp;nbsp;SQLite&amp;amp;nbsp;-&amp;amp;nbsp;一个对于所有应用程序可用，功能强劲的轻型关系型数据库引擎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;运行库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;包括了一个核心库，该核心库提供了JAVA编程语言核心库的大多数功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例。Dalvik是针对于同时高效地运行多个VMs来实现的。Dalvik虚拟机执行.dex的Dalvik可执行文件，该格式文件针对最小内存使用做了优化。该虚拟机是基于寄存器的，所有的类都经由JAVA汇编器编译，然后通过SDK中的dx工具转化成.dex格式由虚拟机执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dalvik虚拟机依赖于linux的一些功能，比如线程机制和底层内存管理机制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Linux&amp;amp;nbsp;内核Android&amp;amp;nbsp;的核心系统服务依赖于&amp;amp;nbsp;Linux&amp;amp;nbsp;2.6&amp;amp;nbsp;内核，如安全性，内存管理，进程管理，网络协议栈和驱动模型。&amp;amp;nbsp;Linux&amp;amp;nbsp;内核也同时作为硬件和软件堆栈之间的硬件抽象层。未来发展
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	老牌智能手机软件平台制造商Symbian发言人则表示：Google的android只不过是另一个linux，symbian对其它软件与其形成的竞争并不感到担心。除了北美之外，Symbian在其它地区智能手机市场都占有大部分市场份额。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与iPhone相似，Android采用WebKit浏览器引擎，具备触摸屏、高级图形显示和上网功能，用户能够在手机上查看电子邮件、搜索网址和观看视频节目等，比iPhone等其他手机更强调搜索功能，界面更强大，可以说是一种融入全部Web应用的单一平台。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但其最震撼人心之处在于Android手机系统的开放性和服务免费。Android是一个对第三方软件完全开放的平台，开发者在为其开发程序时拥有更大的自由度，突破了iPhone等只能添加为数不多的固定软件的枷锁；同时与Windows&amp;amp;nbsp;Mobile、Symbian等厂商不同，Android操作系统免费向开发人员提供，这样可节省近三成成本。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android项目目前正在从手机运营商、手机厂商、开发者和消费者那里获得大力支持。谷歌移动平台主管安迪·鲁宾(Andy&amp;amp;nbsp;Rubin)表示，与软件开发合作伙伴的密切接触正在进行中。从去年11月开始，谷歌开始向服务提供商、芯片厂商和手机销售商提供Android平台，并组建“开放手机联盟”，其成员超过30家。市场前景
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Google手机于08年10月22日正式上市，与运营商捆绑的合约价为179美元(约合人民币1200元)，现有的T-Mobile用户可以通过网络订购。在10月22日发布当天，将有22个国家和地区可以买到谷歌手机。在11月，将增至27个国家和地区。　谷歌手机将只能在T-Mobile网络内使用，将会有SIM卡锁定限制。T-Mobile&amp;amp;nbsp;USA提供了两种流量和短信近曝光的moto&amp;amp;nbsp;sholes（也有人称之为moto&amp;amp;nbsp;tao）将搭载最新的android2.0操作系统包月计划。第一档为25美元，包括不限制的网络流量，以及一定数量的短信；第二档为35美元，包括不限制的网络流量和不限数量的短信。G1支持各种谷歌的服务，包括Gmail、Google&amp;amp;nbsp;Maps、YouTube、Google日历和Google&amp;amp;nbsp;Talk，内置Chrome&amp;amp;nbsp;Lite浏览器。使用这款手机也需要Gmail账号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“我爱死我的G1了！”谷歌联合创始人拉里·佩奇(Larry&amp;amp;nbsp;Page)憧憬：“对于我来说，谷歌手机最激动人心的一点就是它的未来。它的功能很强，正如几年前的电脑一样。你可以上网，安装软件。”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	T-Mobile&amp;amp;nbsp;USA为德国电信旗下移动子公司，运营GSM/HSPA网络，拥有用户近3000万。此次发布的谷歌手机采用高通MSM7201A处理器，支持7.2Mbps下载速率，美国运营商3G网络设定的套餐速率一般可达1Mbps以上。MSM7201A为单芯片、双核，整合硬件加速多媒体功能、支持3D图形，300万像素的摄像功能可以扫描条形码，并且有GPS功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在美国四大移动运营商中，T-Mobile&amp;amp;nbsp;USA处于相对弱势的地位，不过T-Mobile在欧洲有更为强势的是CDMA&amp;amp;nbsp;EV-DO网络，而T-Mobile&amp;amp;nbsp;USA和苹果iPhone的独家运营商AT&amp;amp;T为GSM/HSPA网络，后者在2005年12月就推出了全球第一个HSDPA商用服务。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	T-Mobile&amp;amp;nbsp;USA今年5月方才在纽约推出了3G服务，目前已经在奥斯汀、巴尔的摩、波士顿、达拉斯、休斯敦、拉斯维加斯、迈阿密、明尼阿波利斯、凤凰城、波特兰、圣安东尼奥和圣地亚哥等12个城市增加了3G覆盖，公司计划年底前将3G覆盖的城市从目前的13个增加到27个，能够为其超过2/3的用户提供3G服务。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-07-03/1341276455.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

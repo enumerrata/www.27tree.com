@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-18 13:05:01</datetime>
+  <title>Javascript同时兼容IE和FIREFOX的一些注意点 </title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我们在使用Javascript时候，经常会出现不能同时兼容IE和FIREFOX现象，很多站长或者网站开发人员很容易忽略这点，一般在测试的时候只考虑到界面的显示兼容，而对程序的实际运行情况缺乏应有的测试。这里特别精简汇总一下Javascript的相关兼容性问题，提醒站长们注意。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;Javascript获取文档对象相关注意问题&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		1、表单内对象：&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;document.form1.item(\"abc\")用法不能兼容FIREFOX，只对IE有效，正确用法是document.form1.element[\"abc\"]。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		2、Document文档对象ID：&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;在IE中可以直接作为document的下属对象变量使用，在FIREFOX上则有问题，解决方法用getElement(\"abc\")代替直接使用ID名取用对象。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		3、集合类对象：&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;集合类对象的取用方法：document.form1(\"abc\")应当改为document.form1[\"abc\"]，document.getElementByName(\"abc\")应当改为document.getElementByName[\"abc\"]&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		4、获取其它element建议使用getElementById或者getElementByTagName。
+	&lt;/p&gt;
+	&lt;p&gt;
+		5、获取父节点建议使用parentNode来获取，可以同时兼容IE和FF。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;&lt;br&amp;nbsp;/&gt;
+&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;window&amp;nbsp;event事件相关注意问题：&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		1、window.event只对IE有效，无法在FIREFOX上运行，正确用法，使用带参数的函数调用，如
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;input&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;type=\"button\"&amp;nbsp;name=\"Submit1\"&amp;nbsp;value=\"提交\"&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;onclick=\"chksubmit(event)\"/&amp;gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;script&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;language=\"javascript\"&amp;gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		function&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;chksubmit(evt)&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		{
+	&lt;/p&gt;
+	&lt;p&gt;
+		evt=evt?evt:(window.event?window.event:NULL);//根据实际是否传值进来判断浏览器类型，进而选择性赋值EVENT对象
+	&lt;/p&gt;
+	&lt;p&gt;
+		....
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;/script&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;2、event.x和event.y的问题，必须使用ex=event.x?event.x:event.pageX;ey=event.y?event.y:event.pageY;根据实际运行情况选择，选择项的前者是IE支持，后者为FIREFOX支持。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;font-size:14px;\"&gt;&lt;strong&gt;操作获取IFRAME的相关注意问题：&lt;/strong&gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		在IE可以通过FRAME的ID和NAME都可以访问IFRAME对象，但是FIREFOX只能通过NAME属性访问，最好的方法把IFRAME的名字和ID设为相同值，就可以使用window.top.frameName或window.top.frameId来访问，反正两者设相同值，运行起来效果一样。或者也可以统一直接使用window.top.getElementById(\"frameId\")形式获取。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:12px;\"&gt;setAttribute和getAttribute：&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		在IE上使用setAttribute和getAttribute对class进行设置时候，会无效，但是FIREFOX上可以。比如obj.setAttribute(&amp;nbsp;class&amp;nbsp;,‘Open’);，区别如下：
+	&lt;/p&gt;
+	&lt;p&gt;
+		IE必须使用：obj.setAttribute(&amp;nbsp;className&amp;nbsp;,‘Open’);
+	&lt;/p&gt;
+	&lt;p&gt;
+		FF必须使用：obj.setAttribute(&amp;nbsp;class&amp;nbsp;,‘Open’);
+	&lt;/p&gt;
+	&lt;p&gt;
+		兼容可以写上以上两种或直接改成obj.className=‘Open’;形式。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:12px;\"&gt;getElementsByName&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		getElementsByName按照w3c标准是按name属性进行查询的，在IE上则是按照id属性进行查询，可以通过为元素同时增加name和id属性进行兼容。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;Javascript兼容IE和FIREFOX的其它注意事项：&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		1、IE要与FIREFOX兼容JAVASCRIPT，要尽量不要让变量名与控件ID名相同，非得相同也要记得为变量加上var声明才可以；
+	&lt;/p&gt;
+	&lt;p&gt;
+		2、不要使用const声明变量，因为IE不支持const，用var就可以了；
+	&lt;/p&gt;
+	&lt;p&gt;
+		3、URL地址书写中最好不要使用&amp;amp，建议直接使用&amp;，这是由于遵守规范的兼容性问题决定的，建议实际使用测试一下；
+	&lt;/p&gt;
+	&lt;p&gt;
+		4、在使用nodeName和tagName时候，一定记得判断是否为空，推荐使用tagName；
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>我们在使用Javascript时候，经常会出现不能同时兼容IE和FIREFOX现象，很多站长或者网站开发人员很容易忽略这点，一般在测试的时候只考虑到界面的显示兼容，而对程序的实际运行情况缺乏应有的测试。这里特别精简汇总一下Javascript的相关兼容性问题，提醒站长们注意。
+
+
+	
+		Javascript获取文档对象相关注意问题
+	
+	
+		1、表单内对</contentx>
+  <tags>_null_</tags>
+</root>

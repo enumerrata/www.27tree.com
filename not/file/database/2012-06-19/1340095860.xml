@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL触发器的创建与删除</title>
+<content>&amp;lt;p&amp;gt;
+	下面的文章主要描述的是MySQL触发器的正确创建步骤，MySQL触发器的删除，你如果对MySQL触发器的正确创建步骤，MySQL触发器的删除有兴趣的话你就可以点击以下的文章进行观看了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、创建MySQL触发器:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	语法:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;trigger_name&amp;nbsp;trigger_time&amp;nbsp;trigger_event&amp;nbsp;ON&amp;nbsp;tbl_name&amp;nbsp;&amp;nbsp;&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;&amp;nbsp;&amp;nbsp;BEGIN&amp;nbsp;&amp;nbsp;&amp;nbsp;trigger_stmt&amp;nbsp;&amp;nbsp;&amp;nbsp;END；&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;trigger_name&amp;nbsp;trigger_time&amp;nbsp;trigger_event&amp;nbsp;ON&amp;nbsp;tbl_name&amp;nbsp;&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;&amp;nbsp;&amp;nbsp;BEGIN&amp;nbsp;&amp;nbsp;trigger_stmt&amp;nbsp;&amp;nbsp;END；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;SetUserHome&amp;nbsp;after&amp;nbsp;insert&amp;nbsp;ON&amp;nbsp;users&amp;nbsp;&amp;nbsp;&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;update&amp;nbsp;`users`&amp;nbsp;set&amp;nbsp;homeLocationX&amp;nbsp;=&amp;nbsp;128,&amp;nbsp;&amp;nbsp;homeLocationY=128,&amp;nbsp;homeLocationZ=30&amp;nbsp;&amp;nbsp;&amp;nbsp;where&amp;nbsp;uuid&amp;nbsp;=&amp;nbsp;NEW.uuid&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上的例子是错误的，&amp;nbsp;让本表进行触发时进行更新会让程序进入死循环。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	系统会报这样的错误：it&amp;nbsp;is&amp;nbsp;already&amp;nbsp;used&amp;nbsp;by&amp;nbsp;statement&amp;nbsp;which&amp;nbsp;invoked&amp;nbsp;this&amp;nbsp;stored&amp;nbsp;function/trigger.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应该改成以下语句：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;SetUserHome&amp;nbsp;before&amp;nbsp;insert&amp;nbsp;ON&amp;nbsp;users&amp;nbsp;&amp;nbsp;&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;set&amp;nbsp;New.homeLocationX&amp;nbsp;=&amp;nbsp;128;&amp;nbsp;&amp;nbsp;set&amp;nbsp;New.homeLocationY&amp;nbsp;=&amp;nbsp;128;&amp;nbsp;&amp;nbsp;set&amp;nbsp;New.homeLocationZ=30;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	大写的为关键字
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	trigger_name:触发器的名字，我常用的命名规则t_name_tableName_(b&amp;brvbar;a)(i&amp;brvbar;u&amp;brvbar;d),t:MySQL触发器标识，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	name:英文名，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tableName:表名，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b(BEFORE):标识是触发事件之前，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a(AFTER):标识触发事件之后,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i(insert):标识insert事件，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	u(update):标识update事件，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d(delete):标识delete事件;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	trigger_time:触发时间(BEFORE或AFTER)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	trigger_event:事件名(insert或update或delete)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tbl_name:表名(必须是永久性表)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	trigger_stmt：执行语句(可以是复合语名)，使用别名OLD和NEW，能够引用与触发程序相关的表中的列。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、删除解发器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	语法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DROP&amp;nbsp;TRIGGER&amp;nbsp;[schema_name.]trigger_name；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意：以上操作均需SUPER权限
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	示例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DROP&amp;nbsp;TRIGGER&amp;nbsp;t_wiley_hotelComment_bu;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	delimiter&amp;nbsp;//&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;t_wiley_hotelComment_bu&amp;nbsp;BEFORE&amp;nbsp;UPDATE&amp;nbsp;ON&amp;nbsp;hotel_comment&amp;nbsp;&amp;nbsp;&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;IF&amp;nbsp;OLD.ispass=0&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;NEW.ispass=1&amp;nbsp;THEN&amp;nbsp;&amp;nbsp;&amp;nbsp;UPDATE&amp;nbsp;hotel_info&amp;nbsp;SET&amp;nbsp;sumcommentsumcomment=sumcomment+1,sumconsumesumconsume=sumconsume+NEW.consume,sumservicesumservice=sumservice+NEW.service,&amp;nbsp;sumroomsumroom=sumroom+NEW.room,sumentironsumentiron=sumentiron+NEW.entironment,totaltotal=total+(NEW.service+NEW.room+NEW.entironment)&amp;nbsp;WHERE&amp;nbsp;hotel_id=NEW.hotel_id;&amp;nbsp;&amp;nbsp;&amp;nbsp;ELSEIF&amp;nbsp;OLD.ispass=1&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;NEW.ispass=0&amp;nbsp;THEN&amp;nbsp;&amp;nbsp;&amp;nbsp;UPDATE&amp;nbsp;hotel_info&amp;nbsp;SET&amp;nbsp;sumcommentsumcomment=sumcomment-1,sumconsumesumconsume=sumconsume-NEW.consume,sumservicesumservice=sumservice-NEW.service,&amp;nbsp;sumroomsumroom=sumroom-NEW.room,sumentironsumentiron=sumentiron-NEW.entironment,totaltotal=total-(NEW.service+NEW.room+NEW.entironment)&amp;nbsp;WHERE&amp;nbsp;hotel_id=NEW.hotel_id;&amp;nbsp;&amp;nbsp;&amp;nbsp;END&amp;nbsp;IF;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//&amp;nbsp;&amp;nbsp;&amp;nbsp;delimiter&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上的相关内容就是对MySQL触发器的使用的介绍，望你能有所收获。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340095860.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

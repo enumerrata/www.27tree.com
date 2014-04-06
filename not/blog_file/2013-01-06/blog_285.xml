@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>306</uid>
+  <datetime>2013-01-06 18:48:24</datetime>
+  <title><![CDATA[分享几个数据库的面试题]]></title>
+  <content><![CDATA[<p>
+	<strong>1.查询平均工资大于2000的部门和关联的员工信息。</strong> 
+</p>
+<p>
+	&nbsp; 使用连接查询加分组查询，注意分组中没有用where,因为where不能使用聚合函数avg,sum等)
+</p>
+<p>
+	select * from dept left outer join emp on dept.deptno=emp.deptno where dept.deptno in ( select deptno from emp group by deptno having avg(sal)&lt;2000)
+</p>
+<p>
+	<strong>2.查询平均工资高于本部门工资的员工信息。</strong> 
+</p>
+<p>
+	select * from emp e1 where sal&gt;( select avg(sal) from emp e2 where e2.deptno=e1.deptno )
+</p>
+<p>
+	<strong>3.rank()和desen_rank()</strong> 
+</p>
+<p>
+	&nbsp; 两者是排序函数。如:
+</p>
+<p>
+	数学，100
+</p>
+<p>
+	数学，90
+</p>
+<p>
+	数学，80
+</p>
+<p>
+	语文，88
+</p>
+<p>
+	语文，77
+</p>
+<p>
+	语文，70
+</p>
+<p>
+	那么语句就这么写：
+</p>
+<p>
+	select * from (select rank() over(partition by 科目 order by 分数 desc) rk,a.* from a) t where t.rk&lt;=3;
+</p>
+<p>
+	dense_rank基本和rank()用法差不多，区别在于rank()并列第几的时候排序将跳到后面，dense_rank()则并列的时候，下面的正常排列，如1,2,2,3,并列后还是1,2,2,3.
+</p>
+<p>
+	<strong>4.删除表中的冗余数据。</strong> 
+</p>
+<p>
+	&nbsp; &nbsp;主要用到in和group by ..having分组函数.
+</p>
+<p>
+	&nbsp; &nbsp;方法1，用in：delete from people where peopleId in (select &nbsp; peopleId from people group by &nbsp; peopleId &nbsp; having count(peopleId) &gt; 1)
+</p>
+<p>
+	&nbsp; &nbsp;方法2,用not in：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; delete from employee where rowid not in (select max(t1.rowid) from &nbsp;employee t1 group by t1.emp_id,t1.emp_name,t1.salary);
+</p>
+<p>
+	<strong>5.如何使索引生效。</strong> 
+</p>
+<p>
+	&nbsp; &nbsp;此处不是问你索引创建是否能利用，索引创建后是马上能用的。这里要考的是sql如何利用索引。
+</p>
+<p>
+	答：一般可按照where中加索引列等隐式调用索引，如果要强制索引，可以用hints，hints是oracle强制索引的一组规则。比如可以用注释说明,注释是/*+索引函数*/这种形式，注意有个加号，如：
+</p>
+<p>
+	&nbsp; &nbsp;/*+INDEX_JOIN(TABLE INDEX_NAME)*/
+</p>
+<p>
+	提示明确命令优化器使用索引作为访问路径.
+</p>
+<p>
+	例如:
+</p>
+<p>
+	SELECT /*+INDEX_JOIN(EMP EMPID)*/ SAL,HIREDATE
+</p>
+<p>
+	FROM EMP WHERE SAL&lt;60000;
+</p>
+<p>
+	最后需要注意的是索引列最好不要为null,因为有null值的话，即使有hints也不会执行。
+</p>]]></content>
+  <contentx><![CDATA[1.查询平均工资大于2000的部门和关联的员工信息。 
+
+
+	  使用连接查询加分组查询，注意分组中没有用where,因为where不能使用聚合函数avg,sum等)
+
+
+	select * from dept left outer join emp on dept.deptno=emp.deptno where dept.deptno in ( selec]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HTTP权威指南]]></title>
+  <author>David Gourley Brian Totty Marjorie Sayer</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-15 11:10:11</submit-date-time>
+  <img-link>7fadec9986798c8aa08337a89bc46241.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	HTTP是Web客户端与服务器交互文档和信息时所使用的协议，是每个成功Web事务的幕后推手。众所周知，我们每天访问公司内部网络、搜索绝版书籍、研究统计信息时所使用的浏览器的核心就是HTTP。但HTTP的应用远不仅仅是浏览Web内容。由于HTTP既简单又普及，很多其他网络应用程序也选择了它，尤其是采用SOAP和XML-RPC这样的Web服务。
+</p>
+<p>
+	本书详细解释了HTTP协议，包括它是如何工作的，如何用它来开发基于Web的应用程序。但本书并不只介绍了HTTP，还探讨了HTTP有效工作所依赖的所有其他核心因特网技术。尽管HTTP是本书的中心内容，但本书的本质是理解Web的工作原理，以及如何将这些知识应用到Web编程和管理之中去，主要涵盖HTTP的技术运作方式、产生动机、性能和目标，以及一些相关技术问题。
+</p>
+<p>
+	本书是HTTP协议及相关Web技术方面的权威著作，主要内容包括：
+</p>
+<p>
+	<ul>
+		<li>
+			HTTP方法、首部以及状态码
+		</li>
+		<li>
+			优化代理和缓存的方法
+		</li>
+		<li>
+			设计Web机器人和爬虫的策略
+		</li>
+	</ul>
+	<p>
+		<p>
+			第一部分 　HTTP：Web 的基础
+		</p>
+		<p>
+			第1章 　HTTP 概述　　3
+		</p>
+		<p>
+			1.1 　HTTP——因特网的多媒体信使 　 　4
+		</p>
+		<p>
+			1.2 　Web 客户端和服务器 &nbsp;4
+		</p>
+		<p>
+			1.3 　资源　　 5
+		</p>
+		<p>
+			1.3.1 　媒体类型 　 　6
+		</p>
+		<p>
+			1.3.2 　URI 　 　7
+		</p>
+		<p>
+			1.3.3 　URL　　7
+		</p>
+		<p>
+			1.3.4 　URN　　8
+		</p>
+		<p>
+			1.4 　事务　　 9
+		</p>
+		<p>
+			1.4.1 　方法　　9
+		</p>
+		<p>
+			1.4.2 　状态码 　 　10
+		</p>
+		<p>
+			1.4.3 　Web 页面中可以包含多个对象 &nbsp;10
+		</p>
+		<p>
+			1.5 　报文　　11
+		</p>
+		<p>
+			1.6 　连接　　13
+		</p>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

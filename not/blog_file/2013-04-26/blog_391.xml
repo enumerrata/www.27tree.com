@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JS进阶之Div移动与拉伸的实现]]></title>
+  <content><![CDATA[<p>
+	这次增加了一些相关的功能，增加四个角的拉伸改变宽度，主要还是用到一些简单的坐标位置计算，没有什么技术难度，熟练了一下自己对拖拽的运用。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"&gt;  
+&lt;html xmlns=\"http://www.w3.org/1999/xhtml\"&gt;  
+&lt;head&gt;  
+    &lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /&gt;  
+    &lt;title&gt;简单拖拽扩展&lt;/title&gt;  
+    &lt;style type=\"text/css\"&gt;  
+        *{margin:0;padding:0;}
+        #outwarp{ margin:20px auto; width:600px; height:600px; background:#fff; border:1px solid #333; position: relative; }  
+        .controlBox{ width:200px; height:200px; position: absolute; left:25px; top:50px; background:#ccc; font-size:12px; color:#fff; border: 1px solid #333;}  
+        .controlBar{cursor: move;}  
+        .controlBar h2{ font-size:12px; text-align: center; line-height: 25px; background: blue;}  
+        .innerCon{text-align: left; line-height: 20px;}  
+        .innerCon p{ padding: 10px; color: #000;}  
+        .resize{ position: absolute; height: 10px; width:10px; color: white; z-index: 10; background: red;}  
+        .lt{left:0;right:0; cursor:nw-resize;}  
+        .tr{right:0;top: 0;cursor:ne-resize;}  
+        .rb{right:0;bottom: 0; cursor:nw-resize;}  
+        .bl{left:0;bottom:0;cursor:ne-resize;}  
+    &lt;/style&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+&lt;div id=\"outwarp\"&gt;  
+    &lt;div class=\"controlBox\"&gt;  
+        &lt;div class=\"resize lt\"&gt;&lt;/div&gt;  
+        &lt;div class=\"resize tr\"&gt;&lt;/div&gt;  
+        &lt;div class=\"resize rb\"&gt;&lt;/div&gt;  
+        &lt;div class=\"resize bl\"&gt;&lt;/div&gt;  
+        &lt;div class=\"controlBar\"&gt;  
+            &lt;h2&gt;按此处拖动&lt;/h2&gt;  
+        &lt;/div&gt;  
+        &lt;div class=\"innerCon\"&gt;  
+            &lt;p&gt;中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间  
+                内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容中间内容  
+                中间内容中间内容中间内容中间内容中间内容中间内容&lt;/p&gt;  
+        &lt;/div&gt;  
+    &lt;/div&gt;  
+&lt;/div&gt;  
+&lt;script type=\"text/javascript\"&gt;  
+(function () {  
+    //定义便捷函数getElementById,getElementsByTagName,getElementsByClassName,bindFunction,bindEvent  
+    function $() {  
+        var elements = new Array();  
+        for (var i = 0; i &lt; arguments.length; i++) {  
+            var element = arguments[i];  
+            if (typeof element == \'string\') {  
+                element = document.getElementById(element);  
+            }  
+            if (!element) {  
+                continue;  
+            }  
+            if (arguments.length == 1) {  
+                return element;  
+            }  
+            elements.push(element);  
+        }  
+        return elements;  
+    }  
+    function $$(tag, parent) {  
+        parent = parent || document;  
+        return $(parent).getElementsByTagName(tag);  
+    }  
+    function $$$(str, parent, tag) {  
+        if (parent) {  
+            parent = $(parent);  
+        } else {  
+            parent = document;  
+        }  
+        tag = tag || \'*\';  
+        var els = parent.getElementsByTagName(tag),  
+                arr = [];  
+        for (var i = 0, n = els.length; i &lt; n; i++) {  
+            for (var j = 0, k = els[i].className.split(\' \'), l = k.length; j &lt; l; j++) {  
+                if (k[j] == str) {  
+                    arr.push(els[i]);  
+                    break;  
+                }  
+            }  
+        }  
+        return arr;  
+    }  
+    function bindFunction(obj, func) {  
+        return function () {  
+            return func.apply(obj, arguments);  
+        };  
+    }  
+    function bindEvent(element, type, func) {  
+        if (element.addEventListener) {  
+            element.addEventListener(type, func, false); //false 表示冒泡  
+        } else if (element.attachEvent) {  
+            element.attachEvent(\'on\' + type, func);  
+        } else {  
+            element[\'on\' + type] = func;  
+        }  
+    }  
+    /*定义拖拽类*/ 
+    var DragBox = function (options) {  
+        var outWarpId = this.outWarpId = options.outWarpId;//获取最外围的包裹层ID  
+        var outWarp = $(outWarpId);//获取外围包裹层对象  
+        var controlBox = this.controlBox = $$$(\'controlBox\', outWarp, \'div\')[0]; //被拖动的层  
+        this.controlBar = $$$(\'controlBar\', controlBox, \'div\')[0];  
+        this.resizeLt = $$$(\'lt\', controlBox, \'div\')[0];  
+        this.resizeTr = $$$(\'tr\', controlBox, \'div\')[0];  
+        this.resizeRb = $$$(\'rb\', controlBox, \'div\')[0];  
+        this.resizeBl = $$$(\'bl\', controlBox, \'div\')[0];  
+        /*获取outWarpId信息*/ 
+        this.warpWidth = outWarp.offsetWidth - 2;   // 对象宽度  
+        this.warpHeight = outWarp.offsetHeight - 2;  // 对象高度  
+        this.warpLeft = outWarp.offsetLeft; //对象靠LEFT距离  
+        this.warpTop = outWarp.offsetTop;  //对象靠TOP距离  
+        /*定义拖动的对象*/ 
+        this.draging = null;  
+        this.bind();  
+    };  
+    DragBox.prototype = {  
+        moveBox:function (event) {  
+            event = event || window.event;  
+            var target = event.target || event.srcElement;  
+            // 记录滚动条位置  
+            this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+            this.scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;  
+            //记录光标的位置  
+            var mousex = event.clientX; // 光标LEFT  
+            var mousey = event.clientY; //光标TOP  
+            console.log(\'mousex:\' + mousex);  
+            console.log(\'mousey:\' + mousey);  
+ 
+            // 光标相对outwarp层的坐标  
+            var posx = mousex + this.scrollLeft - this.warpLeft;  
+            var posy = mousey + this.scrollTop - this.warpTop;  
+            // 多次用到this.controlBox 赋值一个短变量名  
+            var my = this.controlBox;  
+            // 多次用到this.controlBox.style，赋值一个短变量名  
+            var myStyle = my.style;  
+            // 最小尺寸  
+            var minWidth = 200,minHeight = 200;  
+            switch(event.type){  
+                case \'mousedown\':  
+                    /*记录相关初始信息*/ 
+                    if(target.parentNode.className.indexOf(\'controlBar\')!=-1){  
+                        this.draging = this.controlBox; //赋值拖动对象  
+                    }  
+                    if(target.className.indexOf(\'rb\')!= -1){  
+                        this.draging = this.resizeRb; // 赋值为右下角拖动  
+                    }  
+                    if(target.className.indexOf(\'tr\')!= -1){  
+                        this.draging = this.resizeTr; // 赋值为右上角改变大小  
+                    }  
+                    if(target.className.indexOf(\'lt\')!= -1){  
+                        this.draging = this.resizeLt; // 赋值为左上角改变大小  
+                    }  
+                    if(target.className.indexOf(\'bl\') != -1){  
+                        this.draging = this.resizeBl;  
+                    }  
+ 
+                    //alert(\'this.scrollTop:\'+this.scrollTop);  
+                    //点击时记录拖动层的初始信息  
+                    this.controlBoxWidth = my.offsetWidth; //拖动层的宽度  
+                    this.controlBoxHeight = my.offsetHeight; //拖动层的宽度  
+                    this.controlBoxLeft = my.offsetLeft; //拖动层的LEFT坐标  
+                    this.controlBoxTop = my.offsetTop; //拖动层的TOP坐标  
+                    // 记录鼠标按下时鼠标相对与拖动层的距离  
+                    this.mx = posx - this.controlBoxLeft;  
+                    this.my = posy - this.controlBoxTop;  
+                    // 记录左下角的坐标，因为按住右上拖动的时候左下角不动  
+                    this.lb_x = my.offsetWidth + my.offsetLeft;  
+                    this.lb_y = my.offsetHeight + my.offsetTop;  
+                    console.log(\'my.offsetHeight:\'+my.offsetHeight+\'my.offsetTop:\'+my.offsetTop);  
+                    // 记录右下角坐标，按住左上角拖动的时候右下角不动  
+                    this.rb_x = my.offsetLeft + my.offsetWidth;  
+                    this.rb_y = my.offsetTop + my.offsetHeight;  
+                    // 记录右上角坐标，当按住左下角的时候右上角不动  
+                    this.lt_x = my.offsetLeft + my.offsetWidth;  
+                    this.lt_y = my.offsetTop;  
+                    break;  
+                case \'mousemove\':  
+                    if (this.draging == this.controlBox){  
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty(); //取消页面上由于鼠标按下拖动造成的选中文字和图片的选择状态  
+                        //拖动层的位置  
+                        var left = posx - this.mx;  
+                        var top = posy - this.my;  
+                        left &lt; 0 &amp;&amp; (left = 0);  
+                        top &lt; 0 &amp;&amp; (top = 0);  
+                        left &gt; (this.warpWidth - this.controlBoxWidth) &amp;&amp; (left = this.warpWidth - this.controlBoxWidth);  
+                        top &gt; (this.warpHeight - this.controlBoxHeight) &amp;&amp; (top = this.warpHeight - this.controlBoxHeight);  
+                        //改变位置  
+                        myStyle.left = left + \'px\';  
+                        myStyle.top = top + \'px\';  
+                    //右下角拖动  
+                    } else if (this.draging == this.resizeRb) {  
+                        // 需要改变的宽度  
+                        var changeWidth = posx - this.controlBoxWidth - this.controlBoxLeft,  
+                                changeHeight = posy - this.controlBoxHeight - this.controlBoxTop,  
+                            // 计算总宽度  
+                                allWidth = this.controlBoxWidth + changeWidth + this.controlBoxLeft ,  
+                                allHeight = this.controlBoxHeight + changeHeight + this.controlBoxTop;  
+                        //改变宽度  
+                        myStyle.width = (this.controlBoxWidth + changeWidth) + \'px\';  
+                        myStyle.height = (this.controlBoxHeight + changeHeight) + \'px\';  
+                        // 限制最大宽度  
+                        if (allWidth &gt; this.warpWidth) {  
+                            myStyle.width = ( this.warpWidth - this.controlBoxLeft) + \'px\';  
+                        }  
+                        if (allHeight &gt; this.warpHeight) {  
+                            myStyle.height = (this.warpHeight - this.controlBoxTop) + \'px\';  
+                        }  
+                        // 限制最小宽度  
+                        if ( parseInt(myStyle.width) &lt; minWidth)myStyle.width = minWidth + \'px\';  
+                        if (parseInt(myStyle.height) &lt; minHeight) myStyle.height = minHeight + \'px\';  
+                    // 右上角  
+                    } else if (this.draging == this.resizeTr) {  
+                        // 需要改变的宽度，该变高度即改变TOP的坐标  
+                        changeWidth = posx - this.controlBoxWidth - this.controlBoxLeft;  
+                        // 计算总宽度  
+                        allWidth = this.controlBoxWidth + changeWidth + this.controlBoxLeft;  
+                        // 改变宽度  
+                        myStyle.width = (this.controlBoxWidth + changeWidth) + \'px\';  
+                        if (allWidth &gt; this.warpWidth) myStyle.width = ( this.warpWidth - this.controlBoxLeft) + \'px\';  
+                        if ( parseInt(myStyle.width) &lt; minWidth) myStyle.width = minWidth + \'px\';  
+                        // 改变高度  
+                        my.style.top = posy + \'px\';  
+                        my.style.height = (this.controlBoxHeight + (this.controlBoxTop - posy)) +\'px\';  
+                        if(parseInt(my.style.height)&lt; minHeight){  
+                            my.style.height = minHeight +\'px\';  
+ 
+                            my.style.top = (this.lb_y - minHeight) + \'px\';  
+                        }  
+                        if(parseInt(my.style.height)&gt;this.lb_y){  
+                            my.style.height = this.lb_y + \'px\';  
+                            my.style.top = 0;  
+                        }  
+                    // 左上角  
+                    }else if (this.draging == this.resizeLt) {  
+                        changeWidth = this.controlBoxLeft - posx;  
+                        changeHeight = this.controlBoxTop - posy;  
+                        my.style.left = posx + \'px\';  
+                        my.style.width = (this.controlBoxWidth + changeWidth) + \'px\';  
+                        my.style.top = posy + \'px\';  
+                        my.style.height = (this.controlBoxHeight + changeHeight) + \'px\';  
+                        // 限制宽高度最大值  
+                        if(parseInt(my.style.width) &gt; this.controlBoxLeft + this.controlBoxWidth){  
+                            my.style.width = (this.controlBoxLeft + this.controlBoxWidth) + \'px\';  
+                            my.style.left = 0;  
+                        }else if(parseInt(my.style.width)&lt; minWidth){  
+                            my.style.left = (this.rb_x - minWidth) + \'px\';  
+                            my.style.width = minWidth + \'px\';  
+                        }  
+                        if(parseInt(my.style.height) &gt; this.controlBoxHeight + this.controlBoxTop){  
+                            my.style.height = (this.controlBoxHeight + this.controlBoxTop) + \'px\';  
+                            if(parseInt(my.style.top)&lt;0) my.style.top = 0;  
+                        }else if(parseInt(my.style.height)&lt; minHeight){  
+                            my.style.top = (this.rb_y - minHeight) + \'px\';  
+                            my.style.height = minHeight + \'px\';  
+                        }  
+                    // 左下角  
+                    }else if(this.draging == this.resizeBl){  
+                        changeWidth = this.controlBoxLeft - posx;  
+                        changeHeight = posy - this.controlBoxHeight - this.controlBoxTop;  
+                        my.style.left = posx + \'px\';  
+                        my.style.width = this.controlBoxWidth + changeWidth + \'px\';  
+                        my.style.height = this.controlBoxHeight + changeHeight + \'px\';  
+                        if(parseInt(my.style.width)&lt; minWidth){  
+                            my.style.width = minWidth + \'px\';  
+                            my.style.left = this.lt_x - minWidth + \'px\';  
+                        }else if(parseInt(my.style.width)&gt; this.lt_x){  
+                           my.style.width = this.lt_x + \'px\';  
+                           my.style.left = 0;  
+                        }  
+                        if(parseInt(my.style.height)&lt; minHeight){  
+                            my.style.height = minHeight + \'px\';  
+                        }else if(parseInt(my.style.height)&gt; this.warpHeight- this.lt_y){  
+                            my.style.height = this.warpHeight- this.lt_y +\'px\';  
+                        }  
+                    }  
+                    break;  
+ 
+                case \'mouseup\':  
+                    this.draging = null;  
+                    break;  
+            }  
+        },  
+        bind:function () {  
+            var that = this;  
+            bindEvent(document, \'mousedown\', bindFunction(that,that.moveBox));  
+            bindEvent(document, \'mousemove\', bindFunction(that,that.moveBox));  
+            bindEvent(document, \'mouseup\', bindFunction(that,that.moveBox));  
+        }  
+    };  
+    var demo = new DragBox({  
+        outWarpId:\'outwarp\' 
+    });  
+})()  
+&lt;/script&gt;  
+&lt;/body&gt;  
+&lt;/html&gt; </pre>
+</p>]]></content>
+  <contentx><![CDATA[
+	这次增加了一些相关的功能，增加四个角的拉伸改变宽度，主要还是用到一些简单的坐标位置计算，没有什么技术难度，熟练了一下自己对拖拽的运用。
+
+
+&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

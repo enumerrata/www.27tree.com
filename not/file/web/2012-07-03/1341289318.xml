@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>验证表单数据的正则，收藏吧。</title>
+<content>&amp;lt;p&amp;gt;
+	匹配IP地址
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"javascript\"&amp;gt;function&amp;amp;nbsp;isIP(strIP)&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(isNull(strIP))&amp;amp;nbsp;return&amp;amp;nbsp;false;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;re&amp;amp;nbsp;=&amp;amp;nbsp;/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/g&amp;amp;nbsp;//匹配IP地址的正则表达式
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(re.test(strIP))&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(RegExp.$1&amp;amp;nbsp;&amp;amp;lt;&amp;amp;nbsp;256&amp;amp;nbsp;&amp;amp;&amp;amp;&amp;amp;nbsp;RegExp.$2&amp;amp;nbsp;&amp;amp;lt;&amp;amp;nbsp;256&amp;amp;nbsp;&amp;amp;&amp;amp;&amp;amp;nbsp;RegExp.$3&amp;amp;nbsp;&amp;amp;lt;&amp;amp;nbsp;256&amp;amp;nbsp;&amp;amp;&amp;amp;&amp;amp;nbsp;RegExp.$4&amp;amp;nbsp;&amp;amp;lt;&amp;amp;nbsp;256)&amp;amp;nbsp;return&amp;amp;nbsp;true;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;false;
+}&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+检查输入字符串是否为空或者全部都是空格
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"javascript\"&amp;gt;function&amp;amp;nbsp;isNull(str)&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(str&amp;amp;nbsp;==&amp;amp;nbsp;\"\")&amp;amp;nbsp;return&amp;amp;nbsp;true;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;regu&amp;amp;nbsp;=&amp;amp;nbsp;\"^[&amp;amp;nbsp;]+$\";
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;re&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;RegExp(regu);
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;re.test(str);
+}&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	检查输入对象的值是否符合整数格式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"javascript\"&amp;gt;function&amp;amp;nbsp;isInteger(str)&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;regu&amp;amp;nbsp;=&amp;amp;nbsp;/^[-]{0,1}[0-9]{1,}$/;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;regu.test(str);
+}&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+检查输入手机号码是否正确
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"javascript\"&amp;gt;function&amp;amp;nbsp;checkMobile(s)&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;regu&amp;amp;nbsp;=&amp;amp;nbsp;/^[1][0-9][0-9]{9}$/;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;re&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;RegExp(regu);
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(re.test(s))&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;true;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}&amp;amp;nbsp;else&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;false;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+}&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+检查输入对象的值是否符合E-Mail格式
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"javascript\"&amp;gt;function&amp;amp;nbsp;isEmail(str)&amp;amp;nbsp;{
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;var&amp;amp;nbsp;myReg&amp;amp;nbsp;=&amp;amp;nbsp;/^[-_A-Za-z0-9]+@([_A-Za-z0-9]+\.)+[A-Za-z0-9]{2,3}$/;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(myReg.test(str))&amp;amp;nbsp;return&amp;amp;nbsp;true;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;false;
+}&amp;amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-07-03/1341289318.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-03+17%3A04%3A11</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-04+09%3A23%3A26</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A44%3A49</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A46%3A44</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A47%3A41</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A54%3A38</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HTML 5 新增加的main标签]]></title>
+  <content><![CDATA[<p>
+	HTML 5新增加的标签元素已经够多的了，在2013年2月份，又增加了&lt;main&gt;标签，参考：
+</p>
+<p>
+	http://www.w3.org/html/wg/drafts/html/master/grouping-content.html#the-main-element
+</p>
+<p>
+	&nbsp;其中定义如下：
+</p>
+<p>
+	The main element represents the main content of the body of a document or application. The main content area consists of content that is directly related to or expands upon the central topic of a document or central functionality of an application.
+</p>
+<p>
+	Authors must not include more than one main element in a document.
+</p>
+<p>
+	Authors must not include the main element as a child of an article, aside, footer, header or nav element
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>也就是说，它是表达了document中的body的主要内容，但不能在一个document中有多个main,不能在article,aside,footer,header或者nav中包含main.</strong>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	下面是个例子：
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;!DOCTYPE html&gt;  
+&lt;html lang=\"en\"&gt;  
+&lt;head&gt;  
+&lt;meta charset=\"UTF-8\" /&gt;  
+&lt;title&gt;Using main&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+    &lt;header&gt;My page&lt;/header&gt;  
+    &lt;nav&gt;  
+        [url=#]Home[/url]  
+    &lt;/nav&gt;  
+    &lt;main&gt;  
+        &lt;article&gt;  
+            &lt;h1&gt;My article&lt;/h1&gt;  
+            Content  
+  
+        &lt;/article&gt;  
+        &lt;aside&gt;  
+            More information  
+  
+        &lt;/aside&gt;  
+    &lt;/main&gt;  
+    &lt;footer&gt;Copyright 2013&lt;/footer&gt;  
+&lt;/body&gt;  
+&lt;/html&gt;  </pre>
+标准中的又一个例子：&nbsp;
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;main&gt;  
+  
+  &lt;h1&gt;Skateboards&lt;/h1&gt;  
+  The skateboard is the way cool kids get around  
+  
+    
+  &lt;article&gt;  
+  &lt;h2&gt;Longboards&lt;/h2&gt;  
+  Longboards are a type of skateboard with a longer   
+  wheelbase and larger, softer wheels.  
+  
+  ...   
+  
+  ...   
+  
+  &lt;/article&gt;  
+  
+  &lt;article&gt;  
+  &lt;h2&gt;Electric Skateboards&lt;/h2&gt;  
+  These no longer require the propelling of the skateboard  
+  by means of the feet; rather an electric motor propels the board,   
+  fed by an electric battery.  
+  
+  ...   
+  
+  ...   
+  
+  &lt;/article&gt;  
+  
+&lt;/main&gt;  
+  
+  &lt;!-- other content --&gt;</pre>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[
+	HTML 5新增加的标签元素已经够多的了，在2013年2月份，又增加了&lt;main&gt;标签，参考：
+
+
+	http://www.w3.org/html/wg/drafts/html/master/grouping-content]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

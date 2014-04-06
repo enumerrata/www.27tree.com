@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>29</uid>
+  <datetime>2012-08-22 11:27:03</datetime>
+  <title>HTML的起源、发展、等等</title>
+  <content>&lt;p&gt;
+	HTML发展历史
+&lt;/p&gt;
+&lt;p&gt;
+	HTML是万维网文档发布和浏览的基本格式。它具有很多特点，如独立于平台的格式、结构化设计，特别是超文本链接，这些特点使它成为万维网较好的文档格式。
+&lt;/p&gt;
+&lt;p&gt;
+	一.&amp;nbsp;HTML的起源
+&lt;/p&gt;
+&lt;p&gt;
+	HTML作为定义万维网的基本规则之一，最初由蒂姆·本尼斯李（Tim&amp;nbsp;Berners-Lee）于1989年在CERN（Conseil&amp;nbsp;Europeen&amp;nbsp;pour&amp;nbsp;la&amp;nbsp;Recherche&amp;nbsp;Nucleaire）研制出来。HTML的设计者是这样考虑的：HTML格式将允许科学家们透明地共享网络上的信息，即使这些科学家使用的计算机差别很大。因此，这种格式必须具备如下几个特点：
+&lt;/p&gt;
+&lt;p&gt;
+	·独立于平台，即独立于计算机硬件和操作系统。这个特性对各种受从是至关重要的，因为在这个特性中，文档可以在具有不同性能（即字体、图形和颜色差异）的计算机上以相似的形式显示文档内容。
+&lt;/p&gt;
+&lt;p&gt;
+	·超文本。允许文档中的任何文字或词组参照另一文档，这个特性将允许用户在不同计算机中的文档之间及文档内部漫游。
+&lt;/p&gt;
+&lt;p&gt;
+	·精确的结构化文档。该特性将允许某些高级应用，如HTML文档和其他格式文档间互相转换以及搜索文本数据库。
+&lt;/p&gt;
+&lt;p&gt;
+	本尼斯李选择使用标准通用标记语言（SGML，standard&amp;nbsp;generalized&amp;nbsp;markup&amp;nbsp;language）作为HTML的开发模版。作为一种当时正在出现的国际标准，标准通用标记语言具有结构化和独立于平台的优点。SGML的标准化水平也确保了它长久的生命力，这意味着采用SGML格式的文档在相当长的时间里不需要重新构建。
+&lt;/p&gt;
+&lt;p&gt;
+	SGML是独立于平台的，因为它对文档的语义结构或含义进行编码描述，而不是对文档的实际外观进行编码描述。因此，某书某章节的标题将标为Chater&amp;nbsp;Title，而不是Helvetica&amp;nbsp;18pt&amp;nbsp;Centered。如果在不具备Helvetica字型或不支持不同大小字母的计算机上显示文档，则后一种风格会失败，而前一种风格可以在任何系统上（智能化地）显示。每个读者都以一种对其计算机有利的方式定义章节标题的外表，相应地，并以这种风格来规范所有的文本。
+&lt;/p&gt;
+&lt;p&gt;
+	这种结构的另一个特征是：按语义编码的文本可以由计算机更智能地自动处理。例如：如果每个章节标题都用Chapter&amp;nbsp;Title标志，再把章节号码作为一种属性，读者就可以要求只看第18章，SGML软件相应地会查找第18章标题和第19章标题，并抽取它们之间的所有内容。如果不用标准格式的字体和代码来标志文本的话，这个工作对计算机来说是无法完成的。
+&lt;/p&gt;
+&lt;p&gt;
+	SGML的一大优点是它的灵活性。SGML本身并不是一种格式，而是定义其他格式的一种规范，用户可以创建新格式来编码某类文件（如技术手册、电话号码薄和法律文书）的所有结构，只需先阅读定义，任何能使用SGML的软件都能读懂它。人们已经为普通文档和十分专业化的文档建立了许多的文档类型定义（document&amp;nbsp;type&amp;nbsp;definitions，DTD）。HTML只是一种DTD，或SGML的一种应用。
+&lt;/p&gt;
+&lt;p&gt;
+	二.&amp;nbsp;HTML的演变
+&lt;/p&gt;
+&lt;p&gt;
+	自1989年以来，HTML及万维网的使用和发展有了巨大的变化。当NCSA（national&amp;nbsp;center&amp;nbsp;for&amp;nbsp;supercomputing&amp;nbsp;applications，国家超级计算机应用中心）在1993年初首次构建Mosaic浏览器时，NCSA的科学家们把自己需要的特性添加到HTML&amp;nbsp;中，包括直接插入图形。当允许人们把位图、照片和图表放入到文档中以后，万维网的规模和使用出现了爆炸性的增长，第二年，HTML的发展很快。HTML的新标记不时地被一个又一个的浏览器引入，有一些新标记流行起来，而有一些又消失了。有些增加部分设计得很糟，很多甚至不遵从SGML规范。
+&lt;/p&gt;
+&lt;p&gt;
+	到了1994年年中，HTML几乎以失控的状态发展。在IETF（Internet&amp;nbsp;engineering&amp;nbsp;task&amp;nbsp;force）主持下，1995年11月在瑞士日内瓦举行的第一次WWW会议上成立了一个HTML工作小组。它的主要任务是把HTML形式化成为一种&amp;nbsp;SGML&amp;nbsp;DTD，称之为HTML&amp;nbsp;Level&amp;nbsp;2（HTML&amp;nbsp;2.0，由本尼斯李最初设计的HTML被定义为Level&amp;nbsp;1）。标准化之后，HTML就可以被安全地扩展到将来的各个级别的版本，从而利用了SGML的实质性能和它的格式化结构。
+&lt;/p&gt;
+&lt;p&gt;
+	尽管有关的各方从来没有取得完全一致的共识，但万维网联盟HTML工作组（world&amp;nbsp;wide&amp;nbsp;web&amp;nbsp;consortium&amp;nbsp;s&amp;nbsp;HTML&amp;nbsp;working&amp;nbsp;group）还是集中了1996年的万维网发展的成果，产生了HTML&amp;nbsp;3.2版本。
+&lt;/p&gt;
+&lt;p&gt;
+	HTML&amp;nbsp;4.0及其以后版本继承了以往版本的所有特点，并在以下几个方面有所发展：
+&lt;/p&gt;
+&lt;p&gt;
+	·更加明确了文档的结构和表现形式上的区别，以鼓励使用格式表（style&amp;nbsp;sheet）来取代使用元素和属性进行表现的方式&amp;nbsp;。
+&lt;/p&gt;
+&lt;p&gt;
+	·更加优良的表单（form）性能，加入了访问关键词（access&amp;nbsp;key）、构建对称的表单控件能力、构建对称的下拉菜单控件的能力和动态标签（active&amp;nbsp;label）。
+&lt;/p&gt;
+&lt;p&gt;
+	·在文本描述的标记中包含对象。
+&lt;/p&gt;
+&lt;p&gt;
+	·一种新客户端的文本包括在图像映射元素（map&amp;nbsp;element），使得网页设计者可以集成文本和图像链接。
+&lt;/p&gt;
+&lt;p&gt;
+	·可以将替代图像的文本包括在图像元素（IMG&amp;nbsp;element）中，也可以将图像映射（image&amp;nbsp;map）包含到区域元素中（area&amp;nbsp;element）。
+&lt;/p&gt;
+&lt;p&gt;
+	·在所有元素中支持title和language两个属性。
+&lt;/p&gt;
+&lt;p&gt;
+	·更多的表格属性，包括Caption、Column&amp;nbsp;groups和方便的非可视信息（non-visual&amp;nbsp;reading）的表现机制
+&lt;/p&gt;</content>
+  <contentx>HTML发展历史
+
+
+	HTML是万维网文档发布和浏览的基本格式。它具有很多特点，如独立于平台的格式、结构化设计，特别是超文本链接，这些特点使它成为万维网较好的文档格式。
+
+
+	一. HTML的起源
+
+
+	HTML作为定义万维网的基本规则之一，最初由蒂姆·本尼斯李（Tim Berners-Lee）于1989年在CERN（Conseil Europeen po</contentx>
+  <tags>_null_</tags>
+</root>

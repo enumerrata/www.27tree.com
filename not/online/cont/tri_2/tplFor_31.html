@@ -1,0 +1,101 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL Where 子句</h1>
+</div>
+<div>
+
+<p><b>如需选取匹配指定条件的数据，请向 SELECT 语句添加 WHERE 子句。</b></p>
+
+<h1>WHERE 子句</h1>
+
+<p>如需选取匹配指定条件的数据，请向 SELECT 语句添加 WHERE 子句。</p>
+
+<h2>语法</h2>
+
+<code>
+SELECT column FROM table<br />
+WHERE column operator value
+</code>
+
+<p>下面的运算符可与 WHERE 子句一起使用：</p>
+
+<table class="dataintable">
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+ 
+<tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+ 
+<tr>
+<td>!=</td>
+<td>不等于</td>
+</tr>
+ 
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+ 
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+ 
+<tr>
+<td>&gt;=</td>
+<td>大于或等于</td>
+</tr>
+ 
+<tr>
+<td>&lt;=</td>
+<td>小于或等于</td>
+</tr>
+ 
+<tr>
+<td>BETWEEN</td>
+<td>介于一个包含范围内</td>
+</tr>
+ 
+<tr>
+<td>LIKE</td>
+<td>搜索匹配的模式</td>
+</tr>
+</table>
+
+<p><b>注释</b>：SQL 语句对大小写不敏感。WHERE 与 where 等效。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysql_query() 函数。该函数用于向 SQL 连接发送查询和命令。</p>
+
+<h2>例子</h2>
+
+<p>下面的例子将从 "Persons" 表中选取所有 FirstName='Peter' 的行：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+$result&nbsp=&nbspmysql_query("SELECT&nbsp*&nbspFROM&nbspPersons<br />
+WHERE&nbspFirstName='Peter'");<br />
+<br />
+while($row&nbsp=&nbspmysql_fetch_array($result))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp$row['FirstName']&nbsp.&nbsp"&nbsp"&nbsp.&nbsp$row['LastName'];<br />
+&nbsp&nbspecho&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+<br />
+?&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>Peter Griffin</code>
+
+</div>

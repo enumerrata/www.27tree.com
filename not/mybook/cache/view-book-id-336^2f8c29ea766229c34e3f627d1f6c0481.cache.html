@@ -1,0 +1,978 @@
+<__cache@1389751404-@1389752404@view-book-id-336__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>《这就是搜索引擎：核心技术详解》- PDF下载 / 张俊林 - 程序员必备</title>
+        <meta name="keywords" content="这就是搜索引擎：核心技术详解,张俊林,其他,PDF下载,电子书下载,好书分享,程序员必备好书" />
+        <meta name="description" content="这就是搜索引擎：核心技术详解-张俊林：二叉树社区电子书库,分享各种编程学习电子书下载" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <script language="javascript" src="/jss/jquery-min.js"></script>
+        <script language="javascript" src="/sources-gz/coref.js.php"></script>
+        <script src="/jss/templates.js"></script>
+        <script src="/static/js/book_single.js"></script>
+        <link rel="stylesheet" type="text/css" href="/sources-gz/core.css.php" />
+        <link rel="stylesheet" type="text/css" href="/static/css/book_single.css" />
+    </head>
+    <body>
+        <ins id="COMMTYPE" rel="book"></ins>
+        <ins id="COMMID" rel="336"></ins>
+        <input type="hidden" value="336" id="bookid"/>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="sdCenter" style="margin-bottom:50px;">
+            <div id="vbookLeft">
+                <div id="vbookLeft-in">
+                    <div id="vbook-imgwu">
+                        <img src="/not/mybook/data/book_image_lib/c8f049916972e5b48fb0fa90ec05a3ba.png" class="Shadow" alt="这就是搜索引擎：核心技术详解"/>
+                    </div>
+                    <div style="margin-top:10px;background:#fff;border:1px solid #ccc;border-right:none;padding:10px;">
+                        <a class="headwapper">
+                            <img src="/user/data/head-img/355_head.jpg" width="45px" height="45px"/>
+                        </a>
+                        <div style="margin-left:60px;">
+                            <b class="Elipsis block">这就是搜索引擎：核心技术详解</b>
+                            <div>由 dede你妹的 分享于 2013年5月4日 10:08</div>
+                            <span class="Gray">浏览量：469</span>
+                        </div>
+                        <a class="s-pages-i borderR10" style="display:block;margin-top:10px;text-align:center;" href="/not/mybook/share/">我也分享一本</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!--<a class="vBookButtonMore" href="/bookLib/other/">查看更多关于其他的书</a>-->
+                </div>
+            </div>
+            <div id="vbookRight" class="Shadow borderR5">
+                <!--<a style="position:absolute;top:25px;right:15px;" href="javascript:;" onclick="javascript:usr_collect_book(,this);">喜欢这本书</a>-->
+
+                <!--TOTOP-btn--><a class="toTopbtn" href="javascript:;" onclick="goTop()"></a><!--TOTOP-btn-->
+
+                <h1 id="book-name">这就是搜索引擎：核心技术详解</h1>
+
+                <p id="book-author">作者：张俊林</p>
+                <div class="autowarp" id="book-intro">
+                    <div id="book-intro-content"><p>
+	<strong> &nbsp; &nbsp; &nbsp;搜索引擎</strong>作为互联网发展中至关重要的一种应用，已经成为互联网各个领域的制高点，其重要性不言而喻。搜索引擎领域也是互联网应用中不多见的以核心技术作为其命脉的领域，搜索引擎各个子系统是如何设计的？这成为广大技术人员和搜索引擎优化人员密切关注的内容。
+</p>
+<p>
+	本书的最大特点是内容新颖全面而又通俗易懂。对于实际搜索引擎所涉及的各种核心技术都有全面细致的介绍，除了作为搜索系统核心的网络爬虫、索引系统、排序系统、链接分析及用户分析外，还包括网页反作弊、缓存管理、网页去重技术等实际搜索引擎必须关注的技术，同时用相当大的篇幅讲解了云计算与云存储的核心技术原理。另外，本书也密切关注搜索引擎发展的前沿技术：<strong>Google的咖啡因系统</strong>及<strong>Megastore</strong>等云计算新技术、百度的暗网抓取技术阿拉丁计划、内容农场作弊、机器学习排序等。诸多新技术在相关章节都有详细讲解，同时对于社会化搜索、实时搜索及情境搜索等搜索引擎的未来发展方向做了技术展望。为了增进读者的理解，全书大量引入形象的图片来讲解算法原理，相信读者会发现原来搜索引擎的核心技术理解起来比原先想象的要简单得多。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		第1章　搜索引擎及其技术架构
+	</p>
+	<p>
+		1.1　搜索引擎为何重要
+	</p>
+	<p>
+		1.1.1　互联网的发展
+	</p>
+	<p>
+		1.1.2　商业搜索引擎公司的发展
+	</p>
+	<p>
+		1.1.3　搜索引擎的重要地位
+	</p>
+	<p>
+		1.2　搜索引擎技术发展史
+	</p>
+	<p>
+		1.2.1　史前时代：分类目录的一代
+	</p>
+	<p>
+		1.2.2　第一代：文本检索的一代
+	</p>
+	<p>
+		1.2.3　第二代：链接分析的一代
+	</p>
+	<p>
+		1.2.4　第三代：用户中心的一代
+	</p>
+	<p>
+		1.3　搜索引擎的3个目标
+	</p>
+	<p>
+		1.4　搜索引擎的3个核心问题
+	</p>
+	<p>
+		1.4.1　3个核心问题
+	</p>
+	<p>
+		1.4.2　与技术发展的关系
+	</p>
+	<p>
+		1.5　搜索引擎的技术架构
+	</p>
+	<p>
+		第2章　网络爬虫
+	</p>
+	<p>
+		2.1　通用爬虫框架
+	</p>
+	<p>
+		2.2　优秀爬虫的特性
+	</p>
+	<p>
+		2.3　爬虫质量的评价标准
+	</p>
+	<p>
+		2.4　抓取策略
+	</p>
+	<p>
+		2.4.1　宽度优先遍历策略（Breath　First）
+	</p>
+	<p>
+		2.4.2　非完全PageRank策略（Partial　PageRank）
+	</p>
+	<p>
+		2.4.3　OCIP策略（Online　Page　Importance　Computation）
+	</p>
+	<p>
+		2.4.4　大站优先策略（Larger　Sites　First）
+	</p>
+	<p>
+		2.5　网页更新策略
+	</p>
+	<p>
+		2.5.1　历史参考策略
+	</p>
+	<p>
+		2.5.2　用户体验策略
+	</p>
+	<p>
+		2.5.3　聚类抽样策略
+	</p>
+	<p>
+		2.6　暗网抓取（Deep　Web　Crawling）
+	</p>
+	<p>
+		2.6.1　查询组合问题
+	</p>
+	<p>
+		2.6.2　文本框填写问题
+	</p>
+	<p>
+		2.7　分布式爬虫
+	</p>
+	<p>
+		2.7.1　主从式分布爬虫（Master-Slave）
+	</p>
+	<p>
+		2.7.2　对等式分布爬虫（Peer　to　Peer）
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第3章　搜索引擎索引
+	</p>
+	<p>
+		3.1　索引基础
+	</p>
+	<p>
+		3.1.1　单词—文档矩阵
+	</p>
+	<p>
+		3.1.2　倒排索引基本概念
+	</p>
+	<p>
+		3.1.3　倒排索引简单实例
+	</p>
+	<p>
+		3.2　单词词典
+	</p>
+	<p>
+		3.2.1　哈希加链表
+	</p>
+	<p>
+		3.2.2　树形结构
+	</p>
+	<p>
+		3.3　倒排列表（Posting　List）
+	</p>
+	<p>
+		3.4　建立索引
+	</p>
+	<p>
+		3.4.1　两遍文档遍历法（2-Pass　In-Memory　Inversion）
+	</p>
+	<p>
+		3.4.2　排序法（Sort-based　Inversion）
+	</p>
+	<p>
+		3.4.3　归并法（Merge-based　Inversion）
+	</p>
+	<p>
+		3.5　动态索引
+	</p>
+	<p>
+		3.6　索引更新策略
+	</p>
+	<p>
+		3.6.1　完全重建策略（Complete　Re-Build）
+	</p>
+	<p>
+		3.6.2　再合并策略（Re-Merge）
+	</p>
+	<p>
+		3.6.3　原地更新策略（In-Place）
+	</p>
+	<p>
+		3.6.4　混合策略（Hybrid）
+	</p>
+	<p>
+		3.7　查询处理
+	</p>
+	<p>
+		3.7.1　一次一文档（Doc　at　a　Time）
+	</p>
+	<p>
+		3.7.2　一次一单词（Term　at　a　Time）
+	</p>
+	<p>
+		3.7.3　跳跃指针（Skip　Pointers）
+	</p>
+	<p>
+		3.8　多字段索引
+	</p>
+	<p>
+		3.8.1　多索引方式
+	</p>
+	<p>
+		3.8.2　倒排列表方式
+	</p>
+	<p>
+		3.8.3　扩展列表方式（Extent　List）
+	</p>
+	<p>
+		3.9　短语查询
+	</p>
+	<p>
+		3.9.1　位置信息索引（Position　Index）
+	</p>
+	<p>
+		3.9.2　双词索引（Nextword　Index）
+	</p>
+	<p>
+		3.9.3　短语索引（Phrase　Index）
+	</p>
+	<p>
+		3.9.4　混合方法
+	</p>
+	<p>
+		3.10　分布式索引（Parallel　Indexing）
+	</p>
+	<p>
+		3.10.1　按文档划分（Document　Partitioning）
+	</p>
+	<p>
+		3.10.2　按单词划分（Term　Partitioning）
+	</p>
+	<p>
+		3.10.3　两种方案的比较
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第4章　索引压缩
+	</p>
+	<p>
+		4.1　词典压缩
+	</p>
+	<p>
+		4.2　倒排列表压缩算法
+	</p>
+	<p>
+		4.2.1　评价索引压缩算法的指标
+	</p>
+	<p>
+		4.2.2　一元编码与二进制编码
+	</p>
+	<p>
+		4.2.3　Elias　Gamma算法与Elias　Delta算法
+	</p>
+	<p>
+		4.2.4　Golomb算法与Rice算法
+	</p>
+	<p>
+		4.2.5　变长字节算法（Variable　Byte）
+	</p>
+	<p>
+		4.2.6　SimpleX　系列算法
+	</p>
+	<p>
+		4.2.7　PForDelta算法
+	</p>
+	<p>
+		4.3　文档编号重排序（DocID　Reordering）
+	</p>
+	<p>
+		4.4　静态索引裁剪（Static　Index　Pruning）
+	</p>
+	<p>
+		4.4.1　以单词为中心的索引裁剪
+	</p>
+	<p>
+		4.4.2　以文档为中心的索引裁剪
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第5章　检索模型与搜索排序
+	</p>
+	<p>
+		5.1　布尔模型（Boolean　Model）
+	</p>
+	<p>
+		5.2　向量空间模型（Vector　Space　Model）
+	</p>
+	<p>
+		5.2.1　文档表示
+	</p>
+	<p>
+		5.2.2　相似性计算
+	</p>
+	<p>
+		5.2.3　特征权重计算
+	</p>
+	<p>
+		5.3　概率检索模型
+	</p>
+	<p>
+		5.3.1　概率排序原理
+	</p>
+	<p>
+		5.3.2　二元独立模型（Binary　Independent　Model）
+	</p>
+	<p>
+		5.3.3　BM25模型
+	</p>
+	<p>
+		5.3.4　BM25F模型
+	</p>
+	<p>
+		5.4　语言模型方法
+	</p>
+	<p>
+		5.5　机器学习排序（Learning　to　Rank）
+	</p>
+	<p>
+		5.5.1　机器学习排序的基本思路
+	</p>
+	<p>
+		5.5.2　单文档方法（PointWise　Approach）
+	</p>
+	<p>
+		5.5.3　文档对方法（PairWise　Approach）
+	</p>
+	<p>
+		5.5.4　文档列表方法（ListWise　Approach）
+	</p>
+	<p>
+		5.6　检索质量评价标准
+	</p>
+	<p>
+		5.6.1　精确率与召回率
+	</p>
+	<p>
+		5.6.2　P@10指标
+	</p>
+	<p>
+		5.6.3　MAP指标（Mean　Average　Precision）
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第6章　链接分析
+	</p>
+	<p>
+		6.1　Web图
+	</p>
+	<p>
+		6.2　两个概念模型及算法之间的关系
+	</p>
+	<p>
+		6.2.1　随机游走模型（Random　Surfer　Model）
+	</p>
+	<p>
+		6.2.2　子集传播模型
+	</p>
+	<p>
+		6.2.3　链接分析算法之间的关系
+	</p>
+	<p>
+		6.3　PageRank算法
+	</p>
+	<p>
+		6.3.1　从入链数量到PageRank
+	</p>
+	<p>
+		6.3.2　PageRank计算
+	</p>
+	<p>
+		6.3.3　链接陷阱（Link　Sink）与远程跳转（Teleporting）
+	</p>
+	<p>
+		6.4　HITS算法（Hypertext　Induced　Topic　Selection）
+	</p>
+	<p>
+		6.4.1　Hub页面与Authority页面
+	</p>
+	<p>
+		6.4.2　相互增强关系
+	</p>
+	<p>
+		6.4.3　HITS算法
+	</p>
+	<p>
+		6.4.4　HITS算法存在的问题
+	</p>
+	<p>
+		6.4.5　HITS算法与PageRank算法比较
+	</p>
+	<p>
+		6.5　SALSA算法
+	</p>
+	<p>
+		6.5.1　确定计算对象集合
+	</p>
+	<p>
+		6.5.2　链接关系传播
+	</p>
+	<p>
+		6.5.3　Authority权值计算
+	</p>
+	<p>
+		6.6　主题敏感PageRank（Topic　Sensitive　PageRank）
+	</p>
+	<p>
+		6.6.1　主题敏感PageRank与PageRank的差异
+	</p>
+	<p>
+		6.6.2　主题敏感PageRank计算流程
+	</p>
+	<p>
+		6.6.3　利用主题敏感PageRank构造个性化搜索
+	</p>
+	<p>
+		6.7　Hilltop算法
+	</p>
+	<p>
+		6.7.1　Hilltop算法的一些基本定义
+	</p>
+	<p>
+		6.7.2　Hilltop算法
+	</p>
+	<p>
+		6.8　其他改进算法
+	</p>
+	<p>
+		6.8.1　智能游走模型（Intelligent　Surfer　Model）
+	</p>
+	<p>
+		6.8.2　偏置游走模型（Biased　Surfer　Model）
+	</p>
+	<p>
+		6.8.3　PHITS算法（Probability　Analogy　of　HITS）
+	</p>
+	<p>
+		6.8.4　BFS算法（Backward　Forward　Step）
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第7章　云存储与云计算
+	</p>
+	<p>
+		7.1　云存储与云计算概述
+	</p>
+	<p>
+		7.1.1　基本假设
+	</p>
+	<p>
+		7.1.2　理论基础
+	</p>
+	<p>
+		7.1.3　数据模型
+	</p>
+	<p>
+		7.1.4　基本问题
+	</p>
+	<p>
+		7.1.5　Google的云存储与云计算架构
+	</p>
+	<p>
+		7.2　Google文件系统（GFS）
+	</p>
+	<p>
+		7.2.1　GFS设计原则
+	</p>
+	<p>
+		7.2.2　GFS整体架构
+	</p>
+	<p>
+		7.2.3　GFS主控服务器
+	</p>
+	<p>
+		7.2.4　系统交互行为
+	</p>
+	<p>
+		7.3　Chubby锁服务
+	</p>
+	<p>
+		7.4　BigTable
+	</p>
+	<p>
+		7.4.1　BigTable的数据模型
+	</p>
+	<p>
+		7.4.2　BigTable整体结构
+	</p>
+	<p>
+		7.4.3　BigTable的管理数据
+	</p>
+	<p>
+		7.4.4　主控服务器（Master　Server）
+	</p>
+	<p>
+		7.4.5　子表服务器（Tablet　Server）
+	</p>
+	<p>
+		7.5　Megastore系统
+	</p>
+	<p>
+		7.5.1　实体群组切分
+	</p>
+	<p>
+		7.5.2　数据模型
+	</p>
+	<p>
+		7.5.3　数据读写与备份
+	</p>
+	<p>
+		7.6　Map/Reduce云计算模型
+	</p>
+	<p>
+		7.6.1　计算模型
+	</p>
+	<p>
+		7.6.2　整体逻辑流程
+	</p>
+	<p>
+		7.6.3　应用示例
+	</p>
+	<p>
+		7.7　咖啡因系统——Percolator
+	</p>
+	<p>
+		7.7.1　事务支持
+	</p>
+	<p>
+		7.7.2　观察/通知体系结构
+	</p>
+	<p>
+		7.8　Pregel图计算模型
+	</p>
+	<p>
+		7.9　Dynomo云存储系统
+	</p>
+	<p>
+		7.9.1　数据划分算法（Partitioning　Algorithm）
+	</p>
+	<p>
+		7.9.2　数据备份（Replication）
+	</p>
+	<p>
+		7.9.3　数据读写
+	</p>
+	<p>
+		7.9.4　数据版本控制
+	</p>
+	<p>
+		7.10　PNUTS云存储系统
+	</p>
+	<p>
+		7.10.1　PNUTS整体架构
+	</p>
+	<p>
+		7.10.2　存储单元
+	</p>
+	<p>
+		7.10.3　子表控制器与数据路由器
+	</p>
+	<p>
+		7.10.4　雅虎消息代理
+	</p>
+	<p>
+		7.10.5　数据一致性
+	</p>
+	<p>
+		7.11　HayStack存储系统
+	</p>
+	<p>
+		7.11.1　HayStack整体架构
+	</p>
+	<p>
+		7.11.2　目录服务
+	</p>
+	<p>
+		7.11.3　HayStack缓存
+	</p>
+	<p>
+		7.11.4　HayStack存储系统
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第8章　网页反作弊
+	</p>
+	<p>
+		8.1　内容作弊
+	</p>
+	<p>
+		8.1.1　常见内容作弊手段
+	</p>
+	<p>
+		8.1.2　内容农场（Content　Farm）
+	</p>
+	<p>
+		8.2　链接作弊
+	</p>
+	<p>
+		8.3　页面隐藏作弊
+	</p>
+	<p>
+		8.4　Web　2.0作弊方法
+	</p>
+	<p>
+		8.5　反作弊技术的整体思路
+	</p>
+	<p>
+		8.5.1　信任传播模型
+	</p>
+	<p>
+		8.5.2　不信任传播模型
+	</p>
+	<p>
+		8.5.3　异常发现模型
+	</p>
+	<p>
+		8.6　通用链接反作弊方法
+	</p>
+	<p>
+		8.6.1　TrustRank算法
+	</p>
+	<p>
+		8.6.2　BadRank算法
+	</p>
+	<p>
+		8.6.3　SpamRank
+	</p>
+	<p>
+		8.7　专用链接反作弊技术
+	</p>
+	<p>
+		8.7.1　识别链接农场
+	</p>
+	<p>
+		8.7.2　识别Google轰炸
+	</p>
+	<p>
+		8.8　识别内容作弊
+	</p>
+	<p>
+		8.9　反隐藏作弊
+	</p>
+	<p>
+		8.9.1　识别页面隐藏
+	</p>
+	<p>
+		8.9.2　识别网页重定向
+	</p>
+	<p>
+		8.10　搜索引擎反作弊综合框架
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第9章　用户查询意图分析
+	</p>
+	<p>
+		9.1　搜索行为及其意图
+	</p>
+	<p>
+		9.1.1　用户搜索行为
+	</p>
+	<p>
+		9.1.2　用户搜索意图分类
+	</p>
+	<p>
+		9.2　搜索日志挖掘
+	</p>
+	<p>
+		9.2.1　查询会话（Query　Session）
+	</p>
+	<p>
+		9.2.2　点击图（Click　Graph）
+	</p>
+	<p>
+		9.2.3　查询图（Query　Graph）
+	</p>
+	<p>
+		9.3　相关搜索
+	</p>
+	<p>
+		9.3.1　基于查询会话的方法
+	</p>
+	<p>
+		9.3.2　基于点击图的方法
+	</p>
+	<p>
+		9.4　查询纠错
+	</p>
+	<p>
+		9.4.1　编辑距离（Edit　Distance）
+	</p>
+	<p>
+		9.4.2　噪声信道模型（Noise　Channel　Model）
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第10章　网页去重
+	</p>
+	<p>
+		10.1　通用去重算法框架
+	</p>
+	<p>
+		10.2　Shingling算法
+	</p>
+	<p>
+		10.3　I-Match算法
+	</p>
+	<p>
+		10.4　SimHash算法
+	</p>
+	<p>
+		10.4.1　文档指纹计算
+	</p>
+	<p>
+		10.4.2　相似文档查找
+	</p>
+	<p>
+		10.5　SpotSig算法
+	</p>
+	<p>
+		10.5.1　特征抽取
+	</p>
+	<p>
+		10.5.2　相似文档查找
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第11章　搜索引擎缓存机制
+	</p>
+	<p>
+		11.1　搜索引擎缓存系统架构
+	</p>
+	<p>
+		11.2　缓存对象
+	</p>
+	<p>
+		11.3　缓存结构
+	</p>
+	<p>
+		11.4　缓存淘汰策略（Evict　Policy）
+	</p>
+	<p>
+		11.4.1　动态策略
+	</p>
+	<p>
+		11.4.2　混合策略
+	</p>
+	<p>
+		11.5　缓存更新策略（Refresh　Policy）
+	</p>
+	<p>
+		本章提要
+	</p>
+	<p>
+		本章参考文献
+	</p>
+	<p>
+		第12章　搜索引擎发展趋势
+	</p>
+	<p>
+		12.1　个性化搜索
+	</p>
+	<p>
+		12.2　社会化搜索
+	</p>
+	<p>
+		12.3　实时搜索
+	</p>
+	<p>
+		12.4　移动搜索
+	</p>
+	<p>
+		12.5　地理位置感知搜索
+	</p>
+	<p>
+		12.6　跨语言搜索
+	</p>
+	<p>
+		12.7　多媒体搜索
+	</p>
+	<p>
+		12.8　情境搜索
+	</p>
+	<p>
+		<br />
+	</p>
+</p></div>
+                    <div id="book-intro-open"><a class="Gbtn" href="javascript:;">展开详细介绍 >> </a></div>
+                </div>
+
+                <!--  购买 / 下载 按钮 -->
+                <div class="bookBDbar">
+                    <a class="Gbtn dlButton download" href="http://www.kuaipan.cn/file/id_62632928256986643.htm" rel="nofollow" target="_blank">
+                        <span>&#19979;&#36733;&#30005;&#23376;&#20070;</span>
+                    </a>
+                    <a class="Gbtn dlButton favor" id="favor-book-btn" href="javascript:;">
+                        <span>收藏这本书</span>
+                    </a>
+                    <a class="Gbtn dlButton amazon" href="http://www.amazon.cn/gp/product/B006J9MSD8/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=B006J9MSD8&linkCode=as2&tag=itsrcs-23" rel="nofollow" target="_blank">
+                        <span>抱它回家</span>
+                    </a>
+                </div>
+
+                <div class="borderR3" id="fsalert">
+                    本站提供的所有资源均是网上搜集或私下交流学习之用。禁止利用本站资源涉及任何商业盈利目的，否则产生的一切后果将由您自己承担！本站仅仅提供一个观摩学习的环境，将不对任何资源负法律责任！本站所有资源请在下载后24小时内删除。如果您觉得满意,请购买正版！本站严厉谴责和鄙夷一切利用本站资源进行牟利的盗版行为！
+                    <div id="book-intro-href">本书永久地址 : <a href="http://www.27tree.com/bookLib/336">http://www.27tree.com/bookLib/336</a></div>
+                </div>
+
+                <div id="vbook-suggBar">
+                    <div id="vbookd-sugg-tip"></div>
+                    <div id="vbookd-sugg-wapp">
+                        <a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/83" title="Objective-C.2.0程序设计"><img alt="Objective-C.2.0程序设计" src="/not/mybook/data/book_image_lib/0911c503558841e771813a0adda28195.png"/></a><a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/326" title="Java EE设计模式——Spring企业级开发最佳实践"><img alt="Java EE设计模式——Spring企业级开发最佳实践" src="/not/mybook/data/book_image_lib/b3eace69ceed0837e206efa28cb7b9ed.png"/></a><a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/276" title="OSGi实战"><img alt="OSGi实战" src="/not/mybook/data/book_image_lib/092520c99b42d47535bd799789bc8ea2.png"/></a><a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/105" title="数据结构与算法：C#语言描述"><img alt="数据结构与算法：C#语言描述" src="/not/mybook/data/book_image_lib/27485116-276c-41ee-805a-cdf5c9260f86.png"/></a><a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/68" title="Oracle Database 9i/10g/11g编程艺术：深入数据库体系结构"><img alt="Oracle Database 9i/10g/11g编程艺术：深入数据库体系结构" src="/not/mybook/data/book_image_lib/9314b8dfd0648f0adf42342f621d3a31.png"/></a><a class="headwapper vbook-sugg-list" href="http://www.27tree.com/bookLib/292" title="Game and Graphics Programming for iOS and Android with OpenGL ES 2.0 (Wrox Programmer to Programmer)"><img alt="Game and Graphics Programming for iOS and Android with OpenGL ES 2.0 (Wrox Programmer to Programmer)" src="/not/mybook/data/book_image_lib/c2c4f702456d3c6e96f77f410246b0d6.png"/></a>                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="sdCommWapp" onmouseover="javascript:$('#comment-content-wapper',this).slideDown(300);">
+                    <div id="comment-cast">
+                        <div id="comment-content-wapper">
+                            <span class="sdText" style="width:auto;margin-top:10px;">
+                                <textarea id="comment-content" rows="3"
+                                          onfocus="javascript:if(this.value=='&#36755;&#20837;&#20320;&#30340;&#35780;&#35770;&#46;&#46;&#46') this.value = '';"
+                                          onblur="javascript:if(this.value=='') this.value = '&#36755;&#20837;&#20320;&#30340;&#35780;&#35770;&#46;&#46;&#46;';">&#36755;&#20837;&#20320;&#30340;&#35780;&#35770;&#46;&#46;&#46;</textarea>
+                            </span>
+                        </div>
+                        <a href="javascript:;" onclick="javascript:submit_log();" id="next-cp-comm" class="next-cp">&#x70B9;&#x6211;&#x53D1;&#x8868;&#x8BC4;&#x8BBA;</a>
+                    </div>
+                                    </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- Baidu Button BEGIN -->
+        <script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=1&amp;mini=1&amp;pos=left&amp;uid=6441257" ></script>
+        <script type="text/javascript" id="bdshell_js"></script>
+        <script type="text/javascript">
+            var bds_config={"bdTop":43,'bdPic':'/not/mybook/data/book_image_lib/c8f049916972e5b48fb0fa90ec05a3ba.png'};
+            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+        </script>
+        <!-- Baidu Button END -->
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script></span>    </body>
+</html>

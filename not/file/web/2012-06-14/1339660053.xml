@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTML5标准学习之DOCTYPE</title>
+<content>&amp;lt;p&amp;gt;
+	HTML5标准学习本节我们来学一下DOCTYPE，本文主要讲述了HTML文档的构成，同时肤浅地接触了“标签省略”这一概念。所谓DOCTYPE，最初是XML的概念，即通过一种特定的语法，作为一种元数据，来描述XML文档中允许出现的元素，以及各元素的组成、嵌套规则等。具体的概念可以在WIKI中中得到一个更详细的结果。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是在HTML中，DOCTYPE又有着一些不同的效果，其中之一就是着名的触发浏览器标准模式的功能。即如果没有DOCTYPE，浏览器会进入一种被称为Quirks模式的怪异状态，在该模式下，浏览器的盒模型、样式解析、布局等都与标准规定的存在差异。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	需要注意的是，所谓的HTML标准、DOM标准等，只规定了在标准模式下的概念和行为，正如文档构成中提到的，DOCTYPE是一个HTML文档绝对不可以省略的部分，因此就根本不存在“Quirks模式”这样的概念。也正是因为标准中没有对Quirks模式做出任何的规定，因此不同浏览器在Quirks模式下的处理也是不同的，应用Quirks模式可谓难上加难。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML4的DOCTYPE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在HTML4的标准中，DOCTYPE被归属于“HTML版本信息”一章中。在该章节中，标准指定了3种DOCTYPE：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	严格模式：&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01//EN\"&amp;nbsp;\"http://www.w3.org/TR/html4/strict.dtd\"&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	过渡模式：&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01&amp;nbsp;Transitional//EN\"&amp;nbsp;\"http://www.w3.org/TR/html4/loose.dtd\"&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	框架模式：&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01&amp;nbsp;Frameset//EN\"&amp;nbsp;\"http://www.w3.org/TR/html4/frameset.dtd\"&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在HTML4的标准中，每一个DOCTYPE对应的dtd文件都是有合法的URL指定的，可以通过互联网进行下载。浏览器可以根据URL获得到dtd的具体内容，并根据内容的规定来解析文档。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现实是不同的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML4如同XML一样，是一个相当理想化的标准。但是，现实往往并没有这么理想，试想下面的HTML文档：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;HTML&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01&amp;nbsp;Frameset//EN\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\"http://www.w3.org/TR/html4/frameset.dtd\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;html&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;head&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;title&amp;amp;gt;I&amp;nbsp;m&amp;nbsp;not&amp;nbsp;a&amp;nbsp;frameset&amp;amp;lt;/title&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;/head&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;body&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;p&amp;amp;gt;So&amp;nbsp;what?&amp;amp;lt;/p&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;/body&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;/html&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个文档采用了一个框架模式的DOCTYPE，但其正文确没有使用任何&amp;amp;lt;frame&amp;amp;gt;元素，相对应地使用了应该由严格模式或者过渡模式指定的，标准的HTML结构。那么在这种情况下，浏览器能做什么呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	拒绝渲染该页面？不，浏览器不敢这么做，在激烈的市场竞争之中，如果因此而导致部分页面无法渲染的话，就只能眼睁睁看着市场份额注入别家田了。所以浏览器顶多弱弱地报一个警告以示抗议，却依旧得乖乖地解析出这个文档并正确渲染。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这就是所谓的浏览器的“容错性”，事实上无论你的DOCTYPE是什么，浏览器都会以最大的兼容能力去解析一个文档，并以最大的努力让这个文档显示得符合开发者的预期。而浏览器的这一特性，也逐渐让标准制定者开始意识到，DOCTYPE似乎真的不怎么重要。因此，在HTML5中，DOCTYPE发生了一次重大的变化&amp;amp;hellip;…
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5的DOCTYPE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	到了HTML5了，这一变化相信多数人已经知道，就是HTML5将DOCTYPE的声明简化了，只需要&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;amp;gt;即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	正好前文所述，在HTML4时代，标准制定者已经认识到，DOCTYPE对浏览器的渲染并没有太大的帮助，除了给无聊的w3c验证器看以外，DOCTYPE似乎只有触发浏览器兼容模式的作用。于是标准工作组采取了非常实际的态度，测试了所有课程顺触发标准模式的最简DOCTYPE，最终得出了这一结论。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是故事不会这么简单，标准工作组也不是完成这么简单的动作就撒手不管的无赖分子，事实上他们还是很尽责任地考虑到了向后兼容性、可扩展性等一系列的事情，最后将DOCTYPE一章用了大量文字来进行描述，得到一个非常详实的结果。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5的参考手册相关章节中，将DOCTYPE分为3类：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	普通DOCTYPE&amp;nbsp;-&amp;nbsp;normal&amp;nbsp;doctype
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	普通DOCTYPE就是我们所见的最简形式，即&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;amp;gt;，他的真正组成是这样的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一段文本，即&amp;amp;lt;!DOCTYPE，大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格，关于空格的定义请参照简介中的解释。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符HTML，同样大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	结束标记，即&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不再推荐的DOCTYPE&amp;nbsp;-&amp;nbsp;deprecated&amp;nbsp;doctype
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	即所谓HTML4时代的几个DOCTYPE，其组成如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一段文本，即&amp;amp;lt;!DOCTYPE，大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符HTML，同样大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符PUBLIC，大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	继续1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一对引号或单引号（必须前后匹配），引号中放一个Public&amp;nbsp;ID。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可选内容：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一对引号或单引号（必须前后匹配），引号中放一个与前面的Public&amp;nbsp;ID对应的System&amp;nbsp;ID。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	结束标记，即&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在标准中，Public&amp;nbsp;ID和System&amp;nbsp;ID是有严格的对应关系的，如果规定的System&amp;nbsp;ID不能有Public&amp;nbsp;ID，则上面的第8项可选内容也就不能存在。HTML5彻底放弃了HTML4中的过渡型和框架型的DOCTYPE，同时整合了XHTML的DOCTYPE声明，得出以下6种组合方式：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.0//EN\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.0//EN\"&amp;nbsp;\"http://www.w3.org/TR/REC-html40/strict.dtd\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01//EN\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;HTML&amp;nbsp;4.01//EN\"&amp;nbsp;\"http://www.w3.org/TR/html4/strict.dtd\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Strict//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.1//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\"&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	遗留工具DOCTYPE&amp;nbsp;-&amp;nbsp;leagacy&amp;nbsp;tool&amp;nbsp;compatible&amp;nbsp;doctype
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	顾名思义，完全是为了兼容久远时代的历史遗产而准备的DOCTYPE，甚至都已经没办法考证什么样的“工具”会搞出这种DOCTYPE来……遗留工具型的DOCTYPE的组成如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一段文本，即&amp;amp;lt;!DOCTYPE，大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符HTML，同样大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符SYSTEM，大小写不敏感。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	继续1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一对引号或单引号（必须前后匹配），引号中放一段文本about:legacy-compat，注意这段文本是大小写敏感的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1个或多个空格。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	结束标记，即&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	比如这样的DOCTYPE就属于此类：&amp;amp;lt;!doctype&amp;nbsp;HTML&amp;nbsp;system&amp;nbsp;\"about:legacy-compat\"&amp;amp;gt;，基本上除了大小写，没有什么值得改变的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现实的细节
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于DOCTYPE的作用，在真正的浏览中，仅仅起到触发浏览器的标准模式的作用。虽然根据标准，一个HTML文档中，DOCTYPE前可以有其他的元素，如一个U+FFEF的BOM，几个注释，一点空格，但是在当前的状态下，并没有这么理想：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于IE6-9，如果DOCTYPE前存在注释，会进入Quirks模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于IE6，如果DOCTYPE前存在一个XML声明，会进入Quirks模式
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-14/1339660053.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-14+22%3A14%3A09</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-14+22%3A14%3A17</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

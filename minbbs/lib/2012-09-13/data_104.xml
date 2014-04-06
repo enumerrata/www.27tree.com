@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-13 16:59:14</datetime>
+  <title>MySQL中，一对一的多重映射关系</title>
+  <content>&lt;p&gt;
+	现在有两个字段uid,target为int类型。
+&lt;/p&gt;
+&lt;p&gt;
+	抽象为朋友关系，uid为1与target为2建立关系，那么uid为2与target为1建立关系就是重复了。
+&lt;/p&gt;
+&lt;p&gt;
+	如何避免重复?
+&lt;/p&gt;
+&lt;p&gt;
+	uid,target均为非主键，如何避免重复数据字段?
+&lt;/p&gt;</content>
+  <state>0</state>
+</root>

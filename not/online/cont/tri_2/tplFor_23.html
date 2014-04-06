@@ -1,0 +1,321 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 错误处理</h1>
+</div>
+<div>
+
+<p><b>在 PHP 中，默认的错误处理很简单。一条消息会被发送到浏览器，这条消息带有文件名、行号以及一条描述错误的消息。</b></p>
+
+<h1>PHP 错误处理</h1>
+
+<p>在创建脚本和 web 应用程序时，错误处理是一个重要的部分。如果您的代码缺少错误检测编码，那么程序看上去很不专业，也为安全风险敞开了大门。</p>
+<p>本教程介绍了 PHP 中一些最为重要的错误检测方法。</p>
+<p>我们将为您讲解不同的错误处理方法：</p>
+
+<ul>
+<li>简单的 "die()" 语句 </li>
+<li>自定义错误和错误触发器</li>
+<li>错误报告</li>
+</ul>
+
+<h1>基本的错误处理：使用 die() 函数</h1>
+
+<p>第一个例子展示了一个打开文本文件的简单脚本：</p>
+
+<code>
+&lt;?php<br />
+$file=fopen("welcome.txt","r");<br />
+?&gt;
+</code>
+
+<p>如果文件不存在，您会获得类似这样的错误：</p>
+
+<code>
+Warning: fopen(welcome.txt) [function.fopen]: failed to open stream: <br />
+No such file or directory in C:\webfolder\test.php on line 2
+</code>
+
+<p>为了避免用户获得类似上面的错误消息，我们在访问文件之前检测该文件是否存在：</p>
+
+<code>
+&lt;?php<br />
+if(!file_exists("welcome.txt"))<br />
+&nbsp{<br />
+&nbspdie("File&nbspnot&nbspfound");<br />
+&nbsp}<br />
+else<br />
+&nbsp{<br />
+&nbsp$file=fopen("welcome.txt","r");<br />
+&nbsp}<br />
+?&gt;
+</code>
+
+<p>现在，假如文件不存在，您会得到类似这样的错误消息：</p>
+
+<code>File not found</code>
+
+<p>比起之前的代码，上面的代码更有效，这是由于它采用了一个简单的错误处理机制在错误之后终止了脚本。</p>
+<p>不过，简单地终止脚本并不总是恰当的方式。让我们研究一下用于处理错误的备选的 PHP 函数。</p>
+
+<h1>创建自定义错误处理器</h1>
+
+<p>创建一个自定义的错误处理器非常简单。我们很简单地创建了一个专用函数，可以在 PHP 中发生错误时调用该函数。</p>
+<p>该函数必须有能力处理至少两个参数 (error level 和 error message)，但是可以接受最多五个参数（可选的：file, line-number 以及 error context）：</p>
+
+<h2>语法</h2>
+
+<code>
+error_function(error_level,error_message,<br />
+error_file,error_line,error_context)
+</code>
+
+<table class="dataintable">
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>error_level</td>
+<td><p>必需。为用户定义的错误规定错误报告级别。必须是一个值数。</p>
+  <p>参见下面的表格：错误报告级别。</p></td>
+</tr>
+ 
+<tr>
+<td>error_message</td>
+<td>必需。为用户定义的错误规定错误消息。</td>
+</tr>
+ 
+<tr>
+<td>error_file</td>
+<td>可选。规定错误在其中发生的文件名。</td>
+</tr>
+ 
+<tr>
+<td>error_line</td>
+<td>可选。规定错误发生的行号。</td>
+</tr>
+ 
+<tr>
+<td>error_context</td>
+<td>可选。规定一个数组，包含了当错误发生时在用的每个变量以及它们的值。</td>
+</tr>
+</table>
+
+<h2>错误报告级别</h2>
+
+<p>这些错误报告级别是错误处理程序旨在处理的错误的不同的类型：</p>
+
+<table class="dataintable">
+<tr>
+<th>值</th>
+<th>常量</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>2</td>
+<td>E_WARNING</td>
+<td>非致命的 run-time 错误。不暂停脚本执行。</td>
+</tr>
+ 
+<tr>
+<td>8</td>
+<td>E_NOTICE</td>
+<td><p>Run-time 通知。</p>
+  <p>脚本发现可能有错误发生，但也可能在脚本正常运行时发生。</p></td>
+</tr>
+ 
+ 
+<tr>
+<td>256</td>
+<td>E_USER_ERROR</td>
+<td>致命的用户生成的错误。这类似于程序员使用 PHP 函数 trigger_error() 设置的 E_ERROR。</td>
+</tr>
+ 
+<tr>
+<td>512</td>
+<td>E_USER_WARNING</td>
+<td>非致命的用户生成的警告。这类似于程序员使用 PHP 函数 trigger_error() 设置的 E_WARNING。</td>
+</tr>
+ 
+<tr>
+<td>1024</td>
+<td>E_USER_NOTICE</td>
+<td>用户生成的通知。这类似于程序员使用 PHP 函数 trigger_error() 设置的 E_NOTICE。</td>
+</tr>
+ 
+<tr>
+<td>4096</td>
+<td>E_RECOVERABLE_ERROR</td>
+<td>可捕获的致命错误。类似 E_ERROR，但可被用户定义的处理程序捕获。(参见 set_error_handler())</td>
+</tr>
+ 
+<tr>
+<td>8191</td>
+<td>E_ALL</td>
+<td><p>所有错误和警告，除级别 E_STRICT 以外。</p>
+  <p> （在 PHP 6.0，E_STRICT 是 E_ALL 的一部分）</p></td>
+</tr>
+</table>
+
+<p>现在，让我们创建一个处理错误的函数：</p>
+
+<code>
+function&nbspcustomError($errno,&nbsp$errstr)<br />
+&nbsp{&nbsp<br />
+&nbspecho&nbsp"&lt;b&gt;Error:&lt;/b&gt;&nbsp[$errno]&nbsp$errstr&lt;br&nbsp/&gt;";<br />
+&nbspecho&nbsp"Ending&nbspScript";<br />
+&nbspdie();<br />
+&nbsp}
+</code>
+
+<p>上面的代码是一个简单的错误处理函数。当它被触发时，它会取得错误级别和错误消息。然后它会输出错误级别和消息，并终止脚本。</p>
+<p>现在，我们已经创建了一个错误处理函数，我们需要确定在何时触发该函数。</p>
+
+<h1>Set Error Handler</h1>
+
+<p>PHP 的默认错误处理程序是内建的错误处理程序。我们打算把上面的函数改造为脚本运行期间的默认错误处理程序。</p>
+<p>可以修改错误处理程序，使其仅应用到某些错误，这样脚本就可以不同的方式来处理不同的错误。不过，在本例中，我们打算针对所有错误来使用我们的自定义错误处理程序：</p>
+
+<code>set_error_handler("customError");</code>
+
+<p>由于我们希望我们的自定义函数来处理所有错误，set_error_handler() 仅需要一个参数，可以添加第二个参数来规定错误级别。</p>
+
+<h2>实例</h2>
+
+<p>通过尝试输出不存在的变量，来测试这个错误处理程序：</p>
+
+<code>
+&lt;?php<br />
+//error&nbsphandler&nbspfunction<br />
+function&nbspcustomError($errno,&nbsp$errstr)<br />
+&nbsp{&nbsp<br />
+&nbspecho&nbsp"<b>Error:</b>&nbsp[$errno]&nbsp$errstr";<br />
+&nbsp}<br />
+<br />
+//set&nbsperror&nbsphandler<br />
+set_error_handler("customError");<br />
+<br />
+//trigger&nbsperror<br />
+echo($test);<br />
+?&gt;
+</code>
+
+<p>以上代码的输出应该类似这样：</p>
+
+<code>Error: [8] Undefined variable: test</code>
+
+<h1>触发错误</h1>
+
+<p>在脚本中用户输入数据的位置，当用户的输入无效时触发错误的很有用的。在 PHP 中，这个任务由 trigger_error() 完成。</p>
+
+<h2>例子</h2>
+
+<p>在本例中，如果 "test" 变量大于 "1"，就会发生错误：</p>
+
+<code>
+&ly;?php<br />
+$test=2;<br />
+if ($test&lt;1)<br />
+{<br />
+trigger_error("Value must be 1 or below");<br />
+}<br />
+?&gt;
+</code>
+
+<p>以上代码的输出应该类似这样：</p>
+
+<code>
+Notice: Value must be 1 or below<br />
+in C:\webfolder\test.php on line 6
+</code>
+
+<p>您可以在脚本中任何位置触发错误，通过添加的第二个参数，您能够规定所触发的错误级别。</p>
+
+<p>可能的错误类型：</p>
+<ul>
+<li>E_USER_ERROR - 致命的用户生成的 run-time 错误。错误无法恢复。脚本执行被中断。</li>
+<li>E_USER_WARNING - 非致命的用户生成的 run-time 警告。脚本执行不被中断。</li>
+<li>E_USER_NOTICE - 默认。用户生成的 run-time 通知。脚本发现了可能的错误，也有可能在脚本运行正常时发生。</li>
+</ul>
+
+<h2>例子</h2>
+
+<p>在本例中，如果 "test" 变量大于 "1"，则发生 E_USER_WARNING 错误。如果发生了 E_USER_WARNING，我们将使用我们的自定义错误处理程序并结束脚本：</p>
+
+<code>
+&lt;?php<br />
+//error&nbsphandler&nbspfunction<br />
+function&nbspcustomError($errno,&nbsp$errstr)<br />
+&nbsp{&nbsp<br />
+&nbspecho&nbsp"&lt;b&gt;Error:&lt;/b&gt;&nbsp[$errno]&nbsp$errstr&lt;br&nbsp/&gt;";<br />
+&nbspecho&nbsp"Ending&nbspScript";<br />
+&nbspdie();<br />
+&nbsp}<br />
+<br />
+//set&nbsperror&nbsphandler<br />
+set_error_handler("customError",E_USER_WARNING);<br />
+<br />
+//trigger&nbsperror<br />
+$test=2;<br />
+if&nbsp($test&gt;1)<br />
+&nbsp{<br />
+&nbsptrigger_error("Value&nbspmust&nbspbe&nbsp1&nbspor&nbspbelow",E_USER_WARNING);<br />
+&nbsp}<br />
+?&gt;
+</code>
+
+<p>以上代码的输出应该类似这样：</p>
+
+<code>
+Error: [512] Value must be 1 or below<br />
+Ending Script
+</code>
+
+<p>现在，我们已经学习了如何创建自己的 error，以及如何触发它们，现在我们研究一下错误记录。</p>
+
+<h1>错误记录</h1>
+
+<p>默认地，根据在 php.ini 中的 error_log 配置，PHP 向服务器的错误记录系统或文件发送错误记录。通过使用 error_log() 函数，您可以向指定的文件或远程目的地发送错误记录。</p>
+<p>通过电子邮件向您自己发送错误消息，是一种获得指定错误的通知的好办法。</p>
+
+<h2>通过 E-Mail 发送错误消息</h2>
+
+<p>在下面的例子中，如果特定的错误发生，我们将发送带有错误消息的电子邮件，并结束脚本：</p>
+
+<code>
+&lt;?php<br />
+//error&nbsphandler&nbspfunction<br />
+function&nbspcustomError($errno,&nbsp$errstr)<br />
+&nbsp{&nbsp<br />
+&nbspecho&nbsp"&lt;b&gt;Error:&lt;/b&gt;&nbsp[$errno]&nbsp$errstr&lt;br&nbsp/&gt;";<br />
+&nbspecho&nbsp"Webmaster&nbsphas&nbspbeen&nbspnotified";<br />
+&nbsperror_log("Error:&nbsp[$errno]&nbsp$errstr",1,<br />
+&nbsp"someone@example.com","From:&nbspwebmaster@example.com");<br />
+}<br />
+<br />
+//set&nbsperror&nbsphandler<br />
+set_error_handler("customError",E_USER_WARNING);<br />
+<br />
+//trigger&nbsperror<br />
+$test=2;<br />
+if&nbsp($test&gt;1)<br />
+&nbsp{<br />
+&nbsptrigger_error("Value&nbspmust&nbspbe&nbsp1&nbspor&nbspbelow",E_USER_WARNING);<br />
+&nbsp}<br />
+?&gt;
+</code>
+
+<p>以上代码的输出应该类似这样：</p>
+
+<code>
+Error: [512] Value must be 1 or below<br />
+Webmaster has been notified
+</code>
+
+<p>接收自以上代码的邮件类似这样：</p>
+
+<code>Error: [512] Value must be 1 or below</code>
+<p>这个方法不适合所有的错误。常规错误应当通过使用默认的 PHP 记录系统在服务器上进行记录。</p>
+
+</div>

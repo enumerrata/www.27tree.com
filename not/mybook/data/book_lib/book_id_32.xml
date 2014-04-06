@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>openGL超级宝典</title>
+  <author>（美）赖特，（美）利普恰克，（美）黑内尔  </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:10:20</submit-date-time>
+  <img-link>877cf3cd82f07c9dcab134c469c8e67b.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是OpenGL及3D图形编程最好的入门指南，涵盖了使用最新版本的OpenGL进行编程所需要的主要知识。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	全书分3个部分，共22章，另有3个附录。第一部分包括第1章到第14章，介绍如何构建一个使用OpenGL的程序，如何设置3D渲染环境，以及如何创建基本对象和光线并对他们进行着色。然后，深入研究使用OpenGL和它的一些高级特性及不同的特殊效果。第二部分包括第15章到第18章，分别介绍了OpenGL中支持可编程硬件[特别是在OpenGL着色语言(GLSL)中]的新特性。第三部分是第19章到第22章，着重介绍OpenGL是如何支持和连接Windows、Mac&amp;nbsp;OS&amp;nbsp;X、Linux和掌上设备。附录部分给出了更多阅读建议、术语表和API参考介绍。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书适合希望精通OpenGL以便对他们的图形编程和3D图形知识进行扩展的程序员阅读，也可以帮助那些经验丰富的OpenGL程序员学习如何移植自己的应用程序。本书既可以作为学习OpenGL的教材，也可以作为随时查阅的参考手册。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

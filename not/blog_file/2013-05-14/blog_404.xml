@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[ 二叉树的建立与显示]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">#include \"stdio.h\"
+#include \"stdlib.h\"
+#define Maxsize 100;
+typedef int ElemType;
+typedef struct BT
+{
+	ElemType data;
+	struct BT *lch,*rch;
+}BT;
+BT *CreatBT();
+void preorder(BT *T);
+void inorder(BT *T);
+void postorder(BT *T);
+void leafnum(BT *T);
+void ShowTree(BT *T);
+void Nodenum(BT *T);
+void main()
+{
+	BT *T=NULL;
+	int choice;
+	do{
+		printf(\"\\n\");
+		printf(\" 二叉树 \\n\");
+		printf(\" ***************************\\n\");
+		printf(\" * *\\n\");
+		printf(\" * 主菜单 *\\n\");
+		printf(\" * 1 建立二叉树 *\\n\");
+		printf(\" * 2 先序遍历二叉树 *\\n\");
+		printf(\" * 3 中序遍历二叉树 *\\n\");
+		printf(\" * 4 后序遍历二叉树 *\\n\");
+		printf(\" * 5 二叉树的叶子结点数 *\\n\");
+		printf(\" * 6 显示二叉树 *\\n\");
+		printf(\" * 7 二叉树的所有结点数 *\\n\");
+		printf(\" * 8 退出程序运行 *\\n\");
+		printf(\" ****************************\\n\");
+		printf(\" 请输入您的选择（1，2，3，4，5，6，7，8): \\n\");
+		scanf(\"%d\",&amp;choice);
+		if(choice==1)
+		{
+			printf(\"二叉树的建立，以输入“0”表示结束：！\\n\");
+			printf(\"请输入根结点：\\n\");
+			T=CreatBT();
+			printf(\"二叉树成功建立\");
+		}
+		else if(choice==2)
+		{
+			printf(\"先序遍历二叉树 :\\n\");
+			preorder(T);
+		}
+		else if(choice==3)
+		{
+			printf(\"中序遍历二叉树:\\n\");
+			inorder(T);
+		}
+		else if(choice==4)
+		{
+			printf(\"后序遍历二叉树 :\\n \");
+			postorder(T);
+		}
+		else if(choice==5)
+		{
+			printf(\" 二叉树的叶子结点数为 : \\n\");
+			leafnum(T);
+		}
+		else if(choice==6)
+			ShowTree(T);
+		else if(choice==7)
+		{
+			int count=0;Nodenum(T);
+			printf(\"该二叉树总共有%d个结点。\\n\",count);
+		}
+			else if(choice==8)
+			exit(0);
+	}while(choice&lt;=8);
+}/*main end*/
+BT *CreatBT() //建立二叉树
+{
+	BT *t;
+	int x;
+	scanf(\"%d\",&amp;x);
+	//getchar();
+	if(x==0)
+	{
+		t=NULL;
+	}
+	else
+	{
+		t=(BT*)malloc(sizeof(BT));
+		t-&gt;data=x;
+		printf(\"\\n请输入%d结点的左子结点:\",t-&gt;data );
+		t-&gt;lch=CreatBT();
+		printf(\"\\n请输入%d结点的右子结点:\",t-&gt;data );
+		t-&gt;rch=CreatBT();
+	}
+	return t;
+}
+void preorder(BT *T)
+{
+	if(T==NULL) return;
+	else
+	{
+		printf(\"%3d\",T-&gt;data);
+		preorder(T-&gt;lch);
+		preorder(T-&gt;rch);
+	}
+}
+void inorder(BT *T)
+{
+	if(T==NULL) return;
+	else
+	{
+			inorder(T-&gt;lch);
+		printf(\"%3d\",T-&gt;data);
+		inorder(T-&gt;rch);
+	}
+}
+void postorder(BT *T)
+{
+	if(T==NULL) return;
+	else
+	{
+		postorder(T-&gt;lch);
+		postorder(T-&gt;rch);
+		printf(\"%3d\",T-&gt;data);
+	}
+}
+void leafnum(BT *T)
+{
+	int count=0;
+	if(T)
+	{
+		if(T-&gt;lch==NULL&amp;&amp;T-&gt;rch==NULL)
+			count++;
+		leafnum(T-&gt;lch);
+		leafnum(T-&gt;rch);
+	}
+	printf(\"%d\",count);
+}
+void ShowTree(BT *T) //显示二叉树
+{
+	BT *stack[100];
+	BT*p;
+	int level[100][2];
+	int top,n,i;
+	int width=4;
+	if(T!=NULL)
+	{
+		printf(\"\\n二叉树的表示法f:\\n\");
+		top=1;
+		stack[top]=T;
+		level[top][0]=width;
+		while(top&gt;0)
+		{
+			p=stack[top];
+			n=level[top][0];
+			for(i=1;i&lt;=n;i++)
+				printf(\" \");
+			printf(\"%d\",p-&gt;data);
+			for(i=n+1;i&lt;60;i+=2)
+				printf(\"*\");
+			printf(\"\\n\\t\\t\");
+			top--;
+			if(p-&gt;rch!=NULL)
+			{
+				top++;
+				stack[top]=p-&gt;rch ;
+				level[top][0]=n+width;
+				level[top][1]=2;
+			}
+			if(p-&gt;lch!=NULL)
+			{
+				top++;
+				stack[top]=p-&gt;lch ;
+				level[top][0]=n+width;
+				level[top][1]=1;
+			}
+		}
+	}
+}
+void Nodenum(BT *T)
+{
+	int count=0;
+	if(T) count++;
+	Nodenum(T-&gt;lch);
+	Nodenum(T-&gt;rch);
+}</pre>]]></content>
+  <contentx><![CDATA[#include \"stdio.h\"
+#include \"stdlib.h\"
+#define Maxsize 100;
+typedef int ElemType;
+typedef struct BT
+{
+	ElemType data]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

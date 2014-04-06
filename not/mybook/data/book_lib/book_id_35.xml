@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>深入理解MySQL</title>
+  <author>（美）贝尔</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:03:11</submit-date-time>
+  <img-link>cc42c4da9bc0d4e073cbad6f99d0c81b.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	MySQL已被公认为是世界上最流行的开源数据库产品和行业内增长最快的数据库系统之一。来自MySQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	AB公司的统计报告显示，MySQL的安装数量已超过800万，每天的下载量接近5万人次。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	MySQL正迅速成为系统集成商首选的数据库系统。据SD&amp;nbsp;Times报上的一篇文章报道，对900多位读者进行的调查表明，MySQL在“装机量最大的数据库”榜上排名第三(www．mysql．com／why-mysql／marketshare／)。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书对数据库系统的一些高级问题进行了探讨，对MySQL的体系结构进行了剖析，还为分析、集成和修改MySQL源代码使之用于企业级环境提供了专家级建议。在如何修改MySQL系统来满足系统集成商和教育科研机构的独特需求方面，本书提出了独到的见解。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书深入源代码，剖析了MySQL数据库系统的架构，并提供了分析、集成和修改MySQL源代码的专家级建议。本书分三个部分：第一部分介绍开发和修改开源系统的概念，提供探讨更高级数据库概念所需的工具和资源；第二部分讨论MySQL系统，阐明如何修改MySQL源码，如何将MySQL系统作为嵌入式数据库系统；第三部分更深入地探讨了MySQL系统，讲述数据库工作的内部机理。本书面向MySQL数据库开发人员。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

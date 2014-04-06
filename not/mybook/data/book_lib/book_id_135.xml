@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>HTML5 Canvas 英文版</title>
+  <author>（美）富尔顿</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-03 22:05:42</submit-date-time>
+  <img-link>400a8e65b9449ab363c8bccda03aa29a.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不管你用什么平台或者工具，html5革命如果还没有改变你构建网络应用的方式，那么这个改变也将很快会发生。html5包含很多新特性，因此要学的东西也不少。本书将带你从canvas元素开始，它也许是html5最令人激动的功能，让你学习如何使用这个元素来绘画，渲染文本，操作图片以及创作动画，从而构建交互式多媒体应用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	无论你现在是在使用flash、&amp;nbsp;silverlight,&amp;nbsp;还是只是使用html加上javascript,&amp;nbsp;你都将很快入门。实际的示例在学习过程中向你展示如何使用canvas来创作各种游戏和娱乐应用程序。&amp;nbsp;在此过程中你将获得html5的宝贵经验，进而了解为何应用程序开发领袖们都把这个特性称为面向未来的创新性网络开发。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	创作并修改二维图像、文本和位图
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	嵌入并操作视频，还有添加音频
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	构建一个基础框架以便在canvas上创作各种游戏
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用位图和tile表格开发动画游戏图像
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+</root>

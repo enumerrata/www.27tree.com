@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-08 22:51:33</datetime>
+  <title><![CDATA[mysql_real_escape_string 函数]]></title>
+  <content><![CDATA[<p>
+	mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。
+</p>
+<p>
+	下列字符受影响：
+</p>
+<p>
+	\x00
+</p>
+<p>
+	\n
+</p>
+<p>
+	\r
+</p>
+<p>
+	\
+</p>
+<p>
+	'
+</p>
+<p>
+	"
+</p>
+<p>
+	\x1a
+</p>
+<p>
+	如果成功，则该函数返回被转义的字符串。如果失败，则返回 false。
+</p>
+<p>
+	mysql_real_escape_string(string,connection)&nbsp;
+</p>
+<p>
+	connection可选。<strong>规定 MySQL 连接。如果未规定，则使用上一个连接。</strong><strong></strong>
+</p>
+<p>
+	<strong>本函数将 string 中的特殊字符转义，并考虑到连接的当前字符集，因此可以安全用于 mysql_query()<br />
+</strong>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

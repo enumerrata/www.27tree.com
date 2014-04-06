@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-17 20:14:25</datetime>
+  <title><![CDATA[HTML5的hidden属性]]></title>
+  <content><![CDATA[<p>
+	我们已经知道了很多HTML5新增的属性，比如placeholder、download、autofocus等，还有个新的可能会常用的属性hidden，也是蛮好用的，这里简单介绍下~~
+</p>
+<p>
+	<p>
+		&lt;div hidden&gt;
+	</p>
+	<p>
+		&nbsp; 你看不见我你看不见我
+	</p>
+	<p>
+		&lt;/div&gt;
+	</p>
+	<p>
+		这个属性的表现类似css的display:none，用了这个属性后，元素会被隐藏，块级元素也会折叠起来不再占位，和visible:hidden不一样。所以，对于不支持HTML5的浏览器来说，也可以做下简单的兼容：
+	</p>
+	<p>
+		*[hidden] { display: none; }
+	</p>
+	<p>
+		嗯，之前我们的通用做法是直接给目标元素一个style=”display:none”或者定义一个.none之类的选择器，现在我们又多了一种选择。是否好用，还要看项目实际需要吧~~
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

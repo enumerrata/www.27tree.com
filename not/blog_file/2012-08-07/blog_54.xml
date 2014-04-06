@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:41:11</datetime>
+  <title>数据库人员手边系列：Mysql字段长度</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	列类型&amp;nbsp;需要的存储量
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TINYINT&amp;nbsp;1&amp;nbsp;字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SMALLINT&amp;nbsp;2
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	MEDIUMINT&amp;nbsp;3&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	INT&amp;nbsp;4&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	INTEGER&amp;nbsp;4
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	BIGINT&amp;nbsp;8&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	FLOAT(X)&amp;nbsp;4&amp;nbsp;如果&amp;nbsp;X&amp;nbsp;&amp;lt;&amp;nbsp;=&amp;nbsp;24&amp;nbsp;或&amp;nbsp;8&amp;nbsp;如果&amp;nbsp;25&amp;nbsp;&amp;lt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	=&amp;nbsp;X&amp;nbsp;&amp;lt;&amp;nbsp;=&amp;nbsp;53
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	FLOAT&amp;nbsp;4&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DOUBLE&amp;nbsp;8&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DOUBLE
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PRECISION&amp;nbsp;8&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REAL&amp;nbsp;8&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DECIMAL(M,D)&amp;nbsp;M字节(D+2&amp;nbsp;,&amp;nbsp;如果M&amp;nbsp;&amp;lt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	D)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	NUMERIC(M,D)&amp;nbsp;M字节(D+2&amp;nbsp;,&amp;nbsp;如果M&amp;nbsp;&amp;lt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	D)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	日期和时间类型
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	列类型&amp;nbsp;需要的存储量
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DATE&amp;nbsp;3
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DATETIME&amp;nbsp;8&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TIMESTAMP&amp;nbsp;4&amp;nbsp;个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TIME&amp;nbsp;3
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	个字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	YEAR&amp;nbsp;1&amp;nbsp;字节
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	串类型
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	列类型&amp;nbsp;需要的存储量
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CHAR(M)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	M字节，1&amp;nbsp;&amp;lt;=&amp;nbsp;M&amp;nbsp;&amp;lt;=&amp;nbsp;255
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	VARCHAR(M)&amp;nbsp;L+1&amp;nbsp;字节,&amp;nbsp;在此L&amp;nbsp;&amp;lt;=&amp;nbsp;M和1&amp;nbsp;&amp;lt;=&amp;nbsp;M
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;=&amp;nbsp;255
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TINYBLOB,&amp;nbsp;TINYTEXT&amp;nbsp;L+1&amp;nbsp;字节,&amp;nbsp;在此L&amp;lt;&amp;nbsp;2&amp;nbsp;^&amp;nbsp;8
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	BLOB,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TEXT&amp;nbsp;L+2&amp;nbsp;字节,&amp;nbsp;在此L&amp;lt;&amp;nbsp;2&amp;nbsp;^&amp;nbsp;16
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	MEDIUMBLOB,&amp;nbsp;MEDIUMTEXT&amp;nbsp;L+3&amp;nbsp;字节,&amp;nbsp;在此L&amp;lt;&amp;nbsp;2
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	^&amp;nbsp;24
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	LONGBLOB,&amp;nbsp;LONGTEXT&amp;nbsp;L+4&amp;nbsp;字节,&amp;nbsp;在此L&amp;lt;&amp;nbsp;2&amp;nbsp;^
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	32
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	ENUM(&amp;nbsp;value1&amp;nbsp;,&amp;nbsp;value2&amp;nbsp;,...)&amp;nbsp;1&amp;nbsp;或&amp;nbsp;2&amp;nbsp;个字节,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	取决于枚举值的数目(最大值65535)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SET(&amp;nbsp;value1&amp;nbsp;,&amp;nbsp;value2&amp;nbsp;,...)&amp;nbsp;1，2，3，4或8个字节,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	取决于集合成员的数量(最多64个成员)
+&lt;/p&gt;</content>
+  <contentx>列类型 需要的存储量
+
+
+	TINYINT 1 字节
+
+
+	SMALLINT 2
+
+
+	个字节
+
+
+	MEDIUMINT 3 个字节
+
+
+	INT 4 个字节
+
+
+	INTEGER 4
+
+
+	个字节
+
+
+	BIGINT 8 个字节
+
+
+	FLOAT(X) 4 如果 X &lt; = 24 或 8 如果 25 &lt;
+
+
+	= X &lt; = 53
+
+
+	</contentx>
+  <tags>_null_</tags>
+</root>

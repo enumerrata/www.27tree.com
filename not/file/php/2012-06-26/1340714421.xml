@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>位运算符简介</title>
+<content>&amp;lt;p&amp;gt;
+	位运算符允许对整型数中指定的位进行置位。如果左右参数都是字符串，则位运算符将操作字符的&amp;nbsp;ASCII&amp;nbsp;值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+echo&amp;nbsp;12&amp;nbsp;^&amp;nbsp;9;&amp;nbsp;//&amp;nbsp;输出为&amp;nbsp;&amp;nbsp;5&amp;nbsp;
+
+echo&amp;nbsp;\"12\"&amp;nbsp;^&amp;nbsp;\"9\";&amp;nbsp;//&amp;nbsp;输出退格字符（ascii&amp;nbsp;8）
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;(&amp;nbsp;1&amp;nbsp;&amp;nbsp;(ascii&amp;nbsp;49))&amp;nbsp;^&amp;nbsp;(&amp;nbsp;9&amp;nbsp;&amp;nbsp;(ascii&amp;nbsp;57))&amp;nbsp;=&amp;nbsp;#8
+
+echo&amp;nbsp;\"hallo\"&amp;nbsp;^&amp;nbsp;\"hello\";&amp;nbsp;//&amp;nbsp;输出&amp;nbsp;ascii&amp;nbsp;值&amp;nbsp;#0&amp;nbsp;#4&amp;nbsp;#0&amp;nbsp;#0&amp;nbsp;#0
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;&amp;nbsp;a&amp;nbsp;&amp;nbsp;^&amp;nbsp;&amp;nbsp;e&amp;nbsp;&amp;nbsp;=&amp;nbsp;#4
+
+echo&amp;nbsp;2&amp;nbsp;^&amp;nbsp;\"3\";&amp;nbsp;//&amp;nbsp;输出&amp;nbsp;1
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;2&amp;nbsp;^&amp;nbsp;((int)\"3\")&amp;nbsp;==&amp;nbsp;1
+
+echo&amp;nbsp;\"2\"&amp;nbsp;^&amp;nbsp;3;&amp;nbsp;//&amp;nbsp;输出&amp;nbsp;1
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;((int)\"2\")&amp;nbsp;^&amp;nbsp;3&amp;nbsp;==&amp;nbsp;1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-26/1340714421.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-03+22%3A50%3A58</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

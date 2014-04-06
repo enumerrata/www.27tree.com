@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[数据挖掘概念与技术]]></title>
+  <author>韩家炜，堪博</author>
+  <submiter-uid>387</submiter-uid>
+  <submit-date-time>2013-03-03 00:31:36</submit-date-time>
+  <img-link>f88096b2ca79208aa98ba2fd76a28c31.png</img-link>
+  <book-area>algo</book-area>
+  <book-intro><![CDATA[<p>
+	本书全面地讲述数据挖掘领域的重要知识和技术创新。在第1版内容相当全面的基础上，第2版展示了该领域的最新研究成果，例如挖掘流、时序和序列数据以及挖掘时间空间、多媒体、文本和Web数据。本书可作为数据挖掘和知识发现领域的教师、研究人员和开发人员的一本必读书。
+</p>
+<p>
+	本书第1版曾是受读者欢迎的数据挖掘专著，是一本可读性极佳的教材。第2版充实了数据挖掘领域研究新进展的题材，增加了讲述最新的数据挖掘方法的若干章节。本书适合作为高等院校计算机及相关专业高年级本科生的选修课教材，特别适合作为研究生的专业课教材。
+</p>
+<p>
+	Jiawei Han，伊利诺伊大学厄巴纳－尚佩恩分校计算机科学系教授。由于在数据挖掘和数据库系统领域卓有成效的研究工作，他曾多次获得各种荣誉和奖励，其中包括2004年ACM SIGKDD颁发的创新奖。同时，他还是ACM《Transactions on Knowledge Discovery from Data》的主编
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

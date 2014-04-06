@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-16 18:52:11</datetime>
+  <title>调整CSS，加速浏览器渲染你的页面</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1、十六进制颜色值的位数与大小写编写&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	十六进制的颜色值默认标准是大写及6位数标注,用标准多好,大写也不难看嘛。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;color:#f3a;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;color:#FF33AA。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;2、display与visibility的差异&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这两个属性的效果都是一样的。display隐藏对象不保留空间，visibility为隐藏对象但是保留占据的空间。当浏览器渲染被占据的空间时，会有一定消耗资源，避免这种情况的发生可以优化系统资源。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;visibility:hidden;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;display:none。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3、border:none;与border:0;的区别&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	和display与visibility的关系类似，border:none;与border:0;分别是不保留与保留边框空间。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	border:0;尽管可以隐藏掉边框，但它会为你保留border-color/border-style的使用权，当border-color和border-style的使用权存在时，浏览器渲染的时候会去解析到这两个代码，这样会额外的耗费系统资源。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;border:0;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;border:none。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4、不宜用过小的背景图片平铺&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一张宽高1px的背景图片，虽然文件体积非常之小，但渲染宽高500px的板块需要重复平铺2500次。提高背景图片渲染效率跟图片尺寸及体积有关，最大的图片文件体积保持约70KB左右。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;宽高8px以下的平铺背景图片，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;衡量适中体积及尺寸的背景图片。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我想关于这个图片的重复应该要注意一下，如果重复的多，造成的HTTP请求数就多，势必会造成额外的资源浪费，但是至于是不是8px我觉得应该好好商榷，另外70k文件也有待考究。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;5、慎用IE滤镜&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	滤镜作为IE的特有属性，除了比较消耗资源外也有兼容性问题。对于IE的PNG透明滤镜可采用GIF或JPG似透非透的办法来避免使用此滤镜。建议只在IE6应用GIF透明，因为IE7以上已经支持了PNG透明。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	另外我想说的是IE的滤镜并非一无是处，很多效果都可以用滤镜来实现，但是IE滤镜非常的消耗系统资源，甚至可以干死一个页面，典型的例子就是&lt;strong&gt;08年汶川地震时候的优酷首页，如果你的网络稍微差一点，或者电脑配置差一点，打开页面就会直接死机的。&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;滥用IE滤镜因为消耗资源外也有兼容性问题，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;最好选择可以不用滤镜的方法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;6、*{&amp;nbsp;margin:0;&amp;nbsp;padding:0;}&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	避免通配符*通配符把所有标签都初始化一遍，浏览器在渲染的时候消耗了一定的资源。有的标签在不同浏览器上几乎无差异，或是某些已经不推荐使用的标签(因为你不会去用它)不需通配符要重新初始化一遍，如果不使用通配符能节省一点资源。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;使用*号通配符，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;div、span、button、b、table等标签纳入通配符控制内外填充样式，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;有选择性地使用通配符控制内外填充样式。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	但是我们这里还是要重复一个问题那就是如果在CSS样式表之前使用标签选择符，比如：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	html,body,table,div,title,p,h1,h2,h3,a,img,head&amp;nbsp;{margin:0px;&amp;nbsp;padding:0px;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这样做会额外的增加很多的字节，对于站点来说似乎也不是一个很优秀的做法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;7、不要添加额外的标签来描述class或id&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你有一个选择器是以id作为关键选择符，请不要添加多余标签名上去。因为ID是唯一的，你不要为了一个不存在的理由而降低了匹配的效率。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;button#backButton&amp;nbsp;{&amp;nbsp;}，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;.menu-left&amp;nbsp;#newMenuIcon&amp;nbsp;{&amp;nbsp;}，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;#backButton&amp;nbsp;{&amp;nbsp;}，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;#newMenuIcon&amp;nbsp;{&amp;nbsp;}。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;8、尽量选择最特殊的类来存放选择器&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	降低系统效率的一个最大原因是我们在标签类中用了过多的选择符。通过添加class到元素，我们可以将类别进行再细分为class类，这样就不用为了一个标签浪费时间去匹配过多的选择符了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;treeitem[mailfolder=\"true\"]&amp;nbsp;&amp;gt;&amp;nbsp;treerow&amp;nbsp;&amp;gt;&amp;nbsp;treecell&amp;nbsp;{&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;.treecell-mailfolder&amp;nbsp;{&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;9、避免子孙选择符&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	子孙选择符是CSS中最耗资源的选择符。它真的是非常的耗资源，尤其是在选择器使用标签类或通用类的时候。很多情况中，我们真正想要的是子选择符。除非有明确说明，在UI&amp;nbsp;CSS中是严禁使用子孙选择符的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;treehead&amp;nbsp;treerow&amp;nbsp;treecell&amp;nbsp;{&amp;nbsp;}，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	好一点，但还是不行&amp;nbsp;-&amp;nbsp;treehead&amp;nbsp;&amp;gt;&amp;nbsp;treerow&amp;nbsp;&amp;gt;&amp;nbsp;treecell&amp;nbsp;{&amp;nbsp;}。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;10、标签类中不要包含子选择符不要在标签类中使用子选择符。否则，每次元素的出现，都会额外地增加匹配时间。（特别是当选择器似乎多半会被匹配的情况下）。&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;treehead&amp;nbsp;&amp;gt;&amp;nbsp;treerow&amp;nbsp;&amp;gt;&amp;nbsp;treecell&amp;nbsp;{&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;.treecell-header&amp;nbsp;{&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;11、留意所有子选择符的使用&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	小心地使用子选择符。如果你能想出一个的不使用他的方法，那么就不要使用。特别是在RDF树和菜单会频繁地使用子选择符。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不赞成&amp;nbsp;-&amp;nbsp;treeitem[IsImapServer=\"true\"]&amp;nbsp;&amp;gt;&amp;nbsp;treerow&amp;nbsp;&amp;gt;&amp;nbsp;.tree-folderpane-icon&amp;nbsp;{&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	请记住RDF的属性是可以在模板中被复制的！利用这一点，我们可以复制那些想基于该属性改变的子XUL元素上的RDF属性。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议用&amp;nbsp;-&amp;nbsp;.tree-folderpane-icon[IsImapServer=\"true\"]&amp;nbsp;{&amp;nbsp;}。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;12、浏览器读取CSS的规则：从右到左&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	浏览器如何读取你的CSS选择器有一个很重要的原则，那就是它们从右到左读取。这意味这像ul&amp;gt;li&amp;nbsp;a[title=\"home\"]这样的选择器，a[title=\"home\"]将是最先被读取的。这一部分通常被称为&amp;nbsp;“key&amp;nbsp;selector”选择器的最后一部分，也是被选择的标签。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;13、绝对没有比用后代选择器更糟糕的做法了&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	后代选择器是CSS里最昂贵的选择器，昂贵得可怕——特别是当它放在标签和通用符后面时。就如下面这个东东一样，绝对的效率低下：html&amp;nbsp;body&amp;nbsp;ul&amp;nbsp;li&amp;nbsp;a&amp;nbsp;{&amp;nbsp;}。遍历的标签越多消耗的资源越大，层次越多越卡。
+&lt;/p&gt;</content>
+  <contentx>1、十六进制颜色值的位数与大小写编写
+
+
+	十六进制的颜色值默认标准是大写及6位数标注,用标准多好,大写也不难看嘛。
+
+
+	不赞成 - color:#f3a;
+
+
+	建议用 - color:#FF33AA。
+
+
+	2、display与visibility的差异
+
+
+	这两个属性的效果都是一样的。display隐藏对象不保留空间，visibility为隐藏对象</contentx>
+  <tags>_null_</tags>
+</root>

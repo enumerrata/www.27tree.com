@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用jQuery简化Ajax开发&lt;5&gt;</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;使用插件扩展&amp;nbsp;jQuery&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与大多数软件不同，使用一个复杂的&amp;nbsp;API&amp;nbsp;为&amp;nbsp;jQuery&amp;nbsp;编写插件并不是非常困难。事实上，jQuery&amp;nbsp;插件非常易于编写，您甚至希望编写一些插件来使代码更加简单。下面是可以编写的最基本的&amp;nbsp;jQuery&amp;nbsp;插件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$.fn.donothing&amp;nbsp;=&amp;nbsp;function(){
+return&amp;nbsp;this;
+};&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	虽然非常简单，但是还是需要对这个插件进行一些解释。首先，如果要为每一个&amp;nbsp;jQuery&amp;nbsp;对象添加一个函数，必须把该函数指派给&amp;nbsp;$.fn。第二，这个函数必须要返回一个&amp;nbsp;this（jQuery&amp;nbsp;对象），这样才不至于打断&amp;nbsp;方法链接（method&amp;nbsp;chaining）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以轻松地在这个示例之上构建。要编写一个更换背景颜色的插件，以替代使用&amp;nbsp;css(&amp;nbsp;background&amp;nbsp;)，可以使用下面的代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$.fn.background&amp;nbsp;=&amp;nbsp;function(bg){
+return&amp;nbsp;this.css(&amp;nbsp;background&amp;nbsp;,&amp;nbsp;bg);
+};&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清注意，可以只从&amp;nbsp;css()&amp;nbsp;返回值，因为已经返回了&amp;nbsp;jQuery&amp;nbsp;对象。因此，方法链接（method&amp;nbsp;chaining）仍然运作良好。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我建议在需要重复工作的时候使用&amp;nbsp;jQuery&amp;nbsp;插件。比方说，如果您需要使用&amp;nbsp;each()&amp;nbsp;函数反复执行相同的操作，那么可以使用一个插件来完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于&amp;nbsp;jQuery&amp;nbsp;插件相当易于编写，所以有上百种可供你选择使用。jQuery&amp;nbsp;提供的插件可用于制表、圆角、滑动显示、工具提示、日期选择器，以及我们可以想到的一切效果。有关插件的完整列表，请参阅&amp;nbsp;参考资料。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最为复杂、使用最为广泛的插件要属界面（Interface），它是一种动画插件，用于处理排序、拖放功能、复杂效果、以及其它有趣和复杂的用户界面（User&amp;nbsp;Interface，UI）。界面对于&amp;nbsp;jQuery&amp;nbsp;来说就如&amp;nbsp;Scriptaculous&amp;nbsp;对于&amp;nbsp;Prototype&amp;nbsp;一样。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表单插件也同样流行且非常有用，通过它可以使用&amp;nbsp;Ajax&amp;nbsp;在后台中轻松地提交表单。这个插件用于处理一些常见的情况：您需要截获某个表单的提交事件，找出所有不同的输入字段，并使用这些字段构造一个&amp;nbsp;Ajax&amp;nbsp;调用。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-31/1338422158.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

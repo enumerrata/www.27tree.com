@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>什么是CSS伪类</title>
+<content>&amp;lt;p&amp;gt;
+	CSS伪类选择符只能作用于超链接（&amp;lt;strong&amp;gt;&amp;amp;lt;a&amp;amp;gt;&amp;lt;/strong&amp;gt;）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CSS中用四个伪类来定义链接的样式，分别是：a:link、a:visited、a:hover和a&amp;nbsp;:&amp;nbsp;active，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;lt;strong&amp;gt;:link&amp;lt;/strong&amp;gt;{font-weight&amp;nbsp;:&amp;nbsp;bold&amp;nbsp;;text-decoration&amp;nbsp;:&amp;nbsp;none&amp;nbsp;;color&amp;nbsp;:&amp;nbsp;#c00&amp;nbsp;;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a:&amp;lt;strong&amp;gt;visited&amp;lt;/strong&amp;gt;&amp;nbsp;{font-weight&amp;nbsp;:&amp;nbsp;bold&amp;nbsp;;text-decoration&amp;nbsp;:&amp;nbsp;none&amp;nbsp;;color&amp;nbsp;:&amp;nbsp;#c30&amp;nbsp;;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a:&amp;lt;strong&amp;gt;hover&amp;lt;/strong&amp;gt;&amp;nbsp;{font-weight&amp;nbsp;:&amp;nbsp;bold&amp;nbsp;;text-decoration&amp;nbsp;:&amp;nbsp;underline&amp;nbsp;;color&amp;nbsp;:&amp;nbsp;#f60&amp;nbsp;;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a:&amp;lt;strong&amp;gt;active&amp;lt;/strong&amp;gt;&amp;nbsp;{font-weight&amp;nbsp;:&amp;nbsp;bold&amp;nbsp;;text-decoration&amp;nbsp;:&amp;nbsp;none&amp;nbsp;;color&amp;nbsp;:&amp;nbsp;#F90&amp;nbsp;;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上语句分别定义了链接、已访问过的链接、鼠标停在上方时、点下鼠标时的样式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，必须按以上顺序写，否则显示可能和你预想的不一样。记住它们的顺序是“&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;LVHA&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-07/1339039237.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

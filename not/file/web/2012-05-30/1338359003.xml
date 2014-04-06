@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>网站分析系统性方法与策略：为什么要建立网站</title>
+<content>&amp;lt;p&amp;gt;
+	接触互联网N年了，真正接触网站分析也有3年的时间，工作中碰到一些临时问题的时候只能采用临时的方法解决，因为没有积累系统性的网站分析方法和策略，所以老是觉得零散，最后的总结和归纳总是杂乱无章和零碎的，于是想整理下网站分析的框架和策略，此想法的产生受到书籍《思考的整理术》和《思维版图》的影响，书中强调思维的整理应该有清晰的脉络和系统。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	虽然一个重大的问题要想得到圆满的解答，需要从蛋孵化成雏鸟那样经历相当漫长的时间，但是只要有起步，有坚持，事情总会得到想要的结果。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0529/1338271489732.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（图片来源于Google，渡鸦在许多文化，神话，文学中都有重要的地位，神灵一般命令渡鸦每日报告世界上发生的事情，一些网站检测和分析的书籍会将渡鸦设置为封面，就是报告和分析的寓意，希望此系列的网站分析系统方法的整理会让网站分析入门者成为合格的渡鸦，包括我自己。）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	言归正传，首先，网站主要分为以下几块内容：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、为什么要建立网站？市场需求，网站目标
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、怎样建立网站？内容策略，用户体验策略，推广策略（SEO，SEM，论坛策略等），社交策略
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、如何检测与优化网站？网站性能监测策略，竞争对手研究策略，用户调查策略
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0529/1338271489823.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本文主要先介绍第一部分的内容，即为什么要建立网站，至于第二、三部分的内容限于篇幅的长度还是由后续博文介绍比较适合。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	哪里有市场需求和利润，哪里就会有商人，网站的建立也是因为有市场需求，怎样去发现和洞悉市场空间也是有讲究的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1.市场需求&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	互联网最不缺的就是数据，我们需要收集数据转换成有价值的市场信息洞察市场需求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.1行业报告&amp;nbsp;–&amp;nbsp;收集行业相关报告，包含市场规模，增长率，竞争强度等信息，例如艾瑞，comscore的报告；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.2行业词表&amp;nbsp;–&amp;nbsp;客户通过什么关键字来表达自己的真实需求，自然搜索和付费搜索关键字都是市场需求的准确体现，不能忽视；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.3竞争分析&amp;nbsp;–&amp;nbsp;竞争对手的客户群体，产品优缺点，向市场传递的信息，选择了哪些关键字
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2.网站目标&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调研了市场，也分析了竞争对手的情况，接下来就应该制定网站的目标，因为有了目标才能不断地进行优化。网站主要有以下几个类型，都有自己相应的特点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.1媒体网站&amp;nbsp;–&amp;nbsp;这些网站通过提供信息来吸引用户，通过拉赞助和替人打广告来盈利，一些门户网站，报纸站点，知名博客都属于这一类，例如腾讯，新浪，搜狐，CNET，NYTimes；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.2电子商务网站&amp;nbsp;–&amp;nbsp;促销网站用户订单的交易来盈利，例如淘宝，京东，当当，走秀，bestbuy，zappos；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.3内容协作网站&amp;nbsp;–&amp;nbsp;提供网站访客自己创作一些内容，维基网站，分类广告信息，社区网站都属于这个类别，一般都是非盈利的，例如维基百科，新浪微博，Facebook；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	制定的目标可以包括：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.4媒体网站&amp;nbsp;–&amp;nbsp;浏览量，忠诚度，广告点击数，RSS订阅数；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.5电子商务网站&amp;nbsp;–&amp;nbsp;浏览量，访问数，订单数，转换率，销售额；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.6内容协作网站&amp;nbsp;–&amp;nbsp;用户数，评论数，转发数；
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0529/1338271489674.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	关于为什么要建立网站的内容可能有些老生常谈，但这是网站运营非常重要的环节，需要放到策略的高度，这样才能总揽全局，游刃有余。下篇博文中主要讲述第二部分的内容，即怎样建立网站，个人觉得比较出彩，希望持续关注。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文章来源：深圳网站分析
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-30/1338359003.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>3</uid>
+  <datetime>2013-04-21 16:57:31</datetime>
+  <title><![CDATA[Gnome 禁用 IBus 输入法白名单]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\">Gnome3.6集成了Ibus，原本是件好事。但搞Gnome的鬼佬们不懂我们中文输入法的博大精深，弄了个输入法白名单，输入源（Input Sources）里只显示在白名单的输入法。而许多优秀的输入法如rime（中州韻），sunpinyin，等，就不能使用。</span> 
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"text-indent:2em;line-height:1.5;font-size:16px;\">还好在&nbsp;Weng Xuetian 和 Mike Qin 的强烈要求下（详细经过:https://bugzilla.gnome.org/show_bug.cgi?id=689001），Gnome的开发者终于妥协了，留下一句：</span> 
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"bsh\">gsettings set org.gnome.desktop.input-sources show-all-sources true</pre>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<span style=\"font-size:16px;\">&nbsp;</span><span style=\"font-size:16px;\">&nbsp;</span><span style=\"font-size:16px;\">&nbsp; &nbsp; 运行就可以在输入源（Input Sources）显示所</span><span style=\"font-size:16px;\">有输入法了。</span> 
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

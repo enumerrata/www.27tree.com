@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>自己动手写操作系统完全版</title>
+  <author>于渊</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:01:14</submit-date-time>
+  <img-link>7c5d72fab043aa978b49d5f7bde3bca9.png</img-link>
+  <book-area>system</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这是一本编程爱好者编写的别具一格、颇有特色的操作系统原理与实现的书。该书作者对操作系统具有特殊爱好，在大量实践和反复钻研下积累了丰富而可贵的经验，为了与广大读者分享这些经验写成了此书。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书对一般的操作系统原理教材不很重视的部分，例如，系统初启、保护模式、控制权如何转入OS&amp;nbsp;Kernal等都写得具体详细，对操作系统的爱好者以及涉足于操作系统设计、实现和应用的读者有很好的参考价值。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书的文字生动活泼，富有个性，可望提高青年学子的阅读兴趣。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	优秀国内原创图书！本书用丰富的实例代码，一步一步地指导读者用C语言和汇编语言编写出一个具备操作系统基本功能的操作系统框架，不同于其他的理论型书籍，本书提供给读者一个动手实践的路线图。用理论指导动手实践，用实践深化理解理论！
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书在详细分析操作系统原理的基础上，用丰富的实例代码，一步一步地指导读者用C语言和汇编语言编写出一个具备操作系统基本功能的操作系统框架。本书不同于其他的理论型书籍，而是提供给读者一个动手实践的路线图。书中讲解了大量在开发操作系统中需注意的细节问题，这些细节不仅能使读者更深刻地认识操作系统的核心原理，而且使整个开发过程少走弯路。全书共分7章。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书适合各类程序员、程序开发爱好者阅读，也可作为高等院校操作系统课程的实践参考书。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-08 19:28:05</datetime>
+  <title>淫才 : 一个 SQL 同时验证帐号是否存在、密码是否正确</title>
+  <content>&lt;p&gt;
+	一个简单的&amp;nbsp;SQL&amp;nbsp;同时验证帐号是否存在、密码是否正确。虽是奇技淫巧，却真正所谓构思巧妙。如果用来作为面试题目，真的能够难倒一大片程序猿了。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	SELECT&amp;nbsp;CASE&amp;nbsp;WHEN&amp;nbsp;p.encrypted_password&amp;nbsp;=?&amp;nbsp;THEN&amp;nbsp;1&amp;nbsp;ELSE&amp;nbsp;0&amp;nbsp;END
+&lt;/p&gt;
+&lt;p&gt;
+	FROM&amp;nbsp;tm_app_user&amp;nbsp;u,&amp;nbsp;tm_app_user_credential&amp;nbsp;p
+&lt;/p&gt;
+&lt;p&gt;
+	WHERE&amp;nbsp;u.app_user_uuid&amp;nbsp;=&amp;nbsp;p.app_user_uuid
+&lt;/p&gt;
+&lt;p&gt;
+	AND&amp;nbsp;(LOWER(u.user_sign_in_nm)&amp;nbsp;=&amp;nbsp;?&amp;nbsp;OR&amp;nbsp;LOWER(u.email)&amp;nbsp;=&amp;nbsp;?)
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	解释：
+&lt;/p&gt;
+&lt;p&gt;
+	a.&amp;nbsp;如果用户名不存在，则查询结果是无数据
+&lt;/p&gt;
+&lt;p&gt;
+	b.&amp;nbsp;如果用户名存在，而密码不正确，则返回&amp;nbsp;0
+&lt;/p&gt;
+&lt;p&gt;
+	c.&amp;nbsp;如果用户名存在，而密码正确，则返回&amp;nbsp;1
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	把密码单独用一个表保存，是因为用户的其他信息与密码是两种不同性质的东西，系统架构师决定分开保存，有助于提醒程序员这种差别:&amp;nbsp;用户的其他信息可以查看，密码不能查看；用户的其他信息更改时可以看到更改前的数据，密码更改时不能看到更改前的数据，所以密码不可找回；修改用户密码与修改用户其他信息，是两个不同页面。
+&lt;/p&gt;</content>
+  <contentx>一个简单的 SQL 同时验证帐号是否存在、密码是否正确。虽是奇技淫巧，却真正所谓构思巧妙。如果用来作为面试题目，真的能够难倒一大片程序猿了。
+
+
+	
+
+
+	SELECT CASE WHEN p.encrypted_password =? THEN 1 ELSE 0 END
+
+
+	FROM tm_app_user u, tm_app_user_credenti</contentx>
+  <tags>_null_</tags>
+</root>

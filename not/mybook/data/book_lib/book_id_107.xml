@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>基于 GSM 的车载无线防盗系统</title>
+  <author>谭春毅，高锋</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-09 22:39:03</submit-date-time>
+  <img-link></img-link>
+  <book-area>other</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	随着中国经济的迅猛发展，购车的家庭越来越多，但随之而来的是盗车案件的增加。&amp;nbsp;虽然目前大多数车辆都装有防盗系统，但一般仅为声光警告。一旦人与车距离过远，车主将无法及时得知车辆被盗信息，从而失去实时报警的机会。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	因此国内外汽车行业的设计人员都在对车辆防盗系统进行研究和改进，而使用GSM&amp;nbsp;短消息作为报警媒介就可以克服上述问题，只要求车主有一只可以收发短消息的手机。防盗系统就可实时报警，鉴于以上考虑并兼顾了其他实用功能作者设计了基于&amp;nbsp;GSM&amp;nbsp;网络的多功能车载无线防盗报警系统。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	该系统使用短消息以及电话作为媒介进行报警，此外还增加了车载电话等实用功能
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+</root>

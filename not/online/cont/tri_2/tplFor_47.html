@@ -1,0 +1,200 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX 投票</h1>
+</div>
+<div>
+
+<h1>AJAX 投票</h1>
+
+<p>在这个 AJAX 实例中，我们将演示一个投票程序，网页在不重新加载的情况下，就可以获得结果。</p>
+
+<h1>到目前为止，您喜欢 PHP 和 AJXA 吗？</h1>
+
+<p>Yes:  </p>
+<p>No:  </p>
+<p>本例包括四个元素：</p>
+
+<ul>
+<li>HTML 表单</li>
+<li>JavaScript</li>
+<li>PHP 页面</li>
+<li>存放结果的文本文件</li>
+</ul>
+
+<h1>HTML 表单</h1>
+
+<p>这是 HTML 页面。它包含一个简单的 HTML 表单，以及一个与 JavaScript 文件的连接：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script src="poll.js"&gt;&lt;/script&gt; <br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;div id="poll"&gt;<br />
+&lt;h2&gt;Do you like PHP and AJAX so far?&lt;/h2&gt;<br />
+<br />
+&lt;form&gt;<br />
+Yes: <br />
+&lt;input type="radio" name="vote" <br />
+value="0" onclick="getVote(this.value)"&gt;<br />
+&lt;br /&gt;<br />
+No: <br />
+&lt;input type="radio" name="vote" <br />
+value="1" onclick="getVote(this.value)"&gt;<br />
+&lt;/form&gt;<br />
+&lt;/div&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>例子解释 - HTML 表单</b></p>
+
+<p>正如您看到的，上面的 HTML 页面包含一个简单的 HTML 表单，其中的 &lt;div&gt; 元素带有两个单选按钮。</p>
+<p>表单这样工作：</p>
+
+<ul>
+<li>当用户选择 "yes" 或 "no" 时，会触发一个事件</li>
+<li>当事件触发时，执行 getVote() 函数</li>
+<li>围绕该表单的是名为 "poll" 的 <div>。当数据从 getVote() 函数返回时，返回的数据会替代该表单。</li>
+</ul>
+
+<h1>文本文件</h1>
+
+<p>文本文件 (poll_result.txt) 中存储来自投票程序的数据。</p>
+<p>它类似这样：</p>
+
+<code>0||0</code>
+
+<p>第一个数字表示 "Yes" 投票，第二个数字表示 "No" 投票。</p>
+<p><b>注释</b>：记得只允许您的 web 服务器来编辑该文本文件。不要让其他人获得访问权，除了 web 服务器 (PHP)。</p>
+
+<h1>JavaScript</h1>
+
+<p>JavaScript 代码存储在 "poll.js" 中，并于 HTML 文档相连接：</p>
+
+<code>
+var&nbspxmlHttp<br />
+<br />
+function&nbspgetVote(int)<br />
+{<br />
+xmlHttp=GetXmlHttpObject()<br />
+if&nbsp(xmlHttp==null)<br />
+&nbsp{<br />
+&nbspalert&nbsp("Browser&nbspdoes&nbspnot&nbspsupport&nbspHTTP&nbspRequest")<br />
+&nbspreturn<br />
+&nbsp}&nbsp<br />
+var&nbspurl="poll_vote.php"<br />
+url=url+"?vote="+int<br />
+url=url+"&sid="+Math.random()<br />
+xmlHttp.onreadystatechange=stateChanged&nbsp<br />
+xmlHttp.open("GET",url,true)<br />
+xmlHttp.send(null)<br />
+}&nbsp<br />
+<br />
+function&nbspstateChanged()&nbsp<br />
+{&nbsp<br />
+&nbspif&nbsp(xmlHttp.readyState==4&nbsp||&nbspxmlHttp.readyState=="complete")<br />
+&nbsp{&nbsp<br />
+&nbspdocument.getElementById("poll").<br />
+&nbspinnerHTML=xmlHttp.responseText;<br />
+&nbsp}&nbsp<br />
+}&nbsp<br />
+<br />
+function&nbspGetXmlHttpObject()<br />
+{&nbsp<br />
+var&nbspobjXMLHttp=null<br />
+if&nbsp(window.XMLHttpRequest)<br />
+&nbsp{<br />
+&nbspobjXMLHttp=new&nbspXMLHttpRequest()<br />
+&nbsp}<br />
+else&nbspif&nbsp(window.ActiveXObject)<br />
+&nbsp{<br />
+&nbspobjXMLHttp=new&nbspActiveXObject("Microsoft.XMLHTTP")<br />
+&nbsp}<br />
+return&nbspobjXMLHttp<br />
+}
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>stateChanged() 和 GetXmlHttpObject 函数与 PHP 和 AJAX 请求 这一节中的例子相同。</p>
+
+<p><b>getVote() 函数</b></p>
+
+<p>当用户在 HTML 表单中选择 "yes" 或 "no" 时，该函数就会执行。</p>
+
+<p>1.定义发送到服务器的 url （文件名）</p>
+<p>2.向 url 添加参数 (vote)，参数中带有输入字段的内容</p>
+<p>3.添加一个随机数，以防止服务器使用缓存的文件</p>
+<p>4.调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象，并告知该对象当触发一个变化时执行 stateChanged 函数</p>
+<p>5.用给定的 url 来打开 XMLHTTP 对象</p>
+<p>6.向服务器发送 HTTP 请求</p>
+
+<h1>PHP 页面</h1>
+
+<p>由 JavaScript 代码调用的服务器页面是名为 "poll_vote.php" 的一个简单的 PHP 文件。</p>
+
+<code>
+&lt;?php<br />
+$vote&nbsp=&nbsp$_REQUEST['vote'];<br />
+<br />
+//get&nbspcontent&nbspof&nbsptextfile<br />
+$filename&nbsp=&nbsp"poll_result.txt";<br />
+$content&nbsp=&nbspfile($filename);<br />
+<br />
+//put&nbspcontent&nbspin&nbsparray<br />
+$array&nbsp=&nbspexplode("||",&nbsp$content[0]);<br />
+$yes&nbsp=&nbsp$array[0];<br />
+$no&nbsp=&nbsp$array[1];<br />
+<br />
+if&nbsp($vote&nbsp==&nbsp0)<br />
+&nbsp{<br />
+&nbsp$yes&nbsp=&nbsp$yes&nbsp+&nbsp1;<br />
+&nbsp}<br />
+if&nbsp($vote&nbsp==&nbsp1)<br />
+&nbsp{<br />
+&nbsp$no&nbsp=&nbsp$no&nbsp+&nbsp1;<br />
+&nbsp}<br />
+<br />
+//insert&nbspvotes&nbspto&nbsptxt&nbspfile<br />
+$insertvote&nbsp=&nbsp$yes."||".$no;<br />
+$fp&nbsp=&nbspfopen($filename,"w");<br />
+fputs($fp,$insertvote);<br />
+fclose($fp);<br />
+?&gt;<br />
+<br />
+&lt;h2&gt;Result:&lt;/h2&gt;<br />
+&lt;table&gt;<br />
+&lt;tr&gt;<br />
+&lt;td&gt;Yes:&lt;/td&gt;<br />
+&lt;td&gt;<br />
+&lt;img&nbspsrc="poll.gif"<br />
+width='&lt;?php&nbspecho(100*round($yes/($no+$yes),2));&nbsp?&gt;'<br />
+height='20'&gt;<br />
+&lt;?php&nbspecho(100*round($yes/($no+$yes),2));&nbsp?&gt;%<br />
+&lt;/td&gt;<br />
+&lt;/tr&gt;<br />
+&lt;tr&gt;<br />
+&lt;td&gt;No:&lt;/td&gt;<br />
+&lt;td&gt;<br />
+&lt;img&nbspsrc="poll.gif"&nbsp<br />
+width='&lt;?php&nbspecho(100*round($no/($no+$yes),2));&nbsp?&gt;'<br />
+height='20'&gt;<br />
+&lt;?php&nbspecho(100*round($no/($no+$yes),2));&nbsp?&gt;%<br />
+&lt;/td&gt;<br />
+&lt;/tr&gt;<br />
+&lt;/table&gt;
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>所选的值从 JavaScript 传来，然后会发生：</p>
+
+<p>1.获取 "poll_result.txt" 文件的内容</p>
+<p>2.把文件内容放入变量，并向被选变量累加 1</p>
+<p>3.把结果写入 "poll_result.txt" 文件</p>
+<p>4.输出图形化的投票结果</p>
+
+</div>

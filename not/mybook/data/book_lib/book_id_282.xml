@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Activiti in Action - Executable business processes in BPMN 2.0]]></title>
+  <author>Tijs Rademakers</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-02-04 11:24:38</submit-date-time>
+  <img-link>d35ac4772a4a5d969a731cc36cf6e9e7.jpg</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	Activiti in Action introduces developers to business process modeling with Activiti. You\'ll start by exploring BPMN 2.0 from a developer\'s perspective. Then, you\'ll quickly move to examples that show you how to implement processes with Activiti. You\'ll dive into key areas of process modeling, including workflow, ESB usage, process monitoring, event handling, business rule engines, and document management integration.
+</p>
+<p>
+	Written for business application developers. Familiarity with Java and BPMN is helpful but not required.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

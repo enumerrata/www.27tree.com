@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Oracle Partition 分区详细总结]]></title>
+  <author>润明</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-09 14:25:36</submit-date-time>
+  <img-link>ba93b3b097e12d5d0ca7c6a526ade793.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	此文从以下几个方面来整理关于分区表的概念及操作:
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;1.表空间及分区表的概念
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;2.表分区的具体作用
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;3.表分区的优缺点
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;4.表分区的几种类型及操作方法
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;5.对表分区的维护性操作.
+</p>
+<p>
+	(1.) 表空间及分区表的概念
+</p>
+<p>
+	表空间： &nbsp;是一个戒多个数据文件的集合，所有的数据对象都存放在指定的表空间
+</p>
+<p>
+	中，但主要存放的是表， 所以称作表空间。 &nbsp;
+</p>
+<p>
+	分区表： &nbsp;
+</p>
+<p>
+	当表中的数据量丌断增大，查询数据的速度就会变慢，应用程序的性能就会下降，
+</p>
+<p>
+	这时就应该考虑对表迚行分区。表迚行分区后，逻辑上表仍然是一张完整的表，只是将
+</p>
+<p>
+	表中的数据在物理上存放到多个表空间(物理文件上)，这样查询数据时，不至于每次都扫描整表。
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

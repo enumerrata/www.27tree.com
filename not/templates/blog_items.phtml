@@ -1,0 +1,16 @@
+<div class="blog-list-item">
+    <?php
+    if(true === G::blog2FontAccepted($templates['bid']))
+    echo "<span class=\"sprit-sign-88\"><img src=\"/img/001.gif\" width=\"100%\"/></span>";
+    else if($templates['option-blogprom'] && false === G::blog2FontApplicated($templates['bid']))
+    echo "<a href=\"javascript:void(0);\" class=\"Shadow blogPromButton\"><input type=\"hidden\" value=\"$templates[bid]\" /></a>";
+    ?>
+    <div class="headwapper">
+        <a href="/user/<?php {echo $templates['uid'];}?>"><img src="<?php {echo $templates['headimg'];}?>_64x" width="64px" height="64px"/></a>
+    </div>
+    <div class="ItemContentx">
+        <h1><a href="<?php {echo $templates['href'];}?>" target="_blank"><?php {echo $templates['title'];}?></a> <span class="stat-blog-list"><?php {echo $templates['commi'];}?>评/<?php {echo $templates['readi'];}?>阅</span></h1>
+        <p><?php {echo $templates['contentx'];}?></p>
+        <a href="<?php {echo $templates['href'];}?>" target="_blank">查看全文</a>&nbsp;<?php echo $templates['time'];?>
+    </div>
+</div>

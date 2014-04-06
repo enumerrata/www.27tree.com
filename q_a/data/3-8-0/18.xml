@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[关于浏览器的一些问题]]></title>
+  <content><![CDATA[<p>
+	浏览器是用什么语言写的 Qt可以搞出来吗
+</p>
+<p>
+	webkit不知道怎么植入
+</p>]]></content>
+  <tags>技术问题|C/C++|JavaScript</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

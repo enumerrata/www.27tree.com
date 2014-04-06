@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Learning OpenGL ES for iOS: A Hands-on Guide to Modern 3D Graphics Programming]]></title>
+  <author>Erik M. Buck</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-17 01:06:03</submit-date-time>
+  <img-link>3f7b6e8b83016a7e3ed8ce1cb7359a6a.jpg</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	OpenGL ES technology underlies the user interface and graphical capabilities of Apple’s iPhone, iPod touch, and iPad–as well as devices ranging from video-game consoles and aircraft-cockpit displays to non-Apple smartphones. In this friendly, thorough introduction, Erik M. Buck shows how to make the most of &nbsp;Open GL ES in Apple’s iOS environment.
+</p>
+<p>
+	This highly anticipated title focuses on modern, efficient approaches that use the newest versions of &nbsp;OpenGL ES, helping you avoid the irrelevant, obsolete, and misleading techniques that litter the Internet. Buck embraces Objective-C and Cocoa Touch, showing how to leverage Apple’s powerful, elegant GLKit framework to maximize your productivity, achieve tight platform integration, and deliver exceptionally polished apps.
+</p>
+<p>
+	If you’ve written C or C++ code and know &nbsp;object-oriented programming basics, this title &nbsp;brings together everything you need to fully &nbsp;master OpenGL ES graphics for iOS–including &nbsp;downloadable examples specifically designed to &nbsp;jumpstart your own projects.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		• Understanding core OpenGL ES computer graphics concepts and iOS graphics architecture
+	</p>
+	<p>
+		• Integrating Cocoa Touch with OpenGL ES to leverage the power of Apple’s platform
+	</p>
+	<p>
+		• Creating textures from start to finish: opacity, blending, multi-texturing, and compression
+	</p>
+	<p>
+		• Simulating ambient, diffuse, and specular light
+	</p>
+	<p>
+		• Using transformations to render 3D geometric objects from any point of view
+	</p>
+	<p>
+		• Animating scenes by controlling time through application logic
+	</p>
+	<p>
+		• Partitioning data to draw expansive outdoor scenes with rolling terrain
+	</p>
+	<p>
+		• Detecting and handling user interaction with 3D geometry
+	</p>
+	<p>
+		• Implementing special effects ranging from skyboxes to particles and billboards
+	</p>
+	<p>
+		• Systematically optimizing graphics performance
+	</p>
+	<p>
+		• Understanding the essential linear algebra concepts used in computer graphics
+	</p>
+	<p>
+		• Designing and constructing a complete simulation that incorporates everything you’ve learned<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

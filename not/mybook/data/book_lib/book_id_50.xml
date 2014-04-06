@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>无懈可击的WEB设计</title>
+  <author>（美）西德霍姆（Cederholm,D）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-07 09:33:15</submit-date-time>
+  <img-link>85e5cdf9912d73a854c90c2a92a97134.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容简介
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一个网站，无论视觉上多么美观，内容多么丰富，如果不能面向最广泛的用户群，那它就不算是真正成功的网站。本书是Web标准设计领域的公认专家Dan&amp;nbsp;Cederholm的倾力之作，向您描述了基于Web标准的设计策略，以适应各种各样的用户浏览方式。书中每一章的开头都给出了一个基于传统HTML技术的实例，然后对它进行重构，指出它的局限性，并利用XHTML和CSS对它进行改造。让您了解到怎样用整洁的HTML和CSS来取代那些臃肿冗余的代码，从而创建加载速度快、适应性强的网站。最后，本书将各章中讨论的所有页面组件综合在一起制作了一个单页模板。与第1版相比，新版将内容更新为与Microsoft&amp;nbsp;Internet&amp;nbsp;Explorer&amp;nbsp;7同步，并且添加了几个使用em的例子，包括弹性布局。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书主要内容：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用关键字、百分比、em来设定页面文字的大小，提高用户的可控性；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	提供能够适应任意字体大小或任意数量内容的站点导航栏；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	规划水平方向的页面组件如何纵向扩展。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

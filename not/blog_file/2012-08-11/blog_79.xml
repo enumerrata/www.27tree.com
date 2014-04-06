@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-11 14:33:50</datetime>
+  <title>添加Java环境变量时，修改/etc/profile导致无法GUI进入ubuntu</title>
+  <content>&lt;p&gt;
+	添加Java环境变量时，修改/etc/profile导致无法GUI进入ubuntu。
+&lt;/p&gt;
+&lt;p&gt;
+	今天在安装Android环境时，配置Java环境变量把PATH=“$PATH:/usr/lib/jvm/jdk7”写成了PATH=“/usr/bin/jvm/jdk7”，导致在进入GUI的时候一直停留在登录界面。
+&lt;/p&gt;
+&lt;p&gt;
+	下面是解决方法：
+&lt;/p&gt;
+&lt;p&gt;
+	在登录界面Ctrl&amp;nbsp;+&amp;nbsp;Alt&amp;nbsp;+&amp;nbsp;F1&amp;nbsp;进入命令行&amp;nbsp;输入账户密码登录&amp;nbsp;，输入
+&lt;/p&gt;
+&lt;p&gt;
+	/usr/bin/sudo&amp;nbsp;/usr/bin/vi&amp;nbsp;/etc/profile&amp;nbsp;修改系统profile文件&amp;nbsp;把错误的PATH环境变量那一行删除。在vi连续输入dd可以整行删除，
+&lt;/p&gt;
+&lt;p&gt;
+	然后按住Shift+：输入w!q&amp;nbsp;回车保存；
+&lt;/p&gt;
+&lt;p&gt;
+	最后&amp;nbsp;/usr/bin/sudo&amp;nbsp;reboot&amp;nbsp;重启ubuntu。搞定
+&lt;/p&gt;</content>
+  <contentx>添加Java环境变量时，修改/etc/profile导致无法GUI进入ubuntu。
+
+
+	今天在安装Android环境时，配置Java环境变量把PATH=“$PATH:/usr/lib/jvm/jdk7”写成了PATH=“/usr/bin/jvm/jdk7”，导致在进入GUI的时候一直停留在登录界面。
+
+
+	下面是解决方法：
+
+
+	在登录界面Ctrl + </contentx>
+  <tags>_null_</tags>
+</root>

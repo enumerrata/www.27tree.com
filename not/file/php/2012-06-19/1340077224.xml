@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>解决php+session生成图片验证码不一致的问题</title>
+<content>&amp;lt;p&amp;gt;
+	最近写一个PHP的小项目，要用到验证码类，喜剧性的出现了以下一幕：用SESSION保存的code在form页面echo出来跟验证码图片显示的不一致，慢半拍，即本次echo出来的是上次的验证码图片信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	群里的朋友说用cookie代替session就行了，但是cookie放验证码不是等于没放么，发贴机一下就过了，不安全。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	生成验证码图片的代码：我用的是&amp;nbsp;Jpgraph&amp;nbsp;里面的abtispam类库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;文件名：&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;valicode.php&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+include_once&amp;nbsp;&amp;nbsp;../mod/jpgraph_antispam-digits.php&amp;nbsp;;
+//ini_set(global_register,&amp;nbsp;on);
+$conf&amp;nbsp;=&amp;nbsp;parse_ini_file(../mod/config_itsrcs.php.ini,true);
+session_save_path($conf[&amp;nbsp;path&amp;nbsp;][&amp;nbsp;session_save_path&amp;nbsp;]);
+session_start();
+$spam&amp;nbsp;=&amp;nbsp;new&amp;nbsp;AntiSpam();
+$_SESSION[&amp;nbsp;codex&amp;nbsp;]&amp;nbsp;=&amp;nbsp;$spam-&amp;amp;gt;Rand(5);
+$spam-&amp;amp;gt;Stroke();
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+然后我在图片要显示的地方加入以下的HTML代码和PHP检查验证码：
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;img&amp;nbsp;id=valicode&amp;nbsp;src=valicode.php&amp;nbsp;/&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;echo&amp;nbsp;$_SESSION[&amp;nbsp;codex&amp;nbsp;];?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	假如这次验证码图片显示的是77088，那么下面输出的是上一次刷新的验证码数字，也就是慢半拍现象了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;原因是：页面加载php页面时，图片的加载跟其他标签加载是&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;异步&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;的，所以其他标签信息先加载，而后才会去加载src（图片），不同步导致“验证码”也不同步。&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	解决方案：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在页面加载后再加载图片文件，我这里是基于jQuery实现，用户中心也有一份是Dojo实现的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面是jQuery代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(function()
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($(#vailcode))
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$(#vailcode).attr(src,valicode.php?r+Math.random());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+});&amp;lt;/pre&amp;gt;
+同时图片HTML代码修改成这样：
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;amp;lt;img&amp;nbsp;id=valicode&amp;nbsp;src=&amp;nbsp;/&amp;amp;gt;&amp;lt;/pre&amp;gt;
+然后就同步啦，这样就可以避免两次加载导致延迟了。</content>
+<json-link>./file/php/2012-06-19/1340077224.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

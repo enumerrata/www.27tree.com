@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-27 18:36:31</datetime>
+  <title><![CDATA[Ubuntu 手动增加快捷方式配置文件]]></title>
+  <content><![CDATA[<p>
+	之前发过一次了，因为更新去掉了，这次发多一次了。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		在/usr/share/application目录中存放着所有程序的快捷方式的配置文件，全部都采用.desktop结尾
+	</p>
+	<p>
+		我们可以在这个目录添加一个新的配置文件来实现添加快捷方式
+	</p>
+	<p>
+		配置文件的参数如下：
+	</p>
+	<p>
+		Name: 程序快捷方式的名称
+	</p>
+	<p>
+		Comment: 程序快捷方式的描述Exec: 程序可执行文件的路径Terminal: 程序执行的方式，true为执行在命令行中，falase则相反
+	</p>
+	<p>
+		Type: 程序类型，默认为ApplicationCategories: 程序在Application面板中所属的分类，
+	</p>
+	<p>
+		StartupNotify: 设置是否现实程序启动和关闭的提示，默认为true
+	</p>
+	<p>
+		Icon: 程序图标的路径，如果只填写名字，那么gnome会在 /usr/share/icons 里面寻找这个图片
+	</p>
+	<p>
+		下面我举一个简单的例子，我创建了一个Komodo Edit的快捷方式，文件命名为komodo.desktop,内容如下
+	</p>
+	<p>
+		[Desktop Entry]
+	</p>
+	<p>
+		Name=Komodo Edit
+	</p>
+	<p>
+		Comment=MyDevelopment
+	</p>
+	<p>
+		Icon=/home/App/Komodo-edit/share/icons/komodo256.png
+	</p>
+	<p>
+		Exec=/home/App/Komodo-edit/bin/komodo
+	</p>
+	<p>
+		Terminal=false
+	</p>
+	<p>
+		Type=Application
+	</p>
+	<p>
+		Categories=Development;
+	</p>
+	<p>
+		StartupNotify=true
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

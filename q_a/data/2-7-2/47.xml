@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[怎么设置MongoDB可远程链接]]></title>
+  <content><![CDATA[在服务器上安装了MongoDB，我本地也安装了MongoDB，本地怎么链接到服务器上？]]></content>
+  <tags></tags>
+  <parseVersion>1.1</parseVersion>
+</root>

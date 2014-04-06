@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Mozilla Firefox 20.0 beta1 版本发布]]></title>
+  <content><![CDATA[<p>
+	继昨日Firefox 19正式版发布之后，Mozilla今天又发布了Firefox 20.0 beta1版本，支持了全新的下载窗口了，
+</p>
+<p>
+	下载地址：
+</p>
+<p>
+	http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/20.0b1/win32/zh-CN/
+</p>
+<p>
+	NEW &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Per-tab private browsing &nbsp;NEW &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Gingerbread and Honeycomb support for H.264/AAC/MP3 hardware decoders &nbsp;CHANGED &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;System requirements have been lowered to 384MB of RAM and QVGA displays &nbsp;DEVELOPER &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CSS3 Flexbox implemented and enabled by default &nbsp;DEVELOPER &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Continued implementation of draft ECMAScript 6 - clear() and Math.imul &nbsp;HTML5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;canvas&gt; now supports blend modes &nbsp;HTML5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Various &lt;audio&gt; and &lt;video&gt; improvements &nbsp;HTML5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;getUserMedia
+</p>
+<p>
+	implemented for web access to the user\'s camera and microphone (with
+</p>
+<p>
+	user permission)
+</p>]]></content>
+  <contentx><![CDATA[
+	继昨日Firefox 19正式版发布之后，Mozilla今天又发布了Firefox 20.0 beta1版本，支持了全新的下载窗口了，
+
+
+	下载地址：
+
+
+	http://download.cdn.mozilla.net/pub/mo]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

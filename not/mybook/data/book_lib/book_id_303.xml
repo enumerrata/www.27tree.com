@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript Step by Step]]></title>
+  <author>Steve Suehring</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-19 18:42:27</submit-date-time>
+  <img-link>fabd4678843d6f8ca7ba34ffa7808dcc.jpg</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	Your hands-on, step-by-step guide to the fundamentals of JavaScript development.
+</p>
+<p>
+	Teach yourself how to program with JavaScript -- one step at time. Ideal for developers with fundamental programming skills, this practical tutorial provides the clear guidance and hands-on examples you need to create or customize interactive Web applications using core JavaScript features and techniques.
+</p>
+<p>
+	Discover how to:
+</p>
+<p>
+	Write and deploy JavaScript code with Microsoft® Visual Studio® 2010, the Eclipse IDE, or text editors
+</p>
+<p>
+	Work with JavaScript syntax and data typesUse the Document Object Model to retrieve, create, and change HTML elements
+</p>
+<p>
+	Create rollover images and slideshow effects
+</p>
+<p>
+	Validate and provide feedback for user input on Web forms
+</p>
+<p>
+	Manipulate CSS styles and respond to browser events
+</p>
+<p>
+	Develop interactive Web applications using AJAX
+</p>
+<p>
+	Help speed development with JavaScript frameworks such as jQuery
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

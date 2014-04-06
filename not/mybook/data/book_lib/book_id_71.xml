@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Oracle Database 10g性能调整与优化</title>
+  <author>（美）尼米克（Niemiec,R.J）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-16 10:52:05</submit-date-time>
+  <img-link>2ddb6485713a495aea208a4a069d54ba.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通过学习《Oracle&amp;nbsp;Database&amp;nbsp;10g&amp;nbsp;性能调整与优化》，读者可以了解到如何选择最优化的索引选项，有效地管理驱动器和磁盘阵列，对查询执行故障检修，以及可靠地预测将来的性能。《Oracle&amp;nbsp;Database&amp;nbsp;10g&amp;nbsp;性能调整与优化》也将详细介绍PL／SQL性能增强、初始化文件调整，以及最新的数据库调查和报告实用程序。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书提供了监控、分析和优化Oracle&amp;nbsp;Database&amp;nbsp;10g的方法，由Oracle认证大师Richard&amp;nbsp;J．Niemiec倾力打造。书中包含了详细的案例研究、最佳实践和丰富的0racle新的调整特性的代码示例。通过学习本书，读者可以了解到如何选择最优化的索引选项，有效地管理驱动器和磁盘阵列，对查询执行故障检修，以及可靠地预测将来的性能。本书也将详细介绍PL／SQL性能增强、初始化文件调整，以及最新的数据库调查和报告实用程序。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

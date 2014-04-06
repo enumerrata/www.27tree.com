@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android 平板电脑编程基础教程]]></title>
+  <author> Robbie Matthews</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-03 12:05:23</submit-date-time>
+  <img-link>52c7311bd530981fd4412e8a77650dcc.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	作为最炙手可热的移动平台，Android迅速在全球攻城略地，在广大开发人员中赢得了良好的口碑。
+</p>
+<p>
+	本书通过大量示例项目，全面介绍Android平板电脑编程，协助你创建一系列有趣的Android应用程序，既包括实用程序，又涵盖好玩的游戏。最重要的是，它从基础知识讲起，就算没有任何Android经验，只要你从头开始阅读，也能读懂。通过阅读本书，你将学到：
+</p>
+<p>
+	触摸屏环境编程；
+</p>
+<p>
+	在应用程序中使用传感器及其提供的数据；
+</p>
+<p>
+	开发Android平板电脑游戏；
+</p>
+<p>
+	用多种语言编写Android平板电脑应用程序；
+</p>
+<p>
+	将Android智能手机应用程序迁移到Android平板电脑。
+</p>
+<p>
+	<p>
+		“本书介绍了有关Android平板电脑编程方方面面的知识，如果你有兴趣了解并亲历这个强大的软硬件环境所带来的种种神奇体验，强烈推荐你阅读本书！”
+	</p>
+	<p>
+		——Ira Laefsky，IT技术顾问和研究员
+	</p>
+	<p>
+		“一本非常好的书，涵盖了Android平板电脑编程的一些非常重要的主题，语言浅显易懂。如果你想找一本Android编程参考书，本书是你的绝佳选择！其他使用开源编程语言（特别是Python）的程序员也可以读一读，一定会受益良多！”
+	</p>
+	<p>
+		——Itamar Hassin，软件项目经理
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

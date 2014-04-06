@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>94</uid>
+  <datetime>2012-09-14 21:22:45</datetime>
+  <title>怎么解决啊？</title>
+  <content>&lt;p&gt;
+	&amp;lt;p&amp;gt;用户定义聚合函数&amp;nbsp;6218错误&amp;nbsp;未通过身份验证&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;&amp;nbsp;p&amp;gt;在SQL&amp;nbsp;Server中部署程序集时，如果报以下错误，原因很简单。如果是用VS2010创建并编译的就报以下错，只需用VS2008创建程序和编译问题即不存在。&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;lt;&amp;nbsp;p&amp;gt;&amp;ldquo;消息&amp;nbsp;6218，级别&amp;nbsp;16，状态&amp;nbsp;3，第&amp;nbsp;1&amp;nbsp;行&amp;lt;br&amp;nbsp;/&amp;gt;针对程序集&amp;nbsp;&amp;nbsp;UDAs&amp;nbsp;&amp;nbsp;的&amp;nbsp;CREATE&amp;nbsp;ASSEMBLY&amp;nbsp;失败，原因是程序集&amp;nbsp;&amp;nbsp;UDAs&amp;nbsp;&amp;nbsp;未通过身份验证。请检查被引用程序集是否是最新的，而且是可信的(external_access&amp;nbsp;或&amp;nbsp;unsafe)，能在该数据库中执行。
+&lt;/p&gt;</content>
+  <state>0</state>
+</root>

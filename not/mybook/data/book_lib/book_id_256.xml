@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[iPhone游戏开发]]></title>
+  <author>Paul Zirkle, Joe Hogue</author>
+  <submiter-uid>309</submiter-uid>
+  <submit-date-time>2013-01-08 01:27:39</submit-date-time>
+  <img-link>6493a7f719fea2c6b18c42e157b58e67.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	即便你以前开发过iPhone应用，iPhone游戏开发还是需要你具备一些新的技能。通过本书的学习，你将掌握从游戏开发基础、iPhone编程基本原理到处理特殊图形及音频、创建游戏中的物理学（in-game physics）应用等在内的所有知识。
+</p>
+<p>
+	通过讲解清晰的实例，这本书帮助你掌握与iPhone/iPod Touch游戏开发紧密相关的技术问题，以及如何提升不同类型游戏的性能。另外，这本书还告诉你，在iPhone本身的游戏编程支持不够好的时候可以使用的一些插件类。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		“我是一家iPhone 应用程序开发公司的老板，目前正在开发各种iPhone游戏产品。我发现本书是构架游戏引擎、思索游戏设计和关卡设计的宝贵资源。对iPhone游戏开发人员来说，本书不可或缺。”
+	</p>
+	<p>
+		——Brad O’Hearne
+	</p>
+	<p>
+		Big Hill Software软件公司和
+	</p>
+	<p>
+		Phoenix iPhone Developer
+	</p>
+	<p>
+		Group的创始人
+	</p>
+	<p>
+		Paul Zirkle，Konami Digital Entertainment公司的一名优秀的移动开发人员，具有5年移动游戏开发经验。他参与过的游戏开发项目有40多个。
+	</p>
+	<p>
+		Joe Hogue，Electronic Arts公司的移动游戏开发人员，具有5年的移动游戏开发经验。他参与了许多个游戏项目的开发。
+	</p>
+	<p>
+		推荐有Java或C++编程经验的初学者阅读
+	</p>
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

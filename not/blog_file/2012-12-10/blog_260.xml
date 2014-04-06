@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-10 12:25:34</datetime>
+  <title><![CDATA[PHP和正则表达式]]></title>
+  <content><![CDATA[<p>
+	一或多次重复字符
+</p>
+<p>
+	为了告诉正则表达式引擎一个字符必须存在，也可以重复不止一次，我们用+字符，像
+</p>
+<p>
+	&lt;?php echo ereg(\"z+\", \"i like the zoo\"); ?&gt;
+</p>
+<p>
+	下面的例子也会返回true:
+</p>
+<p>
+	&lt;?php echo ereg(\"z+\", \"i like the zzzzzzoo!\"); ?&gt;
+</p>
+<p>
+	零或一次重复字符
+</p>
+<p>
+	我们也可以告诉正则表达式引擎，一个字符必须是或者只存在一次，或者没有。我们用?字符来做这项工作，就像
+</p>
+<p>
+	&lt;?php echo ereg(\"c?\", \"cats are fuzzy\"); ?&gt;
+</p>
+<p>
+	如果我们愿意，我们完全可以从上面的搜索字符串中删除’c’，这个表达式会仍旧返回true.’?’ 的意思是一个’c’可以出现在搜索字符串的任何地方，但不是必须的。
+</p>
+<p>
+	正则表达式语法 (续)
+</p>
+<p>
+	空格字符
+</p>
+<p>
+	为了匹配一个搜索字符串中的空格字符，我们用预定义Posix的类，[[:space]].方括号标明连续字符的相关性，”:space:”是实际要匹配的类（在这种情形下，是任何空白字符）。空白包括tab字符，新行字符，空白字符。或者，如果搜索字符串必须包含只有一个空格，而不是一个tab或者新行字符，你可以用一个空格字符(\" \")。在大多数情况下，我倾向于使用\":space:\"，因为这意味着我的意图不仅仅是单个空格字符，这点很容易被忽视。这里有一些Posix-标准预定义类，
+</p>
+<p>
+	有一些我们可以作为正则表达式的部分的一些Posix-标准预定义类，包括[:alnum:], [:digit:], [:lower:]等等。 完整的列表可以在这里查看
+</p>
+<p>
+	我们可以像这样匹配单个空白字符：
+</p>
+<p>
+	&lt;?php echo ereg(\"Mitchell[[:space:]]Harper\", \"Mitchell Harper\"); ?&gt;
+</p>
+<p>
+	我们也可以通过在表达式后用?字符来告诉正则表达式引擎匹配没有空白或者一个空白。
+</p>
+<p>
+	&lt;?php echo ereg(\"Mitchell[[:space:]]?Harper\", \"MitchellHarper\"); ?&gt;
+</p>
+<p>
+	模式分组
+</p>
+<p>
+	相关的模式可以在方括号里分在一起。很容易用[a-z]和[A-Z]指定只有一个小写字母或者一列大写字母以搜索字符串的一部分存在。
+</p>
+<p>
+	&lt;?php// 要求从第一个到最后一个都是小写字母echo ereg(\"^[a-z]+$\", \"johndoe\"); // 返回true?&gt;
+</p>
+<p>
+	或者像
+</p>
+<p>
+	&lt;?php// 要求从第一个到最后一个都是大写字母ereg(\"^[A-Z]+$\", \"JOHNDOE\"); // 返回 true??&gt;
+</p>
+<p>
+	我们也可以告诉正则表达式引擎，我们希望或者是小写字母，或者是大写字母。我们只要把[a-z]和[A-Z]模式结合在一起就可以做到。
+</p>
+<p>
+	&lt;?php echo ereg(\"^[a-zA-Z]+$\", \"JohnDoe\"); ?&gt;
+</p>
+<p>
+	在上面的例子里，如果我们能匹配\"John Doe\",而不是\"JohnDoe\"，将是非常有意义的。我们用下面的正则表达式来做这个：
+</p>
+<p>
+	^[a-zA-Z]+[[:space:]]{1}[a-zA-Z]+$
+</p>
+<p>
+	很容易搜索一个数字字符串
+</p>
+<p>
+	&lt;?php echo ereg(\"^[0-Array]+$\", \"12345\"); ?&gt;
+</p>
+<p>
+	词语分组
+</p>
+<p>
+	不仅仅搜索模式可以分组，我们也可以用圆括号把相关的搜索词语进行分组。
+</p>
+<p>
+	&lt;?php echo ereg(\"^(John|Jane).+$\", \"John Doe\"); ?&gt;
+</p>
+<p>
+	在上面的例子中，我们有一个字符串头部字符，紧跟着\"John\"或者\"Jane\",至少有一个其它字符，然后一个字符串尾部字符。所以…
+</p>
+<p>
+	&lt;?php echo ereg(\"^(John|Jane).+$\", \"Jane Doe\"); ?&gt;
+</p>
+<p>
+	...将也匹配我们的搜索模式
+</p>
+<p>
+	特殊字符的情形
+</p>
+<p>
+	因为一些字符要用在一个搜索模式的明确分组或者语法上，像在(John|Jane)中的圆括号，我们需要告诉正则表达式引擎来屏蔽这些字符，加工它们使之成为被搜索字符串的一部分，而不是搜索表达式的一部分。我们所用的方法称为“字符转义”，涉及到将任何“专用符号”加上反斜杠。所以，例如，如果我想在我的搜索中包含’|’，那么我就可以这样做
+</p>
+<p>
+	&lt;?php echo ereg(\"^[a-zA-z]+|[a-zA-z]+$\", \"John|Jane\"); ?&gt;
+</p>
+<p>
+	这里只是少量的一些你要转义的字符，你必须转义^, $, (, ), ., [, |, *, ?, +, and { 。
+</p>
+<p>
+	希望你现在对正则表达式实际上有多么强大有了一点点感觉了。现在让我们看两个用正则表达式来检查数据中一个字符串的例子。
+</p>
+<p>
+	正则表达式例子
+</p>
+<p>
+	例子1
+</p>
+<p>
+	让我们把第一个例子做的相当简单，检验一个标准的URL.一个标准的URL(没有端口号),有三个部分构成：
+</p>
+<p>
+	[协议]://[域名]
+</p>
+<p>
+	让我们从匹配URL的协议部分开始,并且让它只能用http或者ftp.我们可以用下面的正则表达式做到这点：
+</p>
+<p>
+	^(http|ftp)
+</p>
+<p>
+	^字符特指字符串的头部，利用圆括号把http和ftp围住，且用“或者”符号(|)将它们分开，我们告诉正则表达式引擎http和ftp两者之一必须在字符串的开头。
+</p>
+<p>
+	一个域名通常由www.somesite.com构成，但是可以随意选择要不要www部分。为了例子简单，我们只允许.com,.net,和.org的域名是在考虑之中的。我们最好这样对正则表达式中的域名部分表示如下：
+</p>
+<p>
+	(www.)?.+.(com|net|org)$
+</p>
+<p>
+	把所有的东西放在一起，我们的正则表达式就可以用作检查一个域名，如：
+</p>
+<p>
+	&lt;?phpfunction isValidDomain($domainName){return ereg(\"^(http|ftp)://(www.)?.+.(com|net|org)$\", $domainName);}//真(true)echo isValidDomain(\"http://www.somesite.com\");//真(true)echo isValidDomain(\"ftp://somesite.com\");//假 (false)echo isValidDomain(\"ftp://www.somesite.fr\");//假 (false)echo isValidDomain(\"www.somesite.com\");?&gt;
+</p>]]></content>
+  <contentx><![CDATA[一或多次重复字符
+	为了告诉正则表达式引擎一个字符必须存在，也可以重复不止一次，我们用+字符，像
+	&lt;?php echo ereg(\"z+\", \"i like the zoo\"); ?&gt;
+	下面的例子也会返回true:
+	&lt;?php echo ereg(\"z+\", \"i like the zzzzzzoo!\"); ?&gt;]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php发送邮件类phpmailer</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;amp;nbsp;style=\"font-size:18px;\"&amp;gt;&amp;lt;strong&amp;gt;安装phpmailer&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;hr&amp;amp;nbsp;/&amp;gt;
+	phpmailer的完整安装包可以通过搜索phpmailer官方或相关的网站下载，这里亿柿网为您一个演示文件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;amp;nbsp;style=\"font-size:18px;\"&amp;gt;&amp;lt;strong&amp;gt;phpmailer发送邮件实例&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;hr&amp;amp;nbsp;/&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+require_once(&amp;amp;nbsp;class.phpmailer.php&amp;amp;nbsp;);
+require_once(&amp;amp;nbsp;class.smtp.php&amp;amp;nbsp;);
+$mailer&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;PHPMailer();
+$mailer-&amp;amp;gt;CharSet&amp;amp;nbsp;=&amp;amp;nbsp;\"UTF-8\";
+$mailer-&amp;amp;gt;ContentType&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;text/html&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;IsSMTP();
+//0是不输出调试信息
+//2是输出详细的调试信息
+$mailer-&amp;amp;gt;SMTPDebug&amp;amp;nbsp;&amp;amp;nbsp;=&amp;amp;nbsp;2;
+//需要验证
+$mailer-&amp;amp;gt;SMTPAuth&amp;amp;nbsp;=&amp;amp;nbsp;true;
+$mailer-&amp;amp;gt;SMTPSecure&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;ssl&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;Host&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;smtp.qq.com&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;Port&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;465&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;Username&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;你的QQ邮箱&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;Password&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;你的QQ邮箱密码&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;SetFrom(&amp;amp;nbsp;你的QQ邮箱&amp;amp;nbsp;,&amp;amp;nbsp;你的QQ邮箱&amp;amp;nbsp;);
+$mailer-&amp;amp;gt;AddAddress(&amp;amp;nbsp;发送地址&amp;amp;nbsp;);
+$mailer-&amp;amp;gt;Subject&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;PHP发送邮件实例测试-我是标题我是标题&amp;amp;nbsp;;
+$mailer-&amp;amp;gt;MsgHTML(&amp;amp;nbsp;珍惜生命，远离编码-我是内容我是内容。&amp;amp;nbsp;);
+$mailer-&amp;amp;gt;send();&amp;lt;/pre&amp;gt;
+在确保你的QQ开通了smtp服务之后，试着填完这些信息，目标地址将会收到一封邮件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-30/1341026456.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

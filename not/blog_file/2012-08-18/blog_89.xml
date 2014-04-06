@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-18 12:37:30</datetime>
+  <title>Javascript encodeURI、encodeURIComponent区别 </title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	encodeURI、encodeURIComponent是JS里常用的两个URI编码函数，对应的解码函数为decodeURI和decodeURIComponent，但是在处理URI上还是有些区别，本文做个比较。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;一、encodeURI、encodeURIComponent概念比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		encodeURI&amp;nbsp;——&amp;nbsp;该函数不对&amp;nbsp;ASCII&amp;nbsp;字母和数字以及ASCII标点符号（包括-&amp;nbsp;_&amp;nbsp;.&amp;nbsp;!&amp;nbsp;~&amp;nbsp;*&amp;nbsp;&amp;nbsp;&amp;nbsp;(&amp;nbsp;)）进行编码，其他字符（比如&amp;nbsp;：;/?:@&amp;=+$,#&amp;nbsp;这些用于分隔&amp;nbsp;URI&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;组件的标点符号），也不会被转义。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		encodeURIComponent&amp;nbsp;——&amp;nbsp;该函数也不对&amp;nbsp;ASCII&amp;nbsp;字母和数字以及ASCII标点符号（包括-&amp;nbsp;_&amp;nbsp;.&amp;nbsp;!&amp;nbsp;~&amp;nbsp;*&amp;nbsp;&amp;nbsp;&amp;nbsp;(&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;)）进行编码，其他字符（比如&amp;nbsp;：;/?:@&amp;=+$,#&amp;nbsp;这些用于分隔&amp;nbsp;URI&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;组件的标点符号），会被由一个或多个十六进制组成的转义序列替换。&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;decodeURI和decodeURIComponent是它们对应的解码函数，不再多说。下面看一下测试代码。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;二、encodeURI、encodeURIComponent测试代码&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;1、测试JS代码：&lt;/strong&gt;&lt;strong&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;&amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;gt;
+var&amp;nbsp;tst=\"http://www.itsrcs.com/My&amp;nbsp;dir/?a=http://itsrcs.com/b&amp;c=你好\";
+document.write(tst+&amp;nbsp;\"&amp;lt;br&amp;nbsp;/&amp;gt;\");
+
+var&amp;nbsp;a=encodeURI(tst);
+var&amp;nbsp;b=decodeURI(a);
+document.write(a+&amp;nbsp;\"&amp;lt;br&amp;nbsp;/&amp;gt;\");
+document.write(b+&amp;nbsp;\"&amp;lt;br&amp;nbsp;/&amp;gt;\");
+
+var&amp;nbsp;c=encodeURIComponent(tst);
+var&amp;nbsp;d=decodeURIComponent(c);
+document.write(c+&amp;nbsp;\"&amp;lt;br&amp;nbsp;/&amp;gt;\");
+document.write(d);
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+&lt;strong&gt;2、脚本输出：&lt;/strong&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		http://www.itsrcs.com/My&amp;nbsp;dir/?a=http://itsrcs.com/b&amp;c=&amp;nbsp;你好&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		http://www.itsrcs.com/My%20dir/?a=http://itsrcs.com/b&amp;c=&amp;nbsp;%E4%BD%A0%E5%A5%BD&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		http://www.itsrcs.com/My&amp;nbsp;dir/?a=http://itsrcs.com/b&amp;c=&amp;nbsp;你好&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		http%3A%2F%2Fwww.itsrcs.com%2FMy%20dir%2F%3Fa%3Dhttp%3A%2F%2Fmetsky.com%2Fb%26c%3D&amp;nbsp;%E4%BD%A0%E5%A5%BD&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		http://www.itsrcs.com/My&amp;nbsp;dir/?a=http://itsrcs.com/b&amp;c=&amp;nbsp;你好&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;3、总结&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		留意一下上面输出中的红色部分
+	&lt;/p&gt;
+	&lt;p&gt;
+		encodeURIComponent是把整个参数都当成一个Component处理了，认为你给我的东西后续使用时是“贴”在其它“标准”URI后面做参数值用的，而encodeURI则认为你就让我编码一个URI，这个URI可能是直接使用的。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>encodeURI、encodeURIComponent是JS里常用的两个URI编码函数，对应的解码函数为decodeURI和decodeURIComponent，但是在处理URI上还是有些区别，本文做个比较。
+
+
+	一、encodeURI、encodeURIComponent概念比较
+
+
+	
+		encodeURI —— 该函数不对 ASCII 字母和数字</contentx>
+  <tags>_null_</tags>
+</root>

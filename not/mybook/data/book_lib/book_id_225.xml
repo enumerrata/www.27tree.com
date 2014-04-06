@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Hadoop in Action]]></title>
+  <author>Chuck Lam</author>
+  <submiter-uid>300</submiter-uid>
+  <submit-date-time>2013-01-04 15:15:51</submit-date-time>
+  <img-link>06e4118183c81e1ecc7bcaa521da80a3.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	HIGHLIGHT <strong>Hadoop in Action </strong>is an example-rich tutorial that shows developers how to implement data-intensive distributed computing using Hadoop and the Map- Reduce framework. DESCRIPTION Hadoop is an open source implementation of Google\'s MapReduce framework for scalable, distributed data processing.&nbsp;
+</p>
+<p>
+	<strong>Hadoop in Action</strong> is for programmers, architects, and project managers who have to process large amounts of data offline. The book begins with several simple examples that illustrate the basic idea behind Hadoop. Later chapters explain the core framework components and demonstrate Hadoop in a variety of data analysis tasks. Throughout the book, readers will learn best practices and design patterns, and how to write meaningful programs in a MapReduce framework.&nbsp;
+</p>
+<p>
+	KEY POINTS Explains distributed computing, MapReduce, and the Hadoop framework Focuses on most-used features and rapid development solutions Numerous hands-on examples to illustrate abstract ideas Concise, developer-centric, In Action style Multiple case studies demonstrate real-world Hadoop uses Covers popular Hadoop extensions that ease development and extend functionality
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

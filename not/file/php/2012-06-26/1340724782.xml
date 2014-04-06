@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>大量的session临时文件影响服务器效率</title>
+<content>&amp;lt;p&amp;gt;
+	早上流量有点大，网站出口流量大概5M左右，访问质量却不太好，web响应比较慢，切系统负载很高。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	检&amp;nbsp;查了下各web节点，所有web服务器的httpd线程均达到满负荷，很奇怪。因为所有web节点都通过nfs来共享session目录来达到session的一致性，检查了下nfs文件服务器，IO读写比较大，检查了session_tmp目录，发现session目录临时文件达到&amp;nbsp;70000多个，初步判断也许是因为一级目录下文件过多带来的IO性能下降。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以前没有想过session存放的效率问题，今天由此想到了session多级存放的问题，来解决一个目录下session文件过多带来的读写效率问题，查了下php.net其实php在配置中已经给出了有关选项。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php.net上的说明：http://cn.php.net/manual/zh/ref.session.php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session.save_path&amp;nbsp;定义了传递给存储处理器的参数。如果选择了默认的&amp;nbsp;files&amp;nbsp;文件处理器，则此值是创建文件的路径。默认为&amp;nbsp;/tmp。参见&amp;nbsp;session_save_path()。&amp;nbsp;此指令还有一个可选的&amp;nbsp;N&amp;nbsp;参数来决定会话文件分布的目录深度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如，设定为&amp;nbsp;&amp;nbsp;5;/tmp&amp;nbsp;&amp;nbsp;将使创建的会话文件和路径类似于
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If。&amp;nbsp;要使用&amp;nbsp;N&amp;nbsp;参数，必须在使用前先创建好这些目录。在&amp;nbsp;ext/session&amp;nbsp;目录下有个小的&amp;nbsp;shell&amp;nbsp;脚本名叫&amp;nbsp;mod_files.sh&amp;nbsp;可以用来做这件事。此外注意如果使用了&amp;nbsp;N&amp;nbsp;参数并且&amp;nbsp;N&amp;nbsp;大于&amp;nbsp;0，那么将不会执行自动垃圾回收，更多信息见&amp;nbsp;php.ini。另外如果用了&amp;nbsp;N&amp;nbsp;参数，要确保将&amp;nbsp;session.save_path&amp;nbsp;的值用双引号&amp;nbsp;\"quotes\"&amp;nbsp;括起来，因为分隔符分号（&amp;nbsp;;）在&amp;nbsp;php.ini&amp;nbsp;中也是注释符号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session.save_path&amp;nbsp;string
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在定义session.save_path中可以定义多级存放的路径，修改php.ini
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session.save_path&amp;nbsp;=&amp;nbsp;\"2;/data/session_tmp\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将session文件分成两级存放，即/data/session_tmp/4/b/sess_4b1e384ad74619bd212e236e52a5a174If，取前两位字符，但是php并不生成目录，需要自己手工生成，所以写了个脚本来生成初始的目录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	引用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$string&amp;nbsp;=&amp;nbsp;&amp;nbsp;0123456789abcdefghijklmnopqrstuvwxyz&amp;nbsp;;
+$length&amp;nbsp;=&amp;nbsp;strlen($string);
+for($i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$i&amp;nbsp;&amp;amp;lt;&amp;nbsp;$length;&amp;nbsp;$i++)&amp;nbsp;{
+　&amp;nbsp;for($j&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;$j&amp;nbsp;&amp;amp;lt;&amp;nbsp;$length;&amp;nbsp;$j++)&amp;nbsp;{
+　　　func_mkDir(&amp;nbsp;/session_tmp/&amp;nbsp;.$string[$i].&amp;nbsp;/&amp;nbsp;.$string[$j]);
+　&amp;nbsp;}
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	session目录分级处理之后，IO处理值增加，http进程降低，web处理效率明显好转
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-26/1340724782.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

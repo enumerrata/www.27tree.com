@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[ADB server didn\'t ACK问题解决方案]]></title>
+  <content><![CDATA[<p>
+	之前运行eclipse执行android应用都没问题，今天突然出问题了，控制台报错：
+</p>
+<p>
+	The connection to adb is down, and a severe error has occured.
+</p>
+<p>
+	You must restart adb and Eclipse.
+</p>
+<p>
+	Please ensure that adb is correctly located at \'E:/setups/android/android-2.1_r01-windows/tools/adb.exe\' and can be executed.
+</p>
+<p>
+	在命令行下运行 adb start-server
+</p>
+<p>
+	errors:
+</p>
+<p>
+	* daemon not running. starting it now *
+</p>
+<p>
+	ADB server didn\'t ACK
+</p>
+<p>
+	* failed to start daemon *
+</p>
+<p>
+	已经确认adb.exe的路径没有问题，重启了两次模拟器和eclipse还是不行，上网查了下资料~
+</p>
+<p>
+	解决办法：
+</p>
+<p>
+	（1）查看任务管理器，关闭所有adb.exe
+</p>
+<p>
+	（2）重启eclipse即可
+</p>]]></content>
+  <contentx><![CDATA[
+	之前运行eclipse执行android应用都没问题，今天突然出问题了，控制台报错：
+
+
+	The connection to adb is down, and a severe error has occured.
+
+
+	You mu]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

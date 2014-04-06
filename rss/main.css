@@ -1,0 +1,59 @@
+#main-wapp{
+    width:950px;
+}
+#w-left{
+    float:left;width:202px;height:300px;padding-top:29px;
+}
+#w-left-i{
+    background:#fff;border:1px solid #ccc;padding:1px;
+}
+#w-right{
+    margin-left:201px;background:#fff;border:1px solid #ccc;padding:10px;padding-top:6px;
+}
+.nav-v3{
+    width:950px;
+}
+.rs-btns{
+    height:35px;background:#f6f6f6;display:block;text-align:center;line-height:35px;font-size:15px;border:1px solid #f6f6f6;
+}
+.rs-btns:hover{
+    
+}
+.rs-btns-ho{
+    border:1px solid #ccc;background:#f2f2f2;
+}
+.BookTypesItem{
+    font-size:15px;
+    text-align:center;
+    border:1px solid #ccc;
+    background:url('/not/sources/img/1-120H4144626.png') 50px 45% no-repeat #fefefe;
+    border-left:4px solid #ccc;
+    color:#777;
+    font-weight:bold;
+    display:block;
+    padding:5px 15px;
+    padding-left:30px;
+    margin:3px 0;
+    height:25px;
+    line-height:25px;
+}
+a.BookTypesItem:hover{
+    color:#fdb933;
+    margin-left:-5px;
+    border-left:9px solid #fdb933;
+}
+.about-rss{
+    background-image:url('/user/sources/img/help.png');
+}
+.desc{
+    line-height:20px;font-size:13px;text-indent:1.2em;
+}
+.RedBar{
+    margin-bottom:5px;font-size:13px;height:20px;
+}
+.RedBar-in{
+    line-height:20px;padding-bottom:2px;
+}
+b{
+    color:#555;
+}

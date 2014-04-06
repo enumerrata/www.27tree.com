@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>276</uid>
+  <datetime>2013-01-05 16:09:25</datetime>
+  <title><![CDATA[为什么有那么多人恨 MongoDB ？]]></title>
+  <content><![CDATA[<p>
+	因为几乎所有人都把 MongoDB 想象成是圣杯或者是银弹。
+</p>
+<p>
+	和其他所有的技术一样，设计 MongoDB 并不是为了解决所有的问题。NoSQL 在这两年获得极大的关注，很多人尝试找到一个能解决所有问题的绝活儿。
+</p>
+<p>
+	我已经使用 MongoDB 一年多了，包括两个完全不同领域和需求的项目，结果还是令我满意的。但是完美吗？很显然不是，我从不觉得一项新技术是完美的，我只是觉得使用起来很舒服，在某种意义上它适用于我目前遇见的问题，就这么简单。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

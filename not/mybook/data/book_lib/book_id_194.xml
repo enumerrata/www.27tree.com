@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JSP高级编程]]></title>
+  <author>黄理 洪亮 曹林有 张勇</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-06 00:10:19</submit-date-time>
+  <img-link>e234d21734ada717d8f85413c45f7dae.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	JSP(JavaServer Pages)是目前十分流行的一种技术，主要运行于开发服务端的脚本程序和动态生成网站的内容。它与目前同样流行的ASP技术、PHP技术是同样性质的、同一层次的,它们在网站的建设中所起到的作用是一样的。但是JSP技术与后面两种技术相比，有着十分突出的优越性。关于JSP技术与ASP技术、PHP技术的比较，我们在书中另有论述，这里只想强调一点：JSP技术有J2EE平台支持，发展前途不可限量。众所周知，J2EE平台提供了Java企业应用编程接口(Java Enterprise APIs)，为企业计算以及电子商务应用系统提供了有关的技术和强大的类库支持，J2EE平台包含十几种技术，JSP技术正是其中的一种核心技术。J2EE的发展势头十分迅猛，在可以预见的将来，Sun的J2EE平台可能是唯一可以与微软的．Net构架相互抗衡的平台。在这个意义上说，基于J2EE平台的JSP技术与基于．Net平台的ASP·ASP+技术之争，不正好就是J2EE平台与．Net平台之争的折射吗?因此，JSP技术以及它的基础--J2EE技术十分值得我们去关注。在国外，采用JSP+J2EE技术构架电子商务网站已经是大行其道了，应用得十分普遍。在国内，这一项技术还是方兴未艾，采用这一项技术架构的网站还不多，不过大致的趋势已经出现了，这真是一个令人兴奋的消息。为了帮助广大读者了解JSP／J2EE技术并掌握JSP/J2EE技术，我们编写了《JSP深入编程》和《JSP高级编程》这两本书。前者侧重于JSP技术的基础知识与基本应用，后者侧重于JSP技术和其他技术联合使用，本书正是其中第二本书。
+</p>
+<p>
+	本书按顺序讲述了以下知识点：　　&nbsp;
+</p>
+<p>
+	● JavaBeans的基础知识。
+</p>
+<p>
+	● EJB的结构框架。　　&nbsp;
+</p>
+<p>
+	● 会话EJB的开发·部署·测试·应用。　　&nbsp;
+</p>
+<p>
+	● CMP模式，BMP模式的实体EJB的开发、部署、测试、应用。　　 ● J2EE体系结构。　　&nbsp;
+</p>
+<p>
+	● CORBA,RMI，JNDI技术入门。　　&nbsp;
+</p>
+<p>
+	● XML，XSL，CSS语法介绍。　　&nbsp;
+</p>
+<p>
+	● WML，XHTML简介。　　&nbsp;
+</p>
+<p>
+	● XML+JSP的开发模式。
+</p>
+<p>
+	● Tag Library的开发、应用、运行原理。　　&nbsp;
+</p>
+<p>
+	● javax．servlet.jsp．tagext包的详细说明。　　&nbsp;
+</p>
+<p>
+	● JRun Tag Library的使用手册。　　&nbsp;
+</p>
+<p>
+	● Jakarta Tag Library的使用手册。　　&nbsp;
+</p>
+<p>
+	● JDBC 2．0／3．0新特性介绍。　　&nbsp;
+</p>
+<p>
+	● JDBC Optional Pack介绍(含RowSet包、CachedRowSet包的介绍)。　　&nbsp;
+</p>
+<p>
+	● JSP 网络程序开发(访问SMTP, FTP，News等服务，Socket技术应用介绍)　　&nbsp;
+</p>
+<p>
+	● JavaMail技术完全指南。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

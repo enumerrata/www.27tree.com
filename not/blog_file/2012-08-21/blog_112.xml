@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-21 08:01:47</datetime>
+  <title>为什么说PHP不适合用于开发大型系统</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP确实十分容易编写。但是PHP也有一些十分严重的缺陷。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	下面笔者会给出自己的理由，为什么PHP不适合于比小型业余网站更大的网站。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.&amp;nbsp;对递归的不良支持&amp;nbsp;&lt;/strong&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	递归是一种函数调用自身的机制。这是一种强大的特性可以把某些复杂的东西变得很简单。有一个使用递归的例子是快速排序（quicksort）。不幸的是，PHP并不擅长递归。Zeev，一个PHP开发人员，说道：“PHP&amp;nbsp;4.0（Zend）对密集数据使用了栈方式，而不是使用堆方式。也就是说它能容忍的递归函数的数量限制和其他语言比起来明显少。”见bug&amp;nbsp;1901。这是一个很不好的借口。每一个编程语言都应该提供良好的递归支持。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;2.&amp;nbsp;许多PHP模块都不是线程安全的&amp;nbsp;&lt;/strong&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在几年前，Apache发布了Web服务器的2.0版。这个版本支持多线程模式，在这个模式下，软件一个一部分可以同时运行多个。PHP的发明者说PHP的核心是线程安全的，但是非核心模块不一定是。但是十次有九次，你想要在PHP脚本中使用这种模块，但这又使你的脚本不能合适Apache的多线程模式。这也是为什么PHP小组不推荐在Apache&amp;nbsp;2&amp;nbsp;的多线程模式下运行PHP。不良的多线程模式支持使PHP常被认为是Apache&amp;nbsp;2依然不流行的原因之一。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	请阅读这篇讨论：&amp;nbsp;Slashdot:&amp;nbsp;Sites&amp;nbsp;Rejecting&amp;nbsp;Apache&amp;nbsp;2?.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.&amp;nbsp;PHP&amp;nbsp;由于商业原因而不健全&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通过使用缓存，PHP的性能可以陡增500%[见基准测试]。那么为什么缓存没有被构建在PHP中呢？因为Zend——PHP的制造者，它在销售自己的Zend&amp;nbsp;Accelerator，所以当然，他们不想抛弃自己的商业产品这块肥肉。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	但是有另一个可选择的：&amp;nbsp;APC.&amp;nbsp;（Zend后来推出Zend&amp;nbsp;Optimizer，免费的加速器——译者）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4.&amp;nbsp;没有命名空间&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	设想某个人制作了一个PHP模块用来阅读文件。模块中一个函数叫做read。然后另一个人的模块可以读取网页的，同样包含一个函数read。然后我们就无法同时使用这两个模块了，因为PHP不知道你要用哪个函数。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	但是有一个很简单的解决方法，那就是命名空间。曾经有人建议PHP5加入这个特性，但不幸得是他没有这么做。现在，没有命名空间，每个函数都必须加上模块名作为前缀，来避免名称冲突。这导致了函数名恐怖得长，例如xsl_xsltprocessor_transform_to_xml让代码难于书写和理解。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;5.&amp;nbsp;不标准的日期格式字符&amp;nbsp;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	很多程序员对&amp;nbsp;日期格式字符&amp;nbsp;都很熟悉，它是从UNIX和C语言中来的。其他一些编程语言采用了这个标准，但是很奇怪的，PHP有它自己的一套完全不兼容的日期格式字符。在C中，“%j”表示一年中的当天，在PHP中他表示一个月中的当天。然而使事情更混乱的是：Smarty&amp;nbsp;（一个很流行的PHP模版引擎）的&amp;nbsp;strftime&amp;nbsp;函数和&amp;nbsp;date_format&amp;nbsp;函数，却使用了C/UNIX的格式化字符。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		&lt;strong&gt;6.&amp;nbsp;混乱的许可证&lt;/strong&gt;&amp;nbsp;
+	&lt;/p&gt;
+	&lt;p&gt;
+		你也许认为&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/php/\"&amp;nbsp;target=\"_blank\"&gt;PHP&lt;/a&gt;是免费的，所有的在手册中提到的PHP模块也是免费的。错了！例如，如果你想在PHP中生成PDF文件，你会在手册中发现两个模块：PDF&amp;nbsp;和&amp;nbsp;ClibPDF。但是这两个都是有商业许可证的。所以，你所使用的每个模块，你都要确保你同意他的许可证。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;7.&amp;nbsp;不一致的函数命名规则&amp;nbsp;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		有些函数名称是有多个单词组成的。一般有三种单词组合的习惯：直接拼接：getnumberoffiles用下划线分开：get_number_of_files骆驼法则：getNumberOfFiles　　大部分语言选择其中一中。但是PHP都用到了。
+	&lt;/p&gt;
+	&lt;p&gt;
+		例如，你想要把一些特殊字符转换成HTML实体，你会使用函数htmlentities&amp;nbsp;（直接拼接单词）。如果你要使用相反的功能，你要用到它的小弟弟html_entity_decode。由于某些特殊的原因，这个函数名是由下划线分隔单词。怎么能这样呢？你知道有一个函数叫strpad。或者他是str_pad？每次你都要查看一下到底这个符号是什么或者直接等他出现一个错误。函数是不分大小写的，所以对于PHP来说rawurldecode&amp;nbsp;和RawUrlDecode之间没有什么区别。这也很糟糕，因为两个都使用到了同时他们看上去还不一样，混淆了阅读者。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;8.&amp;nbsp;Magic&amp;nbsp;quote的地狱&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		魔法引用（Magic&amp;nbsp;quote）可以保护PHP脚本免受SQL注入攻击。这很好。但是出于某些原因，你可以在php.ini中关闭这个配置。所以你如果要写出一个有弹性的脚本，你总要检查魔法引用是开启还是关闭。这样一个“特性”应该让编程更简单，而事实上变得更复杂了。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;9.&amp;nbsp;缺少标准框架&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		一个成长中的网站没有一个整体框架，最终会变成维护的噩梦。一个框架可以让很多工作变得简单。现在最流行的框架模型时MVC-模型，在其中表现层、业务逻辑和数据库访问都分离开了。
+	&lt;/p&gt;
+	&lt;p&gt;
+		很多PHP网站不使用MVC-模型。他们甚至没有一个框架。甚至现在有一些PHP框架同时你都可以自己写一个，关于PHP的文章和手册没有提高框架的一个字。同时JSP-开发人员使用像Struts的框架、ASP开发人员使用.Net，看起来好像这些概念都广泛被PHP开发人员所了解。这就说明了PHP实际上到底是多专业。
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>PHP确实十分容易编写。但是PHP也有一些十分严重的缺陷。
+
+
+	下面笔者会给出自己的理由，为什么PHP不适合于比小型业余网站更大的网站。
+
+
+	1. 对递归的不良支持  
+
+
+	递归是一种函数调用自身的机制。这是一种强大的特性可以把某些复杂的东西变得很简单。有一个使用递归的例子是快速排序（quicksort）。不幸的是，PHP并不擅长递归。Zeev，一个P</contentx>
+  <tags>_null_</tags>
+</root>

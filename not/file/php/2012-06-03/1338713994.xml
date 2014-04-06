@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP编程常用技巧四则</title>
+<content>&amp;lt;p&amp;gt;
+	PHP编程常用技巧四则:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.配置PHP文件目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为服务器端解释执行的脚本语言,PHP程序放置在某个服务器可以访问的目录下，一般可以通过修改Apache的httpd.conj进行配置，例如我们在该文件中的一句：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Alias&amp;nbsp;/test/&amp;nbsp;d:brhpwebsitebrhp/&amp;nbsp;那么在浏览器端输入：“http://localhost/test/+PHP文件名”就可以访问d:brhpwebsitebrhp/下的PHP文件了；可见该行不过是为存放PHP文件的目录起一个别名。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其次，还可以通过指定DocumentRoot路径得到存放服务器文件的目录，在httpd.conj找到以下两行，其中的路径可以随意指定，你的PHP文件也可以放在该目录下，服务器同样可以运行它们，如“http://localhost/+PHP文件名”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般的，将PHP文件放在同一个地方比较好，可以方便管理，而其他文件放在另外一个地方。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DocumentRoot&amp;nbsp;C:/usr/bin/html/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.服务器端目录的索引文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在httpd.conj中，有一行：&amp;nbsp;DirectoryIndex&amp;nbsp;index.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该行指定目录默认打开文件为index.html，当访问某个目录时，服务器就会自动查找index.html,&amp;nbsp;若果不存在，则显示目录中的所有文件列表，默认打开文件可以改为别的，如index.php3等等，但是也许我们有很多目录，无论是存放图片，文本等资料的，还是存放PHP文件或别的文件的目录，我们并不希望用户能看到目录中的文件列表，在httpd.conj&amp;nbsp;中指定了一个.htacess文件，该文件产生一个目录索引文件，例如我们用写字板建立一个.htacess文件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;.htacess&amp;nbsp;#
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DirectoryIndex&amp;nbsp;error_open.php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	再建立一个错误警告文件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;error_open.php&amp;nbsp;#
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其中的error_open.php为权限错误警告文件，将此2文件放在所有保护目录下，当用户企图打开目录时，自动转向执行error_open.php，显示错误警告。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.目录删除巧实现
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们知道，PHP4&amp;nbsp;for/win32中有个rename()函数可以支持对目录/文件进行重命名，如：&amp;nbsp;rename(&amp;nbsp;oldpath,&amp;nbsp;newpath)&amp;nbsp;//&amp;nbsp;oldpath为文件或目录原来路径；&amp;nbsp;//&amp;nbsp;newpath为新定义路径；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现将&amp;nbsp;oldpath改名为&amp;nbsp;newpath。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP4中没有删除目录/文件的函数，怎么作到删除呢？我们知道，php.ini中有一行用来完成HTTP上传操作的临时文件目录配置行：&amp;nbsp;upload_tmp_dir=&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP4支持该临时目录的配置(PHP3不支持)，当上载操作完成则自动清空临时目录，好了，用它我们可以巧妙的实现文件/目录的删除，比如设置：&amp;nbsp;upload_tmp_dir=d:brhpwebsitebrhp/tmp/&amp;nbsp;;&amp;nbsp;要删除某个目录&amp;nbsp;path,执行：&amp;nbsp;tmp=d:brhpwebsitebrhp/tmp/;&amp;nbsp;rename(&amp;nbsp;path,&amp;nbsp;tmp)&amp;nbsp;?&amp;amp;gt;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么文件或目录&amp;nbsp;path改名为&amp;nbsp;tmp后，&amp;nbsp;tmp目录下的所有文件/目录自动清除，就完成了删除操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.快速建立MySql数据库表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP和MySql数据库达到了完美结合，在网页上，比如在论坛或书屋发表作品的新用户，我们要把他的言论信息在线写入数据库中，往往要在相应的数据库中为该用户新建一个数据表。win32下建立新的MySQL空数据库很简单，只要在“/mysql/data/”目录下建立一个文件夹，如：/usrinfo/,就可以了。而向库中增添新表可通过以下程序实现：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;connect.mysql--连接数据库&amp;nbsp;#
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	connection&amp;nbsp;=&amp;nbsp;mysql_connect();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mysql_select_db(usrinfo,&amp;nbsp;connection);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#&amp;nbsp;make.php--&amp;nbsp;建立如下结构的，以用户名为表名的数据表&amp;nbsp;#
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//调用connect.mysql
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	require(connect.mysql);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//检查以用户名为表名的数据表存在否?&amp;nbsp;query=select&amp;nbsp;count(*)&amp;nbsp;from&amp;nbsp;usrname;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	result=mysql_db_query(&amp;nbsp;query);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//不存在则创建，如存在就是老用户；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(!&amp;nbsp;result)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;mysql_query(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	create&amp;nbsp;table&amp;nbsp;usrname(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	id&amp;nbsp;tinyint(6),
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	title&amp;nbsp;text,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	body&amp;nbsp;longtext,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dateof&amp;nbsp;date;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	timeof&amp;nbsp;time;&amp;nbsp;))&amp;nbsp;or&amp;nbsp;die(mysql_error());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//此处为向数据表插入新的数据部分
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	?&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-03/1338713994.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c/>
+  <uid-c>12</uid-c>
+  <date-c>2012-06-03+17%3A02%3A34</date-c>
+  <conf-c>不错啊</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

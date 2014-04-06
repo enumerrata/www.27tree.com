@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-01 19:23:43</datetime>
+  <title>MemSQL：“世界上最快”的数据库</title>
+  <content>&lt;p&gt;
+	近日，Eric&amp;nbsp;Frenkiel（前Facebook员工）和Nikita&amp;nbsp;Shamgunov（前微软SQL&amp;nbsp;Server高级工程师）推出了MemSQL数据库，该数据库的目标旨在提高关系型数据库的运行速度。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		MemSQL通过将数据放置在内存中，并将SQL语句翻译为C++，来达到查询执行最优化。这使得MemSQL以难以置信的速度写入和读取数据。Frenkiel称，MemSQL比磁盘型数据库的执行速度快了30倍。
+	&lt;/p&gt;
+	&lt;p&gt;
+		MemSQL提供了一个关系型接口，你可以将通常存储在暂时媒介（缓存或键值存储）中的数据进行统一，并连同现有数据直接放置到数据库中。
+	&lt;/p&gt;
+	&lt;p&gt;
+		除了速度快外，对于开发者来说，MemSQL的另一个优势是可以与MySQL很好地结合。从本质上讲，当磁盘中的MySQL数据需要更少的性能和更高的持久性时，MemSQL则扮演一个高性能内存层的角色。MemSQL使用一个SQL接口和MySQL&amp;nbsp;API，这意味着开发者不必学习新的东西。
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>近日，Eric Frenkiel（前Facebook员工）和Nikita Shamgunov（前微软SQL Server高级工程师）推出了MemSQL数据库，该数据库的目标旨在提高关系型数据库的运行速度。
+
+
+	
+		MemSQL通过将数据放置在内存中，并将SQL语句翻译为C++，来达到查询执行最优化。这使得MemSQL以难以置信的速度写入和读取数据。Fre</contentx>
+  <tags>_null_</tags>
+</root>

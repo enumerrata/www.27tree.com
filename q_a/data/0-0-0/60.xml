@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Js如何判断点击了 不是某个元素]]></title>
+  <content><![CDATA[<p>	比如
+</p>
+<p>
+	&lt;div id=\"a\"&gt;&lt;/div&gt;
+</p>
+<p>
+	&lt;div id=\"b\"&gt;&lt;/div&gt;
+</p>
+<p>
+	如何判断鼠标点击，然后点击了不是id=\"a\"这个元素??
+</p>]]></content>
+  <tags></tags>
+  <parseVersion>1.1</parseVersion>
+</root>

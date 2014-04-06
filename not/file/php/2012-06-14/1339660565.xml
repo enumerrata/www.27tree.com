@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>用Pear加速PHP程序开发</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	及时交付应用程序是确定解决方案采用何种技术的关键所在，PHP借助于PEAR（PHP&amp;nbsp;Extension&amp;nbsp;and&amp;nbsp;Application&amp;nbsp;Repository：PHP扩展与应用库）会大大促进其开发过程。PEAR是一种代码库，它为标准程序功能提供预先编写的类，从而大大降低了应用程序的开发时间。PEAR在概念上类同于Perl的CPAN，PEAR包含了具有丰富特性的功能函数，包括数据库、邮件和错误处理等。在采用PEAR的情况下，开发人员就可以部署和增强已经编写的基本函数同时把注意力集中到编写程序新功能这一方面上来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PEAR基础
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	创建PEAR的目的是为开发人员共享PHP代码和促进代码的重用提供一种标准化的方式。该项目始终处于开发的过程中，用户可以提交自己编写的代码供加入PEAR库使用，后者则同PHP捆绑。所有的PEAR包都在考虑到语法和可读性的情况下严格遵守编码规则，这些代码由用C语言编写的PHP或者PHP扩展所组成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	Stig&amp;nbsp;Bakken于1999年晚些时候开始着手开发PEAR项目。他的目的是创建一个有组织的代码库，由这个代码库起到PHP开发人员团体的资源库作用。该项目在过去的两年里成长的非常快，目前已经包含了相当多的、非常有用的可重用代码。虽然其他的PHP代码库也不少，比如&amp;nbsp;Zend的Code&amp;nbsp;Gallery和PHP&amp;nbsp;Builder的Source&amp;nbsp;Code&amp;nbsp;Snippet&amp;nbsp;Library等等都非常有名，但是，PEAR提供了一种便利函数之间互操作的标准。此外，提交给PEAR的代码会接受严格的检查，由这类标准和检查措施保证代码的质量和可靠性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	可用的功能
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PEAR分成三类：PEAR核心组件、PEAR包和PECL包。核心组件（Core&amp;nbsp;Component）包括PEAR和PEAR_Error的基类以及数据库、HTTP、日志记录和电子邮件函数等。PEAR包包括提供认证、联网和文件系统特性的函数以及采用XML和HTML模版的工具等。PECL包是对PHP的扩展，它用C语言编写，并不遵守编码规则。目前，所有这一类的代码都是实验性的。要了解有关PEAR功能的更多信息请参考&amp;nbsp;PEAR在线手册。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	假如你有兴趣给PEAR提交代码，你可以加入PEAR开发者邮件列表并且请求大家检查你的代码，从而实现以上目的。不过，你得注意到已经包括在库内的函数并且遵守PEAR的编码规则。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	从哪里获取PEAR
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PEAR捆绑在PHP发布包内，当你安装PHP的时候也就同时安装了PEAR。假如你打算获得一个稳定的版本，而且你可以在没有最新PEAR版本的情况下也活得下去，那么你可以从php.net的下载网页获得最新的PHP版本。假如你喜爱冒险，希望采用最新版本的PEAR，你可以按照匿名CVS访问的指示用CVS客户程序下载它。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	安装了PHP之后PEAR资源就会被放置到~/php/PEAR/&amp;nbsp;目录下。你不妨把自己的php目录位置增加到php.ini的include_path参数中来（比如：include_path&amp;nbsp;=&amp;nbsp;\".:/usr/local/lib/php\";），这样就可以使用PEAR功能了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	如何使用PEAR
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	现在所要做的无非是在用到函数和你编写的其他类的地方采用require_once()。清单A中的例子使用了PEAR的电子邮件特性Sendmail。这部分代码例示了PEAR库内的Mail.php文件，该文件是对PEAR.php类的扩展。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	接下来，我们设置一些必要的变量，它们是$recipients、$headers和$body，这些变量是所有PEAR&amp;nbsp;Mail函数和$params所需要的。你可以参在线PEAR手册找出这些变量的设置方法。在PEAR代码本身的注释中也蕴涵了很多信息，不过一般而言，网站对你的帮助还是最大的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	最后，示例代码会调用PEAR&amp;nbsp;Mail类。首先，我们用~/php/Mail.php文件中的Mail::factory方法为邮件驱动程序包含适当的类文件，在我们所举的例子里就是Sendmail（位于~/php/Mail/sendmail.php文件内）。接着，我们从PEAR&amp;nbsp;Mail类里实际调用邮件发送函数。当我们对Mail类实例化的时候采用引用（=&amp;amp;）就可以通过引用名$mail_object引用该类了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	假如你想了解PEAR&amp;nbsp;DB函数的用法，你不妨到Quick&amp;nbsp;Start&amp;nbsp;Guide&amp;nbsp;to&amp;nbsp;Pear&amp;nbsp;DB去看看，它是由Tomas&amp;nbsp;V.&amp;nbsp;V.&amp;nbsp;Cox负责维护的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	为什么使用PEAR
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	如上所述，PEAR功能部署简单，同时不需要额外的编程。虽然我们可以用PHP的固有函数达到同样的结果，但是，部署PEAR模块可以立即为我们带来错误检查等实际利益，同时还便利了程序的重用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	此外，越来越多的高级应用程序也开始采用PEAR了，而PEAR的代码库也在不断的增长之中。因为PEAR包含在PHP许可权之内，所以你可以免费使用或者修改你选择的函数。还有，你再也不必反复编写令人麻木的认证模块了，这对开发人员来说可是一项具有相当吸引力的好处，而且你还可以享受到定制开发的莫大优点。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	好处多多
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	采用合格的预编写、可重用代码，你就可以显着地加快应用程序的开发周期而不必在技术选择上过分地费脑筋了。PEAR是PHP团体为便利开发者而付出的努力所结出的硕果，它提供了实现优秀应用程序的一整套方法。采用PEAR代码以及为其做出自己的贡献不仅加快了项目交付时间，同时还可以在今天和未来开发出质量更好的应用程序
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660565.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-25 22:56:43</datetime>
+  <title>为什么 Node.js 很糟糕</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Node.JS是一个非常糟糕的平台，他的糟糕之处体现在非常简单而重要的一个方面，就是他的核心工作机制：基于I/O的回调。我想大家现在都知道。这种方式编写代码是很糟糕的。一段时间前我注意到了这个事情，在使用了Go语言几周后我喜欢上了他。使得，我承认Go语言比python少了一些动态特性，而导致做开发的时候可能会多出一些任务（主要是做一些样板）。Go比Python还少了一些“magic”的性质，从而代码具有明确性。Go的这种明确性使得你更容易的阅读源代码。因为没有了这些“magic”特性，你就不需要像在阅读python代码时那样努力的去思考到底代码是怎么回事。我们可以这么说，这其中会有些权衡利弊，Python、和Go各有利弊，Python的开发速度要快，而Go的代码维护要容易。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	可是，当你把这些事情往Node.JS上想的时候，你会发现没有了代码可维护性、没有了安心、得到了速度。可是我想说你真的得到了速度么？因为在此同时你同时失去了简易开发和简单维护。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我花费了很长时间去学习Node.JS，并试着做了一些东西，但是并没有成功，我是真的不知道从何开始。通常我评价一个技术的好坏，是通过它自身的一些性质。是否容易上手、是否能帮助我提高生产力、文档做的好不好、有没有帮助资源。很显然Node.JS没能通过上面的测试。在我学习了那么久之后我仍然没有做出一个产品。API参考虽然已经文档化了，但是我想说他并没有描述清楚如何把这些零散的东西组合起来体现生产力。异步的编程风格会让我的大脑崩溃。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	为什么我要在这上面浪费时间？我看到HN（Hacker&amp;nbsp;News）上的一些人说Node.JS有多好。我当时认为这些人都是很聪明的，Node.JS应该是一个不错的平台。很不幸，我花费了几个月时间最终发现这是一个非常糟糕的平台。我没能写出一点读起来很舒服的代码，（当然写起来也是很不舒服）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我开始怀疑我的编程能力！当然，一些读者可能会说：我们将Node.JS用到的生产环境，所以这是你的无能。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	也好，我接受，可能是我钻到某个牛角尖里了。但是我所说的权衡利弊的问题仍然成立，为了满足所承诺的可扩展性，你必须牺牲代码的可读性和可写性。而在Python下你可以非常方便的扩展。你可用gevent，一个基于网络库/服务器的并发框架。这就意味着IO阻塞将不再是问题，剩下的唯一问题是python的解释器，而这也可以通过分布式多服务器来解决负载均衡问题。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	那么，你选择Node.JS作为后台程序的理由是什么呢？
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	现在只有一件事情是Node.js可以而Python不可以的，那就是websockets。实际上我不确定是不是python确实不能，在Google后也许会找到一些方案。当然&amp;nbsp;Go可以很容易的实现websockets（go&amp;nbsp;get&amp;nbsp;code.google.com/p/go.net/websocket）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	即便你认为websocket就是你使用Node.js的原因，但是我想说你仍然可以选择使用Node.js实现websocket，而其余部分都是用Python来做。这里有个例子。是的，这个架构设计（联合Python和Node.js）可能是有点令人费解，但是还是要比使用Node.js开发整个web程序要好的多。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>Node.JS是一个非常糟糕的平台，他的糟糕之处体现在非常简单而重要的一个方面，就是他的核心工作机制：基于I/O的回调。我想大家现在都知道。这种方式编写代码是很糟糕的。一段时间前我注意到了这个事情，在使用了Go语言几周后我喜欢上了他。使得，我承认Go语言比python少了一些动态特性，而导致做开发的时候可能会多出一些任务（主要是做一些样板）。Go比Pytho</contentx>
+  <tags>_null_</tags>
+</root>

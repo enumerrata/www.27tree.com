@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVASE官方教程:接口之把接口作为类型使用(4)</title>
+<content>&amp;lt;p&amp;gt;
+	当你定义了一个接口,你也定义了一种引用数据类型(reference&amp;nbsp;data&amp;nbsp;type).你可以在任何可以使用其他数据类型名的地方使用接口名称.如果你定义了一个接口类型的变量,你只能用实现了这个接口的类的实例来给他赋值.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如,有一个在两个对象之中找出最大的方法,每一个对象都必须从实现了Relatable的类实例化:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;Object&amp;nbsp;findLargest(Object&amp;nbsp;object1,&amp;nbsp;Object&amp;nbsp;object2)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj1&amp;nbsp;=&amp;nbsp;(Relatable)object1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj2&amp;nbsp;=&amp;nbsp;(Relatable)object2;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(&amp;nbsp;(obj1).isLargerThan(obj2)&amp;nbsp;&amp;amp;gt;&amp;nbsp;0)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;object1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;object2;
+}&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		把object1转换成Relatable类型,他才能调用isLargerThan方法.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果你的许多类都实现了Relatable,这些从哪些类实例化的对象都可以通过findLargest()方法来比较--两个对象必须是同一个类的实例.同样,他们也可以通过下面的方法进行比较:
+	&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;Object&amp;nbsp;findSmallest(Object&amp;nbsp;object1,&amp;nbsp;Object&amp;nbsp;object2)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj1&amp;nbsp;=&amp;nbsp;(Relatable)object1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj2&amp;nbsp;=&amp;nbsp;(Relatable)object2;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(&amp;nbsp;(obj1).isLargerThan(obj2)&amp;nbsp;&amp;amp;lt;&amp;nbsp;0)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;object1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;object2;
+}
+
+public&amp;nbsp;boolean&amp;nbsp;isEqual(Object&amp;nbsp;object1,&amp;nbsp;Object&amp;nbsp;object2)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj1&amp;nbsp;=&amp;nbsp;(Relatable)object1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;Relatable&amp;nbsp;obj2&amp;nbsp;=&amp;nbsp;(Relatable)object2;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(&amp;nbsp;(obj1).isLargerThan(obj2)&amp;nbsp;==&amp;nbsp;0)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;true;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;
+}&amp;lt;/pre&amp;gt;
+不管他们的类继承是什么样子,这些方法对每个\"相关的\"对象起作用.
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-12/1336780589.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

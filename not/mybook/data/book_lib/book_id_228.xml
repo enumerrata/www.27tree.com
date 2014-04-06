@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Beginning CouchDB]]></title>
+  <author>Joe Lennon</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-05 00:15:15</submit-date-time>
+  <img-link>176e0d3c798746ea6cf4fc5607e51e09.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	The new world of cloud computing needs data storage.&nbsp;
+</p>
+<p>
+	<strong>CouchDB is the scalable, portable, simple database engine</strong> that is helping open source cloud architects put their data stores onto a firm foundation.&nbsp;
+</p>
+<p>
+	<strong>Beginning CouchDB</strong> provides the tools to begin using this very powerful database engine without having to pay license fees for the software, or worry about administrator\'s certifications or vast hardware requirements. This book teaches the fundamentals of one of the most powerful database engines ever created for the price of a good lunch. After reading this book and working through the examples, you\'ll be able to write your own applications for CouchDB quickly and easily. * In-depth, non-intimidating guide to CouchDB and how it differs from similar offerings such as SimpleDB and BigTable, and also how it differs from traditional relational and object-oriented databases such as Oracle, SQL Server, and MySQL. * Detailed explanation of how CouchDB works, its suitability for use in distributed environments, the role of Erlang, and other technical topics in a manner that does not obfuscate methods or results. JavaScript is extremely popular as a development language for CouchDB. No Erlang is required, but a little bit can\'t hurt either. * A tutorial-oriented approach to teaching readers how to use CouchDB, featuring many code examples and listings, as well as screenshots where relevant. What you\'ll learn * How to install CouchDB on Linux, Unix, Mac OS X, or Windows and enjoy its portability * How to use the CouchDB database and document-oriented databases, and the differences between document-oriented and traditional database management systems * How to use Futon, the administration interface for CouchDB * How to create and manage a basic CouchDB database * Intermediate CouchDB concepts, including views, the REST API, JSON, map/reduce, load balancing, replication, and scalability * How to develop full CouchDB applications to get the reader up and running with CouchDB development as quickly as possible Who this book is for This book will enlighten anyone who\'s curious about the post--Web 2.0 database landscape. If you\'re a software developer fluent in <strong>JavaScript or a database</strong> administrator who wants to learn about CouchDB and document-oriented databases, you\'ll enjoy this book. Although the book doesn\'t assume anything about your level of experience with database management systems, you\'ll get the most out of it if you have some experience using or administering databases. Table of Contents * Introduction to CouchDB * Installing CouchDB on Linux * Installing CouchDB on Mac OS X * Creating Your First CouchDB Database * Using Futon: The CouchDB Administration Interface * Introduction to JSON * Introduction to CouchDB Views * Map/Reduce * Advanced CouchDB Views * Developing CouchDB Applications with CouchApp * Developing Applications with CouchDB * Advanced CouchDB Topics * Mechanics of <strong>CouchDB</strong> Deployment
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

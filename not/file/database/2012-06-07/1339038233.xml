@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>不当编写SQL语句导致系统不安全</title>
+<content>&amp;lt;p&amp;gt;
+	在一般的多用户应用系统中，只有拥有正确的用户名和密码的用户才能进入该系统。我们通常需要编写用户登录窗口来控制用户使用该系统，这里以Visual&amp;nbsp;Basic+ADO为例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;一、漏洞的产生&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于登录的表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Users(name,pwd)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	建立一个窗体Frmlogin，其上有两个文本框Text1，Text2和两个命令按钮cmdok，cmdexit。两个文本框分别用于让用户输入用户名和密码，两个命令按钮用于“登录”和“退出”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、定义Ado&amp;nbsp;Connection对象和ADO&amp;nbsp;RecordSet对象：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Option&amp;nbsp;Explicit
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dim&amp;nbsp;Adocon&amp;nbsp;As&amp;nbsp;ADODB.Connection
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dim&amp;nbsp;Adors&amp;nbsp;As&amp;nbsp;ADODB.Recordset
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、在Form_Load中进行数据库连接：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Set&amp;nbsp;Adocon&amp;nbsp;=&amp;nbsp;New&amp;nbsp;ADODB.Connection
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Adocon.CursorLocation&amp;nbsp;=&amp;nbsp;adUseClient
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	adocon.Open&amp;nbsp;\"Provider=Microsoft.jet.OLeDB.4.0.1;Data&amp;nbsp;Source=\"&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;_
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	App.Path&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;\"&amp;nbsp;est.mdb;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cmdok中的代码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dim&amp;nbsp;sqlstr&amp;nbsp;As&amp;nbsp;String
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sqlstr&amp;nbsp;=&amp;nbsp;\"select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;usersswheresname=&amp;nbsp;\"&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;Text1.Text&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;_
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\"&amp;nbsp;&amp;nbsp;and&amp;nbsp;pwd=&amp;nbsp;\"&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;Text2.Text&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;\"&amp;nbsp;\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Set&amp;nbsp;adors&amp;nbsp;=&amp;nbsp;New&amp;nbsp;ADODB.Recordset
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Set&amp;nbsp;Adors=Adocon.Execute(sqlstr)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	If&amp;nbsp;Adors.Recordcount&amp;amp;gt;0&amp;nbsp;Then&amp;nbsp;//或If&amp;nbsp;Not&amp;nbsp;Adors.EOF&amp;nbsp;then
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	....
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MsgBox&amp;nbsp;\"Pass\"&amp;nbsp;//通过验证
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	...
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MsgBox&amp;nbsp;\"Fail\"&amp;nbsp;//未通过验证
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	End&amp;nbsp;if
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		运行该程序，看起来这样做没有什么问题，但是当在Text1中输入任意字符串(如123)，在Text2中输入a&amp;nbsp;&amp;nbsp;or
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;a&amp;nbsp;=&amp;nbsp;a时，我们来看sqlstr此时的值：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;usersswheresname=&amp;nbsp;123&amp;nbsp;&amp;nbsp;and&amp;nbsp;pwd=&amp;nbsp;a&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;a&amp;nbsp;=&amp;nbsp;a&amp;nbsp;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		执行这样一个SQL语句，由于or之后的&amp;nbsp;a&amp;nbsp;=&amp;nbsp;a&amp;nbsp;为真值，只要users表中有记录，则它的返回的eof值一定为False,这样就轻易地绕过
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		了系统对于用户和密码的验证。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		这样的问题将会出现在所有使用select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;usersswheresname=&amp;nbsp;\"&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;name
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;amp;&amp;amp;&amp;nbsp;\"&amp;nbsp;&amp;nbsp;and&amp;nbsp;pwd=&amp;nbsp;\"&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;password
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;amp;&amp;amp;\"&amp;nbsp;的各种系统中，无论你是使用那种编程语言。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;二、漏洞的特点&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		在网络上，以上问题尤其明显，笔者在许多网站中都发现能使用这种方式进入需要进行用户名和密码验证的系统。这样的一个SQL漏洞具有如下的特点：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		1、与编程语言或技术无关
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		无论是使用VB、Delphi还是ASP、JSP。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		2、隐蔽性
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		现有的系统中有相当一部分存在着这个漏洞，而且不易觉察。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		3、危害性
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		不需要进行用户名或密码的猜测即可轻易进入系统。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;三、解决漏洞的方法&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		1、控制密码中不能出现空格。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		2、对密码采用加密方式。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		这里要提及一点，加密不能采用过于简单的算法，因为过于简单的算法会让人能够构造出形如a&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;a&amp;nbsp;=&amp;nbsp;a的密文，从而进入系统。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		3、将用户验证和密码验证分开来做，先进行用户验证，如果用户存在，再进行密码验证，这样一来也能解决问题。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-07/1339038233.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

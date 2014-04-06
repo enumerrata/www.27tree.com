@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>C#本质论</title>
+  <author>（美）米凯利斯</author>
+  <submiter-uid>37</submiter-uid>
+  <submit-date-time>2012-09-27 19:14:00</submit-date-time>
+  <img-link>4f5e5ffe7077fd871fe51491511b3123.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Mark&amp;nbsp;Michaelis，微软Visual&amp;nbsp;Studio&amp;nbsp;MVP，现任Itron公司企业架构师，并在著名顾问公司Pluralsight担任导师。他是广受尊敬的资深C#专家，曾经受邀担任C#和VSTS等多个微软产品的软件设计审查顾问。除本书外，他还与Herbert&amp;nbsp;Schildt合写过COM+方面的著作。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书是一部好评如潮的语言参考书，作者用一种非常合理的方式来组织本书的内容，由浅入深地介绍了C#语言的各个方面。全书共包括21章及6个附录，每章开头的“思维导图”指明了本章要讨论的主题，以及各个主题之间的层次关系。书中所包含的丰富的示例代码和精要的语言比较，都有助于读者理解C#语言。本书首先介绍了C#语言的基础知识，随后深入讲解了泛型、迭代器、反射、线程、互操作性和语言集成查询(LINQ)等高级主题，还涉及了动态编程、使用TPL进行多线程编程以及用PLINQ进行并行查询处理等C#&amp;nbsp;4.0新增内容，此外还介绍了与这些内容相关的隐式类型变量、扩展方法、分部方法、Lambda语句和表达式、标准查询操作符和查询表达式以及并发集合等内容。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书适合对C#感兴趣的各层次读者，无论对初学者还是C#专家，本书都是一本很有价值的参考书。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		内容全面翔实，讲解精彩权威
+	&lt;/p&gt;
+	&lt;p&gt;
+		C#入门进阶的首选之作
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

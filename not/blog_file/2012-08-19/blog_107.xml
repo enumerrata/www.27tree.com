@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-19 17:47:31</datetime>
+  <title>深入浅出数据库索引的实现</title>
+  <content>&lt;p&gt;
+	基本操作包括：INSERT、UPDATE、DELETE、SELECT。就是增删改查
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;1.SELECT&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	①定位数据
+&lt;/p&gt;
+&lt;p&gt;
+	②读出数据所在的块，对数据加工
+&lt;/p&gt;
+&lt;p&gt;
+	mysqlupdate③返回数据给用户
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;2.UPDATE、DELETE&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	①定位数据
+&lt;/p&gt;
+&lt;p&gt;
+	②读出数据所在的块，修改数据
+&lt;/p&gt;
+&lt;p&gt;
+	③写回磁盘
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;3.INSERT&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	①定位数据要插入的页(如果数据需要排序)
+&lt;/p&gt;
+&lt;p&gt;
+	②读出要插入的数据页，插入数据.
+&lt;/p&gt;
+&lt;p&gt;
+	③写回磁盘
+&lt;/p&gt;
+&lt;p&gt;
+	如何定位数据?
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;4.表扫描(TableScan)&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	从磁盘中依次读出所有的数据块，一行一行的进行数据匹配。
+&lt;/p&gt;
+&lt;p&gt;
+	时间复杂度是O(n)，如果所有的数据占用了100个块。尽管只查询一行数据，也需要读出所有100个块的数据。
+&lt;/p&gt;
+&lt;p&gt;
+	需要大量的磁盘IO操作，极大的影响了数据定位的性能。
+&lt;/p&gt;
+&lt;p&gt;
+	因为数据定位操作是所有数据操作必须的操作，数据定位操作的效率会直接影响所有的数据操作的效率。
+&lt;/p&gt;
+&lt;p&gt;
+	因此我们开始思考，如何来减少磁盘的IO?
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;5.减少磁盘IO&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	减少数据占用的磁盘空间：压缩算法、优化数据存储结构
+&lt;/p&gt;
+&lt;p&gt;
+	减少访问数据的总量：读出或写入的数据中，有一部分是数据操作所必须的，这部分称作&lt;a&amp;nbsp;href=\"http://www.itsrcs.com\"&amp;nbsp;target=\"_blank\"&gt;有效数据&lt;/a&gt;。剩余的部分则不是数据操作必须的数据，称为无效数据。例如，查询姓名是‘张三’的记录。那么这条记录是有效记录，其他记录则是无效记录。我们要&lt;strong&gt;努力减少无效数据的访问。&lt;/strong&gt;
+&lt;/p&gt;</content>
+  <contentx>基本操作包括：INSERT、UPDATE、DELETE、SELECT。就是增删改查
+
+
+	1.SELECT
+
+
+	①定位数据
+
+
+	②读出数据所在的块，对数据加工
+
+
+	mysqlupdate③返回数据给用户
+
+
+	2.UPDATE、DELETE
+
+
+	①定位数据
+
+
+	②读出数据所在的块，修改数据
+
+
+	③写回磁盘
+
+
+	3.INSERT
+
+
+	①定位数据</contentx>
+  <tags>_null_</tags>
+</root>

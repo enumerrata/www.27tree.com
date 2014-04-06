@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-27 13:00:48</datetime>
+  <title>HTTP_X_FORWARDED_FOR,HTTP_VIA,REMOTE_ADDR三者的区别</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一、没有使用代理服务器的情况：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REMOTE_ADDR&amp;nbsp;=&amp;nbsp;您的&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_VIA&amp;nbsp;=&amp;nbsp;没数值或不显示
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_X_FORWARDED_FOR&amp;nbsp;=&amp;nbsp;没数值或不显示
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	二、使用透明代理服务器的情况：Transparent&amp;nbsp;Proxies
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REMOTE_ADDR&amp;nbsp;=&amp;nbsp;最后一个代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_VIA&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_X_FORWARDED_FOR&amp;nbsp;=&amp;nbsp;您的真实&amp;nbsp;IP&amp;nbsp;，经过多个代理服务器时，这个值类似如下：203.98.182.163,&amp;nbsp;203.98.182.163,&amp;nbsp;203.129.72.215。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这类代理服务器还是将您的信息转发给您的访问对象，无法达到隐藏真实身份的目的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	三、使用普通匿名代理服务器的情况：Anonymous&amp;nbsp;Proxies
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REMOTE_ADDR&amp;nbsp;=&amp;nbsp;最后一个代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_VIA&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_X_FORWARDED_FOR&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP&amp;nbsp;，经过多个代理服务器时，这个值类似如下：203.98.182.163,&amp;nbsp;203.98.182.163,&amp;nbsp;203.129.72.215。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	隐藏了您的真实IP，但是向访问对象透露了您是使用代理服务器访问他们的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	四、使用欺骗性代理服务器的情况：Distorting&amp;nbsp;Proxies
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REMOTE_ADDR&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_VIA&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_X_FORWARDED_FOR&amp;nbsp;=&amp;nbsp;随机的&amp;nbsp;IP&amp;nbsp;，经过多个代理服务器时，这个值类似如下：203.98.182.163,&amp;nbsp;203.98.182.163,&amp;nbsp;203.129.72.215。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	告诉了访问对象您使用了代理服务器，但编造了一个虚假的随机IP代替您的真实IP欺骗它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	五、使用高匿名代理服务器的情况：High&amp;nbsp;Anonymity&amp;nbsp;Proxies&amp;nbsp;(Elite&amp;nbsp;proxies)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REMOTE_ADDR&amp;nbsp;=&amp;nbsp;代理服务器&amp;nbsp;IP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_VIA&amp;nbsp;=&amp;nbsp;没数值或不显示
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	HTTP_X_FORWARDED_FOR&amp;nbsp;=&amp;nbsp;没数值或不显示&amp;nbsp;，经过多个代理服务器时，这个值类似如下：203.98.182.163,&amp;nbsp;203.98.182.163,&amp;nbsp;203.129.72.215。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	完全用代理服务器的信息替代了您的所有信息，就象您就是完全使用那台代理服务器直接访问对象。
+&lt;/p&gt;</content>
+  <contentx>一、没有使用代理服务器的情况：
+
+
+	REMOTE_ADDR = 您的 IP
+
+
+	HTTP_VIA = 没数值或不显示
+
+
+	HTTP_X_FORWARDED_FOR = 没数值或不显示
+
+
+	二、使用透明代理服务器的情况：Transparent Proxies
+
+
+	REMOTE_ADDR = 最后一个代理服务器 IP
+
+
+	HTTP_VIA = 代理服</contentx>
+  <tags>_null_</tags>
+</root>

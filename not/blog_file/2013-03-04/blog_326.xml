@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[在C#应用程序中获取和设置IE浏览器Cookie]]></title>
+  <content><![CDATA[<p>
+	近10个月所做的工作都是和网页爬取、交互模拟等等相关的，关于HttpWebRequest、HttpWebResponse的用法已经是烂熟于心了。
+</p>
+<p>
+	但是近日在猪八戒上接了一个活，要在浏览器上做类似的交互模拟。
+</p>
+<p>
+	需求：在自己的网页上输入账号密码，然后通过模拟交互使得登陆进入指定网页。
+</p>
+<br>
+<p>
+	结果网页继承的System.Web.UI.Page类， 当中的Request、Response是HttpRequet、HttpResponse类。
+</p>
+<p>
+	然后原本简单的模拟交互，可把我难倒了。因为HttpRequest 大部分属性都是只读，无法像HttpWebRequest一样去模拟网页交互。之后原本想通过将交互后的网页Cookie写入Response当中来模拟，结果依旧失败。最后只得在网上找了一个将cookie写入浏览器当中的方法。但是可悲的只找到一个写入IE浏览器的。
+</p>
+<br>
+<p>
+	如果有人有什么更好的解决方法，麻烦指定一下。然后本人已经决定与HttpRequest、HttpResponse这两个类干上了（仔细去研究一下）。
+</p>
+<p>
+	提示一下lpszUrlName 这个变量实际输入的是实际访问网址的根目录，而不是目标网址。
+</p>
+<br>
+<p>
+	以下内容转载至&nbsp;<a href=\"http://blog.csdn.net/kobayasi/article/details/4063481\" target=\"_blank\">http://blog.csdn.net/kobayasi/article/details/4063481</a>
+</p>
+<p>
+	最近写程序，需要使用C#应用程序访问一网站，获取相应的Cookie，然后使用该Cookie用IE浏览器打开指定的页面。
+</p>
+<p>
+	恩，好比用QQ打开浏览器自动登录你的QQ空间。
+</p>
+<p>
+	从网上了解了下，一般都是用非托管动态链接库来实现，具体如下：
+</p>
+<p>
+	声明部分代码：
+</p>
+<p>
+	using System.Runtime.InteropServices;
+</p>
+<p>
+	读取函数
+</p>
+<p>
+	[DllImport(\"wininet.dll\", CharSet = CharSet.Auto, SetLastError = true)]
+</p>
+<p>
+	public static extern bool InternetSetCookie(string lpszUrlName, string lbszCookieName, string lpszCookieData);
+</p>
+<p>
+	写入函数
+</p>
+<p>
+	[DllImport(\"wininet.dll\", CharSet = CharSet.Auto, SetLastError = true)]
+</p>
+<p>
+	public static extern bool InternetGetCookie(string lpszUrlName, string lbszCookieName, StringBuilder lpszCookieData, ref int lpdwSize);
+</p>
+<p>
+	检测错误函数
+</p>
+<p>
+	[DllImport(\"kernel32.dll\")]
+</p>
+<p>
+	public static extern Int32 GetLastError(); &nbsp;
+</p>
+<p>
+	使用部分代码
+</p>
+<p>
+	设置cookie
+</p>
+<p>
+	if (!InternetSetCookie(\"http://xxxx/xxxx.htm\", \"Test\", \"Sent as Test via VB+ ;expires=Sun,22-Feb-2099 00:00:00 GMT\"))
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MessageBox.Show(GetLastError().ToString());
+</p>
+<p>
+	}
+</p>
+<p>
+	读取cookie
+</p>
+<p>
+	int size = 1000;
+</p>
+<p>
+	StringBuilder cookie = new StringBuilder(size);
+</p>
+<p>
+	if (!InternetGetCookie(\"http://xxxx/xxxx.htm\", \"Test\", cookie, ref size))
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MessageBox.Show(GetLastError().ToString());
+</p>
+<p>
+	}
+</p>
+<p>
+	else
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MessageBox.Show(cookie.ToString());
+</p>
+<p>
+	}
+</p>
+<p>
+	需要注意的几点：
+</p>
+<p>
+	1、StringBuilder lpszCookieData, ref int lpdwSize 这两个变量并非绝对如此设置， 也有设置成string和long类型的，根据需要选择
+</p>
+<p>
+	2、设置cookie有两种，一种是会话级的，即脱离会话cookie即清楚，一种是持久性的，程序结束也仍然存在，直到超期。
+</p>
+<p>
+	会话级的cookie很特别，因为它是保存在内存中的，所以你在Temporary Internet Files文件夹中是找不到它的，只能在你设置cookie的应用程序中读出。而持久性cookie就可以在Temporary Internet Files文件夹中找到。这种cookie才能进行传递。两种cookie的设置程序是一样的，唯一的区别是持久性cookie设置要在cookie值后附加上“;expires=Sun,22-Feb-2099 00:00:00 GMT\"，过期时间可以根据需要自定。
+</p>
+<p>
+	顺便补充下如何在C#程序中调用浏览器，代码很简单，如下：
+</p>
+<p>
+	System.Diagnostics.Process.Start(\"http://www.google.com\");//默认浏览器
+</p>
+<p>
+	System.Diagnostics.Process.Start(\"IEXPLORE.EXE\",\"http://expert.csdn.net\") ;//指定浏览器
+</p>
+<p>
+	其实该函数可以做的事情还很多，下面是MSDN说明
+</p>
+<p>
+	该函数MSDN说明名称说明Process.Start ()启动（或重用）此 Process 组件的 StartInfo 属性指定的进程资源，并将其与该组件关联。由 .NET Compact Framework 支持。Process.Start (ProcessStartInfo)启动由包含进程启动信息（例如，要启动的进程的文件名）的参数指定的进程资源，并将该资源与新的 Process 组件关联。由 .NET Compact Framework 支持。Process.Start (String)通过指定文档或应用程序文件的名称来启动进程资源，并将资源与新的 Process 组件关联。Process.Start (String, String)通过指定应用程序的名称和一组命令行参数来启动一个进程资源，并将该资源与新的 Process 组件相关联。由 .NET Compact Framework 支持。Process.Start (String, String, SecureString, String)通过指定应用程序的名称、用户名、密码和域来启动一个进程资源，并将该资源与新的 Process 组件关联起来。Process.Start (String, String, String, SecureString, String)通过指定应用程序的名称和一组命令行参数、用户名、密码和域来启动一个进程资源，并将该资源与新的 Process 组件关联起来。
+</p>]]></content>
+  <contentx><![CDATA[
+	近10个月所做的工作都是和网页爬取、交互模拟等等相关的，关于HttpWebRequest、HttpWebResponse的用法已经是烂熟于心了。
+
+
+	但是近日在猪八戒上接了一个活，要在浏览器上做类似的交互模拟。
+
+
+	需求：在自己的网]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

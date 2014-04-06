@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Spring技术内幕-深入解析 Spring架构与设计原理]]></title>
+  <author>计文柯</author>
+  <submiter-uid>309</submiter-uid>
+  <submit-date-time>2013-02-19 18:57:44</submit-date-time>
+  <img-link>65fe046cc980ecab12ac5f6b8d4ec1aa.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	作者从业10余载，悟透Spring等开源软件的本质，权威性毋庸置疑。
+</p>
+<p>
+	Java开发者社区、专业Spring开发者社区和架构师社区一致鼎力推荐！
+</p>
+<p>
+	深入解析Spring架构原理与设计思想，探究Spring成功的奥秘。
+</p>
+<p>
+	揭开Spring源代码的神秘面纱，展示系统阅读开源软件源代码的方法和秘诀。
+</p>
+<p>
+	掌握Spring的架构原理与设计思想真的能让开发者如虎添翼吗？
+</p>
+<p>
+	IoC容器如何掌控以POJO为基础的Bean对象？它的轻量级开发设计思想是如何实现的？
+</p>
+<p>
+	Spring产品级的IoC容器是如何作为一个完整的系统实现并运行的？它如何启动？如何完成Bean的解析和载入？又如何实现Bean的生命周期管理？
+</p>
+<p>
+	Spring如何简捷地在JVM上实现AOP功能？
+</p>
+<p>
+	Spring AOP如何实现Aspect编织功能？
+</p>
+<p>
+	Spring如何实现各种数据库操作组件的集成？
+</p>
+<p>
+	Spring如何在Web环境中集成IoC容器并为Web应用开发提供利器？
+</p>
+<p>
+	我们耳熟能详的MVC模式在Spring中是如何实现的？
+</p>
+<p>
+	Spring MVC如何灵活地集成各种丰富的视图展现方案？
+</p>
+<p>
+	Spring实现远端调用的方案有很多种，你知道它们之间的优劣差异吗？
+</p>
+<p>
+	Spring ACEGI安全框架在用户验证和授权机制的实现上有何过人之处？
+</p>
+<p>
+	如何在Spring的基础上进行扩展开发？
+</p>
+<p>
+	你是否曾经也有过分析开源软件源代码的冲动？你想掌握分析源代码的最佳实践吗？
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

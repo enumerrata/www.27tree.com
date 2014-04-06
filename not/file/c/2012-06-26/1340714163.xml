@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言教程：枚举,位运算</title>
+<content>&amp;lt;p&amp;gt;
+	枚举
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在实际问题中，&amp;nbsp;有些变量的取值被限定在一个有限的范围内。例如，一个星期内只有七天，一年只有十二个月，&amp;nbsp;一个班每周有六门课程等等。如果把这些量说明为整型，&amp;nbsp;字符型或其它类型显然是不妥当的。&amp;nbsp;为此，Ｃ语言提供了一种称为“枚举”的类型。在“枚举”类型的定义中列举出所有可能的取值，&amp;nbsp;被说明为该“枚举”类型的变量取值不能超过定义的范围。应该说明的是，&amp;nbsp;枚举类型是一种基本数据类型，而不是一种构造类型，&amp;nbsp;因为它不能再分解为任何基本类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	枚举类型的定义和枚举变量的说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、枚举的定义枚举类型定义的一般形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enum&amp;nbsp;枚举名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;枚举值表&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在枚举值表中应罗列出所有可用值。这些值也称为枚举元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：&amp;nbsp;enum&amp;nbsp;weekday
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;sun,mou,tue,wed,thu,fri,sat&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该枚举名为weekday，枚举值共有7个，即一周中的七天。&amp;nbsp;凡被说明为weekday类型变量的取值只能是七天中的某一天。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、枚举变量的说明&amp;nbsp;如同结构和联合一样，枚举变量也可用不同的方式说明，&amp;nbsp;即先定义后说明，同时定义说明或直接说明。设有变量a,b,c被说明为上述的weekday，可采用下述任一种方式：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enum&amp;nbsp;weekday
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	......
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enum&amp;nbsp;weekday&amp;nbsp;a,b,c;或者为：&amp;nbsp;enum&amp;nbsp;weekday
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	......
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}a,b,c;或者为：&amp;nbsp;enum
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	......
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}a,b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	枚举类型变量的赋值和使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	枚举类型在使用中有以下规定：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;枚举值是常量，不是变量。不能在程序中用赋值语句再对它赋值。例如对枚举weekday的元素再作以下赋值：&amp;nbsp;sun=5;mon=2;sun=mon;&amp;nbsp;都是错误的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;枚举元素本身由系统定义了一个表示序号的数值，从0&amp;nbsp;开始顺序定义为0，1，2…。如在weekday中，sun值为0，mon值为1，&amp;nbsp;…,sat值为6。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enum&amp;nbsp;weekday
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;sun,mon,tue,wed,thu,fri,sat&amp;nbsp;}&amp;nbsp;a,b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=sun;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=mon;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=tue;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%d,%d,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;只能把枚举值赋予枚举变量，不能把元素的数值直接赋予枚举变量。如：&amp;nbsp;a=sum;b=mon;&amp;nbsp;是正确的。而：&amp;nbsp;a=0;b=1;&amp;nbsp;是错误的。如一定要把数值赋予枚举变量，则必须用强制类型转换，如：&amp;nbsp;a=(enum&amp;nbsp;weekday)2;其意义是将顺序号为2的枚举元素赋予枚举变量a，相当于：&amp;nbsp;a=tue;&amp;nbsp;还应该说明的是枚举元素不是字符常量也不是字符串常量，&amp;nbsp;使用时不要加单、双引号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	enum&amp;nbsp;body
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;a,b,c,d&amp;nbsp;}&amp;nbsp;month[31],j;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	j=a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=1;i&amp;amp;lt;=30;i++){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	month[i]=j;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	j++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(j&amp;amp;gt;d)&amp;nbsp;j=a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=1;i&amp;amp;lt;=30;i++){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	switch(month[i])
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	case&amp;nbsp;a:printf(&amp;nbsp;%2d&amp;nbsp;%c\t,i,&amp;nbsp;a&amp;nbsp;);&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	case&amp;nbsp;b:printf(&amp;nbsp;%2d&amp;nbsp;%c\t,i,&amp;nbsp;b&amp;nbsp;);&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	case&amp;nbsp;c:printf(&amp;nbsp;%2d&amp;nbsp;%c\t,i,&amp;nbsp;c&amp;nbsp;);&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	case&amp;nbsp;d:printf(&amp;nbsp;%2d&amp;nbsp;%c\t,i,&amp;nbsp;d&amp;nbsp;);&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	default:break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	位运算
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前面介绍的各种运算都是以字节作为最基本位进行的。&amp;nbsp;但在很多系统程序中常要求在位(bit)一级进行运算或处理。Ｃ语言提供了位运算的功能，&amp;nbsp;这使得Ｃ语言也能像汇编语言一样用来编写系统程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、位运算符Ｃ语言提供了六种位运算符：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;&amp;nbsp;按位与
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;brvbar;&amp;nbsp;按位或
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	^&amp;nbsp;按位异或
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~&amp;nbsp;取反
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;amp;lt;&amp;nbsp;左移
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;gt;&amp;amp;gt;&amp;nbsp;右移
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;按位与运算&amp;nbsp;按位与运算符&amp;amp;是双目运算符。其功能是参与运算的两数各对应的二进位相与。只有对应的两个二进位均为1时，结果位才为1&amp;nbsp;，否则为0。参与运算的数以补码方式出现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：9&amp;amp;5可写算式如下：&amp;nbsp;00001001&amp;nbsp;(9的二进制补码)&amp;amp;00000101&amp;nbsp;(5的二进制补码)　00000001&amp;nbsp;(1的二进制补码)可见9&amp;amp;5=1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	按位与运算通常用来对某些位清0或保留某些位。例如把a&amp;nbsp;的高八位清&amp;nbsp;0&amp;nbsp;，&amp;nbsp;保留低八位，&amp;nbsp;可作&amp;nbsp;a&amp;amp;255&amp;nbsp;运算&amp;nbsp;(&amp;nbsp;255&amp;nbsp;的二进制数为0000000011111111)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=9,b=5,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a&amp;amp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d\nb=%d\nc=%d\n,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;按位或运算&amp;nbsp;按位或运算符“&amp;brvbar;”是双目运算符。其功能是参与运算的两数各对应的二进位相或。只要对应的二个二进位有一个为1时，结果位就为1。参与运算的两个数均以补码出现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：9&amp;brvbar;5可写算式如下：&amp;nbsp;00001001&amp;brvbar;00000101
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	00001101&amp;nbsp;(十进制为13)可见9&amp;brvbar;5=13
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=9,b=5,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a&amp;brvbar;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d\nb=%d\nc=%d\n,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;按位异或运算&amp;nbsp;按位异或运算符“^”是双目运算符。其功能是参与运算的两数各对应的二进位相异或，当两对应的二进位相异时，结果为1。参与运算数仍以补码出现，例如9^5可写成算式如下：&amp;nbsp;00001001^00000101&amp;nbsp;00001100&amp;nbsp;(十进制为12)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=9;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=a^15;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d\n,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;求反运算&amp;nbsp;求反运算符～为单目运算符，具有右结合性。&amp;nbsp;其功能是对参与运算的数的各二进位按位求反。例如～9的运算为：&amp;nbsp;~(0000000000001001)结果为：1111111111110110
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;左移运算&amp;nbsp;左移运算符“&amp;amp;lt;&amp;amp;lt;”是双目运算符。其功能把“&amp;amp;lt;&amp;amp;lt;&amp;nbsp;”左边的运算数的各二进位全部左移若干位，由“&amp;amp;lt;&amp;amp;lt;”右边的数指定移动的位数，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	高位丢弃，低位补0。例如：&amp;nbsp;a&amp;amp;lt;&amp;amp;lt;4&amp;nbsp;指把a的各二进位向左移动4位。如a=00000011(十进制3)，左移4位后为00110000(十进制48)。6.&amp;nbsp;右移运算&amp;nbsp;右移运算符“&amp;amp;gt;&amp;amp;gt;”是双目运算符。其功能是把“&amp;amp;gt;&amp;amp;gt;&amp;nbsp;”左边的运算数的各二进位全部右移若干位，“&amp;amp;gt;&amp;amp;gt;”右边的数指定移动的位数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：设&amp;nbsp;a=15，a&amp;amp;gt;&amp;amp;gt;2　表示把000001111右移为00000011(十进制3)。&amp;nbsp;应该说明的是，对于有符号数，在右移时，符号位将随同移动。当为正数时，&amp;nbsp;最高位补0，而为负数时，符号位为1，最高位是补0或是补1&amp;nbsp;取决于编译系统的规定。Turbo&amp;nbsp;C和很多系统规定为补1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;a,b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(input&amp;nbsp;a&amp;nbsp;number:&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	scanf(%d,&amp;amp;a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=a&amp;amp;gt;&amp;amp;gt;5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=b&amp;amp;15;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d\tb=%d\n,a,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	请再看一例!
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a=&amp;nbsp;a&amp;nbsp;,b=&amp;nbsp;b&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;p,c,d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=(p&amp;amp;lt;&amp;amp;lt;8)&amp;brvbar;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=p&amp;amp;0xff;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=(p&amp;amp;0xff00)&amp;amp;gt;&amp;amp;gt;8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d\nb=%d\nc=%d\nd=%d\n,a,b,c,d);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	位域
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有些信息在存储时，并不需要占用一个完整的字节，&amp;nbsp;而只需占几个或一个二进制位。例如在存放一个开关量时，只有0和1&amp;nbsp;两种状态，&amp;nbsp;用一位二进位即可。为了节省存储空间，并使处理简便，Ｃ语言又提供了一种数据结构，称为“位域”或“位段”。所谓“位域”是把一个字节中的二进位划分为几个不同的区域，&amp;nbsp;并说明每个区域的位数。每个域有一个域名，允许在程序中按域名进行操作。&amp;nbsp;这样就可以把几个不同的对象用一个字节的二进制位域来表示。一、位域的定义和位域变量的说明位域定义与结构定义相仿，其形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;位域结构名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;位域列表&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其中位域列表的形式为：&amp;nbsp;类型说明符&amp;nbsp;位域名：位域长度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;bs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a:8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;b:2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c:6;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	位域变量的说明与结构变量说明的方式相同。&amp;nbsp;可采用先定义后说明，同时定义说明或者直接说明这三种方式。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;bs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a:8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;b:2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c:6;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}data;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明data为bs变量，共占两个字节。其中位域a占8位，位域b占2位，位域c占6位。对于位域的定义尚有以下几点说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;一个位域必须存储在同一个字节中，不能跨两个字节。如一个字节所剩空间不够存放另一位域时，应从下一单元起存放该位域。也可以有意使某位域从下一单元开始。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;bs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;a:4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;:0&amp;nbsp;/*空域*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;b:4&amp;nbsp;/*从下一单元开始存放*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;c:4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在这个位域定义中，a占第一字节的4位，后4位填0表示不使用，b从第二字节开始，占用4位，c占用4位。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;由于位域不允许跨两个字节，因此位域的长度不能大于一个字节的长度，也就是说不能超过8位二进位。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;位域可以无位域名，这时它只用来作填充或调整位置。无名的位域是不能使用的。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;k
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a:1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;:2&amp;nbsp;/*该2位不能使用*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;b:3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c:2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从以上分析可以看出，位域在本质上就是一种结构类型，&amp;nbsp;不过其成员是按二进位分配的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、位域的使用位域的使用和结构成员的使用相同，其一般形式为：&amp;nbsp;位域变量名·位域名&amp;nbsp;位域允许用各种格式输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;bs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;a:1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;b:3;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;c:4;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;bit,*pbit;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bit.a=1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bit.b=7;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bit.c=15;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%d,%d\n,bit.a,bit.b,bit.c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pbit=&amp;amp;bit;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pbit-&amp;amp;gt;a=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pbit-&amp;amp;gt;b&amp;amp;=3;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pbit-&amp;amp;gt;c&amp;brvbar;=1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%d,%d\n,pbit-&amp;amp;gt;a,pbit-&amp;amp;gt;b,pbit-&amp;amp;gt;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上例程序中定义了位域结构bs，三个位域为a,b,c。说明了bs类型的变量bit和指向bs类型的指针变量pbit。这表示位域也是可以使用指针的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	程序的9、10、11三行分别给三个位域赋值。(&amp;nbsp;应注意赋值不能超过该位域的允许范围)程序第12行以整型量格式输出三个域的内容。第13行把位域变量bit的地址送给指针变量pbit。第14行用指针方式给位域a重新赋值，赋为0。第15行使用了复合的位运算符&amp;amp;=，&amp;nbsp;该行相当于：&amp;nbsp;pbit-&amp;amp;gt;b=pbit-&amp;amp;gt;b&amp;amp;3位域b中原有值为7，与3作按位与运算的结果为3(111&amp;amp;011=011,十进制值为3)。同样，程序第16行中使用了复合位运算&amp;brvbar;=，&amp;nbsp;相当于：&amp;nbsp;pbit-&amp;amp;gt;c=pbit-&amp;amp;gt;c&amp;brvbar;1其结果为15。程序第17行用指针方式输出了这三个域的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型定义符ｔｙｐｅｄｅｆ
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言不仅提供了丰富的数据类型，而且还允许由用户自己定义类型说明符，也就是说允许由用户为数据类型取“别名”。&amp;nbsp;类型定义符typedef即可用来完成此功能。例如，有整型量a,b,其说明如下：&amp;nbsp;int&amp;nbsp;aa,b;&amp;nbsp;其中int是整型变量的类型说明符。int的完整写法为integer，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了增加程序的可读性，可把整型说明符用typedef定义为：&amp;nbsp;typedef&amp;nbsp;int&amp;nbsp;INTEGER&amp;nbsp;这以后就可用INTEGER来代替int作整型变量的类型说明了。&amp;nbsp;例如：&amp;nbsp;INTEGER&amp;nbsp;a,b;它等效于：&amp;nbsp;int&amp;nbsp;a,b;&amp;nbsp;用typedef定义数组、指针、结构等类型将带来很大的方便，不仅使程序书写简单而且使意义更为明确，因而增强了可读性。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	typedef&amp;nbsp;char&amp;nbsp;NAME[20];&amp;nbsp;表示NAME是字符数组类型，数组长度为20。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后可用NAME&amp;nbsp;说明变量，如：&amp;nbsp;NAME&amp;nbsp;a1,a2,s1,s2;完全等效于：&amp;nbsp;char&amp;nbsp;a1[20],a2[20],s1[20],s2[20]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	又如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	typedef&amp;nbsp;struct&amp;nbsp;stu{&amp;nbsp;char&amp;nbsp;name[20];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;age;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;sex;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;STU;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义STU表示stu的结构类型，然后可用STU来说明结构变量：&amp;nbsp;STU&amp;nbsp;body1,body2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	typedef定义的一般形式为：&amp;nbsp;typedef&amp;nbsp;原类型名&amp;nbsp;新类型名&amp;nbsp;其中原类型名中含有定义部分，新类型名一般用大写表示，&amp;nbsp;以
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	便于区别。在有时也可用宏定义来代替typedef的功能，但是宏定义是由预处理完成的，而typedef则是在编译时完成的，后者更为灵活方便。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本章小结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;枚举是一种基本数据类型。枚举变量的取值是有限的，枚举元素是常量，不是变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;枚举变量通常由赋值语句赋值，而不由动态输入赋值。枚举元素虽可由系统或用户定义一个顺序值，但枚举元素和整数并不相同，它们属于不同的类型。因此，也不能用printf语句来输出元素值(可输出顺序值)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;位运算是Ｃ语言的一种特殊运算功能，&amp;nbsp;它是以二进制位为单位进行运算的。位运算符只有逻辑运算和移位运算两类。位运算符可以与赋值符一起组成复合赋值符。如&amp;amp;=,&amp;brvbar;=,^=,&amp;amp;gt;&amp;amp;gt;=,&amp;amp;lt;&amp;amp;lt;=等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;利用位运算可以完成汇编语言的某些功能，如置位，位清零，移位等。还可进行数据的压缩存储和并行运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;位域在本质上也是结构类型，不过它的成员按二进制位分配内存。其定义、说明及使用的方式都与结构相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;位域提供了一种手段，使得可在高级语言中实现数据的压缩，节省了存储空间，同时也提高了程序的效率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;类型定义typedef&amp;nbsp;向用户提供了一种自定义类型说明符的手段，照顾了用户编程使用词汇的习惯，又增加了程序的可读性。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-26/1340714163.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

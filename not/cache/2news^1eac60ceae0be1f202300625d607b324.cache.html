@@ -1,0 +1,390 @@
+<__cache@1389766255-@1389769855@2news__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            IT前沿_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=news />
+                    <input type="hidden" id="pages" value=2/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/news/'>IT前沿</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/news.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">关注IT行业最新动态</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-web/>[互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-13/1339544677.html">
+        &nbsp;互联网未来十年面临的三难题    </a><span class="Gray">(8)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-web/>[互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-14/1339631341.html">
+        &nbsp;Facebook九宗罪    </a><span class="Gray">(6)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-moweb/>[移动互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-11/1339378459.html">
+        &nbsp;直击小米代工厂：月产60万台工人24小时轮班    </a><span class="Gray">(2)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/news-web/" class="borderR15 sband">互联网</a><a href="/art/news-moweb/" class="borderR15 sband">移动互联网</a><a href="/art/news-pweb/" class="borderR15 sband">物联网</a><a href="/art/news-cloud/" class="borderR15 sband">云计算</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-08-07/1344312154.html>网络删帖价格曝光 百度严打后难度增加</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">国家有关部门开展整治非法网络公关行为专项行动以来，一批“删帖公司”被关闭。然而，记者追踪发现，“收费删帖”沉寂一段时间后又浮出水面。记者通过网上搜索“网络危机公关”，对某专业删帖公司进行了暗访，据该公司网站介绍，其服务内容包括网站优化、负面删除、负面压制及广告代发等业务。在负面删除部分，该公司可以提供删稿、删帖服务。
+	
+	
+		  通过网站上提供的联络方式</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/29'>human</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(495)</span>
+                           <em>2012年8月7日 11:55</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-08-07/1344308828.html>7月Chrome份额全球第一 达33.8%超IE</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">【赛迪网讯】8月7日消息，据国外媒体报道，美国互联网流量监测机构StatCounter最新公布的统计数据显示，今年7月谷歌Chrome占全球网络浏览器市场的份额超过了微软IE，Chrome的市场份额达到33.8%，在全球网络浏览器市场排名第一。另外，Chrome今年7月的网络浏览器市场份额也高于今年6月的32.8%，同时也比去年7月的22.1%有大幅增长。
+</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/29'>human</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(446)</span>
+                           <em>2012年8月7日 11:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-08-07/1344307220.html>报告称Android手机在欧洲份额跃至66%</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">【赛迪网讯】 8月7日消息，据国外媒体报道，从Strategy Analytics、IDC和 Canalys发布的财报中我们可以详细地了解上一季度智能手机的销售数量。其报告显示三星智能手机的销售量目前处于领先地位，并且报告强调苹果下个月发布的新品为苹果赢得市场的重要性。
+
+
+	  Kantar的分析结果是根据其每月对数百万人的调查得出的（注意：欧洲仅占100</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/29'>human</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(477)</span>
+                           <em>2012年8月7日 10:36</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-04/1338768219.html>Facebook股价要是再跌，苹果就该收了它</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">
+
+
+	据国外媒体报道，科技博客BusinessInsider作者欧文·托马斯（Owen Thomas）周六撰文指出，随着Facebook上市后股价不断下滑，苹果应当考虑用Facebook的发行价来收购这家社交网站...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(364)</span>
+                           <em>2012年6月4日 08:02</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-24/1340513200.html>不编程的架构师的职业生涯是短暂的</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">架构师一直是我梦寐以求所达到的高度,即便经过了这么多年的努力,我仍然觉得自己离真正的架构师的距离还很远……是不是成为技术牛人,就能成为一个优秀的架构师了呢?其实未必，这仅仅是其中的一个重要点。而在这个似乎是男人天下的职业上,作为一名女性,希望自己能够走得更远,也希望用自己的坚持和努力,使得自己的职业生涯能够有长远的发展,而不是停留在现在的状态。
+	
+	
+		...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(733)</span>
+                           <em>2012年6月24日 12:45</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-17/1339906221.html>心态和想法，是提高编程水平的关键</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">你是否有时候会觉得自己的技术水平停滞不前，想突破但又找不到门路？最近在stackexchange上看到了一个非常好的问答。有人问：你做过的最有效的提高你的编程水平的一件事情是什么？回首作为一个程序员这些年来的生活和职业道路，我使用了很多种不同的方法来提高我的编程技能 —— 阅读代码，编写程序，阅读书籍，听讲座，看视频，等等。
+
+
+	我的问题是：你做过的最有效...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(484)</span>
+                           <em>2012年6月17日 12:08</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-14/1339659684.html>浅谈社区里的头衔</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">社区和任何组织一样，是需要激励机制的。不过这种激励机制，主要是建立在荣誉和尊重上，通常是给核心社区成员授予更高的头衔，更多的特权。随便谈谈现有的几个技术社区，都是如何给成员授衔和授权的。
+
+
+	Apache (Apache Software Foundation， ASF) 在开源软件界大名鼎鼎，  
+
+
+	它有个良好的制度保证其运行。社区成员分为几类：Us...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(359)</span>
+                           <em>2012年6月14日 15:40</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-14/1339631064.html>暑期做站长：建站方向与程序推荐</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">暑假马上到了，很多童鞋会在这期间拥有人生中的第一个网站，本文将推荐当下国内比较流行的建站程序，虽然只是个引子，但希望对即将建站的朋友有所帮助。
+
+
+	
+
+
+	
+		一，建资讯站
+	
+	
+		资讯站是大都小我站长首选...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(656)</span>
+                           <em>2012年6月14日 07:44</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-14/1339630656.html>互动百科正进行5000万美元C轮融资</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp"> 
+
+
+	外媒体报道，百科常识网站“互动百科”正经过C轮融资募集5000万美元风险投资，本次融资局部资金经过在线买卖平台Xpert Financial完成。
+
+
+	Xpert Financial的董事长蒂姆·德拉...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(460)</span>
+                           <em>2012年6月14日 07:37</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-14/1339630580.html>腾讯电商图书频道交由当当网运营 本月上线</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在将电子商务自力后，腾讯的电商大平台计谋也日渐浮出水面。
+
+
+	昨日（6月12日），《每日经济新闻》记者得知，当当网与分拆不久的腾讯电商正式到达协作，由当当网独家运营腾讯电商旗下QQ网购的图书、母婴营业，详细进行站外协作。
+
+
+	随后，记者从当当网、腾讯电商处证实了上述消息。据知情人士走漏，双方将于本周正式对外发布此消息，根据协作细节，图书频道将于6月中旬上...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(556)</span>
+                           <em>2012年6月14日 07:34</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-14/1339630387.html>中国电信3G反击战：限量发售50万张19元3G卡</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">6月13日音讯，中国电信抗衡中国联通的3G还击战正式启动。颇有些“叫板”意味的是，与后者限量推出20元3G卡比拟， 中国电信在6月13日－6月22日10天内限时限量出售50万张天翼飞Young 3G卡，价钱定为19元。
+
+
+	中国电信官方泄漏，运动时期每张天翼飞Young 3G卡，除赠予1G上彀流量外，还额定加赠1000元超值话费，中国电信网上营业厅还将有1...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(459)</span>
+                           <em>2012年6月14日 07:33</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-moweb/>[移动互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-12/1339500784.html>Camera+ 创始人对风投公司说不,并且竖中指</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">北京时间6月10日早间消息，iOS平台的拍照应用Camera+在过去两年中吸引了许多用户。该应用的开发商Tap Tap Tap透露，该公司此前已拒绝了谷歌和Twitter的收购提议，并且拒绝了风险投资，Tap Tap Tap的创始人还对风投公司竖起中指。
+
+
+	2年前，Tap Tap Tap在苹果App
+
+
+	Store应用商店中推出了Camera+。这款应...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(503)</span>
+                           <em>2012年6月12日 19:31</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-11/1339378605.html>互联网火拼从价格烧往物流：苏宁国美力战京东</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">战京东 苏宁千余店增自提功能，国美400城可下网单
+
+
+	“以彼之道，还施彼身”———用京东赖以成名的低价促销来冲击京东，成为苏宁、国美两大家电连锁的共识。
+
+
+	苏宁易购执行副总裁李斌昨日向南都表示，易购推出史无前例的“全网比价月”；国美网上商城总经理韩德鹏亦向南都记者强调，国美网上商城常态化低价销售策略不变，将继续保持5%- 15%的全网价格优势。国美方...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(424)</span>
+                           <em>2012年6月11日 09:35</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-11/1339378473.html>传CNN收购科技博客网站Mashable进入最终谈判</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">腾讯科技讯（张晋艺）北京时间6月9日消息，据国外媒体报道，消息人士透露，美国有线电视新闻网（CNN）将收购在线新闻网站Mashable，双方正在就最终协议进行谈判。交易金额尚不得而知，但据悉远远低于此前传言中的2亿美元。
+
+
+	CNN收购Mashable的传言最早出现于今年3月份。当时传言称收购价格可能最高达2亿美元，但消息人士近期透露，收购金额比2亿美元低...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(344)</span>
+                           <em>2012年6月11日 09:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-11/1339378388.html>色情网站流量超过全球网络的1/3</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">美国科技博客Business Insider早前曾公开一个调查结果，声称：如今的色情网站仍占全球网站整体数量的12%；每秒钟有28258人在观看色情网站；差不多有4千万个美国人有浏览色情网站的习惯，其中每三个人当中有一个是女性；平均来说，现在的小孩从11岁已开始看色情网站……
+
+
+	这个结果并不意外，生活在互联网世界的人，都曾有意无意地浏览过某些色情网站。我...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(333)</span>
+                           <em>2012年6月11日 09:32</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+                        <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/news/0'>1</a></li><li><a href='http://www.27tree.com/art/news/1'>2</a></li><li><a href='http://www.27tree.com/art/news/2'>3</a></li><li><a href='http://www.27tree.com/art/news/3'>4</a></li><li><a href='http://www.27tree.com/art/news/4'>5</a></li><li><a href='http://www.27tree.com/art/news/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

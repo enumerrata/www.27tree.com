@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android 编程入门经典]]></title>
+  <author>李伟梦</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-03 11:59:15</submit-date-time>
+  <img-link>249e9b74c6e4ad1253dda746879ad8a0.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	对于当今具有大量需求的诸多移动设备来说，android操作系统是一个颇为流行和灵活的平台。《android 编程入门经典》为您在最新的移动设备上创建android应用程序提供了身临其境般的指导。作者wei-menglee是一位经验相当丰富的作者，他的每节课程都提供了真实世界的示例，旨在达到其所涵盖内容的本源。本书从概述android核心功能与开发工具开始，循序渐进地讲授了成功开发android应用程序所需的全部知识。
+</p>
+<p>
+	主要内容
+</p>
+<p>
+	阐释了活动的概念及其生命周期
+</p>
+<p>
+	集中阐释了如何应用样式和主题来定制活动
+</p>
+<p>
+	详述了屏幕组件，包括线性布局、绝对布局、相对布局及其他布局方式
+</p>
+<p>
+	详细讨论了一些用于适应不同的屏幕大小并调整其显示方向的方法
+</p>
+<p>
+	概述了文本框、进度条、时间选择器等多种视图
+</p>
+<p>
+	涵盖了如何发送sms消息和联网
+</p>
+<p>
+	详细指导如何创建android服务并与之交互
+</p>
+<p>
+	发布android应用程序最重要的步骤
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Manning C Sharp in Depth]]></title>
+  <author>Jon Skeet</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-11 19:32:11</submit-date-time>
+  <img-link>ef59d230b2fc4bbcd33d47a264134a8b.png</img-link>
+  <book-area>csharp</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>Book Description</strong>
+</p>
+<p>
+	C# in Depth is a completely new book designed to propel existing C# developers to a higher level of programming skill. One simple principle drives this book: explore a few things deeply rather than offer a shallow view of the whole C# landscape. If you often find yourself wanting just a little more at the end of a typical chapter, this is the book for you.Expert author Jon Skeet dives into the C# language, plumbing new C# 2 and 3 features and probing the core C# language concepts that drive them. This unique book puts the new features into context of how C# has evolved without a lengthy rehearsal of the full C# language.
+</p>
+<p>
+	C# in Depth briefly examines the history of C# and the .NET framework and reviews a few often-misunderstood C# 1 concepts that are very important as the foundation for fully exploiting C# 2 and 3. Because the book addresses C# 1 with a light touch, existing C# developers don\'t need to pick through the book in order to find new material to enhance their skills.
+</p>
+<p>
+	This book focuses on the C# 2 and 3 versions of the language, but clearly explains where features are supported by changes in the runtime (CLR) or use new framework classes. Each feature gets a thorough explanation, along with a look on how you\'d use it in real life applications.
+</p>
+<p>
+	C# in Depth is both a vehicle for learning C# 2 and 3 and a reference work. Although the coverage is in-depth, the text is always accessible: You\'ll explore pitfalls that can trip you up, but you\'ll skip over gnarly details best left to the language specification. The overall effect is that readers become not just proficient in C# 2 and 3, but comfortable that they truly understand the language.
+</p>
+<p>
+	<strong>About the Author</strong>
+</p>
+<p>
+	Jon Skeet has worked with C# since 2002, and has been a Microsoft C# MVP since October 2003. He has spent a great amount of time in the C# community answering questions in newsgroups as well as writing articles on the most misunderstood aspects of C# and .NET. After having read tens of thousands of questions over the years, Jon has developed a deep insight into the areas that developers have trouble with, as well as what they\'re trying to achieve. A keen reader of specifications, Jon aims to understand the language at the deepest level, which enables him to provide a detailed exposition of C#, including a few dark corners which can trip up the unwary developer.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

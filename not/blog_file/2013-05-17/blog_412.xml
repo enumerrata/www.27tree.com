@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP 5.4 中的新特性全面详解 ​作者：Rasmus Lerdorf]]></title>
+  <content><![CDATA[<p>
+	作者：Rasmus Lerdorf
+</p>
+<p>
+	LAMP 体系有了新的竞争，但此版本中的特性使 PHP 再次挑战极限。
+</p>
+
+<p>
+	大约八年前，我为 Oracle 技术网写了一篇名为“您了解 PHP 吗？”的文章。在那篇文章中，我谈到了 PHP 固执的功能优于形式的“Web 问题”解决方法，以及它所具备的让事情变得简单的能力。当时，我们即将发布 PHP 5.0。现在，时隔将近十年之后我们推出全新的 PHP 5.4.0 版本，虽然在这期间发生了很多事情，但也有许多事情根本没变。
+</p>
+<p>
+	没变的一件事情就是生态系统一如以往那样重要。解决 Web 问题不仅仅关乎脚本语言的选择，它关乎的是周围的整个生态系统。现在，LAMP 体系已盛行近 15 年，仍广受欢迎，但我们开始注意到其他功能强大的方案。附带 nginx 的 PHP-FPM 已经快速流行起来，因为从 PHP 5.3 开始大大改进了支持，并在 5.4 中进一步得到简化。体系中的 M（即数据库）部分与 8 年前相比也开始变得极为不同。与将所有内容都只放入 MyISAM 表中相比，各种 NoSQL 解决方案和 MySQL Cluster 提供了一组更丰富的选择。
+</p>
+<p>
+	出现了多种有趣的技术，因而我们编写了 PHP 扩展来轻松访问这些技术。我最喜爱的一个扩展是 libevent，可以用它在 PHP 中编写事件驱动的高性能应用程序。另一个是 ZeroMQ，这是一个高级套接字库。与 SQLite 不再需要编写另一种原始文件格式和关联的分析器极为相似，ZeroMQ 也无需因任何理由而使用套接字协议和关联的套接字处理代码。您甚至可以组合使用 libevent 和 ZeroMQ，以获得独立、高性能、事件驱动的卓越服务器。（如果您对此感兴趣，请参见此示例。）我还十分喜欢 SVM（支持向量机）这一机器学习算法，您不必成为机器学习的爱好者也可提出许多问题。
+</p>
+<p>
+	还有许多扩展在最近几年内已被广泛接受。特别是，Gearman 变得流行起来，逐渐成为用户部署的常见体系的一部分。您可以通过 Gearman 分派作业，以便由工作器异步完成这些作业。工作器可以遍布多台服务器，它们甚至可以进一步分派更多的 MapReduce 类型作业。
+</p>
+<p>
+	2004 年发布 PHP 5.0 之后，接下来在 2005 年推出 5.1，此版本新增了 DateTime 实现、PDO 和性能改进。PHP 5.2 于 2006 年发布，引入了改进的内存管理器、JSON 支持和输入筛选。当时，我们着手推动 PHP 6，这是一个极其宏伟的计划，完全重写有关 ICU（Unicode 国际化组件）库的所有内容。事实证明这个计划有些操之过急 — 我们无法使足够多的开发人员为之兴奋，最终只得将准备引入 PHP 6 的各种特性添加到 2009 年发布的 PHP 5.3 中。5.2 与 5.3 版本时隔 3 年，这也意味着 5.3 向 PHP 新增了大量内容：命名空间、后期静态绑定、闭包、垃圾收集、受限 goto、mysqlnd（MySQL 原生驱动程序）、更好的 Windows 性能以及许多其他内容。
+</p>
+<p>
+	事后看来，将此版本称为 PHP 6 可能有一定的道理，但 PHP 6 等同于在 Unicode 方面所做的努力，以至于为此编写了相关书籍，因此我们认为如果没有对 Unicode 做出重大改进，就不能发布 PHP 6。我们引入了名为“intl”的 ICU 扩展，它也针对 PHP 5.2 编译，这可让您访问更多的 ICU 功能。mbstring 扩展随时间不断地改进，这意味着几乎任何与 Unicode 相关的问题都有解决方案，只是未明确集成到语言本身中。
+</p>
+<p>
+	这样在 2012 年推出 PHP 5.4。而且，与上一版本时隔将近 3 年，我们在此期间对一些内容进行了改进。我宁愿恢复到每年推出一个版本，每个版本包含更少的新特性。
+</p>
+
+<p>
+	以下是您升级到 5.4 时将看到的主要特性：
+</p>
+
+<p>
+	<strong style=\"line-height:1.5;\"><span style=\"font-size:14px;\">内存和性能改进</span></strong>
+</p>
+<p>
+	许多内部结构已变得更小或完全消失，从而在大型 PHP 应用程序中可节省 20-50% 的内存。通过各种优化使性能提高 10-30%（主要取决于代码执行的操作），这些优化包括内联各种常见代码路径、将 $GLOBALS 添加到 JIT、“@”操作符运算更快、添加了运行时类/函数/常量缓存、运行时字符串常量现在被拘留、通过预先计算的散列更快地访问常量、空数组速度更快并使用更少内存、unserialize() 和 FastCGI 请求处理速度更快，以及在整个代码中进行更多的内存和性能调整。
+</p>
+<p>
+	例如，早期的一些测试表明，Zend Framework 在 5.4 中运行速度提高 21% 并且内存使用减少 23%，而 Drupal 内存使用减少 50% 并且运行速度大约提高 7%。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">Trait</span></strong>
+</p>
+<p>
+	Trait 可能是 PHP 5.4 中谈论最多的特性 — 将它们视为编译器辅助的复制粘贴。Trait 也是 Scala 的一个特性。其他语言可能将它们称为“mixin”— 或者这些语言根本不对它们进行命名，但具有扩展接口机制，允许接口包含其方法的实际实现。
+</p>
+<p>
+	与 mixin 相反，PHP 中的 trait 包括显式冲突解决机制，用于多个 trait 实现相同方法的情况。
+</p>
+<p>
+	trait Singleton {
+</p>
+<p>
+	&nbsp; &nbsp;public static function getInstance() { ... }
+</p>
+<p>
+	}
+</p>
+<p>
+	class A {
+</p>
+<p>
+	&nbsp; &nbsp;use Singleton;
+</p>
+<p>
+	&nbsp; &nbsp;// ...
+</p>
+<p>
+	}
+</p>
+<p>
+	class B extends ArrayObject {
+</p>
+<p>
+	&nbsp; &nbsp;use Singleton;
+</p>
+<p>
+	&nbsp; &nbsp;// ...
+</p>
+<p>
+	}
+</p>
+<p>
+	// Singleton method is now available for both classes
+</p>
+<p>
+	A::getInstance();
+</p>
+<p>
+	B::getInstance();
+</p>
+<p>
+	请参见 php.net/traits 了解更多示例，包括冲突解决语法、方法优先顺序、可见性以及对 trait 中常量和属性的支持。此外，要详细了解概念理论，您可以阅读 Nathan Schärli 的论文“Trait：行为构建块中的组合类”。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">精简数组语法</span></strong>
+</p>
+<p>
+	新增的一种简单但非常流行的语法：
+</p>
+<p>
+	$a = [1, 2, 3];
+</p>
+<p>
+	$b = [\'foo\' =&gt; \'orange\', \'bar\' =&gt; \'apple\'];
+</p>
+<p>
+	就是说，您现在不再需要使用“array”关键字来定义数组。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">函数数组解除引用</span></strong>
+</p>
+<p>
+	新增的另一种常用语法。返回数组的函数调用现在可以直接解除引用：
+</p>
+<p>
+	function fruits() {
+</p>
+<p>
+	&nbsp; &nbsp;return [\'apple\', \'banana\', \'orange\'];
+</p>
+<p>
+	}
+</p>
+<p>
+	echo fruits()[0]; // Outputs: apple
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">实例方法调用</span></strong>
+</p>
+<p>
+	与函数数组解除引用相关，您现在可以调用对象实例化方法。与早期版本一样，您当然仍可以链接方法调用，因此您现在可以编写如下代码：
+</p>
+<p>
+	class foo {
+</p>
+<p>
+	&nbsp; &nbsp;public $x = 1;
+</p>
+<p>
+	&nbsp; &nbsp;public function getX() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $this-&gt;x;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public function setX($val) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;x = $val;
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $this;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	$X = (new foo)-&gt;setX(20)-&gt;getX();
+</p>
+<p>
+	echo $X; // 20
+</p>
+<p>
+	然而，由于可能丢弃实例化的对象，因此，除非您的构造函数执行有用操作，否则您应该在此改用静态方法调用。如果将它与精简数组语法和函数数组解除引用结合使用，我们可以编写某些十分复杂的代码：
+</p>
+<p>
+	class foo extends ArrayObject {
+</p>
+<p>
+	&nbsp; &nbsp;public function __construct($arr) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;parent::__construct($arr);
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	echo (new foo( [1, [4, 5], 3] ))[1][0];
+</p>
+<p>
+	看一眼之后，您可以断定输出是什么吗？在此，我们将二维数组传递到仅返回数组的构造函数。然后，我们选出第二个维度的第一个元素，因此这将输出“4”。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">闭包绑定</span></strong>
+</p>
+<p>
+	闭包是在 PHP 5.3 中引入的，但在 5.4 中我们改进了闭包与对象的交互方式。例如：
+</p>
+<p>
+	class Foo {
+</p>
+<p>
+	&nbsp;private $prop;
+</p>
+<p>
+	&nbsp;function __construct($prop) {
+</p>
+<p>
+	&nbsp; &nbsp;$this-&gt;prop = $prop;
+</p>
+<p>
+	&nbsp;}
+</p>
+<p>
+	&nbsp;public function getPrinter() {
+</p>
+<p>
+	&nbsp; &nbsp;return function() { echo ucfirst($this-&gt;prop); };
+</p>
+<p>
+	&nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	$a = new Foo(\'bar\');;
+</p>
+<p>
+	$func = $a-&gt;getPrinter();
+</p>
+<p>
+	$func(); // Outputs: Bar
+</p>
+<p>
+	注意闭包访问 $this-&gt;prop 这一私有属性。默认情况下，PHP 中的闭包使用预绑定 — 这意味着闭包内的变量具有定义闭包时所具有的值。可以使用引用将其转换为后绑定。但是，也可以重新绑定闭包：
+</p>
+<p>
+	$a = new Foo(\'bar\');
+</p>
+<p>
+	$b = new Foo(\'pickle\');
+</p>
+<p>
+	$func = $a-&gt;getPrinter();
+</p>
+<p>
+	$func(); // Outputs: Bar
+</p>
+<p>
+	$func = $func-&gt;bindTo($b);
+</p>
+<p>
+	$func(); // Outputs: Pickle
+</p>
+<p>
+	在此，我们将闭包从 $a 实例重新绑定到 $b 中的实例。如果您不希望闭包随时访问对象实例，可以将闭包声明为静态：
+</p>
+<p>
+	class Foo {
+</p>
+<p>
+	&nbsp;private $prop;
+</p>
+<p>
+	&nbsp;function __construct($prop) {
+</p>
+<p>
+	&nbsp; &nbsp;$this-&gt;prop = $prop;
+</p>
+<p>
+	&nbsp;}
+</p>
+<p>
+	&nbsp;public function getPrinter() {
+</p>
+<p>
+	&nbsp; &nbsp;return static function() { echo ucfirst($this-&gt;prop); };
+</p>
+<p>
+	&nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	$a = new Foo(\'bar\');;
+</p>
+<p>
+	$func = $a-&gt;getPrinter();
+</p>
+<p>
+	$func(); // Fatal error: Using $this when not in object context
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">对象即函数</span></strong>
+</p>
+<p>
+	有一种新的神奇方法，名为“__invoke”，其用法如下：
+</p>
+<p>
+	class MoneyObject {
+</p>
+<p>
+	&nbsp; &nbsp;private $value;
+</p>
+<p>
+	&nbsp; &nbsp;function __construct($val) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;value = $val;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;function __invoke() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return sprintf(\'$%.2f\',$this-&gt;value);
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	$Money = new MoneyObject(11.02/5*13);
+</p>
+<p>
+	echo $Money(); // Outputs: $28.65
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">内置 Web 服务器 (CLI)</span></strong>
+</p>
+<p>
+	CLI 服务器是一种小型 Web 服务器实现，可以从命令行运行：
+</p>
+<p>
+	% php -S localhost:8000
+</p>
+<p>
+	PHP 5.4.0 Development Server started at Sun Mar 11 13:27:09 2012
+</p>
+<p>
+	Listening on localhost:8080
+</p>
+<p>
+	Document root is /home/rasmus
+</p>
+<p>
+	Press Ctrl-C to quit.
+</p>
+
+<p>
+	CLI 服务器不适合用作生产 Web 服务器；我们将使用它运行一些 PHP 回归测试，其他单元测试机制也可使用它，并且 IDE 也可能使用它。它确实具有一些很有用的特性，用于从命令行进行日常代码调试。默认情况下，它使用当前目录作为 DocumentRoot；它也处理静态文件请求。默认目录索引文件为“index.php”，因此您可以在满含 .php、.css、.jpg 等文件的目录中激活它，它自己就可以运行。对于可能使用 mod_rewrite 将所有请求发送到前端控制器或路由器的更复杂应用程序，您可以将此路由器与一个简单的小脚本包装在一起，并启动 CLI 服务器，如下所示：
+</p>
+
+<p>
+	% php -S localhost:8080 /path/to/router.php
+</p>
+<p>
+	PHP 5.4.0 Development Server started at Sun Mar 11 13:28:01 2012
+</p>
+<p>
+	Listening on localhost:8080
+</p>
+<p>
+	Document root is /tmp/web
+</p>
+<p>
+	Press Ctrl-C to quit.
+</p>
+<p>
+	router.php 脚本可能如下所示：
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	if (preg_match(\'!\\.php$!\', $_SERVER[\"REQUEST_URI\"])) {
+</p>
+<p>
+	&nbsp; &nbsp;require basename($_SERVER[\"REQUEST_URI\"]);
+</p>
+<p>
+	} else if (strpos($_SERVER[\"REQUEST_URI\"], \'.\')) {
+</p>
+<p>
+	&nbsp; &nbsp;return false; // serve the requested file as-is.
+</p>
+<p>
+	} else {
+</p>
+<p>
+	&nbsp; &nbsp;Framework::Router($_SERVER[\"REQUEST_URI\"]);
+</p>
+<p>
+	}
+</p>
+<p>
+	此包装器加载直接 .php 请求，将包含“.”的任何其他请求传递到静态文件处理程序，其他所有内容都传递到框架的路由器。您可以如此直接从命令行运行 Drupal 和 Symphony。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">原生会话处理程序接口</span></strong>
+</p>
+<p>
+	这是一个小而方便的特性，现在可以用它实现会话处理程序接口。现在，您可以仅将会话处理对象的实例传递给 session_set_save_handler()，而不必传递给它六个比较麻烦的函数：
+</p>
+<p>
+	SessionHandler implements SessionHandlerInterface {
+</p>
+<p>
+	&nbsp;public int close ( void )
+</p>
+<p>
+	&nbsp;public int destroy ( string $sessionid )
+</p>
+<p>
+	&nbsp;public int gc ( int $maxlifetime )
+</p>
+<p>
+	&nbsp;public int open ( string $save_path , string $sessionid )
+</p>
+<p>
+	&nbsp;public string read ( string $sessionid )
+</p>
+<p>
+	&nbsp;public int write ( string $sessionid , string $sessiondata )
+</p>
+<p>
+	}
+</p>
+<p>
+	session_set_save_handler(new MySessionHandler);
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">JsonSerializable 接口</span></strong>
+</p>
+<p>
+	现在，您可以通过实现 JsonSerializable 接口来控制有人尝试使用 json_encode() 对您的对象进行编码时所发生的情况：
+</p>
+<p>
+	class Foo implements JsonSerializable {
+</p>
+<p>
+	&nbsp; &nbsp;private $data = \'Bar\';
+</p>
+<p>
+	&nbsp; &nbsp;public function jsonSerialize() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return array(\'data\'=&gt;$this-&gt;data);
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	echo json_encode(new Foo); // Outputs: {\"data\":\"Bar\"}
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">二进制表示法</span></strong>
+</p>
+<p>
+	为了与 PHP 的原生十六进制和八进制支持协调一致，现在也支持二进制表示法：
+</p>
+<p>
+	$mask = 0b010101;
+</p>
+
+<p>
+	<span style=\"font-size:14px;\"><strong>改进了错误消息错误</strong></span>
+</p>
+<p>
+	消息稍有改进。
+</p>
+<p>
+	改进前：
+</p>
+<p>
+	% php -r \'class abc foo\' Parse error: syntax error, unexpected T_STRING, expecting \'{\' in Command line code on line 1
+</p>
+<p>
+	改进后：
+</p>
+<p>
+	% php -r \'class abc foo\'
+</p>
+<p>
+	Parse error: syntax error, unexpected \'foo\' (T_STRING), expecting \'{\' in Command line code on line
+</p>
+<p>
+	改进可能不十分明显，但区别是现在已在错误消息中显示偏移标记“foo”的值。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">数组到字符串转换</span></strong>
+</p>
+<p>
+	通知如果您一直使用 PHP，则可能以随机出现在页面中“Array”一词结束编程，因为您尝试直接输出数组。每当将数组直接转换为字符串时，都很有可能出现错误，现在有了一个针对这一情况的通知：
+</p>
+<p>
+	$a = [1,2,3];
+</p>
+<p>
+	echo $a;
+</p>
+<p>
+	注意：数组到字符串转换在 example.php onlLine 2 中
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">删除的特性</span></strong>
+</p>
+<p>
+	最后，我们集中整理了几年来标记为已弃用的多个特性。这些特性包括 allow_call_time_pass_reference、define_syslog_variables、highlight.bg、register_globals、register_long_arrays、magic_quotes、safe_mode、zend.ze1_compatibility_mode、session.bug_compat42、session.bug_compat_warn 以及 y2k_compliance。
+</p>
+<p>
+	除了这些特性之外，magic_quotes 可能是最大的危险。在早期版本中，未考虑因 magic_quotes 出错导致的后果，简单编写且未采取任何举措使自身免受 SQL 注入攻击的应用程序都通过 magic_quotes 来保护。如果在升级到 PHP 5.4 时未验证已采取正确的 SQLi 保护措施，则可能导致安全漏洞。
+</p>
+
+<p>
+	<span style=\"font-size:14px;\"><strong>其他改动和特性</strong></span>
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\">有一种新的“可调用的”类型提示，用于某方法采用回调作为参数的情况。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">htmlspecialchars() 和 htmlentities() 现在可更好地支持亚洲字符，如果未在 php.ini 文件中显式设置 PHP default_charset，这两个函数默认使用 UTF-8 而不是 ISO-8859-1。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">&lt;?=（精简回显语法）现在始终可用，无论 short_tags ini 设置的值为何。这应该使模板化系统创建者感到满意。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">会话 ID 现在默认通过 /dev/urandom（或等效文件）中的熵生成，而不是与早期版本一样成为必须显式启用的一个选项。</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">mysqlnd 这一捆绑的 MySQL 原生驱动程序库现在默认用于与 MySQL 通信的各种扩展，除非在编译时通过 ./configure 被显式覆盖。</span>
+		</li>
+	</ul>
+</p>
+<p>
+	可能还有 100 个小的改动和特性。从 PHP 5.3 升级到 5.4 应该极为顺畅，但请阅读迁移指南加以确保。如果您从早期版本升级，执行的操作可能稍多一些。请查看以前的迁移指南再开始升级。
+</p>
+
+<p>
+	<strong><span style=\"font-size:14px;\">PHP 的下一步规划是什么？</span></strong>
+</p>
+<p>
+	我们没有对 PHP 进行长期规划。PHP 将随 Web 一起发展。我们不知道 5-10 年内的重要 Web 趋势和技术将是什么，但知道通过我们的不断付出，PHP 必将存在。
+</p>
+<p>
+	短期内，我们通过“internals”邮件列表讨论 PHP 开发，并且就大特性达成共识时，它将发展为 RFC。您可以在 wiki.php.net/rfc 中找到 RFC。一旦我们表决同意发布一组极佳的新特性，并且对这些特性进行了正确实现和测试，我们便开始筹备推出新版本。
+</p>
+<p>
+	PHP 随 Web 发展并保持稳定的市场份额，在全球所有网站中，大约三分之一的网站都使用它。其中不仅包括一些最大的网站，而且还包括很大一部分最小的网站。我是在最小网站上单独设置 PHP 的：扩展是自然而然的事情，甚至是预期的特征，也是强烈吸引工程师的特征，但缩减不太正常，并且在某些情况下更困难。如果您找到适当的平衡，并且可以将同一代码库用于宿舍出租乃至拥有数十亿美元资产的公司，那么您就真正掌握了这种语言。
+</p>]]></content>
+  <contentx><![CDATA[作者：Rasmus Lerdorf
+
+
+	LAMP 体系有了新的竞争，但此版本中的特性使 PHP 再次挑战极限。
+
+
+
+	大约八年前，我为 Oracle 技术网写了一篇名为“您了解 PHP 吗？”的文章。在那篇文章中，我谈到了 PHP]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

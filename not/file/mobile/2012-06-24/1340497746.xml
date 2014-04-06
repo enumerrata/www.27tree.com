@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>应用界面主题Theme使用方法</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;•android:theme=\"@android:style/Theme.Dialog\"&amp;nbsp;&amp;nbsp;&amp;nbsp;将一个Activity显示为能话框模式
+•android:theme=\"@android:style/Theme.NoTitleBar\"&amp;nbsp;&amp;nbsp;不显示应用程序标题栏
+•android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\"&amp;nbsp;&amp;nbsp;不显示应用程序标题栏，并全屏
+•android:theme=\"Theme.Light\"&amp;nbsp;&amp;nbsp;背景为白色
+•android:theme=\"Theme.Light.NoTitleBar\"&amp;nbsp;&amp;nbsp;白色背景并无标题栏&amp;nbsp;
+•android:theme=\"Theme.Light.NoTitleBar.Fullscreen\"&amp;nbsp;&amp;nbsp;白色背景，无标题栏，全屏
+•android:theme=\"Theme.Black\"&amp;nbsp;&amp;nbsp;背景黑色
+•android:theme=\"Theme.Black.NoTitleBar\"&amp;nbsp;&amp;nbsp;黑色背景并无标题栏
+•android:theme=\"Theme.Black.NoTitleBar.Fullscreen\"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;黑色背景，无标题栏，全屏
+•android:theme=\"Theme.Wallpaper\"&amp;nbsp;&amp;nbsp;用系统桌面为应用程序背景
+•android:theme=\"Theme.Wallpaper.NoTitleBar\"&amp;nbsp;&amp;nbsp;用系统桌面为应用程序背景，且无标题栏
+•android:theme=\"Theme.Wallpaper.NoTitleBar.Fullscreen\"&amp;nbsp;&amp;nbsp;用系统桌面为应用程序背景，无标题栏，全屏
+•android:theme=\"Translucent\"&amp;nbsp;&amp;nbsp;半透明
+•android:theme=\"Theme.Translucent.NoTitleBar\"&amp;nbsp;半透明、无标题栏
+•android:theme=\"Theme.Translucent.NoTitleBar.Fullscreen\"&amp;nbsp;半透明、无标题栏、全屏
+•android:theme=\"Theme.Panel\"
+•android:theme=\"Theme.Light.Panel\"&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这些主题可以应用到整个应用Application范围或者某个活动Activity范围中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应用Application范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在AndroidManifest.xml中的application节点中设置theme属性，主题theme应用到整个应用程序中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;application
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;Android:icon=”@drawable/icon”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;Android:icon=”@string/app_name”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;Android:icon=”@android:style/&amp;nbsp;Theme.Black.NoTitleBar”&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	活动Activity范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用java代码或者在AndroidManifest.xml中对活动Activity的主题进行设置，主题仅应用到当前活动中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在AndroidMainifest.xml设置方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;activity
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android:name=“.About”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android:label=“@string/app_name”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android:theme=“@android:style/&amp;nbsp;Theme.Black.NoTitleBar”&amp;nbsp;&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用java代码进行设置，在当前活动Activity的onCreate中进行设置：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@Override
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;onCreate(Bundle&amp;nbsp;savedInstanceState){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	super.onCreate(savedInstanceState);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	setTheme(android.R.style.Theme_Translucent_NoTitleBar);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	setContentView(R.layout.main);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-06-24/1340497746.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

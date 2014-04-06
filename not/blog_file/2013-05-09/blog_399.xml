@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[nginx爆出新漏洞 最低限度可造成Dos攻击]]></title>
+  <content><![CDATA[<p>
+	称HTTP代理服务器nginx爆出远程栈缓冲区溢出漏洞，攻击者利用此漏洞可能造成栈溢出，从而执行任意代码，最低限度可造成拒绝服务攻击。目前，官方已经发布安全公告以及相应补丁，提醒广大站长及时修补此漏洞。
+</p>
+<br>
+<p>
+	nginx是一款流行的HTTP及反向代理服务器，同时也用作邮件代理服务器。其中，nginx 1.3.9-1.4.0版本文件http/ngx_http_parse.c代码中的ngx_http_parse_chunked()函数在对chunked的长度进行解析时未考虑到该值为负数的情况，导致后续发生基于栈的缓冲区溢出。远程攻击者无需认证即可利用此漏造成nginx拒绝服务，甚至执行任意代码。
+</p>
+<br>
+<p>
+	解决方法：
+</p>
+<p>
+	升级到nginx 1.4.1或nginx 1.5.0。
+</p>
+<p>
+	但如果您不能立刻安装补丁或者升级，您可以采取以下措施以降低威胁：
+</p>
+<p>
+	* 在nginx配置文件中的每个server{}块中使用如下配置
+</p>
+<p>
+	if ($http_transfer_encoding ~* chunked) {
+</p>
+<p>
+	return 444;
+</p>
+<p>
+	}
+</p>
+<br>
+<p>
+	未受影响版本：
+</p>
+<p>
+	nginx 1.5.0
+</p>
+<p>
+	nginx 1.4.1
+</p>
+<p>
+	官方公告和补丁：
+</p>
+<p>
+	链接：<a href=\"http://nginx.org/en/security_advisories.html\" target=\"_blank\">http://nginx.org/en/security_advisories.html</a>
+</p>
+<p>
+	源码补丁下载：<a href=\"http://nginx.org/download/patch.2013.chunked.txt\" target=\"_blank\">http://nginx.org/download/patch.2013.chunked.txt</a>
+</p>]]></content>
+  <contentx><![CDATA[称HTTP代理服务器nginx爆出远程栈缓冲区溢出漏洞，攻击者利用此漏洞可能造成栈溢出，从而执行任意代码，最低限度可造成拒绝服务攻击。目前，官方已经发布安全公告以及相应补丁，提醒广大站长及时修补此漏洞。
+
+
+
+	nginx是一款流行的H]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

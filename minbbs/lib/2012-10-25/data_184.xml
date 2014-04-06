@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-25 17:34:41</datetime>
+  <title><![CDATA[Vsftpd文件服务器介绍及相关配置]]></title>
+  <content><![CDATA[<p>
+	Vsftpd全名“very Secure FTP Daemon”，换句话说VSFTPD最初发展理念就是在于构建一个以安全为重的FTP服务器。由于最初使用FTP传输时具有一定的“危险性”，因为数据在互联网上的传输是没有受到保护的“明码”，因此在信息急剧敏感的今天，数据传输的安全性已经受到人们的重视。
+</p>
+<p>
+	Vsftpd的一些特点：
+</p>
+<p>
+	1.Vsftpd服务的启动者的身份是一般用户，所以对于linux系统的使用权限较低，对于linux系统的危害性也就相对降低了。
+</p>
+<p>
+	2.任何需要具有较高执行权限的vsftpd指令均以一个特殊的父进程所控制，该父进程拥有的较高执行权限功能已经被限制的很低，并不以影响linux系统运行为准。
+</p>
+<p>
+	3.绝大部分FTP会使用到的额外指令功能（如：dir、ls、cd等）都已被集成到vsftpd主程序中。
+</p>
+<p>
+	4.所有来自客户端且想要使用这个父进程所提供的较高执行权限的vsftpd指令，均已看成不可信任的要求来处理，必须经过相当程度的身份确认后，方可利用该上层程序的功能。
+</p>
+<p>
+	具有以上这些特点，所以vsftpd比较安全。下面就谈谈它的配置。
+</p>
+<p>
+	一、所需软件及安装
+</p>
+<p>
+	Vsftpd所需要的软件只有一个，即vsftpd
+</p>
+<p>
+	安装方法有很多，笔者建议使用yum来安装，因为yum可以自动解决软件依赖关系，
+</p>
+<p>
+	# yum install vsftpd –y
+</p>
+<p>
+	二、配置文件
+</p>
+<p>
+	Vsftpd的主配置文件为 /etc/vsftpd/vsftpd.conf
+</p>
+<p>
+	在修改主配置文件前，笔者建议先备份配置文件，以防出错时可以恢复默认。
+</p>
+<p>
+	常用的全局配置项：
+</p>
+<p>
+	listen=[YES|NO] &nbsp;是否以独立运行方式监听服务
+</p>
+<p>
+	write_enable=[YES|NO] 是否启用写入权限
+</p>
+<p>
+	tcp_wrappers=[YES|NO] 是否支持TCP Wrappers
+</p>
+<p>
+	download_enable=[YES|NO] 是否允许下载文件
+</p>
+<p>
+	userlist_enable=[YES|NO] 是否启用user_list文件中的用户登录
+</p>
+<p>
+	userlist_deny=[YES|NO] 是否禁用user_list文件中的用户登录,（此功能
+</p>
+<p>
+	当userlist_enable=YES）时有效 YES表示不允许该文件中的用户登录 NO表示只允许该文件中的用户登录
+</p>
+<p>
+	connect_from_port_20=[YES|NO] 是否启用FTP服务器的数据传输端口
+</p>
+<p>
+	listen_port=21 vsftpd使用的命令通道端口，如果想使用非默认的端口，可在该选项中修改
+</p>
+<p>
+	listen_address=192.168.0.1 设置所监听的服务器ip地址
+</p>
+<p>
+	dirmessage_enable=[YES|NO] 当用户进入某个目录时，会显示该目录需要注意的内容，显示信息的文件默认是”.message”,您可以通过修改下面的设置项目来修改
+</p>
+<p>
+	message_file=.message &nbsp; &nbsp;当dirmessage_enable=YES时可设置该项目来让vsftpd寻找该文件，从而显示信息
+</p>
+<p>
+	cnnect_timeout=60 单位是秒，在数据连接的主动连接模式下，发出的连接信号在60秒内得不到客户端的响应，就不再等待并强制断线
+</p>
+<p>
+	idle_session_timeout=300 如果用户在300秒内都没有任何操作，则强制离线
+</p>
+<p>
+	max_clients=0 限制并发客户端的连接数，0表示不限制
+</p>
+<p>
+	max_per_ip=0 限制同一ip地址的并发连接数，0表示不限制
+</p>
+<p>
+	常用的匿名FTP配置项
+</p>
+<p>
+	anonymous_enable=[YES|NO]是否启用匿名用户访问
+</p>
+<p>
+	anon_umask=022匿名用户所上传文件的权限掩码
+</p>
+<p>
+	anon_root=/var/ftp 匿名用户的ftp根目录
+</p>
+<p>
+	anon_upload_enable=[YES|NO] 是否允许匿名用户上传文件
+</p>
+<p>
+	anon_mkdir_write_enable=[YES|NO] 是否允许匿名用户创建目录
+</p>
+<p>
+	anon_other_write_enable= [YES|NO] 是否开放其他写入权限，如匿名用户删除、重命名文件等
+</p>
+<p>
+	anon_max_rate=0 限制最大传输速率，单位为字节， 0表示不限制
+</p>
+<p>
+	常用的本地用户FTP配置项
+</p>
+<p>
+	local_enable=[YES|NO] 是否启用本地系统用户
+</p>
+<p>
+	local_umask=022 本地用户上传的文件掩码
+</p>
+<p>
+	loacal_root=/var/ftp 设置本地用户的FTP根目录
+</p>
+<p>
+	chroot_local_user=[YES|NO] 是否将用户禁锢在自己的家目录下
+</p>
+<p>
+	local_max_rate=0 限制最大传输速率，单位为字节，0表示不限制
+</p>
+<p>
+	三、构建基于虚拟用户的 vsftpd服务器
+</p>
+<p>
+	1、建立虚拟用户的账号数据库文件
+</p>
+<p>
+	建立虚拟用户的账号、密码表
+</p>
+<p>
+	# vim /etc/vsftpd/vusers.list &nbsp; (奇数行为账号，偶数行为对应的密码)
+</p>
+<p>
+	数据格式转换（需先安装db4-utils软件）
+</p>
+<p>
+	# yum install db4-utils –y
+</p>
+<p>
+	# cd /etc/vsftpd
+</p>
+<p>
+	# db_load -T -t hash -f vusers.list &nbsp; vusers.db
+</p>
+<p>
+	修改权限
+</p>
+<p>
+	# chmod 600 /etc/vsftpd/vusers.*
+</p>
+<p>
+	2、创建FTP根目录及虚拟用户映射的系统用户
+</p>
+<p>
+	# mkdir /var/ftproot
+</p>
+<p>
+	# useradd –d /var/ftproot –s /sbin/nologin virtual
+</p>
+<p>
+	# chmod 755 /var/ftproot/
+</p>
+<p>
+	3、建立支持虚拟用户的PAM认证文件
+</p>
+<p>
+	#vim /etc/pam.d/vusers
+</p>
+<p>
+	auth &nbsp;required &nbsp;pam_userdb.so db=/etc/vsftpd/vusers &nbsp;(vusers对应于第一步中建立的vusers.db 但这里不带后缀)
+</p>
+<p>
+	account required &nbsp;pam_userdb.so db=/etc/vsftpd/vusers
+</p>
+<p>
+	4、在vsftpd.conf文件中添加支持配置
+</p>
+<p>
+	# vim /etc/vsftpd/vsftpd.conf
+</p>
+<p>
+	anonymous_enable=YES
+</p>
+<p>
+	local_enable=YES
+</p>
+<p>
+	write_enable=YES
+</p>
+<p>
+	anon_umask=022
+</p>
+<p>
+	guest_enable=YES
+</p>
+<p>
+	guest_username=virtual //第二步中建立的用户（系统用户）
+</p>
+<p>
+	pam_service_name=vusers //第三步中建立的/etc/pam.d/vusers
+</p>
+<p>
+	5、为个别虚拟用户建立独立的配置文件
+</p>
+<p>
+	在vsftpd.conf 文件中添加用户配置目录支持
+</p>
+<p>
+	# vim /etc/vsftpd/vsftpd.conf &nbsp; &nbsp;添加如下内容
+</p>
+<p>
+	user_config_dir=/etc/vsftpd/vusers_dir
+</p>
+<p>
+	# mkdir /etc/vsftpd/vusers_dir
+</p>
+<p>
+	在该目录内创建与用户名相同的配置文件
+</p>
+<p>
+	# cd /etc/vsftpd/vusers_dir
+</p>
+<p>
+	# vim tom
+</p>
+<p>
+	anon_upload_enable=YES
+</p>
+<p>
+	anon_mkdir_write_enable=YES
+</p>
+<p>
+	6、重新加载vsftpd配置
+</p>
+<p>
+	# service vsftpd restart
+</p>
+<p>
+	7、使用虚拟FTP账户访问测试
+</p>
+<p>
+	分别用刚建的虚拟用户登录FTP进行验证
+</p>
+<p>
+	四、访问控制
+</p>
+<p>
+	为了安全考虑，可以适当的设置访问控制来保证服务器的安全。常用的防控有iptables、TCP Wrappers等，下面就这两种方式进行介绍：
+</p>
+<p>
+	要求：拒绝来自192.168.0.0/24的主机访问vsftpd服务器 其他的允许。
+</p>
+<p>
+	iptables：
+</p>
+<p>
+	# iptables –A INPUT –s 192.168.0.0/24 –p tcp --dport 21 –j DROP
+</p>
+<p>
+	# iptables –A OUTPUT –d 192.168.0.0/24 –p tcp --sport 21 –j DROP
+</p>
+<p>
+	# iptables –A INPUT –p tcp --dport 21 –j ACCEPT
+</p>
+<p>
+	# iptables –A OUTPUT –p tcp --sport 21 –j ACCEPT
+</p>
+<p>
+	TCP Wrappers：
+</p>
+<p>
+	要支持该方式，必须在vsftpd的主配置文件中开启此选项，即：tcp_wrappers=YES
+</p>
+<p>
+	# vim /etc/hosts.deny
+</p>
+<p>
+	vsftpd: 192.168.0.0/255.255.255.0
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

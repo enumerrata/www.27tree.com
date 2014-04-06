@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Mastering Oracle SQL]]></title>
+  <author>Sanjay Mishra,Alan Beaulieu</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-05 00:04:01</submit-date-time>
+  <img-link>22b0353fd06ce19e84f3894f4ae9d52e.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>图书出版日期: 2004年6月29日</strong>
+</p>
+<p>
+	The vast majority of Oracle SQL books discuss some syntax, provide the barest rudiments of using Oracle SQL, and perhaps include a few simple examples. It might be enough to pass a survey course, or give you some buzz words to drop in conversation with real Oracle DBAs. But if you use Oracle SQL on a regular basis, you want much more. You want to access the full power of SQL to write queries in an Oracle environment. You want a solid understanding of what\'s possible with Oracle SQL, creative techniques for writing effective and accurate queries, and the practical, hands-on information that leads to true mastery of the language. Simply put, you want useful, expert best practices that can be put to work immediately, not just non-vendor specific overview or theory. Updated to cover the latest version of Oracle, Oracle 10g, this edition of the highly regarded Mastering Oracle SQL has a stronger focus on technique and on Oracle\'s implementation of SQL than any other book on the market. It covers Oracle s vast library of built-in functions, the full range of Oracle SQL query-writing features, regular expression support, new aggregate and analytic functions, subqueries in the SELECT and WITH clauses, multiset union operators, enhanced support for hierarchical queries: leaf and loop detection, and the CONNECT_BY_ROOT operator, new partitioning methods (some introduced in Oracle9i Release 2), and the native XML datatype, XMLType. Mastering Oracle SQL, 2nd Edition fills the gap between the sometimes spotty vendor documentation, and other books on SQL that just don\'t explore the full depth of what is possible with Oracle-specific SQL. For those who want to harness the untapped (and often overlooked) power of Oracle SQL, this essential guide for putting Oracle SQL to work will prove invaluable.
+</p>
+<p>
+	<strong>作者简介：</strong>
+</p>
+<p>
+	Alan Beaulieu has been designing, building, and implementing custom database applications for over 13 years. He currently runs his own consulting company that specializes in designing Oracle databases and supporting services in the fields of Financial Services and Telecommunications. In building large databases for both OLTP and OLAP environments, Alan utilizes such Oracle features as Parallel Query, Partitioning, and Parallel Server. Alan has a Bachelor of Science degree in Operations Research from the Cornell University School of Engineering. He lives in Massachusetts with his wife and two daughters and can be reached at albeau_mosql@ yahoo.com. Sanjay Mishra is a certified Oracle database administrator with more than ten years of IT experience. He has been involved in the design, architecture, and implementation of many mission-critical and decision support databases. He has worked extensively in the areas of database architecture, database management, backup / recovery, performance tuning, Oracle Parallel Server, and parallel execution. He has a Bachelor of Science degree in Electrical Engineering, and a Master of Engineering degree in Systems Science and Automation. He is the coauthor of Oracle Parallel Processing and Oracle SQL Loader: The Definitive Guide (both published by O\'Reilly &amp; Associates). Presently, he works as a database architect at Dallas Based i2 Technologies, and can be reached at sanjay_mishra@ i2.com.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

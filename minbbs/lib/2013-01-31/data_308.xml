@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-01-31 16:52:49</datetime>
+  <title><![CDATA[使用 正则表达式 压缩HTML文件]]></title>
+  <content><![CDATA[<p>
+	平时工作中经常要php后台产生一些页面，发送给前端处理，这时候压缩就很重要了，大大提升传输效率。
+</p>
+<p>
+	二话不说贴代码：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">    public function compress_html($string) {
+        $string = str_replace(\"\\r\\n\", \'\', $string); //清除换行符 
+        $string = str_replace(\"\\n\", \'\', $string); //清除换行符 
+        $string = str_replace(\"\\t\", \'\', $string); //清除制表符 
+        $pattern = array(
+            \"/&gt; *([^ ]*) *&lt;/\", //去掉注释标记 
+            \"/[\\s]+/\",
+            \"/&lt;!--[^!]*--&gt;/\",
+            \"/\\\" /\",
+            \"/ \\\"/\",
+            \"\'/\\*[^*]*\\*/\'\"
+        );
+        $replace = array(
+            \"&gt;\\\\1&lt;\",
+            \" \",
+            \"\",
+            \"\\\"\",
+            \"\\\"\",
+            \"\"
+        );
+        return preg_replace($pattern, $replace, $string);
+    }</pre>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Java已死？九百万程序员说不</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;&amp;lt;strong&amp;gt;Java没死&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;，事实上它拥有足够的能量让你的应用跑起来。那些对Java吹毛求疵人频繁地聚焦在一些小众问题上，总是和其他技术或者语言做些不公平的对比，这些语言并没有像Java一样得到广泛应用及长远的历史。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在的小孩都能学Java，它在Web和企业开发中广泛被采用，特别是近些年更是有了些让人惊讶的改善，一些新特性正在筹备中。即使抛开这些最新的特性，Java仍然很酷，应用的广泛性、JVM平台背后卓越的设计、清晰的语法、拥有丰富的工具和库文件构成的生态系统。Oracle说有超过9，000，000&amp;nbsp;Java&amp;nbsp;开发者（亿万的应用和设备用户），所以为什么我会听到诸如“Java正在被淘汰中”，2007年开始，Java就已经沦为“21世纪的Cobol语言”的言论？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;Java平台是工程师的梦想&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先就是Java平台的存在，HotSpot&amp;nbsp;JVM&amp;nbsp;是一项非凡的设计，CLR（公共语言运行库）有了大量的优化，Java应用在性能上甚至可以与C相媲美，当然还有其他可选的虚拟机供可用（如：JRockit，Zing），应你的环境有特殊的需求而定。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	再者，多种基于JVM的语言使得这个平台更奇妙，如：Groovy，Jython，JavaFX，Scala，当然还不局限于以上流行的语言。Java现在包含有字节码指令：invokedynamic和java.lang.invoke包，使得JVM构建动态语言更简单，现在已经有超过50中基于JVM的语言。其中最有意思的一个是php.reboot，它的目标是保持php的哲学理念，但是移除了其中一些缺陷，而且它同样能在Android中运行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;Java是一门成熟的语言，并不适合“老人”&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java成为被批评，抱怨，诅咒的靶子，我说这门语言还没死，恰恰相反当有人抱怨Java的时候正是推广Java时机。人们总会做些奇怪的对比，好像仍然以为Java还是停留在1.4的版本，用记事本编写、需要EJB2的支持、只能用来写写简单的留言板，然后把这些用来与一个高端框架甚至是CMS来对比。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为Java程序员，这种对比对我来说没有任何意义。更为明智的方法对比Java就得理智地选择竞争对手，看看Java&amp;nbsp;vs&amp;nbsp;PHP、Python&amp;nbsp;或者Ruby，或者用框架Play&amp;nbsp;对比&amp;nbsp;Ruby&amp;nbsp;on&amp;nbsp;Rails，SpringMVC&amp;nbsp;vs&amp;nbsp;Zend&amp;nbsp;Framework，有鉴于此，我觉得Java似乎根本就不适合老人。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;Java&amp;nbsp;冗长吗？当然&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	人们常说Java太啰嗦了，减缓了运行速度。批评者矛头通常指向Java的强类型静态语言特性，缺乏前沿技术在语言中，然而，我认为他们是经过深思熟虑的，而且这正是Java良好的特性。动态语言在启动一个小项目时开始会觉得很受欢迎，但是可以考虑一下，在时髦框架及合适的工具（如：考虑用IDE代替记事本）下创建一个“Hello&amp;nbsp;留言板”类型的应用，Java很简单，只是10分钟的事情，如果你想做个试验的话，使用Spring&amp;nbsp;Roo&amp;nbsp;再准备一个秒表，如果有需要的话。现在就可以开始繁琐的CRUD了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	想象一下，你正为移动运营商搭建一个系统，运行客户登陆网站，你不得不在后台调用各种子系统收集大量的数据，Cool框架通常分解你的程序模块而不需要匹配任何用户模型。要更多的了解建议你看看Joel&amp;nbsp;Spolsky发表的一篇文章。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0521/1337567917399.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:16px;\"&amp;gt;Java是一门强类型静态语言&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强类型静态语言有很多好处，我喜欢它简单的视觉外观，我可以粗略看一段代码就知道是做什么的，它就像是可视化的用英语反馈，语言非常易读，字母混合成单词仍然可读。其它的一些好处是有强大的IDE支持，动态语言在这点一直是弊端，大项目中有强大的IDE和工具支持是无价的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	批判者的观点在Java在读文件、转换xml或迭代集合的时候缺乏表达力，但是你可以总是创建一个方法去处理这些常用的事例，或者是用FileUtils.readLines()，java语言上表达力的缺点有很多库对其支持。在Java7中能看到一些优雅的加强型功能，如自动关闭资源、siwtch语句支持String、数字类型支持下划线（强烈建议读Coin&amp;nbsp;项目）。Java8承诺了更多的东西（最有意思的应该是闭包）。Java是不是在任何方面都是那么的完美无缺呢？当然不是，这就是Java8、Java9在准备阶段的原因。我个人也不喜欢那些不太优雅的核心API.是否的确将更多的事情留给平台而不是语言本身？java核心包括API进阶设计跨度长达20年，API的更新会破坏向后兼容性，有些设计太抽象，但有些还不够抽象，有些太零碎，有些根本不可思议。看看其竞争对手.NET，核心API做的很好，比如统一的通信API。Java8在Jigsaw项目的帮助下，会有所改变。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以你值得拥有Java，正确地使用它，它是一门很棒的语言。堪比Klingon语言，它将继续改善并不会很快消失。不应把努力放在取代Java上，而是和其他JVM语言结合使用，这是最明智的，但是对我的下一个Pet&amp;nbsp;Clinic&amp;nbsp;还是坚持使用Java。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-23/1337744169.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

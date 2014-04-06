@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>用C语言解决鬼谷算题</title>
+<content>&amp;lt;p&amp;gt;
+	在鬼谷算题中有这样一个著名的题目：“今有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二，问物几何?”这属于高等数学中的数论。我国宋代学者对这类题目钻研已颇为精深，总结出了“三人同行七十稀，五树梅花廿一枝，七子团圆正半月，去百零五便得知。”这样的口诀，意思是说“以三三数之，余数乘以七十；五五数之，余数乘以二十一；七七数之，余数乘十五。三者相加，如不大于一百零五，即为答数；否则须减去一百零五或其倍数。”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这道算题的答案为&amp;lt;strong&amp;gt;23&amp;lt;/strong&amp;gt;。计算起来比较繁琐，但如果用我们所熟悉的C语言来编写一小段程序的话，很快就能解决。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这段程序如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;#include&amp;nbsp;″stdio.h″&amp;nbsp;main
+　　int&amp;nbsp;x;
+　　for(x=0;x&amp;amp;lt;100;x++)
+　　if（x%3==2&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;x%5==3&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;x%7==2）
+　　printf(″This&amp;nbsp;number&amp;nbsp;is&amp;nbsp;%d\n″,x);&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		看一看，是不是很简单啊!
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-14/1339660905.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

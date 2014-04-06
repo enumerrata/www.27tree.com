@@ -1,0 +1,69 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">HTML 头部</h1>
+</div>
+<div>
+
+<h1>头元素</h1>
+
+<p>头元素包含关于文档的概要信息，也称为元信息（meta-information）。Meta 意为"关于某方面的信息"。</p>
+<p>可以这么说，元数据（meta-data）是关于数据的信息，而元信息是关于信息的信息。</p>
+
+<h1>头元素内的信息</h1>
+
+<p>头元素内的元素不会被浏览器显示出来。</p>
+<p>根据 HTML 标准，仅有几个标签在 HTML 的头部分是合法的。它们是：&lt;base&gt;, &lt;link&gt;, &lt;meta&gt;, &lt;title&gt;, &lt;style&gt; 和 &lt;script&gt;。</p>
+<p>这是一个不合法的结构：</p>
+
+<code>
+&lt;head&gt;<br />
+  &lt;p&gt;This is some text&lt;/p&gt;<br />
+&lt;/head&gt;
+</code>
+
+<p>在这个案例中，浏览器有两种选择：</p>
+<ul>
+<li>显示文本，因为它在段落元素中。</li>
+<li>隐藏文本，因为它在头元素中。</li>
+</ul>
+<p>假如你将 &lt;h1&gt; 或者 &lt;p&gt; 之类的 HTML 元素像这样置于头元素之中，大多数浏览器都会显示它，即使这是非法的。</p>
+<p>浏览器真的应该忽略这个的错误吗？我们不这么认为。即使别人这么认为。</p>
+
+<h1>Head 标签</h1>
+<table class="dataintable">
+<tr>
+<th style="width:30%;">标签</th>
+<th style="width:70%;">描述</th>
+</tr>
+<tr>
+<td>&lt;head&gt;</td>
+<td>定义关于文档的信息。</td>
+</tr>
+<tr>
+<td>&lt;title&gt;</td>
+<td>定义文档标题。</td>
+</tr>
+<tr>
+<td>&lt;base&gt;</td>
+<td>定义页面中所有链接的基准 URL。</td>
+</tr>
+<tr>
+<td>&lt;link&gt;</td>
+<td>定义资源引用。</td>
+</tr>
+<tr>
+<td>&lt;meta&gt;</td>
+<td>定义元信息。</td>
+</tr>
+</table>
+ 
+<table class="dataintable">
+<tr>
+<th style="width:30%;">标签</th>
+<th style="width:70%;">描述</th>
+</tr>
+<tr>
+<td>&lt;!DOCTYPE&gt;</td>
+<td>定义文档类型。此标签须位于 html 标签之前。</td>
+</tr>
+</table>
+</div>

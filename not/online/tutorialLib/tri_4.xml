@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tutorial-desc>Dojo 入门教程</tutorial-desc>
+    <tutorial-menu>
+        <sector desc="Dojo 入门教程">
+            <atom title="打开Dojo的大门"/>
+        </sector>
+    </tutorial-menu>
+</root>

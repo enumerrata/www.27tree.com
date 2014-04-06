@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Fedora 10 and Red Hat Enterprise Linux Bible]]></title>
+  <author>Christopher Negus</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-17 00:56:54</submit-date-time>
+  <img-link>84fc3918afc56b5a55e835f5260bb8bf.jpg</img-link>
+  <book-area>system</book-area>
+  <book-intro><![CDATA[<p>
+	As a market-leading, free, open-source Linux operating system (OS),Fedora 10 is implemented in Red Hat Enterprise Linux and serves as an excellent OS for those who want more frequent updates. Bestselling author Christopher Negus offers an ideal companion resource for both new and advanced Linux users. He presents clear, thorough instructions so you can learn how to make Linux installation simple and painless, take advantage of the desktop interface, and use the Linux shell, file system, and text editor.
+</p>
+<p>
+	<p>
+		From the Back CoverMore than a quarter of a million copies sold in previous editions!
+	</p>
+	<p>
+		Catch the latest Linux technology with Fedora 10
+	</p>
+	<p>
+		When the free software world improves its offerings, you can be among the first to try them using Fedora. As the basis for the popular enterprise-quality Red Hat Enterprise Linux, Fedora can be your stepping stone to a lucrative career with Linux. Install, configure, and use Fedora as anything from a desktop to an Internet server. Use this book as a guide to installing and running Fedora from the included DVD and live CD.
+	</p>
+	<p>
+		Set up Fedora or Red Hat Enterprise Linux to:
+	</p>
+	<p>
+		Try new or improved features such as FirstAidKit, ext4 file systems, fast start-up, and connection sharingNavigate your computer with GNOME®, KDE®, Xfce, or Online DesktopsManage and use documents, spreadsheets, presentations, music, and imagesConnect easily to your network with NetworkManagerDraw from massive online Fedora and third-party software repositoriesBuild an Internet server with e-mail, Web, DNS, FTP, and database servicesWhat\'s on the DVD and CD-ROM?
+	</p>
+	<p>
+		Official Fedora 10 install DVDOfficial Fedora 10 KDE desktop live/install CDSystem Requirements: Please see the Preface and Appendix A for details and complete system requirements.
+	</p>
+	<p>
+		New in Fedora 10:
+	</p>
+	<p>
+		Improved printing supportNew, faster graphical startupTime-based PulseAudio sound system featuresMajor RPM package management upgradeOne Laptop Per Child (Sugar) desktop optionEnhanced Webcam support<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

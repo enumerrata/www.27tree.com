@@ -1,0 +1,35 @@
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/mod/G.php' ?>
+<!--<a onmouseover="javascript:this.innerHTML = '&lt;&lt;返回'"
+   onclick="javascript:history.back();"
+   href="javascript:;"
+   class="next-cp borderR5 goBackButton">&lt;&lt;</a>-->
+<div id="nav">
+     <ul>
+          <li><a href="<?php echo DOMAIN;?>/"><img src="<?php echo IMG_PATH_ROOT;?>home-16.png" align="absmiddle"/>&#x4E3B;&#x9875;</a></li>
+          <li style="position:relative;">
+               <div id="subbar" class="Shadow">
+                    <tx></tx><t></t>
+                    <ul>
+                         <li><a href="<?php echo DOMAIN;?>/art/news/">IT资讯</a></li>
+                         <li><a href="<?php echo DOMAIN;?>/art/java/">JAVA</a></li>
+                         <li><a href="<?php echo DOMAIN;?>/art/php/">PHP</a></li>
+                         <li><a href="<?php echo DOMAIN;?>/art/c/">C/C++</a></li>
+                         <li><a href="<?php echo DOMAIN;?>/art/mobile/">移动开发</a></li>
+                         <li><a href="<?php echo DOMAIN;?>/art/database/">数据库</a></li>
+                         <li style="border:none;"><a href="<?php echo DOMAIN;?>/art/web/">Web前端开发</a></li>
+                         <div class="clear"></div>
+                    </ul>
+               </div>
+               <a style="cursor:default;"><img src="<?php echo IMG_PATH_ROOT;?>settings.png" align="absmiddle"/>编程开发</a>
+          </li>
+          <li><a href="<?php echo DOMAIN;?>/bookLib/"><img src="<?php echo IMG_PATH_ROOT;?>Book-16.png" align="absmiddle"/>技术宅必备好书</a></li>
+          <li><a href="<?php echo DOMAIN;?>/blog/"><img src="<?php echo IMG_PATH_ROOT;?>content.png" align="absmiddle"/>最新博文</a></li>
+          <li style="border:none;"><a href="<?php echo DOMAIN;?>/minbbs/"><img src="<?php echo IMG_PATH_ROOT;?>bbs_ico_normal_new_16.png" align="absmiddle"/>讨论区</a></li>
+          <div class="clear"></div>
+     </ul>
+     <span class="clear" />
+</div>
+<?php
+if(!isset($_COOKIE['_uid']) || !isset($_COOKIE['username']))
+echo "<div id=\"signProm\"><a class=\"borderR15 Shadow\" href=\"/log/signprom.php\">现在就注册,加入我们吧</a></div>";
+?>

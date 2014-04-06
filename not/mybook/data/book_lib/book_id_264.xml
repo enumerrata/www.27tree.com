@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Geolocation in iOS Mobile Positioning and Mapping on iPhone and iPad]]></title>
+  <author>Alasdair Allan</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-10 18:57:12</submit-date-time>
+  <img-link>167f2836ad061ed21cddafc9ade62354.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>Geolocation in iOS: Mobile Positioning and Mapping on iPhone and iPad</strong>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Take advantage of iPhone and iPad sensors and advanced geolocation technologies to build state-of-the-art location applications. In this concise hands-on guide, author Alasdair Allan (Learning iOS Programming) takes you deep inside Apple’s Core Location framework, Map Kit, and other iOS tools, using illustrative examples and sample Objective-C code. Learn how to build location-aware apps for both iPhones and iPads, using code that detects hardware features and then adjusts your app’s behavior.
+</p>
+<p>
+	If you’re a programmer with iOS experience, or a Mac developer familiar with Objective-C, this book helps you get off to a solid start in location-based app development.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

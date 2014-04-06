@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>HTML 5与CSS 3权威指南</title>
+  <author>陆凌牛</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-27 19:40:09</submit-date-time>
+  <img-link>6a0ade20a1540a367618435873704d18.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容系统而全面，HTML&amp;nbsp;5与CSS&amp;nbsp;3的新功能和新特性尽揽无余
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	注重实战，包含200余设计精巧的实例，可操作性极强
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	资深专家亲自执笔，3大前端社区一致推荐，权威性毋庸置疑
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		如果你是一位有前瞻性的web前端工作者，那么你一定会从本书中受益，因为它就是专门为你打造的。
+	&lt;/p&gt;
+	&lt;p&gt;
+		《HTML&amp;nbsp;5与CSS&amp;nbsp;3权威指南》内容系统而全面，详尽地讲解了html&amp;nbsp;5和css&amp;nbsp;3的所有新功能和新特性；技术新颖，所有知识点都紧跟html&amp;nbsp;5与css&amp;nbsp;3的最新发展动态（html&amp;nbsp;5和css&amp;nbsp;3仍在不断完善之中）；实战性强（包含246个示例页面），不仅每个知识点都配有精心设计的小案例（便于动手实践），而且还有两个综合性的案例（体现用&amp;nbsp;html&amp;nbsp;5与css&amp;nbsp;3开发web应用的思维和方法）。本书不仅能满足你全面而系统地学习理论知识的需求，还能满足你需要充分实践的需求。
+	&lt;/p&gt;
+	&lt;p&gt;
+		《HTML&amp;nbsp;5与CSS&amp;nbsp;3权威指南》共分为三大部分，第一部分详尽地讲解了html&amp;nbsp;5的相关知识，包括各主流浏览器对html&amp;nbsp;5的支持情况、html&amp;nbsp;5与html&amp;nbsp;4在语法上的区别、html&amp;nbsp;5的结构元素、表单与文件、图形绘制、多媒体播放、本地存储、离线应用、通信api、web&amp;nbsp;workers、地理位置信息获取等内容；第二部分详细地阐述了css&amp;nbsp;3的相关知识，涵盖选择器、文字与字体的相关样式、颜色的相关样式、盒的相关样式、背景与边框的相关样式、布局的相关样式、ui的相关样式、media&amp;nbsp;queries的相关样式、变形处理、多媒体和动画等内容。第三部分以迭代的方式逐步展现了两个完整的案例，旨在帮助读者将理论知识贯穿于实践中，迅速成为新一代web开发技术中的大牛。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

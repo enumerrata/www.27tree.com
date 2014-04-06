@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Objective-C在LLVM 3.1中的新特性</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;与C和C++不同，Objective-C中不是由一个标准组织控制的，它一开始完全被Stepstone公司掌控，然而现在却被Apple公司取代了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;这种完全被一个公司掌控的模式可以算是一个优点和或者缺点。例如，C++规范的新版本的C&amp;nbsp;+
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	+11，历时13年完成。相比之下，Objective-C中可以发展地非常迅速，无需由委员会设计的问题所限制。但对应的缺点是在整个设计过程中，因为
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	没有监督，所以基本上无法被标准化的程序语言所接纳。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;好了，让我们来看看&amp;nbsp;LLVM&amp;nbsp;3.1为&amp;nbsp;Objective-C&amp;nbsp;带来了哪些增强吧。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	NSNumber&amp;nbsp;常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;有个Objective-C的问题我被别人问了几乎25年了，就是创建OC常量的语法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;先让我们看看下面这行代码:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;id&amp;nbsp;str&amp;nbsp;=&amp;nbsp;@\"This&amp;nbsp;is&amp;nbsp;a&amp;nbsp;string\";&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它运行起来当然没什么问题&amp;nbsp;--&amp;nbsp;只是简单的创建一个静态的&amp;nbsp;NSConstantString&amp;nbsp;然后初始化变量值，并指派一个指针指向它。但是如果我们看看下面这一个呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;int&amp;nbsp;x&amp;nbsp;=&amp;nbsp;42;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这行代码也是存储常量值42到x中。按照开始说的，如果我们这么写.
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;id&amp;nbsp;x&amp;nbsp;=&amp;nbsp;@42;&amp;lt;/pre&amp;gt;
+结果看到以下报错
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	lit.m:3:8:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	error:&amp;nbsp;initializer&amp;nbsp;element&amp;nbsp;is&amp;nbsp;not&amp;nbsp;a&amp;nbsp;compile-time&amp;nbsp;constant2id&amp;nbsp;x&amp;nbsp;=&amp;nbsp;@42;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这到底是为什么？因为对于整数是不能像字符串那样处理的；这只是个让程序员方便的语法糖而已，能让我们创建一个&amp;nbsp;autoreleased&amp;nbsp;的NSNumber对象。在&amp;nbsp;Objective-C&amp;nbsp;11中，如果你定义下面这样的宏，代码如下：&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;#define&amp;nbsp;N(x)&amp;nbsp;_Generic((x),&amp;nbsp;\
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int:&amp;nbsp;[NSNumber&amp;nbsp;numberWithInt:&amp;nbsp;x],&amp;nbsp;\
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;float:&amp;nbsp;[NSNumber&amp;nbsp;numberWithFloat:&amp;nbsp;x],&amp;nbsp;\
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;double:&amp;nbsp;[NSNumber&amp;nbsp;numberWithDouble:&amp;nbsp;x])&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这个例子接受一个数值参数然后返回一个NSNumber的对象，以下的代码都是等价的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;x&amp;nbsp;=&amp;nbsp;N(12);
+
+x&amp;nbsp;=&amp;nbsp;&amp;amp;lt;a&amp;nbsp;href=\"http://my.oschina.net/mutou4\"&amp;nbsp;class=\"referer\"&amp;nbsp;target=\"_blank\"&amp;amp;gt;@12&amp;amp;lt;/a&amp;amp;gt;&amp;nbsp;;
+
+x&amp;nbsp;=&amp;nbsp;N(42.5);
+
+x&amp;nbsp;=&amp;nbsp;@42.5;
+
+x&amp;nbsp;=&amp;nbsp;N(42.5f);
+
+x&amp;nbsp;=&amp;nbsp;@42.5f;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;同理你也可以为long,&amp;nbsp;longS以及long&amp;nbsp;doubleS等等来扩展这样的宏。甚至是更加复杂的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;这种宏定义的方式有两个好处，一时它可以以任何表达式的形式工作；第二就是它的表达意思的易理解性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;这种宏定义实际上是一个非常有用的功能。不幸的是，它看起来像刚刚赶到在半成品状态。在未来的版本，希望这一问题将得到解决。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-12/1339500256.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-21+08%3A28%3A08</date-c>
+  <conf-c>这种宏定义实际上是一个非常有用的功能</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

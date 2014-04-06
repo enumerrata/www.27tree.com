@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-18 10:44:06</datetime>
+  <title>SQL Server内存数据写入磁盘的三个方法</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	众所周知，&lt;a&amp;nbsp;href=\"http://www.itsrcs.com\"&amp;nbsp;target=\"_blank\"&gt;SQLServer&lt;/a&gt;增删改数据最先都是在&lt;strong&gt;内存&lt;/strong&gt;中进行的，这可以大大加快数据操作的速度；当内存中的数据被修改了，而磁盘中的数据
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	还没有被修改时，就产生了所谓的”脏页“，SQLServer是如何同步内存和磁盘的数据的呢？以下三种方法就是为同步内存和磁盘数据而产生的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;LazyWrite（惰性写入器）:&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		作用：
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;1.管理SQLServer空闲内存：
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;a.&amp;nbsp;定期检查空闲缓冲列表的大小，当这个值过低的时候，它会扫描整个数据缓存，将一段时间没有使用的页面老化（通过LRU算法），释放内存空间；
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;b.&amp;nbsp;如果找到一段时间没有被使用的脏页，它会将其写入磁盘，然后将这个页面的内存空间标记为空闲空间；
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;2.协调Windows与SQLServer内存：
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;a.&amp;nbsp;监视服务器内存，如果Windows物理内存很少，它会从空闲缓冲列表中释放内存给Windows；
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;b.&amp;nbsp;在SQLServer负载很重时，它还会在分配给SQLServer的内存没有达到最大服务器内存阀值时，增加空闲缓冲列表的大小，以适应负载的需要。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;CheckPoint：&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;作用：检查点是检查点进程创建的一个时间点，在这个时间点，SQLServer可以确认所有提交的事物所做的修改都已经写入磁盘，它是一个标记，&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;这个标记是数据库恢复的起始点，大约每分钟运行一次，这样在启动数据库时，确保数据库在一分钟内就能完成恢复操作；但是如果在这段&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;时间内写入日志的数据不到10MB，SQLServer就不会自动发起检查点。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;跟踪标记（trace&amp;nbsp;flag）3502在错误日志中记录检查点的开始和结束位置。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;与LazyWrite比较，CheckPoint不会从缓存中移出脏页，CheckPoint进程的工作只是保证脏页被写入磁盘，并且在页头将缓存中的这个页面标记为&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;干净的页面。&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;EagerWrite：&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		通常在BCP、SELECT&amp;nbsp;INTO,&amp;nbsp;WRITETEXT,UPDATETEXT,BULK&amp;nbsp;INSERT等操作时发生，为了加快这些操作的速度，EagerWrite会管理数据页&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;的创建和分配，这些操作不会等待所有的页面创建完成后才将内存中的数据写入到页面中，而是以更高的优先级边创建边将缓存中的数据写入页面中，&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;以保证缓冲池有足够的空间来完成这些操作。&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>众所周知，SQLServer增删改数据最先都是在内存中进行的，这可以大大加快数据操作的速度；当内存中的数据被修改了，而磁盘中的数据
+
+
+	还没有被修改时，就产生了所谓的”脏页“，SQLServer是如何同步内存和磁盘的数据的呢？以下三种方法就是为同步内存和磁盘数据而产生的。
+
+
+	LazyWrite（惰性写入器）:
+
+
+	
+		作用：
+	
+	
+		  1.管</contentx>
+  <tags>_null_</tags>
+</root>

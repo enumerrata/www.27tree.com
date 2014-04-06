@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用jQuery简化Ajax开发&lt;1&gt;</title>
+<content>&amp;lt;p&amp;gt;
+	一些简单的代码简化
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面是一个简单示例，它说明了&amp;nbsp;jQuery&amp;nbsp;对代码的影响。要执行一些真正简单和常见的任务，比方说为页面的某一区域中的每个链接附加一个单击（click）事件，您可以使用纯&amp;nbsp;JavaScript&amp;nbsp;代码和&amp;nbsp;DOM&amp;nbsp;脚本来实现，如&amp;nbsp;清单&amp;nbsp;1&amp;nbsp;所示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;1&amp;nbsp;：没有使用&amp;nbsp;jQuery&amp;nbsp;的&amp;nbsp;DOM&amp;nbsp;脚本
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;external_links&amp;nbsp;=&amp;nbsp;document.getElementById(&amp;nbsp;external_links&amp;nbsp;);&amp;nbsp;
+var&amp;nbsp;links&amp;nbsp;=&amp;nbsp;external_links.getElementsByTagName(&amp;nbsp;a&amp;nbsp;);&amp;nbsp;
+for&amp;nbsp;(var&amp;nbsp;i=0;i&amp;nbsp;&amp;amp;lt;&amp;nbsp;links.length;i++)&amp;nbsp;{&amp;nbsp;
+var&amp;nbsp;link&amp;nbsp;=&amp;nbsp;links.item(i);&amp;nbsp;
+link.onclick&amp;nbsp;=&amp;nbsp;function()&amp;nbsp;{&amp;nbsp;
+return&amp;nbsp;confirm(&amp;nbsp;You&amp;nbsp;are&amp;nbsp;going&amp;nbsp;to&amp;nbsp;visit:&amp;nbsp;&amp;nbsp;&amp;nbsp;+&amp;nbsp;this.href);&amp;nbsp;
+};&amp;nbsp;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;2&amp;nbsp;显示了使用&amp;nbsp;jQuery&amp;nbsp;实现的相同的功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;2.&amp;nbsp;使用了&amp;nbsp;jQuery&amp;nbsp;的&amp;nbsp;DOM&amp;nbsp;脚本
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;#external_links&amp;nbsp;a&amp;nbsp;).click(function()&amp;nbsp;{&amp;nbsp;
+return&amp;nbsp;confirm(&amp;nbsp;You&amp;nbsp;are&amp;nbsp;going&amp;nbsp;to&amp;nbsp;visit:&amp;nbsp;&amp;nbsp;&amp;nbsp;+&amp;nbsp;this.href);&amp;nbsp;
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	是不是很神奇？&amp;nbsp;使用&amp;nbsp;jQuery，您可以把握问题的要点，只让代码实现您想要的功能，而省去了一些繁琐的过程。无需对元素进行循环，click()&amp;nbsp;函数将完成这些操作。同样也不需要进行多个&amp;nbsp;DOM&amp;nbsp;脚本调用。您只需要使用一个简短的字符串对所需的元素进行定义即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	理解这一代码的工作原理可能会有一点复杂。首先，我们使用了&amp;nbsp;$()&amp;nbsp;函数&amp;nbsp;——&amp;nbsp;jQuery&amp;nbsp;中功能最强大的函数。通常，我们都是使用这个函数从文档中选择元素。在本例中，一个包含有一些层叠样式表（Cascading&amp;nbsp;Style&amp;nbsp;Sheet，CSS）语法的字符串被传递给函数，然后&amp;nbsp;jQuery&amp;nbsp;尽可能高效地把这些元素找出来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您具备&amp;nbsp;CSS&amp;nbsp;选择器的基本知识，那么应该很熟悉这些语法。在&amp;nbsp;清单&amp;nbsp;2&amp;nbsp;中，#external_links&amp;nbsp;用于检索&amp;nbsp;id&amp;nbsp;为&amp;nbsp;external_links&amp;nbsp;的元素。a&amp;nbsp;后的空格表示&amp;nbsp;jQuery&amp;nbsp;需要检索&amp;nbsp;external_links&amp;nbsp;元素中的所有&amp;nbsp;&amp;amp;lt;a&amp;amp;gt;&amp;nbsp;元素。用英语说起来非常绕口，甚至在&amp;nbsp;DOM&amp;nbsp;脚本中也是这样，但是在&amp;nbsp;CSS&amp;nbsp;中这再简单不过了
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$()&amp;nbsp;函数返回一个含有所有与&amp;nbsp;CSS&amp;nbsp;选择器匹配的元素的&amp;nbsp;jQuery&amp;nbsp;对象。jQuery&amp;nbsp;对象&amp;nbsp;类似于数组，但是它附带有大量特殊的&amp;nbsp;jQuery&amp;nbsp;函数。比方说，您可以通过调用&amp;nbsp;click&amp;nbsp;函数把&amp;nbsp;click&amp;nbsp;处理函数指定给&amp;nbsp;jQuery&amp;nbsp;对象中的所有元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	还可以向&amp;nbsp;$()&amp;nbsp;函数传递一个元素或者一个元素数组，该函数将把这些元素封装在一个&amp;nbsp;jQuery&amp;nbsp;对象中。您可能会想要使用这个功能将&amp;nbsp;jQuery&amp;nbsp;函数用于一些对象，比方说&amp;nbsp;window&amp;nbsp;对象。例如，我们通常会像下面这样把函数分配给加载事件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;window.onload&amp;nbsp;=&amp;nbsp;function()&amp;nbsp;{&amp;nbsp;
+//&amp;nbsp;do&amp;nbsp;this&amp;nbsp;stuff&amp;nbsp;when&amp;nbsp;the&amp;nbsp;page&amp;nbsp;is&amp;nbsp;done&amp;nbsp;loading&amp;nbsp;
+};&amp;lt;/pre&amp;gt;
+使用&amp;nbsp;jQuery&amp;nbsp;编写的功能相同的代码：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(window).load(function()&amp;nbsp;{&amp;nbsp;
+//&amp;nbsp;run&amp;nbsp;this&amp;nbsp;when&amp;nbsp;the&amp;nbsp;whole&amp;nbsp;page&amp;nbsp;has&amp;nbsp;been&amp;nbsp;downloaded&amp;nbsp;
+});&amp;lt;/pre&amp;gt;
+您可能有所体会，等待窗口加载的过程是非常缓慢而且令人痛苦的，这是因为必须等整个页面加载完所有的内容，包括页面上所有的的图片。有的时候，您希望首先完成图片加载，但是在大多数情况下，您只需加载超文本标志语言（Hypertext&amp;nbsp;Markup&amp;nbsp;Language，HTML）就可以了。通过在文档中创建特殊的&amp;nbsp;ready&amp;nbsp;事件，jQuery&amp;nbsp;解决了这个问题，方法如下：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(document).ready(function()&amp;nbsp;{&amp;nbsp;
+//&amp;nbsp;do&amp;nbsp;this&amp;nbsp;stuff&amp;nbsp;when&amp;nbsp;the&amp;nbsp;HTML&amp;nbsp;is&amp;nbsp;all&amp;nbsp;ready&amp;nbsp;
+});&amp;lt;/pre&amp;gt;
+这个代码围绕&amp;nbsp;document&amp;nbsp;元素创建了一个&amp;nbsp;jQuery&amp;nbsp;对象，然后建立一个函数，用于在&amp;nbsp;HTML&amp;nbsp;DOM&amp;nbsp;文档就绪的时候调用实例。可以根据需要任意地调用这个函数。并且能够以真正的&amp;nbsp;jQuery&amp;nbsp;格式，使用快捷方式调用这个函数。这很简单，只需向&amp;nbsp;$()&amp;nbsp;函数传递一个函数就可以了：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(function()&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//&amp;nbsp;run&amp;nbsp;this&amp;nbsp;when&amp;nbsp;the&amp;nbsp;HTML&amp;nbsp;is&amp;nbsp;done&amp;nbsp;downloading
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	});
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	到目前以止，我已经向大家介绍了&amp;nbsp;$()&amp;nbsp;函数的三种用法。第四种方法可以使用字符串来创建元素。结果会产生一个包含该元素的&amp;nbsp;jQuery&amp;nbsp;对象。清单&amp;nbsp;3&amp;nbsp;显示的示例在页面中添加了一个段落。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;3.&amp;nbsp;创建和附加一个简单的段落
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;&amp;amp;lt;p&amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;&amp;nbsp;)&amp;nbsp;
+.html(&amp;nbsp;Hey&amp;nbsp;World!&amp;nbsp;)&amp;nbsp;
+.css(&amp;nbsp;background&amp;nbsp;,&amp;nbsp;&amp;nbsp;yellow&amp;nbsp;)&amp;nbsp;
+.appendTo(body);&amp;lt;/pre&amp;gt;
+在前一个例子中您可能已经注意到，jQuery&amp;nbsp;中的另一个功能强大的特性就是方法链接（method&amp;nbsp;chaining）。每次对&amp;nbsp;jQuery&amp;nbsp;对象调用方法时，方法都会返回相同的&amp;nbsp;jQuery&amp;nbsp;对象。这意味着如果您需要对&amp;nbsp;jQuery&amp;nbsp;对象调用多个方法，那么您不必重新键入选择器就可以实现这一目的：使&amp;nbsp;Ajax&amp;nbsp;变得简单
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;#message&amp;nbsp;).css(&amp;nbsp;background&amp;nbsp;,&amp;nbsp;&amp;nbsp;yellow&amp;nbsp;).html(&amp;nbsp;Hello!&amp;nbsp;).show();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-31/1338421991.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-31+19%3A59%3A11</date-c>
+  <conf-c>kkkkkkkkkkkkk</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

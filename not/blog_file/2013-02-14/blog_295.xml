@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Smarty一些不常用的功能记录]]></title>
+  <content><![CDATA[<p>
+	{* 这是一个单行的Smarty注释 在html的源代码里是看不见的*}
+</p>
+<p>
+	{* 这是一个多行的
+</p>
+<p>
+	&nbsp; Smarty注释
+</p>
+<p>
+	&nbsp; &nbsp;注释内容并不发送到浏览器
+</p>
+<p>
+	*}
+</p>
+<p>
+	模板注释由星号包围，继而由分隔符包围，型如：{* 这是一个注释 *}。Smarty注释不会在最终模板的输出中显示，这点和不同。前者对于在模板中插入内部注释有用，因为没有人能看到。;-)
+</p>
+<p>
+	<strong>truncate标签</strong>
+</p>
+<p>
+	<p>
+		$smarty-&gt;assign(\'hxtitle\', \'Two Sisters Reunite after Eighteen Years at Checkout Counter.\');
+	</p>
+	<p>
+		?&gt;
+	</p>
+	<p>
+		模板为：
+	</p>
+	<p>
+		{$hxtitle}
+	</p>
+	<p>
+		{$hxtitle|truncate}
+	</p>
+	<p>
+		{$hxtitle|truncate:30}
+	</p>
+	<p>
+		{$hxtitle|truncate:30:\"\"}
+	</p>
+	<p>
+		{$hxtitle|truncate:30:\"---\"}
+	</p>
+	<p>
+		{$hxtitle|truncate:30:\"\":true}
+	</p>
+	<p>
+		{$hxtitle|truncate:30:\"...\":true}
+	</p>
+	<p>
+		{$hxtitle|truncate:30:\'..\':true:true}
+	</p>
+	<p>
+		&nbsp; &nbsp; 输出为：
+	</p>
+	<p>
+		Two Sisters Reunite after Eighteen Years at Checkout Counter.
+	</p>
+	<p>
+		Two Sisters Reunite after Eighteen Years at Checkout Counter.
+	</p>
+	<p>
+		Two Sisters Reunite after...
+	</p>
+	<p>
+		Two Sisters Reunite after
+	</p>
+	<p>
+		Two Sisters Reunite after---
+	</p>
+	<p>
+		Two Sisters Reunite after Eigh
+	</p>
+	<p>
+		Two Sisters Reunite after E...
+	</p>
+	<p>
+		Two Sisters Re..ckout Counter.<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	{* 这是一个单行的Smarty注释 在html的源代码里是看不见的*}
+
+
+	{* 这是一个多行的
+
+
+	&nbsp; Smarty注释
+
+
+	&nbsp; &nbsp;注释内容并不发送到浏览器
+
+
+	*}
+
+
+	模板注释由星号包围，]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

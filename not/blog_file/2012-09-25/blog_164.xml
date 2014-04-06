@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-25 23:23:50</datetime>
+  <title>PHP超级全局变量数组</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP超级全局变量数组（Super&amp;nbsp;Global&amp;nbsp;Array），又称为PHP预定义数组，是由PHP引擎内置的，不需要开发者重新定义。&amp;nbsp;在PHP脚本运行时，PHP会自动将一些数据放在超级全局数组中。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	php超级全局变量列表
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_GET[]&amp;nbsp;获得以GET方法提交的变量数组
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_POST[]&amp;nbsp;获得以POST方法提交的变量数组
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_COOKIE[]&amp;nbsp;获取和设置当前网站的Cookie标识
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_SESSION[]&amp;nbsp;取得当前用户访问的唯一标识，以数组形式体现，如sessionid以及自定义session数据
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_ENV[]&amp;nbsp;当前php环境变量数组
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_SERVER[]&amp;nbsp;当前php服务器变量数组
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_FILES[]&amp;nbsp;上传文件时提交到当前脚本的参数值，以数组形式体现
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_REQUEST[]&amp;nbsp;包含当前脚本提交的全部请求，
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$_GET、$_POST、$_COOKIE、$_SESSION的所有动作
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$GLOBALS[]&amp;nbsp;包含正在执行脚本所有超级全局变量的引用内容
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP系统常量
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	__FILE__&amp;nbsp;当前PHP程序脚本的绝对路径及文件名称
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	__LINE__&amp;nbsp;存储该常量所在的行号
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	__FUNCTION__&amp;nbsp;存储该常量所在的函数名称
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	__CLASS__&amp;nbsp;存储该常量所在的类的名称
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	__METHOD__存储该常量所在的类的方法的名称
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP_VERSION&amp;nbsp;存储当前PHP的版本号，也可以通过PHPVERSION()函数获取。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP_OS&amp;nbsp;存储当前服务器的操作系统
+&lt;/p&gt;</content>
+  <contentx>PHP超级全局变量数组（Super Global Array），又称为PHP预定义数组，是由PHP引擎内置的，不需要开发者重新定义。 在PHP脚本运行时，PHP会自动将一些数据放在超级全局数组中。
+
+
+	php超级全局变量列表
+
+
+	$_GET[] 获得以GET方法提交的变量数组
+
+
+	$_POST[] 获得以POST方法提交的变量数组
+
+
+	$_COOKI</contentx>
+  <tags>_null_</tags>
+</root>

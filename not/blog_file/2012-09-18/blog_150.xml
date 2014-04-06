@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-18 10:37:51</datetime>
+  <title>SQL Server插入记录后获取自动增长的列值</title>
+  <content>&lt;p&gt;
+	在关系数据库中，我们经常会给一个表的主键设置为自增列，而在开发过程中，有时又会需要在插入一条记录后获得它的主键值，我们可以通过创建带有输出参数的&amp;nbsp;存储过程来完成这一任务。在T-SQL中，有三个函数可以用来检索标识列值：SCOPE_IDENTITY,&amp;nbsp;@@IDENTITY,&amp;nbsp;IDENT_CURRENT.
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;其中，SCOPE_IDENTITY为微软推荐使用函数，它返回当前执行范围内的最后一个标识值，大部分情况下都适用；@@IDENTITY函数包含当前&amp;nbsp;会话中任何表生成的最后一个标识值，由于这个函数受触发其影响，可能不会返回我们预期的值；IDENT_CURRENT函数返回在任何会话中以及任何范围&amp;nbsp;内为特定表生成的最后一个标识值。推荐大家使用SCOPE_IDENTITY函数。
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面我们就来创建一个可以返回标识值的存储过程：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;CREATE&amp;nbsp;PROCEDURE&amp;nbsp;dbo.CustomerInsert
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@Name&amp;nbsp;varchar(15),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@Age&amp;nbsp;int,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@Sex&amp;nbsp;bit,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@id&amp;nbsp;int&amp;nbsp;OUT
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;AS
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;INSERT&amp;nbsp;INTO&amp;nbsp;Customer(Name,Age,Sex)&amp;nbsp;VALUES(@Name,@Age,@Sex)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;SET&amp;nbsp;@id&amp;nbsp;=&amp;nbsp;SCOPE_IDENTITY()&lt;/pre&gt;
+&lt;p&gt;
+	然后我们可以在数据访问层写这样一个方法：
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;public&amp;nbsp;int&amp;nbsp;InsertCustomer(Customer&amp;nbsp;cus,&amp;nbsp;DataTable&amp;nbsp;dt)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;using&amp;nbsp;(SqlConnection&amp;nbsp;con&amp;nbsp;=&amp;nbsp;new&amp;nbsp;SqlConnection(\"Data&amp;nbsp;Source=.;Initial&amp;nbsp;Catalog=test;Integrated&amp;nbsp;Security=True\"))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;创建SqlDataAdapter
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;SqlDataAdapter&amp;nbsp;adp&amp;nbsp;=&amp;nbsp;new&amp;nbsp;SqlDataAdapter();
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//创建InsertCommand命令
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp.InsertCommand&amp;nbsp;=&amp;nbsp;new&amp;nbsp;SqlCommand(\"dbo.CustomerInsert\",&amp;nbsp;con);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//指定InsertCommand类型为存储过程
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp.InsertCommand.CommandType&amp;nbsp;=&amp;nbsp;CommandType&amp;nbsp;.&amp;nbsp;StoredProcedure;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//向InsertCommand加入参数
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp&amp;nbsp;.&amp;nbsp;InsertCommand&amp;nbsp;.&amp;nbsp;Parameters&amp;nbsp;.&amp;nbsp;Add(new&amp;nbsp;SqlParameter(\"@Name\",&amp;nbsp;SqlDbType&amp;nbsp;.&amp;nbsp;VarChar,&amp;nbsp;20,&amp;nbsp;\"Name\"));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp&amp;nbsp;.&amp;nbsp;InsertCommand&amp;nbsp;.&amp;nbsp;Parameters&amp;nbsp;.&amp;nbsp;Add(new&amp;nbsp;SqlParameter(\"@Age\",&amp;nbsp;SqlDbType&amp;nbsp;.&amp;nbsp;Int,&amp;nbsp;4,&amp;nbsp;\"Age\"));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp&amp;nbsp;.&amp;nbsp;InsertCommand&amp;nbsp;.&amp;nbsp;Parameters&amp;nbsp;.&amp;nbsp;Add(new&amp;nbsp;SqlParameter(\"@Sex\",&amp;nbsp;SqlDbType&amp;nbsp;.&amp;nbsp;Bit,&amp;nbsp;1,&amp;nbsp;\"Sex\"));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;SqlParameter&amp;nbsp;parId&amp;nbsp;=&amp;nbsp;adp&amp;nbsp;.&amp;nbsp;InsertCommand&amp;nbsp;.&amp;nbsp;Parameters&amp;nbsp;.&amp;nbsp;Add(new&amp;nbsp;SqlParameter(\"@id\",&amp;nbsp;SqlDbType&amp;nbsp;.&amp;nbsp;Int,&amp;nbsp;0,&amp;nbsp;\"id\"));
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//指定id为输出参数
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;parId.Direction&amp;nbsp;=&amp;nbsp;ParameterDirection&amp;nbsp;.&amp;nbsp;Output;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;DataRow&amp;nbsp;row&amp;nbsp;=&amp;nbsp;dt&amp;nbsp;.&amp;nbsp;NewRow();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;row[\"Name\"]&amp;nbsp;=&amp;nbsp;cus&amp;nbsp;.&amp;nbsp;Name;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;row[\"Sex\"]&amp;nbsp;=&amp;nbsp;cus&amp;nbsp;.&amp;nbsp;Sex;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;row[\"Age\"]&amp;nbsp;=&amp;nbsp;cus&amp;nbsp;.&amp;nbsp;Age;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dt&amp;nbsp;.&amp;nbsp;Rows&amp;nbsp;.&amp;nbsp;Add(row);
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//更新数据库
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;adp&amp;nbsp;.&amp;nbsp;Update(dt);
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//返回id值
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;Convert.ToInt32(row[\"id\"].ToString());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}&lt;/pre&gt;
+传入的DataTable为数据库中现有数据填充后的表，在需要插入后得到id的时候调用这样的方法就可以接收到返回的id值了。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>在关系数据库中，我们经常会给一个表的主键设置为自增列，而在开发过程中，有时又会需要在插入一条记录后获得它的主键值，我们可以通过创建带有输出参数的 存储过程来完成这一任务。在T-SQL中，有三个函数可以用来检索标识列值：SCOPE_IDENTITY, @@IDENTITY, IDENT_CURRENT.
+
+
+	      其中，SCOPE_IDENTITY为微</contentx>
+  <tags>_null_</tags>
+</root>

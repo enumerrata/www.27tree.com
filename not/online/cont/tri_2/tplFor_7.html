@@ -1,0 +1,106 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP If...Else 语句</h1>
+</div>
+<div>
+
+<P><b>if、elseif 以及 else 语句用于执行基于不同条件的不同动作。</b></P>
+
+<h1>条件语句</h1>
+
+<p>当您编写代码时，您常常需要为不同的判断执行不同的动作。</p>
+<p>您可以在代码中使用条件语句来完成此任务。</p>
+<p><b>if...else 语句</b></p>
+<p>在条件成立时执行一块代码，条件不成立时执行另一块代码</p>
+<p><b>elseif 语句</b></p>
+<p>与 if...else 配合使用，在若干条件之一成立时执行一个代码块</p>
+
+<h1>If...Else 语句</h1>
+
+<p>如果您希望在某个条件成立时执行一些代码，在条件不成立时执行另一些代码，请使用 if....else 语句。</p>
+
+<h2>语法</h2>
+
+<code>
+if&nbsp(condition)<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspcondition&nbspis&nbsptrue;<br />
+else<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspcondition&nbspis&nbspfalse;&nbsp
+</code>
+
+<h2>实例</h2>
+
+<p>如果当前日期是周五，下面的代码将输出 "Have a nice weekend!"，否则会输出 "Have a nice day!"：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+$d=date("D");<br />
+if&nbsp($d=="Fri")<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspweekend!";&nbsp<br />
+else<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspday!";&nbsp<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>如果需要在条件成立或不成立时执行多行代码，应该把这些代码行包括在花括号中：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+$d=date("D");<br />
+if&nbsp($d=="Fri")<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Hello!&lt;br&nbsp/&gt;";&nbsp<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspweekend!";<br />
+&nbsp&nbspecho&nbsp"See&nbspyou&nbspon&nbspMonday!";<br />
+&nbsp&nbsp}<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<h1>ElseIf 语句</h1>
+
+<p>如果希望在多个条件之一成立时执行代码，请使用 elseif 语句：</p>
+
+<h2>语法</h2>
+
+<code>
+if&nbsp(condition)<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspcondition&nbspis&nbsptrue;<br />
+elseif&nbsp(condition)<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspcondition&nbspis&nbsptrue;<br />
+else<br />
+&nbsp&nbspcode&nbspto&nbspbe&nbspexecuted&nbspif&nbspcondition&nbspis&nbspfalse;&nbsp
+</code>
+
+<h2>实例</h2>
+
+<p>如果当前日期是周五，下面的例子会输出 "Have a nice weekend!"，如果是周日，则输出 "Have a nice Sunday!"，否则输出 "Have a nice day!"：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+$d=date("D");<br />
+if&nbsp($d=="Fri")<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspweekend!";&nbsp<br />
+elseif&nbsp($d=="Sun")<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspSunday!";&nbsp<br />
+else<br />
+&nbsp&nbspecho&nbsp"Have&nbspa&nbspnice&nbspday!";&nbsp<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+</div>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:33:15</datetime>
+  <title>Java和PHP在Web开发方面的比较</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	比较PHP和JSP这两个Web开发技术，在目前的情况是其实是比较PHP和Java的Web开发。以下是我就几个主要方面进行的比较：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;一、&amp;nbsp;语言比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP是解释执行的服务器脚本语言，首先php有简单容易上手的特点。语法和c语言比较象，所以学过c语言的程序员可以很快的熟悉php的开发。而java需要先学好java的语法和熟悉一些核心的类库，懂得面向对象的程序设计方法。所以java不如php好学。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java首先要编译成字节码.class文件，然后在java虚拟机上解释执行。Java的Web开发首先最容易想到的就是JSP（现在已经到JSP2.0），原来的java的Web开发都是用servlet来实现的，用servlet来开发需要程序员在java的源文件中嵌入大量的html代码。所以后来就出现了JSP,JSP可以方便的嵌入到html文件当中，其实jsp文件在服务器上执行的时候首先会被应用服务器转换成servlet，然后再编译执行。Jsp可以通过servlet和JavaBean的支持产生强大的功能。JavaBean
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	是一种可复用的、跨平台的软件组件。使用javabean可以方便的实现java代码和html的分离，能够增强系统的功能和软件的复用性。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java的Web开发属于SUN公司定义的J2EE其中的规范。而且在J2EE中包括了java的Web开发的所有方面，如：JSP、Servlet、JDBC、JNDI、JAVABEAN、EJB等等。J2EE就特别适合于做大型的企业级的应用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;二、&amp;nbsp;数据库访问比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java通过JDBC来访问数据库，通过不同的数据库厂商提供的数据库驱动方便地访问数据库。访问数据库的接口比较统一。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP对于不同的数据库采用不同的数据库访问接口，所以数据库访问代码的通用性不强。例如：用Java开发的Web应用从MySQL数据库转到Oracle数据库只需要做很少的修改。而PHP则需要做大量的修改工作。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;三、&amp;nbsp;系统设计架构比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	采用Java的Web开发技术，需要使用的是面向对象的系统设计方法，而PHP还是采用面向过程的开发方法。所以用Java进行开发前期需要做大量的系统分析和设计的工作。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;四、&amp;nbsp;跨平台性&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java和PHP都有很好的跨平台的特性。几乎都可以在不作任何修改的情况下运行在Linux或者Windows等不同的操作系统上。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;五、&amp;nbsp;开发成本比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP最经典的组合就是：PHP&amp;nbsp;+&amp;nbsp;MySQL&amp;nbsp;+
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Apache。非常适合开发中小型的Web应用，开发的速度比较快。而且所有的软件都是开源免费的，可以减少投入。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java的Web应用服务器有免费Tomcat、JBoss等，如果需要更好的商业化的服务有：Web&amp;nbsp;Sphere和&amp;nbsp;Web&amp;nbsp;logic。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;六、&amp;nbsp;分布式多层架构比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP只能实现简单的分布式两层或三层的架构，而JAVA在这方面就比较强大，可以实现多层的网络架构。数据库层（持久化层）、应用（业务）逻辑层、表示逻辑层彼此分开，而且现在不同的层都已经有一些成熟的开发框架的支持。例如Struts就是利用java的Web开发技术实现了MVC的设计模式，而在业务逻辑层也有Spring框架，数据库持久化层有Hibernate等框架。这些框架可以方便开发者高效、合理、科学得架构多层的商业应用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	下面简要的说一下Struts，它实质上是在JSP&amp;nbsp;Model2的基础上实现的一个MVC（Model、View、Controler）框架。JSP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Model2体系结构是一种联合使用JSP&amp;nbsp;与Servlet
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	来提供动态内容的方法。在Struts框架中，模型由实现业务逻辑的JavaBean或EJB组件构成，控制器由Servlet实现的，视图由一组JSP文件组成。采用Struts可以明确角色的定义和开发者与网页设计者的分工。而且项目越复杂，其优势越明显。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;七、&amp;nbsp;源代码安全&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP开发的程序的源代码都是公开的，他人拿到php开发的程序后都可以进行修改。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Java开发的程序，最后用户拿到的是只是一些编译好的class类，无法看到完整的源代码，安全性高。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;八、性能比较&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	有人做过试验，对这两种种语言分别做回圈性能测试及存取Oracle数据库测试。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在循环性能测试中，JSP只用了令人吃惊的四秒钟就结束了20000＊20000的回圈。而PHP测试的是2000＊2000循环（少一个数量级），却分别用了63秒。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	数据库测试中，二者分别对&amp;nbsp;Oracle&amp;nbsp;8&amp;nbsp;进行&amp;nbsp;1000&amp;nbsp;次&amp;nbsp;Insert,Update,Select和Delete：&amp;nbsp;JSP&amp;nbsp;需要&amp;nbsp;13
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	秒，PHP&amp;nbsp;需要&amp;nbsp;69&amp;nbsp;秒。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	综上所述，我个人认为，PHP适合于快速开发，中小型应用系统，开发成本低，能够对变动的需求作出快速的反应。而Java适合于开发大型的应用系统，应用的前景比较广阔，系统易维护、可复用性较好。还有，同样功能的系统用Java开发的系统要比PHP开发的系统的价格要高。
+&lt;/p&gt;</content>
+  <contentx>比较PHP和JSP这两个Web开发技术，在目前的情况是其实是比较PHP和Java的Web开发。以下是我就几个主要方面进行的比较：
+
+
+	一、 语言比较
+
+
+	PHP是解释执行的服务器脚本语言，首先php有简单容易上手的特点。语法和c语言比较象，所以学过c语言的程序员可以很快的熟悉php的开发。而java需要先学好java的语法和熟悉一些核心的类库，懂得面向对</contentx>
+  <tags>_null_</tags>
+</root>

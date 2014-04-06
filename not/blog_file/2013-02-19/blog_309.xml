@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[使用php生成rss文件]]></title>
+  <content><![CDATA[<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+
+$database = \"nameofthedatabase\";
+$dbconnect = mysql_pconnect(localhost, dbuser, dbpassword);
+mysql_select_db($database, $dbconnect);
+$query = \"select link, headline, description from `headlines` limit 15\";
+$result = mysql_query($query, $dbconnect);
+
+while ($line = mysql_fetch_assoc($result)) {
+    $return[] = $line;
+}
+
+$now = date(\"D, d M Y H:i:s T\");
+
+$output = \"&lt;?xml version=\\\"1.0\\\"?&gt;
+            &lt;rss version=\\\"2.0\\\"&gt;
+                &lt;channel&gt;
+                    &lt;title&gt;Our Demo RSS&lt;/title&gt;
+                    &lt;link&gt;http://www.tracypeterson.com/RSS/RSS.php&lt;/link&gt;
+                    &lt;description&gt;A Test RSS&lt;/description&gt;
+                    &lt;language&gt;en-us&lt;/language&gt;
+                    &lt;pubDate&gt;$now&lt;/pubDate&gt;
+                    &lt;lastBuildDate&gt;$now&lt;/lastBuildDate&gt;
+                    &lt;docs&gt;http://someurl.com&lt;/docs&gt;
+                    &lt;managingEditor&gt;you@youremail.com&lt;/managingEditor&gt;
+                    &lt;webMaster&gt;you@youremail.com&lt;/webMaster&gt;
+            \";
+
+foreach ($return as $line) {
+    $output .= \"&lt;item&gt;&lt;title&gt;\" . htmlentities($line[\'headline\']) . \"&lt;/title&gt;
+                    &lt;link&gt;\" . htmlentities($line[\'link\']) . \"&lt;/link&gt;
+                    
+&lt;description&gt;\" . htmlentities(strip_tags($line[\'description\'])) . \"&lt;/description&gt;
+                &lt;/item&gt;\";
+}
+$output .= \"&lt;/channel&gt;&lt;/rss&gt;\";
+header(\"Content-Type: application/rss+xml\");
+echo $output;
+?&gt;</pre>
+刚刚写rss顺带发的
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+&lt;?php
+
+$database = \"nameofthedatabase\";
+$dbconnect = mysql_pconnect(localhost, dbuser, dbpassword);
+mysql_select_d]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

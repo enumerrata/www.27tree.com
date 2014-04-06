@@ -1,0 +1,197 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX RSS 阅读器</h1>
+</div>
+<div>
+
+<p><b>RSS 阅读器用于阅读 RSS Feed。</b></p>
+<p><b>RSS 允许对新闻和更新进行快速浏览。</b></p>
+	
+<h1>AJAX RSS 阅读器<h1>
+
+<p>在下面的 AJAX 实例中，我们将演示一个 RSS 阅读器，通过它，来自 RSS 的内容在不进行刷新的情况下载入网页。</p>
+
+<h1>在下面的列表框中选择一个 RSS 新闻订阅</h1>
+
+<p>Select an RSS-Feed:  Google News MSNBC News </p>
+
+<p>在此列出 RSS Feed。</p>
+<p>本例包括三个元素：</p>
+
+<ul>
+<li>简单的 HTML 表单</li>
+<li>JavaScript</li>
+<li>PHP 页面</li>
+</ul>
+
+<h1>HTML 表单</h1>
+
+<p>这是 HTML 页面。它包含一个简单的 HTML 表单和执行一个 JavaScript 文件的链接：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script type="text/javascript" src="getrss.js"&gt;&lt;/script&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form&gt; <br />
+Select an RSS-Feed:<br />
+&lt;select onchange="showRSS(this.value)"&gt;<br />
+&lt;option value="Google"&gt;Google News&lt;/option&gt;<br />
+&lt;option value="MSNBC"&gt;MSNBC News&lt;/option&gt;<br />
+&lt;/select&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;p&gt;&lt;div id="rssOutput"&gt;<br />
+&lt;b&gt;RSS Feed will be listed here.&lt;/b&gt;&lt;/div&gt;&lt;/p&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>例子解释 - HTML 表单</b></p>
+
+<p>正如您看到的，上面的 HTML 页面包含一个简单的 HTML 表单，其中带有一个下拉列表框。</p>
+<p>表单是这样工作的：</p>
+
+<p>1.当用户选择下拉框中的选项时，会触发一个事件</p>
+<p>2.当事件触发时，执行 showRSS() 函数</p>
+
+<p>表单下面是名为 "rssOutput" 的一个 &lt;div&gt;。它用作 showRSS() 函数所返回的数据的占位符。</p>
+
+<h1>JavaScript</h1>
+
+<p>JavaScript 代码存储在 "getrss.js" 中，它与 HTML 文档相连接：</p>
+
+<code>
+var&nbspxmlHttp<br />
+<br />
+function&nbspshowRSS(str)<br />
+&nbsp{&nbsp<br />
+&nbspxmlHttp=GetXmlHttpObject()<br />
+&nbspif&nbsp(xmlHttp==null)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspalert&nbsp("Browser&nbspdoes&nbspnot&nbspsupport&nbspHTTP&nbspRequest")<br />
+&nbsp&nbspreturn<br />
+&nbsp&nbsp}<br />
+&nbspvar&nbspurl="getrss.php"<br />
+&nbspurl=url+"?q="+str<br />
+&nbspurl=url+"&sid="+Math.random()<br />
+&nbspxmlHttp.onreadystatechange=stateChanged&nbsp<br />
+&nbspxmlHttp.open("GET",url,true)<br />
+&nbspxmlHttp.send(null)<br />
+&nbsp}<br />
+<br />
+function&nbspstateChanged()&nbsp<br />
+&nbsp{&nbsp<br />
+&nbspif&nbsp(xmlHttp.readyState==4&nbsp||&nbspxmlHttp.readyState=="complete")<br />
+&nbsp&nbsp{&nbsp<br />
+&nbsp&nbspdocument.getElementById("rssOutput")<br />
+&nbsp&nbsp.innerHTML=xmlHttp.responseText&nbsp<br />
+&nbsp&nbsp}&nbsp<br />
+&nbsp}<br />
+<br />
+function&nbspGetXmlHttpObject()<br />
+{<br />
+var&nbspxmlHttp=null;<br />
+try<br />
+&nbsp{<br />
+&nbsp//&nbspFirefox,&nbspOpera&nbsp8.0+,&nbspSafari<br />
+&nbspxmlHttp=new&nbspXMLHttpRequest();<br />
+&nbsp}<br />
+catch&nbsp(e)<br />
+&nbsp{<br />
+&nbsp//&nbspInternet&nbspExplorer<br />
+&nbsptry<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Msxml2.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbspcatch&nbsp(e)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Microsoft.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbsp}<br />
+return&nbspxmlHttp;<br />
+}
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>stateChanged() 和 GetXmlHttpObject 函数与 PHP 和 AJAX 请求 这一节中的例子相同。</p>
+
+<p><b>showRSS() 函数</b></p>
+
+<p>每当在下拉框中选择选择时，该函数就会执行：</p>
+
+<p>1.定义发送到服务器的 url （文件名）</p>
+<p>2.把参数 (q) 添加到 url，参数内容是下拉框中的被选项</p>
+<p>3.添加一个随机数，以防止服务器缓存文件</p>
+<p>4.调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象，并告知该对象在触发一个改变时去执行 stateChanged 函数</p>
+<p>5.通过给定的 url 来打开 XMLHTTP</p>
+<p>6.把 HTTP 请求发动到服务器</p>
+
+<h1>PHP 页面</h1>
+
+<p>调用 JavaScript 代码的服务器页面是名为 "getrss.php" 的 PHP 文件：</p>
+
+<code>
+&lt;?php<br />
+//get&nbspthe&nbspq&nbspparameter&nbspfrom&nbspURL<br />
+$q=$_GET["q"];<br />
+<br />
+//find&nbspout&nbspwhich&nbspfeed&nbspwas&nbspselected<br />
+if($q=="Google")<br />
+&nbsp{<br />
+&nbsp$xml=("http://news.google.com/news?ned=us&topic=h&output=rss");<br />
+&nbsp}<br />
+elseif($q=="MSNBC")<br />
+&nbsp{<br />
+&nbsp$xml=("http://rss.msnbc.msn.com/id/3032091/device/rss/rss.xml");<br />
+&nbsp}<br />
+<br />
+$xmlDoc&nbsp=&nbspnew&nbspDOMDocument();<br />
+$xmlDoc-&gt;load($xml);<br />
+<br />
+//get&nbspelements&nbspfrom&nbsp"&lt;channel&gt;"<br />
+$channel=$xmlDoc-&gt;getElementsByTagName('channel')-&gt;item(0);<br />
+$channel_title&nbsp=&nbsp$channel-&gt;getElementsByTagName('title')<br />
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+$channel_link&nbsp=&nbsp$channel-&gt;getElementsByTagName('link')<br />
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+$channel_desc&nbsp=&nbsp$channel-&gt;getElementsByTagName('description')<br />
+-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+<br />
+//output&nbspelements&nbspfrom&nbsp"&lt;channel&gt;"<br />
+echo("&lt;p&gt;&lt;a&nbsphref='"&nbsp.&nbsp$channel_link<br />
+&nbsp.&nbsp"'&gt;"&nbsp.&nbsp$channel_title&nbsp.&nbsp"&lt;/a&gt;");<br />
+echo("&lt;br&nbsp/&gt;");<br />
+echo($channel_desc&nbsp.&nbsp"&lt;/p&gt;");<br />
+<br />
+//get&nbspand&nbspoutput&nbsp"&lt;item&gt;"&nbspelements<br />
+$x=$xmlDoc-&gt;getElementsByTagName('item');<br />
+for&nbsp($i=0;&nbsp$i&lt;=2;&nbsp$i++)<br />
+&nbsp{<br />
+&nbsp$item_title=$x-&gt;item($i)-&gt;getElementsByTagName('title')<br />
+&nbsp-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+&nbsp$item_link=$x-&gt;item($i)-&gt;getElementsByTagName('link')<br />
+&nbsp-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+&nbsp$item_desc=$x-&gt;item($i)-&gt;getElementsByTagName('description')<br />
+&nbsp-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;<br />
+<br />
+&nbspecho&nbsp("&lt;p&gt;&lt;a&nbsphref='"&nbsp.&nbsp$item_link<br />
+&nbsp.&nbsp"'&gt;"&nbsp.&nbsp$item_title&nbsp.&nbsp"&lt;/a&gt;");<br />
+&nbspecho&nbsp("&lt;br&nbsp/&gt;");<br />
+&nbspecho&nbsp($item_desc&nbsp.&nbsp"&lt;/p&gt;");<br />
+&nbsp}<br />
+?&gt;
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>当一个选项从 JavaScript 发送时，会发生：</p>
+
+<p>1.PHP 找出哪个 RSS feed 被选中</p>
+<p>2.为选中的 RSS feed 创建 XML DOM 对象</p>
+<p>3.找到并输出来自 RSS 频道的元素</p>
+<p>4.遍历前三个 RSS 项目中的元素，并进行输出</p>
+
+</div>

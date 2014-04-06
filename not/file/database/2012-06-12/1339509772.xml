@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MemCache在中型网站中的应用</title>
+<content>&amp;lt;p&amp;gt;
+	使用Memcache的网站一般流量都是比较大的，为了缓解数据库的压力，让Memcache作为一个缓存区域，把部分信息保存在内存中，在前端能够迅速
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	的进行存取。那么一般的焦点就是集中在如何分担数据库压力和进行分布式，毕竟单台Memcache的内存容量的有限的。我这里简单提出我的个人看法，未经
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实践，权当参考。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[&amp;nbsp;分布式应用]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Memcache本来支持分布式，我们客户端稍加改造，更好的支持。我们的key可以适当进行有规律的封装，比如以user为主的网站来说，每个用户都有UserID，那么可以按照固定的ID来进行提取和存取，比如1开头的用户保存在第一台Memcache服务器上，以2开头的用户的数据保存在第二台Mecache服务器上，存取数据都先按照User&amp;nbsp;ID来进行相应的转换和存取。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是这个有缺点，就是需要对User&amp;nbsp;ID进行判断，如果业务不一致，或者其他类型的应用，可能不是那么合适，那么可以根据自己的实际业务来进行考虑，或者去想更合适的方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[&amp;nbsp;减少数据库压力]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个算是比较重要的，所有的数据基本上都是保存在数据库当中的，每次频繁的存取数据库，导致数据库性能急剧下降，无法同时服务更多的用户，比如MySQL，特别频繁的锁表，那么让Memcache来分担数据库的压力吧。我们需要一种改动比较小，并且能够不会大规模改变前端的方式来进行改变目前的架构。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-12/1339509772.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

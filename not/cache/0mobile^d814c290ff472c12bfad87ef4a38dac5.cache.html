@@ -1,0 +1,404 @@
+<__cache@1389768680-@1389772280@0mobile__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            移动开发_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=mobile />
+                    <input type="hidden" id="pages" value=0/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/mobile/'>移动开发</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/mobile.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">互联网创造了经济神话。我们在思  Hanbit公司移动互联网设备MID考：一个国家的创新能力，最终是这个国家所掌握的创新的技术在市场竞争中的表现。市场才是衡量创新价值的主要标准，而企业应是国家创新能力的主要体现者。推而广之，如果在7亿手机用户这样一个消费群体上建立一个平台，使之广泛应用到企业、商业和农村之中，是否会创造更惊天动地的奇迹？</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/mobile-android/>[Android]</a>    <a class="hotCommA" href="http://www.27tree.com/art/mobile/content/2012-06-19/1340083466.html">
+        &nbsp;Android中使用定时器TimerTask类介绍    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/2">koodo</a>:&nbsp;新版评论测试</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/mobile-android/>[Android]</a>    <a class="hotCommA" href="http://www.27tree.com/art/mobile/content/2012-06-24/1340544584.html">
+        &nbsp;手机连不上wifi，一直显示正在获取ip地址的解决办法    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/2">koodo</a>:&nbsp;太钓丝了</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/mobile-android/>[Android]</a>    <a class="hotCommA" href="http://www.27tree.com/art/mobile/content/2012-06-01/1338527302.html">
+        &nbsp;你身边的Android开发者都处于什么状态？    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/mobile-android/" class="borderR15 sband">Android</a><a href="/art/mobile-ojc/" class="borderR15 sband">Objective-C</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-09-17/1347877497.html>Andriod之父声明全文：不兼容将毁掉Andriod</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">新浪科技讯 9月15日下午消息，谷歌高级副总裁、Andriod系统创始人Andy Rubin今日在Andriod官方博客上发布声明，称Andriod发展过程中的不兼容将毁掉整个系统，“尽管Android完全免费，但只有兼容才能充分享受整个生态系统带来的益处”，“为同一个Android平台添砖加瓦，而不是推出一大堆不兼容版本”。
+
+
+	全文如下：
+
+
+	我们在</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(744)</span>
+                           <em>2012年9月17日 08:03</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-08-28/1346129003.html>使用JavaScript or PHP 来检测移动设备</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">基于不同的设备加载不同的网站，是我们Web开发者要做的事情。目前通过”User-Agent”检测判断移动设备是比较常用的方法。接下来，让我们看一看如何使用JavaScript or PHP 来检测移动设备。
+
+
+	iPhone & iPod Detection
+
+
+if((navigator.userAgent.match(/iPhone/i)) |</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(814)</span>
+                           <em>2012年8月25日 08:02</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-08-09/1344497116.html>常见控件:SimpleAdapter</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">SimpleAdapter是一个简单的适配器，可以将静态数据映射到XML文件中定义 好的视图。你可以指定数据支持的列表如ArrayList组成的Map。在ArrayList中 的每个条目对应List中的一行。Maps包含每行数据。你可以指定一个定义了被用 于显示行的视图XML文件，通过关键字映射到指定的视图。
+
+
+	构造函数
+
+
+	public Simple</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(669)</span>
+                           <em>2012年8月9日 15:23</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-08-07/1344315672.html>App市场运营三步曲</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">这两年互联网产品，移动互联网产品同质化非常严重，很多很好的产品一旦上线就会很多的竞争者涌现。一个好产品除了真正有价值，把产品体验做到足够好以外，市场运营就成了决定其能否脱颖而出的重要因素。
+
+
+	文章从互联网的产品运营、内容运营、用户运营三个方面，讲解如何将用户吸引到你的网站、安装你的应用，从一个浏览者、猎奇者变成一个用户者。
+
+
+	运营手段推广方式
+
+
+	</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/19'>Serria</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(528)</span>
+                           <em>2012年8月7日 12:59</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-06-01/1338527302.html>你身边的Android开发者都处于什么状态？</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">如果你的公司或者创业团队是专注于Android应用开发的，那么你就很有必要扫视一下以下的信息图，说不定它能在你的开发旅途中指点迷津。这图的数据来源于众多Android开发者的调查，从中我们可以发现58%的开发者竟然是孤军作战，很多所谓的团队开发队伍也不过是2-5个人而已。61%的开发者并不重视应用软件的推广，采取了听之任之的态度。面对这种状况，你抚心自问，你...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(671)</span>
+                           <em>2012年6月1日 13:08</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-07-03/1341276770.html>使用Eclipse来开发Android源码</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">用eclipse＋ADT作为android开发工具，可以说是很方便的，在HelloActivity小程序里我们就感觉到eclipse功能的强大。那么，我们可以用&amp;nbsp;eclipse来开发android源码吗？如果我们直接把android源码里一个工程导入eclipse，一般来说都会出现错误，说许多类库（包）找不到。
+
+
+	今天找到关于怎样使用e...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(408)</span>
+                           <em>2012年7月3日 08:51</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-07-03/1341276703.html>Android实现全屏正确方法介绍</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Android手机操作系统是由谷歌推出的一款基于Linux的开源手机操作系统。我们可以在模拟器中对其进行相应的操作来实现各种功能以满足用户的需求。在这里就简要介绍一下Android实现全屏的相关方法。
+
+
+	新版本的Android Framework和老版本的实现起来有些不同。这里只给出新版本的Android实现全屏代码。
+
+
+　　package pub.t...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(407)</span>
+                           <em>2012年7月3日 08:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-07-03/1341276515.html>Android系统架构基本模式解析</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">如今，大家面对市场中种类繁多的手机必然挑的眼花缭乱。不过，在智能手机占据主要地位的今天，挑选手机的主要因素就是挑选一款性能高的手机操作系统，Android就是其中的一个必然选择。Android系统架构和其操作系统一样，采用了分层的架构。Android分为四个层，从高层到低层分别是应用程序层、应用程序框架层、系统运行库层和linux核心层。
+
+
+	Androi...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(447)</span>
+                           <em>2012年7月3日 08:47</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-07-03/1341276455.html>Android应用程序开发入门</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Android会同一个核心应用程序包一起发布，该应用程序包包括email客户端，SMS短消息程序，日历，地图，浏览器，联系人管理程序等。所有的应用程序都是用JAVA编写的。
+
+
+	Android 应用程序框架开发者也完全可以访问核心应用程序所使用的API框架。该应用程序架构用来简化组件软件的重用；任何一个应用程序都可以发布它的功能块并且任何其它的应用程序都可...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(379)</span>
+                           <em>2012年7月3日 08:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-06-24/1340544584.html>手机连不上wifi，一直显示正在获取ip地址的解决办法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">打开设置-无线和网路-WLAN设置，按menu键，
+
+
+	进入高级选项设置，在ip设置中勾选\"使用静态IP\"。
+
+
+	然后再\"IP地址\"中填入\"192.168.1.X\"，一般家庭使用无线路由，
+
+
+	网段是192.168.1.2--192.168.1.255，X值代表的范畴是2-255之间的。
+
+
+	然后再\"网关\"中填入192.168.1.1，或者是192....</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(4154)</span>
+                           <em>2012年6月24日 21:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-06-24/1340497746.html>应用界面主题Theme使用方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">•android:theme=\"@android:style/Theme.Dialog\"   将一个Activity显示为能话框模式
+•android:theme=\"@android:style/Theme.NoTitleBar\"  不显示应用程序标题栏
+•android:theme=\"@android:style/Theme.NoTitleBar.Full...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(524)</span>
+                           <em>2012年6月24日 08:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-06-19/1340083466.html>Android中使用定时器TimerTask类介绍</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在Android平台中需要反复按周期执行方法可以使用Java上自带的TimerTask类，TimerTask相对于Thread来说对于资源消耗的更低，除了使用Android自带的AlarmManager使用Timer定时器是一种更好的解决方法。 我们需要引入
+
+
+	import java.util.Timer; 和 import java.util.Time...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(471)</span>
+                           <em>2012年6月19日 13:24</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/mobile-android/>[Android]</a>&nbsp;<a href=http://www.27tree.com/art/mobile/content/2012-06-19/1340074981.html> Android使用HttpGet访问php取回json数据</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">下面是php 代码：
+
+$array = array(
+  \'username\'=&gt;\'koodo\',
+  \'password\'=&gt;\'123456\',
+  \'user_id\'=&gt;1
+);
+echo json_encode($array); 
+下面是android要运行的java代码：
+private void startUrlCheck(St...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(668)</span>
+                           <em>2012年6月19日 11:01</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>移动开发</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/109">
+    <img src="/not/mybook/data/book_image_lib/3368f349e7f17f7538eac63774a2553c.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/109">
+    《Hello Android》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/74">
+    <img src="/not/mybook/data/book_image_lib/e54cbd196d67a07e376469362e061c4f.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/74">
+    《Android开发入门教程》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/15">
+    <img src="/not/mybook/data/book_image_lib/c329a177c3722a836b11a4ede085578c.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/15">
+    《精通Android 2》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/240">
+    <img src="/not/mybook/data/book_image_lib/147034cfe8275c1297c3cbed62c59c6b.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/240">
+    《Pro Android 2》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/219">
+    <img src="/not/mybook/data/book_image_lib/86c1959e0e6d55586e39646f81e1ae70.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/219">
+    《Android应用开发揭秘》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

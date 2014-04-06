@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>300</uid>
+  <datetime>2013-03-20 15:37:02</datetime>
+  <title><![CDATA[《Java RMI》流]]></title>
+  <content><![CDATA[<p>
+	读取字节和写入字节有两个基本的类，分别是InuputStream和OutputStream。两个类里的方法都很直接，具体含义方法及可直接参考API文档。
+</p>
+<p>
+	有个比较有趣的地方可能会让新手疑惑，在InputStream里有一个方法：public int read() throws IOException；这个方法表示读取一个字节，并返回。很多人会问，为什么返回值不是byte，而是一个int？原因在于“如果到达流的末尾，则返回 -1”。byte类型的-1的二进制补码是1111 1111，若使用byte类型作为返回值，则无法区分数据中的1111 1111还是流达到末尾的指示符。使用int后，所有数据中的字节反应到int中都是一个非负值，而只有流到达末尾的指示符是负值（-1）。与此对应的是OutputStream中的public abstract void write(int b) throws IOException方法，该方法写入一个字节，按理说这里不需要什么标识之类的东西，为什么要传入一个int呢？实际上，传入的int的有效范围只有[0,255]（一个byte能表示的范围），如果超出这个范围，则会截断成一个byte。声明参数类型为int，是为了个前面说的read方法相对应，很可能你需要从InuputStream读取一个字节后将其写入到另外一个OutputStream，因为InuputStream那个read的返回值是int，若write的参数不是int，就需要做强制转换，将其参数声明为int就避免了这个麻烦。
+</p>
+<p>
+	InputStream中的available方法使用的时候是需要注意的。该类中available的实现如下：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">public int available() throws IOException {
+    return 0;
+}</pre>
+	<p>
+		仅仅只是简单的返回一个0，在使用其子类的available时，要先确认其是否有一个有意义的实现。
+	</p>
+	<p>
+		另外一个需要注意的方法是skip，我们看一下大部分skip的实现：
+	</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">public long skip(long n) throws IOException {
+    long remaining = n;
+    int nr;
+    if (skipBuffer == null)
+        skipBuffer = new byte[SKIP_BUFFER_SIZE];
+ 
+    byte[] localSkipBuffer = skipBuffer;
+ 
+    if (n &lt;= 0) {
+        return 0;
+    }
+    while (remaining &gt; 0) {
+        nr = read(localSkipBuffer, 0,
+              (int) Math.min(SKIP_BUFFER_SIZE, remaining));
+        if (nr &lt; 0) {
+        break;
+        }
+        remaining -= nr;
+    }
+    return n - remaining;
+}</pre>
+	<p>
+		大部分skip的实现都是重复读取数据，然后丢弃。在这种实现下，如果需要skip的数据少于当前available的数据，skip方法将会阻塞，这一点需要意识到。
+	</p>
+	<p>
+		在流不在需要的时候，需要显式调用close进行关闭。通常流都与jvm外部的资源相关联，如文件、网络连接等，使用流通常需要操作系统为其分配内存之外的资源。大部分操作系统，都限制了同时能打开的文件或网络连接的数量。为什么不能等待垃圾回收来关闭这些资源？垃圾回收是不确定性的，一个jvm实现甚至可以不实现垃圾回收部分，只是在内存不足的时候报出一个OutOfMemoryError错误。垃圾回收主要有以下几个问题：
+	</p>
+	<p>
+		1、没法控制一个对象不需要到被垃圾回收之间的时间。
+	</p>
+	<p>
+		2、无法控制哪个对象会被回收。
+	</p>
+	<p>
+		3、内存可用量与文件句柄可用量之间没有必然的联系。可能内存还非常富余，而文件句柄可用数已不多。
+	</p>
+	<p>
+		所以，一定要在流不在使用的时候显式地关闭它。
+	</p>
+	<p>
+		在读取和写入字节的时候使用Buffered…Stream包装一下，虽然操作系统可能已经缓冲了流的读写，但从操作系统读取字节和写入字节到操作系统使用的是native方法，其开销相比java读写还是很大，所以应当使用缓冲流。
+	</p>
+	<p>
+		与Socket相关的输出流在调用flush和close方法，其行为会传播到socket，也就是说，如果关闭了与socket相关的流，也就关闭了socket。
+	</p>
+	<p>
+		与压缩相关的输出流，如GZIPOutputStream，DeflaterOutputStream等，其flush方法只是简单的调用了下底层流的flush方法，这可能不会将所有字节写到底层流中，比如一个56位（7个byte）的数据压缩后只有51位（6个字节+3位），flush方法只会将6个字节写出去，但是剩余的3位仍然没有写出。所以DeflaterOutputStream提供了finish方法，其可以写出所有的位数。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

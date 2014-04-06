@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-10 21:25:25</datetime>
+  <title><![CDATA[ 修改.htaccess文件 将HTML文件当PHP文件使用]]></title>
+  <content><![CDATA[<p>
+	为了将html扩展名文件当作php文件使用，需要在.htaccess文件中添加下面的内容：
+</p>
+<p>
+	AddType application/x-httpd-php .htm
+</p>
+<p>
+	AddType application/x-httpd-php .html
+</p>
+<p>
+	这样服务器就会把HTML文件作为PHP文件进行解析。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

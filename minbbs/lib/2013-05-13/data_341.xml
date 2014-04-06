@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-05-13 19:05:48</datetime>
+  <title><![CDATA[分享几个流行Js库 的CDN地址]]></title>
+  <content><![CDATA[<p>
+	Dojo&nbsp;&lt;script src=\"//ajax.googleapis.com/ajax/libs/dojo/1.9.0/dojo/dojo.js\"&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Ext Core&nbsp;&lt;script src=\"//ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js\"&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	jQuery&nbsp;&lt;script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js\"&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	jQuery UI&nbsp;&lt;script src=\"//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js\"&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	MooTools&nbsp;&lt;script src=\"//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js\"&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	这些都是Google提供的CDN分发，建议大家使用CDN加载Js库，这样比较快哈。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

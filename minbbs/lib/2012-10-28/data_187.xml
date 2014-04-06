@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-28 11:31:46</datetime>
+  <title><![CDATA[Ubuntu下Apache启用Rewrite伪静态 ]]></title>
+  <content><![CDATA[<p>
+	&gt;&nbsp;sudo a2enmod rewrite 开启Rewrite模块&nbsp;
+</p>
+<p>
+	&gt; sudo service apache2 restart
+</p>
+<p>
+	&gt; sudo gedit /etc/apache2/sites-available/default&nbsp;
+</p>
+<p>
+	修改下面的地方
+</p>
+<p>
+	Options FollowSymLinks
+</p>
+<p>
+	AllowOverride None(修改为AllowOverride All)
+</p>
+<p>
+	Options Indexes FollowSymLinks MultiViews
+</p>
+<p>
+	AllowOverride None(修改为AllowOverride All)
+</p>
+<p>
+	Order allow,deny
+</p>
+<p>
+	allow from all
+</p>
+<p>
+	<br />
+</p>
+<p>
+	最后
+</p>
+<p>
+	&gt;&nbsp;sudo service apache2 restart
+</p>
+<p>
+	在网站下面建立.htaccess文件 touch .htaccess
+</p>
+<p>
+	修改.htaccess文件属性 chmod -R 777 .htaccess
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,50 @@
+.blogPromButton{
+    position:absolute;right:5px;top:5px;height:16px;width:16px;background-color:#fefefe;background-image:url('/img/up-load-16.png');
+}
+.blog-list-wapper{
+    margin-left:287px;border:1px solid #ccc;background-color:#fff;padding:10px 15px;margin-bottom:25px;
+}
+.blog-list-wapper-left{
+    float:left;padding-top:41px;
+}
+.blog-rank-list{
+    font-size:12px;color:#999999;font-weight:normal;
+    text-align:left;padding-left:28px;
+    *padding-left:0;
+}
+.blog-rank-list li{
+    padding-left:0;margin-top:5px;
+}
+.blog-list-item{
+    margin:5px 0;border-bottom:1px dashed #ccc;padding-bottom:16px;position:relative;
+}
+.ItemContentx{
+    margin-left:80px;margin-top:10px;position:relative;
+}
+.ItemContentx h1{
+    margin:0;
+    padding:0;
+}
+.ItemContentx p{
+    margin:0px;text-indent:0;margin-bottom:5px;color:#444;
+}
+.stat-blog-list{
+    font-size:12px;
+    color:#666;
+    font-weight:normal;
+}
+.blw-wapper{
+    margin-bottom:10px;
+}
+#nav{
+    margin-top:0;
+}
+#w-item-l{
+    float:left;width:365px;
+}
+#w-item-r{
+    margin-left:375px;
+}
+#nblog-list-wapp{
+    margin-top:10px;
+}

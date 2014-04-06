@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言中#if,#ifdef</title>
+<content>&amp;lt;p&amp;gt;
+	一般情况下，源程序中所有的行都参加编译。但是有时希望对其中一部分内容只在满足一定条件才进行编译。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;条件编译命令最常见的形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#ifdef&amp;amp;nbsp;标识符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;程序段1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;程序段2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#endif
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;它的作用是：当标识符已经被定义过（一般是用#define命令定义），则对程序段1进行编译，否则编译程序段2.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;其中#else部分也可以没有，即：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#ifdef
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;程序段1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#denif
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;还有一种形式，就是#if后面的是一个表达式，而不是一个简单的标识符：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#if&amp;amp;nbsp;表达式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;程序段1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;程序段2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#endif
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;它的作用是：当指定的表达式值为真（非零）时就编译程序段1,否则编译程序段2.可以事先给定一定条件，使程序在不同的条件下执行不同的功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;例如：输入一行字母字符，根据需要设置条件编译，使之能将字母全改为大写输出，或全改为小写字母输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#define&amp;amp;nbsp;LETTER&amp;amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;main（）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;char&amp;amp;nbsp;str[20]=\"C&amp;amp;nbsp;Language\",c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;i=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;while（（c=str[i]）！=&amp;amp;nbsp;\0&amp;amp;nbsp;）{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;i++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#if&amp;amp;nbsp;LETTER
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if（c&amp;amp;gt;=&amp;amp;nbsp;a&amp;amp;nbsp;&amp;amp;&amp;amp;c&amp;amp;lt;=&amp;amp;nbsp;z&amp;amp;nbsp;）&amp;amp;nbsp;c=\"c-32\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if（c&amp;amp;gt;=&amp;amp;nbsp;A&amp;amp;nbsp;&amp;amp;&amp;amp;c&amp;amp;lt;=&amp;amp;nbsp;Z&amp;amp;nbsp;）&amp;amp;nbsp;c=\"c\"+32;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#endif
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;printf（\"%c\",c）；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;运行结果为：C&amp;amp;nbsp;LANGUAGE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;现在先定义LETTER为1,这样在预处理条件编译命令时，由于LETTER为真（非零），则对第一个if语句进行编译，运行时使小写字母变大写。如果将程序第一行改为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#define&amp;amp;nbsp;LETTER&amp;amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;则在预处理时，对第二个if语句进行编译处理，使大写字母变成小写字母（大写字母与相应的小写字母的ASCII代码差32）。此时运行情况为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;c&amp;amp;nbsp;language
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;头文件的中的#ifndef,这是一个很关键的东西。比如你有两个C文件，这两个C文件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问题来了，大量的声明冲突。&amp;amp;nbsp;还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都要加上这个。一般格式是这样的：&amp;amp;nbsp;#ifndef&amp;amp;nbsp;&amp;amp;lt;标识&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#define&amp;amp;nbsp;&amp;amp;lt;标识&amp;amp;gt;&amp;amp;nbsp;……
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#endif&amp;amp;nbsp;&amp;amp;lt;标识&amp;amp;gt;在理论上来说可以是自由命名的，但每个头文件的这个\"标识\"都应该是唯一的。标识的命名规则一般是头文件名全大写，前后加下划线，并把文件名中的\".\"也变成下划线，如：stdio.h&amp;amp;nbsp;#ifndef&amp;amp;nbsp;_STDIO_H_
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#define&amp;amp;nbsp;_STDIO_H_&amp;amp;nbsp;……&amp;amp;nbsp;#endif
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-07-03/1341277148.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

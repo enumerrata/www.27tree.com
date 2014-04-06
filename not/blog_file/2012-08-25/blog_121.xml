@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-25 08:02:48</datetime>
+  <title>使用JavaScript or PHP 来检测移动设备</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	基于不同的设备加载不同的网站，是我们Web开发者要做的事情。目前通过”User-Agent”检测判断移动设备是比较常用的方法。接下来，让我们看一看如何使用JavaScript&amp;nbsp;or&amp;nbsp;PHP&amp;nbsp;来检测移动设备。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:16px;\"&gt;iPhone&amp;nbsp;&amp;&amp;nbsp;iPod&amp;nbsp;Detection&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;if((navigator.userAgent.match(/iPhone/i))&amp;nbsp;||&amp;nbsp;(navigator.userAgent.match(/iPod/i)))&amp;nbsp;{
+	&amp;nbsp;if&amp;nbsp;(document.cookie.indexOf(\"iphone_redirect=false\")&amp;nbsp;==&amp;nbsp;-1){&amp;nbsp;window.location&amp;nbsp;=&amp;nbsp;\"http://yoursite.com/iphone\";}
+}&lt;/pre&gt;
+&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&gt;if(strstr($_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;],&amp;nbsp;iPhone&amp;nbsp;)&amp;nbsp;||&amp;nbsp;strstr($_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;],&amp;nbsp;iPod&amp;nbsp;))
+{
+&amp;nbsp;&amp;nbsp;header(&amp;nbsp;Location:&amp;nbsp;http://yoursite.com/iphone&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;exit();
+}&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;span&amp;nbsp;style=\"font-size:16px;\"&gt;&lt;strong&gt;Android&amp;nbsp;Detection&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;if(navigator.userAgent.match(/Android/i))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;//&amp;nbsp;Redirect&amp;nbsp;to&amp;nbsp;Android-site?
+&amp;nbsp;&amp;nbsp;window.location&amp;nbsp;=&amp;nbsp;&amp;nbsp;http://android.yoursite.com&amp;nbsp;;
+}&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;if(stripos($_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;],&amp;nbsp;Android&amp;nbsp;)&amp;nbsp;!==&amp;nbsp;false)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;header(&amp;nbsp;Location:&amp;nbsp;http://android.yoursite.com&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;exit();
+}&lt;/pre&gt;
+&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:16px;\"&gt;用&amp;nbsp;.htaccess&amp;nbsp;来检测Android：&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		RewriteCond&amp;nbsp;%{HTTP_USER_AGENT}&amp;nbsp;^.*Android.*$
+	&lt;/p&gt;
+	&lt;p&gt;
+		RewriteRule&amp;nbsp;^(.*)$&amp;nbsp;http://android.yoursite.com&amp;nbsp;[R=301]
+	&lt;/p&gt;
+	&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:16px;\"&gt;php判断用户是否使用手机设备&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&gt;//判断是否属手机
+function&amp;nbsp;is_mobile()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$user_agent&amp;nbsp;=&amp;nbsp;$_SERVER[&amp;nbsp;HTTP_USER_AGENT&amp;nbsp;];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$mobile_agents&amp;nbsp;=&amp;nbsp;Array(\"240x320\",\"acer\",\"acoon\",\"acs-\",\"abacho\",\"ahong\",\"airness\",\"alcatel\",\"amoi\",\"android\",\"anywhereyougo.com\",\"applewebkit/525\",\"applewebkit/532\",\"asus\",\"audio\",\"au-mic\",\"avantogo\",\"becker\",\"benq\",\"bilbo\",\"bird\",\"blackberry\",\"blazer\",\"bleu\",\"cdm-\",\"compal\",\"coolpad\",\"danger\",\"dbtel\",\"dopod\",\"elaine\",\"eric\",\"etouch\",\"fly&amp;nbsp;\",\"fly_\",\"fly-\",\"go.web\",\"goodaccess\",\"gradiente\",\"grundig\",\"haier\",\"hedy\",\"hitachi\",\"htc\",\"huawei\",\"hutchison\",\"inno\",\"ipad\",\"ipaq\",\"ipod\",\"jbrowser\",\"kddi\",\"kgt\",\"kwc\",\"lenovo\",\"lg&amp;nbsp;\",\"lg2\",\"lg3\",\"lg4\",\"lg5\",\"lg7\",\"lg8\",\"lg9\",\"lg-\",\"lge-\",\"lge9\",\"longcos\",\"maemo\",\"mercator\",\"meridian\",\"micromax\",\"midp\",\"mini\",\"mitsu\",\"mmm\",\"mmp\",\"mobi\",\"mot-\",\"moto\",\"nec-\",\"netfront\",\"newgen\",\"nexian\",\"nf-browser\",\"nintendo\",\"nitro\",\"nokia\",\"nook\",\"novarra\",\"obigo\",\"palm\",\"panasonic\",\"pantech\",\"philips\",\"phone\",\"pg-\",\"playstation\",\"pocket\",\"pt-\",\"qc-\",\"qtek\",\"rover\",\"sagem\",\"sama\",\"samu\",\"sanyo\",\"samsung\",\"sch-\",\"scooter\",\"sec-\",\"sendo\",\"sgh-\",\"sharp\",\"siemens\",\"sie-\",\"softbank\",\"sony\",\"spice\",\"sprint\",\"spv\",\"symbian\",\"tablet\",\"talkabout\",\"tcl-\",\"teleca\",\"telit\",\"tianyu\",\"tim-\",\"toshiba\",\"tsm\",\"up.browser\",\"utec\",\"utstar\",\"verykool\",\"virgin\",\"vk-\",\"voda\",\"voxtel\",\"vx\",\"wap\",\"wellco\",\"wig&amp;nbsp;browser\",\"wii\",\"windows&amp;nbsp;ce\",\"wireless\",\"xda\",\"xde\",\"zte\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$is_mobile&amp;nbsp;=&amp;nbsp;false;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;foreach&amp;nbsp;($mobile_agents&amp;nbsp;as&amp;nbsp;$device)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(stristr($user_agent,&amp;nbsp;$device))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$is_mobile&amp;nbsp;=&amp;nbsp;true;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$is_mobile;
+}
+//执行
+if(&amp;nbsp;is_mobile()&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Your&amp;nbsp;Code
+}&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;/p&gt;</content>
+  <contentx>基于不同的设备加载不同的网站，是我们Web开发者要做的事情。目前通过”User-Agent”检测判断移动设备是比较常用的方法。接下来，让我们看一看如何使用JavaScript or PHP 来检测移动设备。
+
+
+	iPhone &amp; iPod Detection
+
+
+if((navigator.userAgent.match(/iPhone/i)) |</contentx>
+  <tags>_null_</tags>
+</root>

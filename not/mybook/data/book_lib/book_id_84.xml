@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Linux命令、编辑器与Shell编程</title>
+  <author>Mark G.Sobell</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-18 15:28:59</submit-date-time>
+  <img-link>abda717177102362700d0204c1569a25.png</img-link>
+  <book-area>system</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书更快地获取更多知识，掌握命令行，成为真正的Linux专家，从数百个高质量的实际范例中学习，新增了Mac&amp;nbsp;OS&amp;nbsp;X命令行及其独特的工具，新增了如何使用Perl自动完成任务的专家入门指南。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Linux命令、编辑器与shell编程(第2版)》是唯一涵盖以下全部内容的书籍：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	更好、更实用的范例+涵盖了用户实际中需要执行的任务。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	深入浅出地介绍了Linux和OS×的每个知识点。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	适用于每个系统管理员的Peri完整入门指南。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	深入剖析如何使用bash和tcsh进行基本和高级的Linux&amp;nbsp;shell编程。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	从aspell到xargs的100个核心实用程序的全面阐述，包括从ditto到SetFile的Mac&amp;nbsp;OS&amp;nbsp;X专用实用程序。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	新增了如何使用rsync自动完成远程备份的内容。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	数十个系统安全提示。包括使用ssh和scp实现安全通信的详细步骤。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	定制shell和从命令行交互使用shell的提示和技巧。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使晨vim和emacs进行高效编辑的完全指南。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	全面的命令参考部分——现在包含修订过和扩展过的索引，以便读者快速查找需要的信息。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用apt-get和yum自动更新系统的指令。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	数十人令有助于读者提升实践能力和自信心。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	还包捶BitTorrent、gawk、sed、find、sort、bzip2和正则表达式等内容。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	可用于所有主流版本的Linux,包括Ubuntu、Fedora、openSUSE、Red&amp;nbsp;Hat、Debian、Mandriva、Mint和OS&amp;nbsp;X等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

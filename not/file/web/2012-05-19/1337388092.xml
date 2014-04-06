@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>RIA未来的发展预测</title>
+<content>&amp;lt;p&amp;gt;
+	就目前RIA的使用情况来说，离RIA时代还有很远的一段距离。今后几年时间内传统的Web应用程序和RIA将会共存。笔者认为真正具有实力担当起普及丰富客户端应用重任的只有基于FlashPlayer的Flash/Flex应用程序和Microsoft的基于Avalon的应用程序。短期时间内（估计2-3年时间）可能是Flash/Flex应用程序在新兴的网络应用程序市场上占有主导地位。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	目前Microsoft还在推广一种叫做Smart
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Client（智能客户端）的客户端程序技术，Microsoft称Smart&amp;nbsp;Client是比Rich
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Client更优秀的客户端，因而采用Smart&amp;nbsp;Client的应用程序算不算RIA目前我个人还无法作答。这里我们之所以提及Smart
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Client，是因为Smart&amp;nbsp;Client的特性跟我们谈的Rich&amp;nbsp;Client有太多的相似之处。Smart
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Client拥有自动更新、离线状态下的数据处理和可以使用本地资源等特征，其中的可使用本地资源这一项无疑是一大卖点，因为浏览器中的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flash/Flex应用程序目前还无法操作本地的一些资源，比如Flash/Flex应用程序无法将网上的文件保存到本地或者修改本地文件。虽然&amp;nbsp;Macromedia的Central1.5已经可以对本地文件进行简单的操作，并且flex1.5开发的RIA也能够运行于Central上，但是如何使Central能够得到大范围推广还是个问题。相对于轻量级的Rich&amp;nbsp;Client，Smart&amp;nbsp;Client更接近C/S架构中的客户端程序。Rich&amp;nbsp;Client和Smart&amp;nbsp;Client的定位还是有所区别的：Rich&amp;nbsp;Client更适合作为轻量级的基于浏览器的网络应用程序客户端；Smart&amp;nbsp;Client更适合作为Windows桌面应用程序的智能客户端。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不管我们今天称之为的RIA今后会不会成为主流应用程序，人们对开发具有高度互动性、丰富用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	体验以及功能强大的客户端的追求是不变的。有理由相信，拥有成熟技术和极高市场占有率的Flash客户端将会在RIA道路上越走越远。Microsoft
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	未来的重量级武器：Avalon和Smart&amp;nbsp;Client能否后来者居上让我们拭目以待。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-19/1337388092.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

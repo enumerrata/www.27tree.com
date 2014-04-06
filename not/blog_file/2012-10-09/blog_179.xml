@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-09 16:25:12</datetime>
+  <title><![CDATA[FireFox的DOMContentLoaded事件]]></title>
+  <content><![CDATA[<p>
+	基于Mozilla的浏览器提供了一种方便的且通常没有文档化的名为DOMContentLoaded的事件。
+</p>
+<p>
+	DOMContentLoaded时间允许你在DOM加载之后以及所有其他非DOM内容完成加载之前启动你的AJAX组件。
+</p>
+<p>
+	事件注册如下所示：
+</p>
+<p>
+	document.addEventListener(\'DOMContentLoaded\', function(){ }, false);
+</p>
+<p>
+	请牢记这个方法只能在基于Mozilla的浏览器使用哦。
+</p>]]></content>
+  <contentx><![CDATA[基于Mozilla的浏览器提供了一种方便的且通常没有文档化的名为DOMContentLoaded的事件。
+
+
+	DOMContentLoaded时间允许你在DOM加载之后以及所有其他非DOM内容完成加载之前启动你的AJAX组件。
+
+
+	事件注册如下所示：
+
+
+	document.addEventListener(\'DOMContentLoaded\', fun]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

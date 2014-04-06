@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Adobe公司 今日发布1990年的Photoshop 1.0.1版源代码]]></title>
+  <content><![CDATA[<p>
+	Thomas Knoll 是密歇根大学的计算机视觉专业的博士生，在 1987 年写了一个程序用来显示和修改数值图像。他的兄弟 John 在 Industrial Light &amp; Magic 公司工作，发现这个软件非常有用，但还没有满足作为一个产品的要求。Thomas 说：我们最初开发的目的是给个人使用，它还有更多有趣的事情可做。
+</p>
+<p>
+	这个软件一开始成为 Display，变得越来越复杂。1988 年夏天兄弟俩意识到这应该成为一个可靠的商业产品。于是他们俩将这个软件改名为 Photoshop ，然后开始寻找一个公司来发布它。他们找到了 Barneyscan 这家公司，以 Barneyscan &nbsp;XP 的名称售出了大约 200 份拷贝。
+</p>
+<p>
+	而 Adobe 则决定了 Photoshop 的命运，其艺术总监 Russell Brown 非常看好这个软件，决定购买许可以发布一个增强版的 Photoshop，这个事情在 1989年4月完成，而 1990 年正式发布了 1.0 版本。
+</p>
+<p>
+	在接下来的 10 年内，Photoshop 共售出 300 万份拷贝。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130215/20130215225427_44177.jpg\" alt=\"\" />
+</p>
+<p>
+	Photoshop 的第一个版本使用 Pascal for Apple Macintosh 编写，包括一些为摩托罗拉 68000 微处理器编写的底层机器语言来提升执行效率。“这不是一个庞大团队的工作成果” Thomas 说：“ 1.0 版本只有我一个工程师，2.0 版本有两个工程师”，其中 Thomas 编写基本的程序，而 John 写了很多图像处理的插件。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130215/20130215225525_35481.jpg\" alt=\"\" />
+</p>
+<p>
+	<p>
+		在 Adobe System Inc 公司的许可下，计算机历史博物馆非常荣幸的发布了 1990 年的 Photoshop 1.0.1 版本的源码。除了主程序外，其他的文件许可来自苹果公司。此次发布的源码打包文件中共有 179 个文件，大约 12万8千行无注释的代码，结构良好！这些代码中有 75% 是 Pascal 代码，15% 是摩托罗拉 68000 的汇编语言，剩余的是各种数据。
+	</p>
+	<p>
+		你可以通过以下链接来下载 Photoshop 1.0 源码，非商业使用。
+	</p>
+下载：<a href=\"http://computerhistory.org/atchm/photoshop-license-agreement/\" target=\"_blank\">Photoshop version 1.0.1 Source Code</a>
+</p>]]></content>
+  <contentx><![CDATA[
+	Thomas Knoll 是密歇根大学的计算机视觉专业的博士生，在 1987 年写了一个程序用来显示和修改数值图像。他的兄弟 John 在 Industrial Light &amp; Magic 公司工作，发现这个软件非常有用，但还没]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

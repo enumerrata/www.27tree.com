@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android Application Development]]></title>
+  <author>Rick Rogers / John Lombardo / Zigurd</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-10 00:37:08</submit-date-time>
+  <img-link>f3575cdffafa9b323dedc904c7db6463.jpg</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[This practical book provides the concepts and code you need to develop software with Android, the open-source platform for cell phones and mobile devices that\'s generating enthusiasm across the industry. Based on the Linux operating system and developed by Google and the Open Handset Alliance, Android has the potential to unite a fragmented mobile market. \"Android Application Development\" introduces this programming environment, and offers you a complete working example that demonstrates Android architectural features and APIs. With this book, you will: get a complete introduction to the Android programming environment, architecture, and tools; build a modular application, beginning with a core module that serves to launch modules added in subsequent chapters; learn the concepts and architecture of a specific feature set, including views, maps, location-based services, persistent data storage, 2D and 3D graphics, media services, telephony services, and messaging; use ready-to-run example code that implements each feature; and, delve into advanced topics, such as security, custom views, performance analysis, and internationalization. The book is a natural complement to the existing Android documentation provided by Google. Whether you want to develop a commercial application for mobile devices, or just want to create a mobile mashup for personal use, \"Android Application Development\" demonstrates how you can design, build, and test applications for the new mobile market.]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

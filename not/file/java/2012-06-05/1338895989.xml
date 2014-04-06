@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>一道华为JAVA比武大赛试题，你能解答吗？</title>
+<content>&amp;lt;p&amp;gt;
+	据说这是华为2005年中央平台开发部的JAVA比武大赛中的必做题，当时难倒了不少人。你能够给出最佳答案吗？把你的代码帖出来，看看谁的算法最简单最高效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要求：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/////////////////////input.txt样例////////////////////////////////
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1+3/7*2=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4+2/*asjdff*/5-8=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5%2+5-2/*4=6/*i**ifdg***/*84o*/*1-2=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	………………………………………&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//更多表达式省略
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/////////////////////////////////////////////////////////////////
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/////////////////////output.txt样例////////////////////////////////
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1+3/7*2=43
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4+2/*asjdff*/*5-8=6
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5%2+5-2/*4=6/*i**ifdg***/*84o*/*1-2=??
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	………………………………………&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//更多表达式省略
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/////////////////////////////////////////////////////////////
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;要求用JAVA实现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;若在命令行参数中指明了&amp;nbsp;input.txt&amp;nbsp;和&amp;nbsp;output.txt，请计算出input.txt中每一行表达式的值，并写入到output.txt文件中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;若在命令行参数中只指明了&amp;nbsp;input.txt，则新建一个output.txt，计算出input.txt中每一行表达式的值，并写入到output.txt文件中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;若在命令行参数中没有指明&amp;nbsp;input.txt&amp;nbsp;和&amp;nbsp;output.txt，则输入一个类似4+2/*asjdff*/*5-8这样的表达式，计算1000次这个表达式的值，在屏幕中输出结计算结果和所用时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;要求最多在180分钟内完成。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-06-05/1338895989.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

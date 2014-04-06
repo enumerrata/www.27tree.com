@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[谁动了我的指针]]></title>
+  <content><![CDATA[<p>
+	简介：
+</p>
+<p>
+	前几天发生了这样一件事，我正在调试一个程序，这个程序用了一大堆乱七八糟的指针来处理一个链表，最终在一个指向链表结点的指针上出了问题。我们预计它应当指向的是一个虚基类的对象。我想到第一个问题是：指针所指的地方真的有一个对象吗？出问题的指针值可以被4整除，并且不是NULL的，所以可以断定它曾经是一个有效的指针。通过使用Visual Studio的内存查看窗口（View-&gt;Debug Windows-&gt;Memory）我们发现这个指针所指的数据是FE EE FE EE FE EE ...这通常意味着内存是曾经是被分配了的，但现在却处于一种未分配的状态。不知是谁、在什么地方把我的指针所指的内存区域给释放掉了。我想要找出一种方案来查出我的数据到底是怎么会被释放的。
+</p>
+<p>
+	背景：
+</p>
+<p>
+	我最终通过重载了new和delete运算符找到了我丢失的数据。当一个函数被调用时，参数会首先被压到栈上后，然后返回地址也会被压到栈上。我们可以在new和delete运算符的函数中把这些信息从栈上提取出来，帮助我们调试程序。
+</p>
+<p>
+	代码：
+</p>
+<p>
+	在经历了几次错误的猜测后，我决定求助于重载new和delete运算符来帮我找到我的指针所指向的数据。下面的new运算符的实现把返回地址从栈上提了出来。这个返回地址位于传递过来的参数和第一个局部变量的地址之间。编译器的设置、调用函数的方法、计算机的体系结构都会引响到这个返回地址的实际位置，所以您在使用下面代码的时候，要根据您的实际情况做一些调整。一旦new运算符获得了返回地址，它就在将要实际分配的内存前面分配额外的16个字节的空间来存放这个返回地址和实际的分配的内存大小，并且把实际要分配的内存块首地址返回。
+</p>
+<p>
+	对于delete运算符，你可以看到，它不再释放空间。它用与new同样的方法把返回地址提取出来，写到实际分配空间大小的后面（译者注：就是上面分配的16个字节的第9到第12个字节），在最后四个字节中填上DE AD BE EF（译者注：四个十六进制数，当成单词来看正好是dead beef，用来表示内存已释放真是很形象！），并且把剩余的空间（译者注：就是原本实际应该分配而现在应该要释放掉的空间）都填上一个重复的值。
+</p>
+<p>
+	现在，如果程序由于一个错误的指针而出错，我只需打开内存查看窗口，找到出错的指针所指的地方，再往前找16个字节。这里的值就是调用new运算符的地址，接下来四个字节就是实际分配的内存大小，第三个四个字节是调用delete运算符的地址，最后四个字节应该是DE AD BE EF。接下的实际分配过的内存内容应该是77 77 77 77。
+</p>
+<p>
+	要通过这两个返回地址在源程序中分别找到对应的new和delete，可以这样做：首先把表示地址的四个字节的内容倒序排一下，这样才能得到真正的地址，这里因为在Intel平台上字节序是低位在前的。下一步，在源代码上右击点击，选“Go To Diassembly”。在反汇编的窗口上的左边一栏就是机器代码对应的内存地址。按Ctrl + G或选择Edit-&gt;Go To...并输入你找到的地址之一。反汇编的窗口就将滚动到对应的new或delete的函数调用位置。要回到源程序只需再次右键单击，选择“Go To Source”。您就可以看到相应的new或delete的调用了。
+</p>
+<p>
+	现在您就可以很方便的找出您的数据是何时丢失的了。至于要找出为什么delete会被调用，就要靠您自己了。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">#include &lt;MALLOC.H&gt;  
+void * :perator new(size_t size)  
+{  
+int stackVar;  
+unsigned long stackVarAddr = (unsigned long)&amp;stackVar;  
+unsigned long argAddr = (unsigned long)&amp;size;  
+void ** retAddrAddr = (void **)(stackVarAddr/2 + argAddr/2 + 2);  
+void * retAddr = * retAddrAddr;  
+unsigned char *retBuffer = (unsigned char*)malloc(size + 16);  
+memset(retBuffer, 0, 16);  
+memcpy(retBuffer, &amp;retAddr, sizeof(retAddr));  
+memcpy(retBuffer + 4, &amp;size, sizeof(size));  
+return retBuffer + 16;  
+}  
+void :perator delete(void *buf)  
+{  
+int stackVar;  
+if(!buf)  
+return;  
+unsigned long stackVarAddr = (unsigned long)&amp;stackVar;  
+unsigned long argAddr = (unsigned long)&amp;buf;  
+void ** retAddrAddr = (void **)(stackVarAddr/2 + argAddr/2 + 2);  
+void * retAddr = * retAddrAddr;  
+unsigned char* buf2 = (unsigned char*)buf;  
+buf2 -= 8;  
+memcpy(buf2, &amp;retAddr, sizeof(retAddr));  
+size_t size;  
+buf2 -= 4;  
+memcpy(&amp;size, buf2, sizeof(buf2));  
+buf2 += 8;  
+buf2[0] = 0xde;  
+buf2[1] = 0xad;  
+buf2[2] = 0xbe;  
+buf2[3] = 0xef;  
+buf2 += 4;  
+memset(buf2, 0x7777, size);  
+// deallocating destroys saved addresses, so dont  
+// buf -= 16;  
+// free(buf);  
+}  
+</pre>
+	<p>
+		其它值得关注的地方：
+	</p>
+	<p>
+		这段代码同样可以用于内存泄露的检测。只需修改delete运算符使它真正的去释放内存，并且在程序退出前，用__heapwalk遍历所有已分配的内存块并把调用new的地址提取出来，这就将得到一份没有被delete匹配的new调用列表。
+	</p>
+	<p>
+		还要注意的是：这里列出的代码只能在调试的时候去使用，如果你把它段代码放到最终的产品中，会导致程序运行时内存被大量的消耗。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[
+	简介：
+
+
+	前几天发生了这样一件事，我正在调试一个程序，这个程序用了一大堆乱七八糟的指针来处理一个链表，最终在一个指向链表结点的指针上出了问题。我们预计它应当指向的是一个虚基类的对象。我想到第一个问题是：指针所指的地方真的有一个对象吗]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

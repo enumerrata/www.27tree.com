@@ -1,0 +1,146 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 文件上传</h1>
+</div>
+<div>
+
+<p><b>通过 PHP，可以把文件上传到服务器。</b></p>
+
+<h1>创建一个文件上传表单</h1>
+
+<p>允许用户从表单上传文件是非常有用的。</p>
+<p>请看下面这个供上传文件的 HTML 表单：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form action="upload_file.php" method="post"<br />
+enctype="multipart/form-data"&gt;<br />
+&lt;label for="file"&gt;Filename:&lt;/label&gt;<br />
+&lt;input type="file" name="file" id="file" /&gt; <br />
+&lt;br /&gt;<br />
+&lt;input type="submit" name="submit" value="Submit" /&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>请留意如下有关此表单的信息：</p>
+<p>&lt;form&gt; 标签的 enctype 属性规定了在提交表单时要使用哪种内容类型。在表单需要二进制数据时，比如文件内容，请使用 "multipart/form-data"。</p>
+<p>&lt;input&gt; 标签的 type="file" 属性规定了应该把输入作为文件来处理。举例来说，当在浏览器中预览时，会看到输入框旁边有一个浏览按钮。</p>
+<p><b>注释</b>：允许用户上传文件是一个巨大的安全风险。请仅仅允许可信的用户执行文件上传操作。</p>
+
+<h1>创建上传脚本</h1>
+
+<p>"upload_file.php" 文件含有供上传文件的代码：</p>
+
+<code>
+&lt;?php<br />
+if&nbsp($_FILES["file"]["error"]&nbsp&gt;&nbsp0)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Error:&nbsp"&nbsp.&nbsp$_FILES["file"]["error"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Upload:&nbsp"&nbsp.&nbsp$_FILES["file"]["name"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbspecho&nbsp"Type:&nbsp"&nbsp.&nbsp$_FILES["file"]["type"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbspecho&nbsp"Size:&nbsp"&nbsp.&nbsp($_FILES["file"]["size"]&nbsp/&nbsp1024)&nbsp.&nbsp"&nbspKb&lt;br&nbsp/&gt;";<br />
+&nbsp&nbspecho&nbsp"Stored&nbspin:&nbsp"&nbsp.&nbsp$_FILES["file"]["tmp_name"];<br />
+&nbsp&nbsp}<br />
+?&gt;
+</code>
+
+<p>通过使用 PHP 的全局数组 $_FILES，你可以从客户计算机向远程服务器上传文件。</p>
+<p>第一个参数是表单的 input name，第二个下标可以是 "name", "type", "size", "tmp_name" 或 "error"。就像这样：</p>
+
+<ul>
+<li>$_FILES["file"]["name"] - 被上传文件的名称</li>
+<li>$_FILES["file"]["type"] - 被上传文件的类型</li>
+<li>$_FILES["file"]["size"] - 被上传文件的大小，以字节计</li>
+<li>$_FILES["file"]["tmp_name"] - 存储在服务器的文件的临时副本的名称</li>
+<li>$_FILES["file"]["error"] - 由文件上传导致的错误代码</li>
+</ul>
+<p>这是一种非常简单文件上传方式。基于安全方面的考虑，您应当增加有关什么用户有权上传文件的限制。</p>
+
+<h1>上传限制</h1>
+
+<p>在这个脚本中，我们增加了对文件上传的限制。用户只能上传 .gif 或 .jpeg 文件，文件大小必须小于 20 kb：</p>
+
+<code>
+&lt;?php<br />
+<br />
+if&nbsp((($_FILES["file"]["type"]&nbsp==&nbsp"image/gif")<br />
+||&nbsp($_FILES["file"]["type"]&nbsp==&nbsp"image/jpeg")<br />
+||&nbsp($_FILES["file"]["type"]&nbsp==&nbsp"image/pjpeg"))<br />
+&&&nbsp($_FILES["file"]["size"]&nbsp&lt;&nbsp20000))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspif&nbsp($_FILES["file"]["error"]&nbsp&gt;&nbsp0)<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Error:&nbsp"&nbsp.&nbsp$_FILES["file"]["error"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Upload:&nbsp"&nbsp.&nbsp$_FILES["file"]["name"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Type:&nbsp"&nbsp.&nbsp$_FILES["file"]["type"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Size:&nbsp"&nbsp.&nbsp($_FILES["file"]["size"]&nbsp/&nbsp1024)&nbsp.&nbsp"&nbspKb&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Stored&nbspin:&nbsp"&nbsp.&nbsp$_FILES["file"]["tmp_name"];<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Invalid&nbspfile";<br />
+&nbsp&nbsp}<br />
+<br />
+?&gt;
+</code>
+
+<p><b>注释</b>：对于 IE，识别 jpg 文件的类型必须是 pjpeg，对于 FireFox，必须是 jpeg。</p>
+
+
+<h1>保存被上传的文件</h1>
+
+<p>上面的例子在服务器的 PHP 临时文件夹创建了一个被上传文件的临时副本。</p>
+<p>这个临时的复制文件会在脚本结束时消失。要保存被上传的文件，我们需要把它拷贝到另外的位置：</p>
+
+<code>
+&lt;?php<br />
+if&nbsp((($_FILES["file"]["type"]&nbsp==&nbsp"image/gif")<br />
+||&nbsp($_FILES["file"]["type"]&nbsp==&nbsp"image/jpeg")<br />
+||&nbsp($_FILES["file"]["type"]&nbsp==&nbsp"image/pjpeg"))<br />
+&&&nbsp($_FILES["file"]["size"]&nbsp&lt;&nbsp20000))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspif&nbsp($_FILES["file"]["error"]&nbsp&gt;&nbsp0)<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Return&nbspCode:&nbsp"&nbsp.&nbsp$_FILES["file"]["error"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Upload:&nbsp"&nbsp.&nbsp$_FILES["file"]["name"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Type:&nbsp"&nbsp.&nbsp$_FILES["file"]["type"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Size:&nbsp"&nbsp.&nbsp($_FILES["file"]["size"]&nbsp/&nbsp1024)&nbsp.&nbsp"&nbspKb&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Temp&nbspfile:&nbsp"&nbsp.&nbsp$_FILES["file"]["tmp_name"]&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+<br />
+&nbsp&nbsp&nbsp&nbspif&nbsp(file_exists("upload/"&nbsp.&nbsp$_FILES["file"]["name"]))<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbspecho&nbsp$_FILES["file"]["name"]&nbsp.&nbsp"&nbspalready&nbspexists.&nbsp";<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbspmove_uploaded_file($_FILES["file"]["tmp_name"],<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"upload/"&nbsp.&nbsp$_FILES["file"]["name"]);<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbspecho&nbsp"Stored&nbspin:&nbsp"&nbsp.&nbsp"upload/"&nbsp.&nbsp$_FILES["file"]["name"];<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"Invalid&nbspfile";<br />
+&nbsp&nbsp}<br />
+?&gt;
+</code>
+
+<p>上面的脚本检测了是否已存在此文件，如果不存在，则把文件拷贝到指定的文件夹。</p>
+<p><b>注释</b>：这个例子把文件保存到了名为 "upload" 的新文件夹。</p>
+
+</div>

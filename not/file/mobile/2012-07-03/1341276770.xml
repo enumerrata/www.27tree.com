@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用Eclipse来开发Android源码</title>
+<content>&amp;lt;p&amp;gt;
+	用eclipse＋ADT作为android开发工具，可以说是很方便的，在HelloActivity小程序里我们就感觉到eclipse功能的强大。那么，我们可以用&amp;amp;nbsp;eclipse来开发android源码吗？如果我们直接把android源码里一个工程导入eclipse，一般来说都会出现错误，说许多类库（包）找不到。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	今天找到关于怎样使用eclipse来开发android源码的官方文档：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	https://sites.google.com/a/android.com/opensource/using-eclipse
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从该文档和实践可以总结出几点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、可以使用eclipse来编辑JAVA程序、检查错误（主要是类库包含和语法方面），但是不能在eclipse上编译运行android源码，还是得在shell中make(或mm或mmm)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、android源码文件夹里提供有一些eclipse配置文件，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	.claapath：eclipse工程的配置文件，方便我们直接把android源码相应的文件和JAVA包导入工程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android-formatting.xml和android.importorder：这个很重要，主要是用来规范我们的编码风格，更容易使我们的代码风格一致
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、把android源码作为一个工程导入eclipse时，必须注意两点
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1)、新建的工程必须是java&amp;amp;nbsp;project，不能是android&amp;amp;nbsp;project，否则会破坏android源码（一般是多添加文件/文件夹）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2)、导入前最好检查.classpath里的文件在android源码中是否有相应的文件（文件夹），否则也会破坏android源码（一般是多添加文件/文件夹）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总的来说：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、用eclipse来编辑代码、检查错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、不在eclipse上编译、运行android源码程序，只能在命令行通过make(或mm或mmm)编译android源码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、可以在eclipse上调试android源码程序（原理：eclipse通过ddms服务器在emulator上进行调试），并可以单步调试、断点调试。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面，从官方文档总结出具体怎样用eclipse来开发android源码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、建立基本的android开发环境
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	请参考官方文档或＜android模拟器在ubuntu8.10的安装＞
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、编译android源码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android源码根目录下通过make进行编译，请注意一些配置，具体可参考＜android源码的编译＞
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、把eclipse工程配置文件复制到android源码根目录下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cp&amp;amp;nbsp;development/ide/eclipse/.classpath&amp;amp;nbsp;./
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	chmod&amp;amp;nbsp;u+w&amp;amp;nbsp;.classpath&amp;amp;nbsp;&amp;amp;nbsp;#&amp;amp;nbsp;Make&amp;amp;nbsp;the&amp;amp;nbsp;copy&amp;amp;nbsp;writable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、修改eclipse程序的配置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1）、修改eclipse缓存设置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	把eclipse.ini（在eclipse软件的安装目录下）的3个值改为下面的值：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-Xms128m
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-Xmx512m
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-XX:MaxPermSize=256m
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2）、把android-formatting.xml和android.importorder导入eclipse
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android-formatting.xml、.classpath和android.importorder都放在development/ide/eclipse/下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	android-formatting.xml用来配置eclipse编辑器的代码风格；android.importorder用来配置eclipse的import的顺序和结构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在window-&amp;amp;gt;preferences-&amp;amp;gt;java-&amp;amp;gt;Code&amp;amp;nbsp;style-&amp;amp;gt;Formatter中导入android-formatting.xml
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在window-&amp;amp;gt;preferences-&amp;amp;gt;java-&amp;amp;gt;Code&amp;amp;nbsp;style-&amp;amp;gt;Organize&amp;amp;nbsp;Imports中导入android.importorder
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3）、安装anyedit插件（可选）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在http://andrei.gmxhome.de/anyedit/下载并导入eclipse中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、把android源码作为一个工程导入eclipse
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	导入前先检查.classpath里的文件在android源码中是否有相应的文件（文件夹），否则也会破坏android源码（一般是多添加文件/文件夹），.classpath里多余的路径可删除
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	新建Java&amp;amp;nbsp;Project（不是android&amp;amp;nbsp;project，否则会破坏android源码），选择从已存在的工程导入，工程名任意，完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	导入时，eclipse要build工程，比较慢。导完后，一般都没有错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、eclipse上调试android里的程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	先执行：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cd&amp;amp;nbsp;android源码目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	.&amp;amp;nbsp;build/envsetup.sh
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	lunch&amp;amp;nbsp;1&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#&amp;amp;nbsp;to&amp;amp;nbsp;build&amp;amp;nbsp;the&amp;amp;nbsp;emulator
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	emulator&amp;amp;nbsp;&amp;amp;&amp;amp;nbsp;&amp;amp;nbsp;#&amp;amp;nbsp;you&amp;amp;nbsp;should&amp;amp;nbsp;see&amp;amp;nbsp;a&amp;amp;nbsp;GUI&amp;amp;nbsp;picture&amp;amp;nbsp;of&amp;amp;nbsp;a&amp;amp;nbsp;phone
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ddms&amp;amp;nbsp;&amp;amp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;#&amp;amp;nbsp;you&amp;amp;nbsp;should&amp;amp;nbsp;get&amp;amp;nbsp;a&amp;amp;nbsp;splufty&amp;amp;nbsp;debugging&amp;amp;nbsp;console
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后在eclipse中配置调试类型和端口：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Run-&amp;amp;gt;Debug&amp;amp;nbsp;Configurations-&amp;amp;gt;Remote&amp;amp;nbsp;java&amp;amp;nbsp;application上双击，然后，”Host:”设为localhost，”Port:”设为8700，”Connection&amp;amp;nbsp;Type”为Standard(Socket&amp;amp;nbsp;Attach)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后“Apply”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，在点击”Debug”时苦出错，说8700端口被占用，那么把DDMS程序关掉，重新打开DDMS就OK了。如果提供连不到VM错误时，请注意，要先在DDMS中选中某一进程（对应某一应用程序），才能在eclipse执行&amp;amp;nbsp;Debug。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在eclipse调试时，可以设断点、单步调试。估计google团队也是这样开发、调试android应用程序的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、编译android源码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cd&amp;amp;nbsp;android源码目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	.&amp;amp;nbsp;build/envsetup.sh
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	那么就会多出mm/mmm等命令，mm/mmm用来编译模块（包括C、C＋＋、JAVA程序）。我们也可以直接在&amp;amp;nbsp;android源码根目录下执行“make&amp;amp;nbsp;模块名”来编译模块。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-07-03/1341276770.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-04+09%3A21%3A14</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

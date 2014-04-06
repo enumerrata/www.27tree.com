@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Cassandra实战</title>
+  <author>郭鹏</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-27 16:55:29</submit-date-time>
+  <img-link>244770725a4059ff14fc4ee02ce6549c.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Cassandra实战》是国内首本Cassandra专著，由Cassandra领域的先驱者和实践者亲自执笔，多位数据库专家联袂推荐，权威性毋庸置疑。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Cassandra实战》内容全面，基于Cassandra最新版撰写，系统地讲解了Cassandra的所有功能特性和使用方法；实战性强，不仅包含大量示例代码，而且还设计了一个完整的在线交易系统实例；有一定的深度，不仅结合源代码分析了Cassandra的底层机制和工作原理，而且还精心总结了一些关于Cassandra的最佳实践。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Cassandra实战》一共分为13章，首先简单介绍了NoSQL的优势，以及几种具有代表性的NoSQL数据库的功能特性；其次详细讲解了Cassandra的安装和配置、数据模型和排序规则、编程接口等基础知识；接着以迭代的方式演示了一个基于Cassandra的在线交易系统的完整开发过程，很好地将基础理论融入到了实践中；再接着结合源代码分析了Cassandra的集群机制、内部数据存储结构、数据更新机制、数据读取机制、数据压缩机制、启动流程等与Cassandra的底层机制和工作原理相关的内容；最后讲解了Cassandra在分布式环境中的应用、与Hadoop的整合，以及相关的最佳实践。附录中包含了本书示例的源代码以及在Eclipse环境中编辑和修改Cassandra的源代码方法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Cassandra实战》适合所有对Cassandra感兴趣的读者阅读。通过本书，不仅能全面掌握Cassandra的基础知识和使用方法，还能深入理解Cassandra的底层机制和工作原理，以及它在复杂现实环境中的应用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	郭鹏，国内Cassandra领域的先驱者和实践者。资深软件开发工程师，擅长分布式应用程序的开发和使用，时间经验极其丰富。一直致力于Cassandra、Hadoop、Hive、MongoDB等分布式应用的底层实现原理的研究和探索，对分布式数据库和数据仓库也有深刻而独到的理解。曾任阿里巴巴数据仓库开发工程师，参与设计和开发了多个基于Cassandra和Hadoop的大型应用。现供职于盛大在线，参与Hadoop计算存储平台的搭建与实施。活跃于开源技术社区，是博客园的推荐博客，也是CSDN的博客专家，热衷于与网友分享自己的心得和体会，深受社区欢迎。博客地址：http://gpcuster.cnblogs.com/；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	新浪微博：@逖靖寒。
+&lt;/p&gt;</book-intro>
+</root>

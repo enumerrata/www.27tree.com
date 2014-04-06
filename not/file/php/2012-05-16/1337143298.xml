@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP5经典教程之文件操作</title>
+<content>一、引论
+&amp;lt;p&amp;gt;
+	在任何计算机设备中,文件是都是必须的对象,而在web编程中,文件的操作一直是web程序员的头疼的地方,而,文件的操作在cms系统中这是必须
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	的,非常有用的,我们经常遇到生成文件目录,文件(夹)编辑等操作,现在我把php中的这些函数做一详细总结并实例示范如何使用.,关于对应的函数详细介
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	绍,请查阅php手册.此处只总结重点.和需要注意的地方.(这在php手册是没有的.)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;二、目录操作&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先介绍的是一个从目录读取的函数,opendir(),readdir(),closedir(),使用的时候是先打开文件句柄,而后迭代列出:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$base_dir&amp;nbsp;=&amp;nbsp;\"filelist/\";
+$fso&amp;nbsp;=&amp;nbsp;opendir($base_dir);
+echo&amp;nbsp;$base_dir.\"&amp;amp;lt;hr/&amp;amp;gt;\"&amp;nbsp;;
+while($flist=readdir($fso)){
+echo&amp;nbsp;$flist.\"&amp;amp;lt;br/&amp;amp;gt;\"&amp;nbsp;;
+}
+closedir($fso)
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这是讲返回文件目录下面的文件已经目录的程序(0文件将返回false).
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有时候需要知道目录的信息,可以使用dirname($path)和basename($path),分别返回路径的目录部分和文件名名称部分,可用disk_free_space($path)返回看空间空余空间.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	创建命令:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;mkdir($path,0777)&amp;lt;/pre&amp;gt;
+,0777是权限码,在非window下可用umask()函数设置.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;rmdir($path)&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	将删除路径在$path的文件.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dir&amp;nbsp;--&amp;nbsp;directory&amp;nbsp;类也是操作文件目录的重要类,有3个方法,read,rewind,close,这是一个仿面向对象的类,它先使用的是打开文件句柄,然后用指针的方式读取的.,这里看php手册:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$d&amp;nbsp;=&amp;nbsp;dir(\"/etc/php5\");
+echo&amp;nbsp;\"Handle:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$d-&amp;amp;gt;handle&amp;nbsp;.&amp;nbsp;\"\\n\";
+echo&amp;nbsp;\"Path:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;$d-&amp;amp;gt;path&amp;nbsp;.&amp;nbsp;\"\\n\";
+while&amp;nbsp;(false&amp;nbsp;!==&amp;nbsp;($entry&amp;nbsp;=&amp;nbsp;$d-&amp;amp;gt;read()))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$entry.\"\\n\";
+}
+$d-&amp;amp;gt;close();
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+输出:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;Handle:&amp;nbsp;Resource&amp;nbsp;id&amp;nbsp;#2
+Path:&amp;nbsp;/etc/php5
+.
+..
+apache
+cgi
+cli&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	文件的属性也非常重要,文件属性包括创建时间,最后修改时间,所有者,文件组,类型,大小等.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面我们重点谈文件操作.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;三、文件操作&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A、读文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先是一个文件看能不能读取(权限问题),或者存在不,我们可以用is_readable函数获取信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+if&amp;nbsp;(is_readable($file)&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;die(&amp;nbsp;文件不存在或者无法读取&amp;nbsp;);
+}&amp;nbsp;else&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;&amp;nbsp;存在&amp;nbsp;;
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+判断文件存在的函数还有file_exists(下面演示),但是这个显然无is_readable全面.,当一个文件存在的话可以用
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;\"filelist.php\";
+if&amp;nbsp;(file_exists($file)&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;die(&amp;nbsp;文件不存在&amp;nbsp;);
+}
+$data&amp;nbsp;=&amp;nbsp;file_get_contents($file);
+echo&amp;nbsp;htmlentities($data);
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+但是file_get_contents函数在较低版本上不支持,可以先创建文件的一个句柄,然后用指针读取全部:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$fso&amp;nbsp;=&amp;nbsp;fopen($cacheFile,&amp;nbsp;&amp;nbsp;r&amp;nbsp;);
+$data&amp;nbsp;=&amp;nbsp;fread($fso,&amp;nbsp;filesize($cacheFile));
+fclose($fso);&amp;lt;/pre&amp;gt;
+还有一种方式,可以读取二进制的文件:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$data&amp;nbsp;=&amp;nbsp;implode(&amp;nbsp;&amp;nbsp;,&amp;nbsp;file($file));&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	B、写文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	和读取文件的方式一样,先看看是不是能写:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+if&amp;nbsp;(is_writable($file)&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;die(\"我是鸡毛,我不能\");
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+能写了的话可以使用file_put_contents函数写入:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+if&amp;nbsp;(is_writable($file)&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+die(&amp;nbsp;我是鸡毛,我不能&amp;nbsp;);
+}
+$data&amp;nbsp;=&amp;nbsp;&amp;nbsp;我是可鄙,我想要&amp;nbsp;;
+file_put_contents&amp;nbsp;($file,&amp;nbsp;$data);
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+file_put_contents函数在php5中新引进的函数(不知道存在的话用function_exists函数先判断一下)低版本的php无法使用,可以使用如下方式:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$f&amp;nbsp;=&amp;nbsp;fopen($file,&amp;nbsp;&amp;nbsp;w&amp;nbsp;);
+fwrite($f,&amp;nbsp;$data);
+fclose($f);&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	替换之.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	写文件的时候有时候需要锁定,然后写:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;function&amp;nbsp;cache_page($pageurl,$pagedata){
+if(!$fso=fopen($pageurl,&amp;nbsp;w&amp;nbsp;)){
+$this-&amp;amp;gt;warns(&amp;nbsp;无法打开缓存文件.&amp;nbsp;);//trigger_error
+return&amp;nbsp;false;
+}
+if(!flock($fso,LOCK_EX)){//LOCK_NB,排它型锁定
+$this-&amp;amp;gt;warns(&amp;nbsp;无法锁定缓存文件.&amp;nbsp;);//trigger_error
+return&amp;nbsp;false;
+}
+if(!fwrite($fso,$pagedata)){//写入字节流,serialize写入其他格式
+$this-&amp;amp;gt;warns(&amp;nbsp;无法写入缓存文件.&amp;nbsp;);//trigger_error
+return&amp;nbsp;false;
+}
+flock($fso,LOCK_UN);//释放锁定
+fclose($fso);
+return&amp;nbsp;true;
+}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	C、复制,删除文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	php删除文件非常easy,用unlink函数简单操作:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+$result&amp;nbsp;=&amp;nbsp;@unlink&amp;nbsp;($file);
+if&amp;nbsp;($result&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+echo&amp;nbsp;&amp;nbsp;蚊子赶走了&amp;nbsp;;
+}&amp;nbsp;else&amp;nbsp;{
+echo&amp;nbsp;&amp;nbsp;无法赶走&amp;nbsp;;
+}
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	即可.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	复制文件也很容易:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;yang.txt&amp;nbsp;;
+$newfile&amp;nbsp;=&amp;nbsp;&amp;nbsp;ji.txt&amp;nbsp;;&amp;nbsp;#&amp;nbsp;这个文件父文件夹必须能写
+if&amp;nbsp;(file_exists($file)&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+die&amp;nbsp;(&amp;nbsp;小样没上线,无法复制&amp;nbsp;);
+}
+$result&amp;nbsp;=&amp;nbsp;copy($file,&amp;nbsp;$newfile);
+if&amp;nbsp;($result&amp;nbsp;==&amp;nbsp;false)&amp;nbsp;{
+echo&amp;nbsp;&amp;nbsp;复制记忆ok&amp;nbsp;;
+}
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	可以使用rename()函数重命名一个文件夹.其他操作都是这几个函数组合一下就能实现的.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D、获取文件属性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我说几个常见的函数:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	获取最近修改时间:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;test.txt&amp;nbsp;;
+echo&amp;nbsp;date(&amp;nbsp;r&amp;nbsp;,&amp;nbsp;filemtime($file));
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	返回的说unix的时间戳,这在缓存技术常用.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关的还有获取上次被访问的时间fileatime(),filectime()当文件的权限，所有者，所有组或其它&amp;nbsp;inode&amp;nbsp;中的元数据被更新时间,fileowner()函数返回文件所有者
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$owner&amp;nbsp;=&amp;nbsp;posix_getpwuid(fileowner($file));&amp;lt;/pre&amp;gt;
+(非window系统),ileperms()获取文件的权限,
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+$perms&amp;nbsp;=&amp;nbsp;substr(sprintf(&amp;nbsp;%o&amp;nbsp;,&amp;nbsp;fileperms($file)),&amp;nbsp;-4);
+echo&amp;nbsp;$perms;
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+filesize()返回文件大小的字节数:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+//&amp;nbsp;输出类似：somefile.txt:&amp;nbsp;1024&amp;nbsp;bytes
+$filename&amp;nbsp;=&amp;nbsp;&amp;nbsp;somefile.txt&amp;nbsp;;
+echo&amp;nbsp;$filename&amp;nbsp;.&amp;nbsp;&amp;nbsp;:&amp;nbsp;&amp;nbsp;&amp;nbsp;.&amp;nbsp;filesize($filename)&amp;nbsp;.&amp;nbsp;&amp;nbsp;&amp;nbsp;bytes&amp;nbsp;;
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+获取文件的全部信息有个返回数组的函数stat()函数:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+$file&amp;nbsp;=&amp;nbsp;&amp;nbsp;dirlist.php&amp;nbsp;;
+$perms&amp;nbsp;=&amp;nbsp;stat($file);
+var_dump($perms);
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+那个键对应什么可以查阅详细资料,此处不再展开.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-16/1337143298.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

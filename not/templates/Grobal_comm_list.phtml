@@ -1,0 +1,40 @@
+<div class='comment-list'>
+    <em class='headwapper'>
+        <img src="<?php echo $params['headimg']; ?>" width="45px" height="45px"/>
+    </em>
+    <div class='comment-content'>
+        <s></s><i></i>
+        <div class='comment-info'>
+            <span class='comment-info-place'>
+                <?php echo $params['placex']; ?>&nbsp;<a href="javascript:;" rel="$1" index="<?php echo $params['index']; ?>" class="repButton" onclick="loadEditCl(this.parentNode)" style="font-size:12px;">回复</a>
+            </span>
+            <span class='comment-info-date'>
+                <?php echo $params['datetime']; ?>
+            </span>
+            <em class="editside"></em>
+        </div>
+        <div class='comment-content-in'>
+            <?php echo $params['fuid'] <= 0 ? $params['username'] : "<a href='/user/$params[fuid]'>$params[username]</a>";?> :
+            <?php echo $params['content']; ?>
+            <!--In-->
+            <?php
+            if (false !== $params['sub'] && is_array($params['sub'])) {
+                $templatePath = dirname(__FILE__) . '/Grobal_comm_listIn.phtml';
+                foreach ($params['sub'] as $_scomm) {
+                    $paramsx = array(
+                        'headimg' => G::getHeadimg($_scomm['fuid']),
+                        'fuid' => &$_scomm['fuid'],
+                        'username' => urldecode(&$_scomm['un']),
+                        'content' => G::article_content_conv($_scomm['ct']),
+                        'datetime' => G::tTimeFormat_vs($_scomm['dt']),
+                        'index' => $params['index']
+                    );
+                    include $templatePath;
+                }
+            }
+            ?>
+            <!--In-->
+        </div><!--endof comment-content-in-->
+    </div><!--endof comment-content-->
+    <div class='clear'></div>
+</div>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>在VC++中访问和修改注册表</title>
+<content>&amp;lt;p&amp;gt;
+	Windows95/98/Me的注册表包含了Windows95/98/Me的系统配置、PC机的硬件配置、Win32应用程序和用户的其他设置信息。注册表和INI文件不同，它是多层次的树状数据结构，具有六个分支(根键)，每个分支又由许多的键和键值组成，而每个键则代表一个特定的配置项目。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在实际编程工作中，我们遇到了如何在Visual&amp;nbsp;C++中对Windows95/98/Me注册表整个树状结构信息进行访问和修改的问题，如查询和修改注册表中用户姓名和公司名称的有关信息。通过编程实践，我们实现了在Visual&amp;nbsp;C++中查询和修改系统注册表的有关信息。下面以一个实例说明具体的编程方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Visual&amp;nbsp;C++&amp;nbsp;6.0或5.0环境中新建一基于对话框的工程，设置两个命令按钮，名为“查询用户信息”和“修改用户信息”，用来查询和修改注册表中用户姓名和公司名称。这里须要指出的是，用户的信息位于系统注册表中\HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\&amp;nbsp;的位置，键值名RegisteredOwner和RegisteredOrganization分别表示用户的姓名和用户公司的名称。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.查询用户信息的代码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;HKEY&amp;nbsp;hKEY;&amp;nbsp;//定义有关的&amp;nbsp;hKEY,&amp;nbsp;在查询结束时要关闭。
+LPCTSTR&amp;nbsp;data_Set=\"Software\\Microsoft\\Windows\\CurrentVersion\\\";
+//打开与路径&amp;nbsp;data_Set&amp;nbsp;相关的&amp;nbsp;hKEY，第一个参数为根键名称，第二个参数表。
+//表示要访问的键的位置，第三个参数必须为0，KEY_READ表示以查询的方式。
+//访问注册表，hKEY则保存此函数所打开的键的句柄。
+long&amp;nbsp;ret0=(::RegOpenKeyEx(HKEY_LOCAL_MACHINE,data_Set,&amp;nbsp;0,&amp;nbsp;KEY_READ,&amp;nbsp;＆hKEY));
+if(ret0!=ERROR_SUCCESS)&amp;nbsp;//如果无法打开hKEY，则终止程序的执行
+{MessageBox(\"错误:&amp;nbsp;无法打开有关的hKEY!\");
+return;}
+//查询有关的数据&amp;nbsp;(用户姓名&amp;nbsp;owner_Get)。
+LPBYTE&amp;nbsp;owner_Get=new&amp;nbsp;BYTE[80];
+DWORD&amp;nbsp;type_1=REG_SZ&amp;nbsp;;&amp;nbsp;DWORD&amp;nbsp;cbData_1=80;&amp;nbsp;&amp;nbsp;
+//hKEY为刚才RegOpenKeyEx()函数所打开的键的句柄，\"RegisteredOwner\"。
+//表示要查&amp;nbsp;询的键值名，type_1表示查询数据的类型，owner_Get保存所。
+//查询的数据，cbData_1表示预设置的数据长度。
+long&amp;nbsp;ret1=::RegQueryValueEx(hKEY,&amp;nbsp;\"RegisteredOwner\",&amp;nbsp;NULL,
+＆type_1,&amp;nbsp;owner_Get,&amp;nbsp;＆cbData_1);
+if(ret1!=ERROR_SUCCESS)
+{
+MessageBox(\"错误:&amp;nbsp;无法查询有关注册表信息!\");
+return;
+}
+//&amp;nbsp;查询有关的数据&amp;nbsp;(公司名&amp;nbsp;company_Get)
+LPBYTE&amp;nbsp;company_Get=new&amp;nbsp;BYTE&amp;nbsp;[80];
+DWORD&amp;nbsp;type_2=REG_SZ;&amp;nbsp;DWORD&amp;nbsp;cbData_2=80;&amp;nbsp;&amp;nbsp;
+long&amp;nbsp;ret2=::RegQueryValueEx(hKEY,&amp;nbsp;\"RegisteredOrganization\",&amp;nbsp;NULL,＆type_2,company_Get,&amp;nbsp;＆cbData_2);
+if(ret2!=ERROR_SUCCESS)
+{
+MessageBox(\"错误:&amp;nbsp;无法查询有关注册表信息!\");
+return;
+}
+//&amp;nbsp;将&amp;nbsp;owner_Get&amp;nbsp;和&amp;nbsp;company_Get&amp;nbsp;转换为&amp;nbsp;CString&amp;nbsp;字符串,&amp;nbsp;以便显示输出。
+CString&amp;nbsp;str_owner=CString(owner_Get);
+CString&amp;nbsp;str_company=CString(company_Get);
+delete[]&amp;nbsp;owner_Get;&amp;nbsp;delete[]&amp;nbsp;company_Get;
+//&amp;nbsp;程序结束前要关闭已经打开的&amp;nbsp;hKEY。
+::RegCloseKey(hKEY);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	……
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样，上述程序执行完毕，字符串str_owner和str_company则表示查询到的用户的姓名和公司的名称，在VC++中便可用对话框的方式将其显示出来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.修改用户信息的代码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意和上述的查询代码属于不同的函数体。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在程序中我们先显示一个对话框，要求用户输入新的用户姓名和公司名称并按确认键，将取得CString类型的有关字符串。要先将其转换为LPBYTE(即unsigned&amp;nbsp;char＊)型的数据类型，以便后面的函数调用。下面是程序中用到的将CString型转换为LPBYTE的转换函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;LPBYTE&amp;nbsp;CString_To_LPBYTE(CString&amp;nbsp;str)
+{
+LPBYTE&amp;nbsp;lpb=new&amp;nbsp;BYTE[str.GetLength()+1];&amp;nbsp;&amp;nbsp;
+for(int&amp;nbsp;i=0;(i&amp;amp;lt;str.GetLength())&amp;amp;&amp;amp;(*(lpb+i)&amp;nbsp;=&amp;nbsp;str.GetAt(i));i++)
+return&amp;nbsp;lpb;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下则是具体的修改注册表用户信息的代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;CString&amp;nbsp;str_owner,&amp;nbsp;str_company;
+……&amp;nbsp;//通过对话框输入新的用户信息，保存到str_owner和str_company
+//定义有关的&amp;nbsp;hKEY,&amp;nbsp;在程序的最后要关闭。
+HKEY&amp;nbsp;hKEY;&amp;nbsp;&amp;nbsp;
+LPCTSTR&amp;nbsp;data_Set=\"Software\\Microsoft\\Windows\\CurrentVersion\";
+//打开与路径&amp;nbsp;data_Set&amp;nbsp;相关的hKEY，KEY_WRITE表示以写的方式打开。
+long&amp;nbsp;ret0=(::RegOpenKeyEx(HKEY_LOCAL_MACHINE,&amp;nbsp;&amp;nbsp;
+data_Set,&amp;nbsp;0,&amp;nbsp;KEY_WRITE,&amp;nbsp;＆hKEY));
+if(ret0!=ERROR_SUCCESS)
+{
+MessageBox(\"错误:&amp;nbsp;无法打开有关的hKEY!\");
+return;
+}
+//修改有关数据(用户姓名&amp;nbsp;owner_Set)，要先将CString型转换为LPBYTE。
+LPBYTE&amp;nbsp;owner_Set=CString_To_LPBYTE(str_owner);
+DWORD&amp;nbsp;type_1=REG_SZ;
+DWORD&amp;nbsp;cbData_1=str_owner.GetLength()+1;&amp;nbsp;&amp;nbsp;
+//与RegQureyValueEx()类似，hKEY表示已打开的键的句柄，\"RegisteredOwner\"
+//表示要访问的键值名，owner_Set表示新的键值，type_1和cbData_1表示新值。
+//的数据类型和数据长度
+long&amp;nbsp;ret1=::RegSetValueEx(hKEY,&amp;nbsp;\"RegisteredOwner\",&amp;nbsp;NULL,
+type_1,&amp;nbsp;owner_Set,&amp;nbsp;cbData_1);
+if(ret1!=ERROR_SUCCESS)
+{
+MessageBox(\"错误:&amp;nbsp;无法修改有关注册表信息!\");
+return;
+}
+//修改有关的数据&amp;nbsp;(公司名&amp;nbsp;company_Set)
+LPBYTE&amp;nbsp;company_Set=CString_To_LPBYTE(str_company);
+DWORD&amp;nbsp;type_2=REG_SZ;&amp;nbsp;&amp;nbsp;
+DWORD&amp;nbsp;cbData_2=str_company.GetLength()+1;&amp;nbsp;&amp;nbsp;
+long&amp;nbsp;ret2=::RegSetValueEx(hKEY,&amp;nbsp;\"RegisteredOrganization\",&amp;nbsp;NULL,
+type_2,&amp;nbsp;company_Set,&amp;nbsp;cbData_2);
+if(ret2!=ERROR_SUCCESS)
+{
+MessageBox(\"错误:&amp;nbsp;无法修改有关注册表信息!\");
+return;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行上面的修改注册表的操作后，可打开注册表查看具体的数值，可以看到已经成功地修改了有关的数据了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上实例讲述了如何在VC++中访问Windows98/95的系统注册表，我们可以很方便地查询及修改注册表的任何位置的有关信息。以上的程序在Visual&amp;nbsp;C++&amp;nbsp;6.0中调试通过(Visual&amp;nbsp;C++5.0与之类似)，且运行结果正确
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-03/1338712680.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

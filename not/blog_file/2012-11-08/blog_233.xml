@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-11-08 20:35:25</datetime>
+  <title><![CDATA[PHP PEAR DB类安装与使用实例详解]]></title>
+  <content><![CDATA[<p>
+	在PHP网站开发中，由于其支持各种数据库引擎，如MySQL，MSSQL，Pgsql，SQLite等，并对各种数据库系统都提供了不同的函数作为接口，给PHP网站开发者带来很多便利，但同时也带来了平台移植性的问题，随着底层数据库的改变，PHP代码也必须改变。对于这个问题，有各种解决方法，如使用PHP ADO DB类，PHP PEAR DB类或者自行编写PHP DB类，将各种数据库的函数操作聚合在一起等，今天和大家分享如何安装使用PHP PEAR DB类，以实现不同数据库的访问功能。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	在使用PHP PEAR DB类访问数据库之前，需要安装PHP PEAR，然后通过PEAR来下载安装DB类，即。
+</p>
+<p>
+	pear install db
+</p>
+<p>
+	根据需要安装相关数据库，比如Mysql，Mssql，Pgsql，Sqlite等，同时在PHP.INI中找到Dynamic Extensions，引入对应数据的DLL文件，并重启Apache。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	PHP PEAR DB类使用示例
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?
+require_once(\"DB.php\");
+
+$userName = \'root\';
+$password = \'123456\';
+$hostName = \'localhost\';
+$dbName = \'test\';
+
+$dsn = \"mysql://$userName:$password@$hostName/$dbName\";
+
+$dbCon = DB::connect($dsn);
+
+if (DB::isError($dbCon)) {
+        die ($dbCon-&gt;getMessage());
+}
+
+$sql = \"CREATE TABLE client (\".
+\"`id` INT( 11 ) UNSIGNED NOT NULL ,\".
+\"`name` VARCHAR( 30 ) CHARACTER SET utf8 COLLATE utf8-bin NOT NULL ,\".
+\"`age` INT( 2 ) NOT NULL ,\".
+\"`sex` INT( 1 ) NOT NULL ,\".
+\"PRIMARY KEY (  `id` )\".
+\") ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8-bin\";
+
+$result = $dbCon-&gt;query($sql);
+
+if (DB::isError($result)) {
+        die ($result-&gt;getMessage());
+}
+
+$sql = \"insert into leapsoul(id,name,age,birthday,sex) values(1,\'leapsoul\',1,\'2009-05-13\',1),(2,\'leapsoul\',1,\'2009-05-13\',1),(3,\'leapsoul\',1,\'2009-05-13\',1)\";
+
+$result = $dbCon-&gt;query($sql);
+
+if (DB::isError($result)) {
+        die ($result-&gt;getMessage());
+}
+
+$dbCon-&gt;setFetchMode(DB_FETCHMODE_ASSOC);
+
+$sql = \"select * from leapsoul\";
+
+$result = $dbCon-&gt;query($sql);
+
+if (DB::isError($result)) {
+        die ($result-&gt;getMessage());
+}
+for($i=0;$i&lt;$result-&gt;numRows();$i++)
+{
+    $info = &amp;$result-&gt;fetchRow();
+    echo \"name:\".$info[\'name\'];
+}
+$result-&gt;free();
+
+$dbCon-&gt;disconnect();
+}</pre>
+	<p>
+		从pear/DB.php的parseDSN函数中我们可以看到$dsn参数有以下几种格式
+	</p>
+	<p>
+		phptype://username:password@protocol+hostspec:110//usr/db_file.db?mode=0644
+	</p>
+	<p>
+		phptype://username:password@hostspec/database_name
+	</p>
+	<p>
+		phptype://username:password@hostspec
+	</p>
+	<p>
+		phptype://username@hostspec
+	</p>
+	<p>
+		phptype://hostspec/database
+	</p>
+	<p>
+		phptype://hostspec
+	</p>
+	<p>
+		phptype(dbsyntax)
+	</p>
+	<p>
+		phptype
+	</p>
+	<p>
+		其中
+	</p>
+	<p>
+		<ul>
+			<li>
+				phptype: 代表使用的数据库，如Mysql，Mssql，Pgsql，Sqlite等
+			</li>
+			<li>
+				dbsyntax: 数据库语法规范
+			</li>
+			<li>
+				protocol: 使用的协议，比如TCP等
+			</li>
+			<li>
+				hostspec: 主机，比如数据库存放在远程服务器上，可指定端口(hostname[:port])
+			</li>
+			<li>
+				database: 数据库服务器上的数据库名
+			</li>
+			<li>
+				username: 用于登录的用户名
+			</li>
+			<li>
+				password: 用于登录的密码
+			</li>
+		</ul>
+	</p>
+	<p>
+		第13-15行：错误处理，如数据库链接出错，则报错。
+	</p>
+	<p>
+		第17-38行：执行数据库表创建并插入测试数据。
+	</p>
+	<p>
+		第40行：setFetchMode函数是PHP PEAR DB让用户设定返回记录集是数字索引数组还是关联数组或者对象，此处我设定为关联数组的形式。默认DB_FETCHMODE_ORDERED模式，其他两种模式为DB_FETCHMODE_ASSOC与DB_FETCHMODE_OBJECT
+	</p>
+	<p>
+		第49-55行：输出记录集
+	</p>
+	<p>
+		第56-58行：释放记录集并关闭连接
+	</p>
+	<p>
+		PHP PEAR DB类部分函数说明：更多函数可参考pear/db.php和pear/db/common.php
+	</p>
+	<p>
+		connect()：数据库链接函数
+	</p>
+	<p>
+		query()：SQL语句执行函数
+	</p>
+	<p>
+		execute()：SQL语句执行函数，与query()函数使用方式略有不同，具体可参考pear/db/common.php文件
+	</p>
+	<p>
+		setFetchMode()：设定返回记录集是数字索引数组还是关联数组或者对象
+	</p>
+	<p>
+		numRows()：返回记录集有多少行
+	</p>
+	<p>
+		numCols()：返回记录集有多少列
+	</p>
+	<p>
+		free()：释放记录集
+	</p>
+	<p>
+		disconnect()：关闭数据库链接
+	</p>
+	<p>
+		affectedRows()：操作影响的记录行数
+	</p>
+	<p>
+		isManip()：判断一个查询是数据处理还是数据定义操作
+	</p>
+	<p>
+		平台移植说明：
+	</p>
+	<p>
+		理想情况下，移植到其他类型的数据库平台时，只需要修改PEAR DB中的DSN字符串参数即可，但是对于一些特定数据库特有的查询，当移植到其他数据库平台时只能进行修改了。
+	</p>
+	<p>
+		其他：
+	</p>
+	<p>
+		DB目录下存了所有PHP PEAR DB支持的相关数据库，有兴趣的朋友可看看。
+	</p>
+	<p>
+		通过上述代码实例，我们就可以利用PHP PEAR DB类来实现不同数据库的访问功能。
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[在PHP网站开发中，由于其支持各种数据库引擎，如MySQL，MSSQL，Pgsql，SQLite等，并对各种数据库系统都提供了不同的函数作为接口，给PHP网站开发者带来很多便利，但同时也带来了平台移植性的问题，随着底层数据库的改变，PHP代码也必须改变。对于这个问题，有各种解决方法，如使用PHP ADO DB类，PHP PEAR DB类或者自行编写PHP D]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

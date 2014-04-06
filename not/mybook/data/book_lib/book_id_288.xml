@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript DOM高级程序设计]]></title>
+  <author>Samb-ells</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-06 15:46:07</submit-date-time>
+  <img-link>bc21b7a5447b78f1320b865144626990.jpg</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	“本书是一本全景式的、沟通历史和未来的Web开发经典好书。是对现有JavaScript DoM程序开发最佳实践的一次大检阅和大放送，是推动Web标准化和向下一代Web开发挺进的里程碑式著作。”
+</p>
+<p>
+	——本书译者
+</p>
+<p>
+	“如果你是一位中级JavaScript人员，还想更上一层楼，那么这将是使你梦想成真的绝妙好书。”
+</p>
+<p>
+	——DOMAssistant库的作者Robert Nyman
+</p>
+<p>
+	本书深入浅出地讲述了作为一名专业的Web开发人员（或者真正的高手）所必须了解和掌握的高级知识，是Web编程领域名副其实的扛鼎之作。书中对核心JavaScript原理的总结和概括、对最佳实践的倡导和践行、对DOM规范讲解的提纲挈领、对浏览器外部通信（Ajax）的反思与解决之道、对Web 2．o rXJ容整合（Mashup）的分类与讲说等，无一不折射出这本书是作者博观约取、厚积薄发的心血力作。
+</p>
+<p>
+	与此同时，
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">如果你也醉心于Prototype、jQuery、YUI、Ext等优秀的JavaScript库，想见微知著地真正理解这些库背后的工作原理，甚至希望创建自己的库，那么这本书恰好适合你。</span></strong>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,11 @@
+<div style="margin-bottom:10px;background-color:#FFF;border:1px solid #ccc;text-align:center;">
+    <a href="javascript:;" onclick="javascript:rowToNews(<?php echo $_GET['id']; ?>);">新闻投稿</a>
+    <select id="submitNtype">
+        <?php
+        $xml = simplexml_load_file('./news/config/new_type_map.xml');
+        foreach ($xml->xpath('//n') as $nt) {
+            echo sprintf('<option value="%s">%s</option>', $nt['code'], $nt['type']);
+        }
+        ?>
+    </select>
+</div>

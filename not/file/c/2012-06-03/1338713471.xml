@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>谁动了我的指针</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;简介：&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前几天发生了这样一件事，我正在调试一个程序，这个程序用了一大堆乱七八糟的指针来处理一个链表，最终在一个指向链表结点的指针上出了问题。我们预计它应当指向的是一个虚基类的对象。我想到第一个问题是：指针所指的地方真的有一个对象吗？出问题的指针值可以被4整除，并且不是NULL的，所以可以断定它曾经是一个有效的指针。通过使用Visual&amp;amp;nbsp;Studio的内存查看窗口（View-&amp;amp;gt;Debug&amp;amp;nbsp;Windows-&amp;amp;gt;Memory）我们发现这个指针所指的数据是FE&amp;amp;nbsp;EE&amp;amp;nbsp;FE&amp;amp;nbsp;EE&amp;amp;nbsp;FE&amp;amp;nbsp;EE&amp;amp;nbsp;...这通常意味着内存是曾经是被分配了的，但现在却处于一种未分配的状态。不知是谁、在什么地方把我的指针所指的内存区域给释放掉了。我想要找出一种方案来查出我的数据到底是怎么会被释放的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;背景：&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我最终通过重载了new和delete运算符找到了我丢失的数据。当一个函数被调用时，参数会首先被压到栈上后，然后返回地址也会被压到栈上。我们可以在new和delete运算符的函数中把这些信息从栈上提取出来，帮助我们调试程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;代码：&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在经历了几次错误的猜测后，我决定求助于重载new和delete运算符来帮我找到我的指针所指向的数据。下面的new运算符的实现把返回地址从栈上提了出来。这个返回地址位于传递过来的参数和第一个局部变量的地址之间。编译器的设置、调用函数的方法、计算机的体系结构都会引响到这个返回地址的实际位置，所以您在使用下面代码的时候，要根据您的实际情况做一些调整。一旦new运算符获得了返回地址，它就在将要实际分配的内存前面分配额外的16个字节的空间来存放这个返回地址和实际的分配的内存大小，并且把实际要分配的内存块首地址返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于delete运算符，你可以看到，它不再释放空间。它用与new同样的方法把返回地址提取出来，写到实际分配空间大小的后面（译者注：就是上面分配的16个字节的第9到第12个字节），在最后四个字节中填上DE&amp;amp;nbsp;AD&amp;amp;nbsp;BE&amp;amp;nbsp;EF（译者注：四个十六进制数，当成单词来看正好是dead&amp;amp;nbsp;beef，用来表示内存已释放真是很形象！），并且把剩余的空间（译者注：就是原本实际应该分配而现在应该要释放掉的空间）都填上一个重复的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在，如果程序由于一个错误的指针而出错，我只需打开内存查看窗口，找到出错的指针所指的地方，再往前找16个字节。这里的值就是调用new运算符的地址，接下来四个字节就是实际分配的内存大小，第三个四个字节是调用delete运算符的地址，最后四个字节应该是DE&amp;amp;nbsp;AD&amp;amp;nbsp;BE&amp;amp;nbsp;EF。接下的实际分配过的内存内容应该是77&amp;amp;nbsp;77&amp;amp;nbsp;77&amp;amp;nbsp;77。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要通过这两个返回地址在源程序中分别找到对应的new和delete，可以这样做：首先把表示地址的四个字节的内容倒序排一下，这样才能得到真正的地址，这里因为在Intel平台上字节序是低位在前的。下一步，在源代码上右击点击，选“Go&amp;amp;nbsp;To&amp;amp;nbsp;Diassembly”。在反汇编的窗口上的左边一栏就是机器代码对应的内存地址。按Ctrl&amp;amp;nbsp;+&amp;amp;nbsp;G或选择Edit-&amp;amp;gt;Go&amp;amp;nbsp;To...并输入你找到的地址之一。反汇编的窗口就将滚动到对应的new或delete的函数调用位置。要回到源程序只需再次右键单击，选择“Go&amp;amp;nbsp;To&amp;amp;nbsp;Source”。您就可以看到相应的new或delete的调用了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在您就可以很方便的找出您的数据是何时丢失的了。至于要找出为什么delete会被调用，就要靠您自己了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"cpp\"&amp;gt;#include&amp;amp;nbsp;&amp;amp;lt;MALLOC.H&amp;amp;gt;
+void&amp;amp;nbsp;*&amp;amp;nbsp;:perator&amp;amp;nbsp;new(size_t&amp;amp;nbsp;size)
+{
+int&amp;amp;nbsp;stackVar;
+unsigned&amp;amp;nbsp;long&amp;amp;nbsp;stackVarAddr&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;long)&amp;amp;stackVar;
+unsigned&amp;amp;nbsp;long&amp;amp;nbsp;argAddr&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;long)&amp;amp;size;
+void&amp;amp;nbsp;**&amp;amp;nbsp;retAddrAddr&amp;amp;nbsp;=&amp;amp;nbsp;(void&amp;amp;nbsp;**)(stackVarAddr/2&amp;amp;nbsp;+&amp;amp;nbsp;argAddr/2&amp;amp;nbsp;+&amp;amp;nbsp;2);
+void&amp;amp;nbsp;*&amp;amp;nbsp;retAddr&amp;amp;nbsp;=&amp;amp;nbsp;*&amp;amp;nbsp;retAddrAddr;
+unsigned&amp;amp;nbsp;char&amp;amp;nbsp;*retBuffer&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;char*)malloc(size&amp;amp;nbsp;+&amp;amp;nbsp;16);
+memset(retBuffer,&amp;amp;nbsp;0,&amp;amp;nbsp;16);
+memcpy(retBuffer,&amp;amp;nbsp;&amp;amp;retAddr,&amp;amp;nbsp;sizeof(retAddr));
+memcpy(retBuffer&amp;amp;nbsp;+&amp;amp;nbsp;4,&amp;amp;nbsp;&amp;amp;size,&amp;amp;nbsp;sizeof(size));
+return&amp;amp;nbsp;retBuffer&amp;amp;nbsp;+&amp;amp;nbsp;16;
+}
+void&amp;amp;nbsp;:perator&amp;amp;nbsp;delete(void&amp;amp;nbsp;*buf)
+{
+int&amp;amp;nbsp;stackVar;
+if(!buf)
+return;
+unsigned&amp;amp;nbsp;long&amp;amp;nbsp;stackVarAddr&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;long)&amp;amp;stackVar;
+unsigned&amp;amp;nbsp;long&amp;amp;nbsp;argAddr&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;long)&amp;amp;buf;
+void&amp;amp;nbsp;**&amp;amp;nbsp;retAddrAddr&amp;amp;nbsp;=&amp;amp;nbsp;(void&amp;amp;nbsp;**)(stackVarAddr/2&amp;amp;nbsp;+&amp;amp;nbsp;argAddr/2&amp;amp;nbsp;+&amp;amp;nbsp;2);
+void&amp;amp;nbsp;*&amp;amp;nbsp;retAddr&amp;amp;nbsp;=&amp;amp;nbsp;*&amp;amp;nbsp;retAddrAddr;
+unsigned&amp;amp;nbsp;char*&amp;amp;nbsp;buf2&amp;amp;nbsp;=&amp;amp;nbsp;(unsigned&amp;amp;nbsp;char*)buf;
+buf2&amp;amp;nbsp;-=&amp;amp;nbsp;8;
+memcpy(buf2,&amp;amp;nbsp;&amp;amp;retAddr,&amp;amp;nbsp;sizeof(retAddr));
+size_t&amp;amp;nbsp;size;
+buf2&amp;amp;nbsp;-=&amp;amp;nbsp;4;
+memcpy(&amp;amp;size,&amp;amp;nbsp;buf2,&amp;amp;nbsp;sizeof(buf2));
+buf2&amp;amp;nbsp;+=&amp;amp;nbsp;8;
+buf2[0]&amp;amp;nbsp;=&amp;amp;nbsp;0xde;
+buf2[1]&amp;amp;nbsp;=&amp;amp;nbsp;0xad;
+buf2[2]&amp;amp;nbsp;=&amp;amp;nbsp;0xbe;
+buf2[3]&amp;amp;nbsp;=&amp;amp;nbsp;0xef;
+buf2&amp;amp;nbsp;+=&amp;amp;nbsp;4;
+memset(buf2,&amp;amp;nbsp;0x7777,&amp;amp;nbsp;size);
+//&amp;amp;nbsp;deallocating&amp;amp;nbsp;destroys&amp;amp;nbsp;saved&amp;amp;nbsp;addresses,&amp;amp;nbsp;so&amp;amp;nbsp;dont
+//&amp;amp;nbsp;buf&amp;amp;nbsp;-=&amp;amp;nbsp;16;
+//&amp;amp;nbsp;free(buf);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;其它值得关注的地方：&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这段代码同样可以用于内存泄露的检测。只需修改delete运算符使它真正的去释放内存，并且在程序退出前，用__heapwalk遍历所有已分配的内存块并把调用new的地址提取出来，这就将得到一份没有被delete匹配的new调用列表。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	还要注意的是：这里列出的代码只能在调试的时候去使用，如果你把它段代码放到最终的产品中，会导致程序运行时内存被大量的消耗。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-03/1338713471.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

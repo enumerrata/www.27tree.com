@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[使用Jquery实现美观的滑动解锁]]></title>
+  <content><![CDATA[<p>
+	首先来看看预览图
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130218/20130218104857_23962.jpg\" alt=\"\" /> 
+</p>
+<p>
+	我在页面创建了两个html元素&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	&lt;div id=\"dp-lock-wapp\"&gt;
+</p>
+<p>
+	&nbsp; &lt;a id=\"dp-lock-btn\"&gt;&lt;/a&gt;
+</p>
+<p>
+	&lt;/div&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	具体样式是
+</p>
+<p>
+	<br />
+</p>
+<p>
+	#dp-lock-wapp{
+</p>
+<p>
+	<span style=\"line-height:1.5;\">height:29px;position:relative;text-align:left;background:#fff;padding:3px;border:1px solid #ccc;</span>
+</p>
+<p>
+	}
+</p>
+<p>
+	#dp-lock-btn{
+</p>
+<p>
+	background-attachment:fixed;
+</p>
+<p>
+	display:inline-block;height:29px;width:40px;border-left:1px solid #ccc;cursor:pointer;background:url(\'./arr-btn.png\') -42px 0px no-repeat;
+</p>
+<p>
+	}
+</p>
+<p>
+	#dp-lock-btn:hover{
+</p>
+<p>
+	background-position-y:-48px;
+</p>
+<p>
+	}
+</p>
+<p>
+	具体的图片在后面提供的源码下载中有,实际上这个实现是很简单的,原理就是监听鼠标做相应动作而已.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	下面是js解释
+</p>
+<p>
+	var fin = false; &nbsp;//&nbsp;定义一个变量来检查解锁是否成功
+</p>
+<p>
+	var i_x = 0; &nbsp;// 定义一个x坐标 这个变量用来计算鼠标x坐标增量
+</p>
+<p>
+	var max = $(\'#dp-lock-wapp\').width() - $(\'#dp-lock-btn\').width(); // 定义最大增量
+</p>
+<p>
+	然后下面是一个比较兼容性的获取鼠标x坐标的方法:
+</p>
+<p>
+	function getMouseX(ev){
+</p>
+<p>
+	&nbsp; &nbsp; ev=ev || window.event;
+</p>
+<p>
+	&nbsp; &nbsp; if(ev.pageX){
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; return ev.pageX;
+</p>
+<p>
+	&nbsp; &nbsp; }
+</p>
+<p>
+	&nbsp; &nbsp; return ev.clientX + document.body.scrollLeft - document.body.clientLeft
+</p>
+<p>
+	}
+</p>
+<p>
+	<br />
+</p>
+<p>
+	然后我们开始事件监听
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$(\'#dp-lock-btn\').mousedown(function(){
+    // 鼠标按下时触发
+    if(!fin) listen = true; // 如果解锁未完成 监听鼠标
+    document.onmousemove = function(e){
+        // 全局监听鼠标
+        if(listen){
+            var x = getMouseX(e);
+            if(i_x == 0) i_x = x; // 初始化x坐标
+            var ml = x - i_x; // 计算鼠标x增量
+            ml = ml &gt; 0 ? ml &gt; max ? max : ml : 0; // 距离判断
+            
+            // 移动按钮
+            $(\'#dp-lock-btn\').css(\'margin-left\',ml + \'px\');
+                            
+            // ML == max 时完成解锁
+            if(ml == max) {
+                fin = true;
+                listen = false;
+                                
+            // 解锁完毕,下面你爱干嘛干嘛
+            // do something ...
+            }
+        }
+    }
+    $(document).mouseup(function(){
+        // 鼠标松开就停止监听
+        listen = false;
+    });
+});</pre>
+</p>]]></content>
+  <contentx><![CDATA[
+	首先来看看预览图
+
+
+	 
+
+
+	我在页面创建了两个html元素&nbsp;
+
+
+	
+
+
+	&lt;div id=\"dp-lock-wapp\"&gt;
+
+
+	&nbsp; &lt;a id=\"dp-lock-btn\"&gt;&l]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

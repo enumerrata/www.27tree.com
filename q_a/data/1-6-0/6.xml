@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[为什么 ++[[]][+[]]+[+[]] = 10？]]></title>
+  <content><![CDATA[<p>
+	++[[]][+[]]+[+[]]
+</p>
+<p>
+	在 Javascript 里面确实返回了 10
+</p>
+<p>
+	有没有人能解答啊，神问题一个。
+</p>]]></content>
+  <tags>技术问题|Web开发|JavaScript</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

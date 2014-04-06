@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>306</uid>
+  <datetime>2013-04-10 23:36:36</datetime>
+  <title><![CDATA[哎，symfony2变化也太大了]]></title>
+  <content><![CDATA[<p>
+	在PHP里，我们可以通过header()函数轻松实现页面的跳转，在symfony2中，我们同样可以轻松实现条转，下面是2种主要的方法：
+</p>
+<p>
+	<br />
+</p>
+<p>
+	1）：使用redirect()函数实现跳转
+</p>
+<p>
+	<br />
+</p>
+<p>
+	function indexAction() &nbsp;
+</p>
+<p>
+	{ &nbsp;
+</p>
+<p>
+	return $this-&gt;redirect($this-&gt;generateUrl(\'homepage\')); &nbsp;
+</p>
+<p>
+	&nbsp;}&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	在这里，generateUrl() 函数是用来根据router的名字来生成URL路径的。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	默认的，redirect()函数只是执行一个302的跳转，如果想执行301跳转，那么需要修改第二个参数：
+</p>
+<p>
+	function indexAction() &nbsp;
+</p>
+<p>
+	{ &nbsp;
+</p>
+<p>
+	return $this-&gt;redirect($this-&gt;generateUrl(\'homepage\'),301); &nbsp;&nbsp;
+</p>
+<p>
+	}&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	redirect()函数其实是Responsd对象的一个快捷方式。它等价于：
+</p>
+<p>
+	use Symfony\\Component\\HttpFoundation\\RedirectResponse
+</p>
+<p>
+	return new RedirectResponse($this-&gt;generateUrl(\'homepage\'));
+</p>
+<p>
+	<br />
+</p>
+<p>
+	第二个我们要介绍的跳转函数是forward(),这个函数较前面的函数来讲功能上更强大。因为它支持你传参到URL中去。
+</p>
+<p>
+	public function indexAction() &nbsp;
+</p>
+<p>
+	{ &nbsp;
+</p>
+<p>
+	$response = $this -&gt;forward(\'AcmeHelloBundle:Hello:fancy\',array( &nbsp;
+</p>
+<p>
+	\'name\'=&gt;$name, &nbsp;
+</p>
+<p>
+	\'color\'=&gt;\'green\', &nbsp;
+</p>
+<p>
+	)); &nbsp;
+</p>
+<p>
+	return $response; &nbsp;&nbsp;
+</p>
+<p>
+	}
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

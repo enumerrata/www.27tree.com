@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[【Hacks系列】 AJAX Hacks]]></title>
+  <author>（美）佩里</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2012-11-09 07:59:58</submit-date-time>
+  <img-link>14e5d05edd06c0d328f415f6b59828e6.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	想给你的Web站点增加交互功能吗？想创建一个像桌面应用软件一样美观的Web应用程序吗？《Ajax Hacks》正是你要寻找的、可以帮助你实现上述想法的书籍。Ajax是基础构建技术的一套全新的实例，它能帮助网站摆脱传统Web技术的束缚，赋予网站和Web应用更多的灵活性和交互性。
+</p>
+<p>
+	Ajax有机地结合了HTML、JavaScript和XML的优点，允许网页和服务器进行部分的数据交换，而不是整页交换。利用Ajax，你可以让更多的工作在客户端完成，像流行的Gmail或Google Maps。Ajax非常适合于大型项目的开发，同时，它的灵活性也适用于中小型的网站和应用。
+</p>
+<p>
+	本书包括以下内容：
+</p>
+<p>
+	如何运用Ajax开发个性化的HTML forms以满足不同客户的需求
+</p>
+<p>
+	如何共享和集成Google Maps、Yahoo! Maps和GeoURL APIs的资源
+</p>
+<p>
+	在Ajax环境下，如何与cookies协同工作
+</p>
+<p>
+	如何管理Browser History和Back button
+</p>
+<p>
+	如何远程调用Java和Ruby on Rails进行Ajax应用开发
+</p>
+<p>
+	如何运用Prototype、Rico和script.aculo.us JavaScript libraries
+</p>
+<p>
+	如何管理网络连接和Web服务
+</p>
+<p>
+	总之，《Ajax Hacks》阐述了一个面向下一代web应用的开发工具，同时也讲述了运用Ajax进行程序开发的几种不同方法。无论你是想了解Ajax，还是想找一种新方法运用Ajax，本书都将陪伴你走过很长一段路。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

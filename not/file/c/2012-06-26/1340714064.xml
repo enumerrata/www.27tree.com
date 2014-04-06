@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言教程：文件</title>
+<content>&amp;lt;p&amp;gt;
+	文件的基本概念
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所谓“文件”是指一组相关数据的有序集合。&amp;nbsp;这个数据集有一个名称，叫做文件名。&amp;nbsp;实际上在前面的各章中我们已经多次使用了文件，例如源程序文件、目标文件、可执行文件、库文件&amp;nbsp;(头文件)等。文件通常是驻留在外部介质(如磁盘等)上的，&amp;nbsp;在使用时才调入内存中来。从不同的角度可对文件作不同的分类。从用户的角度看，文件可分为普通文件和设备文件两种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	普通文件是指驻留在磁盘或其它外部介质上的一个有序数据集，可以是源文件、目标文件、可执行程序；&amp;nbsp;也可以是一组待输入处理的原始数据，或者是一组输出的结果。对于源文件、目标文件、&amp;nbsp;可执行程序可以称作程序文件，对输入输出数据可称作数据文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设备文件是指与主机相联的各种外部设备，如显示器、打印机、键盘等。在操作系统中，把外部设备也看作是一个文件来进行管理，把它们的输入、输出等同于对磁盘文件的读和写。&amp;nbsp;通常把显示器定义为标准输出文件，&amp;nbsp;一般情况下在屏幕上显示有关信息就是向标准输出文件输出。如前面经常使用的printf,putchar&amp;nbsp;函数就是这类输出。键盘通常被指定标准的输入文件，&amp;nbsp;从键盘上输入就意味着从标准输入文件上输入数据。scanf,getchar函数就属于这类输入。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从文件编码的方式来看，文件可分为ASCII码文件和二进制码文件两种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ASCII文件也称为文本文件，这种文件在磁盘中存放时每个字符对应一个字节，用于存放对应的ASCII码。例如，数5678的存储形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ASC码：&amp;nbsp;　00110101&amp;nbsp;00110110&amp;nbsp;00110111&amp;nbsp;00111000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	↓&amp;nbsp;　　　　↓　　　　↓&amp;nbsp;　　　↓
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十进制码：&amp;nbsp;5　　　　　6　　　　7　　　　8&amp;nbsp;共占用4个字节。ASCII码文件可在屏幕上按字符显示，&amp;nbsp;例如源程序文件就是ASCII文件，用DOS命令TYPE可显示文件的内容。&amp;nbsp;由于是按字符显示，因此能读懂文件内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二进制文件是按二进制的编码方式来存放文件的。&amp;nbsp;例如，&amp;nbsp;数5678的存储形式为：&amp;nbsp;00010110&amp;nbsp;00101110只占二个字节。二进制文件虽然也可在屏幕上显示，&amp;nbsp;但其内容无法读懂。C系统在处理这些文件时，并不区分类型，都看成是字符流，按字节进行处理。&amp;nbsp;输入输出字符流的开始和结束只由程序控制而不受物理符号(如回车符)的控制。&amp;nbsp;因此也把这种文件称作“流式文件”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本章讨论流式文件的打开、关闭、读、写、&amp;nbsp;定位等各种操作。文件指针在Ｃ语言中用一个指针变量指向一个文件，&amp;nbsp;这个指针称为文件指针。通过文件指针就可对它所指的文件进行各种操作。&amp;nbsp;定义说明文件指针的一般形式为：&amp;nbsp;FILE*&amp;nbsp;指针变量标识符；&amp;nbsp;其中FILE应为大写，它实际上是由系统定义的一个结构，&amp;nbsp;该结构中含有文件名、文件状态和文件当前位置等信息。&amp;nbsp;在编写源程序时不必关心FILE结构的细节。例如：FILE&amp;nbsp;*fp；&amp;nbsp;表示fp是指向FILE结构的指针变量，通过fp&amp;nbsp;即可找存放某个文件信息的结构变量，然后按结构变量提供的信息找到该文件，&amp;nbsp;实施对文件的操作。习惯上也笼统地把fp称为指向一个文件的指针。文件的打开与关闭文件在进行读写操作之前要先打开，使用完毕要关闭。&amp;nbsp;所谓打开文件，实际上是建立文件的各种有关信息，&amp;nbsp;并使文件指针指向该文件，以便进行其它操作。关闭文件则断开指针与文件之间的联系，也就禁止再对该文件进行操作。&amp;nbsp;　　在Ｃ语言中，文件操作都是由库函数来完成的。&amp;nbsp;在本章内将介绍主要的文件操作函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件打开函数ｆｏｐｅｎ
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fopen函数用来打开一个文件，其调用的一般形式为：&amp;nbsp;文件指针名=fopen(文件名，使用文件方式)&amp;nbsp;其中，“文件指针名”必须是被说明为FILE&amp;nbsp;类型的指针变量，“文件名”是被打开文件的文件名。&amp;nbsp;“使用文件方式”是指文件的类型和操作要求。“文件名”是字符串常量或字符串数组。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fp=(file&amp;nbsp;a,r);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其意义是在当前目录下打开文件file&amp;nbsp;a，&amp;nbsp;只允许进行“读”操作，并使fp指向该文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	又如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fphzk
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fphzk=(c:\\hzk16&amp;nbsp;,rb)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其意义是打开C驱动器磁盘的根目录下的文件hzk16，&amp;nbsp;这是一个二进制文件，只允许按二进制方式进行读操作。两个反斜线“\\&amp;nbsp;”中的第一个表示转义字符，第二个表示根目录。使用文件的方式共有12种，下面给出了它们的符号和意义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件使用方式&amp;nbsp;　　　　　　　意&amp;nbsp;义
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“rt”　　　　　　只读打开一个文本文件，只允许读数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“wt”　　　　　　只写打开或建立一个文本文件，只允许写数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“at”　　　　　　追加打开一个文本文件，并在文件末尾写数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“rb”　　　　　　只读打开一个二进制文件，只允许读数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“wb”　　　　&amp;nbsp;　&amp;nbsp;只写打开或建立一个二进制文件，只允许写数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“ab”&amp;nbsp;　　　　&amp;nbsp;　追加打开一个二进制文件，并在文件末尾写数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“rt+”　　　　　&amp;nbsp;读写打开一个文本文件，允许读和写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“wt+”　　　　　&amp;nbsp;读写打开或建立一个文本文件，允许读写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“at+”　　　　　&amp;nbsp;读写打开一个文本文件，允许读，或在文件末追加数&amp;nbsp;据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“rb+”　　　　　&amp;nbsp;读写打开一个二进制文件，允许读和写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“wb+”　　　　　&amp;nbsp;读写打开或建立一个二进制文件，允许读和写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“ab+”&amp;nbsp;　　　　　读写打开一个二进制文件，允许读，或在文件末追加数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于文件使用方式有以下几点说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;文件使用方式由r,w,a,t,b，+六个字符拼成，各字符的含义是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	r(read):&amp;nbsp;读
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	w(write):&amp;nbsp;写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a(append):&amp;nbsp;追加
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	t(text):&amp;nbsp;文本文件，可省略不写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b(banary):&amp;nbsp;二进制文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	+:&amp;nbsp;读和写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;凡用“r”打开一个文件时，该文件必须已经存在，&amp;nbsp;且只能从该文件读出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;用“w”打开的文件只能向该文件写入。&amp;nbsp;若打开的文件不存在，则以指定的文件名建立该文件，若打开的文件已经存在，则将该文件删去，重建一个新文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;若要向一个已存在的文件追加新的信息，只能用“a&amp;nbsp;”方式打开文件。但此时该文件必须是存在的，否则将会出错。&amp;nbsp;5.&amp;nbsp;在打开一个文件时，如果出错，fopen将返回一个空指针值NULL。在程序中可以用这一信息来判别是否完成打开文件的工作，并作相应的处理。因此常用以下程序段打开文件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(c:\\hzk16,rb)==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\nerror&amp;nbsp;on&amp;nbsp;open&amp;nbsp;c:\\hzk16&amp;nbsp;file!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这段程序的意义是，如果返回的指针为空，表示不能打开C盘根目录下的hzk16文件，则给出提示信息“error&amp;nbsp;on&amp;nbsp;open&amp;nbsp;c:\&amp;nbsp;hzk16file!”，下一行getch()的功能是从键盘输入一个字符，但不在屏幕上显示。在这里，该行的作用是等待，&amp;nbsp;只有当用户从键盘敲任一键时，程序才继续执行，&amp;nbsp;因此用户可利用这个等待时间阅读出错提示。敲键后执行exit(1)退出程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;把一个文本文件读入内存时，要将ASCII码转换成二进制码，&amp;nbsp;而把文件以文本方式写入磁盘时，也要把二进制码转换成ASCII码，因此文本文件的读写要花费较多的转换时间。对二进制文件的读写不存在这种转换。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;标准输入文件(键盘)，标准输出文件(显示器&amp;nbsp;)，标准出错输出(出错信息)是由系统打开的，可直接使用。文件关闭函数ｆｃｌｏｓｅ文件一旦使用完毕，应用关闭文件函数把文件关闭，&amp;nbsp;以避免文件的数据丢失等错误。&amp;nbsp;fclose函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调用的一般形式是：&amp;nbsp;fclose(文件指针)；&amp;nbsp;例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);&amp;nbsp;正常完成关闭文件操作时，fclose函数返回值为0。如返回非零值则表示有错误发生。文件的读写对文件的读和写是最常用的文件操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Ｃ语言中提供了多种文件读写的函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·字符读写函数&amp;nbsp;：fgetc和fputc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·字符串读写函数：fgets和fputs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·数据块读写函数：freed和fwrite
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·格式化读写函数：fscanf和fprinf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面分别予以介绍。使用以上函数都要求包含头文件stdio.h。字符读写函数ｆｇｅｔｃ和ｆｐｕｔｃ字符读写函数是以字符(字节)为单位的读写函数。&amp;nbsp;每次可从文件读出或向文件写入一个字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、读字符函数fgetc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fgetc函数的功能是从指定的文件中读一个字符，函数调用的形式为：&amp;nbsp;字符变量=fgetc(文件指针)；&amp;nbsp;例如：ch=fgetc(fp);其意义是从打开的文件fp中读取一个字符并送入ch中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于fgetc函数的使用有以下几点说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;在fgetc函数调用中，读取的文件必须是以读或读写方式打开的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;读取字符的结果也可以不向字符变量赋值，例如：fgetc(fp);但是读出的字符不能保存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;在文件内部有一个位置指针。用来指向文件的当前读写字节。在文件打开时，该指针总是指向文件的第一个字节。使用fgetc&amp;nbsp;函数后，&amp;nbsp;该位置指针将向后移动一个字节。&amp;nbsp;因此可连续多次使用fgetc函数，读取多个字符。&amp;nbsp;应注意文件指针和文件内部的位置指针不是一回事。文件指针是指向整个文件的，须在程序中定义说明，只要不重新赋值，文件指针的值是不变的。文件内部的位置指针用以指示文件内部的当前读写位置，每读写一次，该指针均向后移动，它不需在程序中定义说明，而是由系统自动设置的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.1]读入文件e10-1.c，在屏幕上输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(e10_1.c,rt))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while&amp;nbsp;(ch!=EOF)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	putchar(ch);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例程序的功能是从文件中逐个读取字符，在屏幕上显示。&amp;nbsp;程序定义了文件指针fp,以读文本文件方式打开文件“e10_1.c”，&amp;nbsp;并使fp指向该文件。如打开文件出错，&amp;nbsp;给出提示并退出程序。程序第12行先读出一个字符，然后进入循环，&amp;nbsp;只要读出的字符不是文件结束标志(每个文件末有一结束标志EOF)就把该字符显示在屏幕上，再读入下一字符。每读一次，文件内部的位置指针向后移动一个字符，文件结束时，该指针指向EOF。执行本程序将显示整个文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、写字符函数fputc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputc函数的功能是把一个字符写入指定的文件中，函数调用的&amp;nbsp;形式为：&amp;nbsp;fputc(字符量，文件指针)；&amp;nbsp;其中，待写入的字符量可以是字符常量或变量，例如：fputc(&amp;nbsp;a&amp;nbsp;,fp);其意义是把字符a写入fp所指向的文件中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于fputc函数的使用也要说明几点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;被写入的文件可以用、写、读写，追加方式打开，用写或读写方式打开一个已存在的文件时将清除原有的文件内容，写入字符从文件首开始。如需保留原有文件内容，希望写入的字符以文件末开始存放，必须以追加方式打开文件。被写入的文件若不存在，则创建该文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;每写入一个字符，文件内部位置指针向后移动一个字节。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;fputc函数有一个返回值，如写入成功则返回写入的字符，&amp;nbsp;否则返回一个EOF。可用此来判断写入是否成功。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.2]从键盘输入一行字符，写入一个文件，&amp;nbsp;再把该文件内容读出显示在屏幕上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(string,wt+))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(input&amp;nbsp;a&amp;nbsp;string:\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=getchar();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while&amp;nbsp;(ch!=&amp;nbsp;\n&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputc(ch,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=getchar();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while(ch!=EOF)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	putchar(ch);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	程序中第6行以读写文本文件方式打开文件string。程序第13行从键盘读入一个字符后进入循环，当读入字符不为回车符时，&amp;nbsp;则把该字符写入文件之中，然后继续从键盘读入下一字符。&amp;nbsp;每输入一个字符，文件内部位置指针向后移动一个字节。写入完毕，&amp;nbsp;该指针已指向文件末。如要把文件从头读出，须把指针移向文件头，&amp;nbsp;程序第19行rewind函数用于把fp所指文件的内部位置指针移到文件头。&amp;nbsp;第20至25行用于读出文件中的一行内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.3]把命令行参数中的前一个文件名标识的文件，&amp;nbsp;复制到后一个文件名标识的文件中，&amp;nbsp;如命令行中只有一个文件名则把该文件写到标准输出文件(显示器)中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(int&amp;nbsp;argc,char&amp;nbsp;*argv[])
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp1,*fp2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(argc==1)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(have&amp;nbsp;not&amp;nbsp;enter&amp;nbsp;file&amp;nbsp;name&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(0);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp1=fopen(argv[1],rt))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;%s\n,argv[1]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(argc==2)&amp;nbsp;fp2=stdout;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else&amp;nbsp;if((fp2=fopen(argv[2],wt+))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;%s\n,argv[1]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while((ch=fgetc(fp1))!=EOF)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputc(ch,fp2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本程序为带参的main函数。程序中定义了两个文件指针&amp;nbsp;fp1&amp;nbsp;和fp2，分别指向命令行参数中给出的文件。如命令行参数中没有给出文件名，则给出提示信息。程序第18行表示如果只给出一个文件名，则使fp2指向标准输出文件(即显示器)。程序第25行至28行用循环语句逐个读出文件1中的字符再送到文件2中。再次运行时，给出了一个文件名(由例10.2所建立的文件)，&amp;nbsp;故输出给标准输出文件stdout，即在显示器上显示文件内容。第三次运行，给出了二个文件名，因此把string中的内容读出，写入到OK之中。可用DOS命令type显示OK的内容：字符串读写函数ｆｇｅｔｓ和ｆｐｕｔｓ
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、读字符串函数fgets函数的功能是从指定的文件中读一个字符串到字符数组中，函数调用的形式为：&amp;nbsp;fgets(字符数组名，n，文件指针)；&amp;nbsp;其中的n是一个正整数。表示从文件中读出的字符串不超过&amp;nbsp;n-1个字符。在读入的最后一个字符后加上串结束标志&amp;nbsp;\0&amp;nbsp;。例如：fgets(str,n,fp);的意义是从fp所指的文件中读出n-1个字符送入字符数组str中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.4]从e10_1.c文件中读入一个含10个字符的字符串。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;str[11];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(e10_1.c,rt))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fgets(str,11,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%s,str);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例定义了一个字符数组str共11个字节，在以读文本文件方式打开文件e101.c后，从中读出10个字符送入str数组，在数组最后一个单元内将加上&amp;nbsp;\0&amp;nbsp;，然后在屏幕上显示输出str数组。输出的十个字符正是例10.1程序的前十个字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对fgets函数有两点说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;在读出n-1个字符之前，如遇到了换行符或EOF，则读出结束。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;fgets函数也有返回值，其返回值是字符数组的首地址。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、写字符串函数fputs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputs函数的功能是向指定的文件写入一个字符串，其调用形式为：&amp;nbsp;fputs(字符串，文件指针)&amp;nbsp;其中字符串可以是字符串常量，也可以是字符数组名，&amp;nbsp;或指针&amp;nbsp;变量，例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputs(“abcd“，fp)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其意义是把字符串“abcd”写入fp所指的文件之中。[例10.5]在例10.2中建立的文件string中追加一个字符串。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch,st[20];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(string,at+))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(input&amp;nbsp;a&amp;nbsp;string:\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	scanf(%s,st);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputs(st,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while(ch!=EOF)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	putchar(ch);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ch=fgetc(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例要求在string文件末加写字符串，因此，在程序第6行以追加读写文本文件的方式打开文件string&amp;nbsp;。&amp;nbsp;然后输入字符串，&amp;nbsp;并用fputs函数把该串写入文件string。在程序15行用rewind函数把文件内部位置指针移到文件首。&amp;nbsp;再进入循环逐个显示当前文件中的全部内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数据块读写函数ｆｒｅａｄ和ｆｗｒｉｔｅ
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言还提供了用于整块数据的读写函数。&amp;nbsp;可用来读写一组数据，如一个数组元素，一个结构变量的值等。读数据块函数调用的一般形式为：&amp;nbsp;fread(buffer,size,count,fp);&amp;nbsp;写数据块函数调用的一般形式为：&amp;nbsp;fwrite(buffer,size,count,fp);&amp;nbsp;其中buffer是一个指针，在fread函数中，它表示存放输入数据的首地址。在fwrite函数中，它表示存放输出数据的首地址。&amp;nbsp;size&amp;nbsp;表示数据块的字节数。count&amp;nbsp;表示要读写的数据块块数。fp&amp;nbsp;表示文件指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fread(fa,4,5,fp);&amp;nbsp;其意义是从fp所指的文件中，每次读4个字节(一个实数)送入实数组fa中，连续读5次，即读5个实数到fa中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.6]从键盘输入两个学生数据，写入一个文件中，&amp;nbsp;再读出这两个学生的数据显示在屏幕上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;stu
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;name[10];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;num;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;age;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;addr[15];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}boya[2],boyb[2],*pp,*qq;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pp=boya;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq=boyb;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(stu_list,wb+))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\ninput&amp;nbsp;data\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,pp++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	scanf(%s%d%d%s,pp-&amp;amp;gt;name,&amp;amp;pp-&amp;amp;gt;num,&amp;amp;pp-&amp;amp;gt;age,pp-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pp=boya;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fwrite(pp,sizeof(struct&amp;nbsp;stu),2,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fread(qq,sizeof(struct&amp;nbsp;stu),2,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n\nname\tnumber&amp;nbsp;age&amp;nbsp;addr\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,qq++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%s\t%5d%7d%s\n,qq-&amp;amp;gt;name,qq-&amp;amp;gt;num,qq-&amp;amp;gt;age,qq-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例程序定义了一个结构stu,说明了两个结构数组boya和&amp;nbsp;boyb以及两个结构指针变量pp和qq。pp指向boya,qq指向boyb。程序第16行以读写方式打开二进制文件“stu_list”，输入二个学生数据之后，写入该文件中，&amp;nbsp;然后把文件内部位置指针移到文件首，读出两块学生数据后，在屏幕上显示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	格式化读写函数ｆｓｃａｎｆ和ｆｐｒｉｎｔｆ
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fscanf函数，fprintf函数与前面使用的scanf和printf&amp;nbsp;函数的功能相似，都是格式化读写函数。&amp;nbsp;两者的区别在于&amp;nbsp;fscanf&amp;nbsp;函数和fprintf函数的读写对象不是键盘和显示器，而是磁盘文件。这两个函数的调用格式为：&amp;nbsp;fscanf(文件指针，格式字符串，输入表列)；&amp;nbsp;fprintf(文件指针，格式字符串，输出表列)；&amp;nbsp;例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fscanf(fp,%d%s,&amp;amp;i,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fprintf(fp,%d%c,j,ch);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用fscanf和fprintf函数也可以完成例10.6的问题。修改后的程序如例10.7所示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.7]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;stu
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;name[10];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;num;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;age;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;addr[15];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}boya[2],boyb[2],*pp,*qq;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pp=boya;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq=boyb;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(stu_list,wb+))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\ninput&amp;nbsp;data\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,pp++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	scanf(%s%d%d%s,pp-&amp;amp;gt;name,&amp;amp;pp-&amp;amp;gt;num,&amp;amp;pp-&amp;amp;gt;age,pp-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pp=boya;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,pp++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fprintf(fp,%s&amp;nbsp;%d&amp;nbsp;%d&amp;nbsp;%s\n,pp-&amp;amp;gt;name,pp-&amp;amp;gt;num,pp-&amp;amp;gt;age,pp-&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,qq++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fscanf(fp,%s&amp;nbsp;%d&amp;nbsp;%d&amp;nbsp;%s\n,qq-&amp;amp;gt;name,&amp;amp;qq-&amp;amp;gt;num,&amp;amp;qq-&amp;amp;gt;age,qq-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n\nname\tnumber&amp;nbsp;age&amp;nbsp;addr\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq=boyb;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;i&amp;amp;lt;2;i++,qq++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%s\t%5d&amp;nbsp;%7d&amp;nbsp;%s\n,qq-&amp;amp;gt;name,qq-&amp;amp;gt;num,&amp;nbsp;qq-&amp;amp;gt;age,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与例10.6相比，本程序中fscanf和fprintf函数每次只能读写一个结构数组元素，因此采用了循环语句来读写全部数组元素。&amp;nbsp;还要注意指针变量pp,qq由于循环改变了它们的值，因此在程序的25和32行分别对它们重新赋予了数组的首地址。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件的随机读写
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前面介绍的对文件的读写方式都是顺序读写，&amp;nbsp;即读写文件只能从头开始，顺序读写各个数据。&amp;nbsp;但在实际问题中常要求只读写文件中某一指定的部分。&amp;nbsp;为了解决这个问题可移动文件内部的位置指针到需要读写的位置，再进行读写，这种读写称为随机读写。&amp;nbsp;实现随机读写的关键是要按要求移动位置指针，这称为文件的定位。文件定位移动文件内部位置指针的函数主要有两个，&amp;nbsp;即&amp;nbsp;rewind&amp;nbsp;函数和fseek函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind函数前面已多次使用过，其调用形式为：&amp;nbsp;rewind(文件指针)；&amp;nbsp;它的功能是把文件内部的位置指针移到文件首。&amp;nbsp;下面主要介绍
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fseek函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fseek函数用来移动文件内部位置指针，其调用形式为：&amp;nbsp;fseek(文件指针，位移量，起始点)；&amp;nbsp;其中：“文件指针”指向被移动的文件。&amp;nbsp;“位移量”表示移动的字节数，要求位移量是long型数据，以便在文件长度大于64KB&amp;nbsp;时不会出错。当用常量表示位移量时，要求加后缀“L”。“起始点”表示从何处开始计算位移量，规定的起始点有三种：文件首，当前位置和文件尾。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其表示方法如表10.2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	起始点&amp;nbsp;　　　表示符号&amp;nbsp;　　　数字表示
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	──────────────────────────
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件首&amp;nbsp;　　　SEEK—SET　　　　0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当前位置&amp;nbsp;　　SEEK—CUR　　　　1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件末尾&amp;nbsp;　　SEEK—END&amp;nbsp;　　　&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fseek(fp,100L,0);其意义是把位置指针移到离文件首100个字节处。还要说明的是fseek函数一般用于二进制文件。在文本文件中由于要进行转换，故往往计算的位置会出现错误。文件的随机读写在移动位置指针之后，&amp;nbsp;即可用前面介绍的任一种读写函数进行读写。由于一般是读写一个数据据块，因此常用fread和fwrite函数。下面用例题来说明文件的随机读写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[例10.8]在学生文件stu&amp;nbsp;list中读出第二个学生的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;stu
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;name[10];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;num;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;age;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;addr[15];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}boy,*qq;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i=1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq=&amp;amp;boy;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(stu_list,rb))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(Cannot&amp;nbsp;open&amp;nbsp;file&amp;nbsp;strike&amp;nbsp;any&amp;nbsp;key&amp;nbsp;exit!);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getch();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exit(1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	rewind(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fseek(fp,i*sizeof(struct&amp;nbsp;stu),0);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fread(qq,sizeof(struct&amp;nbsp;stu),1,fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n\nname\tnumber&amp;nbsp;age&amp;nbsp;addr\n);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%s\t%5d&amp;nbsp;%7d&amp;nbsp;%s\n,qq-&amp;amp;gt;name,qq-&amp;amp;gt;num,qq-&amp;amp;gt;age,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	qq-&amp;amp;gt;addr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件stu_list已由例10.6的程序建立，本程序用随机读出的方法读出第二个学生的数据。程序中定义boy为stu类型变量，qq为指向boy的指针。以读二进制文件方式打开文件，程序第22行移动文件位置指针。其中的i值为1，表示从文件头开始，移动一个stu类型的长度，&amp;nbsp;然后再读出的数据即为第二个学生的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件检测函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言中常用的文件检测函数有以下几个。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、文件结束检测函数feof函数调用格式：&amp;nbsp;feof(文件指针)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	功能：判断文件是否处于文件结束位置，如文件结束，则返回值为1，否则为0。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、读写文件出错检测函数ferror函数调用格式：&amp;nbsp;ferror(文件指针)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	功能：检查文件在用各种输入输出函数进行读写时是否出错。&amp;nbsp;如ferror返回值为0表示未出错，否则表示有错。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、文件出错标志和文件结束标志置0函数clearerr函数调用格式：&amp;nbsp;clearerr(文件指针);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	功能：本函数用于清除出错标志和文件结束标志，使它们为0值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ库文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ系统提供了丰富的系统文件，称为库文件，C的库文件分为两类，一类是扩展名为.h的文件，称为头文件，&amp;nbsp;在前面的包含命令中我们已多次使用过。在.h文件中包含了常量定义、&amp;nbsp;类型定义、宏定义、函数原型以及各种编译选择设置等信息。另一类是函数库，包括了各种函数的目标代码，供用户在程序中调用。&amp;nbsp;通常在程序中调用一个库函数时，要在调用之前包含该函数原型所在的.h&amp;nbsp;文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在附录中给出了全部库函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ALLOC.H&amp;nbsp;　　　说明内存管理函数(分配、释放等)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ASSERT.H&amp;nbsp;　&amp;nbsp;　定义&amp;nbsp;assert调试宏。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BIOS.H&amp;nbsp;　　&amp;nbsp;　说明调用IBM—PC&amp;nbsp;ROM&amp;nbsp;BIOS子程序的各个函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CONIO.H&amp;nbsp;　　　说明调用DOS控制台I/O子程序的各个函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CTYPE.H&amp;nbsp;　　　包含有关字符分类及转换的名类信息(如&amp;nbsp;isalpha和toascii等)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DIR.H&amp;nbsp;　　　　包含有关目录和路径的结构、宏定义和函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DOS.H&amp;nbsp;　　　　定义和说明MSDOS和8086调用的一些常量和函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ERRON.H&amp;nbsp;　　　定义错误代码的助记符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FCNTL.H&amp;nbsp;　　　定义在与open库子程序连接时的符号常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FLOAT.H&amp;nbsp;　　　包含有关浮点运算的一些参数和函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GRAPHICS.H&amp;nbsp;　&amp;nbsp;说明有关图形功能的各个函数，图形错误代码的常量定义，正对不同驱动程序的各种颜色值，及函数用到的一些特殊结构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	IO.H&amp;nbsp;　　　　&amp;nbsp;包含低级I/O子程序的结构和说明。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LIMIT.H&amp;nbsp;　　　包含各环境参数、编译时间限制、数的范围等信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MATH.H&amp;nbsp;　　　&amp;nbsp;说明数学运算函数，还定了&amp;nbsp;HUGE&amp;nbsp;VAL&amp;nbsp;宏，&amp;nbsp;说明了matherr和matherr子程序用到的特殊结构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MEM.H&amp;nbsp;　　　　说明一些内存操作函数(其中大多数也在STRING.H&amp;nbsp;中说明)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PROCESS.H&amp;nbsp;　　说明进程管理的各个函数，spawn…和EXEC&amp;nbsp;…函数的结构说明。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SETJMP.H&amp;nbsp;　　&amp;nbsp;定义longjmp和setjmp函数用到的jmp&amp;nbsp;buf类型，&amp;nbsp;说明这两个函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SHARE.H&amp;nbsp;　　　定义文件共享函数的参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SIGNAL.H&amp;nbsp;　　&amp;nbsp;定义SIG[ZZ(Z]&amp;nbsp;[ZZ)]IGN和SIG[ZZ(Z]&amp;nbsp;[ZZ)]DFL常量，说明rajse和signal两个函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	STDARG.H&amp;nbsp;　　&amp;nbsp;定义读函数参数表的宏。(如vprintf,vscarf函数)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	STDDEF.H&amp;nbsp;　　&amp;nbsp;定义一些公共数据类型和宏。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	STDIO.H&amp;nbsp;　　　定义Kernighan和Ritchie在Unix&amp;nbsp;System&amp;nbsp;V&amp;nbsp;中定义的标准和扩展的类型和宏。还定义标准I/O&amp;nbsp;预定义流：stdin,stdout和stderr，说明&amp;nbsp;I/O流子程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	STDLIB.H&amp;nbsp;　　&amp;nbsp;说明一些常用的子程序：转换子程序、搜索/&amp;nbsp;排序子程序等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	STRING.H&amp;nbsp;　　&amp;nbsp;说明一些串操作和内存操作函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS\STAT.H&amp;nbsp;　&amp;nbsp;定义在打开和创建文件时用到的一些符号常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS\TYPES.H&amp;nbsp;　说明ftime函数和timeb结构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SYS\TIME.H&amp;nbsp;　&amp;nbsp;定义时间的类型time[ZZ(Z]&amp;nbsp;[ZZ)]t。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	TIME.H&amp;nbsp;　　　&amp;nbsp;定义时间转换子程序asctime、localtime和gmtime的结构，ctime、&amp;nbsp;difftime、&amp;nbsp;gmtime、&amp;nbsp;localtime和stime用到的类型，并提供这些函数的原型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	VALUE.H&amp;nbsp;　　　定义一些重要常量，&amp;nbsp;包括依赖于机器硬件的和为与Unix&amp;nbsp;System&amp;nbsp;V相兼容而说明的一些常量，包括浮点和双精度值的范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本章小结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;Ｃ系统把文件当作一个“流”，按字节进行处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;Ｃ文件按编码方式分为二进制文件和ASCII文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;Ｃ语言中，用文件指针标识文件，当一个文件被&amp;nbsp;打开时，&amp;nbsp;可取得该文件指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;文件在读写之前必须打开，读写结束必须关闭。&amp;nbsp;5.&amp;nbsp;文件可按只读、只写、读写、追加四种操作方式打开，同时还必须指定文件的类型是二进制文件还是文本文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;文件可按字节，字符串，数据块为单位读写，文件也可按指定的格式进行读写。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;文件内部的位置指针可指示当前的读写位置，移动该指针可以对文件实现随机读写。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-26/1340714064.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

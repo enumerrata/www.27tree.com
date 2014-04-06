@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-26 09:30:16</datetime>
+  <title>使用JavaScript打开新窗口的两种方式</title>
+  <content>&lt;p&gt;
+	一般常使的方式有window.open()和window.showModalDialog()两种
+&lt;/p&gt;
+&lt;p&gt;
+	1、window.open(url)
+&lt;/p&gt;
+&lt;p&gt;
+	将在浏览器中新开一个选项卡，可以在其中使用window.opener.document文档对象来进行对父窗口的操作。
+&lt;/p&gt;
+&lt;p&gt;
+	2、window.showModalDialog(url，obj，style)
+&lt;/p&gt;
+&lt;p&gt;
+	可以带三个参数，url为弹出窗口url地址，obj为想要传到子窗口中的对象，style可以设置子窗口的样式，例如高度大小之类的
+&lt;/p&gt;
+&lt;p&gt;
+	该弹出的子窗口将获取焦点锁定浏览器，除非关闭该窗口，不然其他页面无法操作
+&lt;/p&gt;
+&lt;p&gt;
+	一般获取返回值的使用如下：
+&lt;/p&gt;
+&lt;p&gt;
+	父窗口：sar&amp;nbsp;returnValue&amp;nbsp;=&amp;nbsp;window.showModalDialog(\"Child.html\");
+&lt;/p&gt;
+&lt;p&gt;
+	这样在子窗口中的返回值将可以被赋值为父窗口中的returnValue。
+&lt;/p&gt;</content>
+  <contentx>一般常使的方式有window.open()和window.showModalDialog()两种
+
+
+	1、window.open(url)
+
+
+	将在浏览器中新开一个选项卡，可以在其中使用window.opener.document文档对象来进行对父窗口的操作。
+
+
+	2、window.showModalDialog(url，obj，style)
+
+
+	可</contentx>
+  <tags>_null_</tags>
+</root>

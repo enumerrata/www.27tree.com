@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-05 11:43:09</datetime>
+  <title><![CDATA[实现MySQL随机查询数据的几个步骤]]></title>
+  <content><![CDATA[<p>
+	此文章主要向大家讲述的是实现MySQL随机查询数据与MySQL随机更新数据的实际操作流程，我们大家都知道MySQL随机查询数据与MySQL随机更新数据在实际操作中是经常被用到的，所以对其实际操作有一定的了解还是比较好的。
+</p>
+<p>
+	<strong>MySQL随机查询数据</strong>
+</p>
+<p>
+	以前讨论过这个问题,比较的有意思.MySQLl的语法真好玩.大家原本都想用PHP的实现随机,但取出多条好像要进行两次以上查询.翻了手册,找到了下面这个语句,可以完成任务了
+</p>
+<p>
+	SELECT * FROM table_name ORDER BY rand() LIMIT 5;&nbsp;
+</p>
+<p>
+	<p>
+		MySQL里面的rand()函数在手册上是这么说的:
+	</p>
+	<p>
+		RAND()
+	</p>
+	<p>
+		RAND(N)
+	</p>
+	<p>
+		返回在范围0到1.0内的随机浮点值。如果一个整数参数N被指定，它被用作种子值。
+	</p>
+实际效果
+</p>
+<p>
+	<span style=\"line-height:1.5;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">MySQLl&gt; select RAND();  
+-&gt; 0.5925  
+MySQLl&gt; select RAND(20);  
+-&gt; 0.1811  
+MySQLl&gt; select RAND(20);  
+-&gt; 0.1811  
+MySQLl&gt; select RAND();  
+-&gt; 0.2079  
+MySQLl&gt; select RAND();  
+-&gt; 0.7888 </pre>
+	<p>
+		<strong>MySQL随机更新数据</strong>
+	</p>
+	<p>
+		如何写一个语句能一下更新几百条MySQL数据！
+	</p>
+	<p>
+		需要测试MySQL数据库，里面有一个上万条数据的数据库，如何写一个PHP文件一下每次更新几百条信息，我都是写一个循环一次更新一条信息，这样我知道用WHILE写就可以了，要是一次更新好比100条数据改如何写呢？
+	</p>
+	<p>
+		正确答案是：
+	</p>
+UPDATE cdb_posts SET views = rand();&nbsp;</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">其实在insert 命令中，value()里面用rand()，要注意字段宽度是否足够</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">MySQL随机查询几条数据，就用</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">SELECT * FROM `table` ORDER BY RAND() LIMIT 5&nbsp;</span><span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\"></span>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

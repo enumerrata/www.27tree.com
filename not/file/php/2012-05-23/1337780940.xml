@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP全面提速：应用Zend Optimizer和内容压缩</title>
+<content>&amp;lt;p&amp;gt;
+	PHP最大的优点之一显然在于它的快速度。一般情况下PHP总是具有足够的速度支持Web内容动态生成，许多时候你甚至无法找出比它更快的方法。然而，当你不得不面对庞大的访问量、高负荷的应用、有限的带宽以及其他各种带来性能瓶颈的因素时，你可能会问问自己是否可以做点什么让网站运行得更好。或许只要加上一个很不起眼的免费模块，你的PHP应用性能以及Web服务器响应速度就会有显著的改善。本文讨论的就是如何进一步提高php应用的性能，给用户以更美妙的浏览感受。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;本文分三个方面(代码优化、缓存、内容压缩)阐述提高&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP应用性能的各种技术，并介绍各个领域的知名产品。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:left;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;代码优化&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先我们来看看代码优化。注意，这里的代码优化可不是指把代码写得更加美观漂亮，因为这恐怕已经是众所周知没有必要继续讨论了;另外，如果你已经考虑到了速度问题，很可能你早就对PHP的源代码作了一些优化。不过，有些工具却能够自动地帮助我们完成这些繁杂的工作，如Zend&amp;nbsp;Optimizer就是这样一个工具。&amp;nbsp;Zend&amp;nbsp;Optimizer可以从Zend&amp;nbsp;Technologies免费得到，但你必须同意它的许可约定，注意它不是以&amp;nbsp;GPL方式发行。Zend&amp;nbsp;Optimizer获取由Zend&amp;nbsp;Engine运行时编译生成的中间代码，并对它进行优化，&amp;nbsp;从而使得中间代码具有更快的执行效率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Zend&amp;nbsp;Optimizer的安装方法非常简单，你只需下载为自己所用平台提供的预编译版本，把下面两行代&amp;nbsp;码加入到php.ini，然后重新启动Web服务器即可：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;zend_optimizer.optimization_level=15
+
+zend_extension=\"/path/to/ZendOptimizer.so\"
+
+zend_loader.enable=Off&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这里额外增加的第三行代码是可选的。禁止zend_loader似乎能够让Zend&amp;nbsp;Optimizer的速度更快一点
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	，所以在php.ini中加上这行代码是值得的。注意：只有当你不使用Zend&amp;nbsp;Encoder&amp;nbsp;Runtime时，你才
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以禁用zend_loader。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;缓存&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你想要让自己庞大的PHP应用有更好的性能表现，采用缓存也是一种很好的方法。现在已经有许多缓存&amp;nbsp;方案可供选择，其中包括：Zend&amp;nbsp;Cache，APC，和Afterburner&amp;nbsp;Cache。所有这些产品都属于“缓存模块”。当第一次出现对.php文件的请求时，它们会在Web服务器内存中保存PHP的中间代码，此后就用“经过编译”的版本响应后继的请求。这种方法确实能够改善应用的性能，因为它使得磁盘访问量减低到了最少的程度(代码已经读取和解析)，代码直接在内存中运行使得服务器响应请求的速度大大提高。当然，缓存模块还会监视PHP源文件的变化，必要时重新缓存页面，从而防止了用户得到的页面仍旧由过时的PHP代码生成。由于缓存模块能够明显地降低服务器的负载、提高PHP应用的响应效率，因此它们非&amp;nbsp;常适合于负载较大的网站使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;如何选择这些缓存产品&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Zend&amp;nbsp;Cache是Zend&amp;nbsp;Technologies公司的商业软件，而Zend&amp;nbsp;Technologies就是前面提到的那个为我们提供PHP引擎和免费Zend&amp;nbsp;Optimizer的公司。Zend&amp;nbsp;Cache确实是名不虚传!对于大型的PHP页面，你可以感觉到第一次运行之后速度就会有所提高，而且服务器也会有更多的可用资源。遗憾的是这个产品并不免费，不过在有些情形下它仍旧是物超所值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Afterburner&amp;nbsp;Cache是来自Bware&amp;nbsp;Technologies的免费缓存模块，当前这个产品还是Beta版。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Afterburner&amp;nbsp;Cache的做法看起来与Zend&amp;nbsp;Cache差不多，但它对性能的改善程度(还)不能与&amp;nbsp;Zend
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Cache相比，而且它还不能与Zend&amp;nbsp;Optimizer一起工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	APC是Alternative&amp;nbsp;PHP&amp;nbsp;Cache的缩写，它是来自Community&amp;nbsp;Connect的又一个免费缓存模&amp;nbsp;块。这个产品已经具有足够的稳定性供正式场合使用，而且它看起来也能在很大程度上提高响应请求的速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;内容压缩&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前面我们讨论了几种提高PHP应用性能的方法，下面来看看使得浏览者感到网站速度太慢的另外一个重要因素：下载速度。如果PHP应用在内部Intranet上运行，而且每一台客户机都以100&amp;nbsp;MB/s的速度连接到服务器，那么下载速度应该不是什么问题。然而，如果服务器还要为慢腾腾的Modem用户提供服务，那么值得考虑内容压缩。大多数浏览器都根据IETF标准支持用gzip进行内容压缩。这意味着你可以用gzip压缩内容然而发送给浏览器，由浏览器解压缩数据之后再显示页面，这整个过程对用户来说完全透明。至于服务器端的内容压缩，&amp;nbsp;现在已经有许多不同的方法可供使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如，来自Remote&amp;nbsp;Communications的免费Apache模块mod_gzip就具有为支持这类内容编码的浏览器压缩静态Web内容的能力。对于绝大多数静态Web内容，mod_gzip都非常有效。mod_gzip可以方便地编译到Apache里面，也可以作为DSO使用。据Remote&amp;nbsp;communications公司说，mod_gzip也能够压缩来自mod_php、mod_perl等的动态内容。我试了一次又一次，但看来还是不行。我看了许多关于mod_gzip的论坛和文章，看来到了mod_gzip的下一个版本(可能是1.3.14.6f)这个问题有望得到解决。在此之前，我们可以在网站的静态&amp;nbsp;部分使用mod_gzip。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然而有时我们确实需要压缩动态内容，所以必须找找其他办法。有一种办法是使用class.gzip_encode.php，这是一个可以用来压缩页面内容的PHP类，具体方法是在PHP脚本的开头和末尾调用该类的某些函数。如果要在网站级实现这个方案，可以从php.ini文件的auto_prepend以及auto_append指令调用这些函数。这种方法虽然有效，但它无疑为高负载的网站带来了更多的开销。关于如何使用这个类的详细说明，请参见它的源代码。它的源代码说明相当完善，作者告诉了你所有你必须知道的事情。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP&amp;nbsp;4.0.4有一个新的输出缓存句柄ob_gzhandler，它与前面的类相似，但用法不同。使用&amp;nbsp;ob_gzhandler时要在php.ini中加入的内容如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;output_handler&amp;nbsp;=&amp;nbsp;ob_gzhandler&amp;nbsp;;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这行代码使得PHP激活输出缓存，并压缩它发送出去的所有内容。如果由于某种原因你不想在php.ini中加上这行代码，你还可以通过PHP源文件所在目录的.htaccess文件改变默认的服务器行为(不压缩)，语法如下&amp;nbsp;：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;php_value&amp;nbsp;output_handler&amp;nbsp;ob_gzhandler&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	或者是从PHP代码调用，如下所示：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;ob_start(\"ob_gzhandler\");&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	采用输出缓存句柄的方法确实非常有效，而且不会给服务器带来什么特殊的负荷。但必须注意的是，NetscapeCommunicator对压缩图形的支持不佳，因此除非你能够保证所有用户都使用IE浏览器，否则你应该禁止压缩JPEG和GIF图形。一般地，对于所有其他文件，这种压缩都有效，但建议你针对各种浏览器都分别进行测试，特别是当你使用了特殊的插件或者数据查看器时这一点尤其重要。使用前面介绍的各种技术，你能够显著地改善网站的性能表现，但应该注意的是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP可能是、也可能不是性能瓶颈所在。务必仔细地观察每一个和应用性能有关的因素，比如数据库等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	单纯使用本文技术只能在一定限度之内提高Web服务器的性能。因此在归咎于PHP以及它的缓存之前，不妨看看是否应该升级服务器以及是否可以引入负载平衡技术(后者需要较大的投资)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不要低估内容压缩的作用。虽然你在100&amp;nbsp;MB/s的LAN连接下看到Web应用响应非常迅速，但使用Modem&amp;nbsp;连接的用户不会，他们只会抱怨你那100&amp;nbsp;Kb的HTML页面实在过于庞大。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-23/1337780940.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

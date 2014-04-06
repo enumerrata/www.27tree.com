@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>前瞻:Java能否畅行未来?</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	如果要评选最近十年对整个IT产业具有颠覆性影响力的技术，非Java莫属。今年，Java问世整整十年，Java已经在全球盛开得无处不在。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	全球市场调查分析显示：已经有25亿部电子设备采用Java技术，Java智能卡发行量已经达到10亿张；采用Java技术的手机达7亿多部；7亿台PC中应用了Java技术；140家电信运营商支持Java技术；全球有450万以上的Java开发人员；JCP(Java社区项目)已经有912家会员企业。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所以当Sun公司董事长兼CEO麦克里尼出现在9月13—14日在北京举行的“2005&amp;nbsp;Java中国开发者大会”新闻发布会现场时，他非常坦率地承认，十年前他实在不是什么战略家，根本没有料想到Java对世界具有如此震撼的影响力。以至于当穿着套头衫牛仔裤的Java之父James&amp;nbsp;Gosling现身于北京的开发者大会主会场时，许多的中国开发者看到他，眼里立刻闪现晶莹的泪光。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	“一次编写，到处运行”的Java，十年时间，其跨平台和开放性已经得到全世界的认可，整个IT的历史上，还没有过像Java这样能够如此广泛被应用的平台。但是，比起全球的如火如荼的Java之势，Java在中国的应用还是显得有一些滞后，而对于目前已经如此流行的Java，Java的发明公司Sun又从它身上捞到多少好处，对于创新的永恒话题，Java之父是否相信Java依然可以畅行未来？未来Java面临的最大挑战又将是什么？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;p&amp;gt;
+		用了十年的时间，尽管Java在全球的发展已经取得了很大的发展，但是来自清华大学的王克宏教授认为，Java在未来的发展依然是面临很多挑战，比如工具的优化，比如开放原代码，比如强化行业市场，比如需要抓住Web服务浪潮等等。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Java之父James&amp;nbsp;Gosling认为，Sun对于Java和Solaris的开源工作都在陆续进行之中，在开源的同时需要保证Java完整性。他认为未来十年Java面临的最大挑战应该是复杂性问题。他强调，鉴于许多机器运行越来越多的数据，人对线程模型投以越来越多的关注，随着人们对桌面应用的要求越来越高，系统将变得越来越复杂。所以他所领导的小组成员目前开展的更多工作是解决应用编程接口、语言以及工具中所涉及的复杂性问题，在工具和用户界面(UI)中都会遭遇到复杂性的问题。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		尽管依然还面临很多的问题，但是也并不能否认Java是10年里，IT产业最伟大的技术之一。至于Java是否还能够在下一技术新纪元来临的时候依然畅行，James&amp;nbsp;Gosling坦言确实没有一种技术的生命力是永远的，Java同样也不例外。他也相信当IT在下一个颠覆性技术来临的时候，应该会有更好的语言出现，但目前可以预见的下一个技术浪潮是多核，而Java依然是非常适合多核运算的。
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-06-19/1340075550.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

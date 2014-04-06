@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Redis Cookbook]]></title>
+  <author>Tiago Macedo, Fred Oliveria</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-01-05 13:54:30</submit-date-time>
+  <img-link>dcaf097785a6179b0bef2ea8fa732e51._SL500_</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	Two years since its initial release, Redis already has an impressive list of adopters, including Engine Yard, GitHub, Craigslist, and Digg. This open source data structure server is built for speed and flexibility, making it ideal for many applications. If you\'re using Redis, or considering it, this concise cookbook provides recipes for a variety of issues you\'re likely to face.
+</p>
+<p>
+	Each recipe solves a specific problem, and provides an in-depth discussion of how the solution works. You’ll discover that Redis, while simple in nature, offers extensive functionality for manipulating and storing data.
+</p>
+<p>
+	Learn when it makes sense to use Redis
+</p>
+<p>
+	Explore several methods for installing Redis
+</p>
+<p>
+	Connect to Redis in a number of ways, ranging from the command line to popular languages such as Python and Ruby
+</p>
+<p>
+	Solve a range of needs, from linked datasets to analytics
+</p>
+<p>
+	Handle backups, sharding, datasets larger than available memory, and many other tasks
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

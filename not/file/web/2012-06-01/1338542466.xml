@@ -1,0 +1,1664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>记录一下备查，很不错的一篇SQL语句总结。</title>
+<content>&amp;lt;p&amp;gt;
+	一、基础
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、说明：创建数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;DATABASE&amp;nbsp;database-name
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、说明：删除数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	drop&amp;nbsp;database&amp;nbsp;dbname
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、说明：备份sql&amp;nbsp;server
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	—&amp;nbsp;创建&amp;nbsp;备份数据的&amp;nbsp;device
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	USE&amp;nbsp;master
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXEC&amp;nbsp;sp_addumpdevice&amp;nbsp;‘disk’,&amp;nbsp;‘testBack’,&amp;nbsp;‘c:mssql7backupMyNwind_1.dat’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	—&amp;nbsp;开始&amp;nbsp;备份
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BACKUP&amp;nbsp;DATABASE&amp;nbsp;pubs&amp;nbsp;TO&amp;nbsp;testBack
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、说明：创建新表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	create&amp;nbsp;table&amp;nbsp;tabname(col1&amp;nbsp;type1&amp;nbsp;[not&amp;nbsp;null]&amp;nbsp;[primary&amp;nbsp;key],col2&amp;nbsp;type2&amp;nbsp;[not&amp;nbsp;null],..)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	根据已有的表创建新表：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A：create&amp;nbsp;table&amp;nbsp;tab_new&amp;nbsp;like&amp;nbsp;tab_old&amp;nbsp;(使用旧表创建新表)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B：create&amp;nbsp;table&amp;nbsp;tab_new&amp;nbsp;as&amp;nbsp;select&amp;nbsp;col1,col2…&amp;nbsp;from&amp;nbsp;tab_old&amp;nbsp;definition&amp;nbsp;only
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、说明：删除新表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	drop&amp;nbsp;table&amp;nbsp;tabname
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、说明：增加一个列
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Alter&amp;nbsp;table&amp;nbsp;tabname&amp;nbsp;add&amp;nbsp;column&amp;nbsp;col&amp;nbsp;type
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注：列增加后将不能删除。DB2中列加上后数据类型也不能改变，唯一能改变的是增加varchar类型的长度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、说明：添加主键：&amp;nbsp;Alter&amp;nbsp;table&amp;nbsp;tabname&amp;nbsp;add&amp;nbsp;primary&amp;nbsp;key(col)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明：删除主键：&amp;nbsp;Alter&amp;nbsp;table&amp;nbsp;tabname&amp;nbsp;drop&amp;nbsp;primary&amp;nbsp;key(col)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、说明：创建索引：create&amp;nbsp;[unique]&amp;nbsp;index&amp;nbsp;idxname&amp;nbsp;on&amp;nbsp;tabname(col….)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	删除索引：drop&amp;nbsp;index&amp;nbsp;idxname
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注：索引是不可更改的，想更改必须删除重新建。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9、说明：创建视图：create&amp;nbsp;view&amp;nbsp;viewname&amp;nbsp;as&amp;nbsp;select&amp;nbsp;statement
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	删除视图：drop&amp;nbsp;view&amp;nbsp;viewname
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10、说明：几个简单的基本的sql语句
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	选择：select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	插入：insert&amp;nbsp;into&amp;nbsp;table1(field1,field2)&amp;nbsp;values(value1,value2)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	删除：delete&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	更新：update&amp;nbsp;table1&amp;nbsp;set&amp;nbsp;field1=value1&amp;nbsp;where&amp;nbsp;范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	查找：select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;field1&amp;nbsp;like&amp;nbsp;’%value1%’&amp;nbsp;—like的语法很精妙，查资料!
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	排序：select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;order&amp;nbsp;by&amp;nbsp;field1,field2&amp;nbsp;[desc]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总数：select&amp;nbsp;count&amp;nbsp;as&amp;nbsp;totalcount&amp;nbsp;from&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	求和：select&amp;nbsp;sum(field1)&amp;nbsp;as&amp;nbsp;sumvalue&amp;nbsp;from&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	平均：select&amp;nbsp;avg(field1)&amp;nbsp;as&amp;nbsp;avgvalue&amp;nbsp;from&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最大：select&amp;nbsp;max(field1)&amp;nbsp;as&amp;nbsp;maxvalue&amp;nbsp;from&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最小：select&amp;nbsp;min(field1)&amp;nbsp;as&amp;nbsp;minvalue&amp;nbsp;from&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11、说明：几个高级查询运算词
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A：&amp;nbsp;UNION&amp;nbsp;运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	UNION&amp;nbsp;运算符通过组合其他两个结果表（例如&amp;nbsp;TABLE1&amp;nbsp;和&amp;nbsp;TABLE2）并消去表中任何重复行而派生出一个结果表。当&amp;nbsp;ALL&amp;nbsp;随&amp;nbsp;UNION&amp;nbsp;一起使用时（即&amp;nbsp;UNION&amp;nbsp;ALL），不消除重复行。两种情况下，派生表的每一行不是来自&amp;nbsp;TABLE1&amp;nbsp;就是来自&amp;nbsp;TABLE2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B：&amp;nbsp;EXCEPT&amp;nbsp;运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXCEPT&amp;nbsp;运算符通过包括所有在&amp;nbsp;TABLE1&amp;nbsp;中但不在&amp;nbsp;TABLE2&amp;nbsp;中的行并消除所有重复行而派生出一个结果表。当&amp;nbsp;ALL&amp;nbsp;随&amp;nbsp;EXCEPT&amp;nbsp;一起使用时&amp;nbsp;(EXCEPT&amp;nbsp;ALL)，不消除重复行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C：&amp;nbsp;INTERSECT&amp;nbsp;运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	INTERSECT&amp;nbsp;运算符通过只包括&amp;nbsp;TABLE1&amp;nbsp;和&amp;nbsp;TABLE2&amp;nbsp;中都有的行并消除所有重复行而派生出一个结果表。当&amp;nbsp;ALL&amp;nbsp;随&amp;nbsp;INTERSECT&amp;nbsp;一起使用时&amp;nbsp;(INTERSECT&amp;nbsp;ALL)，不消除重复行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注：使用运算词的几个查询结果行必须是一致的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12、说明：使用外连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A、left&amp;nbsp;（outer）&amp;nbsp;join：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	左外连接（左连接）：结果集几包括连接表的匹配行，也包括左连接表的所有行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL:&amp;nbsp;select&amp;nbsp;a.a,&amp;nbsp;a.b,&amp;nbsp;a.c,&amp;nbsp;b.c,&amp;nbsp;b.d,&amp;nbsp;b.f&amp;nbsp;from&amp;nbsp;a&amp;nbsp;LEFT&amp;nbsp;OUT&amp;nbsp;JOIN&amp;nbsp;b&amp;nbsp;ON&amp;nbsp;a.a&amp;nbsp;=&amp;nbsp;b.c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B：right&amp;nbsp;（outer）&amp;nbsp;join:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	右外连接(右连接)：结果集既包括连接表的匹配连接行，也包括右连接表的所有行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C：full/cross&amp;nbsp;（outer）&amp;nbsp;join：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12、分组:Group&amp;nbsp;by:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一张表，一旦分组&amp;nbsp;完成后，查询后只能得到组相关的信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	组相关的信息：（统计信息）&amp;nbsp;count,sum,max,min,avg&amp;nbsp;&amp;nbsp;分组的标准)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在SQLServer中分组时：不能以text,ntext,image类型的字段作为分组依据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在selecte统计函数中的字段，不能和普通的字段放在一起；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13、对数据库进行操作：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分离数据库：&amp;nbsp;sp_detach_db;&amp;nbsp;附加数据库：sp_attach_db&amp;nbsp;后接表明，附加需要完整的路径名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14.如何修改数据库的名称:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sp_renamedb&amp;nbsp;‘old_name’,&amp;nbsp;‘new_name’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、提升
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、说明：复制表(只复制结构,源表名：a&amp;nbsp;新表名：b)&amp;nbsp;(Access可用)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	法一：select&amp;nbsp;*&amp;nbsp;into&amp;nbsp;b&amp;nbsp;from&amp;nbsp;a&amp;nbsp;where&amp;nbsp;1&amp;amp;lt;&amp;amp;gt;1（仅用于SQlServer）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	法二：select&amp;nbsp;top&amp;nbsp;0&amp;nbsp;*&amp;nbsp;into&amp;nbsp;b&amp;nbsp;from&amp;nbsp;a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、说明：拷贝表(拷贝数据,源表名：a&amp;nbsp;目标表名：b)&amp;nbsp;(Access可用)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;into&amp;nbsp;b(a,&amp;nbsp;b,&amp;nbsp;c)&amp;nbsp;select&amp;nbsp;d,e,f&amp;nbsp;from&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、说明：跨数据库之间表的拷贝(具体数据使用绝对路径)&amp;nbsp;(Access可用)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;into&amp;nbsp;b(a,&amp;nbsp;b,&amp;nbsp;c)&amp;nbsp;select&amp;nbsp;d,e,f&amp;nbsp;from&amp;nbsp;b&amp;nbsp;in&amp;nbsp;‘具体数据库’&amp;nbsp;where&amp;nbsp;条件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例子：..from&amp;nbsp;b&amp;nbsp;in&amp;nbsp;‘”&amp;amp;Server.MapPath(“.”)&amp;amp;”data.mdb”&amp;nbsp;&amp;amp;”‘&amp;nbsp;where..
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、说明：子查询(表名1：a&amp;nbsp;表名2：b)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a,b,c&amp;nbsp;from&amp;nbsp;a&amp;nbsp;where&amp;nbsp;a&amp;nbsp;IN&amp;nbsp;(select&amp;nbsp;d&amp;nbsp;from&amp;nbsp;b&amp;nbsp;)&amp;nbsp;或者:&amp;nbsp;select&amp;nbsp;a,b,c&amp;nbsp;from&amp;nbsp;a&amp;nbsp;where&amp;nbsp;a&amp;nbsp;IN&amp;nbsp;(1,2,3)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、说明：显示文章、提交人和最后回复时间
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a.title,a.username,b.adddate&amp;nbsp;from&amp;nbsp;table&amp;nbsp;a,(select&amp;nbsp;max(adddate)&amp;nbsp;adddate&amp;nbsp;from&amp;nbsp;table&amp;nbsp;where&amp;nbsp;table.title=a.title)&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、说明：外连接查询(表名1：a&amp;nbsp;表名2：b)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a.a,&amp;nbsp;a.b,&amp;nbsp;a.c,&amp;nbsp;b.c,&amp;nbsp;b.d,&amp;nbsp;b.f&amp;nbsp;from&amp;nbsp;a&amp;nbsp;LEFT&amp;nbsp;OUT&amp;nbsp;JOIN&amp;nbsp;b&amp;nbsp;ON&amp;nbsp;a.a&amp;nbsp;=&amp;nbsp;b.c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、说明：在线视图查询(表名1：a&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;(SELECT&amp;nbsp;a,b,c&amp;nbsp;FROM&amp;nbsp;a)&amp;nbsp;T&amp;nbsp;where&amp;nbsp;t.a&amp;nbsp;&amp;amp;gt;&amp;nbsp;1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、说明：between的用法,between限制查询数据范围时包括了边界值,not&amp;nbsp;between不包括
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;time&amp;nbsp;between&amp;nbsp;time1&amp;nbsp;and&amp;nbsp;time2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a,b,c,&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;a&amp;nbsp;not&amp;nbsp;between&amp;nbsp;数值1&amp;nbsp;and&amp;nbsp;数值2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9、说明：in&amp;nbsp;的使用方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;a&amp;nbsp;[not]&amp;nbsp;in&amp;nbsp;(‘值1’,’值2’,’值4’,’值6’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10、说明：两张关联表，删除主表中已经在副表中没有的信息
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	delete&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;not&amp;nbsp;exists&amp;nbsp;(&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table2&amp;nbsp;where&amp;nbsp;table1.field1=table2.field1&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11、说明：四表联查问题：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;a&amp;nbsp;left&amp;nbsp;inner&amp;nbsp;join&amp;nbsp;b&amp;nbsp;on&amp;nbsp;a.a=b.b&amp;nbsp;right&amp;nbsp;inner&amp;nbsp;join&amp;nbsp;c&amp;nbsp;on&amp;nbsp;a.a=c.c&amp;nbsp;inner&amp;nbsp;join&amp;nbsp;d&amp;nbsp;on&amp;nbsp;a.a=d.d&amp;nbsp;where&amp;nbsp;…..
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12、说明：日程安排提前五分钟提醒
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL:&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;日程安排&amp;nbsp;where&amp;nbsp;datediff(‘minute’,f开始时间,getdate())&amp;amp;gt;5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13、说明：一条sql&amp;nbsp;语句搞定数据库分页
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;10&amp;nbsp;b.*&amp;nbsp;from&amp;nbsp;(select&amp;nbsp;top&amp;nbsp;20&amp;nbsp;主键字段,排序字段&amp;nbsp;from&amp;nbsp;表名&amp;nbsp;order&amp;nbsp;by&amp;nbsp;排序字段&amp;nbsp;desc)&amp;nbsp;a,表名&amp;nbsp;b&amp;nbsp;where&amp;nbsp;b.主键字段&amp;nbsp;=&amp;nbsp;a.主键字段&amp;nbsp;order&amp;nbsp;by&amp;nbsp;a.排序字段
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	具体实现：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	关于数据库分页：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	declare&amp;nbsp;@start&amp;nbsp;int,@end&amp;nbsp;int
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@sql&amp;nbsp;&amp;nbsp;nvarchar(600)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@sql=’select&amp;nbsp;top’+str(@end-@start+1)+’+from&amp;nbsp;T&amp;nbsp;where&amp;nbsp;rid&amp;nbsp;not&amp;nbsp;in(select&amp;nbsp;top’+str(@str-1)+’Rid&amp;nbsp;from&amp;nbsp;T&amp;nbsp;where&amp;nbsp;Rid&amp;amp;gt;-1)’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_executesql&amp;nbsp;@sql
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意：在top后不能直接跟一个变量，所以在实际应用中只有这样的进行特殊的处理。Rid为一个标识列，如果top后还有具体的字段，这样做是非&amp;nbsp;常有好处的。因为这样可以避免&amp;nbsp;top的字段如果是逻辑索引的，查询的结果后实际表中的不一致（逻辑索引中的数据有可能和数据表中的不一致，而查询时如果处在索引则首先查询索引）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14、说明：前10条记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;10&amp;nbsp;*&amp;nbsp;form&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15、说明：选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a,b,c&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;ta&amp;nbsp;where&amp;nbsp;a=(select&amp;nbsp;max(a)&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;tb&amp;nbsp;where&amp;nbsp;tb.b=ta.b)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16、说明：包括所有在&amp;nbsp;TableA&amp;nbsp;中但不在&amp;nbsp;TableB和TableC&amp;nbsp;中的行并消除所有重复行而派生出一个结果表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(select&amp;nbsp;a&amp;nbsp;from&amp;nbsp;tableA&amp;nbsp;)&amp;nbsp;except&amp;nbsp;(select&amp;nbsp;a&amp;nbsp;from&amp;nbsp;tableB)&amp;nbsp;except&amp;nbsp;(select&amp;nbsp;a&amp;nbsp;from&amp;nbsp;tableC)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	17、说明：随机取出10条数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;10&amp;nbsp;*&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;order&amp;nbsp;by&amp;nbsp;newid()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	18、说明：随机选择记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;newid()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	19、说明：删除重复记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1),delete&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;where&amp;nbsp;id&amp;nbsp;not&amp;nbsp;in&amp;nbsp;(select&amp;nbsp;max(id)&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;group&amp;nbsp;by&amp;nbsp;col1,col2,…)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2),select&amp;nbsp;distinct&amp;nbsp;*&amp;nbsp;into&amp;nbsp;temp&amp;nbsp;from&amp;nbsp;tablename
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	delete&amp;nbsp;from&amp;nbsp;tablename
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;into&amp;nbsp;tablename&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;temp
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	评价：&amp;nbsp;这种操作牵连大量的数据的移动，这种做法不适合大容量但数据操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3),例如：在一个外部表中导入数据，由于某些原因第一次只导入了一部分，但很难判断具体位置，这样只有在下一次全部导入，这样也就产生好多重复的字段，怎样删除重复字段
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	alter&amp;nbsp;table&amp;nbsp;tablename
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–添加一个自增列
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	add&amp;nbsp;&amp;nbsp;column_b&amp;nbsp;int&amp;nbsp;identity(1,1)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	delete&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;where&amp;nbsp;column_b&amp;nbsp;not&amp;nbsp;in(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;max(column_b)&amp;nbsp;&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;group&amp;nbsp;by&amp;nbsp;column1,column2,…)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	alter&amp;nbsp;table&amp;nbsp;tablename&amp;nbsp;drop&amp;nbsp;column&amp;nbsp;column_b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	20、说明：列出数据库里所有的表名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;name&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;where&amp;nbsp;type=’U’&amp;nbsp;//&amp;nbsp;U代表用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	21、说明：列出表里的所有的列名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;name&amp;nbsp;from&amp;nbsp;syscolumns&amp;nbsp;where&amp;nbsp;id=object_id(‘TableName’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	22、说明：列示type、vender、pcs字段，以type字段排列，case可以方便地实现多重选择，类似select&amp;nbsp;中的case。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;type,sum(case&amp;nbsp;vender&amp;nbsp;when&amp;nbsp;‘A’&amp;nbsp;then&amp;nbsp;pcs&amp;nbsp;else&amp;nbsp;0&amp;nbsp;end),sum(case&amp;nbsp;vender&amp;nbsp;when&amp;nbsp;‘C’&amp;nbsp;then&amp;nbsp;pcs&amp;nbsp;else&amp;nbsp;0&amp;nbsp;end),sum(case&amp;nbsp;vender&amp;nbsp;when&amp;nbsp;‘B’&amp;nbsp;then&amp;nbsp;pcs&amp;nbsp;else&amp;nbsp;0&amp;nbsp;end)&amp;nbsp;FROM&amp;nbsp;tablename&amp;nbsp;group&amp;nbsp;by&amp;nbsp;type
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示结果：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	type&amp;nbsp;vender&amp;nbsp;pcs
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	电脑&amp;nbsp;A&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	电脑&amp;nbsp;A&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	光盘&amp;nbsp;B&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	光盘&amp;nbsp;A&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	手机&amp;nbsp;B&amp;nbsp;3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	手机&amp;nbsp;C&amp;nbsp;3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	23、说明：初始化表table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	TRUNCATE&amp;nbsp;TABLE&amp;nbsp;table1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	24、说明：选择从10到15的记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;5&amp;nbsp;*&amp;nbsp;from&amp;nbsp;(select&amp;nbsp;top&amp;nbsp;15&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;order&amp;nbsp;by&amp;nbsp;id&amp;nbsp;asc)&amp;nbsp;table_别名&amp;nbsp;order&amp;nbsp;by&amp;nbsp;id&amp;nbsp;desc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、技巧
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、1=1，1=2的使用，在SQL语句组合时用的较多
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“where&amp;nbsp;1=1”&amp;nbsp;是表示选择全部&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;“where&amp;nbsp;1=2”全部不选，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;@strWhere&amp;nbsp;!=”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@strSQL&amp;nbsp;=&amp;nbsp;‘select&amp;nbsp;count(*)&amp;nbsp;as&amp;nbsp;Total&amp;nbsp;from&amp;nbsp;[&amp;nbsp;&amp;nbsp;+&amp;nbsp;@tblName&amp;nbsp;+&amp;nbsp;&amp;nbsp;]&amp;nbsp;where&amp;nbsp;‘&amp;nbsp;+&amp;nbsp;@strWhere
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@strSQL&amp;nbsp;=&amp;nbsp;‘select&amp;nbsp;count(*)&amp;nbsp;as&amp;nbsp;Total&amp;nbsp;from&amp;nbsp;[&amp;nbsp;&amp;nbsp;+&amp;nbsp;@tblName&amp;nbsp;+&amp;nbsp;&amp;nbsp;]‘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们可以直接写成
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	错误！未找到目录项。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@strSQL&amp;nbsp;=&amp;nbsp;‘select&amp;nbsp;count(*)&amp;nbsp;as&amp;nbsp;Total&amp;nbsp;from&amp;nbsp;[&amp;nbsp;&amp;nbsp;+&amp;nbsp;@tblName&amp;nbsp;+&amp;nbsp;&amp;nbsp;]&amp;nbsp;where&amp;nbsp;1=1&amp;nbsp;安定&amp;nbsp;‘+&amp;nbsp;@strWhere&amp;nbsp;2、收缩数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–重建索引
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;REINDEX
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;INDEXDEFRAG
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–收缩数据和日志
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;SHRINKDB
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;SHRINKFILE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、压缩数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dbcc&amp;nbsp;shrinkdatabase(dbname)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、转移数据库给新用户以已存在用户权限
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_change_users_login&amp;nbsp;‘update_one’,&amp;nbsp;newname’,&amp;nbsp;oldname’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	go
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、检查备份集
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RESTORE&amp;nbsp;VERIFYONLY&amp;nbsp;from&amp;nbsp;disk=’E:dvbbs.bak’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、修复数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ALTER&amp;nbsp;DATABASE&amp;nbsp;[dvbbs]&amp;nbsp;SET&amp;nbsp;SINGLE_USER
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GO
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;CHECKDB(‘dvbbs’,repair_allow_data_loss)&amp;nbsp;WITH&amp;nbsp;TABLOCK
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GO
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ALTER&amp;nbsp;DATABASE&amp;nbsp;[dvbbs]&amp;nbsp;SET&amp;nbsp;MULTI_USER
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GO
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、日志清除
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SET&amp;nbsp;NOCOUNT&amp;nbsp;ON
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@LogicalFileName&amp;nbsp;sysname,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@MaxMinutes&amp;nbsp;INT,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@NewSize&amp;nbsp;INT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	USE&amp;nbsp;tablename&amp;nbsp;—&amp;nbsp;要操作的数据库名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;&amp;nbsp;@LogicalFileName&amp;nbsp;=&amp;nbsp;‘tablename_log’,&amp;nbsp;—&amp;nbsp;日志文件名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@MaxMinutes&amp;nbsp;=&amp;nbsp;10,&amp;nbsp;—&amp;nbsp;Limit&amp;nbsp;on&amp;nbsp;time&amp;nbsp;allowed&amp;nbsp;to&amp;nbsp;wrap&amp;nbsp;log.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@NewSize&amp;nbsp;=&amp;nbsp;1&amp;nbsp;&amp;nbsp;—&amp;nbsp;你想设定的日志文件的大小(M)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Setup&amp;nbsp;/&amp;nbsp;initialize
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@OriginalSize&amp;nbsp;int
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;@OriginalSize&amp;nbsp;=&amp;nbsp;size
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;sysfiles
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;@LogicalFileName
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;‘Original&amp;nbsp;Size&amp;nbsp;of&amp;nbsp;‘&amp;nbsp;+&amp;nbsp;db_name()&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;LOG&amp;nbsp;is&amp;nbsp;‘&amp;nbsp;+
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CONVERT(VARCHAR(30),@OriginalSize)&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;8K&amp;nbsp;pages&amp;nbsp;or&amp;nbsp;‘&amp;nbsp;+
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CONVERT(VARCHAR(30),(@OriginalSize*8/1024))&amp;nbsp;+&amp;nbsp;‘MB’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;sysfiles
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;@LogicalFileName
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;TABLE&amp;nbsp;DummyTrans
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(DummyColumn&amp;nbsp;char&amp;nbsp;(8000)&amp;nbsp;not&amp;nbsp;null)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@Counter&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;INT,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@StartTime&amp;nbsp;DATETIME,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@TruncLog&amp;nbsp;&amp;nbsp;&amp;nbsp;VARCHAR(255)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;@StartTime&amp;nbsp;=&amp;nbsp;GETDATE(),
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@TruncLog&amp;nbsp;=&amp;nbsp;‘BACKUP&amp;nbsp;LOG&amp;nbsp;‘&amp;nbsp;+&amp;nbsp;db_name()&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;WITH&amp;nbsp;TRUNCATE_ONLY’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBCC&amp;nbsp;SHRINKFILE&amp;nbsp;(@LogicalFileName,&amp;nbsp;@NewSize)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXEC&amp;nbsp;(@TruncLog)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–&amp;nbsp;Wrap&amp;nbsp;the&amp;nbsp;log&amp;nbsp;if&amp;nbsp;necessary.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHILE&amp;nbsp;@MaxMinutes&amp;nbsp;&amp;amp;gt;&amp;nbsp;DATEDIFF&amp;nbsp;(mi,&amp;nbsp;@StartTime,&amp;nbsp;GETDATE())&amp;nbsp;—&amp;nbsp;time&amp;nbsp;has&amp;nbsp;not&amp;nbsp;expired
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	AND&amp;nbsp;@OriginalSize&amp;nbsp;=&amp;nbsp;(SELECT&amp;nbsp;size&amp;nbsp;FROM&amp;nbsp;sysfiles&amp;nbsp;WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;@LogicalFileName)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	AND&amp;nbsp;(@OriginalSize&amp;nbsp;*&amp;nbsp;8&amp;nbsp;/1024)&amp;nbsp;&amp;amp;gt;&amp;nbsp;@NewSize
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN&amp;nbsp;—&amp;nbsp;Outer&amp;nbsp;loop.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;@Counter&amp;nbsp;=&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHILE&amp;nbsp;&amp;nbsp;&amp;nbsp;((@Counter&amp;nbsp;&amp;amp;lt;&amp;nbsp;@OriginalSize&amp;nbsp;/&amp;nbsp;16)&amp;nbsp;AND&amp;nbsp;(@Counter&amp;nbsp;&amp;amp;lt;&amp;nbsp;50000))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN&amp;nbsp;—&amp;nbsp;update
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	INSERT&amp;nbsp;DummyTrans&amp;nbsp;VALUES&amp;nbsp;(‘Fill&amp;nbsp;Log’)&amp;nbsp;DELETE&amp;nbsp;DummyTrans
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;@Counter&amp;nbsp;=&amp;nbsp;@Counter&amp;nbsp;+&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXEC&amp;nbsp;(@TruncLog)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;‘Final&amp;nbsp;Size&amp;nbsp;of&amp;nbsp;‘&amp;nbsp;+&amp;nbsp;db_name()&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;LOG&amp;nbsp;is&amp;nbsp;‘&amp;nbsp;+
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CONVERT(VARCHAR(30),size)&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;8K&amp;nbsp;pages&amp;nbsp;or&amp;nbsp;‘&amp;nbsp;+
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CONVERT(VARCHAR(30),(size*8/1024))&amp;nbsp;+&amp;nbsp;‘MB’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;sysfiles
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHERE&amp;nbsp;name&amp;nbsp;=&amp;nbsp;@LogicalFileName
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DROP&amp;nbsp;TABLE&amp;nbsp;DummyTrans
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SET&amp;nbsp;NOCOUNT&amp;nbsp;OFF
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、说明：更改某个表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_changeobjectowner&amp;nbsp;‘tablename’,&amp;nbsp;dbo’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9、存储更改全部表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;nbsp;PROCEDURE&amp;nbsp;dbo.User_ChangeObjectOwnerBatch
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@OldOwner&amp;nbsp;as&amp;nbsp;NVARCHAR(128),
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@NewOwner&amp;nbsp;as&amp;nbsp;NVARCHAR(128)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	AS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@Name&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;as&amp;nbsp;NVARCHAR(128)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@Owner&amp;nbsp;&amp;nbsp;&amp;nbsp;as&amp;nbsp;NVARCHAR(128)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;@OwnerName&amp;nbsp;&amp;nbsp;&amp;nbsp;as&amp;nbsp;NVARCHAR(128)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;curObject&amp;nbsp;CURSOR&amp;nbsp;FOR
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;‘Name’&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;=&amp;nbsp;name,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	‘Owner’&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;=&amp;nbsp;user_name(uid)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	from&amp;nbsp;sysobjects
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;user_name(uid)=@OldOwner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	order&amp;nbsp;by&amp;nbsp;name
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	OPEN&amp;nbsp;&amp;nbsp;&amp;nbsp;curObject
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FETCH&amp;nbsp;NEXT&amp;nbsp;FROM&amp;nbsp;curObject&amp;nbsp;INTO&amp;nbsp;@Name,&amp;nbsp;@Owner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHILE(@@FETCH_STATUS=0)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;@Owner=@OldOwner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@OwnerName&amp;nbsp;=&amp;nbsp;@OldOwner&amp;nbsp;+&amp;nbsp;‘.’&amp;nbsp;+&amp;nbsp;rtrim(@Name)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_changeobjectowner&amp;nbsp;@OwnerName,&amp;nbsp;@NewOwner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–&amp;nbsp;select&amp;nbsp;@name,@NewOwner,@OldOwner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FETCH&amp;nbsp;NEXT&amp;nbsp;FROM&amp;nbsp;curObject&amp;nbsp;INTO&amp;nbsp;@Name,&amp;nbsp;@Owner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	close&amp;nbsp;curObject
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	deallocate&amp;nbsp;curObject
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GO
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10、SQL&amp;nbsp;SERVER中直接循环写入数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	declare&amp;nbsp;@i&amp;nbsp;int
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@i=1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while&amp;nbsp;@i&amp;amp;lt;30
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;into&amp;nbsp;test&amp;nbsp;(userid)&amp;nbsp;values(@i)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@i=@i+1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	案例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有如下表，要求就裱中所有沒有及格的成績，在每次增長0.1的基礎上，使他們剛好及格:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Name&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;score
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Zhangshan&amp;nbsp;80
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Lishi&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;59
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Wangwu&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;50
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Songquan&amp;nbsp;69
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while((select&amp;nbsp;min(score)&amp;nbsp;from&amp;nbsp;tb_table)&amp;amp;lt;60)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	update&amp;nbsp;tb_table&amp;nbsp;set&amp;nbsp;score&amp;nbsp;=score*1.01
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;score&amp;amp;lt;60
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;&amp;nbsp;(select&amp;nbsp;min(score)&amp;nbsp;from&amp;nbsp;tb_table)&amp;amp;gt;60
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	break
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	continue
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数据开发-经典
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.按姓氏笔画排序:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;TableName&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;CustomerName&amp;nbsp;Collate&amp;nbsp;Chinese_PRC_Stroke_ci_as&amp;nbsp;//从少到多
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.数据库加密:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;encrypt(‘原始密码’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;pwdencrypt(‘原始密码’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;pwdcompare(‘原始密码’,&amp;nbsp;加密后密码’)&amp;nbsp;=&amp;nbsp;1–相同；否则不相同&amp;nbsp;encrypt(‘原始密码’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;pwdencrypt(‘原始密码’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;pwdcompare(‘原始密码’,&amp;nbsp;加密后密码’)&amp;nbsp;=&amp;nbsp;1–相同；否则不相同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.取回表中字段:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	declare&amp;nbsp;@list&amp;nbsp;varchar(1000),
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	@sql&amp;nbsp;nvarchar(1000)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;@list=@list+’,&amp;nbsp;+b.name&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;a,syscolumns&amp;nbsp;b&amp;nbsp;where&amp;nbsp;a.id=b.id&amp;nbsp;and&amp;nbsp;a.name=’表A’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@sql=’select&amp;nbsp;‘+right(@list,len(@list)-1)+’&amp;nbsp;from&amp;nbsp;表A’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;(@sql)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.查看硬盘分区:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXEC&amp;nbsp;master..xp_fixeddrives
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.比较A,B表是否相等:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(select&amp;nbsp;checksum_agg(binary_checksum(*))&amp;nbsp;from&amp;nbsp;A)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	=
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(select&amp;nbsp;checksum_agg(binary_checksum(*))&amp;nbsp;from&amp;nbsp;B)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	print&amp;nbsp;‘相等’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	print&amp;nbsp;‘不相等’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.杀掉所有的事件探察器进程:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DECLARE&amp;nbsp;hcforeach&amp;nbsp;CURSOR&amp;nbsp;GLOBAL&amp;nbsp;FOR&amp;nbsp;SELECT&amp;nbsp;‘kill&amp;nbsp;‘+RTRIM(spid)&amp;nbsp;FROM&amp;nbsp;master.dbo.sysprocesses
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHERE&amp;nbsp;program_name&amp;nbsp;IN(‘SQL&amp;nbsp;profiler’,N’SQL&amp;nbsp;事件探查器’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	EXEC&amp;nbsp;sp_msforeach_worker&amp;nbsp;‘?’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.记录搜索:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	开头到N条记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Select&amp;nbsp;Top&amp;nbsp;N&amp;nbsp;*&amp;nbsp;From&amp;nbsp;表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	——————————-
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	N到M条记录(要有主索引ID)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Select&amp;nbsp;Top&amp;nbsp;M-N&amp;nbsp;*&amp;nbsp;From&amp;nbsp;表&amp;nbsp;Where&amp;nbsp;ID&amp;nbsp;in&amp;nbsp;(Select&amp;nbsp;Top&amp;nbsp;M&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;表)&amp;nbsp;Order&amp;nbsp;by&amp;nbsp;ID&amp;nbsp;&amp;nbsp;&amp;nbsp;Desc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	———————————-
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	N到结尾记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Select&amp;nbsp;Top&amp;nbsp;N&amp;nbsp;*&amp;nbsp;From&amp;nbsp;表&amp;nbsp;Order&amp;nbsp;by&amp;nbsp;ID&amp;nbsp;Desc
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	案例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如1：一张表有一万多条记录，表的第一个字段&amp;nbsp;RecID&amp;nbsp;是自增长字段，&amp;nbsp;写一个SQL语句，&amp;nbsp;找出表的第31到第40个记录。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;10&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A&amp;nbsp;where&amp;nbsp;recid&amp;nbsp;not&amp;nbsp;&amp;nbsp;in(select&amp;nbsp;top&amp;nbsp;30&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分析：如果这样写会产生某些问题，如果recid在表中存在逻辑索引。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;top&amp;nbsp;10&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A&amp;nbsp;where……是从索引中查找，而后面的select&amp;nbsp;top&amp;nbsp;30&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A则在数据表中查找，这样由于索引中的顺序有可能和数据表中的不一致，这样就导致查询到的不是本来的欲得到的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	解决方案
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1，&amp;nbsp;用order&amp;nbsp;by&amp;nbsp;select&amp;nbsp;top&amp;nbsp;30&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A&amp;nbsp;order&amp;nbsp;by&amp;nbsp;ricid&amp;nbsp;如果该字段不是自增长，就会出现问题
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2，&amp;nbsp;在那个子查询中也加条件：select&amp;nbsp;top&amp;nbsp;30&amp;nbsp;recid&amp;nbsp;from&amp;nbsp;A&amp;nbsp;where&amp;nbsp;recid&amp;amp;gt;-1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例2：查询表中的最后以条记录，并不知道这个表共有多少数据,以及表结构。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;@s&amp;nbsp;=&amp;nbsp;‘select&amp;nbsp;top&amp;nbsp;1&amp;nbsp;*&amp;nbsp;from&amp;nbsp;T&amp;nbsp;&amp;nbsp;&amp;nbsp;where&amp;nbsp;pid&amp;nbsp;not&amp;nbsp;in&amp;nbsp;(select&amp;nbsp;top&amp;nbsp;‘&amp;nbsp;+&amp;nbsp;str(@count-1)&amp;nbsp;+&amp;nbsp;‘&amp;nbsp;pid&amp;nbsp;&amp;nbsp;from&amp;nbsp;&amp;nbsp;T)’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	print&amp;nbsp;@s&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;exec&amp;nbsp;&amp;nbsp;sp_executesql&amp;nbsp;&amp;nbsp;@s
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9：获取当前数据库中的所有用户表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;Name&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;where&amp;nbsp;xtype=’u’&amp;nbsp;and&amp;nbsp;status&amp;amp;gt;=0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10：获取某一个表的所有字段
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;name&amp;nbsp;from&amp;nbsp;syscolumns&amp;nbsp;where&amp;nbsp;id=object_id(‘表名’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;name&amp;nbsp;from&amp;nbsp;syscolumns&amp;nbsp;where&amp;nbsp;id&amp;nbsp;in&amp;nbsp;(select&amp;nbsp;id&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;where&amp;nbsp;type&amp;nbsp;=&amp;nbsp;‘u’&amp;nbsp;and&amp;nbsp;name&amp;nbsp;=&amp;nbsp;‘表名’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	两种方式的效果相同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11：查看与某一个表相关的视图、存储过程、函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;a.*&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;a,&amp;nbsp;syscomments&amp;nbsp;b&amp;nbsp;where&amp;nbsp;a.id&amp;nbsp;=&amp;nbsp;b.id&amp;nbsp;and&amp;nbsp;b.text&amp;nbsp;like&amp;nbsp;‘%表名%’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12：查看当前数据库中所有存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;name&amp;nbsp;as&amp;nbsp;存储过程名称&amp;nbsp;from&amp;nbsp;sysobjects&amp;nbsp;where&amp;nbsp;xtype=’P’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13：查询用户创建的所有数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;master..sysdatabases&amp;nbsp;D&amp;nbsp;where&amp;nbsp;sid&amp;nbsp;not&amp;nbsp;in(select&amp;nbsp;sid&amp;nbsp;from&amp;nbsp;master..syslogins&amp;nbsp;where&amp;nbsp;name=’sa’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	或者
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;dbid,&amp;nbsp;name&amp;nbsp;AS&amp;nbsp;DB_NAME&amp;nbsp;from&amp;nbsp;master..sysdatabases&amp;nbsp;where&amp;nbsp;sid&amp;nbsp;&amp;amp;lt;&amp;amp;gt;&amp;nbsp;0×01
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14：查询某一个表的字段和数据类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;column_name,data_type&amp;nbsp;from&amp;nbsp;information_schema.columns
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;table_name&amp;nbsp;=&amp;nbsp;‘表名’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15：不同服务器数据库之间的数据操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–创建链接服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_addlinkedserver&amp;nbsp;&amp;nbsp;&amp;nbsp;‘ITSV&amp;nbsp;‘,&amp;nbsp;‘&amp;nbsp;‘,&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘远程服务器名或ip地址&amp;nbsp;‘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_addlinkedsrvlogin&amp;nbsp;&amp;nbsp;‘ITSV&amp;nbsp;‘,&amp;nbsp;‘false&amp;nbsp;‘,null,&amp;nbsp;‘用户名&amp;nbsp;‘,&amp;nbsp;‘密码&amp;nbsp;‘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–查询示例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;ITSV.数据库名.dbo.表名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–导入示例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;into&amp;nbsp;表&amp;nbsp;from&amp;nbsp;ITSV.数据库名.dbo.表名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–以后不再使用时删除链接服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_dropserver&amp;nbsp;&amp;nbsp;‘ITSV&amp;nbsp;‘,&amp;nbsp;‘droplogins&amp;nbsp;‘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–连接远程/局域网数据(openrowset/openquery/opendatasource)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–1、openrowset
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–查询示例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;openrowset(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘sql服务器名&amp;nbsp;‘;&amp;nbsp;‘用户名&amp;nbsp;‘;&amp;nbsp;‘密码&amp;nbsp;‘,数据库名.dbo.表名)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–生成本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;into&amp;nbsp;表&amp;nbsp;from&amp;nbsp;openrowset(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘sql服务器名&amp;nbsp;‘;&amp;nbsp;‘用户名&amp;nbsp;‘;&amp;nbsp;‘密码&amp;nbsp;‘,数据库名.dbo.表名)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–把本地表导入远程表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;openrowset(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘sql服务器名&amp;nbsp;‘;&amp;nbsp;‘用户名&amp;nbsp;‘;&amp;nbsp;‘密码&amp;nbsp;‘,数据库名.dbo.表名)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*from&amp;nbsp;本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–更新本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	update&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;b.列A=a.列A
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	from&amp;nbsp;openrowset(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘sql服务器名&amp;nbsp;‘;&amp;nbsp;‘用户名&amp;nbsp;‘;&amp;nbsp;‘密码&amp;nbsp;‘,数据库名.dbo.表名)as&amp;nbsp;a&amp;nbsp;inner&amp;nbsp;join&amp;nbsp;本地表&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	on&amp;nbsp;a.column1=b.column1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–openquery用法需要创建一个连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–首先创建一个连接创建链接服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_addlinkedserver&amp;nbsp;&amp;nbsp;&amp;nbsp;‘ITSV&amp;nbsp;‘,&amp;nbsp;‘&amp;nbsp;‘,&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;‘远程服务器名或ip地址&amp;nbsp;‘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–查询
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;openquery(ITSV,&amp;nbsp;&amp;nbsp;‘SELECT&amp;nbsp;*&amp;nbsp;&amp;nbsp;FROM&amp;nbsp;数据库.dbo.表名&amp;nbsp;‘)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–把本地表导入远程表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;openquery(ITSV,&amp;nbsp;&amp;nbsp;‘SELECT&amp;nbsp;*&amp;nbsp;&amp;nbsp;FROM&amp;nbsp;数据库.dbo.表名&amp;nbsp;‘)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–更新本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	update&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set&amp;nbsp;b.列B=a.列B
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;openquery(ITSV,&amp;nbsp;&amp;nbsp;‘SELECT&amp;nbsp;*&amp;nbsp;FROM&amp;nbsp;数据库.dbo.表名&amp;nbsp;‘)&amp;nbsp;as&amp;nbsp;a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	inner&amp;nbsp;join&amp;nbsp;本地表&amp;nbsp;b&amp;nbsp;on&amp;nbsp;a.列A=b.列A
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–3、opendatasource/openrowset
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SELECT&amp;nbsp;&amp;nbsp;&amp;nbsp;*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FROM&amp;nbsp;&amp;nbsp;&amp;nbsp;opendatasource(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;&amp;nbsp;‘Data&amp;nbsp;Source=ip/ServerName;User&amp;nbsp;ID=登陆名;Password=密码&amp;nbsp;‘&amp;nbsp;).test.dbo.roy_ta
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–把本地表导入远程表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;opendatasource(&amp;nbsp;‘SQLOLEDB&amp;nbsp;‘,&amp;nbsp;&amp;nbsp;‘Data&amp;nbsp;Source=ip/ServerName;User&amp;nbsp;ID=登陆名;Password=密码&amp;nbsp;‘).数据库.dbo.表名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;本地表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL&amp;nbsp;Server基本函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL&amp;nbsp;Server基本函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.字符串函数&amp;nbsp;长度与分析用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,datalength(Char_expr)&amp;nbsp;返回字符串包含字符数,但不包含后面的空格
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,substring(expression,start,length)&amp;nbsp;取子串，字符串的下标是从“1”，start为起始位置，length为字符串长度，实际应用中以len(expression)取得其长度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,right(char_expr,int_expr)&amp;nbsp;返回字符串右边第int_expr个字符，还用left于之相反
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,isnull(&amp;nbsp;check_expression&amp;nbsp;,&amp;nbsp;replacement_value&amp;nbsp;)如果check_expression為空，則返回replacement_value的值，不為空，就返回check_expression字符操作类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5,Sp_addtype&amp;nbsp;自定義數據類型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：EXEC&amp;nbsp;sp_addtype&amp;nbsp;birthday,&amp;nbsp;datetime,&amp;nbsp;‘NULL’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6,set&amp;nbsp;nocount&amp;nbsp;{on&amp;brvbar;off}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使返回的结果中不包含有关受&amp;nbsp;Transact-SQL&amp;nbsp;语句影响的行数的信息。如果存储过程中包含的一些语句并不返回许多实际的数据，则该设置由于大量减少了网络流量，因此可显著提高性能。SET&amp;nbsp;NOCOUNT&amp;nbsp;设置是在执行或运行时设置，而不是在分析时设置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SET&amp;nbsp;NOCOUNT&amp;nbsp;为&amp;nbsp;ON&amp;nbsp;时，不返回计数（表示受&amp;nbsp;Transact-SQL&amp;nbsp;语句影响的行数）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SET&amp;nbsp;NOCOUNT&amp;nbsp;为&amp;nbsp;OFF&amp;nbsp;时，返回计数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	常识
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在SQL查询中：from后最多可以跟多少张表或视图：256
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在SQL语句中出现&amp;nbsp;Order&amp;nbsp;by,查询时，先排序，后取
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在SQL中，一个字段的最大容量是8000，而对于nvarchar(4000),由于nvarchar是Unicode码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQLServer2000同步复制技术实现步骤
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、&amp;nbsp;预备工作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.发布服务器,订阅服务器都创建一个同名的windows用户,并设置相同的密码,做为发布快照文件夹的有效访问用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–管理工具
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–计算机管理
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–用户和组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–新建用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–建立一个隶属于administrator组的登陆windows的用户（SynUser）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.在发布服务器上,新建一个共享目录,做为发布的快照文件的存放目录,操作:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我的电脑–D:&amp;nbsp;新建一个目录,名为:&amp;nbsp;PUB
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键这个新建的目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–属性–共享
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–选择”共享该文件夹″
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–通过”权限”按纽来设置具体的用户权限,保证第一步中创建的用户(SynUser)&amp;nbsp;具有对该文件夹的所有权限
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–确定
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.设置SQL代理(SQLSERVERAGENT)服务的启动用户(发布/订阅服务器均做此设置)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	开始–程序–管理工具–服务
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键SQLSERVERAGENT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–属性–登陆–选择”此账户”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–输入或者选择第一步中创建的windows登录用户名（SynUser）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”密码”中输入该用户的密码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.设置SQL&amp;nbsp;Server身份验证模式,解决连接时的权限问题(发布/订阅服务器均做此设置)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	企业管理器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键SQL实例–属性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–安全性–身份验证
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–选择”SQL&amp;nbsp;Server&amp;nbsp;和&amp;nbsp;Windows”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–确定
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.在发布服务器和订阅服务器上互相注册
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	企业管理器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键SQL&amp;nbsp;Server组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–新建SQL&amp;nbsp;Server注册…
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–下一步–可用的服务器中,输入你要注册的远程服务器名&amp;nbsp;–添��
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–下一步–连接使用,选择第二个”SQL&amp;nbsp;Server身份验证”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–下一步–输入用户名和密码（SynUser）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–下一步–选择SQL&amp;nbsp;Server组,也可以创建一个新组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–下一步–完成
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.对于只能用IP,不能用计算机名的,为其注册服务器别名（此步在实施中没用到）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(在连接端配置,比如,在订阅服务器上配置的话,服务器名称中输入的是发布服务器的IP)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	开始–程序–Microsoft&amp;nbsp;SQL&amp;nbsp;Server–客户端网络实用工具
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–别名–添��
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–网络库选择”tcp/ip”–服务器别名输入SQL服务器名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–连接参数–服务器名称中输入SQL服务器ip地址
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–如果你修改了SQL的端口,取消选择”动态决定端口”,并输入对应的端口号
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、&amp;nbsp;正式配置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、配置发布服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开企业管理器，在发布服务器（B、C、D）上执行以下步骤:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(1)&amp;nbsp;从[工具]下拉菜单的[复制]子菜单中选择[配置发布、订阅服务器和分发]出现配置发布和分发向导
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)&amp;nbsp;[下一步]&amp;nbsp;选择分发服务器&amp;nbsp;可以选择把发布服务器自己作为分发服务器或者其他sql的服务器（选择自己）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)&amp;nbsp;[下一步]&amp;nbsp;设置快照文件夹
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	采用默认servernamePub
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(4)&amp;nbsp;[下一步]&amp;nbsp;自定义配置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以选择:是,让我设置分发数据库属性启用发布服务器或设置发布设置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否,使用下列默认设置（推荐）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(5)&amp;nbsp;[下一步]&amp;nbsp;设置分发数据库名称和位置&amp;nbsp;采用默认值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(6)&amp;nbsp;[下一步]&amp;nbsp;启用发布服务器&amp;nbsp;选择作为发布的服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(7)&amp;nbsp;[下一步]&amp;nbsp;选择需要发布的数据库和发布类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(8)&amp;nbsp;[下一步]&amp;nbsp;选择注册订阅服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(9)&amp;nbsp;[下一步]&amp;nbsp;完成配置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、创建出版物
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	发布服务器B、C、D上
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(1)从[工具]菜单的[复制]子菜单中选择[创建和管理发布]命令
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)选择要创建出版物的数据库，然后单击[创建发布]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)在[创建发布向导]的提示对话框中单击[下一步]系统就会弹出一个对话框。对话框上的内容是复制的三个类型。我们现在选第一个也就是默认的快照发布(其他两个大家可以去看看帮助)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(4)单击[下一步]系统要求指定可以订阅该发布的数据库服务器类型,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQLSERVER允许在不同的数据库如&amp;nbsp;orACLE或ACCESS之间进行数据复制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是在这里我们选择运行”SQL&amp;nbsp;SERVER&amp;nbsp;2000″的数据库服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(5)单击[下一步]系统就弹出一个定义文章的对话框也就是选择要出版的表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意:&amp;nbsp;如果前面选择了事务发布&amp;nbsp;则再这一步中只能选择带有主键的表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(6)选择发布名称和描述
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(7)自定义发布属性&amp;nbsp;向导提供的选择:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是&amp;nbsp;我将自定义数据筛选,启用匿名订阅和或其他自定义属性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否&amp;nbsp;根据指定方式创建发布&amp;nbsp;（建议采用自定义的方式）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(8)[下一步]&amp;nbsp;选择筛选发布的方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(9)[下一步]&amp;nbsp;可以选择是否允许匿名订阅
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1)如果选择署名订阅,则需要在发布服务器上添加订阅服务器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法:&amp;nbsp;[工具]-&amp;amp;gt;[复制]-&amp;amp;gt;[配置发布、订阅服务器和分发的属性]-&amp;amp;gt;[订阅服务器]&amp;nbsp;中添
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否则在订阅服务器上请求订阅时会出现的提示:改发布不允许匿名订阅
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果仍然需要匿名订阅则用以下解决办法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[企业管理器]-&amp;amp;gt;[复制]-&amp;amp;gt;[发布内容]-&amp;amp;gt;[属性]-&amp;amp;gt;[订阅选项]&amp;nbsp;选择允许匿名请求订阅
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2)如果选择匿名订阅,则配置订阅服务器时不会出现以上提示
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(10)[下一步]&amp;nbsp;设置快照&amp;nbsp;代理程序调度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(11)[下一步]&amp;nbsp;完成配置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当完成出版物的创建后创建出版物的数据库也就变成了一个共享数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	srv1.库名..author有字段:id,name,phone,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	srv2.库名..author有字段:id,name,telphone,adress
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要求：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	srv1.库名..author增加记录则srv1.库名..author记录增
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	srv1.库名..author的phone字段更新，则srv1.库名..author对应字段telphone更新
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–大致的处理步骤
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–1.在&amp;nbsp;srv1&amp;nbsp;上创建连接服务器,以便在&amp;nbsp;srv1&amp;nbsp;中操作&amp;nbsp;srv2,实现同步
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_addlinkedserver&amp;nbsp;‘srv2′,”,’SQLOLEDB’,&amp;nbsp;srv2的sql实例名或ip’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	exec&amp;nbsp;sp_addlinkedsrvlogin&amp;nbsp;‘srv2′,’false’,null,’用户名’,&amp;nbsp;密码’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	go
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–2.在&amp;nbsp;srv1&amp;nbsp;和&amp;nbsp;srv2&amp;nbsp;这两台电脑中,启动&amp;nbsp;msdtc(分布式事务处理服务),并且设置为自动启动
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	。我的电脑–控制面板–管理工具–服务–右键&amp;nbsp;Distributed&amp;nbsp;Transaction&amp;nbsp;Coordinator–属性–启动–并将启动类型设置为自动启动
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	go
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–然后创建一个作业定时调用上面的同步处理存储过程就行了
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	企业管理器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–管理
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–SQL&amp;nbsp;Server代理
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–右键作业
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–新建作业
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”常规”项中输入作业名称
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”步骤”项
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–新建
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”步骤名”中输入步骤名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”类型”中选择”Transact-SQL&amp;nbsp;脚本(TSQL)”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”数据库”选择执行命令的数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”命令”中输入要执行的语句:&amp;nbsp;exec&amp;nbsp;p_process
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–确定
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”调度”项
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–新建调度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”名称”中输入调度名称
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–”调度类型”中选择你的作业执行安排
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–如果选择”反复出现”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–点″更改″来设置你的时间安排
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后将SQL&amp;nbsp;Agent服务启动,并设置为自动启动,否则你的作业不会被执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设置方法:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我的电脑–控制面板–管理工具–服务–右键&amp;nbsp;SQLSERVERAGENT–属性–启动类型–选择”自动启动”–确定.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–3.实现同步处理的方法2,定时同步
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–在srv1中创建如下的同步处理存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	create&amp;nbsp;proc&amp;nbsp;p_process
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	as
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–更新修改过的数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	update&amp;nbsp;b&amp;nbsp;set&amp;nbsp;name=i.name,telphone=i.telphone
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	from&amp;nbsp;srv2.库名.dbo.author&amp;nbsp;b,author&amp;nbsp;i
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;b.id=i.id&amp;nbsp;and
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(b.name&amp;nbsp;&amp;amp;lt;&amp;amp;gt;&amp;nbsp;i.name&amp;nbsp;or&amp;nbsp;b.telphone&amp;nbsp;&amp;amp;lt;&amp;amp;gt;&amp;nbsp;i.telphone)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–插入新增的数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;nbsp;srv2.库名.dbo.author(id,name,telphone)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;id,name,telphone&amp;nbsp;from&amp;nbsp;author&amp;nbsp;i
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;not&amp;nbsp;exists(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;srv2.库名.dbo.author&amp;nbsp;where&amp;nbsp;id=i.id)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	–删除已经删除的数据(如果需要的话)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	delete&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	from&amp;nbsp;srv2.库名.dbo.author&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	where&amp;nbsp;not&amp;nbsp;exists(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;author&amp;nbsp;where&amp;nbsp;id=b.id)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	go
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-01/1338542466.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

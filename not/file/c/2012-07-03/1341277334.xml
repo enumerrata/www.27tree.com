@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C++函数的Boost内存池性能介绍</title>
+<content>&amp;lt;p&amp;gt;
+	Boost内存池，即boost.pool库，是由Boost提供的一个用于内存池管理的开源C++库。作为Boost中影响较大的一个库，Pool已经被广泛使用。可以毫不夸张的说，Boost是目前影响最大的通用C++库。Boost库由C++标准委员会库工作组成员发起，其中有些内容有望成为下一代C++标准库内容，是一个\"准\"标准库。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1.&amp;amp;nbsp;什么是内存池\"池\"是在计算机技术中经常使用的一种设计模式，其内涵在于：将程序中需要经常使用的核心资源先申请出来，放到一个池内，由程序自己管理，这样可以提高资源的使用效率，也可以保证本程序占有的资源数量。经常使用的池技术包括内存池、线程池和连接池等，其中尤以内存池和线程池使用最多。内存池（Memory&amp;amp;nbsp;Pool）是一种动态内存分配与管理技术。通常情况下，程序员习惯直接使用new、delete、malloc、free等API申请分配和释放内存，导致的后果时：当程序长时间运行时，由于所申请内存块的大小不定，频繁使用时会造成大量的内存碎片从而降低程序和操作系统的性能。内存池则是在真正使用内存之前，先申请分配一大块内存（内存池）留作备用，当程序员申请内存时，从池中取出一块动态分配，当程序员释放内存时，将释放的内存再放入池内，并尽量与周边的空闲内存块合并。若内存池不够时，则自动扩大内存池，从操作系统中申请更大的内存池。Boost的内存池则对内存块的大小是否相同没有限制，因此只要是频繁动态申请释放内存的长时间运行程序，都适用Boost内存池。这样可以有效减少内存碎片并提高程序运行效率。安装Boost的pool库是以C++头文件的形式提供的，不需要安装，也没有lib或者dll文件，仅仅需要将头文件包含到你的C++工程中就可以了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2.&amp;amp;nbsp;内存池的特征
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2.1&amp;amp;nbsp;无内存泄露正确的使用内存池的申请和释放函数不会造成内存泄露，更重要的是，即使不正确的使用了申请和释放函数，内存池中的内存也会在进程结束时被全部自动释放，不会造成系统的内存泄露。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2.2&amp;amp;nbsp;申请的内存数组没有被填充例如一个元素的内存大小为A,那么元素数组若包含n个元素，则该数组的内存大小必然是A*n,不会有多余的内存来填充该数组。尽管每个元素也许包含一些填充的东西。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2.3&amp;amp;nbsp;任何数组内存块的位置都和使用operator&amp;amp;nbsp;new[]分配的内存块位置一致这表明你仍可以使用那些通过数组指针计算内存块位置的算法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2.4&amp;amp;nbsp;内存池要比直接使用系统的动态内存分配快这个快是概率意义上的，不是每个时刻，每种内存池都比直接使用new或者malloc快。例如，当程序使用内存池时内存池恰好处于已经满了的状态，那么这次内存申请会导致内存池自我扩充，肯定比直接new一块内存要慢。但在大部分时候，内存池要比new或者malloc快很多。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3.&amp;amp;nbsp;Boost内存池的分类Boost内存池按照不同的理念分为四类。主要是两种理念的不同造成了这样的分类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;一是Object&amp;amp;nbsp;Usage和Singleton&amp;amp;nbsp;Usage的不同。Object&amp;amp;nbsp;Usage意味着每个内存池都是一个可以创建和销毁的对象，一旦内存池被销毁则其所分配的所有内存都会被释放。Singleton&amp;amp;nbsp;Usage意味着每个内存池都是一个被静态分配的对象，直至程序结束才会被销毁，这也意味着这样的内存池是多线程安全的。只有使用release_memory或者purge_memory方法才能释放内存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;二是内存溢出的处理方式。第一种方式是返回NULL代表内存池溢出了；第二种方式是抛出异常代表内存池溢出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;根据以上的理念，boost的内存池分为四种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;4.1&amp;amp;nbsp;Pool&amp;amp;nbsp;Pool是一个Object&amp;amp;nbsp;Usage的内存池，溢出时返回NULL.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;4.2&amp;amp;nbsp;object_pool&amp;amp;nbsp;object_pool与pool类似，唯一的区别是当其分配的内存释放时，它会尝试调用该对象的析购函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;4.3&amp;amp;nbsp;singleton_pool&amp;amp;nbsp;singleton_pool是一个Singleton&amp;amp;nbsp;Usage的内存池，溢出时返回NULL.&amp;amp;nbsp;4.4&amp;amp;nbsp;pool_alloc&amp;amp;nbsp;pool_alloc是一个Singleton&amp;amp;nbsp;Usage的内存池，溢出时抛出异常。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;4.&amp;amp;nbsp;内存池溢出的原理与解决方法5.1&amp;amp;nbsp;必然溢出的内存内存池简化了很多内存方面的操作，也避免了一些错误使用内存对程序造成的损害。但是，使用内存池时最需要注意的一点是要处理内存池溢出的情况。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-07-03/1341277334.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

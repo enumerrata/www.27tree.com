@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>国产jquery ui插件：ligerui</title>
+<content>&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;LigerUI&amp;nbsp;是基于jQuery的一系列UI控件组合，简单而又强大，致力于快速打造Web前端界面解决方案。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因为是前端控件，跟服务器无关，可以适合.net,jsp,php等等web服务器环境。目前全部插件的打包压缩JS只有100K左右,很轻巧。使用插件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	式的开发模式，以“简单”为原则的设计，每个插件尽量独立，并可依赖拓展。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ligerUI是什么
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;LigerUI控件丰富，包括基础、导航、布局、表单、表格、树形、窗口等
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基础：Resizable、Drag、Tip
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	导航：Menu、MenuBar、ToolBar
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	布局：Layout、Tab
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表单：Form、TextBox、Button、CheckBox、ComboBox、DateEditor、Radio、Spinner
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表格：Grid
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	树形：Tree
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	窗口：Dialog、MessageBox、Window
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如何使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;LigerUI是基于jQuery而设计的一系列插件集合。基本上每个插件都是相对独立的。但是彼此之间又紧密地关联着，合理地对插件进行组装，实现出现各种复杂的功能。&amp;nbsp;使用UI可以帮助你快速地创建友好的用户界面。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-08/1339129917.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>​集合Collection</title>
+<content>&amp;lt;p&amp;gt;
+	集合Collection接口
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--Collection&amp;nbsp;是任何对象组，元素各自独立，通常拥有相同的套用规则。Set&amp;nbsp;List由它派生。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本操作&amp;nbsp;增加元素add(Object&amp;nbsp;obj);&amp;nbsp;addAll(Collection&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	删除元素&amp;nbsp;remove(Object&amp;nbsp;obj);&amp;nbsp;removeAll(Collection&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	求交集&amp;nbsp;retainAll(Collection&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	访问/遍历集合元素的好办法是使用Iterator接口(迭代器用于取代Enumeration)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Public&amp;nbsp;interface&amp;nbsp;Iterator{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;Public&amp;nbsp;Boolean&amp;nbsp;hasNext(};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;　&amp;nbsp;Public&amp;nbsp;Object&amp;nbsp;next(};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;　Public&amp;nbsp;void&amp;nbsp;remove(};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、set
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	无重复、无序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;Set(集):集合中的对象不按特定方式排列,并且没有重复对象,它的有些实现类能对集合中的对象按特定方式排列.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set接口主要有两个实现类HashSet和TreeSet,HashSet类按照哈希算法来存取集合中的对象,存取速度比较快,HashSet类还有一个子类LinkedHashSet类,不仅实现了哈希算法,而且实现了链表数据结构,TreeSet类实现了SortedSet接口,具有排序功能.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HashSet
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基于散列表的集，加进散列表的元素要实现hashCode()方法以判断是否为同一个对象，无顺序、无重复。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;那么,当一个新的对象加入到Set集合中,Set的add()方法是如何判断这个对象是否已经存在于集合中的呢?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;boolean&amp;nbsp;isExists=false;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Iterator&amp;nbsp;it=set.iterator();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;while(it.hasNext())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Object&amp;nbsp;oldObject=it.next();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(newObject.equals(oldObject))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;isExists=true;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;可见,Set采用对象的equals()方法比较两个对象是否相等,而不是采用\"==\"比较运算符,以下程序代码尽管两次调用了Set的add()方法,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实际上只加入了一个对象:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Set&amp;nbsp;set=new&amp;nbsp;HashSet();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;s1=new&amp;nbsp;String(\"hello\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;s2=new&amp;nbsp;String(\"hello\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(s1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(s2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;虽然变量s1和s2实际上引用的是两个内存地址不同的字符串对象,但是由于s2.equals(s1)的比较结果为true,因此Set认为他们是相等的对象,当第二次调用Set的add()方法时,add()方法不会把s2引用的字符串对象加入到集合中.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;HashSet类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;按照哈希算法来存取集合中的对象,具有很好的存取性能,当HashSet向集合中加入一个对象时,会调用对象的hashCode()方法获得哈希码,然后根据这个哈希码进一步计算出对象在集合中的存放位置.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;在Object类中定义了hashCode()和equals()方法,Object类的euqals()方法按照内存地址比较对象是否相等,因此如果object1.equals(object2)为true,表明object1变量和object2变量引用同一个对象.那么object1和object2的哈希码也应该相同.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;***如果用户定义的类覆盖了Object类的equals()方法,但是没有覆盖Object类的hashCode()方法,就会导致当object1.equals(object2)为true时,而object1和object2的哈希码不一定一样,这样使HashSet无法正常工作.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LinkedHashSet-在HashSet中加入了链表数据结构，有顺序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	TreeSet-可以排序，需要实现Comparable接口，并实现其compareTo()方法，以排序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;TreeSet类:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实现了SortedSet接口,能够对集合中的对象进行排序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Set&amp;nbsp;set=new&amp;nbsp;TreeSet();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(7);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(new&amp;nbsp;Integer(6));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(new&amp;nbsp;Integer(8));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Iterator&amp;nbsp;it=set.iterator();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;while(it.hasNext())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(it.next());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;输出结果为:6&amp;nbsp;7&amp;nbsp;8
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当TreeSet向集合中加入一个对象时,会把它插入到有序的对象序列中,那么TreeSet是如何对对象进行排序的呢?TreeSet支持
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;两种排序方式:自然排序和客户化排序,默认情况下是自然排序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在JDK中,有一部分类实现了Comparable接口,如Integer,Double和String等,Comparable接口有一个compareTo(Object&amp;nbsp;o)方法,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它返回整数类型,对于表达式x.compareTo(y),如果返回值为0,表示x和y相等,如果返回值大于0,表示x大于y,如果小于0,表示x&amp;amp;lt;y.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;TreeSet调用对象的compareTo()方法比较集合中对象的大小,然后进行升序排序,这种方式称为自然排序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;客户化排序:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java.util.Comparator接口用于指定具体的排序方式,它有个compare(Object&amp;nbsp;obj1,Object&amp;nbsp;obj2),用于比较两个对象的大小.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当表达式compare(x,y)的值大于0,表示x大于y,小于0,表示x小于y,等于0,表示x等于y,如果想让TreeSet进按照Customer对象的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;name属性进行降序排列,可以先创建实现Comparator接口的类CustomerComparator,如:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;import&amp;nbsp;java.util.*;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;class&amp;nbsp;CustomerComparator&amp;nbsp;implements&amp;nbsp;Comparator
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;compare(Object&amp;nbsp;o1,Object&amp;nbsp;o2)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer&amp;nbsp;c1=(Custoemr)o1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer&amp;nbsp;c2=(Customer)o2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(c1.getName().compareTo(c2.getName())&amp;amp;gt;0)&amp;nbsp;return&amp;nbsp;-1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(c1.getName().compareTo(c2.getName())&amp;amp;lt;0)&amp;nbsp;return&amp;nbsp;1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;接下来在构造TreeSet的实例时,调用它的TreeSet(Comparator&amp;nbsp;comparator)构造方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Set&amp;nbsp;set=new&amp;nbsp;TreeSet(new&amp;nbsp;CustomerComparator());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer&amp;nbsp;c1=new&amp;nbsp;Customer(\"TOM\",15);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer&amp;nbsp;c2=new&amp;nbsp;Customer(\"JACK\",20);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Customer&amp;nbsp;c3=new&amp;nbsp;Customer(\"MIKE\",38);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;set.add(c1);set.add(c2);set.add(c3);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Iterator&amp;nbsp;it=set.iterator();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;while(it.hasNext())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{Custoemr&amp;nbsp;customer=(Customer)it.next();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(customer.getName()+\"\"&amp;nbsp;+customer.getAge();)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当TreeSet向集合中加入Customer对象时,会调用CustomerComparator类的compare()方法进行排序,以上Tree按照
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Custoemr对象的name属性进行降序排列,最后输出为:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;TOM&amp;nbsp;15&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MIKE&amp;nbsp;38&amp;nbsp;JACK&amp;nbsp;16
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、List
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List(列表):对象以线性方式存储,集合中的对象按索引位置排序,可以有重复对象,允许按照对象在集合中的索引位置检索对象.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实现类有LinkedList,ArrayList和Vector,LinkedList采用链表数据结构,而ArrayList代表大小可变的数组,&amp;nbsp;Vector和ArrayList比较相似,两者的区别在于Vecotr类的实现采用了同步机制,而ArrayList没有使用同步机制/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List按索引排列:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List&amp;nbsp;list=new&amp;nbsp;ArrayList();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(4));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List的get(int&amp;nbsp;index)方法返回集合中由参数index指定的索引位置的对象,第一个加入到集合中的对象的索引位置为0,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(&amp;nbsp;int&amp;nbsp;i=0,i&amp;amp;lt;list.size;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{System.out.println(list.get(i));}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;输出结果为:3&amp;nbsp;4&amp;nbsp;3&amp;nbsp;2.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List只能对集合中的对象按索引位置排序,如果希望对List中的对象按其他特定方式排序,可以借助Comparator接口和Collections类.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Collections类是Java集合API中的辅助类,它提供了操纵集合的各种静态方法,其中sort()方法用于对List中的对象进行排序:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;sort(List&amp;nbsp;list):对List中的对象进行自然排序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;sort(List&amp;nbsp;list,Comparator&amp;nbsp;comparator):对List中的对象进行客户化排序,comparator参数指定排序方式.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;对以下List进行自然排序:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List&amp;nbsp;list=new&amp;nbsp;ArrayList();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(4));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;list.add(new&amp;nbsp;Integer(2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Collections.sort(list);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(int&amp;nbsp;i=0;i&amp;amp;lt;list.size();i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(list.get(i));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;以上输出结果:2&amp;nbsp;3&amp;nbsp;3&amp;nbsp;4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有重复、有序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ArrayList(数组表)-&amp;nbsp;有重复、有顺序。类似于Vector，都用于缩放数组维护集合。区别：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一.同步性:Vector是线程安全的，也就是说是同步的，而ArrayList是线程序不安全的，不是同步的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二.数据增长:当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LinkedList(链表)-是双向链表，适合变更很多的List。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用在FIFO，用addList()加入元素&amp;nbsp;removeFirst()删除元素
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用在FILO,用addFirst()/removeLast()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ListIterator提供双向遍历next()&amp;nbsp;previous()，可删除、替换、增加元素
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、Map
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map(映射):集合中的每一个元素包含一对键对象和一对值对象,集合中没有重复的键对象,值对象可以重复,它的有写实现类能
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;对集合中的键对象进行排序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;Map&amp;nbsp;map=new&amp;nbsp;HashMap();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"1\",\"Mon\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"1\",Monday);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"2\",\"monday\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;由于第一次和第二次加入到Map中的键对象都是1,所以第一次加入的值对象将被覆盖,而第二个和第三个的值对象虽然相同,但是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;键对象不一样,所以分配了不同的地址空间,所以不会覆盖,也就是说一共有两个元素在Map集合中.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;Map有两种比较常用的实现:HashMap和TreeMap.Hashmap按照哈希算法来存取键对象,有很好的存取能力,为了保证HashMap能正常工作,&amp;nbsp;&amp;nbsp;和HashSet一样,要求当两个键对象通过equals()方法比较为true时,这两个键对象的hashCode()方法返回的哈希码也一样.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--用于关键字/数值对，较高的存取性能。不允许重复的key，但允许重复的Value。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	处理Map的三种集合
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	关键字集KeySet()&amp;nbsp;数值集value()&amp;nbsp;&amp;nbsp;&amp;nbsp;项目集enrySet()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四个具体版本
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HashMap-散列表的通用映射表，无序，可在初始化时设定其大小，自动增长。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LinkedHashMap-扩展HashMap，对返回集合迭代时，维护插入顺序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WeakHashMap-基于弱引用散列表的映射表，如果不保持映射表外的关键字的引用，则内存回收程序会回收它
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	TreeMap-基于平衡树的映射表&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;TreeMap实现了SortedMap接口,能对键对象进行排序,和TreeSet一样,TreeMap也支持自然排序和客户化排序两种方式,以下程序中的TreeMap
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;会对四个字符串类型的键对象\"1\",\"3\",\"4\",\"2\"进行自然排序:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;Map&amp;nbsp;map=new&amp;nbsp;TreeMap();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"1\",\"Monday\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"3\",\"Wendsday\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"4\",\"Thursday\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;map.put(\"2\",\"Tuesday\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;//返回集合中所有键对象的集合
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;Set&amp;nbsp;keys=map.keySet();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;Iterator&amp;nbsp;it=keys.iterator();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;while(it.hasNext)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;{String&amp;nbsp;key=(String)it.next();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;//根据键对象得到值对象
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;String&amp;nbsp;value=(String)map.get(key);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;System.out.println(key+\"\"&amp;nbsp;+value);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;以上输出结果为:1&amp;nbsp;Monday&amp;nbsp;&amp;nbsp;2&amp;nbsp;Wendsday&amp;nbsp;3&amp;nbsp;Thursday&amp;nbsp;4&amp;nbsp;Tuesday
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;如果希望TreeMap进行客户化排序,可以调用它的另一个构造方法TreeMap(Comparator&amp;nbsp;comparator),参数comparator指定具体的排序方式.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四、collections类，用于同步集合，还能改变集合只读方式的类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	e.g.:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;nbsp;mp=new&amp;nbsp;HashMap();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mp=Collections.synchronizedMap(mp);&amp;nbsp;//生成线程安全的映射表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mp=Collections.unmodifiableMap(mp);&amp;nbsp;//生成只读映射表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	五、Comparable&amp;nbsp;自然顺序的排序类&amp;nbsp;Comparator&amp;nbsp;面向树的集合排序类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	六、Vector类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vector，可以动态增加容量。对它的操作简要如下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	七、Enumeration接口&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	八、Dictionary类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字典。关键字/数值方式存取数据，如果映射没有此关键字，取回null。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	九、Hashtable类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是Dictionary结构的具体实现。&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总结：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、Collection&amp;nbsp;和&amp;nbsp;Collections的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Collections是个java.util下的类，它包含有各种有关集合操作的静态方法。&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Collection是个java.util下的接口，它是各种集合结构的父接口
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、List,&amp;nbsp;Set,&amp;nbsp;Map是否继承自Collection接口?&amp;nbsp;List，Set是&amp;nbsp;Map不是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、ArrayList和Vector的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一.同步性:Vector是线程安全的，也就是说是同步的，而ArrayList是线程序不安全的，不是同步的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二.数据增长:当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、HashMap和Hashtable的区别
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一.历史原因:Hashtable是基于陈旧的Dictionary类的，HashMap是Java&amp;nbsp;1.2引进的Map接口的一个实现
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二.同步性:Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三.值：只有HashMap可以让你将空值作为一个表的条目的key或value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	集合中存放的是对象的引用,而非对象本身&amp;nbsp;,出于表达上的便利,简称为\"集合中的对象\".
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	排序：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;API针对集合类型排序提供了两种支持：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	java.util.Collections.sort(java.util.List)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	java.util.Collections.sort(java.util.List,&amp;nbsp;java.util.Comparator)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第一个方法要求所排序的元素类必须实现java.lang.Comparable接口。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第二个方法要求实现一个java.util.Comparator接口。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	java.lang.Comparable接口和java.util.Comparator接口是Java对排序最提供最基本支持。这两个接口不但可以用于集合元素排序，还可以用于数组排序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果数组或集合元素是String类型，则可以利用Java&amp;nbsp;API实现的Comparator&amp;amp;lt;String&amp;amp;gt;对象String.CASE_INSENSITIVE_ORDER为容器元素排序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	集合类的若干常用方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1。list方法。将&amp;nbsp;Enumeration&amp;nbsp;类型转换成list类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2。swap方法。方便的调换一个list中的两个元素的位置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3。lastIndexOfSubList方法。从一个list中从后面开始查找另外一个list第一次出现的位置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4。rotate方法。在一个list中，顺序移动每一个元素的位置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5。replaceAll方法。用指定的元素替换一个list中所用匹配的元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6。indexOfSubList方法。从一个list中从前面开始查找另外一个list第一次出现的位置。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-05/1336176317.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

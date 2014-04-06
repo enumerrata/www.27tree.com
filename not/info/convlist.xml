@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+   <sp desc="IT前沿" stype="news">
+      <band type="互联网" url="web"></band>
+      <band type="移动互联网" url="moweb"></band>
+      <band type="物联网" url="pweb"></band>
+      <band type="云计算" url="cloud"></band>
+   </sp>
+   <!--<sp desc="工大资讯" stype="gdutnews">
+      <band type="大事记" url="bevent"></band>
+      <band type="校园活动" url="event"></band>
+      <band type="校园招聘" url="employ"></band>
+   </sp>-->
+   <sp desc="JAVA" stype="java">
+      <band type="开发基础" url="basejava"></band>
+      <band type="网络编程" url="netjava"></band>
+      <band type="JDBC/JDO" url="jdbc"></band>
+      <band type="多线程" url="thread"></band>
+   </sp>
+   <sp desc="PHP" stype="php">
+      <band type="开发基础" url="basephp"></band>
+      <band type="面向对象" url="phpop"></band>
+      <band type="MVC设计模式" url="mvc"></band>
+      <band type="Web服务" url="webserver"></band>
+      <band type="Smarty模板引擎" url="smarty"></band>
+      <band type="Zend FrameWork" url="zf"></band>
+   </sp>
+   <sp desc="C/C++" stype="c">
+      <band type="开发基础" url="basec"></band>
+      <band type="MFC框架" url="mfc"></band>
+   </sp>
+   <sp desc="移动开发" stype="mobile">
+      <band type="Android" url="android"></band>
+      <band type="Objective-C" url="ojc"></band>
+   </sp>
+   <sp desc="数据库" stype="database">
+      <band type="SQL技术" url="sql"></band>
+      <band type="性能调优" url="optim"></band>
+      <band type="MySQL" url="mysql"></band>
+   </sp>
+   <sp desc="Web前端开发" stype="web">
+      <band type="CSS2/3" url="css"></band>
+      <band type="HTML4/5" url="html5"></band>
+      <band type="JQuery" url="jquery"></band>
+      <band type="Dojo" url="dojo"></band>
+      <band type="Ext" url="ext"></band>
+      <band type="Javascript" url="js"></band>
+      <band type="RIA/AJAX" url="ajax"></band>
+      <band type="Regex正则" url="regex"></band>
+   </sp>
+</root>

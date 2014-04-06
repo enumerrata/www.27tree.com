@@ -1,0 +1,156 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 文件处理</h1>
+</div>
+<div>
+
+<p><b>fopen() 函数用于在 PHP 中打开文件。</b></p>
+
+<h1>打开文件</h1>
+
+<p>fopen() 函数用于在 PHP 中打开文件。</p>
+<p>此函数的第一个参数含有要打开的文件的名称，第二个参数规定了使用哪种模式来打开文件：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+$file=fopen("welcome.txt","r");<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>文件可能通过下列模式来打开：</p>
+
+<table class="dataintable">
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>r</td>
+<td>只读。在文件的开头开始。</td>
+</tr>
+ 
+<tr>
+<td>r+</td>
+<td>读/写。在文件的开头开始。</td>
+</tr>
+ 
+<tr>
+<td>w</td>
+<td>只写。打开并清空文件的内容；如果文件不存在，则创建新文件。</td>
+</tr>
+ 
+<tr>
+<td>w+</td>
+<td>读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。</td>
+</tr>
+ 
+<tr>
+<td>a</td>
+<td>追加。打开并向文件文件的末端进行写操作，如果文件不存在，则创建新文件。</td>
+</tr>
+ 
+<tr>
+<td>a+</td>
+<td>读/追加。通过向文件末端写内容，来保持文件内容。</td>
+</tr>
+ 
+<tr>
+<td>x</td>
+<td>只写。创建新文件。如果文件已存在，则返回 FALSE。</td>
+</tr>
+ 
+<tr>
+<td>x+</td>
+<td>
+  <p>读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</p>
+  <p>注释：如果 fopen() 无法打开指定文件，则返回 0 (false)。</p>
+</td>
+</tr>
+</table>
+
+<h2>例子</h2>
+
+<p>如果 fopen() 不能打开指定的文件，下面的例子会生成一段消息：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+$file=fopen("welcome.txt","r") or exit("Unable to open file!");<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<h1>关闭文件</h1>
+
+<p>fclose() 函数用于关闭打开的文件。</p>
+
+<code>
+&lt;?php<br />
+$file = fopen("test.txt","r");<br />
+<br />
+//some code to be executed<br />
+<br />
+fclose($file);<br />
+?&gt;
+</code>
+
+<h1>检测 End-of-file</h1>
+
+<p>feof() 函数检测是否已达到文件的末端 (EOF)。</p>
+<p>在循环遍历未知长度的数据时，feof() 函数很有用。</p>
+<p><b>注释</b>：在 w 、a 以及 x 模式，您无法读取打开的文件！</p>
+
+<code>if (feof($file)) echo "End of file";</code>
+
+<h1>逐行读取文件</h1>
+
+<p>fgets() 函数用于从文件中逐行读取文件。</p>
+<p>注释：在调用该函数之后，文件指针会移动到下一行。</p>
+
+<h2>例子</h2>
+
+<p>下面的例子逐行读取文件，直到文件末端为止：</p>
+
+<code>
+&lt;?php<br />
+$file&nbsp=&nbspfopen("welcome.txt",&nbsp"r")&nbspor&nbspexit("Unable&nbspto&nbspopen&nbspfile!");<br />
+//Output&nbspa&nbspline&nbspof&nbspthe&nbspfile&nbspuntil&nbspthe&nbspend&nbspis&nbspreached<br />
+while(!feof($file))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbspfgets($file).&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+fclose($file);<br />
+?&gt;
+</code>
+
+<h1>逐字符读取文件</h1>
+
+<p>fgetc() 函数用于从文件逐字符地读取文件。</p>
+<p><b>注释</b>：在调用该函数之后，文件指针会移动到下一个字符。</p>
+
+<h2>例子</h2>
+
+<p>下面的例子逐字符地读取文件，直到文件末端为止：</p>
+
+<code>
+&lt;?php<br />
+$file=fopen("welcome.txt","r")&nbspor&nbspexit("Unable&nbspto&nbspopen&nbspfile!");<br />
+while&nbsp(!feof($file))&nbsp<br />
+&nbsp&nbsp{&nbsp<br />
+&nbsp&nbspecho&nbspfgetc($file);&nbsp<br />
+&nbsp&nbsp}<br />
+fclose($file);<br />
+?&gt;
+</code>
+
+</div>

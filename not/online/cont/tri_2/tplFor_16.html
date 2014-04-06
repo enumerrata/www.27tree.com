@@ -1,0 +1,151 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 引用文件</h1>
+</div>
+<div>
+
+<p><b>服务器端引用 (SSI) 用于创建可在多个页面重复使用的函数、页眉、页脚或元素。</b></p>
+
+<h1>服务器端引用（Server Side Includes）</h1>
+
+<p>通过 include() 或 require() 函数，您可以在服务器执行 PHP 文件之前在该文件中插入一个文件的内容。除了它们处理错误的方式不同之外，这两个函数在其他方面都是相同的。include() 函数会生成一个警告（但是脚本会继续执行），而 require() 函数会生成一个致命错误（fatal error）（在错误发生后脚本会停止执行）。</p>
+<p>这两个函数用于创建可在多个页面重复使用的函数、页眉、页脚或元素。</p>
+<p>这会为开发者节省大量的时间。这意味着您可以创建供所有网页引用的标准页眉或菜单文件。当页眉需要更新时，您只更新一个包含文件就可以了，或者当您向网站添加一张新页面时，仅仅需要修改一下菜单文件（而不是更新所有网页中的链接）。</p>
+
+<h1>include() 函数</h1>
+
+<p>include() 函数可获得指定文件中的所有文本，并把文本拷贝到使用 include 函数的文件中。</p>
+
+<h2>例子 1</h2>
+
+<p>假设您拥有一个标准的页眉文件，名为 "header.php"。如需在页面中引用这个页眉文件，请使用 include() 函数，就像这样：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php include("header.php"); ?&gt;<br />
+<br />
+&lt;h1&gt;Welcome to my home page&lt;/h1&gt;<br />
+<br />
+&lt;p&gt;Some text&lt;/p&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<h2>例子 2</h2>
+
+<p>现在，假设我们有一个在所有页面上使用的标准菜单文件。请看下面这个 "menu.php"：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;a href="http://www.itsrcs.com/default.php"&gt;Home&lt;/a&gt; |<br />
+&lt;a href="http://www.itsrcs.com/about.php"&gt;About Us&lt;/a&gt; | <br />
+&lt;a href="http://www.itsrcs.com/contact.php"&gt;Contact Us&lt;/a&gt;
+</code>
+
+<p>三个文件，"default.php"、"about.php" 以及 "contact.php" 都引用了 "menu.php" 文件。这是 "default.php" 中的代码：</p>
+
+<code>
+&lt;?php include("menu.php"); ?&gt;<br />
+<br />
+&lt;h1&gt;Welcome to my home page&lt;/h1&gt;<br />
+<br />
+&lt;p&gt;Some text&lt;/p&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>如果您在浏览器中查看 "default.php" 的源代码，应该类似这样：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;a href="default.php"&gt;Home&lt;/a&gt; |<br />
+&lt;a href="about.php"&gt;About Us&lt;/a&gt; | <br />
+&lt;a href="contact.php"&gt;Contact Us&lt;/a&gt;<br />
+<br />
+&lt;h1&gt;Welcome to my home page&lt;/h1&gt;<br />
+&lt;p&gt;Some text&lt;/p&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>同时，当然，我们也将用相同的方法处理 "about.php" 和 "contact.php"。通过使用引用文件，在您需要重命名链接、更改链接顺序或向站点添加另一张网页时，只要简单地更新 "menu.php" 文件中的文本即可。</p>
+
+<h1>require() 函数</h1>
+
+<p>require() 函数与 include() 相同，不同的是它对错误的处理方式。</p>
+<p>include() 函数会生成一个警告（但是脚本会继续执行），而 require() 函数会生成一个致命错误（fatal error）（在错误发生后脚本会停止执行）。</p>
+<p>如果在您通过 include() 引用文件时发生了错误，会得到类似下面这样的错误消息：</p>
+
+<p><b>PHP 代码：</b></p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+include("wrongFile.php");<br />
+echo "Hello World!";<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>错误消息：</b></p>
+
+<code>
+Warning: include(wrongFile.php) [function.include]:<br />
+failed to open stream:<br />
+No such file or directory in C:\home\website\test.php on line 5<br />
+<br />
+Warning: include() [function.include]:<br />
+Failed opening 'wrongFile.php' for inclusion<br />
+(include_path='.;C:\php5\pear')<br />
+in C:\home\website\test.php on line 5<br />
+<br />
+Hello World!
+</code>
+
+<p>请注意，echo 语句依然被执行了！这是因为警告不会中止脚本的执行。</p>
+<p>现在，让我们使用 require() 函数运行相同的例子。</p>
+
+<p><b>PHP 代码：</b></p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+require("wrongFile.php");<br />
+echo "Hello World!";<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>错误消息：</b></p>
+
+<code>
+Warning: require(wrongFile.php) [function.require]:<br />
+failed to open stream:<br />
+No such file or directory in C:\home\website\test.php on line 5<br />
+<br />
+Fatal error: require() [function.require]:<br />
+Failed opening required 'wrongFile.php'<br />
+(include_path='.;C:\php5\pear')<br />
+in C:\home\website\test.php on line 5
+</code>
+
+<p>由于在致命错误发生后终止了脚本的执行，因此 echo 语句不会执行。</p>
+<p><b>正因为在文件不存在或被重命名后脚本不会继续执行，因此我们推荐使用 require() 而不是 include()。</b></p>
+
+</div>

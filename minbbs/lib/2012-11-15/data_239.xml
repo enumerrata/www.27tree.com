@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>237</uid>
+  <datetime>2012-11-15 14:06:43</datetime>
+  <title><![CDATA[想问个JS内存泄漏的问题]]></title>
+  <content><![CDATA[<p>
+	看过很多的参考
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	大部分说 value = null;
+</p>
+<p>
+	可以销毁变量
+</p>
+<p>
+	fuction aa(){
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;a=5;
+</p>
+<p>
+	}
+</p>
+<p>
+	居于中 a在函数aa执行完毕销毁。
+</p>
+<p>
+	&nbsp;
+</p>
+<p>
+	我想问问
+</p>
+<p>
+	&nbsp;
+</p>
+<pre id=\"prettyprint\" class=\"javascript\" name=\"code\">function test(s){
+function a(s){
+
+function b(){return -1;}
+ this.b();
+}
+
+var aaa = new a(s);
+aaa = null;
+}</pre>
+<p>
+	这里吗的 函数test执行完毕 会被JS的垃圾回收么？
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

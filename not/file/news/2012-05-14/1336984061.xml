@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Linux手动增加快捷方式配置文件</title>
+<content>&amp;lt;p&amp;gt;
+	手动增加快捷方式配置文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在/usr/share/application目录中存放着所有程序的快捷方式的配置文件，全部都采用.desktop结尾
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们可以在这个目录添加一个新的配置文件来实现添加快捷方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	配置文件的参数如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Name:&amp;nbsp;程序快捷方式的名称
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;Comment:&amp;nbsp;程序快捷方式的描述Exec:&amp;nbsp;程序可执行文件的路径Terminal:&amp;nbsp;程序执行的方式，true为执行在命令行中，falase则相反
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Type:&amp;nbsp;程序类型，默认为ApplicationCategories:&amp;nbsp;程序在Application面板中所属的分类，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;StartupNotify:&amp;nbsp;设置是否现实程序启动和关闭的提示，默认为true
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Icon:&amp;nbsp;程序图标的路径，如果只填写名字，那么gnome会在&amp;nbsp;/usr/share/icons&amp;nbsp;里面寻找这个图片
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面我举一个简单的例子，我创建了一个Komodo&amp;nbsp;Edit的快捷方式，文件命名为komodo.desktop,内容如下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Desktop&amp;nbsp;Entry]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Name=Komodo&amp;nbsp;Edit
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Comment=MyDevelopment
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Icon=/home/App/Komodo-edit/share/icons/komodo256.png
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Exec=/home/App/Komodo-edit/bin/komodo
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Terminal=false
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Type=Application
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Categories=Development;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	StartupNotify=true
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-05-14/1336984061.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-01-04 21:20:51</datetime>
+  <title><![CDATA[nofollow属性的介绍和使用]]></title>
+  <content><![CDATA[<p>
+	我们知道，反向链接是Google PR值的主要评估指标。为了添加反向链接，SEO优化人员在各种论坛和他人的博客大量发布带有无关链接的内容。这些垃圾链接的存在给搜索引擎对网页权重的评估造成一定程度的麻烦。nofollow 正是Google、Yahoo、MSN 为了应对垃圾链接（Spam）引入的一个属性，此属性目前应该被广泛采用。
+</p>
+<p>
+	如果A网页上有一个链接指向B网页，但是A网页在这个链接上添加了&nbsp;rel=\"nofollow\" 这个属性，则搜索引擎不把A网页计算入B网页的反链。
+</p>
+<p>
+	<strong>nofollow 怎么用呢？</strong>
+</p>
+<p>
+	比如某博客上有垃圾评论：
+</p>
+<p>
+	&lt;a href=\"http://www.itsrcs.com/\"&gt;顶顶&lt;/a&gt;
+</p>
+<p>
+	以下操作，即进行了 nofollow：
+</p>
+<p>
+	&lt;a href=\"http://www.itsrcs.com/\" &nbsp;rel=\"nofollow\" &gt;顶顶&lt;/a&gt;
+</p>
+<p>
+	搜索引擎在计算PR值时，不会把这个链接计算在内。
+</p>
+<p>
+	关于 nofollow：目前绝大多数的博客和建站系统都加上了nofollow 属性。也就是说，在其他人的博客上留链接以获得PR值的做法是没用的。（特别是名人的博客，基本都用了nofollow）如果你担心网站被垃圾链接侵扰，nofollow是一个非常好的“拉圾链接防火墙”。nofollow 并不代表搜索引擎不收录那个链接，只是不计入反向链接而已。
+</p>
+<p>
+	<strong>以下这一点对 SEO优化人员</strong><strong>非常重要。</strong>
+</p>
+<p>
+	你可以为站点的内部链接添加 nofollow。比如：联系我们、关于我们、隐私保护、公司简介、网站后台等的链接可以把它们nofollow 掉，这样做，首页的PR值就不会传输给他们。因为，他们有太多的PR值显然没用。
+</p>]]></content>
+  <contentx><![CDATA[我们知道，反向链接是Google PR值的主要评估指标。为了添加反向链接，SEO优化人员在各种论坛和他人的博客大量发布带有无关链接的内容。这些垃圾链接的存在给搜索引擎对网页权重的评估造成一定程度的麻烦。nofollow 正是Google、Yahoo、MSN 为了应对垃圾链接（Spam）引入的一个属性，此属性目前应该被广泛采用。
+
+
+	如果A网页上有一个链接指]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

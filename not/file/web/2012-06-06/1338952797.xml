@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>淡出淡入的下拉菜单效果,使用jQuery+CSS实现</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;jQuery&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;+CSS&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;编写的&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;下拉菜&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;单&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;，有简单带&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;淡出动画效果&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;，这个实例没有编写太复杂的CSS样式，比较简单，喜欢大家喜欢哦。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&amp;gt;&amp;nbsp;&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Transitional//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&amp;amp;gt;
+&amp;amp;lt;html&amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;amp;gt;
+&amp;amp;lt;head&amp;amp;gt;
+&amp;amp;lt;meta&amp;nbsp;http-equiv=\"Content-Type\"&amp;nbsp;content=\"text/html;charset=GBK\"&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;title&amp;amp;gt;jQuery下拉菜单&amp;nbsp;-&amp;nbsp;Liehuo.Net&amp;amp;lt;/title&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"/uploads/common/js/jquery-1.3.2.js\"&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;style&amp;amp;gt;
+.test{&amp;nbsp;margin:10px;}
+.topMenu{&amp;nbsp;position:relative;}
+.topMenu&amp;nbsp;span{&amp;nbsp;position:absolute;&amp;nbsp;top:15px;&amp;nbsp;border:#ccc&amp;nbsp;1px&amp;nbsp;solid;&amp;nbsp;padding:5px;&amp;nbsp;width:60px;}
+&amp;amp;lt;/style&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;amp;gt;
+$(function(){
+//$(\".test\").append(\"&amp;amp;lt;br/&amp;amp;gt;在.test里面后置字符串\");
+//$(\"b\").appendTo(\"p\");&amp;nbsp;//把b后置到p
+//$(\".test\").prepend(\"在.test里面前置字符串\");
+//$(\"p\").prepend($(\"b\"));&amp;nbsp;//把b前置到.test
+//$(\"b\").prependTo(\"p\");&amp;nbsp;//把b前置到.test
+$(\".topMenu&amp;nbsp;a\").click(function(){
+if($(this).siblings().length==0){
+$(this).parent().append(\"&amp;amp;lt;span&amp;amp;gt;栏目001&amp;amp;lt;br/&amp;amp;gt;栏目002&amp;amp;lt;br/&amp;amp;gt;栏目003&amp;amp;lt;br/&amp;amp;gt;栏目004&amp;amp;lt;/span&amp;amp;gt;\");
+}
+else{
+$(this).siblings().show();
+}
+}).parent().hover(function(){},function(){
+$(this).find(\"span\").fadeOut();
+})
+})
+$(window).resize(function(){
+alert(\"Stop&amp;nbsp;it!\");
+});
+&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;/head&amp;amp;gt;
+&amp;amp;lt;body&amp;amp;gt;
+&amp;amp;lt;div&amp;nbsp;class=\"test\"&amp;amp;gt;
+&amp;amp;lt;p&amp;amp;gt;这是一个测试&amp;amp;lt;/p&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;作者：racemam&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;鼠标点击topmenu即可显示&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;span&amp;nbsp;class=\"topMenu\"&amp;amp;gt;&amp;amp;lt;a&amp;nbsp;href=\"#\"&amp;amp;gt;topMenu&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;&amp;amp;lt;center&amp;amp;gt;如不能显示效果，请按Ctrl+F5刷新本页，更多网页代码：&amp;amp;lt;a&amp;nbsp;href=&amp;nbsp;http://www.veryhuo.com/&amp;nbsp;&amp;nbsp;target=&amp;nbsp;_blank&amp;nbsp;&amp;amp;gt;http://www.veryhuo.com/&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/center&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-06/1338952797.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

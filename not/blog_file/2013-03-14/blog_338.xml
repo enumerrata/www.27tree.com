@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP 过滤器（Filter）简单介绍]]></title>
+  <content><![CDATA[<p>
+	PHP 过滤器用于验证和过滤来自非安全来源的数据，比如用户的输入。
+</p>
+<p>
+	<p>
+		几乎所有 web 应用程序都依赖外部的输入。这些数据通常来自用户或其他应用程序（比如 web 服务）。通过使用过滤器，您能够确保应有程序获得正确的输入类型。
+	</p>
+	<p>
+		您应该始终对外部数据进行过滤！
+	</p>
+	<p>
+		输入过滤是最重要的应用程序安全课题之一。
+	</p>
+	<p>
+		<br />
+	</p>
+函数和过滤器如需过滤变量，请使用下面的过滤器函数之一：
+</p>
+<p>
+	filter_var() - 通过一个指定的过滤器来过滤单一的变量
+</p>
+<p>
+	filter_var_array() - 通过相同的或不同的过滤器来过滤多个变量
+</p>
+<p>
+	filter_input - 获取一个输入变量，并对它进行过滤
+</p>
+<p>
+	filter_input_array - 获取多个输入变量，并通过相同的或不同的过滤器对它们进行过滤
+</p>
+<br>
+<p>
+	在下面的例子中，我们用 filter_var() 函数验证了一个整数：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+$int = 123;
+
+if(!filter_var($int, FILTER_VALIDATE_INT))
+ {
+ echo(\"Integer is not valid\");
+ }
+else
+ {
+ echo(\"Integer is valid\");
+ }
+?&gt;</pre>
+	<p>
+		上面的代码使用了 \"FILTER_VALIDATE_INT\" 过滤器来过滤变量。由于这个整数是合法的，因此代码的输出是：\"Integer is valid\"。
+	</p>
+	<p>
+		假如我们尝试使用一个非整数的变量，则输出是：\"Integer is not valid\"。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	PHP 过滤器用于验证和过滤来自非安全来源的数据，比如用户的输入。
+
+
+	
+		几乎所有 web 应用程序都依赖外部的输入。这些数据通常来自用户或其他应用程序（比如 web 服务）。通过使用过滤器，您能够确保应有程序获得正确的输入类型。]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

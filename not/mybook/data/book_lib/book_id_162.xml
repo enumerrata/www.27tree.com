@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Google Android开发入门与实战]]></title>
+  <author>靳岩，姚尚朗</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-04 11:14:18</submit-date-time>
+  <img-link>808f463da3dbb05e8ed18596c034645c.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	5大完整商业应用案例：RSS阅读器、基于Google Map的个人GPS、豆瓣网客户端、在线音乐播放器、手机信息查看助手。
+</p>
+<p>
+	全部内容基于Android SDK；随书附赠400多分钟的详细教学视频，286段示例代码；从事一线开发的作者团队提供在线答疑。
+</p>
+<p>
+	本书特色：
+</p>
+<p>
+	涵盖And roid开发环境搭建、SDK、组件应用、Intents、Broadcast、Service、Market使用等，每个知识点都配以精彩实例，使读者学以致用。
+</p>
+<p>
+	注重对实际动手能力的指导，在容易产生错误、不易理解的环节均配有详实的开发情景图例，并将 重要的知识点、实战技巧以“小实验”、“小知识”的活泼形式呈现给读者，帮助初学者举一反三。
+</p>
+<p>
+	案例体现创新，将传统互联网的内容/服务与移动平台紧密结合，如基于Google Map的个人GPS、豆瓣网（Web 2.0）客户端、在线音乐播放器等。
+</p>
+<p>
+	<p>
+		本书内容上覆盖了用Android开发的大部分场景，从Android基础介绍、环境搭建、SDK介绍、Market使用，到应用剖析、组件介绍、实例演 示等方面。从技术实现上，讲解了5个Android平台下的完整综合实例及源代码分析，分别是RSS阅读器、基于Google Map的个人GPS、豆瓣网（Web 2.0）客户端、在线音乐播放器、手机信息助手。本书注重对实际动手能力的指导，在遵循技术研发知识体系的严密性同时，在容易产生错误、不易理解的环节配 以了详实的开发情景截图，并将重要的知识点和经验技巧以“小实验”、“小知识”的活泼形式呈现给读者。在程序实例的讲解方面，将实例安插在Android 开发的精髓知识章节，这为初学者学习与实践结合提供了很好的指导。
+	</p>
+	<p>
+		本书配套有300多分钟的全程开发视频光盘，指导读者快速、无障碍地学通Android实战开发技术。
+	</p>
+	<p>
+		本书适合具备一定软件开发经验，想快速进入Android开发领域的程序员；具备一些手机开发经验的开发者和Android开发爱好者学习用书；也适合作为相关培训学校的Android培训教材。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

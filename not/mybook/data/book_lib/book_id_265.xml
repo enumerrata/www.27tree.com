@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[iOS 6 Programming Cookbook]]></title>
+  <author>Vandad Nahavandipoor</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-10 18:56:00</submit-date-time>
+  <img-link>0586e8b77231a4e882c1389dd5a337d5.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	Overcome the vexing issues you’ll inevitably confront when creating apps for the iPhone, iPad, or iPod touch. By making use of new and revised recipes in this updated cookbook, you’ll quickly learn the steps necessary to write complete iOS apps—including ways to store and protect data, enhance and animate graphics, manage files and folders, and take advantage of Passbook.
+</p>
+<p>
+	Thoroughly updated for iOS 6 SDK, this cookbook shows you how to use hundreds of techniques to solve problems that developers of all levels commonly face. Each recipe includes sample code you can use right away.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Use Pass Kit to deliver digitally-signed passes such as loyalty cards
+</p>
+<p>
+	Define the layout of UI elements with Cocoa Auto Layout
+</p>
+<p>
+	Develop location-aware apps
+</p>
+<p>
+	Get working examples for implementing gesture recognizers
+</p>
+<p>
+	Use new Objective-C Runtime featuresPlay audio and video files and access the iPod library
+</p>
+<p>
+	Retrieve contacts and groups from the Address Book
+</p>
+<p>
+	Determine camera availability and access the Photo Library
+</p>
+<p>
+	Create multitasking-aware apps
+</p>
+<p>
+	Use Event Kit to manage calendars, dates, and events
+</p>
+<p>
+	Apply the accelerometer and gyroscope
+</p>
+<p>
+	Enhance your app with the iCloud service
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

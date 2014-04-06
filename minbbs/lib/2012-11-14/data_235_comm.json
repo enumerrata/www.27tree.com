@@ -1,0 +1,1 @@
+[{"fu":"73","ct":"<p>\n\t\u5b83\u5176\u5b9e\u53ef\u4ee5\u8fd9\u6837\u7684\n<pre name=\\\"code\\\" id=\\\"prettyprint\\\" class=\\\"Java\\\">var total = 0;\nfor(int i = n; i &lt;= m; i++)\n{\n   total +=  f(i)\n}<\/pre>\n<\/p>\n<p>\n\t<br \/>\n<\/p>","dt":"2012-11-14 23:42:53","pd":"235"}]

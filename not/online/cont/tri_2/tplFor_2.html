@@ -1,0 +1,48 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 安装</h1>
+</div>
+<div>
+
+<h1>安装前所需要下载的</h1>
+
+<h2>下载 PHP</h2>
+<p>从此处下载免费的 PHP：<a href="http://www.php.net/downloads.php" target="_blank">http://www.php.net/downloads.php</a></p>
+
+<h2>下载 MySQL 数据库</h2>
+<p>从此处下载免费的 MySQL：<a href="http://www.mysql.com/downloads/" target="_blank">http://www.mysql.com/downloads/</a></p>
+
+<h2>下载 Apache 服务器</h2>
+<p>从此处下载免费的 Apache：<a href="http://httpd.apache.org/download.cgi" target="_blank">http://httpd.apache.org/download.cgi</a></p>
+
+<h1>安装 Apache</h1>
+<p>双击安装包，疯狂下一步。<b>httpd.conf在{Apache根目录}/conf/下</b></p>
+
+<h1>安装 MySQL</h1>
+<p>双击安装包，疯狂下一步。记得设置root用户的密码。</p>
+
+<h1>安装 PHP</h1>
+<p>PHP安装包解压到某个你喜欢的文件夹就行了，比如 <b>php-5.2.13-Win32.zip</b> 文件解压到 <b>C:\php</b> 下</p>
+
+<h1>将 PHP 以模块的方式加载到Apache中</h1>
+<p><b class="cRed">把下面三行代码粘贴到httpd.conf文件里面</b></p>
+<p>LoadModule php5_module "C:\php\php5apache2_2.dll" <span class="Gray">#加载PHP模块</span></p>
+<p>AddType application/x-httpd-php .php .phtml <span class="Gray">#PHP模块解析哪种后缀文件</span></p>
+<p>PHPIniDir "C:\php" <span class="Gray">#指定PHP配置文件的位置</span></p>
+<p>我上面设置的 php目录 是 <b>C:\php</b>，改成你自己的就行了。</p>
+
+<h1>建立PHP的配置文件</h1>
+<p>直接把PHP解压缩目录C:\php下面的php.ini-recommended文件改名为php.ini,然后复制一份php.ini到C:\Windows下</p>
+
+<h1>检查一下PHP是否安装成功</h1>
+<p>首先重启Apache服务器，怎么重启，屏幕右下方那个很难看的图标就是了。</p>
+<p>Apache服务器存放网页的文件夹{Apache根目录}\htdocs下,使用文本编辑器创建一个名为test.php的文件,写入<br />&lt;?php phpinfo();?&gt;</p>
+<p>然后使用浏览器打开http://localhost/test.php页面。出现一个PHP测试页说明PHP安装成功。 </p>
+
+<h1>配置 PHP 的 MySQL 扩展接口</h1>
+<p>在PHP配置文件中开启MySQL功能。使用文本编辑器打开PHP的配置文件C:\lamp\php5\php.ini。 <p>
+<p class="cRed"><b>插入下面三项就可以开启mysql和mysqli扩展接口。也可以在PHP配置文件中找到下面三行，将前面用于注释的分号去掉。</b></p>
+<p>extension_dir="c:/lamp/php5/ext" <span class="Gray">#指定PHP的扩展接口目录，目录分隔符是”/”</span></p>
+<p>extension=php_mysql.dll <span class="Gray">#开启MySQL扩展接口</span></p>
+<p>extension=php_mysqli.dll <span class="Gray">#开启MySQLi扩展接口</span></p>
+<p>重启Apache</p>
+</div>

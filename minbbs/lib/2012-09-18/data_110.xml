@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-18 10:34:16</datetime>
+  <title>Sql Server内置函数实现MD5加密</title>
+  <content>&lt;p&gt;
+	比如&amp;nbsp;MD5加密数字序列“123456”&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	HashBytes(&amp;nbsp;MD5&amp;nbsp;,&amp;nbsp;123456&amp;nbsp;)
+&lt;/p&gt;
+&lt;p&gt;
+	得到的结果：0xE10ADC3949BA59ABBE56E057F20F883E
+&lt;/p&gt;
+&lt;p&gt;
+	HashBytes生成的结果为：0xE10ADC3949BA59ABBE56E057F20F883E，16进制大写的数值，去掉“0x”转换为小写值就&lt;strong&gt;完全与MD5值吻合&lt;/strong&gt;了，在此需要用另一个函数（sys.fn_sqlvarbasetostr）把varbinary的值转换为varchar类型的，完整的sql如下：
+&lt;/p&gt;
+&lt;p&gt;
+	select&amp;nbsp;substring(sys.fn_sqlvarbasetostr(HashBytes(&amp;nbsp;MD5&amp;nbsp;,&amp;nbsp;123456&amp;nbsp;)),3,32);
+&lt;/p&gt;
+&lt;p&gt;
+	结果就是完整的MD5值：e10adc3949ba59abbe56e057f20f883e
+&lt;/p&gt;</content>
+  <state>0</state>
+</root>

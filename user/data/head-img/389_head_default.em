@@ -1,0 +1,1 @@
+default30.jpg

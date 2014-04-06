@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>PHP手册(最新评论整合版)</title>
+  <author>Mehdi Achour, Etienne Kneuss, Nuno Lopes, Hannes Magnusson, Bobby Matthis 和 Maciek Sokolewicz</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-24 07:39:15</submit-date-time>
+  <img-link></img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP，即“PHP:&amp;nbsp;Hypertext&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Preprocessor”，是一种被广泛使用的开放源代码多用途脚本语言，尤其适用于&amp;nbsp;web&amp;nbsp;开发并可以嵌入到&amp;nbsp;HTML&amp;nbsp;中去。其语法利用了&amp;nbsp;C，Java&amp;nbsp;和&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Perl，非常容易学习。该语言的主要目标是让&amp;nbsp;web&amp;nbsp;开发人员可以很快写出动态生成的网页，但&amp;nbsp;PHP&amp;nbsp;的功能远不止如此。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本手册主要由函数参考组成，但也包括语言参考，PHP&amp;nbsp;一些主要特点的说明以及其它补充信息。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	可以在&amp;nbsp;»
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	http://www.php.net/download-docs.php&amp;nbsp;下载本手册的数种格式。关于本手册如何被开发的更多信息，请参阅附录：“关于本手册”。如果对&amp;nbsp;PHP&amp;nbsp;的历史感兴趣，请访问相关附录。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	手册首页仅突出了目前最活跃的人员，但是还有更多的贡献者在现在或者过去对本项目提供了大量的帮助。很多不留名的人也帮忙在手册中写下了笔记，并不断被包括在手册中，也很感谢他们的工作。下面的姓名列表按照字母顺序排列。
+&lt;/p&gt;</book-intro>
+</root>

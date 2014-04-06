@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>浅释材质绘制的色彩理论</title>
+<content>&amp;lt;p&amp;gt;
+	以下的所述的理论是在网上找到一些外国大师们在绘画材质色彩表现的理论和结合自己浅薄的知识简述得出，虽然是主要讲述材质色彩表现方面，希望对大家工作上有点帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;１视觉中心&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		哪些现象会比较吸引我们的视觉，让我们用最简单的一些图示来说明问题
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721631.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		1.色彩饱和度的对比，饱和度高的元素会比饱和度低的元素更加吸引我们的眼球
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		2.对比度的变化：对比度高的地方地方比对比度的地方更加吸引眼球（废话练习，谢谢）
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		3.虚实的对比：实比虚跟吸引眼球．（锐化和模糊的对比）
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		4.线的导向性：单从本图来说，线的发射源更加吸引我们的眼球，线的疏密程度决定了视觉上的选择
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721609.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;width=\"474\"&amp;nbsp;height=\"525\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		首先我们观察图中怪兽眼睛和周围的对比
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		１&amp;nbsp;眼睛中使用了饱和度非常高的色彩对比，并且经过锐化处理，所以在最终结果中，很难不让我们注视他的眼睛
+	&amp;lt;/p&amp;gt;
+２&amp;nbsp;毛发的处理上，毛发体现了线的疏密对视觉产生的影响，在所有毛发收紧的末段，线更加密集，这些地方很好的吸引了我们对于毛发的关注，所以很大程度上，在绘制毛发的过程中，松和紧的搭配是非常重要的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;2关于光能传递&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		光是一种能量，那么在光的反射中，是一种增益的形式体现在物体表面上的．
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如下图所示，当一个球体靠近一个蓝色的背景，那么这个球体的反射面上色彩应该是稍亮的
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		粉蓝色，而不是两个物体固有色叠加那么简单．体现在实际操作中，也就是体现在整个ＲＧＢ图象的Ｒ通道上，通过改变ＲＥＤ通道的明度信息来得到最终的结果．
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;align=center&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721404.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		阴影的体现
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		这点非常重要，很多人在实际绘制过程中只是叠加一层黑色&amp;nbsp;之后调节一下透明度就了事了．这样是非常错误的，因为这样只是整体上改变了色彩的亮度信息，甚至还保留着高光，并没有从根本上诠释阴影的概念，（如下图右下脚所示）
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		中间的才是阴影的正确表现方式
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721630.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		冷暖的对比和烘托
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如图所示
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		１&amp;nbsp;暖色的物体在暖的环境中，看起来平淡无奇
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		２&amp;nbsp;暖色的物体在冷色的环境中，看起来很突显
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		３&amp;nbsp;中性的灰色在暖的氛围中看起来偏冷
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		４&amp;nbsp;中性的灰色在冷的氛围中看起来偏暖
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721430.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;3线条的暗示性&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		线条是一种最基本的造型手段
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如图１（第一组图象）所表现的
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		线条很好的诠释了结构上的变化／重量感／等，生动的线条让画面充满了活力
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		图２则很好的让我们认识到了结构的提炼的重要性
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		很多朋友在绘制角色的时候都是按照解剖书上的解剖图来画的，很机械的照本宣科的完成肌肉穿插关系的绘画，这样画出来的结构呆板如同一个扒皮人一样，看起来很无趣。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		而我们在绘制这类生物角色的时候，应该考虑到哪部分肌肉结构是最终体现在皮肤表面的，并不是所有肌肉关系都会体现在最终的皮肤表面。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		就如同一堆凌乱的物体，当我们在他上面盖一块布所看到的结果和原来的物体对比，看到的结果是显而易见的不一样的．道理虽然十分简单，但在绘制的过程中却需要根据实际所绘制的生物进行很好的分析和提炼，当然这些都是在你很好熟悉肌肉系统之后才能
+	&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0428/1335575721496.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-07/1339037529.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

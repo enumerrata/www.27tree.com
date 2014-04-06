@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Servlet 3.0实战：异步Servlet与Comet风格应用程序]]></title>
+  <author>未知</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-05 23:59:34</submit-date-time>
+  <img-link></img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	自 JSR 315 规范（即 Servlet 3.0）的草案公开发布以来，最新一代 Servlet 规范的各种新特性被越来越多的开发人员所关注。规范中提到的一系列高级目标：如可插拔的 Web 框架、便捷开发特性、增强安全性支持等都令人期待。但其中关注程度最高的，毫无疑问是异步 Servlet。
+</p>
+<p>
+	本文将详细介绍 Comet 风格应用的实现方式，以及 Servlet 3.0 中的异步处理特性在 Comet 风格程序中的实际应用。 概述 作为 Java EE 6 体系中重要成员的 JSR 315 规范，将 Servlet API 最新的版本从 2.5 提升到了 3.0，这是近 10 年来 Servlet 版本号最大的一次升级，此次升级中引入了若干项令开发人员兴奋的特性，如：l可插拔的 Web 架构（Web framework pluggability）。l通过 Annotations 代替传统 web.xml 配置文件的 EOD 易于开发特性（ease of development）。lSerlvet 异步处理支持。l安全性提升，如 Http Only Cookies、login/logout 机制。l其它改进，如文件上传的直接支持等。 &nbsp;
+</p>
+<p>
+	其中，在开源社区中讨论得最多的就是 Servlet 异步处理的支持，所谓 Servlet 异步处理，包括了非阻塞的输入/输出、异步事件通知、延迟 request 处理以及延迟 response 输出等几种特性。这些特性大多并非 JSR 315 规范首次提出，譬如非阻塞输入/输出，在 Tomcat 6.0 中就提供了 Advanced NIO 技术以便一个 Servlet 线程能处理多个 Http Request，Jetty、GlassFish 也曾经有过类似的支持。但是使用这些 Web 容器提供的高级特性时，因为现有的 Servlet API 没有对这类应用的支持，所以都必须引入一些 Web 容器专有的类、接口或者 Annotations，导致使用了这部分高级特性，就必须与特定的容器耦合在一起，这对很多项目来说都是无法接受的。因此 JSR 315 将这些特性写入规范，提供统一的 API 支持后，这类异步处理特性才真正具备广泛意义上的实用性，只要支持 Servlet 3.0 的 Web 容器，就可以不加修改的运行这些 Web 程序。 JSR 315 中的 Servlet 异步处理系列特性在很多场合都有用武之地，但人们最先看到的，是它们在“服务端推”（Server-Side Push）方式 —— 也称为 Comet 方式的交互模型中的价值。在 JCP（Java Community Process）网站上提出的 JSR 315 规范目标列表，关于异步处理这个章节的标题就直接定为了“Async and Comet support”（异步与 Comet 支持）。&nbsp;
+</p>
+<p>
+	本文将详细介绍 Comet 风格应用的实现方式，以及 Servlet 3.0 中的异步处理特性在 Comet 风格程序中的实际应用。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

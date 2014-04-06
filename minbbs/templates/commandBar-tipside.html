@@ -1,0 +1,42 @@
+<div id="n-tip" class="borderR5" style="width:512px;display:none;position:relative;margin:5px auto;margin-bottom:12px;padding:10px 5px;text-align:center;background-color:#fff;border:1px solid #ccc;">
+     <style>
+          .options{
+               margin-bottom:10px;text-align:center;
+          }
+          .color-select{
+               width:32px;margin:0 auto;margin-left:5px;display:inline-block;border:1px solid #FFF;height:32px;
+          }
+          .color-select-hover{
+               width:36px;
+               border-color:gray;
+          }
+     </style>
+     <a href="javascript:;" onclick="javascript:$('#n-tip').hide();$('.cRed').removeClass('cRed');" class="exitCommandBar"></a>
+     <ar class="arrow"
+         style="border-color:#CCC transparent transparent transparent;
+         border-style:dashed solid dashed dashed;bottom:-20px;"></ar>
+     <ac class="arrow"
+         style="border-color:#FFF transparent transparent transparent;
+         border-style:dashed solid dashed dashed;bottom:-18px;"></ac>
+     <span id="tipText" style="margin-bottom:10px;display:block;font-size:20px;color:#999;"></span>
+     <div id="template_place"></div>
+     <templates style="display:none;">
+          <div class="options" id="highlight">
+               <?php
+               $_xml_color = simplexml_load_file(dirname(__FILE__) . '/../info/colorRender.xml');
+               foreach($_xml_color as $color){
+               echo "<a href=\"javascript:;\" colorcode=\"".$color['name']."\" class=\"color-select\" style=\"background-color:" .$color['hex']. ";\"></a>";
+               }
+               ?>
+          </div>
+          <div class="options" id="upCredit">
+               <select id="command-upCredit-incre">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+               </select>
+          </div>
+     </templates>
+     <a class="next-cp" id="postCommandButton" href="javascript:;" style="width:128px;margin:0 auto;">确认</a>
+     <span class="clear"></span>
+</div>

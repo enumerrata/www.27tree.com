@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Dojo 中的事件处理</title>
+<content>&amp;lt;p&amp;gt;
+	多数&amp;nbsp;JavaScript&amp;nbsp;库都有一个本地&amp;nbsp;JavaScript&amp;nbsp;事件处理的跨浏览器实现，允许您附加函数，在事件触发时调用。这可能很有用，Dojo&amp;nbsp;通过允许您将函数链接到其他函数进一步延伸了这一概念，这可能是&amp;nbsp;DOM&amp;nbsp;事件、对象时间、用户定义函数、或者是&amp;nbsp;“topics”，我们将在下一节进行讨论。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DOM&amp;nbsp;事件处理
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将函数附加到&amp;nbsp;DOM&amp;nbsp;对象的第一个方法是使用&amp;nbsp;dojo.connect&amp;nbsp;函数。结合示例来说明最好不过。在&amp;nbsp;Firebug&amp;nbsp;控制台输入下面的代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用&amp;nbsp;dojo.connect&amp;nbsp;附加函数到&amp;nbsp;DOM&amp;nbsp;事件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;message&amp;nbsp;=&amp;nbsp;dojo.byId(\"message\");
+dojo.connect(message,&amp;nbsp;\"onclick\",&amp;nbsp;function()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alert(message.innerHTML);
+});&amp;lt;/pre&amp;gt;
+控制台中的输出如下所示。
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;nbsp;var&amp;nbsp;message&amp;nbsp;=&amp;nbsp;dojo.byId(\"message\");&amp;nbsp;dojo.connect...,&amp;nbsp;function()&amp;nbsp;
+{&amp;nbsp;alert(message.innerHTML);&amp;nbsp;});
+[div#message,&amp;nbsp;\"onclick\",&amp;nbsp;function(),&amp;nbsp;1]&amp;lt;/pre&amp;gt;
+漂亮且容易，不是吗？如果您想附加一个事件到数组的所有条目上该怎么办？例如，假设您想要页面上无序列表中的每一项在您单击时都以粗体突出显示。使用下面的代码就可以很轻松地完成。
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加事件到数组元素上
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;dojo.query(\"#list&amp;nbsp;li\").forEach(function(item)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dojo.connect(item,&amp;nbsp;\"onclick\",&amp;nbsp;function()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dojo.style(item,&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fontWeight:&amp;nbsp;\"bold\"
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+});&amp;lt;/pre&amp;gt;
+试试看，是有效的。Dojo&amp;nbsp;支持您以一种更简洁的方式编写这段代码。不需要使用&amp;nbsp;forEach&amp;nbsp;对整个数组进行迭代，使用NodeList.connect&amp;nbsp;快捷函数即可完成，如下所示：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加事件到数组元素上（改进的）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;dojo.query(\"#list&amp;nbsp;li\").onclick(function(e)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;dojo.style(e.target,&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fontWeight:&amp;nbsp;\"bold\"
+&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于您已经附加了一个事件到这个列表上，在尝试清单&amp;nbsp;16&amp;nbsp;中的代码之前刷新页面，确保正常运行。e&amp;nbsp;参数是&amp;nbsp;Event&amp;nbsp;对象的一个引用，对象的&amp;nbsp;target&amp;nbsp;属性帮助您确定触发事件的元素。您可以使用这个来指出粗体样式应该被应用的元素。试一下单击这&amp;nbsp;3&amp;nbsp;个列表项，单击之后每一个都会变成粗体。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	连接函数到其他函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在前面的示例中，您可以连接函数到&amp;nbsp;DOM&amp;nbsp;事件上。Dojo&amp;nbsp;也支持您以同样的方式将函数连接到其他函数。这方面的一个示例可能是这样一个函数，在您的页面的某个地方显示一个旋转轮子。当用户执行一个&amp;nbsp;Ajax&amp;nbsp;函数时，您想要显示这个图像。类似地，当函数返回一个响应时，您想要隐藏该图像。如果不使用&amp;nbsp;dojo.connect，您的代码看起来像下面这样：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不使用&amp;nbsp;dojo.connect&amp;nbsp;将函数连接到其他函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;toggleImage()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;show/hide&amp;nbsp;loading&amp;nbsp;image&amp;nbsp;goes&amp;nbsp;here
+}
+function&amp;nbsp;callAjax()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;toggleImage();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;call&amp;nbsp;Ajax&amp;nbsp;function&amp;nbsp;goes&amp;nbsp;here
+}
+function&amp;nbsp;handleResponse()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;handle&amp;nbsp;Ajax&amp;nbsp;response&amp;nbsp;goes&amp;nbsp;here
+&amp;nbsp;&amp;nbsp;&amp;nbsp;toggleImage();
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这段代码没什么问题，toggleImage&amp;nbsp;函数定义包含在&amp;nbsp;callAjax&amp;nbsp;和&amp;nbsp;handleResponse&amp;nbsp;函数中。如果您想添加另一个函数调用，您需要再次修改这些函数来包含额外调用。现在不需要向这些函数本身添加函数调用，只需要使用&amp;nbsp;dojo.connect&amp;nbsp;来在它们之间建立一个链接。下面显示&amp;nbsp;dojo.connect&amp;nbsp;方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;toggleImage()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;show/hide&amp;nbsp;loading&amp;nbsp;image&amp;nbsp;goes&amp;nbsp;here
+}
+function&amp;nbsp;callAjax()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;call&amp;nbsp;Ajax&amp;nbsp;function&amp;nbsp;goes&amp;nbsp;here
+}
+function&amp;nbsp;handleResponse()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//Code&amp;nbsp;to&amp;nbsp;handle&amp;nbsp;Ajax&amp;nbsp;response&amp;nbsp;goes&amp;nbsp;here
+}
+dojo.connect(callAjax,&amp;nbsp;toggleImage);
+dojo.connect(handleResponse,&amp;nbsp;toggleImage);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这种编码风格未必每个开发人员都会喜欢，但是它允许您以这样一种方式组织您的代码，使它阅读起来更容易些。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-19/1340114229.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

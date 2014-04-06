@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[精通Android 2]]></title>
+  <author>（美）哈希米，（印）克曼特内尼，（美）麦克莱恩</author>
+  <submiter-uid>1</submiter-uid>
+  <submit-date-time>2012-10-30 00:53:10</submit-date-time>
+  <img-link>c329a177c3722a836b11a4ede085578c.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	本书全面介绍了针对Android平台的移动应用程序的开发，涵盖从Android资源、Intent和Content-Provider等基本概念到OpenGL、文本到语言转换、多点触摸、主屏幕部件和Titanium Mobile的方方面面。
+</p>
+<p>
+	本书按照由浅入深的顺序逐个剖析Android API，指导读者开发Android应用程序。
+</p>
+<p>
+	本书囊括了Android开发人员所需的一切知识，既可为Android开发人员夯实基础，又能提高Android开发人员的技能。
+</p>
+<p>
+	<p>
+		第1章　Android计算平台简介
+	</p>
+	<p>
+		第2章　初识Android
+	</p>
+	<p>
+		第3章　使用资源、ContentProvider和Intent
+	</p>
+	<p>
+		第4章　构建用户界面和使用控件
+	</p>
+	<p>
+		第5章　使用菜单和对话框
+	</p>
+	<p>
+		第6章　2D动画揭秘
+	</p>
+	<p>
+		第7章　探索安全性和基于位置的服务
+	</p>
+	<p>
+		第8章　构建和使用服务
+	</p>
+	<p>
+		第9章　使用媒体框架和电话API
+	</p>
+	<p>
+		第10章　使用OpenGL进行3D图形编程
+	</p>
+	<p>
+		第11章　管理和组织首选项
+	</p>
+	<p>
+		第12章　活动文件夹
+	</p>
+	<p>
+		第13章　主屏幕部件
+	</p>
+	<p>
+		第14章　Android搜索
+	</p>
+	<p>
+		第15章　文本到语音转换和翻译API
+	</p>
+	<p>
+		第16章　触摸屏
+	</p>
+	<p>
+		第17章　Titanium Mobile：基于WebKit的Android开发方法
+	</p>
+	<p>
+		第18章　使用Android Market
+	</p>
+	<p>
+		第19章　前景展望和资源
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

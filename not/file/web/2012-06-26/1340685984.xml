@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>.Is() VS .HasClass()</title>
+<content>&amp;lt;p&amp;gt;
+	一、.hasClass()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	hasClass()方法是用来检查被选择的元素是否包含指定的class名，其语法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(selector).hasClass(\"className\");//其中class是必须的值，规定需要在指定元素中查找的类名。&amp;nbsp;hasClass()也可以同时写多个class但他们之前用空格隔开，如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(selector).hasClass(\"className1&amp;nbsp;className2\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;二、.is()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	is()方法也是用来检查被选择的元素是否包含指定的class名，其用法为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(selector).is(\".className\");&amp;nbsp;同样is()也可以有多个类名的写法，如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(selector).is(\".className,.className\");
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-26/1340685984.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

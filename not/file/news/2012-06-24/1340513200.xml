@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>不编程的架构师的职业生涯是短暂的</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;架构师&amp;lt;/strong&amp;gt;一直是我梦寐以求所达到的高度,即便经过了这么多年的努力,我仍然觉得自己离真正的架构师的距离还很远……是不是成为技术牛人,就能成为一个优秀的架构师了呢?其实未必，这仅仅是其中的一个重要点。而在这个似乎是男人天下的职业上,作为一名女性,希望自己能够走得更远,也希望用自己的坚持和努力,使得自己的职业生涯能够有长远的发展,而不是停留在现在的状态。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Occupation&amp;nbsp;Programmer,&amp;nbsp;Author;&amp;nbsp;Employer:&amp;nbsp;Canonical&amp;nbsp;Ltd
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Known&amp;nbsp;for&amp;nbsp;Parrot
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		开源项目Parrot的首席架构师兼开发组组长Allison&amp;nbsp;Randal，她也是为女性，就曾经很务实地说过：架构师往往容易被抽象的架构所吸引，沉迷于设计过程。事实上，仅有架构说明书是远远不够的。软件项目的最终的目标是建立生产体系，架构师必须时刻关注这个目标，牢记设计只是达成目标的手段，而不是目标。我们的目标是可工作的代码，对软件项目而言，忽略这一点就是灾难。如果你亲自参与开发，应该珍视自己花在写代码上的时间，千万别听信这会分散架构师精力的说法。参与项目所付出的努力，既能拓展你的宏观视野，也能丰富你的微观视界。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		结合我的项目经验，对于Allison&amp;nbsp;Randal的话体会是很深的。作为架构师我一直参与开发，我十分珍惜写代码的时间和经验。这其实不会分散架构师的精力，很多时候，技术方案的选择，最好有两种以上，在经过验证后才可以才能够确定。当初我们拿到架构方案书，并不是迷信该方案说明书，而是通过关键应用，搭建了原型系统，一方面验证了架构的可行性，另一方面，可以为开发人员提供更为实实在在的示范指导。对于开发的每个细节，都比较清楚，开发人员有什么问题，也可以得到很快的解决。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		国外的架构师为何能够成为大师，而国内的架构师最后无法成为大师，其实主要的区别就在于，国外的架构师还在参与编程，跟项目团队一起解决难题。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		由于架构设计很多时候是给出了设计原则，粗粒度的设计，有时候往往与实现还有一段距离。因此，在架构设计与实现会出现断层。这是因为如果架构师不去实践，只是想当然的认为“没问题，这个想法能实现”，那么对于项目的落实而言是个很大的隐患。支付宝架构师冯大辉也表示过，架构师是一个比较“虚”的岗位，主要的问题都在“落地”的过程中。而如何要实现“落地”，取决于架构师是否参与编程。而事实上，我们列举出一个长长的顶级架构师的列表，你会发现无一不是顶级的程序员。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		让我们来看看，eBay的架构师Randy&amp;nbsp;Shoup是如何总结架构师在项目中的承担的职责的：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		1.&amp;nbsp;架构师拿到一个新的项目，架构师便开始工作，首先他要了解业务需求，然后根据需求把可行性、质量属性以及权衡取舍等因素一一剖析清楚。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		2.&amp;nbsp;技术需求出来了，架构师的主要工作开始了：设计整体的技术实现步骤。Randy还说“大多数成功的架构师都喜欢与其他团队成员一同完成架构和设计这一块的工作，而认为自己应独自完成这个步骤则是新手架构师常见的误区”。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		3.&amp;nbsp;与开发团队一起，完成设计与实施的细节
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		4.&amp;nbsp;与开发团队和运维团队一起，完成部署的过程
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		5.&amp;nbsp;与运维团队一起，进行部署之后的维护和故障排除
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		从Randy&amp;nbsp;Shoup的描述来看，架构师至少一半以上的时间是跟开发团队在一起进行合作的。试想一下，如果开发人员发现问题不能解决时，架构师说：这是你们开发实现的问题，跟我无关。从而就会产生嫌隙，以至于到最后，开发人员会说，这个架构师没有什么真材实料，似乎是一个只会将理论的技术大忽悠。这样是非常不利于项目的成功的。而架构师确实在对项目成功担负了重要的职责。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果是梦想以后不要编程而向架构师方向走的程序员，我奉劝您还是打消这样的念头吧，还是往项目经理方向发展可能更为合适。
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-24/1340513200.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A21%3A54</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A44%3A04</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

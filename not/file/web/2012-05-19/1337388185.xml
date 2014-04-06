@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>RIA简介及RIA的优势</title>
+<content>&amp;lt;p&amp;gt;
+	RIA是Rich&amp;nbsp;Internet&amp;nbsp;Applications的缩写，翻译成中文为丰富的因特网应用程序（Macromedia中文网站翻译为Rich&amp;nbsp;Internet应用程序）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	传统网络程序的开发是基于页面的、服务器端数据传递的模式，把网络程序的表示层建立于HTML
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	页面之上，而HTML是适合于文本的，传统的基于页面的系统已经渐渐不能满足网络浏览者的更高的、全方位的体验要求了，这就是被Macromedia公司
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	称之为的“体验问题”（\"Experience&amp;nbsp;Matters\"），而富因特网应用程序（Rich&amp;nbsp;Internet
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Applications，缩写为RIA）的出现也就是为了解决这个问题。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RIA是集桌面应用程序的最佳用户界面功能与Web应用程序的普遍采用和快速、低成本布署以及互动多媒体通信的实时快捷于一体的新一代网络应用程序。目前WEB
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	领域和桌面软件领域正逐步向RIA靠拢，预计3、5年后RIA的时代将会完全到来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;特点&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RIA最突出的特点为“Rich”，同时RIA最核心的部分也体现在“Rich”中。“Rich”包含了两层含义。丰富的数据模型：RIA技术提供了多种数据模型来处理客户端复杂的数据操作。使用RIA可以将部分原本需要在后台程序处理的问题转移到客户端，使数据能够被缓存在客户端，从而可以实现一个比基于HTML的响应速度更快，且数据往返于服务器的次数更少的用户界面。丰富的界面元素：RIA技术提供了比HTML更为丰富的界面表现元素，密集、响应速度快和图形丰富的页面元素与数据模型结合在一起，为用户提供好的使用体验。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RIA&amp;nbsp;具有的桌面应用程序的特点包括：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在消息确认和格式编排方面提供互动用户界面；在无刷新页面之下提供快捷的界面响应时间；提供通用的用户界面特性如拖放式（drag&amp;nbsp;anddrop）以及在线和离线操作能力。RIA具有的Web应用程序的特点包括如：立即部署、跨平台、采用逐步下载来检索内容和数据以及可以充分利用被广泛采纳的互联网标准。RIA具有通信的特点则包括实时互动的声音和图像。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	客户机在RIA中的作用不仅是展示页面，它可以在幕后与用户请求异步地进行计算、传送和检索数据、显示集成的用户界面和综合使用声音和图像，这一切都可以在不依靠客户机连接的服务器或后端的情况下进行。部署RIA的好处　　对于企业来说，部署RIA的好处在于：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1&amp;lt;/strong&amp;gt;）RIA可以继续使用现有的应用程序模型（包括J2EE和.NET），因而无需大规模替换现有的Web应用程序。通过Rich&amp;nbsp;Client技术，可以轻松构建更为直观、易于使用、反应更迅速并且可以脱机使用的应用程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2&amp;lt;/strong&amp;gt;）RIA可以帮助企业提供多元化的重要业务效益，包括提高销量、提高品牌忠诚度、延长网站逗留时间、较频繁的重复访问、减少带宽成本、减少支持求助以及增强客户关系等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-19/1337388185.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

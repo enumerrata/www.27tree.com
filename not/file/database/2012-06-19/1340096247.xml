@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL触发器介绍</title>
+<content>&amp;lt;p&amp;gt;
+	一、什么是触发器？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	触发器（trigger）是为了响应某个预订时间执行的任务。具体地，此事件包括插入、修改、删除表数据，任务可以发生在事件之前、或紧随其后。这是MySQL&amp;nbsp;5新增的特性之一。虽然此功能目前很有限，但是开发人员正在努力的提高这个功能，比如最近发布的MySQL&amp;nbsp;5.1就加强了这个特性。熟悉web前台的人应该知道，javascript中有类似的事件，比如onload，click等，onload是在加载（load）之前激活的事件，click是在点击之后引发的事件，当然其也有onclick。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、触发器的作用？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、防止恶意数据带来的破坏，事实上如果我们很熟练的应用MySQL本身的特性，这一点完全可以避免，在查询之前对将要查询的SQL语句进行过滤是个好习惯，如果我们还要增加一道防线，就是再加上一个触发器了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、强制业务规则，例如在确保product表中插入产品信息时包括了一个厂商的标识符，而且这个厂商已经存储在manufacturer中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、在数据库中通过级联修改确保数据的完整性，例如在系统中删除某个厂商时，相应的删除该厂商ID所对应的所有产品（当然实际应用中并删除厂商时就删除其旗下的产品，这里只是个例子，不要误会）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、为什么使用触发器？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、审计跟踪：假设使用MySQL记录apache流量日志，但还是希望创建另外一个特殊的日志表之跟踪网站区域的流量，使你能快速的将结果列表，显示给没有耐心的主管。执行此额外的插入操作可以通过触发器自动完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、验证：可以使用触发器在更新数据之前验证数据，例如确保如何满足最低订单阈值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、强制引用完整性：根据可靠的数据库管理实践，表的关系在项目的整个生命周期中要保持稳定。与其尝试通过编程来加入所有完整性约束，不如使用触发器，有时候使用触发器来确保这些任务自动完成很有意义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	触发器的使用远远不只满足于上述目的。假设希望在公司每月收入到达100万是更新公司的网站。或者假设希望向每周旷工两天以上的员工发送电子邮件。再或者可能希望某种产品库存量偏低时通知厂商。所有的这些任务都能够很方便地俄自动完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了更好的了解触发器的使用，你需要考虑两个情景，第一个是使用“前触发器”（before&amp;nbsp;trigger），即触发器发生在事件之前，可以与javascript中on开头的事件类比，第二个使用“后触发器”（after&amp;nbsp;trigger），即触发器发生在事件之后，可以与javascript中load、click等事件相类比。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340096247.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>mysql常用命令小结</title>
+<content>&amp;lt;p&amp;gt;
+	1.查询(1)查询存在的数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;show&amp;nbsp;databases;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;选择所要的某个数据库&amp;nbsp;&amp;nbsp;use&amp;nbsp;databasename;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)查询当前数据库存在的所有的表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;show&amp;nbsp;tables;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)查询表结构
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;describe&amp;nbsp;tablename;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(4)查询表格列的属性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;show&amp;nbsp;columns&amp;nbsp;from&amp;nbsp;tableName；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(5)查询记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;name&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;where&amp;nbsp;id=xxx;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(6)查询当前时间
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;now();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;current_time;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(7)查询当前日期
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;current_date;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(8)查询当前用户
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;user();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(9)查询数据库版本
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;version();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(10)查询当前使用的数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;select&amp;nbsp;database();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(11)查询当前服务器支持哪个存储引擎
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;show&amp;nbsp;engines;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.创建(1)创建数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;database&amp;nbsp;databasename;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;database&amp;nbsp;DATABASE_NAME&amp;nbsp;default&amp;nbsp;character&amp;nbsp;set&amp;nbsp;utf8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)创建一张表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;table&amp;nbsp;tablename&amp;nbsp;(name&amp;nbsp;VARCHAR(20),&amp;nbsp;sex&amp;nbsp;CHAR(1));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;table&amp;nbsp;if&amp;nbsp;not&amp;nbsp;exists&amp;nbsp;students(……);&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//创建表是先判断表是否存在
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)创建临时表：(建立临时表linshi)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;temporary&amp;nbsp;table&amp;nbsp;linshi(name&amp;nbsp;varchar(10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(4)从已经有的表table1中复制表的结构到表table2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;table&amp;nbsp;table2&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1&amp;nbsp;where&amp;nbsp;1&amp;amp;lt;&amp;amp;gt;1;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//只复制表结构
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;create&amp;nbsp;table&amp;nbsp;table2&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table1;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//复制表结构和表中的数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(5)往表中links加入记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;insert&amp;nbsp;into&amp;nbsp;links(name,url)&amp;nbsp;values(&amp;nbsp;xiaoxiaozi&amp;nbsp;,&amp;nbsp;http://www.xiaoxiaozi.com&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;insert&amp;nbsp;into&amp;nbsp;links&amp;nbsp;set&amp;nbsp;name=&amp;nbsp;xiaoxiaozi&amp;nbsp;,url=&amp;nbsp;http://www.xiaoxiaozi.com&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.修改(1)对表重新命名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;alter&amp;nbsp;table&amp;nbsp;tablename1&amp;nbsp;rename&amp;nbsp;as&amp;nbsp;tablename2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)修改列的类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;alter&amp;nbsp;table&amp;nbsp;tablename&amp;nbsp;modify&amp;nbsp;id&amp;nbsp;int&amp;nbsp;unsigned;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//修改列id的类型为int&amp;nbsp;unsigned
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;alter&amp;nbsp;table&amp;nbsp;tablename&amp;nbsp;change&amp;nbsp;id&amp;nbsp;sid&amp;nbsp;int&amp;nbsp;unsigned;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//修改列id的名字为sid，而且把属性修改为int&amp;nbsp;unsigned
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)更新表中数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;update&amp;nbsp;tablename&amp;nbsp;set&amp;nbsp;sex=&amp;nbsp;f&amp;nbsp;&amp;nbsp;where&amp;nbsp;name=&amp;nbsp;john&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.删除(1)删除某个数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;drop&amp;nbsp;database&amp;nbsp;databasename;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//删除数据库前，没有提示
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;mysqladmin&amp;nbsp;drop&amp;nbsp;databasename;&amp;nbsp;&amp;nbsp;&amp;nbsp;//删除数据库前，有提示
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)删除某张表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;drop&amp;nbsp;table&amp;nbsp;tablename;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)清空某张表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;delete&amp;nbsp;from&amp;nbsp;tablename;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(4)删除符合条件的某些记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;delete&amp;nbsp;from&amp;nbsp;tablename&amp;nbsp;where&amp;nbsp;id=xxx;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(5)删除授权：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;revoke&amp;nbsp;all&amp;nbsp;privileges&amp;nbsp;on&amp;nbsp;*.*&amp;nbsp;from&amp;nbsp;root@”%”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;delete&amp;nbsp;from&amp;nbsp;user&amp;nbsp;where&amp;nbsp;user=”root”&amp;nbsp;and&amp;nbsp;host=”%”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;flush&amp;nbsp;privileges;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//刷新数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.备份(1)备份数据库：(将数据库test备份)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;mysqldump&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-p&amp;nbsp;test&amp;amp;gt;c:\\test.txt
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)备份表格：(备份test数据库下的mytable表格)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;mysqldump&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-p&amp;nbsp;test&amp;nbsp;mytable&amp;amp;gt;c:\\test.txt
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)将备份数据导入到数据库：(导回test数据库)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;mysql&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-p&amp;nbsp;test&amp;amp;lt;c:\\test.txt
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-25/1337925690.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

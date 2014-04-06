@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[CSS滚动条美化 基于webkit]]></title>
+  <content><![CDATA[<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">::-webkit-scrollbar{
+    padding-left:1px;
+    border-left:1px solid #d5d5d5;
+    background-color:#fafafa;
+    overflow:visible;
+    width:13px;
+}
+::-webkit-scrollbar-thumb{
+    background-color:rgba(0, 0, 0, .2);
+    background-clip:padding-box;
+    border:1px solid transparent;
+    border-left-width:2px;
+    min-height:15px;
+    box-shadow:inset 1px 1px 0 rgba(0, 0, 0, .1),inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+::-webkit-scrollbar-thumb:vertical:hover{
+    background-color:rgba(0, 0, 0, .3);
+}
+::-webkit-scrollbar-thumb:vertical:active{
+    background-color:rgba(0, 0, 0, .5);
+}
+::-webkit-scrollbar-button{
+    height:0;
+    width:0;
+}
+::-webkit-scrollbar-track{
+    background-clip:padding-box;
+    border:solid transparent;
+    border-width:0 0 0 4px;
+}
+::-webkit-scrollbar-corner{
+    background:transparent;
+}</pre>
+把代码加到样式表就可以了，表示很喜欢
+</p>
+<br>]]></content>
+  <contentx><![CDATA[::-webkit-scrollbar{
+    padding-left:1px;
+    border-left:1px solid #d5d5d5;
+    background-color:#fafafa;
+    overflo]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

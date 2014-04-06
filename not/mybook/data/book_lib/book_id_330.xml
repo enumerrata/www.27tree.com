@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[高性能Linux服务器构建实战：运维监控、性能调优与集群应用]]></title>
+  <author>高俊峰</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-04-16 23:05:50</submit-date-time>
+  <img-link>dc9a540aa8b69903574bc5d67add05bd.png</img-link>
+  <book-area>system</book-area>
+  <book-intro><![CDATA[<p>
+	本书以构建高性能Linux服务器为核心内容，从Web应用、数据备份与恢复、网络存储应用、运维监控与性能优化、集群高级应用等多个方面深入讲解了如何构建高性能的Linux服务器。全书以实战性为导向，所有内容都来自于作者多年实践经验的总结，同时从社区中收集了大量Linux运维人员遇到的有代表性的疑难问题，并给出了优秀的解决方案，实践指导意义极强。
+</p>
+<p>
+	全书分为5个部分。Web应用篇详细介绍了Nginx、Varnish和Memcached这三款Linux服务器上极为常用的Web应用软件的安装、配置、管理、使用方法、工作原理和性能调优技巧。数据备份与恢复篇首先讲述了开源备份软件bacula的使用与管理技巧，并通过实例讲解了在bacula上进行各种备份与恢复操作的具体方法；其次讲解了开源数据镜像备份工具rsync和unison的使用，并通过两个企业级案例演示了这两个工具在生产环境中的使用过程；最后讲解了如何利用ext3grep工具来恢复误删除的数据文件和MySQL数据库的方法。网络存储应用篇首先系统地讲解了网络存储技术iSCSI的配置和使用，然后讲解了分布式存储系统MFS的使用和维护。运维监控与性能优化篇通过理论与实践相结合的方法讲解了如何利用Nagios进行性能监控，以及Linux服务器的性能分析原则和优化方法。集群高级应用篇是前面内容的综合，也是本书的核心，主要讲述了如何通过LVS+heartbeat、piranha、LVS+Keepalived来构建高可用的负载均衡集群，其次讲解了红帽集群套件RHCS的配置、管理、维护和监控，然后讲解了Oracle集群解决方案，即Oracle RAC数据库的构建、使用和维护。最后以构建一个MySQL+heartbeat+DRBD+LVS集群系统的实战案例结束全书，巧妙地将本书的所有核心内容都融合到了一起。
+</p>
+<p>
+	<p>
+		高俊峰（南非蚂蚁），资深系统管理员、系统架构师、DBA和技术顾问，从事Linux+Oracle服务器系统的运维和管理多年，在系统管理、故障诊断与排除、性能调优、集群和虚拟化等方面积累了大量的实战经验。国内知名IT技术社区51CTO的博客专家和IXPUB论坛Linux版块的版主，同时还活跃于ChinaUnix和ITPUB等技术社区，在社区和论坛里发表了大量技术文章，深受欢迎。此外，他还著有畅销书《循序渐进Linux》，广获读者好评。
+	</p>
+	<p>
+		作者博客：
+	</p>
+	<p>
+		http://ixdba.blog.51cto.com
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

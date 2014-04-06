@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+sx{
+    border-color:transparent #CCC transparent transparent;
+    border-style:dashed solid dashed dashed;
+    border-width:20px;
+    display:block;
+    font-size:0;
+    height:0;
+    left:-40px;
+    line-height:0;
+    position:absolute;
+    top:12px;
+    width:0;
+}
+
+ix{
+    border-color:transparent #FFF transparent transparent;
+    border-style:dashed solid dashed dashed;
+    border-width:20px;
+    display:block;
+    font-size:0;
+    height:0;
+    left:-39px;
+    line-height:0;
+    position:absolute;
+    top:12px;
+    width:0;
+}
+.sdULpath{
+	line-height:20px;
+font-size:14px;
+}

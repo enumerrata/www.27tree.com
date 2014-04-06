@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>78</uid>
+  <datetime>2013-03-03 22:32:40</datetime>
+  <title><![CDATA[来一道概率题]]></title>
+  <content><![CDATA[&nbsp;假设发现了一颗不均匀的骰子，由于它，使得在进行掷一对骰子的试验中时，在该样本空间中出现偶数和（如（1，1），（1，3）等）的次数比奇数和（如（2，1），（2，3）等）的次数多一倍，求点数和小于6和点数、等于8的、点数和是偶数的概率。]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

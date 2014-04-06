@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>专家预言：PHP将比Java更受欢迎</title>
+<content>&amp;lt;p&amp;gt;
+	Netscape共同创办人Marc&amp;nbsp;Andreessen在周三（10/19）举行的Zend/PHP会议上预言，简单的PHP描述性语言撰写工具，在Web-based应用程序的开发上，将会比Java更受欢迎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在升阳（Sun&amp;nbsp;Microsystems）于1995年发表Java之后，由于Java的友善接口让工程师设计软件更为容易，受到工程师欢迎，但十年下来Java陆陆续续被加入了强大的功能，反而使它变得不容易操作。Marc&amp;nbsp;Andreessen指出，现在的Java可能比C++更难学，在此同时，PHP传承了Java的简单精神，并创造一个比Java更容易使用的程序开发环境。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP为一开放原始码项目，其中包括可以简化程序的描述性语言引擎以及一个大的链接库，也有专门开发PHP的公司，如Zend就有销售PHP套装产品、程序撰写工具及技术支持服务。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Andreessen的看法可能很难博得Java拥护者的认同，因为现阶段全球仍有数百万专研Java的工程师，也有数百家公司参与Java&amp;nbsp;Community&amp;nbsp;Process（JCP），在JCP中共同主掌Java的命运。但是，就算是大力扶植Java、甚至以Java为WebSphere服务器软件核心的IBM，也认为PHP的前途会比Java来得好。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	IBM新网络科技事业处副总裁Rod&amp;nbsp;Smith就说，「简单」是PHP最大的特色，而且它不会为了与其它语言竞争而加入新的语言功能，Java显然就不是这么做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	而且，PHP的势力也不小，目前约有2200万的网站采用PHP，包括Yahoo!、Lufthansa等知名网站，数量并持续增加中，并有450个软件工程师有权去审核在PHP软件上的任何变动。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与Java相较，PHP可用范畴限制较多，它仅能用在网络服务器上，不像Java，同时可用在网络服务器、个人计算机、手机、芯片卡或其它装置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java和PHP除了在某些方面相互竞争之外，某个程度来看，也在彼此靠陇。甲骨文产品策略副总Ken&amp;nbsp;Jacobs表示，即使甲骨文（Oracle）销售同时可执行Java及PHP的Java服务器与数据库软件，但正为Java加上一项额外的新功能，让这两个软件项目可以协同运作；更具体的说，Java规格需求223（JSR&amp;nbsp;223）将会「协助建构在Java社群与PHP社群之间的那座桥梁」。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	日前才发表可以分享照片等内容网站「Ning」的Marc&amp;nbsp;Andreessen也说，现在Ning也同时执行Java与PHP，其中核心系统是由Java组成，比起该站所有可看见的应用程序都是由PHP写成，Java更像是操作系统层级。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	就像其它诸如Linux及Apache的开放原始码项目，PHP目前也受到计算机工业主要大厂的庇佑，像IBM跟Oracle都致力开发让PHP软件可以撷取旗下数据库的程序。事实上，IBM与Oracle的行为就像在为PHP背书，连这两大厂都支持PHP，证明PHP也许就是个好东西。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-03/1338711610.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

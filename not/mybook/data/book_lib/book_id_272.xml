@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Cocoa Fundamentals Guide]]></title>
+  <author>Apple</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-01-17 12:03:03</submit-date-time>
+  <img-link>f1296c48c359ccf707f14399f1e2418a.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	To a developer new to it, Cocoa might seem like a vast, uncharted new world of technology. The features, tools, concepts, designs, terminology, programming interfaces, and even programming language of this development environment may all be unfamiliar. Cocoa Fundamentals Guide eases the initial steps to Cocoa proficiency. It provides an orientation to the technological landscape that is Cocoa. It introduces its features, basic concepts, terminology, architectures, and underlying design patterns.
+</p>
+<p>
+	You can build Cocoa applications for two platforms: the OS X operating system and iOS, the operating system for Multi-Touch devices such as iPhone, iPad, and iPod touch. Cocoa Fundamentals Guide presents Cocoa-related information for both platforms, integrating the information as much as possible and pointing out platform differences when necessary. The intent is that, as you become familiar with Cocoa for one platform, it will become easier to transfer that knowledge to software development for the other platform.Cocoa Fundamentals Guide is structured to lead gradually to a general understanding of what Cocoa development is all about. It starts with the most basic information—what Cocoa is in terms of its components and capabilities—and ends with an examination of its major architectures. Each chapter builds on what was explained in previous chapters. Each section gives the important details about a subject, yet describes it at only a high level. A section frequently refers you to another document that offers a more comprehensive description.
+</p>
+<p>
+	In the set of Cocoa developer documentation, Cocoa Fundamentals Guide is the conceptual entry-point document. It is prerequisite reading for other essential Cocoa guides, such as Cocoa Drawing Guide, View Programming Guide, and iOS Application Programming Guide. Cocoa Fundamentals Guide assumes little in terms of prerequisite reading, but readers should be proficient C programmers and should be familiar with the capabilities and technologies of the platform they will be developing for. For OS X, you can acquire this familiarity by reading Mac Technology Overview; for iOS, read iOS Technology Overview.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

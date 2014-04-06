@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Expert CSharp Business Objects]]></title>
+  <author>Rockford Lhotka</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-11 19:26:53</submit-date-time>
+  <img-link>40cde3822c71f3aaaae34f0760d2759e.png</img-link>
+  <book-area>csharp</book-area>
+  <book-intro><![CDATA[<p>
+	Do you want to create .NET applications that provide high performance and scalability? Do you want to employ object–oriented programming techniques in a distributed environment? Do <strong>you want to maximize the reuse and maintainability of your code?&nbsp;</strong>
+</p>
+<p>
+	Then this book is for you.
+</p>
+<p>
+	In Rockford Lhotka’s Expert C# 2008 Business Objects, you’ll learn how to use advanced .NET Framework capabilities alongside OO design and programming to create scalable, maintainable object–oriented applications. Better still, this book includes CSLA .NET 3.6, a widely used framework on which you can base your application development. By using the concepts and framework in the book, you can focus more on your business issues and less on technology.
+</p>
+<p>
+	Using VS 2008 and C# 3.0, Rockford Lhotka shows you how CSLA .NET 3.6 allows great flexibility in object persistence, so business objects can use virtually any data sources available. The CSLA framework supports 1–, 2– and n–tier models through the concept of mobile objects. This provides the flexibility to optimize performance, scalability, security, and fault tolerance with no changes to code in the UI or business objects.
+</p>
+<p>
+	Business objects based on CSLA.NET 3.6 automatically gain many advanced features that simplify the creation of Windows forms, web forms, WPF, WCF, WF, and web services interfaces, and LINQ.
+</p>
+<p>
+	Who is this book for
+</p>
+<p>
+	This book is for .NET developers using VS 2008 who want to create .NET applications that provide high performance and scalability, employing object–oriented programming techniques in a distributed environment.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

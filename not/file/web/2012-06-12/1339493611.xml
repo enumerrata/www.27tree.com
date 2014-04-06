@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>DOM方法创建和修改表格</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;amp;lt;table&amp;amp;gt;&amp;lt;/strong&amp;gt;元素是HTML中最复杂的结构之一。要想创建表格，一般都必须涉及表示表格行、单元格、表头等方面的标签。由于涉及的标签多，因而使用核心DOM方法创建和修改表格往往都免不了要编写大量的代码。假设我们要使用DOM来创建下面的HTML表格：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;amp;lt;table&amp;nbsp;border=\"1\"&amp;nbsp;width=\"100%\"&amp;amp;gt;
+&amp;amp;lt;tbody&amp;amp;gt;
+&amp;amp;lt;tr&amp;amp;gt;
+&amp;amp;lt;td&amp;amp;gt;Cell&amp;nbsp;1,1&amp;amp;lt;/td&amp;amp;gt;
+&amp;amp;lt;td&amp;amp;gt;Cell&amp;nbsp;2,1&amp;amp;lt;/td&amp;amp;gt;
+&amp;amp;lt;/tr&amp;amp;gt;
+&amp;amp;lt;tr&amp;amp;gt;
+&amp;amp;lt;td&amp;amp;gt;Cell&amp;nbsp;1,2&amp;amp;lt;/td&amp;amp;gt;
+&amp;amp;lt;td&amp;amp;gt;Cell&amp;nbsp;2,2&amp;amp;lt;/td&amp;amp;gt;
+&amp;amp;lt;/tr&amp;amp;gt;
+&amp;amp;lt;/tbody&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;amp;lt;/table&amp;amp;gt;要是用核心DOM方法创建这些元素，得需要像下面这么多的代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;//创建table
+var&amp;nbsp;table&amp;nbsp;=&amp;nbsp;document.createElement(\"table\");
+table.border&amp;nbsp;=&amp;nbsp;1;
+table.width&amp;nbsp;=&amp;nbsp;\"100%\";
+//创建tbody
+var&amp;nbsp;tbody&amp;nbsp;=&amp;nbsp;document.createElement(\"tbody\");
+table.appendChild(tbody);
+//创建第一行
+var&amp;nbsp;row1&amp;nbsp;=&amp;nbsp;document.createElement(\"tr\");
+tbody.appendChild(row1);
+var&amp;nbsp;cell1_1&amp;nbsp;=&amp;nbsp;document.createElement(\"td\");
+cell1_1.appendChild(document.createTextNode(\"Cell&amp;nbsp;1,1\"));
+row1.appendChild(cell1_1);
+var&amp;nbsp;cell2_1&amp;nbsp;=&amp;nbsp;document.createElement(\"td\");
+cell2_1.appendChild(document.createTextNode(\"Cell&amp;nbsp;2,1\"));
+row1.appendChild(cell2_1);
+
+//创建第二行
+var&amp;nbsp;row2&amp;nbsp;=&amp;nbsp;document.createElement(\"tr\");
+tbody.appendChild(row2);
+var&amp;nbsp;cell1_2&amp;nbsp;=&amp;nbsp;document.createElement(\"td\");
+cell1_2.appendChild(document.createTextNode(\"Cell&amp;nbsp;1,2\"));
+row2.appendChild(cell1_2);
+var&amp;nbsp;cell2_2&amp;nbsp;=&amp;nbsp;document.createElement(\"td\");
+cell2_2.appendChild(document.createTextNode(\"Cell&amp;nbsp;2,2\"));
+row2.appendChild(cell2_2);
+//将表格插入到文档主题中
+document.body.appendChild(table);&amp;lt;/pre&amp;gt;
+		&amp;lt;p&amp;gt;
+			显然，DOM代码很长，还有点不太好懂。为了方便构建表格，HTML&amp;nbsp;DOM&amp;nbsp;还为&amp;amp;lt;table&amp;amp;gt;、&amp;amp;lt;tbody&amp;amp;gt;和&amp;amp;lt;tr&amp;amp;gt;元素添加了一些属性和方法。
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			&amp;lt;br&amp;nbsp;/&amp;gt;
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			为&amp;amp;lt;table&amp;amp;gt;元素添加的属性和方法如下：
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			caption:保存这对&amp;amp;lt;caption&amp;amp;gt;元素（如果有）的指针；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			tBodies:是一个&amp;amp;lt;tbody&amp;amp;gt;元素的HTMLCollection；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			tFoot：保存着对&amp;amp;lt;tfoot&amp;amp;gt;元素（如果有）的指针；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			tHead:保存着对&amp;amp;lt;thead&amp;amp;gt;元素（如果有）的指针
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			rows:是一个表格中所有行的HTMLCollection；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			createTHead():创建&amp;amp;lt;thead&amp;amp;gt;元素，将其放到表格中，返回引用；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			createTFoot():创建&amp;amp;lt;tfoot&amp;amp;gt;元素，将其放到表格中，返回引用；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			createCaption()；创建&amp;amp;lt;caption&amp;amp;gt;元素，将其放到表格中，返回引用；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			deleteTHead()；删除&amp;amp;lt;thead&amp;amp;gt;元素；deleteTFoot()；删除&amp;amp;lt;tfoot&amp;amp;gt;元素；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			deleteCaption()：删除&amp;amp;lt;caption&amp;amp;gt;元素；deleteRow(pos)：删除指定位置的行；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			insertRow(pos)：向rows集合中的指定位置插入一行。
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			&amp;lt;br&amp;nbsp;/&amp;gt;
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			为&amp;amp;lt;tbody&amp;amp;gt;元素添加属性和方法有：
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			rows：保存着&amp;amp;lt;tbody&amp;amp;gt;元素中行的HTMLCollection；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			deleteRow(pos)：删除制定位置的行；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			insertRow(pos)：向rows集合中的指定位置插入一行，返回对新插入行的引用。
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			&amp;lt;br&amp;nbsp;/&amp;gt;
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			为&amp;amp;lt;tr&amp;amp;gt;元素添加的属性和方法如下：
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			cells:保存着&amp;amp;lt;tr&amp;amp;gt;元素中单元格的HTMLCollection；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			deleteCell(pos):删除指定位置的单元格；
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			insertCell(pos)：向cells集合中的指定位置插入一个单元格，返回新插入单元格的引用。
+		&amp;lt;/p&amp;gt;
+		&amp;lt;p&amp;gt;
+			使用这些属性和方法，可以极大的减少创建报个所需要的代码数量。例如，使用这些属性和方法可以将前面的代码重写如下：
+		&amp;lt;/p&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;//创建table
+var&amp;nbsp;table&amp;nbsp;=&amp;nbsp;document.createElement(\"table\");
+table.border&amp;nbsp;=&amp;nbsp;1;
+table.width&amp;nbsp;=&amp;nbsp;\"100%\";
+
+//创建tbody
+var&amp;nbsp;tbody&amp;nbsp;=&amp;nbsp;document.createElement(\"tbody\");
+table.appendChild(tbody);
+tbody.insertRow(0);
+tbody.rows[0].insertCell(0);
+tbody.rows[0].cells[0].appendChild(document.createTextNode(\"Cell&amp;nbsp;1,1\"));
+tbody.rows[0].insertCell(1);
+tbody.rows[0].cells[1].appendChild(document.createTextNode(\"Cell&amp;nbsp;2,1\"));
+
+//创建第一行
+tbody.insertRow(1);
+tbody.rows[1].insertCell(0);
+tbody.rows[1].cells[0].appendChild(document.createTextNode(\"Cell&amp;nbsp;1,2\"));
+tbody.rows[1].insertCell(1);
+tbody.rows[1].cells[1].appendChild(document.createTextNode(\"Cell&amp;nbsp;2,2\"));
+
+//将表格添加到文档主题中
+document.body.appendChild(table);&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	在这次代码中，创建&amp;amp;lt;table&amp;amp;gt;和&amp;amp;lt;tbody&amp;amp;gt;的代码没有变化。不同是创建两行的部分，其中使用了HTML&amp;nbsp;DOM定义的表格属性和方法。在创建第一行时，通过&amp;amp;lt;tbody&amp;amp;gt;元素调用了insertRow()方法，传入了参数0——表示应该插入的行放在什么位置上。执行这一样的代码后，就会自动创建一行并将其插入到&amp;amp;lt;tbody&amp;amp;gt;元素的位置0上。因此马上就可以通过tbody.rows[0]来引用新插入的行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	创建单元格的方式也十分相似，即通过&amp;amp;lt;tr&amp;amp;gt;元素调用insertCell()方法并传入放置单元格的位置。然后，就可以通过tbody.rows[0].cells[0]来引用新插入的单元格，因为新创建的单元格被插入到了这一行的位置0上
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-12/1339493611.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

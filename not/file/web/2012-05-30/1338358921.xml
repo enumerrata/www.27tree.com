@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>全球75%网站采用开源技术 4成用阿帕奇服务器</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0530/1338356723850.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	全球75%网站采用开源技术（腾讯科技配图）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0530/1338356723375.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	网站服务器使用调查（腾讯科技配图）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	腾讯科技讯&amp;nbsp;(汤姆)&amp;nbsp;北京时间5月29日消息，据国外媒体报道，瑞典网站监测服务公司Pingdom日前发布了最近网页软件使用报告。调査结果显示，在全球排名前1万位的网站中，开源软件的使用率高达75%。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Pingdom此次调査的对象主要是Alexa全球排名最高的1万个网站。&amp;lt;strong&amp;gt;Pingdom的调查结果显示，全球最多人使用的网站服务器依然是阿帕奇HTTP&amp;nbsp;Server，占39.8%；其次是俄罗斯公司开发的Nginx，Nginx由Igor&amp;nbsp;Sysoev为俄罗斯访问量第二的&amp;nbsp;Rambler.ru网站而开发。Nginx第一个公开版本0.1.0发布于2004年10月4日。目前，其市场占有率已达到21.6%。&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其他能够同Apache和Nginx进行抗争还有微软的互联网信息服务IIS（Internet&amp;nbsp;Information&amp;nbsp;Services），其市场占有率达到14%，但IIS并不属于开源类服务软件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其他出现在全球排名最高的1万个网站中网页服务器还包括有：谷歌&amp;nbsp;Web&amp;nbsp;Server、lighttp、阿帕奇的Tomcat、liteSpeed、Caucho公司的应用服务器Resin、Zeus,、Jetty和Tengine。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显然，阿帕奇依然是这一领域市场占有率最高的品牌，俄罗斯的Nginx在过去几年的发展也十分迅速，一举超越了原本排名第二的微软IIS服务。但需要指出的是，由于Nginx的服务包括高性能HTTP&amp;nbsp;和反向代理服务（reverse&amp;nbsp;proxy），因此Nginx的部分流量应当归于阿帕奇旗下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调查还显示，在目前全球排名前1万位的网站中，开源软件的使用率已高达74.6%，不使用开源软件网站占19.4%。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在此次调查中Pingdom删除了这1万个网站中部分没有反馈调查结果的统计，如果Pingdom将这部分数字统计在内的话，使用开源软件网站的占有率将降低为66.8%，而不使用开源软件网站的占有率将上升至19.4%。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-30/1338358921.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

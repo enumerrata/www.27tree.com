@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言实现的XML解析器</title>
+<content>&amp;lt;p&amp;gt;
+	最近做嵌入式开发，板子上面需要有解析XML的功能，理所当然地我就去网上找开源的来用。结果找来的要不是C++的，要不就是超级复杂的。像libxml，我统计了下解析一个40几KB的XML文件，居然动态申请内存100多次，对于没有mmu功能的arm7，真是无福消受了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以，我只能自己写一个来用了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我写的这个xml解析器，非常简单，核心代码只有600多行。当然，功能也相对弱些，只支持ansi编码的xml文件，只能解析，不能生成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整个解析器只用到了&amp;nbsp;若干条&amp;nbsp;EBNF文法&amp;nbsp;和&amp;nbsp;一个DFA状态机&amp;nbsp;（用来跳过注释的），&amp;nbsp;采用了递归下降的分析方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整个解析过程没有动态申请内存，不会造成内存碎片（特别适应于没有mmu的设备），&amp;nbsp;当然，在开始解析之前，还是需要提供一片缓冲给解析器用的，最后生成的XML树，就放在这片缓冲里面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	接口如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;&amp;nbsp;/******************************************************&amp;nbsp;
+/*&amp;nbsp;minixml.h&amp;nbsp;
+/*&amp;nbsp;
+/*&amp;nbsp;author:@#$%^&amp;amp;*&amp;nbsp;
+/*&amp;nbsp;
+/*&amp;nbsp;about:&amp;nbsp;
+/*&amp;nbsp;该文件提供根据解析XML文件功能&amp;nbsp;
+/*&amp;nbsp;
+/*&amp;nbsp;
+/*&amp;nbsp;sample:&amp;nbsp;
+/*&amp;nbsp;
+/*&amp;nbsp;支持平台:&amp;nbsp;windows&amp;nbsp;,&amp;nbsp;linux&amp;nbsp;2.4,2.6&amp;nbsp;uclinux&amp;nbsp;
+/*&amp;nbsp;[in]&amp;nbsp;表示是输入参数&amp;nbsp;
+/*&amp;nbsp;[out]&amp;nbsp;表示是输出参数&amp;nbsp;
+/******************************************************/&amp;nbsp;
+#ifndef&amp;nbsp;_MINIXML_H_08_17_&amp;nbsp;
+#define&amp;nbsp;_MINIXML_H_08_17_&amp;nbsp;
+#define&amp;nbsp;_CRT_SECURE_NO_DEPRECATE&amp;nbsp;
+
+#if&amp;nbsp;defined&amp;nbsp;(__cplusplus)&amp;nbsp;&amp;brvbar;&amp;brvbar;&amp;nbsp;defined&amp;nbsp;(c_plusplus)&amp;nbsp;
+extern&amp;nbsp;\"C\"&amp;nbsp;{&amp;nbsp;
+#endif&amp;nbsp;
+
+struct&amp;nbsp;_MINI_XML_ATTRI;&amp;nbsp;
+struct&amp;nbsp;_MINI_XML_NODE;&amp;nbsp;
+
+/*&amp;nbsp;记录一个属性信息&amp;nbsp;*/&amp;nbsp;
+typedef&amp;nbsp;struct&amp;nbsp;_MINI_XML_ATTRI&amp;nbsp;
+{&amp;nbsp;
+char*&amp;nbsp;name;&amp;nbsp;/*&amp;nbsp;属性名&amp;nbsp;*/&amp;nbsp;
+char*&amp;nbsp;value;&amp;nbsp;/*&amp;nbsp;属性值&amp;nbsp;*/&amp;nbsp;
+struct&amp;nbsp;_MINI_XML_ATTRI*&amp;nbsp;next;&amp;nbsp;/*&amp;nbsp;指向下一个属性&amp;nbsp;*/&amp;nbsp;
+}&amp;nbsp;MINI_XML_ATTRI;&amp;nbsp;
+
+/*&amp;nbsp;记录一个XML节点信息&amp;nbsp;*/&amp;nbsp;
+typedef&amp;nbsp;struct&amp;nbsp;_MINI_XML_NODE&amp;nbsp;
+{&amp;nbsp;
+char*&amp;nbsp;name;&amp;nbsp;/*&amp;nbsp;节点名&amp;nbsp;*/&amp;nbsp;
+char*&amp;nbsp;value;&amp;nbsp;/*&amp;nbsp;节点值&amp;nbsp;*/&amp;nbsp;
+
+MINI_XML_ATTRI*&amp;nbsp;attri_list;&amp;nbsp;/*&amp;nbsp;属性列表&amp;nbsp;*/&amp;nbsp;
+struct&amp;nbsp;_MINI_XML_NODE*&amp;nbsp;parent;&amp;nbsp;/*&amp;nbsp;父节点&amp;nbsp;*/&amp;nbsp;
+struct&amp;nbsp;_MINI_XML_NODE*&amp;nbsp;child;&amp;nbsp;/*&amp;nbsp;子节点,&amp;nbsp;若没有则为空&amp;nbsp;*/&amp;nbsp;
+struct&amp;nbsp;_MINI_XML_NODE*&amp;nbsp;next;&amp;nbsp;/*&amp;nbsp;同层下一节点&amp;nbsp;*/&amp;nbsp;
+}&amp;nbsp;MINI_XML_NODE;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;///&amp;nbsp;说明&amp;nbsp;:&amp;nbsp;解析XML文件，返回XML的根节点&amp;nbsp;
+///&amp;nbsp;参数&amp;nbsp;:&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;xml&amp;nbsp;xml文件路径&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;buffer&amp;nbsp;供解析用的缓冲&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;buffer_len&amp;nbsp;缓冲大小(单位:字节)&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;error_reason&amp;nbsp;执行出错时保存错误原因&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;root&amp;nbsp;XML的根节点&amp;nbsp;[out]&amp;nbsp;
+///&amp;nbsp;返回&amp;nbsp;:&amp;nbsp;成功&amp;nbsp;返回0&amp;nbsp;，失败返回&amp;nbsp;-1&amp;nbsp;
+///&amp;nbsp;说明&amp;nbsp;:&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;问&amp;nbsp;:供解析用的缓冲应该取多大比较合适呢?&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;答&amp;nbsp;:供解析用的缓冲主要用来存放XML树,&amp;nbsp;所以&amp;nbsp;buffer_len&amp;nbsp;&amp;amp;gt;=&amp;nbsp;(XML文件的大小)&amp;nbsp;*&amp;nbsp;2&amp;nbsp;即可&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;
+
+int&amp;nbsp;mini_parse_xml&amp;nbsp;(char*&amp;nbsp;xml,&amp;nbsp;
+char*&amp;nbsp;buffer,&amp;nbsp;int&amp;nbsp;buffer_len,&amp;nbsp;
+char&amp;nbsp;error_reason[128],&amp;nbsp;
+MINI_XML_NODE**&amp;nbsp;root);&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;///&amp;nbsp;说明&amp;nbsp;:&amp;nbsp;查找特定节点的子节点&amp;nbsp;
+///&amp;nbsp;参数&amp;nbsp;:&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;father&amp;nbsp;父结点&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;name&amp;nbsp;子孩子节点名&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;child&amp;nbsp;子节点&amp;nbsp;[out]&amp;nbsp;
+
+int&amp;nbsp;mini_find_child&amp;nbsp;(MINI_XML_NODE*&amp;nbsp;father,&amp;nbsp;char*&amp;nbsp;name,&amp;nbsp;MINI_XML_NODE**&amp;nbsp;child);&amp;nbsp;
+
+////////////////////////////////////////////////////&amp;nbsp;
+///&amp;nbsp;说明&amp;nbsp;:&amp;nbsp;查找特定节点的属性值&amp;nbsp;
+///&amp;nbsp;参数&amp;nbsp;:&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;node&amp;nbsp;节点&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;name&amp;nbsp;属性名&amp;nbsp;[in]&amp;nbsp;
+///&amp;nbsp;:&amp;nbsp;value&amp;nbsp;属性值&amp;nbsp;[out]&amp;nbsp;
+
+int&amp;nbsp;mini_find_attribute&amp;nbsp;(MINI_XML_NODE*&amp;nbsp;node,&amp;nbsp;char*&amp;nbsp;name,&amp;nbsp;char**&amp;nbsp;value);&amp;nbsp;
+
+////////////////////////////////////////////////////&amp;nbsp;
+///&amp;nbsp;说明&amp;nbsp;:&amp;nbsp;打印XML树，供调试用&amp;nbsp;
+int&amp;nbsp;mini_print_tree&amp;nbsp;(MINI_XML_NODE*&amp;nbsp;root&amp;nbsp;,&amp;nbsp;int&amp;nbsp;layer);&amp;nbsp;
+
+#if&amp;nbsp;defined&amp;nbsp;(__cplusplus)&amp;nbsp;&amp;brvbar;&amp;brvbar;&amp;nbsp;defined&amp;nbsp;(c_plusplus)&amp;nbsp;
+}&amp;nbsp;
+#endif&amp;nbsp;
+#endif&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-14/1339660804.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

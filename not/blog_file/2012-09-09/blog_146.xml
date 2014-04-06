@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-09 22:53:51</datetime>
+  <title>2011年使用率增长最快的十大Web技术</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	W3techs网站评出了2011年十大使用增速最快的Web技术，本文对其进行编译供各位参考。注意，该评选结果是在针对前100万流行网站(根据Alexa值统计)进行调查统计出的，点击这里查看详细统计信息。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	以下是2011年前100万流行网站中使用率增长最多的10大Web技术。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;1.&amp;nbsp;jQuery&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	jQuery在前100万流行网站选择中新增了惊人的145&amp;nbsp;300个名额。也就是，在过去的一年中，每天都有398个网站开始使用它。jQuery目前在所有网站中的使用率已达到了42.8%。其市占率更是达到了84.1%，许多人都将它视为JavaScript库的事实标准。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;2.&amp;nbsp;UTF-8&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	UTF-8在去年的榜单中居于榜首地位，而且也正变得越来越流行。去年有82&amp;nbsp;6000个新增网站选择使用它。目前已有超过2/3的网站将字符编码切换为UTF-8。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3.&amp;nbsp;Google&amp;nbsp;Analytics&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Google&amp;nbsp;Web&amp;nbsp;Analystic工具现在已被超过一半的网站使用，在去年的100万名单中它收获了57&amp;nbsp;900个新名额。并不是所有的私密访问者都对此欢迎，但它确实是一款很好的Google工具。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;4.&amp;nbsp;Nginx&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Nginx现在已有超过10%的网站在使用(在前1000个流行网站中则达到了25%的份额)。2011年有41&amp;nbsp;200个网站开始选择它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;5.&amp;nbsp;WordPress&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	WordPress的用户基础在去年又增加了26&amp;nbsp;800个名单，并且继续在CMS网站中居于主导地位，占据54%多的市场。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;6.&amp;nbsp;JavaScript&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	JavaScript一直以来都是最重要的Web客户端编程语言。在2011年有26&amp;nbsp;500个网站开始使用它。不过仍有8.9%的网站没有使用JavaScript，实在令人惊讶。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;7.&amp;nbsp;XHTML&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在2009年我曾预言XHTML将会出现衰落，我错了。XHTML基础仍然广泛，去年有26&amp;nbsp;400个新网站使用了它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;8.&amp;nbsp;PHP&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	超过77%的网站是用PHP编写的。在这100万网站名单中使用它开发的网站比前年多了20&amp;nbsp;000个。CMS系统的使用增长造就了这一趋势，在14个顶级的CMS系统中有13个即是由PHP编写。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;9.&amp;nbsp;Ubuntu&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Ubuntu连续第二次出现在这份名单中，它是增长最快的在Web&amp;nbsp;服务器中使用的Linux发行版，2011年它收获了19&amp;nbsp;500个生力军。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;10.&amp;nbsp;Google&amp;nbsp;AdSense&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	榜单中的第二项Google技术，网络广告中的霸主。它占据了近80%的市场份额，去年又有13&amp;nbsp;000个网站开始使用它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	注意，Google&amp;nbsp;+1按钮由于是在2011年刚推出的，所以没有出现在这份名单中(尽管在前100万流行网站中已经有十分之一使用了它，如果入选它足以排至第二);同样地Facebook分享按钮也没有入选。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	此外，在这十大榜单之外我们还注意到了两个有趣的事情，分享给大家：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在100万流行网站中有4000个新增加的巴西顶级域名(.br)，它也是2011年增速最快的顶级域名。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	俄语是2011年成长最快的网站(内容)语言，在2011年中新增了7&amp;nbsp;200个俄语网站。
+&lt;/p&gt;</content>
+  <contentx>W3techs网站评出了2011年十大使用增速最快的Web技术，本文对其进行编译供各位参考。注意，该评选结果是在针对前100万流行网站(根据Alexa值统计)进行调查统计出的，点击这里查看详细统计信息。
+
+
+	以下是2011年前100万流行网站中使用率增长最多的10大Web技术。
+
+
+	1. jQuery
+
+
+	jQuery在前100万流行网站选择中新增了惊</contentx>
+  <tags>_null_</tags>
+</root>

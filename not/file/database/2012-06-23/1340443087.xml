@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL数据库锁机制相关原理简介</title>
+<content>&amp;lt;p&amp;gt;
+	不同于行级或页级锁定的选项：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;版本(例如，为并行的插入在MySQL中使用的技术)，其中可以一个写操作，同时有许多读取操作。这明数据库或表支持数据依赖的不同视图，取决于访问何时开始。其它共同的术语是“时间跟踪”、“写复制”或者“按需复制”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;按需复制在许多情况下优先于页级或行级锁定。然而，在最坏的情况下，它可能比使用常规锁定使用多的内存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;除了行级锁定外，你可以使用应用程序级锁定，例如在MySQL中使用GET_LOCK()和RELEASE_LOCK()。这些是建议性锁定，它们只能在运行良好的应用程序中工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为达到最高锁定速度，除InnoDB&amp;nbsp;和BDB&amp;nbsp;之外，对所有存储引擎，MySQL使用表锁定(而不是页、行或者列锁定)。对于InnoDB&amp;nbsp;和BDB&amp;nbsp;表，如果你用LOCK&amp;nbsp;TABLES显式锁定表，MySQL只使用表锁定;如果你不使用LOCK&amp;nbsp;TABLES，因为&amp;nbsp;InnoDB&amp;nbsp;使用自动行级锁定而BDB&amp;nbsp;使用页级锁定来保证事务隔离。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是对于大表，对于大多数应用程序，表锁定比行锁定更好，但存在部分缺陷。表锁定使许多线程同时从一个表中进行读取操作，但如果一个线程想要对表进行写操作，它必须首先获得独占访问。更新期间，所有其它想要访问该表的线程必须等待直到更新完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表更新通常情况认为比表检索更重要，因此给予它们更高的优先级。这应确保更新一个表的活动不能“饿死”，即使该表上有很繁重的SELECT&amp;nbsp;活动。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表锁定在这种情况下会造成问题，例如当线程正等待，因为硬盘已满并且在线程可以处理之前必须有空闲空间。在这种情况下，所有想要访问出现问题的表的线程也被设置成等待状态，直到有更多的硬盘空间可用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表锁定在下面的情况下也存在问题：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;一个客户发出长时间运行的查询。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;然后，另一个客户对同一个表进行更新。该客户必须等待直到SELECT完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;另一个客户对同一个表上发出了另一个&amp;nbsp;SELECT&amp;nbsp;语句。因为UPDATE比&amp;nbsp;SELECT&amp;nbsp;优先级高，该SELECT&amp;nbsp;语句等待UPDATE完成，并且等待第1个&amp;nbsp;SELECT&amp;nbsp;完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面描述了一些方法来避免或减少表锁定造成的竞争：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;试图使&amp;nbsp;SELECT&amp;nbsp;语句运行得更快。可能必须创建一些摘要(summary)表做到这点。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;用–low-priority-updates启动mysqld。这将给所有更新(修改)一个表的语句以比SELECT语句低的优先级。在这种情况下，在先前情形的第2个SELECT语句将在UPDATE语句前执行，而不需要等候第1个&amp;nbsp;SELECT&amp;nbsp;完成。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;可以使用SET&amp;nbsp;LOW_PRIORITY_UPDATES=1语句指定具体连接中的所有更新应使用低优先级。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;可以用LOW_PRIORITY属性给与一个特定的INSERT、UPDATE或DELETE语句较低优先级。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;可以用HIGH_PRIORITY属性给与一个特定的SELECT语句较高优先级。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;为max_write_lock_count系统变量指定一个低值来启动mysqld来强制MySQL在具体数量的插入完成后临时提高所有等待一个表的SELECT&amp;nbsp;语句的优先级。这样允许在一定数量的WRITE锁定后给出READ锁定。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;如果你有关于INSERT结合SELECT的问题，切换到使用新的MyISAM表，因为它们支持并发的SELECT和INSERT。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;如果你对同一个表混合插入和删除，INSERT&amp;nbsp;DELAYED将会有很大的帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;如果你对同一个表混合使用&amp;nbsp;SELECT&amp;nbsp;和DELETE&amp;nbsp;语句出现问题，DELETE&amp;nbsp;的LIMIT&amp;nbsp;选项可以有所帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;对&amp;nbsp;SELECT&amp;nbsp;语句使用SQL_BUFFER_RESULT可以帮助使表锁定时间变短。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;可以更改mysys/thr_lock.c中的锁代码以使用单一的队列。在这种情况下，写锁定和读锁定将具有相同的优先级，对一些应用程序会有帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里是一些MySQL中表锁定相关的技巧：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;如果不混合更新与需要在同一个表中检查许多行的选择，可以进行并行操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;可以使用&amp;nbsp;LOCK&amp;nbsp;TABLES&amp;nbsp;来提高速度，因为在一个锁定中进行许多更新比没有锁定的更新要快得多。将表中的内容切分为几个表也可以有所帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·&amp;nbsp;如果在MySQL中表锁定时遇到速度问题，可以将表转换为&amp;nbsp;InnoDB&amp;nbsp;或BDB&amp;nbsp;表来提高性能。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-23/1340443087.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

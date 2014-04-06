@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[php的包含文件到底是用什么命令，头都大了]]></title>
+  <content><![CDATA[<p>
+	到底是用
+</p>
+<p>
+	include&nbsp;
+</p>
+<p>
+	还是
+</p>
+<p>
+	include_once&nbsp;
+</p>
+<p>
+	还是
+</p>
+<p>
+	require
+</p>
+<p>
+	还是
+</p>
+<p>
+	require_once 啊 。。。。。。。。。
+</p>
+<p>
+	这几个到底有什么区别啊，搞不懂，求大神来解答。
+</p>]]></content>
+  <tags>技术问题|PHP|JavaScript</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

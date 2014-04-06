@@ -1,0 +1,439 @@
+<__cache@1389694652-@1389698252@2web__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            Web前端开发_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=web />
+                    <input type="hidden" id="pages" value=2/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/web/'>Web前端开发</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/web.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">web本意是蜘蛛网和网的意思。现广泛译作网络、互联网等技术领域。表现为三种形式，即超文本(Hypertext)、超媒体(Hypermedia)、超文本传输协议(Http)等。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-html5/>[HTML4/5]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-15/1339742777.html">
+        &nbsp;HTML发展历程    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;这篇文章...应该是用翻译器翻译的吧？还是...文章中的“得”频频出错，另外“欣赏器”这种说法，为什么不说是“浏览器”呢？</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-26/1340685984.html">
+        &nbsp;.Is() VS .HasClass()    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-11/1339350787.html">
+        &nbsp;Jquery的自适应宽度圆角按钮    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/266">%E5%95%8A%E5%93%A6</a>:&nbsp;按钮我都没有看到哦？</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/web-css/" class="borderR15 sband">CSS2/3</a><a href="/art/web-html5/" class="borderR15 sband">HTML4/5</a><a href="/art/web-jquery/" class="borderR15 sband">JQuery</a><a href="/art/web-dojo/" class="borderR15 sband">Dojo</a><a href="/art/web-ext/" class="borderR15 sband">Ext</a><a href="/art/web-ajax/" class="borderR15 sband">RIA/AJAX</a><a href="/art/web-regex/" class="borderR15 sband">Regex正则</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-15/1339742777.html>HTML发展历程</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">从 IETF 到 W3C: HTML 4 之路
+
+
+	HTML 1 并未曾存在，HTML 得第一个官方版本便是由 IETF (互联网工程任务组) 推出得 HTML 2.0。问世之前，这个版本中得很多细则已经被实现，比如，1994年得 Mosaic 欣赏器已经实现了在文档中嵌入图片得方式，其后 HTML 2.0 便吸纳了 img 这个标签。
+
+
+	其后，W3C...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(621)</span>
+                           <em>2012年6月15日 14:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-15/1339742574.html>HTML 5 Web开发：防止浏览器假死的方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一个浏览器至少存在三个线程：js引擎线程(处理js)、GUI渲染线程(渲染页面)、浏览器事件触发线程(控制交互)。
+
+
+	JavaScript引擎是基于事件驱动单线程执行的，JS引擎一直等待着任务队列中任务的到来然后加以处理，浏览器无论再什么时候都只有一个JS线程在运行JS程序。
+
+
+	GUI 渲染线程负责渲染浏览器界面，当界面需要重绘(Repaint)或由...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(551)</span>
+                           <em>2012年6月15日 14:42</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-14/1339660053.html>HTML5标准学习之DOCTYPE</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">HTML5标准学习本节我们来学一下DOCTYPE，本文主要讲述了HTML文档的构成，同时肤浅地接触了“标签省略”这一概念。所谓DOCTYPE，最初是XML的概念，即通过一种特定的语法，作为一种元数据，来描述XML文档中允许出现的元素，以及各元素的组成、嵌套规则等。具体的概念可以在WIKI中中得到一个更详细的结果。
+
+
+	但是在HTML中，DOCTYPE又有着...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(426)</span>
+                           <em>2012年6月14日 15:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-14/1339659962.html>HTTP状态代码合集</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">首先我们先要知道HTTP是个什么东西~
+
+
+	HTTP协议是基于请求／响应范式的。一个客户机与服务器建立连接后，发送一个请求给服务器，请求方式的格式为，统一资源标识符、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。服务器接到请求后，给予相应的响应信息，其格式为一个状态行包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(658)</span>
+                           <em>2012年6月14日 15:45</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-14/1339630857.html>调查：主流浏览器对HTML5的兼容性</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp"> 
+
+
+	
+
+
+	每过一段工夫，软件开拓商的世界就成为一个竞技场，在这个场所中HTML5正在指导我们走向另一个舞台。HTML5的成功恍惚了任务和文娱之间的分界限。你能否想过不必下载任何器械就可以直接在你的阅读器上...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(527)</span>
+                           <em>2012年6月14日 07:40</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-12/1339493611.html>DOM方法创建和修改表格</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">&lt;table&gt;元素是HTML中最复杂的结构之一。要想创建表格，一般都必须涉及表示表格行、单元格、表头等方面的标签。由于涉及的标签多，因而使用核心DOM方法创建和修改表格往往都免不了要编写大量的代码。假设我们要使用DOM来创建下面的HTML表格：
+
+
+&lt;table border=\"1\" width=\"100%\"&gt;
+&lt;tbody&g...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(472)</span>
+                           <em>2012年6月12日 17:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-12/1339491763.html>添加到收藏夹和设为首页代码</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">&lt;a href=# onclick=this.style.behavior= url(#default#homepage) ;this.setHomePage( http://www.itsrcs.com/ );&gt;设为首页&lt;/a&gt;
+
+&lt;a href=javascript:window.external.AddFavorite( ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(629)</span>
+                           <em>2012年6月12日 17:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-11/1339394902.html>position : static | absolute | fixed | relative 各含义</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">static   : 
+
+
+	默认值。无特殊定位，对象遵循HTML定位规则
+
+
+	
+
+
+	absolute   : 
+
+
+	将对象从文档流中拖出，使用 left ， right ， top ， bottom 等属性相对于其最接近的一个最有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据 body 对象。而其层叠通过 z-index 属性定义
+
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(660)</span>
+                           <em>2012年6月11日 14:07</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-11/1339350787.html>Jquery的自适应宽度圆角按钮</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Jquery的自适应宽度圆角按钮，给你提供一个思路，按钮的长度随你的文字多少自动伸长，用着更省心。而且鼠标放在按钮上，按钮还会变颜色呢，漂亮吧。兼容性貌似也不错，感谢作者的分享。原理很简单，就是在input的前后各追加一个DIV来实现圆角
+
+
+	
+&lt;!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Transitio...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(677)</span>
+                           <em>2012年6月11日 01:51</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-html5/>[HTML4/5]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-10/1339337087.html>Html表单的基本用法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在做php网站开发中，HTML表单(Form)是HTML的一个重要部分，主要用于采集和提交用户输入的信息,下面就介绍下表单的基本用法。举个简单的例子，一个让用户输入姓名的HTML表单(Form)。示例代码如下：&lt;form action=\"yourname.asp\" method=\"get\"&gt;请输入你的姓名：&lt;input type=\"text...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(464)</span>
+                           <em>2012年6月10日 22:04</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-webps/>[]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-10/1339294091.html>PS图层样式快速制作光滑的蓝色水晶字</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">水晶字制作方法比较简单。水晶质感部分用到了两个图层，分别设置不同的样式，顶部的图层把填充度改为0，这样就可以得到相对        复杂的水晶效果。后期再添加一些纹理即可。
+	
+             最终效果
+
+  ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(508)</span>
+                           <em>2012年6月10日 10:07</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-webps/>[]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-10/1339259753.html>在photoshop中创建一个透明玻璃按钮（强烈推荐）</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在这一篇教程中，我将教给你怎样在photoshop中创建一个透明玻璃效果的干净的网页用按钮。
+
+
+	这就是我们最终的结果。好了，让我们开始吧。在photoshop中新建文档，尺寸为430x430，白色背景。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(454)</span>
+                           <em>2012年6月10日 00:35</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-08/1339129917.html>国产jquery ui插件：ligerui</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">jQuery LigerUI 是基于jQuery的一系列UI控件组合，简单而又强大，致力于快速打造Web前端界面解决方案。
+
+
+	因为是前端控件，跟服务器无关，可以适合.net,jsp,php等等web服务器环境。目前全部插件的打包压缩JS只有100K左右,很轻巧。使用插件
+
+
+	式的开发模式，以“简单”为原则的设计，每个插件尽量独立，并可依赖拓展。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1117)</span>
+                           <em>2012年6月8日 12:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-ajax/>[RIA/AJAX]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-08/1339117130.html>怎样使用AJAX进行WEB应用程序开发</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、常规属性和方法 
+
+
+	表1和2提供了一个属性和方法的概述- 它们为Windows Internet Explorer 5，Mozilla，Netscape 7，Safari 1.2，和Opera等浏览器所支持。
+
+
+	表1属性
+
+
+	属性 描述
+
+
+	onreadystatechange 当请求对象变化时该事件处理器激活。
+
+
+	readyState ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(525)</span>
+                           <em>2012年6月8日 08:58</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-08/1339115378.html>何为Web2.0网址导航</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">从Hao123网址之家创造的流量神话，简单在页面上放置站点链接便可以受到网民如此热烈的追捧，引来了一批又一批的模仿者，令人可悲的是，这些模仿者抱着像李兴平、蔡文胜一样一夜成名的幻想，放弃了创造，只是无谓的复制再复制。模仿一个导航网没有任何技术门槛，一个Hao123被收购，千万个Hao123站起来。各个导航站的千篇一律，使得导航站目前已经成为了垃圾站的代名词。...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(417)</span>
+                           <em>2012年6月8日 08:29</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>Web前端开发</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/303">
+    <img src="/not/mybook/data/book_image_lib/fabd4678843d6f8ca7ba34ffa7808dcc.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/303">
+    《JavaScript Step by Step》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/204">
+    <img src="/not/mybook/data/book_image_lib/34edcf0a50e02e97ceefbd5051e6f212.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/204">
+    《HTML5程序设计(第2版)》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/283">
+    <img src="/not/mybook/data/book_image_lib/fdaee259db731c81c2043544915e9200.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/283">
+    《Professional WordPress, 2nd Edition》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/322">
+    <img src="/not/mybook/data/book_image_lib/94fea9cd99699042ef3bec75586c585c.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/322">
+    《精通CSS：高级Web标准解决方案（第2版）》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/247">
+    <img src="/not/mybook/data/book_image_lib/611753ddfa824eec139c93c3be575c5d.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/247">
+    《TCP/IP详解 3：TCP事务协议、HTTP、NNTP和UNIX域协议》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/web/0'>1</a></li><li><a href='http://www.27tree.com/art/web/1'>2</a></li><li><a href='http://www.27tree.com/art/web/2'>3</a></li><li><a href='http://www.27tree.com/art/web/3'>4</a></li><li><a href='http://www.27tree.com/art/web/4'>5</a></li><li><a href='http://www.27tree.com/art/web/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

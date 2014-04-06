@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[java是Java编译器的名称]]></title>
+  <content><![CDATA[<p>
+	&nbsp; 用运行一个java应用程序Java源代码总是存储在扩展名为。java的文件中。一旦你为程序建立了源代码，并且把它存储在jawa的文件中，就需要用一个Java编译器处理该程序。使用JDK编译器，你可以用下述命令进行操作：
+</p>
+<p>
+	&lt;./HEAD&gt;
+</p>
+<p>
+	&lt;BODY&gt;
+</p>
+<p>
+	需要的文字，文档猪蹄可以包含各种HTML元素，包括&lt;B&gt;Java小应用程序&lt;/a&gt;，注意每个元素都用一对标记标识。下文中Java小应用程序将用粗体显示
+</p>
+<p>
+	&lt;/BODY&gt;
+</p>
+<p>
+	&lt;/HTML&gt;
+</p>
+<p>
+	]avaC
+</p>
+<p>
+	MyPrpqram.java这里，java是Java编译器的名称，MyProgramjarea是程序的源文件名称。如果你的程序没有错误，编译器就会产生一个等效于源代码的字节码程序。它以源文件相同的名字保在&lt;HTML&gt;中出现了两个元素，一个是&lt;HEAD&gt;元素，另一个是&lt;BODY&gt;元素。&lt;HEAD&gt;元素提供了有关文档的信息。从严格意义上讲，它并不是&lt;HTML&gt;元素的一部分。&lt;HEAD&gt;元素内出现的由两个&lt;TTTLE&gt;标记所包含的文字，在浏览该网页时，将显示在窗口的标题上。出现在&lt;BODY&gt;元素内的其他标记可以包含标题、列表、表格、到其他网页的链接以及Java小应用程序。因为有些元素被认为是空的，所以不要求结尾标记。这种类型的元素标记有&lt;HR&gt;,它指出一条占据该网页总宽度的水平线段。你可以使用&lt;HR&gt;标记分页，也可以用它来隔离不同类型的元素。我在前面提到过，你会在本书中找到一个HTML工标记的综合列表。用将一个小应用程序添加到HTML文件中对于许多元素标记而言，你可以在标记开始后说明元素的属性，用来定义有关该元素附加或限定的数据。Java小应用程序是以&lt;APPLET&gt;标记识别的。这里是一个在HTML文件中包含Java小应用程序的例子：
+</p>
+<p>
+	&lt;HTML&gt;
+</p>
+<p>
+	&lt;HEAD&gt;
+</p>
+<p>
+	&lt;TITLE&gt; A
+</p>
+<p>
+	Simple Program &lt;/TITLE&gt;
+</p>
+<p>
+	&lt;/HEAD&gt;
+</p>
+<p>
+	&lt;BODY&gt;
+</p>
+<p>
+	&lt;HR&gt;
+</p>
+<p>
+	&lt;APPLET code =”MyfirstApplet.clase’ width = 3000;
+</p>
+<p>
+	height = 200&gt;
+</p>
+<p>
+	&lt;/APPLET&gt;
+</p>
+<p>
+	&lt;HR&gt;
+</p>
+<p>
+	&lt;/BODY&gt;
+</p>
+<p>
+	&lt;/HTML&gt;
+</p>
+<p>
+	标记之间的两个阴影行标明小应用程序的字节码包含在MyFirstApplet.class文件中。&lt;APPLET&gt;标记中的属性值code说明了包含小应用程序字节码的文件名。另两个属性值width和height定义了小应用程序执行时占据屏幕区域的宽度和高度。这些属性是执行小应用程序必须定义的。正像我们将要看到的，有很多标记可以有选择地指定。这里是一个简单的小应用程序的Java源代码：
+</p>
+<p>
+	Import
+</p>
+<p>
+	java.swing.Japplet;
+</p>
+<p>
+	Import
+</p>
+<p>
+	java.awt.Graphics;
+</p>
+<p>
+	Public class
+</p>
+<p>
+	MyFirstApplet extends Japplet
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; Public void paint{Graphics
+</p>
+<p>
+	g}
+</p>
+<p>
+	&nbsp; {
+</p>
+<p>
+	&nbsp; &nbsp; g.drawString{‘to climb a laoder,start
+</p>
+<p>
+	at the bottom rung’,20, 30};
+</p>
+<p>
+	&nbsp; }
+</p>
+<p>
+	}
+</p>]]></content>
+  <contentx><![CDATA[
+	&nbsp; 用运行一个java应用程序Java源代码总是存储在扩展名为。java的文件中。一旦你为程序建立了源代码，并且把它存储在jawa的文件中，就需要用一个Java编译器处理该程序。使用JDK编译器，你可以用下述命令进行操作：
+
+]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

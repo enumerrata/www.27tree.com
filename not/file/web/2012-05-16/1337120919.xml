@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Google官方开发指南：提升移动Web性能表现的四大建议</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	移动互联网已经在全球得到了广泛的应用。到2009年，有50%的新增的互联网访问都是来自手机设备的（eMarket，2008和2009）。来自Google的内部资料显示，随着移动浏览器的提升，用户的浏览习惯也在逐步改进。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	移动浏览器上的页面布局与桌面浏览器有着显著的差异，所以，想要在移动设备上开发出优秀的浏览器，有些注意事项是需要开发者事先了解的。对于如何在移动设
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	备上开发出高性能、体验良好的web应用，Google网络管理员Jeremy
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Weinstein给出了几点技术和非技术方面的建议（译者注：原文来自Google&amp;nbsp;Code，可以认为是Google官方的开发指南）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;让你的网页和Apps更适合移动设备访问&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;在桌面版应用上提供一个显著的移动版入口&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你有一个包含大量图像的网站，当你为它开发了一个移动版本，你是否还希望移动用户继续使用原来的桌面版？确保让用户知道你的网站还有一个移动版本存在。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	移动URL要遵循习惯用法，并推广之
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	虽然没有规定你必须把原来桌面服务的移动版的地址设置成什么样，但是这里有些地址设计的惯例可以参
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	考：m.yoursite.com，mobile.yoursite.com
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	或是yoursite.com/mobile。选择一个简单的移动URL，并且将它贴在原来的桌面网站上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;设计一个与移动设备相适应的用户界面&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽量避免让用户输入过多的信息。提供更多的点击功能。将URL设计得尽量短一点，方便用户输入。选取合适的UI组件和功能，使得你的应用在小屏幕上能够方
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	便地显示和操作。多考虑一下用户的访问情景——或许不是舒服地坐在椅子上，所以尽量让用户能够快速找到想要的信息。确保你的信息足够的清晰简洁。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;让你的网站适合各种移动浏览器的访问&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	目前存在着全功能（Mobile&amp;nbsp;Safari,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android等），半功能（BlackBerry），以及低功能（旧款的翻盖手机）浏览器。想想如何让你的移动web页面既能在150x128像素的屏
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	幕上显示，又能在640x480像素的屏幕上显示。不同国家的移动浏览器标准也有所不同。如果你的用户来自不同的国家，确保你的设计能够符合这些国家的设
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	备标准。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;减少请求和数据的传输&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了减少延迟现象的发生，你的网站或应用程序应该尽量避免向服务器发送请求。在TCP和socket机制中，一次大数据的请求传输比多次小数据的请求传输速度要快。这一点在移动开发中显得尤为重要。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用CSS&amp;nbsp;Sprite处理你的图片，或者将你的图片转换为data&amp;nbsp;URI&amp;nbsp;scheme。可以参考Google&amp;nbsp;Search搜索结果页面上的logo图标，它就用到了CSS&amp;nbsp;sprite。Google的一些服务（例如Wave）通过使用data&amp;nbsp;URI&amp;nbsp;scheme将静态的请求固化，用于在web页面中内联静态数据。（data
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	URI技术无法在旧版本的浏览器上使用，它是专门为iPhone，Android和其他最新的移动web浏览器上的网页和应用程序设计的。）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你的图片里面包含base64的字符串，那么在压缩的时候可能会丢失部分数据（这种格式的图片在传输时必须使用gzip压缩）。但即使这样，也尽量不要创建一个新的连接或是发送一个新的HTTP请求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你的应用包含了一个CSS文件，那么它还需要导入一些其他的资源；如果包含的是一个JavaScript文件，那么也需要下载一下额外的代码，将你的网页需要下载的信息全部放到一个文件中。将你的请求放到一个文件中将提升你的应用的速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;简化代码&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	代码越少，传输的数据越小，你的网页打开得越快。减少传输的数据量不如减少通讯次数有效，对于高延迟的移动连接，每减少一个bit都将有助于提升你的应用加载速度。可以看看一篇关于HTML&amp;nbsp;optional&amp;nbsp;tags&amp;nbsp;and&amp;nbsp;CSS&amp;nbsp;optimization的文章。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;避免重定向&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有时Web页面和Web服务会对某个请求多次重定向。如果你的服务需要对请求重定向，那么尽量在服务器端处理，而不是在客户端，尽可能减少客户端的网络交互次数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;预先考虑并拉长内容下载流程&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	只有在需要的时候才传输数据，可能的话尽可能提前下载数据。不要下载一些用户根本看不到的图片。在移动设备上Time-to-text是非常重要的。如果你的设备在显示一组图片，可以考虑一起下载它前后的图片以提升UI的速度，但是不要下载一些相隔太远的图片。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以看看Page&amp;nbsp;Speed中的Web&amp;nbsp;Performance&amp;nbsp;Best&amp;nbsp;Practices介绍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;充分利用HTML的新功能&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;在移动应用中使用Appilcation&amp;nbsp;Cache&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5浏览器（Mobile&amp;nbsp;Safari,&amp;nbsp;Android）通过使用Application&amp;nbsp;Cache能够减少页面启动时间，并且允许用户离线访问。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;如果可能的话，尽量用CSS3替代图片&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	支持CSS3的HTML5浏览器能使用各种丰富的属性，如圆角、渐变色、阴影、文本转换、画布等等。使用CSS替代图片来装饰你的页面能够减少数据传输的开销。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Google的移动Apps上已经使用了HTML5提供的新的APIs。例如Mobile&amp;nbsp;Gmail就用到了Application&amp;nbsp;Cache。Mobile&amp;nbsp;Google&amp;nbsp;Search则使用了HTML5&amp;nbsp;Geolocation
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	API来展示搜索到的定位结果。Google&amp;nbsp;Maps&amp;nbsp;for&amp;nbsp;Mobile以及Mobile&amp;nbsp;Gmai都使用了canvas标志来避免图片的传输。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-16/1337120919.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

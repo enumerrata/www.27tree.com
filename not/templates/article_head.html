@@ -1,0 +1,19 @@
+<div id="tit_div">
+     <input type="hidden" id="path_hidden" value="<?php {echo $path;}?>" />
+     <h1 id='art-title' class="autowarp"><?php echo $title;?></h1>
+     <input type='text' id='edit-h1' value='<?php echo $title;?>' />
+     <h5>
+          <span class="Gray">由 <a href='/user/<?php {echo $uid;}?>'><?php echo $author;?></a></span>&nbsp;<span class="Gray">发布于</span>
+          <span class="Gray"><?php echo $date;?></span>
+          <span class="Gray">评论</span>(<b><?php echo $commi;?></b>) /
+          <span class="Gray">阅读</span>(<b><?php echo $readi;?></b>)
+     </h5>
+     <div class="articleBar" style="">
+          <a href="javascript:like_this()" id="like-this" style="display:none;"><img src="/img/finished-work.png" align="absmiddle" style="margin-top:-4px;"/>&nbsp;收藏我吧</a>
+     </div>
+</div>
+<div id="submittype"></div>
+<a href="javascript:loadStype()" id="loadst" class="next-cp" style="margin-bottom:5px;display:none;">更改分类</a>
+<a href='javascript:editOk()' class='next-cp' id='edit-top'>修改好了就点我保存修改</a>
+<div id='editarea' class='editarea'></div>
+<a href='javascript:editOk()' class='next-cp' id='edit-bottom'>修改好了就点我保存修改</a>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>MySQL开发者SQL权威指南</title>
+  <author>Rick F.van der Lans</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-11 08:07:44</submit-date-time>
+  <img-link>8ca9fcd15a6b5f73dfe92384bb0e279d.png</img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书介绍MySQL的驱动语言SQL的详细内容与使用方法，主要内容包括：编写查询，包括连接、函数和子查询，更新数据，创建表，视图和其他数据库对象，声明主键、外键以及其他完整性约束，使用索引提高效率，通过密码和权限来增强安全性，在PHP程序中嵌入SQL，使用事务、锁、回滚和隔离级等。本书内容翔实，深入浅出，包含大量练习，以巩固读者所学知识。书中通过一个详细设计的案例，完整讲解了数据库开发和使用中SQL语言的使用技巧。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书适合程序员、Web开发者、DBA或数据库用户等参考。
+&lt;/p&gt;</book-intro>
+  <down-load-page>http://www.kuaipan.cn/file/id_62632928256986292.html</down-load-page>
+</root>

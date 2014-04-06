@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2013-05-07 23:14:08</datetime>
+  <title><![CDATA[Javascript 区分 一个数组和普通对象]]></title>
+  <content><![CDATA[<p>
+	今天本来用的 typeof arr == \'object\' 来区分对象，谁知道我一个数组传进去居然也返回了true。
+</p>
+<p>
+	手贱google了一下，网上的答案是&nbsp;Object.prototype.toString.call(<strong>arr</strong>) !== \'[object Array]\' 来区分对象。
+</p>
+<p>
+	所以我们可以&nbsp;
+</p>
+<p>
+	if(Object.prototype.toString.call(arr) !== \'[object Array]\') // 数组
+</p>
+<p>
+	else //对象
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

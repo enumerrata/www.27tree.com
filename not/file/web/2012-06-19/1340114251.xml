@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Discuz 如何防止注册机发布垃圾信息</title>
+<content>&amp;lt;p&amp;gt;
+	感动自从做了论坛就一直被注册机的垃圾信息环绕，这些注册机大部分都是发布不良信息，不仅对论坛资源是种浪费，更严重影响了论坛的形象。感动研究了很长一段时间，将常用的一些防止注册机的方法和自己挖掘出来的方法都分享给大家。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.验证码注册
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相信这是大家用的比较多的方法，但是很明显，效果并不好。这也是感动最开始使用的方法，这种方法基本只能挡住一些简单的注册机。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.修改注册地址和注册表单
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相信大家在后台看到DZ有提示：修改注册地址/注册表单会使得注册机更难发挥作用。所以感动还是试了一下。效果基本和第一个方法差不多。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.强制签到
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强制签到是许多站长认为比较好的防止注册机的方法。这个方法在签到插件才出来的时候有些效果，但现在的注册机明显智商高多了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.验证邮箱（推荐）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这在很多论坛都有用到，感动因为追求用户体验一直没有使用，但显然删帖已经控制不了垃圾帖的蔓延。只有委屈大家验证邮箱了。使用之后有一部分注册机因为无法验证邮箱而失效了。但是真实的用户有的也因为懒得验证邮箱而流失了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.设置禁止email地地址（推荐）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	感动经过大量时间观察，注册机使用的邮箱大多是gmail和hotmail两种邮箱，我们可以通过UCenter设置将这两类邮箱屏蔽了。这就减少了一大部分的注册机的机会。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.审核关键词（强烈推荐）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前面的方法都不能完全杜绝不良信息的滋扰。感动想了很久，终于找到了这个方法。大家仔细去分析论坛的垃圾帖，就会发现其实发垃圾帖的就那几个人，他们发的信息差不多都是一样的。这就好办了。只需要提取他们发布信息中的一些敏感的而其它用户很少可能会用到的关键词，进入审核。基本能够消除绝大部分垃圾信息了。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-19/1340114251.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

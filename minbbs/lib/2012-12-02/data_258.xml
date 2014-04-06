@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>172</uid>
+  <datetime>2012-12-02 19:10:18</datetime>
+  <title><![CDATA[ie a标签 应用负margin导致的bug]]></title>
+  <content><![CDATA[<p>
+	在对一个display:block的a标签应用负的margin值时，不知道为什么display自动变成inline了。
+</p>
+<p>
+	为修复这个错误，添加position:relative即可，貌似出现什么错误的时候，加个relative有时能解决。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

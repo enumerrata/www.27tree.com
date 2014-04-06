@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[UNIX/Linux 系统管理技术手册(第4版)]]></title>
+  <author>Evi Nemeth / Garth Snyder / Trent R.Hein / Ben Whaley</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-03-07 13:12:24</submit-date-time>
+  <img-link>ebac2518601dd8d5f25dc06d981622b8.png</img-link>
+  <book-area>system</book-area>
+  <book-intro><![CDATA[<p>
+	《UNIX/Linux 系统管理技术手册(第4版)》的几位作者是分别来自学术界、企业界以及职业培训领域的Linux/UNIX系统管理专家，这使得《UNIX/Linux 系统管理技术手册(第4版)》从第一版开始，即成为全面、深入而且颇富实用性的Linux系统管理权威参考书。《UNIX/Linux 系统管理技术手册(第4版)》延续了《Linux系统管理技术手册(第2版)》以及《UNIX系统管理技术手册(第3版)》的讲解风格，以当前主流的5种Linux发行版本(Red Hat ES、SUSE、Debian、Fedora Core和Ubuntu)为例，把Linux系统管理技术分为3部分分别介绍。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		Evi Nemeth，（sailingevi@gmail tom）已经从科罗拉多大学计算机科学系教师的岗位上退休民。她现在正坐在自己1.2米长的帆船Wonderland号上邀游太平洋呢。这是她写的最后一版——当船停泊在人间天堂里的时候，用只有30波特的GPRS收发电子邮件，是无法跟上最新系统管理技术的步伐了。
+	</p>
+	<p>
+		Garth Snyder，（snyderga@simon.rochester.edu）曾经在NeXT和Sun公司工作过，他从斯沃索莫学院（Swarthmore College）获得了工学学士学位，并从罗彻斯特大学取得MD和MBA学位。
+	</p>
+	<p>
+		Trent R.Hein是Applied Trust公司的创办人之一，这是一家提供网络基础设施咨询服务的公司。Trent从科罗拉多大学获得了计算机科学专业学士学位。
+	</p>
+	<p>
+		Bell Whaley是AppliedTrust公司的企业构架主管，这是一家位于科罗拉多州波尔多的IT咨询公司。Ben在2004年获得科罗拉多大学计算机科学专业学士学位。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

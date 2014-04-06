@@ -1,0 +1,39 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">CSS3 变形</h1>
+</div>
+<div>
+    <h1>transform:rotate(*)</h1>
+    <p>如果想要让指定的元素旋转，只需要按照如下方式定义即可：</p>
+    <p>#content{transform:rotate(45deg);}</p>
+    <p>rotate：表示旋转的意思，其值为角度（旋转方向为顺时针）；</p>
+    <p>deg：是CSS3的“Values and Units”模块中定义的一个角度单位；</p>
+    <p>浏览器支持：Chrome8+, FireFox4+, Opera10+,Safari3.1+</p>
+    <p>[注]IE9不支持此属性</p>
+
+    <h2>此属性在不同的浏览器下不同的写法</h2>
+    <p>Chrome & Safari:-webkit-transform:rotate(45deg);</p>
+    <p>FireFox:-moz-transform:rotate(45deg);</p>
+    <p>Opera:-o-transform:rotate(45deg);</p>
+    <p>不可忽略掉属性之前的前缀，否则无效！</p>
+
+    <h1>transform:scale(num，num)</h1>
+    <p>使用scale方法来实现文字或图像的缩放处理，在参数中指定缩放倍率。譬如“scale(0.5)”表示缩小50%，“scale(2)”表示放大1倍。此方法可设置两个值，分别表示水平和垂直方向，设置一个参数，则第二个参数默认取第一个。</p>
+    <p>此属性在不同的浏览器下不同的写法</p>
+    <p>比如缩小50%:</p>
+    <p>Chrome & Safari:-webkit-transform:scale(0.5);</p>
+    <p>FireFox:-moz-transform:scale(0.5);</p>
+    <p>Opera:-o-transform:scale(0.5);</p>
+    <p>不可忽略掉属性之前的前缀，否则无效！</p>
+
+    <h1>transform:skew(num，num)</h1>
+    <p>使用skew方法来实现指定元素的倾斜角度，它有两个参数值，分别表示水平方向的倾斜角度和垂直方向的倾斜角度。第二个参数可省略。</p>
+    <code>
+        #box{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;transform:skew(-45deg, 20deg); <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;-moz-transform:skew(-45deg, 20deg); <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;-o-transform:skew(-45deg, 20deg); <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;transform:skew(-45deg, 20deg);<br />
+        }</code>
+    <p>deg：是CSS3的“Values and Units”模块中定义的一个角度单位；</p>
+    <p>[注]此属性在不同浏览器下同样也要加上相对应的前缀；</p>
+</div>

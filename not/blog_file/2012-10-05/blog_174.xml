@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-05 10:20:42</datetime>
+  <title>RMI之NoSuchObjectException</title>
+  <content>&lt;p&gt;
+	最近再一次碰到RMI客户端访问RMI服务出现java.rmi.NoSuchObjectException异常，碰到两次这个异常，都是出现在生产环境中，现象很有意思，生产运行好几年也没出现过这种异常，突然某一天出现了，重启服务就OK，然后每天都要出现。原因很简单，现象很费解，要么不出现，要么天天出现，jdk1.4，1.5都有，印象中都是hotspot&amp;nbsp;vm出的这个问题。
+&lt;/p&gt;
+&lt;p&gt;
+	这个问题的根本原因在于RMI绑定的远程服务对象被垃圾回收掉了。看起来像是jvm的bug，不是吗？不管怎样，没法改变jvm，只能改变程序了。
+&lt;/p&gt;
+&lt;p&gt;
+	通常喜欢这样绑定服务：Naming.bind(name,&amp;nbsp;new&amp;nbsp;Service());只需将new&amp;nbsp;Service剥离出来，让一个静态引用持有它就好static&amp;nbsp;Service&amp;nbsp;s&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Service();......Naming.bind(name,&amp;nbsp;s);如此，即可避免该异常。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;a&amp;nbsp;href=\"http://www.ticmy.com/\"&amp;nbsp;target=\"_blank\"&gt;http://www.ticmy.com/&lt;/a&gt;
+&lt;/p&gt;</content>
+  <contentx>最近再一次碰到RMI客户端访问RMI服务出现java.rmi.NoSuchObjectException异常，碰到两次这个异常，都是出现在生产环境中，现象很有意思，生产运行好几年也没出现过这种异常，突然某一天出现了，重启服务就OK，然后每天都要出现。</contentx>
+  <tags>_null_</tags>
+</root>

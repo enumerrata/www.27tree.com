@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JS的动态加载]]></title>
+  <content><![CDATA[<p>
+	方法一，最简单也是最容易被接受的方法，通过后台代码来控制，还是少些复杂的JS吧，通过一个标签、一个分支判断，就可以做到，何乐而不为呢？
+</p>
+<p>
+	方法二，如果要使用纯JS来控制，那么看看这样如何：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$.ajax(){   
+  url:\"xxx/play.js\";   
+  ……   
+  success:function(res){   
+    eval(res.responseText);   
+  }   
+}  </pre>
+	<p>
+		原理是很简单，不过有一个藏匿着的魔鬼：eval，js加载的生效就靠它了，那么执行的上下文就在它的里面，这就会带来一些潜在的问题，而且，调试也变得困难。
+	</p>
+	<p>
+		方法三，通过添加&lt;script&gt;标签的方式来动态引入脚本：
+	</p>
+	<p>
+		原理相信大家也马上能领悟个大概了，需要的时候动态地往页面的&lt;head&gt;里面写一对&lt;script&gt;标签，让浏览器自己去取需要的js，这样的就解决了方法二里面的魔鬼eval的问题，是一个比较好的方法：
+	</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;script src=\"xxx/play.js\" ... /&gt;</pre>
+&lt;script&gt;标签中的src——本质上不就是对src所表示的地址发送一个get请求吗？这虽然看起来有点歪门邪道，却恰恰是一个跨域问题的解决办法！因为浏览器对&lt;script&gt;引用js页面可没有同域的安全限制
+</p>]]></content>
+  <contentx><![CDATA[
+	方法一，最简单也是最容易被接受的方法，通过后台代码来控制，还是少些复杂的JS吧，通过一个标签、一个分支判断，就可以做到，何乐而不为呢？
+
+
+	方法二，如果要使用纯JS来控制，那么看看这样如何：
+
+
+$.ajax(){   
+  url:]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

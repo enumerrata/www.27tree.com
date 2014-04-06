@@ -1,0 +1,100 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL Insert Into</h1>
+</div>
+<div>
+
+<p><b>INSERT INTO 语句用于向数据库表中插入新记录。</b></p>
+
+<h1>向数据库表插入数据</h1>
+
+<p>INSERT INTO 语句用于向数据库表添加新记录。</p>
+
+<h2>语法</h2>
+
+<code>
+INSERT INTO table_name<br />
+VALUES (value1, value2,....)
+</code>
+
+<p>您还可以规定希望在其中插入数据的列：</p>
+
+<code>
+INSERT INTO table_name (column1, column2,...)<br />
+VALUES (value1, value2,....)
+</code>
+
+<p><b>注释</b>：SQL 语句对大小写不敏感。INSERT INTO 与 insert into 相同。</p>
+<p>为了让 PHP 执行该语句，我们必须使用 mysql_query() 函数。该函数用于向 MySQL 连接发送查询或命令。</p>
+
+<h2>例子</h2>
+
+<p>在前面的章节，我们创建了一个名为 "Persons" 的表，有三个列："Firstname", "Lastname" 以及 "Age"。我们将在本例中使用同样的表。下面的例子向 "Persons" 表添加了两个新记录：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+mysql_query("INSERT&nbspINTO&nbspPersons&nbsp(FirstName,&nbspLastName,&nbspAge)&nbsp<br />
+VALUES&nbsp('Peter',&nbsp'Griffin',&nbsp'35')");<br />
+<br />
+mysql_query("INSERT&nbspINTO&nbspPersons&nbsp(FirstName,&nbspLastName,&nbspAge)&nbsp<br />
+VALUES&nbsp('Glenn',&nbsp'Quagmire',&nbsp'33')");<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<h1>把来自表单的数据插入数据库</h1>
+
+<p>现在，我们创建一个 HTML 表单，这个表单可把新记录插入 "Persons" 表。</p>
+<p>这是这个 HTML 表单：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form action="insert.php" method="post"&gt;<br />
+Firstname: &lt;input type="text" name="firstname" /&gt;<br />
+Lastname: &lt;input type="text" name="lastname" /&gt;<br />
+Age: &lt;input type="text" name="age" /&gt;<br />
+&lt;input type="submit" /&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>当用户点击上例中 HTML 表单中的提交按钮时，表单数据被发送到 "insert.php"。"insert.php" 文件连接数据库，并通过 $_POST 变量从表单取回值。然后，mysql_query() 函数执行 INSERT INTO 语句，一条新的记录会添加到数据库表中。</p>
+<p>下面是 "insert.php" 页面的代码：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+$sql="INSERT&nbspINTO&nbspPersons&nbsp(FirstName,&nbspLastName,&nbspAge)<br />
+VALUES<br />
+('$_POST[firstname]','$_POST[lastname]','$_POST[age]')";<br />
+<br />
+if&nbsp(!mysql_query($sql,$con))<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Error:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+echo&nbsp"1&nbsprecord&nbspadded";<br />
+<br />
+mysql_close($con)<br />
+?&gt;
+</code>
+
+</div>

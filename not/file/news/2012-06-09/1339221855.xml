@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>IPv6在全球范围内正式启用</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:left;text-indent:2em;\"&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;strong&amp;gt;IPv6在全球范围内正式启用，这将逐步取代目前的IPv4协议。&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:left;text-indent:2em;\"&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;据统计，截至6月4日，参加IPv6Launch的网站中，&amp;lt;strong&amp;gt;美国有71%可在IPv6上存取，中国则为65%左&amp;lt;/strong&amp;gt;右。&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;img&amp;nbsp;src=\"http://dl.iteye.com/upload/attachment/0069/1890/df371f32-24e8-35e6-9dc5-642b0ae03657.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:left;text-indent:2em;\"&amp;gt;
+	&amp;lt;p&amp;gt;
+		随着科技的发展，接入互联网的设备数量越来越多，导致目前的IPv4地址使用殆尽。而IPv6协议具有更大的地址空间，很好地解决了这一问题。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;与IPv4相比，IPv6具有以下几个优势：&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;IPv6具有更大的地址空间。&amp;lt;/strong&amp;gt;IPv4中规定IP地址长度为32，最大地址个数为2^32；而IPv6中IP地址的长度为128，即最大地址个数为2^128。与32位地址空间相比，其地址空间增加了2^128-2^32个。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;IPv6使用更小的路由表。&amp;lt;/strong&amp;gt;IPv6的地址分配一开始就遵循聚类（Aggregation）的原则，这使得路由器能在路由表中用一条记录（Entry）表示一片子网，大大减小了路由器中路由表的长度，提高了路由器转发数据包的速度。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;IPv6增加了增强的组播（Multicast）支持以及对流的支持（Flow&amp;nbsp;Control）&amp;lt;/strong&amp;gt;，这使得网络上的多媒体应用有了长足发展的机会，为服务质量（QoS，Quality&amp;nbsp;of&amp;nbsp;Service）控制提供了良好的网络平台&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;strong&amp;gt;IPv6加入了对自动配置（Auto&amp;nbsp;Configuration）的支持。&amp;lt;/strong&amp;gt;这是对DHCP协议的改进和扩展，使得网络（尤其是局域网）的管理更加方便和快捷。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;strong&amp;gt;IPv6具有更高的安全性。&amp;lt;/strong&amp;gt;在使用IPv6网络中用户可以对网络层的数据进行加密并对IP报文进行校验，在IPV6中的加密与鉴别选项提供了分组的保密性与完整性。极大的增强了网络的安全性。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;strong&amp;gt;允许扩充。&amp;lt;/strong&amp;gt;如果新的技术或应用需要时，IPV6允许协议进行扩充。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;strong&amp;gt;更好的头部格式。&amp;lt;/strong&amp;gt;IPV6使用新的头部格式，其选项与基本头部分开，如果需要，可将选项插入到基本头部与上层数据之间。这就简化和加速了路由选择过程，因为大多数的选项不需要由路由选择。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;strong&amp;gt;新的选项。&amp;lt;/strong&amp;gt;IPV6有一些新的选项来实现附加的功能。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;span&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;截至2012年3月，中国IPv6地址量上升至全球第四位，比2011年初增加23倍以上。但IPv6要真正地取得进展还需要多方参与，包括&amp;lt;strong&amp;gt;互联网服务供应商、路由器制造商、家用网络设备、DNS服务器、软件公司和IT专业人士&amp;lt;/strong&amp;gt;。&amp;lt;/span&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		对于目前用户量最大的Windows操作系统，微软表示，从Windows&amp;nbsp;Vista开始，已经默认安装并启用了IPv6协议，而XP中已经包含但未安装。今天微软在博客中称，Windows&amp;nbsp;8中已经添加了对IPv6的支持，同时会将IPv6加入到其他服务中，如Bing和Xbox服务。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+		&amp;lt;img&amp;nbsp;src=\"http://dl.iteye.com/upload/attachment/0069/1913/5d8d675f-2cdd-38a2-8a8b-f052b159553a.png\"&amp;nbsp;alt=\"\"&amp;nbsp;style=\"text-indent:2em;\"&amp;nbsp;/&amp;gt;
+	&amp;lt;/div&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:left;text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-09/1339221855.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

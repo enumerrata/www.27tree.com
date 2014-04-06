@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java NIO</title>
+  <author>Ron Hitcbens</author>
+  <submiter-uid>1</submiter-uid>
+  <submit-date-time>2012-07-18 08:39:20</submit-date-time>
+  <img-link>70713da91b3fd70e34d0a0defe684e25.jpg</img-link>
+  <book-area>java</book-area>
+  <book-intro>阿帕网为美国国防部高级研究计划署开发的世界上第一个运营的封包交换网络，它是全球互联网的始祖。 1969年11月，美国国防部高级研究计划管理局（ ARPA - - Advanced Research Projects Agency ）开始建立一个命名为ARPAnet的网络，但是只有4个结点。 ARPANET采用了包交换机制。当初，ARPAnet只联结4台主机，从军事要求上是置于美国国防部高级机密的保护之下，从技术上它还不具备向外推广的条件。</book-intro>
+  <down-load-page></down-load-page>
+</root>

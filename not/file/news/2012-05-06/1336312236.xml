@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Win常用DOS命令</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:32px;\"&amp;gt;dir&amp;nbsp;&amp;lt;/span&amp;gt;&amp;nbsp;列文件名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:32px;\"&amp;gt;edit&amp;lt;/span&amp;gt;&amp;nbsp;文本编辑
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:32px;\"&amp;gt;mem&amp;nbsp;&amp;lt;/span&amp;gt;&amp;nbsp;查看内存状况
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cls清屏&amp;nbsp;〔适用场合〕　　屏幕上太乱了，或是屏幕上出现乱码了，&amp;nbsp;清除屏幕上显示内容但不影响电脑内部任何信息&amp;nbsp;〔用　　法〕　　cls　&amp;nbsp;回车
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	move&amp;nbsp;　　移动文件，改目录名　&amp;nbsp;〔适用场合〕　　移动文件到别的目录&amp;nbsp;〔用　　法〕　　move&amp;nbsp;[文件名]&amp;nbsp;[目录]　　移动文件至新目录下move&amp;nbsp;[目录名]&amp;nbsp;[目录名]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	改目录名&amp;nbsp;〔例　　子〕
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c:\\&amp;amp;gt;move&amp;nbsp;c:\\autoexec.bat&amp;nbsp;c:\\old&amp;nbsp;　移动autoexec.bat文件至old目录下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c:\\&amp;amp;gt;move&amp;nbsp;c:\\config.sys&amp;nbsp;c:\\temp&amp;nbsp;　移动config.sys文件至old目录下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xcopy&amp;nbsp;　　拷贝目录和文件&amp;nbsp;〔适用场合〕　　在进行连同子目录一起拷贝时很有用，在拷贝大量文件时比COPY命令要快得多&amp;nbsp;〔用　　法〕
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xcopy&amp;nbsp;[文件名]&amp;nbsp;[目录]将指定文件拷贝到指定目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xcopy&amp;nbsp;[源目录]&amp;nbsp;[目的目录]　　将源目录连子目录考到目的目录下
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	xcopy&amp;nbsp;*.*&amp;nbsp;[目录]&amp;nbsp;/s　　　将文件与非空子目录拷贝到指定目录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其它常用参数还有:&amp;nbsp;v&amp;nbsp;拷贝后校验，会影响速度　e&amp;nbsp;与s&amp;nbsp;相似，但即使子目录是空的也会拷贝。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	date&amp;nbsp;&amp;nbsp;显示及修改日期&amp;nbsp;〔适用场合〕　　想知道或修改时间和日期&amp;nbsp;〔用　　法〕　　date&amp;nbsp;显示和改变当前日期
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〔例　　子〕　　C:\\&amp;amp;gt;date&amp;nbsp;09-20-1996&amp;nbsp;将日期改为1996年9月20日&amp;nbsp;C:\\&amp;amp;gt;date&amp;nbsp;　Current&amp;nbsp;date&amp;nbsp;is&amp;nbsp;Tue&amp;nbsp;08-20-1996　　　Enter&amp;nbsp;new&amp;nbsp;date&amp;nbsp;(mm-dd-yy):09-20-1996　按月-日-年的顺序修改当前日期&amp;nbsp;直接按回车键忽略修改日期
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	defrag　　磁盘碎片整理&amp;nbsp;〔适用场合〕　　磁盘读写次数很多，或磁盘使用时间很长了，可能需要使用这条命令整理磁盘。磁盘碎片并不是指磁盘坏了，而只是由于多次的拷贝和删除文件后，磁盘使用会很不连贯，致使速度变慢。&amp;nbsp;〔用　　法〕
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;C:\\&amp;amp;gt;defrag&amp;nbsp;2.&amp;nbsp;选择要整理的磁盘
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fdisk&amp;nbsp;　　硬盘分区&amp;nbsp;〔建　　议〕　　只有硬盘被很利害的病毒感染时，或是一块新硬盘才需要分区，最好请懂行的人指导。硬盘都需经过低级格式化，分区，格式化三个步骤才可使用，成品电脑内的硬盘都已经做过这些加工了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	〔用　　法〕　　输入fdisk后按回车即可进入提示界面
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	prompt　　设置提示符&amp;nbsp;〔适用场合〕　　当你厌烦了c:\\&amp;amp;gt;的提示符或者您想使您的提示符与众不同时，您可以试一试，非常有趣的DOS命令，可以随时显示时间与日期。&amp;nbsp;〔用　　法〕　　prompt&amp;nbsp;$p$g&amp;nbsp;以当前目录名和&amp;amp;gt;号为提示符，这是最常用的提示符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	prompt&amp;nbsp;$t&amp;nbsp;表示时间　prompt&amp;nbsp;$d&amp;nbsp;表示日期&amp;nbsp;&amp;nbsp;prompt&amp;nbsp;$$&amp;nbsp;表示$　　prompt&amp;nbsp;$q&amp;nbsp;表示=　prompt&amp;nbsp;$v&amp;nbsp;表示当前版本prompt&amp;nbsp;$l&amp;nbsp;表示&amp;amp;lt;&amp;nbsp;prompt&amp;nbsp;$b&amp;nbsp;表示&amp;brvbar;&amp;nbsp;　　prompt&amp;nbsp;$h&amp;nbsp;表示退位符　prompt&amp;nbsp;$e&amp;nbsp;表示Esc代表的字符&amp;nbsp;　prompt&amp;nbsp;$_&amp;nbsp;表示回车换行&amp;nbsp;〔例　　子〕　　C:\\DOS&amp;amp;gt;prompt&amp;nbsp;wang$g&amp;nbsp;将wang&amp;amp;gt;作为提示符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WANG&amp;amp;gt;prompt&amp;nbsp;$t$d$g&amp;nbsp;　使用时间、日期和&amp;amp;gt;号做为提示符&amp;nbsp;0:01:07.77Thu&amp;nbsp;08-29-1996&amp;amp;gt;prompt&amp;nbsp;$p$gC:\\DOS&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	set设置环境变量&amp;nbsp;〔适用场合〕　　设置声卡和路径等时用到&amp;nbsp;〔用　　法〕　　set&amp;nbsp;[环境变量]=[字符串]这条命令常常用在autoexec.bat中&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;set&amp;nbsp;blaster=a220&amp;nbsp;i5&amp;nbsp;d1设置声卡的参数&amp;nbsp;　C:\\&amp;amp;gt;set&amp;nbsp;path=c:\\dos　　path&amp;nbsp;c:\\dos含义相同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	append设置非执行文件的路径&amp;nbsp;〔适用场合〕　　当您无法在多个目录中寻找到自己输入的文稿时，可以试一试这个命令，用法类似path。&amp;nbsp;〔用　　法〕　　append&amp;nbsp;[路径];[路径]&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;append
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c:\\test设置寻找非可执行文件路径为c:\\test如果该目录下有文件1.txt时，在其它目录下调用1.txt找不到时，可自动寻找到c:\\test目录。D:\\UCDOS&amp;amp;gt;edit&amp;nbsp;1.txt&amp;nbsp;可找到C:\\test\\1.txt文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	diskcomp　　比较磁盘&amp;nbsp;〔适用场合〕比较两张盘是否相同，没想到什么时候会用到，在比较用diskcopy拷贝的两张盘，为什么不用diskcopy/v校验呢？&amp;nbsp;〔用　　法〕　　diskcomp&amp;nbsp;[盘符1]&amp;nbsp;[盘符2]&amp;nbsp;比较盘1和盘2&amp;nbsp;diskcomp&amp;nbsp;/1&amp;nbsp;只比较磁盘的第一面　diskcomp&amp;nbsp;/8&amp;nbsp;只比较没磁道的前8个扇区&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;diskcomp&amp;nbsp;a:&amp;nbsp;a:&amp;nbsp;　在同一软驱中比较两张盘Insert&amp;nbsp;FIRST&amp;nbsp;diskette&amp;nbsp;in&amp;nbsp;drive&amp;nbsp;A:放入第一张盘　Press&amp;nbsp;any&amp;nbsp;key&amp;nbsp;to&amp;nbsp;continue&amp;nbsp;.&amp;nbsp;.&amp;nbsp;.&amp;nbsp;　　　　　　　　Comparing&amp;nbsp;80&amp;nbsp;tracks&amp;nbsp;18&amp;nbsp;sectors&amp;nbsp;per&amp;nbsp;track,&amp;nbsp;2&amp;nbsp;side(s)&amp;nbsp;　&amp;nbsp;　Insert&amp;nbsp;SECOND&amp;nbsp;diskette&amp;nbsp;in&amp;nbsp;drive&amp;nbsp;A:&amp;nbsp;　　　　　　　　放入第二张盘　Press&amp;nbsp;any&amp;nbsp;key&amp;nbsp;to&amp;nbsp;continue&amp;nbsp;.&amp;nbsp;.&amp;nbsp;.&amp;nbsp;Compare&amp;nbsp;OK比较未发现不同&amp;nbsp;Compare&amp;nbsp;another&amp;nbsp;diskette&amp;nbsp;(Y/N)&amp;nbsp;?n是否比较其它盘，选y继续比较，选n停止
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	expand解压工具&amp;nbsp;〔适用场合〕　　微软公司软件原始安装盘中有许多后缀以\"_\"结尾的压缩文件，可以用它解压，解除您因为少数几个文件丢失造成的麻烦。&amp;nbsp;〔用　　法〕　　expand&amp;nbsp;[源文件名]&amp;nbsp;[目的文件]&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;expand&amp;nbsp;a:vsafe.co_&amp;nbsp;c:\\dos\\vsafe.com&amp;nbsp;　解压vsafe.co_为vsafe.com文件&amp;nbsp;Microsoft&amp;nbsp;(R)&amp;nbsp;File&amp;nbsp;Expansion&amp;nbsp;Utility&amp;nbsp;Version&amp;nbsp;2.10&amp;nbsp;Copyright&amp;nbsp;(C)&amp;nbsp;Microsoft&amp;nbsp;Corp&amp;nbsp;1990-1993.&amp;nbsp;All&amp;nbsp;rights&amp;nbsp;reserved.&amp;nbsp;　　Expanding&amp;nbsp;a:vsafe.co_&amp;nbsp;to&amp;nbsp;c:\\dos\\vsafe.com.&amp;nbsp;a:vsafe.co_:&amp;nbsp;　33046&amp;nbsp;bytes&amp;nbsp;expanded&amp;nbsp;to&amp;nbsp;62576&amp;nbsp;bytes,&amp;nbsp;89%&amp;nbsp;increase.　C:\\DOS&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	setver&amp;nbsp;　设置版本&amp;nbsp;〔适用场合〕　　当希望使用其它版本的dos命令时可以用它来欺骗电脑。在高版本DOS中，某些旧版本程序需要DOS3.3时，可用setver来设置&amp;nbsp;〔用　　法〕　　使用时一般在config.sys中加入&amp;nbsp;device=setver.exe　setver　显示文件的版本setver&amp;nbsp;[文件名]&amp;nbsp;n.nn&amp;nbsp;　　设置指定文件的版本号&amp;nbsp;〔例　　子〕　C:\\DOS&amp;amp;gt;setver　KERNEL.EXE&amp;nbsp;5.00&amp;nbsp;　　DOSOAD.SYS&amp;nbsp;5.00　EDLIN.EXE&amp;nbsp;5.00　BACKUP.EXE&amp;nbsp;5.00　ASSIGN.COM&amp;nbsp;5.00　EXE2BIN.EXE&amp;nbsp;5.00　JOIN.EXE&amp;nbsp;5.00　RECOVER.EXE&amp;nbsp;5.00　WINWORD.EXE&amp;nbsp;4.10　C:\\&amp;amp;gt;　若程序AAA.exe必须在MS-DOS3.3下执行，则键入C:\\DOS&amp;amp;gt;setver&amp;nbsp;aaa.exe&amp;nbsp;3.30又如net5.exe仅在MS-DOS5.0下执行，则在config.sys中加入　device=setver.exe后也可在Ms-DOS6.22下运行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	share文件共享&amp;nbsp;〔建　　议〕只有在软件声明必须要运行它时才用&amp;nbsp;〔用　　法〕　　可在config.sys中加入&amp;nbsp;install=share.exe&amp;nbsp;也可直接运行参数有&amp;nbsp;f&amp;nbsp;l
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	subst　路径替换&amp;nbsp;〔建　　议〕一个非常有趣的命令，如果经常用光碟软件，可能有用。&amp;nbsp;〔用　　法〕　　subst显示当前的替代路径&amp;nbsp;subst&amp;nbsp;[盘符]&amp;nbsp;[路径]&amp;nbsp;将指定的路径替代盘符，该路径将作为驱动器使用&amp;nbsp;subst&amp;nbsp;/b解除替代&amp;nbsp;〔例　　子〕C:\\DOS&amp;amp;gt;subst&amp;nbsp;a:&amp;nbsp;c:\\temp&amp;nbsp;用c盘temp目录替代a盘&amp;nbsp;C:\\&amp;amp;gt;subst&amp;nbsp;a:&amp;nbsp;/d　解除替代
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tree&amp;nbsp;　显示命令树结构&amp;nbsp;〔适用场合〕　查看所有的子目录&amp;nbsp;〔用　　法〕　tree&amp;nbsp;[盘符]　显示所有的子目录树
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tree&amp;nbsp;/f显示目录时同时显示文件名
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tree&amp;nbsp;/a　　以ASCII码显示目录树&amp;nbsp;〔例　　子〕　　C:\\WINDOWS&amp;amp;gt;tree&amp;nbsp;/a&amp;nbsp;　unformat　恢复已被格式化的磁盘&amp;nbsp;〔建　　议〕你把有重要信息的软盘格式化了?快用unformat……什么?你用了　format&amp;nbsp;/u，那死定了&amp;nbsp;〔用　　法〕　　unformat&amp;nbsp;[盘符]&amp;nbsp;　　　恢复指定的被格式化的磁盘&amp;nbsp;unformat&amp;nbsp;/l显示unformat所找到的文件名&amp;nbsp;〔例　　子〕　　C:\\WINDOWS&amp;amp;gt;unformat&amp;nbsp;a:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ver　　显示DOS版本&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;ver&amp;nbsp;&amp;nbsp;MS-DOS&amp;nbsp;Version&amp;nbsp;6.22&amp;nbsp;C:\\&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	vol&amp;nbsp;显示指定的磁盘卷标号&amp;nbsp;〔例　　子〕　　C:\\&amp;amp;gt;vol&amp;nbsp;　　Volume&amp;nbsp;in&amp;nbsp;drive&amp;nbsp;C&amp;nbsp;is&amp;nbsp;Wang　Volume&amp;nbsp;Serial&amp;nbsp;Number&amp;nbsp;is&amp;nbsp;2116-1DD0&amp;nbsp;C:\\&amp;amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-05-06/1336312236.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-08+20%3A32%3A02</date-c>
+  <conf-c>还可以</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

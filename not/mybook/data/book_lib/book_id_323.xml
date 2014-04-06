@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[jQuery Mobile快速入门（ 国内首本jQuery Mobile技术图书）]]></title>
+  <author>布鲁林克</author>
+  <submiter-uid>341</submiter-uid>
+  <submit-date-time>2013-04-08 12:27:04</submit-date-time>
+  <img-link>86efaa32ec3e123392270ab0383bff30.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	<strong><span style=\"font-size:14px;\">jquery mobile的入门级读物</span></strong>，《jquery mobile快速入门》以示例方式讲解了jquery mobile的基本知识和核心特性，内容系统全面，便于理解。
+</p>
+<p>
+	《jquery mobile快速入门》总共分为10章，内容包括jquery mobile的基础知识；使用页眉、工具栏和标签栏进行导航；表单元素和按钮；列表视图；使用表格和css渐变来格式化内容；创建可主题化的设计；jquery mobile api；服务集成策略；使用phonegap轻松部署jquery mobile应用程序等。通过本书的学习，读者将会获悉jquery mobile的核心特性，以及如何创建可主题化的设计，还会掌握jquery mobile的api，以及如何使用phonegap来扩展jquery mobile。
+</p>
+<p>
+	《jquery mobile快速入门》适合想要掌握jquery mobile的web开发人员阅读。具有一定开发经验的android开发人员和iphone/ipad开发人员在学完本书后，也可以通过一次编码，构建出可跨平台运行的app。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		当前，企业和个人用于开发和发布移动应用程序所使用的技术正在发生变化，而我们则是见证者。最初，开发和发布移动程序的策略是针对每一个主流平台开发独立的本地app，然而，开发团队迅速意识到，维护多个平台所需的花费是不可忍受的，而且移动团队也会丧失其敏捷性。在将来，移动开发团队只需一次编码，就可以将app部署到所有设备上，这样的开发团队会更具竞争性，而jQueryMobile可以帮助你实现这一目标。
+	</p>
+	<p>
+		jQuery Mobile是一个框架，用于交付具有统一界面的跨平台移动Web应用程序。jQuery Mobile将响应式布局与渐进式增强结合起来，从而通过一个代码库来呈现最佳的用尸体验。通过使用jQuery Mobile，我们将会看到如何为iOS、Android、Windows Phone、BlackBerry及其他移动设备创建可主题化的，而且具有本地外观的相应式应用程序。我们会发现是什么让jQuery Mobile不同于其他移动Web开发平台，也会通过示例来探索jQuery Mobile的特性，其中包括设计元素和事件处理。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

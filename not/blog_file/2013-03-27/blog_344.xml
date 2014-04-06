@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[百度支持Canonical标签]]></title>
+  <content><![CDATA[<p>
+	一、Canonical标签有什么作用？
+</p>
+<p>
+	对一组内容完全相同或高度相似的网页，通过使用Canonical标签可以告诉搜索引擎哪个页面为规范的网页，能够规范网址并避免搜索结果中出现多个内容相同或相似的页面，帮助解决重复内容的收录问题，避免网站相同内容网页的重复展示及权重的分散，提升规范网页的权重，优化规范网页的排名。
+</p>
+<p>
+	二、什么是规范网页？
+</p>
+<p>
+	规范网页是一组内容完全相同或高度相似的网页的首选版本。
+</p>
+<p>
+	三、为什么要指定规范网页？
+</p>
+<p>
+	为了避免重复内容的收录，百度会通过算法对网页内容及链接进行识别，对内容完全相同或者高度相似的网页，会计算出一个系统认为规范的网页结果建立索引并供用户查询。
+</p>
+<p>
+	支持Canonical标签以后，站长可以通过将 &lt;link&gt; 元素和 rel=\"canonical\" 属性添加到该网页非规范版本的&lt;head&gt; 部分，为搜索引擎指定规范网页。添加此链接和属性可以告诉百度：“在内容相同或高度相似的所有网页中，该网页为最规范最有价值的页面，推荐将该网页排在搜索结果中靠前的位置。”
+</p>
+<p>
+	四、如何指定规范网址？
+</p>
+<p>
+	可通过在每个非规范版本的 HTML 网页的 &lt;head&gt; 部分中，添加一个 rel=\"canonical\" 链接来进行指定规范网址。
+</p>
+<p>
+	例如，要指定指向网页 http://www.example.com/product.php?id=15786 的规范链接，需要按以下形式创建 &lt;link&gt; 元素：
+</p>
+<p>
+	&lt;link rel=\"canonical\" href=\"http://www.example.com/product.php?id=15786\"/&gt;
+</p>
+<p>
+	然后将上述链接复制到某网页所有非规范网页版本的 &lt;head&gt; 部分中（例如 http://www.example.com/product.php?id=15786&amp;active=1），即可完成设置。
+</p>
+<p>
+	五、可设置规范网页的几种情况举例：
+</p>
+<p>
+	举例一、社区帖子可能由于置顶、突出颜色等行为导致内容完全相同的一个网页产生不同的链接，搜索引擎只会选择其中一个链接建立索引，如以下两个链接不同，内容完全相同的页面：
+</p>
+<p>
+	http://bbs.zhanzhang.baidu.com/forum.php?mod=viewthread&amp;tid=9502&amp;highlight=
+</p>
+<p>
+	&nbsp; &nbsp;http://bbs.zhanzhang.baidu.com/thread-9502-1-1.html
+</p>
+<p>
+	举例二、对商品的列表页面，按照价格或者优惠等顺序进行排序，但网页内容高度相似：
+</p>
+<p>
+	&nbsp; &nbsp;http://mall.leho.com/pr-list?locid=75fb2a357d38397c5e1e75fa&amp;cid=5e1e02f950a4101fb27571ee&amp;order=discount
+</p>
+<p>
+	&nbsp; &nbsp;http://mall.leho.com/pr-list?order=price_asc&amp;locid=75fb2a357d38397c5e1e75fa&amp;cid=5e1e02f950a4101fb27571ee
+</p>
+<p>
+	&nbsp; 举例三、网站有多个网页展示的为相同型号的商品，只是每个网页商品图的颜色不同，其他内容几乎完全相似，此时也可设置rel=\"canonical\"，将当下最流行色彩的商品网页设置规范网页，推荐百度有优先将其显示在搜索结果中。
+</p>
+<p>
+	六、百度会完全遵守rel=\"canonical\"标签吗？
+</p>
+<p>
+	网页中添加该标签后，就代表站长向百度推荐某个网页作为最规范的网页版本，百度会同时根据标签的推荐及系统算法选择出最合适的网页将其显示在搜索结果中。百度会根据网页内容实际情况考虑Canonical标签中推荐的网页，但不保证完全遵守该标签。为了保证标签的效果，请保证一个页面中仅有一个Canonical标签。
+</p>
+<p>
+	七、此链接是相对的还是绝对的？
+</p>
+<p>
+	rel=\"canonical\" 可与相对链接或绝对链接一起使用，但建议您使用绝对链接，以最大程度地减少可能出现的混乱或问题。
+</p>
+<p>
+	八、rel=\"canonical\"标签可用于在不同的域名中建议规范网址吗？
+</p>
+<p>
+	如果网站需要更换域名，且使用的服务器不能创建服务器端重定向网址的情况下，就可以使用rel=\"canonical\" 链接元素指定希望百度收录域的网址。
+</p>]]></content>
+  <contentx><![CDATA[
+	一、Canonical标签有什么作用？
+
+
+	对一组内容完全相同或高度相似的网页，通过使用Canonical标签可以告诉搜索引擎哪个页面为规范的网页，能够规范网址并避免搜索结果中出现多个内容相同或相似的页面，帮助解决重复内容的收录问题，]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

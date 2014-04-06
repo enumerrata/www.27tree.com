@@ -1,0 +1,31 @@
+.nav-v3{
+    width:1024px;
+}
+#uvs-wapp{
+    width:1024px;margin:0 auto;margin-bottom:45px;border:1px solid #ccc;margin-top:0;border-top:none;background:#fefefe;
+}
+#uvs-tbg{
+    background:url('/img/dag-bg-vcm.png');height:279px;
+}
+#uvs-tbg-set{
+    float:right;width:16px;height:16px;margin:5px;border:1px solid #ccc;background:url('/img/settings.png') #fff center no-repeat;
+}
+#uvs-info-wapp{
+    padding-bottom:20px;border-top:1px solid #ccc;position:relative;
+}
+#add-follow-btn{
+    color:black;
+    display:inline-block;padding-left:18px;height:16px;line-height:16px;background:url('/user/sources/img/add_outline.png') left center no-repeat;
+}
+#add-follow-btn:hover{
+    background:url('/user/sources/img/add.png') left center no-repeat;
+}
+#add-follow-btn:active{
+    color:#900;
+}
+.h-visitor{
+    margin-right:5px;margin-bottom:5px;
+}
+.blog-empty{
+    font-size:25px;color:#888;font-weight:normal;cursor:default;display:block;height:250px;
+}

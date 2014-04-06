@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-16 14:58:57</datetime>
+  <title>不是手机的错，手机连不上wifi，正在获取ip地址怎么办</title>
+  <content>&lt;p&gt;
+	打开设置-无线和网路-WLAN设置，按menu键，
+&lt;/p&gt;
+&lt;p&gt;
+	进入高级选项设置，在ip设置中勾选\"使用静态IP\"。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;为什么要选择静态IP?,因为动态IP是有租期的，路由器一般默认的租期都很短，也可以自己把租期调到最大继续使用动态地址。&lt;/strong&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;但是动态地址一旦过期你是无法再连接的了。&lt;/strong&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	然后在\"IP地址\"中填入\"192.168.1.X\"，一般家庭使用无线路由，
+&lt;/p&gt;
+&lt;p&gt;
+	网段是192.168.1.2--192.168.1.255，X值代表的范畴是2-255之间的。
+&lt;/p&gt;
+&lt;p&gt;
+	然后再\"网关\"中填入192.168.1.1，或者是192.168.0.1，
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;192.168.x.1里面的x一般路由器默认是1或者0，也可以自己修改，路由器桥接才需要修改。&lt;/strong&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	\"网络掩码\"&amp;nbsp;(也叫子网掩码)&amp;nbsp;中填入255.255.255.0，在\"域名1\"中填入192.168.1.1，\"域名2\"中填入192.168.1.1。
+&lt;/p&gt;
+&lt;p&gt;
+	DNS也称为域名系统，我们使用谷歌的DNS服务就行了&amp;nbsp;8.8.8.8
+&lt;/p&gt;
+&lt;p&gt;
+	填一个也能够，填两个也是可以的。最后按menu键保存，这样就设置好了。
+&lt;/p&gt;
+&lt;p&gt;
+	要是还不行，请在下面发帖，我们为你解决。
+&lt;/p&gt;</content>
+  <state>0</state>
+</root>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>中国电信遭黑客攻击 官方回应称仍在核实中</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338813126764.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;strong&amp;gt;中国电信遭黑客攻击&amp;nbsp;官方回应称消息仍在核实中&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	中新网6月4日电今日有消息称，某黑客组织宣布，已经破解了中国电信的网络，并发布了中国电信的900个网络管理员的用户名和密码及相关文件。中新网IT频道就此致电中国电信新闻处，该处相关负责人表示仍在进行核实，当笔者试图进一步询问时，该负责人并未回应。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	据国内媒体报道，一个名为Swagg&amp;nbsp;Security的黑客组织在其博客中宣布，他们窃取了中国电信数据中包含900个网络管理员的用户名和密码。并表示，这些信息是在一个不安全的SQL服务器上所获得。SwaggSec在中国电信的网络中植入了一条信息，以此通知该公司。这个SQL服务器已经被移除，但问题并未解决。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	据了解，Swagger&amp;nbsp;Security又称SwaggSec，该组织上周日通过海盗湾的文件连接分享了上述信息。自今年以来，SwaggSec一直非常活跃，此前曾窃取了富士康订购系统中的用户名和密码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此外，SwaggSec还在博客中表示，他们还破解了华谊兄弟旗下网站的重要资料。包括一份题为《内容安全状态更新》的报告，这份报告内容是对华纳兄弟旗下网站安全状况的评估，并列出了最易遭受中等风险攻击的十大网站。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对此，中国新闻网IT频道对此还将持续关注。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-05/1338853281.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

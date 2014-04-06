@@ -1,0 +1,128 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 安全的电子邮件</h1>
+</div>
+<div>
+
+<p><b>在上一节中的 PHP e-mail 脚本中，存在着一个漏洞。</b></p>
+
+<h1>PHP E-mail 注入</h1>
+
+<p>首先，请看上一节中的 PHP 代码：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+if&nbsp(isset($_REQUEST['email']))<br />
+//if&nbsp"email"&nbspis&nbspfilled&nbspout,&nbspsend&nbspemail<br />
+&nbsp&nbsp{<br />
+&nbsp&nbsp//send&nbspemail<br />
+&nbsp&nbsp$email&nbsp=&nbsp$_REQUEST['email']&nbsp;&nbsp<br />
+&nbsp&nbsp$subject&nbsp=&nbsp$_REQUEST['subject']&nbsp;<br />
+&nbsp&nbsp$message&nbsp=&nbsp$_REQUEST['message']&nbsp;<br />
+&nbsp&nbspmail("someone@example.com",&nbsp"Subject:&nbsp$subject",<br />
+&nbsp&nbsp$message,&nbsp"From:&nbsp$email"&nbsp);<br />
+&nbsp&nbspecho&nbsp"Thank&nbspyou&nbspfor&nbspusing&nbspour&nbspmail&nbspform";<br />
+&nbsp&nbsp}<br />
+else<br />
+//if&nbsp"email"&nbspis&nbspnot&nbspfilled&nbspout,&nbspdisplay&nbspthe&nbspform<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"&lt;form&nbspmethod='post'&nbspaction='mailform.php'&gt;<br />
+&nbsp&nbspEmail:&nbsp&lt;input&nbspname='email'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspSubject:&nbsp&lt;input&nbspname='subject'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspMessage:&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;textarea&nbspname='message'&nbsprows='15'&nbspcols='40'&gt;<br />
+&nbsp&nbsp&lt;/textarea&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;input&nbsptype='submit'&nbsp/&gt;<br />
+&nbsp&nbsp&lt;/form&gt;";<br />
+&nbsp&nbsp}<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>以上代码存在的问题是，未经授权的用户可通过输入表单在邮件头部插入数据。</p>
+<p>假如用户在表单中的输入框内加入这些文本，会出现什么情况呢？</p>
+
+<code>
+someone@example.com%0ACc:person2@example.com<br />
+%0ABcc:person3@example.com,person3@example.com,<br />
+anotherperson4@example.com,person5@example.com<br />
+%0ABTo:person6@example.com
+</code>
+
+<p>与往常一样，mail() 函数把上面的文本放入邮件头部，那么现在头部有了额外的 Cc:, Bcc: 以及 To: 字段。当用户点击提交按钮时，这封 e-mail 会被发送到上面所有的地址！</p>
+
+<h1>PHP 防止 E-mail 注入</h1>
+
+<p>防止 e-mail 注入的最好方法是对输入进行验证。</p>
+<p>下面的代码与上一节类似，不过我们已经增加了检测表单中 email 字段的输入验证程序：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+&lt;?php<br />
+function&nbspspamcheck($field)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbsp//filter_var()&nbspsanitizes&nbspthe&nbspe-mail&nbsp<br />
+&nbsp&nbsp//address&nbspusing&nbspFILTER_SANITIZE_EMAIL<br />
+&nbsp&nbsp$field=filter_var($field,&nbspFILTER_SANITIZE_EMAIL);<br />
+&nbsp&nbsp<br />
+&nbsp&nbsp//filter_var()&nbspvalidates&nbspthe&nbspe-mail<br />
+&nbsp&nbsp//address&nbspusing&nbspFILTER_VALIDATE_EMAIL<br />
+&nbsp&nbspif(filter_var($field,&nbspFILTER_VALIDATE_EMAIL))<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspreturn&nbspTRUE;<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspreturn&nbspFALSE;<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp}<br />
+<br />
+if&nbsp(isset($_REQUEST['email']))<br />
+&nbsp&nbsp{//if&nbsp"email"&nbspis&nbspfilled&nbspout,&nbspproceed<br />
+<br />
+&nbsp&nbsp//check&nbspif&nbspthe&nbspemail&nbspaddress&nbspis&nbspinvalid<br />
+&nbsp&nbsp$mailcheck&nbsp=&nbspspamcheck($_REQUEST['email']);<br />
+&nbsp&nbspif&nbsp($mailcheck==FALSE)<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Invalid&nbspinput";<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp{//send&nbspemail<br />
+&nbsp&nbsp&nbsp&nbsp$email&nbsp=&nbsp$_REQUEST['email']&nbsp;&nbsp<br />
+&nbsp&nbsp&nbsp&nbsp$subject&nbsp=&nbsp$_REQUEST['subject']&nbsp;<br />
+&nbsp&nbsp&nbsp&nbsp$message&nbsp=&nbsp$_REQUEST['message']&nbsp;<br />
+&nbsp&nbsp&nbsp&nbspmail("someone@example.com",&nbsp"Subject:&nbsp$subject",<br />
+&nbsp&nbsp&nbsp&nbsp$message,&nbsp"From:&nbsp$email"&nbsp);<br />
+&nbsp&nbsp&nbsp&nbspecho&nbsp"Thank&nbspyou&nbspfor&nbspusing&nbspour&nbspmail&nbspform";<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp}<br />
+else<br />
+&nbsp&nbsp{//if&nbsp"email"&nbspis&nbspnot&nbspfilled&nbspout,&nbspdisplay&nbspthe&nbspform<br />
+&nbsp&nbspecho&nbsp"&lt;form&nbspmethod='post'&nbspaction='mailform.php'&gt;<br />
+&nbsp&nbspEmail:&nbsp&lt;input&nbspname='email'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspSubject:&nbsp&lt;input&nbspname='subject'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspMessage:&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;textarea&nbspname='message'&nbsprows='15'&nbspcols='40'&gt;<br />
+&nbsp&nbsp&lt;/textarea&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;input&nbsptype='submit'&nbsp/&gt;<br />
+&nbsp&nbsp&lt;/form&gt;";<br />
+&nbsp&nbsp}<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>在上面的代码中，我们使用了 PHP 过滤器来对输入进行验证：</p>
+
+<ul>
+<li>FILTER_SANITIZE_EMAIL 从字符串中删除电子邮件的非法字符</li>
+<li>FILTER_VALIDATE_EMAIL 验证电子邮件地址</li>
+</ul>
+
+</div>

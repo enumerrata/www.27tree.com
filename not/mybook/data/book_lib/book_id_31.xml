@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Linux内核设计与实现</title>
+  <author> （美）Robert Love  </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:12:09</submit-date-time>
+  <img-link>81efb903f3a97099938cf9f9f3347ce8.png</img-link>
+  <book-area>system</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Linux内核设计与实现（原书第3版）》详细描述了Linux内核的设计与实现。内核代码的编写者、开发者以及程序开发人员都可以通过阅读《Linux内核设计与实现（原书第3版）》受益，他们可以更好理解操作系统原理，并将其应用在自己的编码中以提高效率和生产率。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Linux内核设计与实现（原书第3版）》详细描述了Linux内核的主要子系统和特点，包括Linux内核的设计、实现和接口。从理论到实践涵盖了Linux内核的方方面面，可以满足读者的各种兴趣和需求。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作者Robert&amp;nbsp;Love是一位Linux内核核心开发人员，他分享了在开发Linux2.6内核过程中颇具价值的知识和经验《Linux内核设计与实现（原书第3版）》的主题包括进程管理、进程调度、时间管理和定时器、系统调用接口、内存寻址、内存管理和页缓存、VFS、内核同步、移植性相关的问题以及调试技术。同时《Linux内核设计与实现（原书第3版）》也涵盖了Linux2.6内核中颇具特色的内容，包括CFS调度程序、抢占式内核、块I/O层以及I/O调度程序。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

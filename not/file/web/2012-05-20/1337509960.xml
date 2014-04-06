@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Web前端/RIA开发必备：11 个最常用的 AJAX 开发框架</title>
+<content>&amp;lt;p&amp;gt;
+	AJAX（Asynchronous&amp;nbsp;JavaScript&amp;nbsp;and&amp;nbsp;XML，异步JavaScript和XML)，是创建交互式Web应用的主要开发技术。互联网中也有大量的关于AJAX的框架，本文汇总了最常用的11个框架。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;&amp;nbsp;jQuery
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery是一个轻量级的Javascript库，兼容CSS3，还兼容各种浏览器。jQuery使用户能更方便地处理HTML&amp;nbsp;documents、events、实现动画效果，并且方便地为网站提供AJAX交互。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;&amp;nbsp;MooTools
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MooTools是一个简洁、模块化、面向对象的JavaScript库。它能够帮助你更快、更简单地编写可扩展和兼容性强的JavaScript代码。Mootools跟prototypejs相类似，语法几乎一样。但它提供的功能要比prototypejs多，而且更强大。比如增加了动画特效、拖放操作等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;&amp;nbsp;Prototype
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Prototype是Sam&amp;nbsp;Stephenson写的一个非常优雅的JavaScript基础类库，对JavaScript做了大量的扩展，旨在简化动态Web应用程序的开发。Prototype很好的支持AJAX，国内外有多个基于此类库实现的效果库，也做得很棒。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;&amp;nbsp;ASP.NET&amp;nbsp;AJAX
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ASP.NET&amp;nbsp;AJAX是一个完整的开发框架，容易与现有的ASP.NET程序相结合，通常实现复杂的功能只需要在页面中拖几个控件，而不必了解深层次的工作原理，除此之外服务器端编程的ASP.NET&amp;nbsp;AJAX&amp;nbsp;Control&amp;nbsp;Toolkit含有大量的独立AJAX控件和对ASP.NET原有服务器控件的AJAX功能扩展，实现起来也非常简单。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;&amp;nbsp;Apache&amp;nbsp;Wicket
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Apache&amp;nbsp;Wicket是一个针对Java的Web开发框架，与Struts、WebWork、Tapestry类似。其特点在于对HTML和代码进行了有效的分离（有利于程序员和美工的合作），基于规则的配置（减少了XML&amp;nbsp;等配置文件的使用)，学习曲线较低（开发方式与C/S相似），更加易于调试（错误类型比较少，而且容易定位）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;&amp;nbsp;Dojo&amp;nbsp;Tookit
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dojo是一个强大的面向对象的JavaScript框架。主要由三大模块组成：Core、Dijit、DojoX。Core提供AJAX、events、packaging、CSS-based&amp;nbsp;querying、animations、JSON等相关操作API；Dijit是一个可更换皮肤、基于模板的WEB&amp;nbsp;UI控件库；DojoX包括一些创新/新颖的代码和控件：DateGrid、charts、离线应用、跨浏览器矢量绘图等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;&amp;nbsp;DWR（Direct&amp;nbsp;Web&amp;nbsp;Remoting）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DWR是一个Java库，可以帮助开发者轻松实现服务器端的Java和客户端的JavaScript相互操作、彼此调用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.&amp;nbsp;&amp;nbsp;Spry&amp;nbsp;Framework
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Adobe&amp;nbsp;Spry是一个面向Web设计人员而不是开发人员的AJAX框架，它使得设计人员不需要了解复杂的AJAX技巧也能在一个HTML页面中创建丰富体验成为了可能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.&amp;nbsp;&amp;nbsp;YUI&amp;nbsp;（Yahoo&amp;nbsp;User&amp;nbsp;Interface）&amp;nbsp;Library
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	YUI（Yahoo&amp;nbsp;User&amp;nbsp;Interface），是由雅虎开发的一个开源的JavaScript函数库，它采用了AJAX、&amp;nbsp;DHTML和DOM等诸多技术。YUI包含多种程序工具、函数库以及网页操作界面，能够更快速地开发互动性高且丰富的网站应用程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.&amp;nbsp;&amp;nbsp;Google&amp;nbsp;Web&amp;nbsp;Toolkit
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Google&amp;nbsp;Web&amp;nbsp;Toolkit&amp;nbsp;(GWT)&amp;nbsp;是一个开源的Java开发框架，可以使不会使用第二种浏览器语言的开发人员编写Google&amp;nbsp;地图和&amp;nbsp;Gmail&amp;nbsp;等&amp;nbsp;AJAX&amp;nbsp;应用程序时更加轻松。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11.&amp;nbsp;&amp;nbsp;ZK&amp;nbsp;Framework
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ZK是一套开源、兼容XUL/HTML标准、使用Java编写的AJAX框架，使用该框架，你无需编写JavaScript&amp;nbsp;代码就可以创建一个支持Web&amp;nbsp;2.0的富互联网应用程序（RIA）。其最大的好处是，在设计AJAX网络应用程序时，轻松简便的操作就像设计桌面程序一样。ZK包含了一个以AJAX为基础、事件驱动（event-driven）、高互动性的引擎，同时还提供了多样丰富、可重复使用的XUL与HTML组件，以及以XML为基础的使用接口设计语言ZK&amp;nbsp;User-interfaces&amp;nbsp;Markup&amp;nbsp;Language（ZUML）。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-20/1337509960.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-25+10%3A30%3A57</date-c>
+  <conf-c>ZK是一套开源、兼容XUL/HTML标准、使用Java编写的AJAX框架，使用该框架，你无需编写JavaScript&amp;nbsp;代码就可以创建一个支持Web&amp;nbsp;2.0的富互联网应用程序（RIA）。其最大的好处是，在设计AJAX网络应用程序时，轻松简便的操作就像设计桌面程序一样。ZK包含了一个以AJAX为基础、事件驱动（event-driven）、高互动性的引擎，同时还提供了多样丰富、可重复使用的XUL与HTML组件，以及以XML为基础的使用接口设计语言ZK&amp;nbsp;User-interfaces&amp;nbsp;Markup&amp;nbsp;Language（ZUML）。</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-25+10%3A31%3A21</date-c>
+  <conf-c>DWR是一个Java库，可以帮助开发者轻松实现服务器端的Java和客户端的JavaScript相互操作、彼此调用。</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

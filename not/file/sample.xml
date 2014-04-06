@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>1</title>
+<content>2</content>
+<json-link>3</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref></imghref>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

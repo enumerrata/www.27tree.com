@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言教程：基本运算符和表达式</title>
+<content>&amp;lt;p&amp;gt;
+	运算符的种类、优先级和结合性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言中运算符和表达式数量之多，&amp;nbsp;在高级语言中是少见的。正是丰富的运算符和表达式使Ｃ语言功能十分完善。&amp;nbsp;这也是Ｃ语言的主要特点之一。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言的运算符不仅具有不同的优先级，&amp;nbsp;而且还有一个特点，就是它的结合性。在表达式中，&amp;nbsp;各运算量参与运算的先后顺序不仅要遵守运算符优先级别的规定，还要受运算符结合性的制约，&amp;nbsp;以便确定是自左向右进行运算还是自右向左进行运算。&amp;nbsp;这种结合性是其它高级语言的运算符所没有的，因此也增加了Ｃ语言的复杂性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	运算符的种类Ｃ语言的运算符可分为以下几类：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.算术运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于各类数值运算。包括加(+)、减(-)、乘(*)、除(/)、求余(或称模运算，%)、自增(++)、自减(--)共七种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.关系运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于比较运算。包括大于(&amp;amp;gt;)、小于(&amp;amp;lt;)、等于(==)、&amp;nbsp;大于等于(&amp;amp;gt;=)、小于等于(&amp;amp;lt;=)和不等于(!=)六种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.逻辑运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于逻辑运算。包括与(&amp;amp;&amp;amp;)、或(&amp;brvbar;&amp;brvbar;)、非(!)三种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.位操作运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	参与运算的量，按二进制位进行运算。包括位与(&amp;amp;)、位或(&amp;brvbar;)、位非(~)、位异或(^)、左移(&amp;amp;lt;&amp;amp;lt;)、右移(&amp;amp;gt;&amp;amp;gt;)六种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.赋值运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于赋值运算，分为简单赋值(=)、复合算术赋值(+=,-=,*=,/=,%=)和复合位运算赋值(&amp;amp;=,&amp;brvbar;=,^=,&amp;amp;gt;&amp;amp;gt;=,&amp;amp;lt;&amp;amp;lt;=)三类共十一种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.条件运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是一个三目运算符，用于条件求值(?:)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.逗号运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于把若干表达式组合成一个表达式(，)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.指针运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于取内容(*)和取地址(&amp;amp;)二种运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.求字节数运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用于计算数据类型所占的字节数(sizeof)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.特殊运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有括号()，下标[]，成员(→，.)等几种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	优先级和结合性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言中，运算符的运算优先级共分为15级。1级最高，15级最低。在表达式中，优先级较高的先于优先级较低的进行运算。&amp;nbsp;而在一个运算量两侧的运算符优先级相同时，&amp;nbsp;则按运算符的结合性所规定的结合方向处理。&amp;nbsp;Ｃ语言中各运算符的结合性分为两种，即左结合性(自左至右)和右结合性(自右至左)。例如算术运算符的结合性是自左至右，即先左后右。如有表达式x-y+z则y应先与“-”号结合，&amp;nbsp;执行x-y运算，然后再执行+z的运算。这种自左至右的结合方向就称为“左结合性”。而自右至左的结合方向称为“右结合性”。&amp;nbsp;最典型的右结合性运算符是赋值运算符。如x=y=z,由于“=”的右结合性，应先执行y=z再执行x=(y=z)运算。&amp;nbsp;Ｃ语言运算符中有不少为右结合性，应注意区别，以避免理解错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	算术运算符和算术表达式基本的算术运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.加法运算符“+”加法运算符为双目运算符，即应有两个量参与加法运算。如a+b,4+8等。具有右结合性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.减法运算符“-”减法运算符为双目运算符。但“-”也可作负值运算符，此时为单目运算，如-x,-5等具有左结合性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.乘法运算符“*”双目运算，具有左结合性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.除法运算符“/”双目运算具有左结合性。参与运算量均为整型时，&amp;nbsp;结果也为整型，舍去小数。如果运算量中有一个是实型，则结果为双精度实型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\n\n%d,%d\n,20/7,-20/7);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%f,%f\n,20.0/7,-20.0/7);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	双目运算具有左结合性。参与运算量均为整型时，&amp;nbsp;结果也为整型，舍去小数。如果运算量中有一个是实型，则结果为双精度实型。&amp;nbsp;printf(\n\n%d,%d\n,20/7,-20/7);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%f,%f\n,20.0/7,-20.0/7);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例中，20/7，-20/7的结果均为整型，小数全部舍去。而20.0/7和-20.0/7由于有实数参与运算，因此结果也为实型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.求余运算符(模运算符)“%”双目运算，具有左结合性。要求参与运算的量均为整型。&amp;nbsp;求余运算的结果等于两数相除后的余数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,100%3);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	双目运算，具有左结合性。求余运算符%&amp;nbsp;要求参与运算的量均为整型。本例输出100除以3所得的余数1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	自增１，自减１运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	自增1运算符记为“++”，其功能是使变量的值自增1。自减1运算符记为“--”，其功能是使变量值自减1。自增1，自减1运算符均为单目运算，都具有右结合性。可有以下几种形式：&amp;nbsp;++i&amp;nbsp;i自增1后再参与其它运算。--i&amp;nbsp;i自减1后再参与其它运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i++&amp;nbsp;　i参与运算后，i的值再自增1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i--&amp;nbsp;　i参与运算后，i的值再自减1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在理解和使用上容易出错的是i++和i--。&amp;nbsp;特别是当它们出在较复杂的表达式或语句中时，常常难于弄清，因此应仔细分析。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i=8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,++i);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,--i);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,i--);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,-i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,-i--);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;i&amp;amp;lt;--8
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i+1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i-1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i+1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i-1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i+1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--i-1&amp;nbsp;int&amp;nbsp;i=8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,++i);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,--i);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,i--);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,-i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n,-i--);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i的初值为8
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第2行i加1后输出故为9；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第3行减1后输出故为8；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第4行输出i为8之后再加1(为9)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第5行输出i为9之后再减1(为8)&amp;nbsp;；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第6行输出-8之后再加1(为9)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第7行输出-9之后再减1(为8)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i=5,j=5,p,q;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=(i++)+(i++)+(i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	q=(++j)+(++j)+(++j);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%d,%d,%d,p,q,i,j);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i&amp;amp;lt;--5,j&amp;amp;lt;--5,p&amp;amp;lt;--0,q&amp;amp;lt;--0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i+i+i---&amp;amp;gt;p,i+1--&amp;amp;gt;i,i+1--&amp;amp;gt;i,i+1--&amp;amp;gt;i
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	j+1-&amp;amp;gt;j,j+1-&amp;amp;gt;j,j+1-&amp;amp;gt;j,j+j+j-&amp;amp;gt;q&amp;nbsp;int&amp;nbsp;i=5,j=5,p,q;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=(i++)+(i++)+(i++);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	q=(++j)+(++j)+(++j);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个程序中，对P=(i++)+(i++)+(i++)应理解为三个i相加，故P值为15。然后i再自增1三次相当于加3故i的最后值为8。而对于q&amp;nbsp;的值则不然，q=(++j)+(++j)+(++j)应理解为q先自增1，再参与运算，由于q自增1三次后值为8，三个8相加的和为24，j的最后值仍为8。算术表达式表达式是由常量、变量、函数和运算符组合起来的式子。&amp;nbsp;一个表达式有一个值及其类型，&amp;nbsp;它们等于计算表达式所得结果的值和类型。表达式求值按运算符的优先级和结合性规定的顺序进行。&amp;nbsp;单个的常量、变量、函数可以看作是表达式的特例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	算术表达式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是由算术运算符和括号连接起来的式子，&amp;nbsp;以下是算术表达式的例子：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a+b&amp;nbsp;　(a*2)／c　(x+r)*8-(a+b)／7　　++i　sin(x)+sin(y)&amp;nbsp;　(++i)-(j++)+(k--)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	赋值运算符和赋值表达式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	简单赋值运算符和表达式，简单赋值运算符记为“=”。由“=&amp;nbsp;”连接的式子称为赋值表达式。其一般形式为：&amp;nbsp;变量=表达式&amp;nbsp;例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x=a+b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	w=sin(a)+sin(b)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	y=i+++--j&amp;nbsp;赋值表达式的功能是计算表达式的值再赋予左边的变量。赋值运算符具有右结合性。因此
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=b=c=5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可理解为
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=(b=(c=5))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在其它高级语言中，赋值构成了一个语句，称为赋值语句。&amp;nbsp;而在C中，把“=”定义为运算符，从而组成赋值表达式。&amp;nbsp;凡是表达式可以出现的地方均可出现赋值表达式。例如，式子x=(a=5)+(b=8)是合法的。它的意义是把5赋予a，8赋予b，再把a,b相加，和赋予x&amp;nbsp;，故x应等于13。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Ｃ语言中也可以组成赋值语句，按照Ｃ语言规定，&amp;nbsp;任何表达式在其未尾加上分号就构成为语句。因此如x=8;a=b=c=5；都是赋值语句，在前面各例中我们已大量使用过了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果赋值运算符两边的数据类型不相同，&amp;nbsp;系统将自动进行类型转换，即把赋值号右边的类型换成左边的类型。具体规定如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.实型赋予整型，舍去小数部分。前面的例2.9已经说明了这种情况。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.整型赋予实型，数值不变，但将以浮点形式存放，&amp;nbsp;即增加小数部分(小数部分的值为0)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.字符型赋予整型，由于字符型为一个字节，&amp;nbsp;而整型为二个字节，故将字符的ASCII码值放到整型量的低八位中，高八位为0。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.整型赋予字符型，只把低八位赋予字符量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b=322;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;x,y=8.88;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c1=&amp;nbsp;k&amp;nbsp;,c2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x=b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=c1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c2=b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%f,%d,%c,a,x,a,c2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b=322;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;x,y=8.88;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c1=&amp;nbsp;k&amp;nbsp;,c2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d,%f,%d,%c,a=y,x=b,a=c1,c2=b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例表明了上述赋值运算中类型转换的规则。a为整型，赋予实型量y值888后只取整数8。x为实型，赋予整型量b值322，&amp;nbsp;后增加了小数部分。字符型量c1赋予a变为整型，整型量b赋予c2&amp;nbsp;后取其低八位成为字符型(b的低八位为01000010，即十进制66，按ASCII码对应于字符B)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	复合赋值符及表达式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在赋值符“=”之前加上其它二目运算符可构成复合赋值符。如
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	+=,-=,*=,／=,%=,&amp;amp;lt;&amp;amp;lt;=,&amp;amp;gt;&amp;amp;gt;=,&amp;amp;=,^=,&amp;brvbar;=。&amp;nbsp;构成复合赋值表达式的一般形式为：&amp;nbsp;变量&amp;nbsp;双目运算符=表达式&amp;nbsp;它等效于&amp;nbsp;变量=变量&amp;nbsp;运算符&amp;nbsp;表达式&amp;nbsp;例如：&amp;nbsp;a+=5&amp;nbsp;等价于a=a+5　　x*=y+7&amp;nbsp;等价于x=x*(y+7)　　r%=p&amp;nbsp;等价于r=r%p
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	复合赋值符这种写法，对初学者可能不习惯，&amp;nbsp;但十分有利于编译处理，能提高编译效率并产生质量较高的目标代码。逗号运算符和逗号表达式在
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	逗号运算符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ｃ语言中逗号“，”也是一种运算符，称为逗号运算符。&amp;nbsp;其功能是把两个表达式连接起来组成一个表达式，&amp;nbsp;称为逗号表达式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其一般形式为：&amp;nbsp;表达式1，表达式2&amp;nbsp;其求值过程是分别求两个表达式的值，并以表达式2的值作为整个逗号表达式的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=2,b=4,c=6,x,y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	y=(x=a+b),(b+c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(y=%d,x=%d,y,x);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;amp;lt;--2,b&amp;amp;lt;--4,c&amp;amp;lt;--6,x&amp;amp;lt;--0,y&amp;amp;lt;--0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x&amp;amp;lt;--a+b,y&amp;amp;lt;---b+c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例中，y等于整个逗号表达式的值，也就是表达式2的值，x是第一个表达式的值。对于逗号表达式还要说明两点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.逗号表达式一般形式中的表达式1和表达式2&amp;nbsp;也可以又是逗号表达式。例如：&amp;nbsp;表达式1，(表达式2，表达式3)&amp;nbsp;形成了嵌套情形。因此可以把逗号表达式扩展为以下形式：&amp;nbsp;表达式1，表达式2，…表达式n&amp;nbsp;整个逗号表达式的值等于表达式n的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.程序中使用逗号表达式，通常是要分别求逗号表达式内各表达式的值，并不一定要求整个逗号表达式的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.并不是在所有出现逗号的地方都组成逗号表达式，如在变量说明中，函数参数表中逗号只是用作各变量之间的间隔符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//arithmeticint&amp;nbsp;a,b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=11;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=235;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a+b-a*b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=(float)c/(float)a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=c/a;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,4,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,0;2,0;3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,11
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,235
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,-2339
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,-212.636368
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,-212
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//1int&amp;nbsp;a,b,c1,c2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=25;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=3243;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c1=b/a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c2=b%a;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c1,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c2,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,0;2,0;3,0;4,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,25
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,3243
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,129
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,18
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//1int&amp;nbsp;a,b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=25;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=40;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a+b,c+35;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,0;2,0;3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,25
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,40
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,65
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	小结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.Ｃ的数据类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本类型，构造类型，指针类型，空类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.基本类型的分类及特点
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符&amp;nbsp;　　　　　字节&amp;nbsp;　　　　　　数值范围
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符型char&amp;nbsp;　　　　&amp;nbsp;　&amp;nbsp;1&amp;nbsp;　　　　　　　C字符集
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本整型int&amp;nbsp;　　　　　&amp;nbsp;2&amp;nbsp;　　　　　　　-32768～32767
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	短整型short&amp;nbsp;int&amp;nbsp;　　　&amp;nbsp;2&amp;nbsp;　&amp;nbsp;　　　　&amp;nbsp;　-32768～32767
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	长整型&amp;nbsp;long&amp;nbsp;int&amp;nbsp;　　　&amp;nbsp;4　　　　　　-214783648～214783647
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	无符号型&amp;nbsp;unsigned&amp;nbsp;　　&amp;nbsp;2　　　　　　　　0～65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	无符号长整型&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;4&amp;nbsp;　　　　　0～4294967295
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	单精度实型&amp;nbsp;float&amp;nbsp;　　　4　　　　　　　3/4E-38～3/4E+38
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	双精度实型&amp;nbsp;double　　　8　　　　　　　1/7E-308～1/7E+308
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.常量后缀
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	L或l&amp;nbsp;长整型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	U或u&amp;nbsp;无符号数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	F或f&amp;nbsp;浮点数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.常量类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整数，长整数，无符号数，浮点数，字符，字符串，符号常数，转义字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.数据类型转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·自动转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在不同类型数据的混合运算中，由系统自动实现转换，&amp;nbsp;由少字节类型向多字节类型转换。&amp;nbsp;不同类型的量相互赋值时也由系统自动进行转换，把赋值号右边的类型转换为左边的类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·强制转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由强制转换运算符完成转换。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.运算符优先级和结合性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般而言，单目运算符优先级较高，赋值运算符优先级低。&amp;nbsp;算术运算符优先级较高，关系和逻辑运算符优先级较低。&amp;nbsp;多数运算符具有左结合性，单目运算符、三目运算符、&amp;nbsp;赋值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.表达式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表达式是由运算符连接常量、变量、函数所组成的式子。&amp;nbsp;每个表达式都有一个值和类型。&amp;nbsp;表达式求值按运算符的优先级和结合性所规定的顺序进行。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-26/1340713647.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

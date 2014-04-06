@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-03-30 00:40:17</datetime>
+  <title><![CDATA[demo - 支持gzip的缓存类]]></title>
+  <content><![CDATA[<p>
+	&lt;?php
+</p>
+<p>
+	$ROOT = $_SERVER[\'DOCUMENT_ROOT\'];
+</p>
+<p>
+	include $ROOT . \'/inc/mCache/CacheLite.php\';
+</p>
+<p>
+	$Cache = new Cache_M(Cache_M::ZIP_GZIP);
+</p>
+<p>
+	$ckey = \'clks\';
+</p>
+<p>
+	if(!$Cache-&gt;is_cached($ckey)){
+</p>
+<p>
+	&nbsp; &nbsp;$Cache-&gt;cache_start($ckey);
+</p>
+<p>
+	&nbsp; &nbsp;echo \'xxx\';
+</p>
+<p>
+	&nbsp; &nbsp;$Cache-&gt;cache_end();
+</p>
+<p>
+	} else {
+</p>
+<p>
+	&nbsp; &nbsp;$Cache-&gt;read_cache_file($ckey);
+</p>
+<p>
+	&nbsp; &nbsp;exit(0);
+</p>
+<p>
+	}
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	代码真心很简单，没神马好解释的了，用过缓存的朋友都能看懂了，不懂的跟贴吧。
+</p>
+<p>
+	<img src=\"/mod/kd/plugins/emoticons/images/jx2/j_0071.gif\" border=\"0\" alt=\"\" />
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

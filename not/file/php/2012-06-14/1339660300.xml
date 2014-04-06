@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>令人期待的PHP 6.0 新语法改进及特性增强</title>
+<content>&amp;lt;p&amp;gt;
+	PHP下一个备受关注的6.0版本，已经进入snapshot阶段，不久后即将发布。PHP&amp;nbsp;6.0将包含很多新的特性、语法改进，会让面向对象编程更加简单，另外还有很多重要的改进，比如Unicode的核心支持，这将让PHP更适合全球范围支持和更加的健康发展。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP是已经风靡全球的开源脚本语言，在数以万计的网站上运行着,PHP&amp;nbsp;6.0将完全向前兼容,同时增加许多令人激动的特性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	更加好的Unicode支持
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在PHP的核心函数中，有很多对Unicode字符串的支持的改进，这些新特性将产生巨大的影响因为它允许PHP为国际字符提供更多的支持。所以如果一个开发者或者架构师使用不同的语言，例如Java程序语言，是因为它具有超过PHP的国际化支持的话，当支持改进时他会花一点时间来考虑一下PHP。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	NameSpace：名字空间,将更好的避免在函数及类之间的变量名冲突。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	令人激动的Web&amp;nbsp;2.0特性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SOAP：简单对象访问协议&amp;nbsp;(SOAP:Simple&amp;nbsp;Object&amp;nbsp;Access&amp;nbsp;Protocol)SOAP&amp;nbsp;可以和现存的许多因特网协议和格式结合使用,包括超文本传输协议(&amp;nbsp;HTTP),简单邮件传输协议(SMTP),多用途网际邮件扩充协议(MIME)。它还支持从消息系统到远程过程调用(RPC)等大量的应用程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	XML：从PHP&amp;nbsp;5.1版本开始,XMLReader和XMLWriter就已经包含在PHP内核,它可以让它可以让XML编程更加轻松。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然，除了增加新的特性，一些会给系统带来不稳定因素和安全隐患的特性也将被取消，以下是取消的内容列表：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;ul&amp;gt;
+		&amp;lt;li&amp;gt;
+			magic_quotes
+		&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;
+			register_globals
+		&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;
+			register_long_arrays
+		&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;
+			safe_mode
+		&amp;lt;/li&amp;gt;
+		&amp;lt;li&amp;gt;
+			magic_quotes
+		&amp;lt;/li&amp;gt;
+	&amp;lt;/ul&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660300.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

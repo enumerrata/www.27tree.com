@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[c#通过计算与1970.1.1时间差模拟js中的date.parse方法，但是计算值不正确！]]></title>
+  <content><![CDATA[<p>
+	今天由于要在c#后台计算一个Date.parse(new Date()) 的值。
+</p>
+<p>
+	所以按照w3cshcool上面关于date.parse的解释做了一次换算。
+</p>
+<p>
+	“指定的日期和时间据 1970/1/1 午夜（GMT 时间）之间的毫秒数。”此为函数方法介绍
+</p>
+<p>
+	换算代码
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"c-sharp\">TimeSpan ts = DateTime.Now - new DateTime(1970, 1, 1);
+return ts.TotalSeconds*1000;<span style=\"line-height:1.5;\"> </span></pre>
+<p>
+	结果计算出来的结果与js方法计算结果不同。以2005/07/08为例（w3cschool上的例子）
+</p>
+<p>
+	c#换算结果：1120780800000
+</p>
+<p>
+	js结果为：1120752000000
+</p>
+<p>
+	相差：28800000
+</p>
+<p>
+	换算为小时的话是 8小时。
+</p>
+<p>
+	对于此事甚为不解呀，望各位能帮忙给予解答。
+</p>]]></content>
+  <contentx><![CDATA[
+	今天由于要在c#后台计算一个Date.parse(new Date()) 的值。
+
+
+	所以按照w3cshcool上面关于date.parse的解释做了一次换算。
+
+
+	“指定的日期和时间据 1970/1/1 午夜（GMT 时间）之间的]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

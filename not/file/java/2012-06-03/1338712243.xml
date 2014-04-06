@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Java基础学习:jdbc小技巧</title>
+<content>&amp;lt;p&amp;gt;
+	利用jdbc进行数据库操作，分为以下几步：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1.载入驱动&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	格式：Class.forName&amp;amp;nbsp;(&amp;amp;lt;JDBC&amp;amp;nbsp;&amp;amp;nbsp;Driver&amp;amp;nbsp;Class&amp;amp;nbsp;Name&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	E.G.Class.forName(Weblogic.jdbc.mssqlserver4.Driver)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2.联接数据源。&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Connection&amp;amp;nbsp;con
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下任选其一
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	con&amp;amp;nbsp;=&amp;amp;nbsp;DriverManager.getConnection(&amp;amp;lt;url&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	con&amp;amp;nbsp;=&amp;amp;nbsp;DriverManager.getConnection(&amp;amp;lt;url&amp;amp;gt;,&amp;amp;lt;proporties&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	con&amp;amp;nbsp;=&amp;amp;nbsp;DriverManager.getConnection(&amp;amp;lt;url&amp;amp;gt;,&amp;amp;lt;user&amp;amp;gt;,&amp;amp;lt;password&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;3.执行&amp;lt;/strong&amp;gt;&amp;amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Statement&amp;amp;nbsp;stmt=con.creatStatement();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	----执行存储过程：stmt.execute(&amp;amp;lt;String&amp;amp;nbsp;sql&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	----以批处理方式执行多个语句：stmt.executeBatch()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	----更新处理：&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;int&amp;amp;nbsp;updateCount=stmt.executeUpdate(&amp;amp;lt;String&amp;amp;nbsp;&amp;amp;nbsp;sql&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	----查询&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ResultSet&amp;amp;nbsp;rs=stmt.executeQuery(&amp;amp;lt;String&amp;amp;nbsp;sql&amp;amp;gt;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	常用的是:&amp;amp;nbsp;&amp;amp;nbsp;while&amp;amp;nbsp;(rs.next())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	利用&amp;amp;nbsp;.&amp;amp;nbsp;PrepairedStatement
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	优点：不需重新在生成，只要修改参数就可以了，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	e.g.&amp;amp;nbsp;&amp;amp;nbsp;PrepairedStatement&amp;amp;nbsp;pstmt1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pstmt1=con.PrepairedStatement(select&amp;amp;nbsp;*&amp;amp;nbsp;from&amp;amp;nbsp;tableName&amp;amp;nbsp;where&amp;amp;nbsp;&amp;amp;nbsp;a=?&amp;amp;nbsp;and&amp;amp;nbsp;b=?)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pstmt1.setString(text1.getText,text2.getText)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ResultSet&amp;amp;nbsp;&amp;amp;nbsp;rs=pstmt1.executeQuery();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	利用&amp;amp;nbsp;ResultSetMetaData
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要取得数据表中的字段数目，类型等，可以利用Result的getMetaData(),返回结果是以ResultSetMetaData对象保存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	e.g.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ResultSet&amp;amp;nbsp;rs&amp;amp;nbsp;=stmt.getResultSet()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ResultSetMetaData&amp;amp;nbsp;rsmd=rs.getMetaData();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//字段数目，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;amp;nbsp;columeCount=rsmd.getColumnCount()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;amp;nbsp;(i=1;i&amp;amp;lt;=columnCount;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(rsmd.getClumnName())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;br&amp;amp;nbsp;&amp;gt;&amp;lt;/br&amp;amp;nbsp;&amp;gt;</content>
+<json-link>./file/java/2012-06-03/1338712243.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

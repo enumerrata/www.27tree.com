@@ -1,0 +1,234 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX MySQL 数据库实例</h1>
+</div>
+<div>
+
+<p><b>AJAX 可用来与数据库进行交互式通信。</b></p>
+	
+<h1>AJAX 数据库实例</h1>
+
+<p>在下面的 AJAX 实例中，我们将演示网页如何使用 AJAX 技术从 MySQL 数据库中读取信息。</p>
+
+<h1>在下拉列表中选择一个名字 （测试说明：该实例功能未实现）</h1>
+
+<p>Select a User:  Peter Griffin Lois Griffin Joseph Swanson Glenn Quagmire </p>
+
+<p>在此列出用户信息。此列由四个元素组成：</p>
+
+<ul>
+<li>MySQL 数据库</li>
+<li>简单的 HTML 表单</li>
+<li>JavaScript</li>
+<li>PHP 页面</li>
+</ul>
+
+<h1>数据库</h1>
+
+<p>将在本例中使用的数据库看起来类似这样：</p>
+
+<table class="dataintable">
+	<tr>
+		<th>id</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+		<th>Hometown</th>
+		<th>Job</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Peter</td>
+		<td>Griffin</td>
+		<td>41</td>
+		<td>Quahog</td>
+		<td>Brewery</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Lois</td>
+		<td>Griffin</td>
+		<td>40</td>
+		<td>Newport</td>
+		<td>Piano Teacher</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>Joseph</td>
+		<td>Swanson</td>
+		<td>39</td>
+		<td>Quahog</td>
+		<td>Police Officer</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>41</td>
+		<td>Quahog</td>
+		<td>Pilot</td>
+	</tr>
+</table>
+
+<h1>HTML 表单</h1>
+
+<p>上面的例子包含了一个简单的 HTML 表单，以及指向 JavaScript 的链接：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script src="selectuser.js"&gt;&lt;/script&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form&gt; <br />
+Select a User:<br />
+&lt;select name="users" onchange="showUser(this.value)"&gt;<br />
+&lt;option value="1"&gt;Peter Griffin&lt;/option&gt;<br />
+&lt;option value="2"&gt;Lois Griffin&lt;/option&gt;<br />
+&lt;option value="3"&gt;Glenn Quagmire&lt;/option&gt;<br />
+&lt;option value="4"&gt;Joseph Swanson&lt;/option&gt;<br />
+&lt;/select&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;p&gt;<br />
+&lt;div id="txtHint"&gt;&lt;b&gt;User info will be listed here.&lt;/b&gt;&lt;/div&gt;<br />
+&lt;/p&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>例子解释 - HTML 表单</b></p>
+
+<p>正如您看到的，它仅仅是一个简单的 HTML 表单，其中带有名为 "users" 的下拉列表，这个列表包含了姓名，以及与数据库的 "id" 对应的选项值。</p>
+<p>表单下面的段落包含了名为 "txtHint" 的 div。这个 div 用作从 web 服务器检索到的信息的占位符。</p>
+<p>当用户选择数据时，执行名为 "showUser()" 的函数。该函数的执行由 "onchange" 事件触发。</p>
+<p>换句话说：每当用户改变下拉列表中的值，就会调用 showUser() 函数。</p>
+
+<h1>JavaScript</h1>
+
+<p>这是存储在 "selectuser.js" 文件中的 JavaScript 代码：</p>
+
+<code>
+var&nbspxmlHttp<br />
+<br />
+function&nbspshowUser(str)<br />
+{&nbsp<br />
+xmlHttp=GetXmlHttpObject()<br />
+if&nbsp(xmlHttp==null)<br />
+&nbsp{<br />
+&nbspalert&nbsp("Browser&nbspdoes&nbspnot&nbspsupport&nbspHTTP&nbspRequest")<br />
+&nbspreturn<br />
+&nbsp}<br />
+var&nbspurl="getuser.php"<br />
+url=url+"?q="+str<br />
+url=url+"&sid="+Math.random()<br />
+xmlHttp.onreadystatechange=stateChanged&nbsp<br />
+xmlHttp.open("GET",url,true)<br />
+xmlHttp.send(null)<br />
+}<br />
+<br />
+function&nbspstateChanged()&nbsp<br />
+{&nbsp<br />
+if&nbsp(xmlHttp.readyState==4&nbsp||&nbspxmlHttp.readyState=="complete")<br />
+&nbsp{&nbsp<br />
+&nbspdocument.getElementById("txtHint").innerHTML=xmlHttp.responseText&nbsp<br />
+&nbsp}&nbsp<br />
+}<br />
+<br />
+function&nbspGetXmlHttpObject()<br />
+{<br />
+var&nbspxmlHttp=null;<br />
+try<br />
+&nbsp{<br />
+&nbsp//&nbspFirefox,&nbspOpera&nbsp8.0+,&nbspSafari<br />
+&nbspxmlHttp=new&nbspXMLHttpRequest();<br />
+&nbsp}<br />
+catch&nbsp(e)<br />
+&nbsp{<br />
+&nbsp//Internet&nbspExplorer<br />
+&nbsptry<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Msxml2.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbspcatch&nbsp(e)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Microsoft.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbsp}<br />
+return&nbspxmlHttp;<br />
+}
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>stateChanged() 和 GetXmlHttpObject 函数与 PHP AJAX 请求 那一节中的相同，您可以参阅其中的相关解释。</p>
+
+<p><b>showUser() 函数</b></p>
+
+<p>假如下拉列表中的项目被选择，函数执行：</p>
+
+<p>1.调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象</p>
+<p>2.定义发送到服务器的 URL（文件名）</p>
+<p>3.向 URL 添加带有下拉列表内容的参数 (q)</p>
+<p>4.添加一个随机数，以防服务器使用缓存的文件</p>
+<p>5.当触发事件时调用 stateChanged</p>
+<p>6.通过给定的 URL 打开 XMLHTTP 对象</p>
+<p>7.向服务器发送 HTTP 请求</p>
+
+<h1>PHP 页面</h1>
+
+<p>由 JavaScript 调用的服务器页面，是名为 "getuser.php" 的简单 PHP 文件。</p>
+<p>该页面用 PHP 编写，并使用 MySQL 数据库。</p>
+<p>其中的代码执行针对数据库的 SQL 查询，并以 HTML 表格返回结果：</p>
+
+<code>
+&lt;?php<br />
+$q=$_GET["q"];<br />
+<br />
+$con&nbsp=&nbspmysql_connect('localhost',&nbsp'peter',&nbsp'abc123');<br />
+if&nbsp(!$con)<br />
+&nbsp{<br />
+&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp}<br />
+<br />
+mysql_select_db("ajax_demo",&nbsp$con);<br />
+<br />
+$sql="SELECT&nbsp*&nbspFROM&nbspuser&nbspWHERE&nbspid&nbsp=&nbsp'".$q."'";<br />
+<br />
+$result&nbsp=&nbspmysql_query($sql);<br />
+<br />
+echo&nbsp"&lt;table&nbspborder='1'&gt;<br />
+&lt;tr&gt;<br />
+&lt;th&gt;Firstname&lt;/th&gt;<br />
+&lt;th&gt;Lastname&lt;/th&gt;<br />
+&lt;th&gt;Age&lt;/th&gt;<br />
+&lt;th&gt;Hometown&lt;/th&gt;<br />
+&lt;th&gt;Job&lt;/th&gt;<br />
+&lt;/tr&gt;";<br />
+<br />
+while($row&nbsp=&nbspmysql_fetch_array($result))<br />
+&nbsp{<br />
+&nbspecho&nbsp"&lt;tr&gt;";<br />
+&nbspecho&nbsp"&lt;td&gt;"&nbsp.&nbsp$row['FirstName']&nbsp.&nbsp"&lt;/td&gt;";<br />
+&nbspecho&nbsp"&lt;td&gt;"&nbsp.&nbsp$row['LastName']&nbsp.&nbsp"&lt;/td&gt;";<br />
+&nbspecho&nbsp"&lt;td&gt;"&nbsp.&nbsp$row['Age']&nbsp.&nbsp"&lt;/td&gt;";<br />
+&nbspecho&nbsp"&lt;td&gt;"&nbsp.&nbsp$row['Hometown']&nbsp.&nbsp"&lt;/td&gt;";<br />
+&nbspecho&nbsp"&lt;td&gt;"&nbsp.&nbsp$row['Job']&nbsp.&nbsp"&lt;/td&gt;";<br />
+&nbspecho&nbsp"&lt;/tr&gt;";<br />
+&nbsp}<br />
+echo&nbsp"&lt;/table&gt;";<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>当查询从 JavaScript 被发送到这个 PHP 页面，会发生：</p>
+
+<p>1.PHP 打开到达 MySQL 服务器的连接</p>
+<p>2.找到拥有指定姓名的 "user"</p>
+<p>3.创建表格，插入数据，然后将其发送到 "txtHint" 占位符</p>
+
+</div>

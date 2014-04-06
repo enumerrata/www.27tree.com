@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Web开发基础知识分享：Php基础知识扫盲</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是PHP？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	php是Hypertext&amp;nbsp;Preprocessor的缩写，php是一种内嵌HTML的脚本语言。PHP的独特语法混合了c,java和perl及PHP式的新语法。这门语言的的目标是让网页开发人员快速的写出动态的网页。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是PHPer？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP&amp;nbsp;programmer，指编写PHP的程序员
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是模式？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	模式，即pattern。其实就是解决某一类问题的方法论。你把解决某类问题的方法总结归纳到理论高度，那就是模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是框架？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	框架，即framework。其实就是某种应用的半成品，就是一组组件，供你选用完成你自己的系统。简单说就是使用别人搭好的舞台，你来做表演。而且，框架一般是成熟的，不断升级的软件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是模版？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP模板发展自Perl的Template。模板能够改善网站的结构,可以在几秒钟改变你的整个站点的外观;&amp;nbsp;抽象程序设计，没有垃圾HTML代码;&amp;nbsp;设计人员不需要关心全部的\"模糊\"代码;&amp;nbsp;运行更加的快速;&amp;nbsp;更容易重用旧的模版（对普通的表单而说）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是CGI用户？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	CGI&amp;nbsp;是Common&amp;nbsp;Gateway&amp;nbsp;Interface&amp;nbsp;(公共网关接口)的缩写，&amp;nbsp;Web主机与其外部电脑程序之间所使用的一种信息交换标准。撰写外部程序时可采用执行Web主机的操作系统所支持的任一种程式设计语言。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是资源数据库？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	资源是一种特殊变量，保存了到外部资源的一个引用。资源是通过专门的函数来建立和使用的。所有这些函数及其相应资源类型见php手册&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是类？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	类是对某个对象的定义。它包含有关对象动作方式的信息，包括它的名称、方法、属性和事件。实际上它本身并不是对象，因为它不存在于内存中。当引用类的代码运行时，类的一个新的实例，即对象，就在内存中创建了。虽然只有一个类，但能从这个类在内存中创建多个相同类型的对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是函数？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	函数为程序设计人员提供了方便，通常在进行一个复杂的程序设计时，总是根据所要完成的功能，将程序划分为一些相对独立的部分，每一部分编写一个函数，从而使各部分充分独立，任务单一，程序清晰，易懂、易读、易维护。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是面向对象？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	面向对象方法(Object-Oriented&amp;nbsp;Method)是一种把面向对象的思想应用于软件开发过程中，指导开发活动的&amp;nbsp;系统方法，简称OO&amp;nbsp;(Object-Oriented)方法，是建立在“对象”概念基础上的方法学。对象是由数据和容许的操作组成的封装体，与客观实体有直接对应关系，一个&amp;nbsp;对象类定义了具有相似性质的一组对象。而每继承性是对具有层次关系的类的属性和操作进行共享的一种方式。所谓面向对象就是基于对象概念，以对象为中心，以&amp;nbsp;类和继承为构造机制，来认识、理解、刻画客观世界和设计、构建相应的软件系统。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是session？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	session用中文来解释就是会话期。一个会话期开始于用户输入一个站点的网址时，结束于他离开这个站点时。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是socket?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所谓socket通常也称作\"套接字\"，用于描述IP地址和端口，是一个通信链的句柄。应用程序通常通过\"套接字\"向网络发出请求或者应答网络请求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是pecl?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PECL&amp;nbsp;是通过&amp;nbsp;PEAR&amp;nbsp;打包系统来的&amp;nbsp;PHP&amp;nbsp;扩展库仓库。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是变量?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP&amp;nbsp;中的变量用一个美元符号后面跟变量名来表示。变量名是区分大小写的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是常量?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	常量是一个简单值的标识符（名字）。如同其名称所暗示的，在脚本执行期间该值不能改变（除了所谓的魔术常量，它们其实不是常量）。常量默认为大小写敏感。按照惯例常量标识符总是大写的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	什么是超全局变量?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	常量是一个简单值的标识符（名字）。如同其名称所暗示的，在脚本执行期间该值不能改变（除了所谓的魔术常量，它们其实不是常量）。常量默认为大小写敏感。按照惯例常量标识符总是大写的
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660435.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

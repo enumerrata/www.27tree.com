@@ -1,0 +1,461 @@
+<__cache@1389761754-@1389765354@0c__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            C/C++_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=c />
+                    <input type="hidden" id="pages" value=0/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/c/'>C/C++</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/c.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">C语言是一种计算机程序设计语言。它既具有高级语言的特点，又具有汇编语言的特点。它由美国贝尔研究所的D.M.Ritchie于1972年推出。1978后，C语言已先后被移植到大、中、小及微型机上。它可以作为工作系统设计语言，编写系统应用程序，也可以作为应用程序设计语言，编写不依赖计算机硬件的应用程序。它的应用范围广泛，具备很强的数据处理能力，不仅仅是在软件开发上，而且各类科研都需要用到C语言，适于编写系统软件，三维，二维图形和动画。具体应用比如单片机以及嵌入式系统开发。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/c-basec/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/c/content/2012-06-03/1338713471.html">
+        &nbsp;谁动了我的指针    </a><span class="Gray">(7)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;哇。
+</li><li class="Elipsis"><a href="/user/29">human</a>:&nbsp;亲。评论真的不会怀孕的哦</li><li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;C中的进栈出栈吗？www.shiyayong.cn网络茶馆</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/c-basec/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/c/content/2012-06-26/1340714121.html">
+        &nbsp;C语言教程：结构体与联合    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/198">%E8%80%81%E9%A1%BD%E7%AB%A5</a>:&nbsp;页面太长了，添加一个返回页顶会更好</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/c-mfc/>[MFC框架]</a>    <a class="hotCommA" href="http://www.27tree.com/art/c/content/2012-07-03/1341277225.html">
+        &nbsp;MFC实现全屏功能的代码    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/c-basec/" class="borderR15 sband">开发基础</a><a href="/art/c-vcpp/" class="borderR15 sband">VC++</a><a href="/art/c-mfc/" class="borderR15 sband">MFC框架</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-03/1338713471.html>谁动了我的指针</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">简介：
+
+
+	前几天发生了这样一件事，我正在调试一个程序，这个程序用了一大堆乱七八糟的指针来处理一个链表，最终在一个指向链表结点的指针上出了问题。我们预计它应当指向的是一个虚基类的对象。我想到第一个问题是：指针所指的地方真的有一个对象吗？出问题的指针值可以被4整除，并且不是NULL的，所以可以断定它曾经是一个有效的指针。通过使用Visual Studio的内...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>7</strong>) / <img src='/img/read.png' align='absmiddle' />(1869)</span>
+                           <em>2012年6月3日 16:50</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-mfc/>[MFC框架]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-07-03/1341277225.html>MFC实现全屏功能的代码</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">很多的播放器都有快捷键控制窗口以全屏幕的方式显示。给应用程序加上全屏幕的功能，并不需要很多的代码，比如给一个基于对话框的应用程序加上全屏功能只需要以下少量代码就可以工作了。
+
+
+	   void CFullScreenDlg::FullScreenView(void)
+
+
+	   {
+
+
+	   RECT rectDesktop;
+
+
+	   WINDOWP...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(476)</span>
+                           <em>2012年7月3日 08:59</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-07-03/1341277416.html>C++程序员进阶必读书本列举</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">本文总结了一个C++优秀书籍清单，希望能够为你带来一定的帮助。因为多读一些优秀的书籍，对于开发者稳固编程基础、提高编程技能有很大帮助，这些书大多数都有中文版，并且可以很容易在网上找到。
+
+
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;阶段1:《C++&amp;nbsp;Primer》
+
+
+	&amp;nbsp;&amp;nbsp;&amp;...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(2283)</span>
+                           <em>2012年7月3日 09:02</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-07-03/1341277334.html>C++函数的Boost内存池性能介绍</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Boost内存池，即boost.pool库，是由Boost提供的一个用于内存池管理的开源C++库。作为Boost中影响较大的一个库，Pool已经被广泛使用。可以毫不夸张的说，Boost是目前影响最大的通用C++库。Boost库由C++标准委员会库工作组成员发起，其中有些内容有望成为下一代C++标准库内容，是一个\"准\"标准库。
+
+
+	   1. 什么是内存池\"...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(605)</span>
+                           <em>2012年7月3日 09:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-07-03/1341277304.html>C语言的三个声明及高级声明</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">const有关的变量声明：
+
+
+	   （1）const == read-only
+
+
+	   const修饰的变量被许多人错误的认为是常量，但是const所修饰的变量应该是只读变量检验这个结论可以用下面这个方法：
+
+
+	   const int two = 2;
+
+
+	   switch（i）
+
+
+	   { case 1: printf（\"case 1....</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(683)</span>
+                           <em>2012年7月3日 09:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-07-03/1341277148.html>C语言中#if,#ifdef</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一般情况下，源程序中所有的行都参加编译。但是有时希望对其中一部分内容只在满足一定条件才进行编译。
+
+
+	   条件编译命令最常见的形式为：
+
+
+	   #ifdef 标识符
+
+
+	   程序段1
+
+
+	   #else
+
+
+	   程序段2
+
+
+	   #endif
+
+
+	   它的作用是：当标识符已经被定义过（一般是用#define命令定义），则对程序段1...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(507)</span>
+                           <em>2012年7月3日 08:58</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340714127.html>C语言教程：预处理命令</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">概述
+
+
+	在前面各章中，已多次使用过以“#”号开头的预处理命令。如包含命令# include，宏定义命令# define等。在源程序中这些命令都放在函数之外， 而且一般都放在源文件的前面，它们称为预处理部分。
+
+
+	所谓预处理是指在进行编译的第一遍扫描(词法扫描和语法分析)之前所作的工作。预处理是Ｃ语言的一个重要功能， 它由预处理程序负责完成。当对一个源文...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(572)</span>
+                           <em>2012年6月26日 20:35</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340714163.html>C语言教程：枚举,位运算</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">枚举
+
+
+	在实际问题中， 有些变量的取值被限定在一个有限的范围内。例如，一个星期内只有七天，一年只有十二个月， 一个班每周有六门课程等等。如果把这些量说明为整型， 字符型或其它类型显然是不妥当的。 为此，Ｃ语言提供了一种称为“枚举”的类型。在“枚举”类型的定义中列举出所有可能的取值， 被说明为该“枚举”类型的变量取值不能超过定义的范围。应该说明的是， 枚举...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(645)</span>
+                           <em>2012年6月26日 20:34</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340714121.html>C语言教程：结构体与联合</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">结构类型定义和结构变量说明
+
+
+	在实际问题中，一组数据往往具有不同的数据类型。例如， 在学生登记表中，姓名应为字符型；学号可为整型或字符型； 年龄应为整型；性别应为字符型；成绩可为整型或实型。 显然不能用一个数组来存放这一组数据。 因为数组中各元素的类型和长度都必须一致，以便于编译系统处理。为了解决这个问题，Ｃ语言中给出了另一种构造数据类型——“结构”。 ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(524)</span>
+                           <em>2012年6月26日 20:33</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340714064.html>C语言教程：文件</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">文件的基本概念
+
+
+	所谓“文件”是指一组相关数据的有序集合。 这个数据集有一个名称，叫做文件名。 实际上在前面的各章中我们已经多次使用了文件，例如源程序文件、目标文件、可执行文件、库文件 (头文件)等。文件通常是驻留在外部介质(如磁盘等)上的， 在使用时才调入内存中来。从不同的角度可对文件作不同的分类。从用户的角度看，文件可分为普通文件和设备文件两种。
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(447)</span>
+                           <em>2012年6月26日 20:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340713773.html>C语言教程：指针</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">指针简介
+
+
+	指针是Ｃ语言中广泛使用的一种数据类型。 运用指针编程是Ｃ语言最主要的风格之一。利用指针变量可以表示各种数据结构； 能很方便地使用数组和字符串； 并能象汇编语言一样处理内存地址，从而编出精练而高效的程序。指针极大地丰富了Ｃ语言的功能。 学习指针是学习Ｃ语言中最重要的一环， 能否正确理解和使用指针是我们是否掌握Ｃ语言的一个标志。同时， 指针也是Ｃ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(450)</span>
+                           <em>2012年6月26日 20:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340713790.html>C语言教程：数组</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">数组在程序设计中，为了处理方便， 把具有相同类型的若干变量按有序的形式组织起来。这些按序排列的同类数据元素的集合称为数组。在Ｃ语言中， 数组属于构造数据类型。一个数组可以分解为多个数组元素，这些数组元素可以是基本数据类型或是构造类型。因此按数组元素的类型不同，数组又可分为数值数组、字符数组、指针数组、结构数组等各种类别。
+
+
+	本章介绍数值数组和字符数组，其...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(589)</span>
+                           <em>2012年6月26日 20:28</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340713647.html>C语言教程：基本运算符和表达式</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">运算符的种类、优先级和结合性
+
+
+	Ｃ语言中运算符和表达式数量之多， 在高级语言中是少见的。正是丰富的运算符和表达式使Ｃ语言功能十分完善。 这也是Ｃ语言的主要特点之一。
+
+
+	Ｃ语言的运算符不仅具有不同的优先级， 而且还有一个特点，就是它的结合性。在表达式中， 各运算量参与运算的先后顺序不仅要遵守运算符优先级别的规定，还要受运算符结合性的制约， 以便确定是自...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(460)</span>
+                           <em>2012年6月26日 20:26</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340713632.html>C语言教程：数据类型</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在第一课中，我们已经看到程序中使用的各种变量都应预先加以说明，即先说明，后使用。对变量的说明可以包括三个方面：
+
+
+	·数据类型
+
+
+	·存储类型
+
+
+	·作用域
+
+
+	在本课中，我们只介绍数据类型说明。其它说明在以后各章中陆续介绍。所谓数据类型是按被说明量的性质，表示形式，占据存储空间的多少，构造特点来划分的。在Ｃ语言中，数据类型可分为：基本数据类型，构造...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(354)</span>
+                           <em>2012年6月26日 20:26</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/c-basec/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/c/content/2012-06-26/1340713557.html>C语言概论</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Ｃ语言的发展过程
+
+
+	Ｃ语言是在70年代初问世的。一九七八年由美国电话电报公司(AT&amp;T)贝尔实验室正式发表了Ｃ语言。同时由B.W.Kernighan和D.M.Ritchit合著了著名的“THE C PROGRAMMING LANGUAGE”一书。通常简称为《K&amp;R》，也有人称之为《K&amp;R》标准。但是，在《K&amp;R》中并没有定...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(324)</span>
+                           <em>2012年6月26日 20:25</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>C/C++</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/80">
+    <img src="/not/mybook/data/book_image_lib/6395a772062efb605fb8145eb2946ed8.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/80">
+    《Essential C++（注释版）》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/16">
+    <img src="/not/mybook/data/book_image_lib/b5e41267f2ee780de1a5307d54eaf0b7.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/16">
+    《Linux C编程》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/83">
+    <img src="/not/mybook/data/book_image_lib/0911c503558841e771813a0adda28195.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/83">
+    《Objective-C.2.0程序设计》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/295">
+    <img src="/not/mybook/data/book_image_lib/efebbfb86f574cc4700b107261eab857.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/295">
+    《C++代码设计与重用》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/76">
+    <img src="/not/mybook/data/book_image_lib/d3b042108101a9605ca7389a925bfc1e.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/76">
+    《Essential C++（中文版）》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=3 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/c/0'>1</a></li><li><a href='http://www.27tree.com/art/c/1'>2</a></li><li><a href='http://www.27tree.com/art/c/2'>3</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

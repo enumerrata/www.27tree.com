@@ -1,0 +1,435 @@
+<__cache@1389709749-@1389713349@3news__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            IT前沿_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=news />
+                    <input type="hidden" id="pages" value=3/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/news/'>IT前沿</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/news.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">关注IT行业最新动态</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-web/>[互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-13/1339544677.html">
+        &nbsp;互联网未来十年面临的三难题    </a><span class="Gray">(8)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-web/>[互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-14/1339631341.html">
+        &nbsp;Facebook九宗罪    </a><span class="Gray">(6)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/news-moweb/>[移动互联网]</a>    <a class="hotCommA" href="http://www.27tree.com/art/news/content/2012-06-11/1339378459.html">
+        &nbsp;直击小米代工厂：月产60万台工人24小时轮班    </a><span class="Gray">(2)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/news-web/" class="borderR15 sband">互联网</a><a href="/art/news-moweb/" class="borderR15 sband">移动互联网</a><a href="/art/news-pweb/" class="borderR15 sband">物联网</a><a href="/art/news-cloud/" class="borderR15 sband">云计算</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-09/1339221855.html>IPv6在全球范围内正式启用</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">IPv6在全球范围内正式启用，这将逐步取代目前的IPv4协议。
+
+
+	据统计，截至6月4日，参加IPv6Launch的网站中，美国有71%可在IPv6上存取，中国则为65%左右。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(418)</span>
+                           <em>2012年6月9日 14:04</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-08/1339165991.html>国产手机能有点创新吗？</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">
+
+
+	小米青春版今天开放预约购买，还是限量的，就在今天，360与华为宣布推出首款360特供机—华为闪耀。 雷军的“没有设计的设计就是最好的设计”让我情不自禁的吐了口口水：“你妹的”！ 华为闪耀同样让我看到...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(473)</span>
+                           <em>2012年6月8日 22:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-08/1339115825.html>Scroll Kit：让不会编程的人也能创建网站</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">腾讯科技讯（Kathy）北京时间6月7日消息，据国外媒体报道，有很多人想创建网站，但要却没有足够的编程知识，纽约市的Scroll Kit希望改变这种状况。使用Scroll Kit提供的Web应用，即使你没有必要的编程知识，也可以创建一个像样的网站。
+
+
+	Scroll Kit用户可以在一张空白的画布上放置任何东西：文字、图片等等，然后点击按钮，发布到Web上...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(304)</span>
+                           <em>2012年6月8日 08:36</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-08/1339115603.html>富士康成都工厂爆发千人骚乱 十余人被捕</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">
+
+
+	
+		据外媒报道，富士康旗下位于四川成都的集体宿舍本周一晚上爆发骚乱，涉及上千人，并有多人受伤、十余人被捕。据称，骚乱的主要原因是工人对薪资待遇、宿舍管理的不满。
+	
+	
+		香港《明报》称，骚乱发生在成都...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(295)</span>
+                           <em>2012年6月8日 08:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-08/1339115592.html>黑客利用火狐浏览器严重漏洞盗取用户密码</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">火狐浏览器刚刚发现的一个漏洞可以让黑客很容易就偷走用户在他们自己的网页上留下的信息，比如在MySpace.com上留下的用户资料。
+
+
+	这个漏洞存在于火狐用户登录管理系统，可以将用户的登录信息发送到攻击者指定的网页，Chapin信息服务集团的总裁RobertChapin说道。为了让这个攻击可以执行，攻击者需要有能力在他们指定的站点建立一个HTML页面，这个...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(297)</span>
+                           <em>2012年6月8日 08:31</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339047293.html>普通网民追求怎样的用户体验</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">作为一名资深普通网民，我想以普通的视角谈谈怎样的网站是我喜欢的，这就是用户体验的问题。网站的内容不是我所控制的，我只谈其他的。
+
+
+	
+
+
+	1，域名
+
+
+	我去，域名有什么可谈的。也许我有些强迫症，但域名有时真的是我喜不喜欢这个网站的一个重要原因。
+
+
+	首先，后缀是cn和net的网站我不喜欢，一种不伦不类的感觉直涌上我心头，com是我的首选。com.cn...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(334)</span>
+                           <em>2012年6月7日 13:34</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339037529.html>浅释材质绘制的色彩理论</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">以下的所述的理论是在网上找到一些外国大师们在绘画材质色彩表现的理论和结合自己浅薄的知识简述得出，虽然是主要讲述材质色彩表现方面，希望对大家工作上有点帮助。
+
+
+	
+
+
+	
+		１视觉中心
+	
+	
+		哪些现象会比较吸引我们的视觉，让我们用最简单的一些图示来说明问题
+	
+	
+		
+	
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(476)</span>
+                           <em>2012年6月7日 10:51</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-moweb/>[移动互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339027295.html>WWDC可能是苹果史上最大规模Mac发布会</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">根据9to5mac网站的消息，2012年度的苹果开发者大会（WWDC），将带来史上最大规模的Mac产品更新。人们普遍预计，苹果将在6月11号举行的WWDC首场主题演讲时，宣布iOS6、OS X10.8以及更新的Macbook Pro产品。不过9to5mac声称，这些可能只是苹果新产品计划的冰山一角。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(357)</span>
+                           <em>2012年6月7日 08:00</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-moweb/>[移动互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339027179.html>盛大网络推出Bambook智能手机售价1299元</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">
+
+
+	
+		盛大网络推出Bambook智能手机
+	
+	
+		新浪数码讯 6月6日下午消息，盛大网络正式推出了旗下首款智能终端Bambook手机，该机采用了1GHz双核处理器、4.3英寸屏幕，而1299元(8GB版...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(334)</span>
+                           <em>2012年6月7日 07:58</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-moweb/>[移动互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339027032.html>苹果WWDC开幕在即：库克给我们啥惊喜？</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp"> 
+
+
+	作为乔帮主钦点的接班人，库克能有“师傅”的真传吗？
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(330)</span>
+                           <em>2012年6月7日 07:56</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-07/1339026474.html>浅谈新站很快被百度收录又删除现象</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">常开新站，然后做SEO的站长朋友，会经常发现，有时新站很快就可以被收录，但收录第二天又被删除了，那么，是什么原因导致此类异常现象？如何防止此类现象？子南认为，主要应该从以下几个方面去考虑新站被收录又删除现象，应该来说属一种正常现象，不必惊慌，更不可反复去调整网站。
+
+
+	1、网站空间是否稳定？
+
+
+	如果网站所在的空间不稳定，导致这种现象的可能性就比较大了，...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(486)</span>
+                           <em>2012年6月7日 07:47</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-06/1338995557.html>如何做好网站</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">许多成功的企业已经成功地在线使用他们的网站，并把网站作为促进其产品和服务强大的工具 。当网站到一个新的水平，也一定能带给您的网上业务 。如果他们认为你的网站不够专业，人们仅仅停留在网站上几秒，甚至会立即离开。
+
+
+	一个专业的网站将不仅给你更多的收入，但它也将有助于改善您的在线声誉，因此，你的品牌得到大多数人的信任和信心 。但是，如何才能让您的网站看起来很专...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(314)</span>
+                           <em>2012年6月6日 23:11</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-06/1338958156.html>jdk和jre有什么区别</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">JDK是给专业开发人员用的，JRE是您电脑运行JAVA软件所需的环境，但是JDK包含JRE的功能！
+
+
+	
+
+
+
+	
+	
+		下边是来自互联网的更多解释，有时间的同学多看看吧。
+	
+	
+		JDK是面向开发人员使用的SDK，它提供了Java的开发环境和运行环境。SDK是Software Development Kit 一般指软件开发包，可以包括函数库、编译程...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(472)</span>
+                           <em>2012年6月6日 12:48</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-06/1338952365.html>站长做网站应该注意的几个误区</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">中国大大小小的站长难以计清，有的是经验老到，有的初出茅庐，大部分站长介乎2者之间;本文就此探讨一些站长容易走入的误区。这些误区，是思想上的盲点，走入进去，自己可能一下子难以抽身出来，最后延误了时机与经历。为此在这里做个详细的阐述。
+
+
+	第一个误区：内容误区
+
+
+	有个说法是：\"内容为王
+
+
+	链接为皇。\"强调的就是内容在网站建设中至高无上的重要性。但是会有...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(332)</span>
+                           <em>2012年6月6日 11:12</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/news-web/>[互联网]</a>&nbsp;<a href=http://www.27tree.com/art/news/content/2012-06-06/1338951158.html>PHP中正则表达式的几则使用技巧归总</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">PCRE正则表达式函数： 
+
+preg_match()和preg_match_all()
+preg_quote()
+preg_split()
+preg_grep()
+preg_replace()
+
+	
+
+
+	匹配action属性 
+
+$str =   ;
+ $match =   ;
+ preg_match_all( /\\s+action=\\(?!http:)...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(306)</span>
+                           <em>2012年6月6日 10:52</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+                        <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/news/0'>1</a></li><li><a href='http://www.27tree.com/art/news/1'>2</a></li><li><a href='http://www.27tree.com/art/news/2'>3</a></li><li><a href='http://www.27tree.com/art/news/3'>4</a></li><li><a href='http://www.27tree.com/art/news/4'>5</a></li><li><a href='http://www.27tree.com/art/news/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

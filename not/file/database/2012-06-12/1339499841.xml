@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL 严重 Bug - 用户登陆漏洞</title>
+<content>&amp;lt;p&amp;gt;
+	Security&amp;nbsp;vulnerability&amp;nbsp;in&amp;nbsp;MySQL/MariaDB&amp;nbsp;在知道用户名的情况下（如root），直接反复重试（平均大约256次）即可登入。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	受影响的版本：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	All&amp;nbsp;MariaDB&amp;nbsp;and&amp;nbsp;MySQL&amp;nbsp;versions&amp;nbsp;up&amp;nbsp;to&amp;nbsp;5.1.61,&amp;nbsp;5.2.11,&amp;nbsp;5.3.5,&amp;nbsp;5.5.22&amp;nbsp;are&amp;nbsp;vulnerable.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MariaDB&amp;nbsp;versions&amp;nbsp;from&amp;nbsp;5.1.62,&amp;nbsp;5.2.12,&amp;nbsp;5.3.6,&amp;nbsp;5.5.23&amp;nbsp;are&amp;nbsp;not.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;nbsp;versions&amp;nbsp;from&amp;nbsp;5.1.63,&amp;nbsp;5.5.24,&amp;nbsp;5.6.6&amp;nbsp;are&amp;nbsp;not.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	详情请点击这里
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	==============&amp;nbsp;补充说明&amp;nbsp;==================
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个&amp;nbsp;Bug&amp;nbsp;在官方编译的版本中没有发现。如果你是下载的源码，然后自己编译的就有可能遇到这个问题。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个问题和&amp;nbsp;memcmp()&amp;nbsp;这个函数的返回值有关系。目前知道的情况来看，gcc&amp;nbsp;自带的&amp;nbsp;memcmp&amp;nbsp;是安全的，BSD&amp;nbsp;libc&amp;nbsp;的&amp;nbsp;memcmp&amp;nbsp;是安全的。Linux&amp;nbsp;glibc&amp;nbsp;sse&amp;nbsp;优化过的&amp;nbsp;memcmp&amp;nbsp;会有这个问题。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-12/1339499841.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

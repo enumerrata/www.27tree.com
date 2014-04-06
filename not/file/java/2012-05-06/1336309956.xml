@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JDBC连接数据库经验技巧集萃</title>
+<content>&amp;lt;p&amp;gt;
+	Java数据库连接（JDBC）由一组用&amp;nbsp;Java&amp;nbsp;编程语言编写的类和接口组成。JDBC&amp;nbsp;为工具/数据库开发人员提供了一个标准的&amp;nbsp;API，使他们能够用纯Java&amp;nbsp;API&amp;nbsp;来编写数据库应用程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然而各个开发商的接口并不完全相同，所以开发环境的变化会带来一定的配置变化。本文主要集合了不同数据库的连接方式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、连接各种数据库方式速查表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面罗列了各种数据库使用JDBC连接的方式，可以作为一个手册使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、Oracle8/8i/9i数据库（thin模式）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(oracle.jdbc.driver.OracleDriver).newInstance();&amp;nbsp;
+String&amp;nbsp;url=jdbc:oracle:thin:@localhost:1521:orcl;&amp;nbsp;//orcl为数据库的SID&amp;nbsp;
+String&amp;nbsp;user=test;&amp;nbsp;
+String&amp;nbsp;password=test;&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url,user,password);&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、DB2数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(com.ibm.db2.jdbc.app.DB2Driver&amp;nbsp;).newInstance();&amp;nbsp;
+String&amp;nbsp;url=jdbc:db2://localhost:5000/sample;&amp;nbsp;//sample为你的数据库名&amp;nbsp;
+String&amp;nbsp;user=admin;&amp;nbsp;
+String&amp;nbsp;password=;&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url,user,password);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	3、Sql&amp;nbsp;Server7.0/2000数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(com.microsoft.jdbc.sqlserver.SQLServerDriver).newInstance();&amp;nbsp;
+String&amp;nbsp;url=jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=mydb;&amp;nbsp;
+//mydb为数据库&amp;nbsp;
+String&amp;nbsp;user=sa;&amp;nbsp;
+String&amp;nbsp;password=;&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url,user,password);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	4、Sybase数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(com.sybase.jdbc.SybDriver).newInstance();&amp;nbsp;
+String&amp;nbsp;url&amp;nbsp;=&amp;nbsp;jdbc:sybase:Tds:localhost:5007/myDB;//myDB为你的数据库名&amp;nbsp;
+Properties&amp;nbsp;sysProps&amp;nbsp;=&amp;nbsp;System.getProperties();&amp;nbsp;
+SysProps.put(user,userid);&amp;nbsp;
+SysProps.put(password,user_password);&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url,&amp;nbsp;SysProps);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、Informix数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(com.informix.jdbc.IfxDriver).newInstance();&amp;nbsp;
+String&amp;nbsp;url&amp;nbsp;=&amp;nbsp;jdbc:informix-sqli://123.45.67.89:1533/myDB:INFORMIXSERVER=myserver;&amp;nbsp;
+user=testuser;password=testpassword;&amp;nbsp;//myDB为数据库名&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url);&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	6、MySQL数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(org.gjt.mm.mysql.Driver).newInstance();&amp;nbsp;
+String&amp;nbsp;url&amp;nbsp;=jdbc:mysql://localhost/myDB?user=soft&amp;amp;password=soft1234&amp;amp;useUnicode=true&amp;amp;characterEncoding=8859_1&amp;nbsp;
+//myDB为数据库名&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url);&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	7、PostgreSQL数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(org.postgresql.Driver).newInstance();&amp;nbsp;
+String&amp;nbsp;url&amp;nbsp;=jdbc:postgresql://localhost/myDB&amp;nbsp;//myDB为数据库名&amp;nbsp;
+String&amp;nbsp;user=myuser;&amp;nbsp;
+String&amp;nbsp;password=mypassword;&amp;nbsp;
+Connection&amp;nbsp;conn=&amp;nbsp;DriverManager.getConnection(url,user,password);&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、access数据库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;Class.forName(sun.jdbc.odbc.JdbcOdbcDriver)&amp;nbsp;;
+&amp;nbsp;
+String&amp;nbsp;url=jdbc:odbc:Driver={MicroSoft&amp;nbsp;Access&amp;nbsp;Driver&amp;nbsp;(*.mdb)};DBQ=+application.getRealPath(/Data/ReportDemo.mdb);
+&amp;nbsp;
+Connection&amp;nbsp;conn&amp;nbsp;=&amp;nbsp;DriverManager.getConnection(url,,);
+&amp;nbsp;
+Statement&amp;nbsp;stmtNew=conn.createStatement()&amp;nbsp;;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	二、JDBC连接MySql方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面是使用JDBC连接MySql的一个小的教程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、查找驱动程序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL目前提供的java驱动程序为Connection/J，可以从MySQL官方网站下载，并找到mysql-connector-java-3.0.15-ga-bin.jar文件，此驱动程序为纯java驱动程序，不需做其他配置。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、动态指定classpath
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果需要执行时动态指定classpath，就在执行时采用－cp方式。否则将上面的.jar文件加入到classpath环境变量中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、加载驱动程序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;try{
+&amp;nbsp;
+　Class.forName(com.mysql.jdbc.Driver);
+&amp;nbsp;
+　System.out.println(Success&amp;nbsp;loading&amp;nbsp;Mysql&amp;nbsp;Driver!);
+&amp;nbsp;
+}catch(Exception&amp;nbsp;e)
+&amp;nbsp;
+{
+&amp;nbsp;
+　System.out.println(Error&amp;nbsp;loading&amp;nbsp;Mysql&amp;nbsp;Driver!);
+&amp;nbsp;
+　e.printStackTrace();
+&amp;nbsp;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	4、设置连接的url
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jdbc：mysql：//localhost/databasename
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-06/1336309956.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-18+00%3A09%3A20</date-c>
+  <conf-c>mmjmkmkjj</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

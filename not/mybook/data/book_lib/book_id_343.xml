@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript宝典（第7版）]]></title>
+  <author>古德曼</author>
+  <submiter-uid>12</submiter-uid>
+  <submit-date-time>2013-05-14 07:49:04</submit-date-time>
+  <img-link>c023c6b452183587b228e9c0fe6fa8a7.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	编辑推荐《JavaScript宝典(第7版)》创建富有吸引力的交互网站；
+</p>
+<p>
+	为当今浏览器创建精彩纷呈的动态内容；深入理解“文档对象模型”概念；《JavaScript宝典(第7版)》为您铺就成功路！
+</p>
+<p>
+	作者：（美国）古德曼（Danny Goodman） （美国）Michael Morrison （美国）Paul Novitski （美国）Tia Gustaff Rayl&nbsp;
+</p>
+<p>
+	译者：杨岳湘 普杰 高宇辉
+</p>
+<p>
+	古德曼，已经撰写了多本备受广大读者青昧的畅销书，他是一位声誉卓著的计算机脚本语言权威专家和讲师。他的写作风格和教学方式将继续为他赢得全球各地读者和教师的赞美。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	目录
+</p>
+<p>
+	第1部分 JavaScript入门
+</p>
+<p>
+	第1章 JavaScript在万维网和其他领域所起的作用
+</p>
+<p>
+	1.1 Web流量的竞争
+</p>
+<p>
+	1.2其他Web技术
+</p>
+<p>
+	1.2.1 超文本标记语言（HTML和XHTML）
+</p>
+<p>
+	1.2.2 CSS
+</p>
+<p>
+	1.2.3服务器编程
+</p>
+<p>
+	1.2.4 辅助程序和插件程序
+</p>
+<p>
+	1.3 JavaScript是一门综合性语言
+</p>
+<p>
+	1.3.1 LiveScript蜕变成JavaScript
+</p>
+<p>
+	1.3.2微软的JavaScfipt版本
+</p>
+<p>
+	1.3.3 JavaScript版本
+</p>
+<p>
+	1.3.4核心语言标准ECMAScript
+</p>
+<p>
+	1.4 JavaScript：灵活易用的工具
+</p>
+<p>
+	第2章 脚本开发策略
+</p>
+<p>
+	2.1 浏览器的竞争
+</p>
+<p>
+	2.2 相互包容
+</p>
+<p>
+	2.3 当今存在的兼容性问题
+</p>
+<p>
+	2.3.1 将核心JavaScript语言从文档对象中独立出来
+</p>
+<p>
+	2.3.2 核心语言标准
+</p>
+<p>
+	2.3.3 文档对象模型
+</p>
+<p>
+	2.3.4 通过标记打下良好的基础
+</p>
+<p>
+	2.3.5 层叠样式表
+</p>
+<p>
+	2.3.6标准兼容模式（DOCTYPE转换）
+</p>
+<p>
+	2.3.7 动态HTML和定位
+</p>
+<p>
+	2.4 开发脚本编写策略
+</p>
+<p>
+	2.4.1 功能降低和渐进增强
+</p>
+<p>
+	2.4.2 开发层的分离
+</p>
+<p>
+	2.4.3 延伸阅读
+</p>
+<p>
+	第3章 选择和使用工具
+</p>
+<p>
+	3.1 软件工具
+</p>
+<p>
+	3.1.1 选择文本编辑器
+</p>
+<p>
+	3.1.2选择浏览器
+</p>
+<p>
+	3.2建立编写环境
+</p>
+<p>
+	3.2.1 Windows
+</p>
+<p>
+	3.2.2 Mac OS X
+</p>
+<p>
+	3.2.3 重载问题
+</p>
+<p>
+	3.3 验证
+</p>
+<p>
+	3.4创建第一个脚本
+</p>
+<p>
+	3.4.1 第一步：静态HTML
+</p>
+<p>
+	3.4.2第二步：连接JavaScnpt
+</p>
+<p>
+	3.4.3 第三步：用CSS指定样式
+</p>
+<p>
+	第4章 JavaScript基础
+</p>
+<p>
+	4.1 合并JavaScript和H7ML
+</p>
+<p>
+	4.1.1
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

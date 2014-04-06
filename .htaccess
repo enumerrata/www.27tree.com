@@ -1,0 +1,84 @@
+RewriteEngine On
+RewriteBase /
+
+rewriteCond %{http_host} ^(www.)?itsrcs.com [NC]
+RewriteRule ^(.*)$ http://www.27tree.com/$1 [R=301,L]
+
+rewriteCond %{http_host} ^27tree.com [NC]
+RewriteRule ^(.*)$ http://www.27tree.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^cdmomo.godorders.com$
+RewriteCond %{REQUEST_URI} !^/p6-cdmomo/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /p6-cdmomo/$1
+RewriteCond %{HTTP_HOST} ^cdmomo.godorders.com$
+RewriteRule ^(/)?$ p6-cdmomo/ [L]
+
+RewriteRule ^(.*)user/([0-9]+)$ $1/user/index.php?uid=$2
+#RewriteRule ^(.*)user/visit/([0-9]+)$ $1$1/not/view_blog_cm.php?uid=$2
+RewriteRule ^(.*)user/visit/([0-9]+)$ $1$1/user/visit/index.php?u=$2
+RewriteRule ^(.*)blogm/usr-([0-9]+)(/+)?$ $1$1/user/visit/index.php?u=$2
+RewriteRule ^(.*)blogm/usr-([0-9]+).html?$ $1$1/user/visit/index.php?u=$2
+RewriteRule ^(.*)user/([0-9]+)/([a-zA-z]+).html$ $1/user/index.php?uid=$2&action=$3
+RewriteRule ^(.*)user/([0-9]+)/([a-zA-z]+)/([0-9]+)$ $1/user/index.php?uid=$2&action=$3&pg=$4
+RewriteRule ^(.*)user/([0-9]+)/admin/([a-zA-z]+).html$ $1/user/index.php?uid=$2&action=admin&sub_action=$3
+
+#blog
+RewriteRule ^(.*)blog/(.*)/content_([a-zA-Z0-9]*)\.html$ $1/not/view_blog.php?id=$3&date=$2
+RewriteRule ^(.*)blog(/+)?$ $1/not/view_blog_list.php
+RewriteRule ^(.*)blog/index.html?$ $1/not/view_blog_list.php
+RewriteRule ^(.*)blog/([0-9]+).html?$ $1/not/view_blog_list.php?page=$2
+
+RewriteRule ^(.*)bookLib(/+)?$ $1/not/mybook/index.php
+RewriteRule ^(.*)bookLib/index.html$ $1/not/mybook/index.php
+RewriteRule ^(.*)bookLib/([0-9]+)?(/+)?$ $1/not/mybook/view_book.php?b=$2
+
+RewriteRule ^(.*)bookLib-([a-zA-z0-9]+)(/+)?$ $1/not/mybook/view_book_list.php?libtype=$2
+RewriteRule ^(.*)bookLib/([a-zA-z0-9]+)/([0-9]+).html?$ $1/not/mybook/view_book_list.php?libtype=$2&page=$3
+RewriteRule ^(.*)bookLib/([a-zA-z0-9]+)(/)+?$ $1/not/mybook/view_book_list.php?libtype=$2
+
+RewriteRule ^(.*)art/([a-zA-z0-9]+)/([0-9]*)$ $1/not/index.php?nottype=$2&pages=$3
+RewriteRule ^(.*)art/([a-zA-z0-9]+)/([a-zA-z0-9]+)/([0-9]*)?$ $1/not/sub.php?nottype=$2&subtype=$3
+RewriteRule ^(.*)art/([a-zA-z0-9]+)-([a-zA-z0-9]+)/([0-9]*)?$ $1/not/index.php?nottype=$2&pages=$4&stype=$3
+RewriteRule ^(.*)art/([a-zA-z0-9]+)/content/(.*)/([a-zA-Z0-9]*)\.html$ $1/not/view_article.php?type=$2&date=$3&id=$4
+
+#bbs
+RewriteRule ^(.*)minbbs/(tech|ques|talk|carr)(?:/)?(?:([0-9]+).html)?$ $1/minbbs/index.php?type=$2&page=$3
+RewriteRule ^(.*)minbbs/topic/([a-zA-z0-9]+).html$ $1/minbbs/posts.php?id=$2
+RewriteRule ^(.*)bbs/Sector-([0-9]+)/Post-([0-9]+).html$ $1/minbbs/posts.php?id=$3&sid=$2
+RewriteRule ^(.*)bbs/Sector-([0-9]+)/bost-([0-9]+).html$ $1/minbbs/posts_1.php?id=$3&sid=$2
+RewriteRule ^(.*)bbs/Sector-([0-9]+)(/)?$ $1/minbbs/posts_list.php?sid=$2
+RewriteRule ^(.*)bbs/Sector-([0-9]+)/Pages-([0-9]+).shtml?$ $1/minbbs/posts_list.php?sid=$2&pages=$3
+
+#online
+RewriteRule ^(.*)online/tri-([0-9]+)/sec-([0-9]+).html$ $1/not/online/?p=$3&t=$2
+
+#q_a
+RewriteRule ^(.*)q_a/question/([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+).html$ $1/q_a/view_qa.php?pid=$5
+RewriteRule ^(.*)q_a/index.html$ $1/q_a/index.php
+
+#rss
+RewriteRule ^(.*)rss/([a-zA-z]+).xml?$ $1/rss/main.php?type=$2
+
+ErrorDocument 404 /404.php
+# proc/self/environ?
+RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+# 阻止脚本企图通过URL修改mosConfig�?
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+# 阻止脚本通过URL传递的base64_encode垃圾信息
+RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
+# 阻止在URL含有<script>标记的脚�?
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+# 阻止企图通过URL设置PHP的GLOBALS变量的脚�?
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
+# 阻止企图通过URL设置PHP的_REQUEST变量的脚�?
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
+# 把所有被阻止的请求转向到403禁止提示页面�?
+
+RewriteRule ^(.*)$ index.php [F,L]
+<FilesMatch "\.(engine|inc|info|install|make|cache|module|json|profile|test|po|sh|.*sql|templates(\.php)?|xtmpl|svn-base)$|^(code-style\.pl|Entries.*|Repository|Root|Tag|Template|all-wcprops|entries|format)$">
+ Order allow,deny
+ Allow from all
+</FilesMatch>
+#文件，文件夹访问屏蔽

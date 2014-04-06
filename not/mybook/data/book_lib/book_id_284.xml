@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android Application Development Cookbook]]></title>
+  <author>Wei-Meng Lee</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-04 11:41:00</submit-date-time>
+  <img-link>03656b51ec8d0ac5b3e3291501650edb.jpg</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>93 Recipes for Building Winning Apps</strong>
+</p>
+<p>
+	The popularity of Google Android devices is seemingly unstoppable and the Android 4 release offers, for the first time, a single OS solution for building both phone and tablet applications. With that exciting information in mind, veteran author Wei-Meng Lee presents you with 100 unique recipes that you can apply today in order to discover solutions to some of the most commonly encountered problems that exist in Android programming.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

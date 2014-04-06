@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP多线程]]></title>
+  <content><![CDATA[<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">/**
+ *
+ *  PHP多线程应用使用方法：
+ *  require_once \'thread.class.php\';
+ *  $thread = new thread();
+ *  $thread-&gt;addthread(\'action_log\',\'a\');
+ *  $thread-&gt;addthread(\'action_log\',\'b\');
+ *  $thread-&gt;addthread(\'action_log\',\'c\');
+ *  $thread-&gt;runthread();
+ *
+ *  function action_log($info) {
+ *      $log = \'log/\' . microtime() . \'.log\';
+ *      $txt = $info . \"\\r\\n\\r\\n\" . \'Set in \' . Date(\'h:i:s\', time()) . (double)microtime() . \"\\r\\n\";
+ *      $fp = fopen($log, \'w\');
+ *      fwrite($fp, $txt);
+ *      fclose($fp);
+ *  }
+ */
+ 
+class thread {
+ 
+    var $hooks = array();
+    var $args = array();
+ 
+    function thread() {
+    }
+ 
+    function addthread($func)
+    {
+        $args = array_slice(func_get_args(), 1);
+        $this-&gt;hooks[] = $func;
+        $this-&gt;args[] = $args;
+        return true;
+    }
+ 
+    function runthread()
+    {
+        if(isset($_GET[\'flag\']))
+        {
+            $flag = intval($_GET[\'flag\']);
+        }
+ 
+        if($flag || $flag === 0)
+        {
+            call_user_func_array($this-&gt;hooks[$flag], $this-&gt;args[$flag]);
+        }
+        else
+        {
+            for($i = 0, $size = count($this-&gt;hooks); $i &lt; $size; $i++)
+            {
+                $fp=fsockopen($_SERVER[\'HTTP_HOST\'],$_SERVER[\'SERVER_PORT\']);
+                if($fp)
+                {
+                    $out = \"GET {$_SERVER[\'PHP_SELF\']}?flag=$i HTTP/1.1\\r\\n\";
+                    $out .= \"Host: {$_SERVER[\'HTTP_HOST\']}\\r\\n\";
+                    $out .= \"Connection: Close\\r\\n\\r\\n\";
+                    fputs($fp,$out);
+                    fclose($fp);
+                }
+            }
+        }
+    }
+}</pre>
+</p>
+<p>
+	<p>
+		使用方法：
+	</p>
+	<p>
+		$thread = new thread();
+	</p>
+	<p>
+		$thread-&gt;addthread(\'func1\',\'info1\');
+	</p>
+	<p>
+		$thread-&gt;addthread(\'func2\',\'info2\');
+	</p>
+	<p>
+		$thread-&gt;addthread(\'func3\',\'info3\');
+	</p>
+	<p>
+		$thread-&gt;runthread();
+	</p>
+	<p>
+		说明：
+	</p>
+	<p>
+		addthread是添加线程函数，第一个参数是函数名，之后的参数（可选）为传递给指定函数的参数。
+	</p>
+	<p>
+		runthread是执行线程的函数。
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+/**
+ *
+ *  PHP多线程应用使用方法：
+ *  require_once \'thread.class.php\';
+ *  $thread = new thread();
+ *  $thread-&gt;addthread(\]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

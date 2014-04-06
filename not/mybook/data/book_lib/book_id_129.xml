@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>SQL Cookbook 中文版</title>
+  <author>（美）莫利纳罗</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-29 09:33:40</submit-date-time>
+  <img-link>ea45a0aeca09453045a76ab03686d560.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	WHERE，就可以开始了。许多数据库开发人员所掌握的仅在于此，而使用这门语言可做的事情则远远不止这些。在本书中，SQL开发人员Anthony&amp;nbsp;Molinaro倾诚奉献他多年积累的丰富经验，使我们能够充分利用SQL的强大功能。您将在本书中学到：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·实际上，在过去的10年中，对于SQL而言，窗口函数的使用是最重要的增强功能。SQL的使用者，绝不该错过这些函数。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·利用强大的数据库特定功能，例如SQL&amp;nbsp;Server的PIVOT和UNPIVOT运算符，Oracle的MODEL子句，以及PostgreSQL的GENERATE_SERIES函数。..
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·利用基干表，从行到列，或者从列到行，以不同方式查看数据，基干表便于行间计算，而且可以对结果集进行双倍“透视”。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·创建直方图，以直观方式展现数据，对可变范围的数据执行聚合运算，生成总计和小计结果，还有其他高级的数据仓库技术。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·字符串处理，您可以使用SQL来分析字符、单词或者是字符串的有界元素。...
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		SQL&amp;nbsp;是计算机世界的语言，在用关系数据库开发报表时，将数据放入数据库以及从数据库中取出来，都需要SQL&amp;nbsp;的知识。很多人以一种马马虎虎的态度在使用SQL，根本没有意识到自己掌握着多么强大的武器。本书的目的是打开读者的视野，看看SQL&amp;nbsp;究竟能干什么，以改变这种状况。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书是一本指南，其中包含了一系列SQL&amp;nbsp;的常用问题以及它们的解决方案，希望能对读者的日常工作有所帮助。本书将相关主题的小节归成章，如果读者遇到不能解决的SQL&amp;nbsp;新问题，可以先找到最可能适用的章，浏览其中各小节的标题，希望读者能从中找到解决方案，至少可以找到点灵感。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;在这本书中有150&amp;nbsp;多个小节，这还仅仅是SQL&amp;nbsp;所能做的事情的一鳞半爪。解决日常编程问题的解决方案的数量仅取决于需要解决的问题的数量，本书没有覆盖所有问题，事实上也不可能覆盖；然而从中可以找到许多共同的问题及其解决方案，这些解决方案中用到许多技巧，读者学到这些技巧就可以将它们扩展并应用到本书不可能覆盖的其他新问题上。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

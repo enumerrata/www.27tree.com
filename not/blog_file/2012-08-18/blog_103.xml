@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-18 15:50:12</datetime>
+  <title>clear:both; 干嘛用的？</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	lear:both;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CSS手册上这样解释：该属性的值指出了不允许有浮动对象的边。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这个属性是用来控制float属性在文档流的物理位置的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当属性设置float（浮动）时，他所在的物理位置已经脱离文档流了，但是大多时候我们希望文档流能识别float（浮动）,或者是希望float（浮动）后面的元素不被float（浮动）所影响，这个时候我们就需要用clear:both;来清除clear:both;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	例子：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;style=\"float:left;width&amp;nbsp;:100px;\"&amp;gt;这个是第1列，&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;style=\"float:left;width&amp;nbsp;:400px;\"&amp;gt;这个是第2列，&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;&amp;gt;这个是列的下面。&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果不用清除浮动，那么第3个&amp;lt;P&amp;gt;的文字就会和第一二行在一起
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	所以我们在第3个这利加一个清除浮动。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;style=\"float:left;width&amp;nbsp;:100px;\"&amp;gt;这个是第1列，&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;style=\"float:left;width&amp;nbsp;:400px;\"&amp;gt;这个是第2列，&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;p&amp;nbsp;clear:both;&amp;gt;这个是列的下面。&amp;lt;/p&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CSS中&amp;nbsp;clear:both;可以终结在出现他之前的浮动&amp;nbsp;CSS中&amp;nbsp;clear:both;可以终结在出现他之前的浮动
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	语法：&amp;nbsp;clear&amp;nbsp;:&amp;nbsp;none&amp;nbsp;|&amp;nbsp;left&amp;nbsp;|right&amp;nbsp;|&amp;nbsp;both
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	none&amp;nbsp;:&amp;nbsp;允许两边都可以有浮动对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	both&amp;nbsp;:&amp;nbsp;不允许有浮动对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	left&amp;nbsp;:&amp;nbsp;不允许左边有浮动对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	right&amp;nbsp;:&amp;nbsp;不允许右边有浮动对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	说明：&amp;nbsp;该属性的值指出了不允许有浮动对象的边。请参阅float属性。&amp;nbsp;对应的脚本特性为clear
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	示例：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	div&amp;nbsp;{&amp;nbsp;clear&amp;nbsp;:&amp;nbsp;left&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	img&amp;nbsp;{&amp;nbsp;float:&amp;nbsp;right&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;div&amp;nbsp;style=\"clear:both;\"&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	主要是用在div套div的结构中。如果内div是浮动的，一般都需要clear浮动，不然的话内div会超出外div的框架
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	所用什么时候用clear:both;就很重要,一般我们在需要清除浮动的时候用到clear:both;不要轻意用到clear:both;因为它也有副伯用.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我们写一个clear:both;的例子:
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;div&amp;nbsp;style=\"float:left;width:100px;\"&amp;gt;&amp;nbsp;clear:both第1行第1列，&amp;lt;/div&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;div&amp;nbsp;style=\"float:left;width:700px;\"&amp;gt;&amp;nbsp;clear:both第1行第2列，&amp;lt;/div&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;div&amp;nbsp;style=\"clear:both;\"&amp;gt;&amp;nbsp;clear:both第2行。&amp;lt;/div&amp;gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	效果:clear:both第1行第1列，clear:both第1行第2列，clear:both第2行。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>lear:both;
+
+
+	CSS手册上这样解释：该属性的值指出了不允许有浮动对象的边。
+
+
+	这个属性是用来控制float属性在文档流的物理位置的。
+
+
+	当属性设置float（浮动）时，他所在的物理位置已经脱离文档流了，但是大多时候我们希望文档流能识别float（浮动）,或者是希望float（浮动）后面的元素不被float（浮动）所影响，这个时候我们就需</contentx>
+  <tags>_null_</tags>
+</root>

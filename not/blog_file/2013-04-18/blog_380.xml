@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[php 生成缩略图:PHP生成智能缩略图]]></title>
+  <content><![CDATA[<p>
+	&lt;?php
+</p>
+<p>
+	class resizeimage {
+</p>
+<p>
+	//图片类型
+</p>
+<p>
+	var $type;
+</p>
+<p>
+	//实际宽度
+</p>
+<p>
+	var $width;
+</p>
+<p>
+	//实际高度
+</p>
+<p>
+	var $height;
+</p>
+<p>
+	//改变后的宽度
+</p>
+<p>
+	var $resize_width;
+</p>
+<p>
+	//改变后的高度
+</p>
+<p>
+	var $resize_height;
+</p>
+<p>
+	//是否裁图
+</p>
+<p>
+	var $cut;
+</p>
+<p>
+	//源图象
+</p>
+<p>
+	var $srcimg;
+</p>
+<p>
+	//目标图象地址
+</p>
+<p>
+	var $dstimg;
+</p>
+<p>
+	//临时创建的图象
+</p>
+<p>
+	var $im;
+</p>
+<p>
+	function resizeimage($img, $wid, $hei, $c, $dstpath) {
+</p>
+<p>
+	$this-&gt;srcimg = $img;
+</p>
+<p>
+	$this-&gt;resize_width = $wid;
+</p>
+<p>
+	$this-&gt;resize_height = $hei;
+</p>
+<p>
+	$this-&gt;cut = $c;
+</p>
+<p>
+	//图片的类型
+</p>
+<p>
+	$this-&gt;type = strtolower ( substr ( strrchr ( $this-&gt;srcimg, \".\" ), 1 ) );
+</p>
+<p>
+	//初始化图象
+</p>
+<p>
+	$this-&gt;initi_img ();
+</p>
+<p>
+	//目标图象地址
+</p>
+<p>
+	$this-&gt;dst_img ( $dstpath );
+</p>
+<p>
+	$this-&gt;width = imagesx ( $this-&gt;im );
+</p>
+<p>
+	$this-&gt;height = imagesy ( $this-&gt;im );
+</p>
+<p>
+	//生成图象
+</p>
+<p>
+	$this-&gt;newimg ();
+</p>
+<p>
+	ImageDestroy ( $this-&gt;im );
+</p>
+<p>
+	}
+</p>
+<p>
+	function newimg() {
+</p>
+<p>
+	//改变后的图象的比例
+</p>
+<p>
+	$resize_ratio = ($this-&gt;resize_width) / ($this-&gt;resize_height);
+</p>
+<p>
+	//实际图象的比例
+</p>
+<p>
+	$ratio = ($this-&gt;width) / ($this-&gt;height);
+</p>
+<p>
+	if (($this-&gt;cut) == \"1\") //裁图
+</p>
+<p>
+	{
+</p>
+<p>
+	if ($ratio &gt;= $resize_ratio) //高度优先
+</p>
+<p>
+	{
+</p>
+<p>
+	$newimg = imagecreatetruecolor ( $this-&gt;resize_width, $this-&gt;resize_height );
+</p>
+<p>
+	imagecopyresampled ( $newimg, $this-&gt;im, 0, 0, 0, 0, $this-&gt;resize_width, $this-&gt;resize_height, (($this-&gt;height) * $resize_ratio), $this-&gt;height );
+</p>
+<p>
+	ImageJpeg ( $newimg, $this-&gt;dstimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	if ($ratio &lt; $resize_ratio) //宽度优先
+</p>
+<p>
+	{
+</p>
+<p>
+	$newimg = imagecreatetruecolor ( $this-&gt;resize_width, $this-&gt;resize_height );
+</p>
+<p>
+	imagecopyresampled ( $newimg, $this-&gt;im, 0, 0, 0, 0, $this-&gt;resize_width, $this-&gt;resize_height, $this-&gt;width, (($this-&gt;width) / $resize_ratio) );
+</p>
+<p>
+	ImageJpeg ( $newimg, $this-&gt;dstimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	} else //不裁图
+</p>
+<p>
+	{
+</p>
+<p>
+	if ($ratio &gt;= $resize_ratio) {
+</p>
+<p>
+	$newimg = imagecreatetruecolor ( $this-&gt;resize_width, ($this-&gt;resize_width) / $ratio );
+</p>
+<p>
+	imagecopyresampled ( $newimg, $this-&gt;im, 0, 0, 0, 0, $this-&gt;resize_width, ($this-&gt;resize_width) / $ratio, $this-&gt;width, $this-&gt;height );
+</p>
+<p>
+	ImageJpeg ( $newimg, $this-&gt;dstimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	if ($ratio &lt; $resize_ratio) {
+</p>
+<p>
+	$newimg = imagecreatetruecolor ( ($this-&gt;resize_height) * $ratio, $this-&gt;resize_height );
+</p>
+<p>
+	imagecopyresampled ( $newimg, $this-&gt;im, 0, 0, 0, 0, ($this-&gt;resize_height) * $ratio, $this-&gt;resize_height, $this-&gt;width, $this-&gt;height );
+</p>
+<p>
+	ImageJpeg ( $newimg, $this-&gt;dstimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	}
+</p>
+<p>
+	}
+</p>
+<p>
+	//初始化图象
+</p>
+<p>
+	function initi_img() {
+</p>
+<p>
+	if ($this-&gt;type == \"jpg\") {
+</p>
+<p>
+	$this-&gt;im = imagecreatefromjpeg ( $this-&gt;srcimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	if ($this-&gt;type == \"gif\") {
+</p>
+<p>
+	$this-&gt;im = imagecreatefromgif ( $this-&gt;srcimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	if ($this-&gt;type == \"png\") {
+</p>
+<p>
+	$this-&gt;im = imagecreatefrompng ( $this-&gt;srcimg );
+</p>
+<p>
+	}
+</p>
+<p>
+	}
+</p>
+<p>
+	//图象目标地址
+</p>]]></content>
+  <contentx><![CDATA[
+	&lt;?php
+
+
+	class resizeimage {
+
+
+	//图片类型
+
+
+	var $type;
+
+
+	//实际宽度
+
+
+	var $width;
+
+
+	//实际高度
+
+
+	var $height;
+
+
+	//改变后的宽度]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

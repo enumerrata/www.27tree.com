@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>匹配中文的正则表达式</title>
+<content>&amp;lt;p&amp;gt;
+	以前在编写linux下的scim郑码码表时，就跟正则式的中文匹配问题打过交道。当时总结了这样一条经验，utf8编码格式下，中文正则式应该这样书写：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;[\x80-\xff]{3}&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		当然，这与语言无关。在perl与python中，都是一样的。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		现在，这条正则式又派上用场了。正在编写的一个小程序MiniBlogs&amp;nbsp;Updater中，需要计算用户所输入的文字字数。因为中英文字符编码长度不一，如果直接使用python中的len()函数，它计算的是该字串的实际长度，一个中文字并非等同于一个英文字母的。因此，需要把中文字当成英文字母来处理。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		我写了这样一条语句来处理：
+	&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;length=len(re.sub(&amp;nbsp;[\x80-\xff]{3}&amp;nbsp;,&amp;nbsp;a&amp;nbsp;,msg))&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		它的意思是，把所有的中文都替换成英文字母a，然后再统计字数。（只是统计而已，不修改源字串。）这条语句在windows下utf8文件中能够正常工作。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		再分享两则与匹配中文的正则表达式有用的链接：
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-06/1338985999.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

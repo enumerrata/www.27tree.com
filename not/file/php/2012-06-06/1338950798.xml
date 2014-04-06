@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>10 个不常见却非常有用的PHP函数</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;1.&amp;nbsp;sys_getloadavg()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	sys_getloadavt()可以获得系&amp;nbsp;统负载情况。该函数返回一个包含三个元素的数组，每个元素分别代表系统再过去的1、5和15分钟内的平均负载。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与其让服务器因负&amp;nbsp;载过高而宕掉，不如在系统负载很高时主动die掉一个脚本，sys_getloadavg()就是用来帮你实现这个功能的。&amp;nbsp;不过很遗憾，该函数在windows下无效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;2.&amp;nbsp;pack()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Pack()&amp;nbsp;能将md5()返回的32位16进制字符串转换为16位的二进制字符串，可以节省存储空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;3.&amp;nbsp;cal_days_in_month()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cal_days_in_month()能够返回指定月份共有多少天。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;4.&amp;nbsp;_()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WordPress开发者经常能见到这个函数，还有&amp;nbsp;_e()。这两个函数功能相同，与gettext()函数结合使用，能实现网站的多语言化。具体可参见PHP手册的相关部分介绍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;5.&amp;nbsp;get_browser()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在发送页面前先看看用户的浏览器都能做些什么是&amp;nbsp;不是挺好？get_browser()能获得用户的浏览器类型，以及浏览器支持的功能，不过首先你需要一个php_browscap.ini文件，用来给&amp;nbsp;函数做参考文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要注意，该函数对浏览器功能的判断是基于该类浏览器的一般特性的。例如，如果用户关闭了浏览器对&amp;nbsp;JavaScript的支持，函数无法得知这一点。但是在判断浏览器类型和OS平台方面，该函数还是很准确的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;6.&amp;nbsp;debug_print_backtrace()&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是一个调试用的函数，能帮助你发现代码中的逻辑错误。要理&amp;nbsp;解这个函数，还是直接看个例子吧：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$a&amp;nbsp;=&amp;nbsp;0;
+function&amp;nbsp;iterate()&amp;nbsp;{
+global&amp;nbsp;$a;
+if(&amp;nbsp;$a&amp;nbsp;&amp;amp;lt;&amp;nbsp;10&amp;nbsp;)
+recur();
+echo&amp;nbsp;$a&amp;nbsp;.&amp;nbsp;“,&amp;nbsp;“;
+}
+function&amp;nbsp;recur()&amp;nbsp;{
+global&amp;nbsp;$a;
+$a++;
+//&amp;nbsp;how&amp;nbsp;did&amp;nbsp;I&amp;nbsp;get&amp;nbsp;here?
+echo&amp;nbsp;“\n\n\n”;
+debug_print_backtrace();
+if(&amp;nbsp;$a&amp;nbsp;&amp;amp;lt;&amp;nbsp;10&amp;nbsp;)
+iterate();
+}
+iterate();
+#&amp;nbsp;OUTPUT:
+#0&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#1&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:25]
+#0&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#1&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:21]
+#2&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#3&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:25]
+#0&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#1&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:21]
+#2&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#3&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:21]
+#4&amp;nbsp;recur()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:8]
+#5&amp;nbsp;iterate()&amp;nbsp;called&amp;nbsp;at&amp;nbsp;[C:\htdocs\php_stuff\index.php:25]&amp;nbsp;
+&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;7.&amp;nbsp;metaphone()&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个函数返回单词的metaphone值，相同读音的单词具有相同的metaphone值，也就是说这个函数可以帮你判断两个单词的读音是否&amp;nbsp;相同。不过对中文就无效了。。。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;8.&amp;nbsp;natsort()&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	natsort()能将一个数组以自然排序法&amp;nbsp;进行排列，直接看个例子吧：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$items&amp;nbsp;=&amp;nbsp;array(
+“100&amp;nbsp;apples”,&amp;nbsp;“5&amp;nbsp;apples”,&amp;nbsp;“110&amp;nbsp;apples”,&amp;nbsp;“55&amp;nbsp;apples”
+);
+//&amp;nbsp;normal&amp;nbsp;sorting:
+sort($items);
+print_r($items);
+#&amp;nbsp;Outputs:
+#&amp;nbsp;Array
+#&amp;nbsp;(
+#&amp;nbsp;[0]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;100&amp;nbsp;apples
+#&amp;nbsp;[1]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;110&amp;nbsp;apples
+#&amp;nbsp;[2]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;5&amp;nbsp;apples
+#&amp;nbsp;[3]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;55&amp;nbsp;apples
+#&amp;nbsp;)
+natsort($items);
+print_r($items);
+#&amp;nbsp;Outputs:
+#&amp;nbsp;Array
+#&amp;nbsp;(
+#&amp;nbsp;[2]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;5&amp;nbsp;apples
+#&amp;nbsp;[3]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;55&amp;nbsp;apples
+#&amp;nbsp;[0]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;100&amp;nbsp;apples
+#&amp;nbsp;[1]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;110&amp;nbsp;apples
+#&amp;nbsp;)&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;9.&amp;nbsp;levenshtein()&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Levenshtein()&amp;nbsp;告诉你两个单词之间的“距离”。它告诉你如果想把一个单词变成另一个单词，需要插入、替换和删除多少字母。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	看个例子吧：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$dictionary&amp;nbsp;=&amp;nbsp;array(
+“php”,&amp;nbsp;“javascript”,&amp;nbsp;“css”
+);
+$word&amp;nbsp;=&amp;nbsp;“japhp”;
+$best_match&amp;nbsp;=&amp;nbsp;$dictionary[0];
+$match_value&amp;nbsp;=&amp;nbsp;levenshtein($dictionary[0],&amp;nbsp;$word);
+foreach($dictionary&amp;nbsp;as&amp;nbsp;$w)&amp;nbsp;{
+$value&amp;nbsp;=&amp;nbsp;levenshtein($word,&amp;nbsp;$w);
+if(&amp;nbsp;$value&amp;nbsp;&amp;amp;lt;&amp;nbsp;$match_value&amp;nbsp;)&amp;nbsp;{
+$best_match&amp;nbsp;=&amp;nbsp;$w;
+$match_value&amp;nbsp;=&amp;nbsp;$value;
+}
+}
+echo&amp;nbsp;“Did&amp;nbsp;you&amp;nbsp;mean&amp;nbsp;the&amp;nbsp;‘$best_match’&amp;nbsp;category?”;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;10.&amp;nbsp;glob()&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	glob()会让你觉得用&amp;nbsp;opendir(),&amp;nbsp;readdir()和closedir()来寻找文件非常蠢。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;foreach&amp;nbsp;(glob(“*.php”)&amp;nbsp;as&amp;nbsp;$file)
+echo&amp;nbsp;“$file\n”;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338950798.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

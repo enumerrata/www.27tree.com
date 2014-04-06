@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用jQuery简化Ajax开发&lt;2&gt;</title>
+<content>&amp;lt;p&amp;gt;
+	使用&amp;nbsp;jQuery&amp;nbsp;将使&amp;nbsp;Ajax&amp;nbsp;变得及其简单。jQuery&amp;nbsp;提供有一些函数，可以使简单的工作变得更加简单，复杂的工作变得不再复杂。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Ajax&amp;nbsp;最常见的用法就是把一块&amp;nbsp;HTML&amp;nbsp;代码加载到页面的某个区域中去。为此，只需简单地选择所需的元素，然后使用&amp;nbsp;load()&amp;nbsp;函数即可。下面是一个用于更新统计信息的示例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$(&amp;nbsp;#stats&amp;nbsp;).load(&amp;nbsp;stats.html&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	通常，我们只需简单地把一些参数传递给服务器中的某个页面。正如您所预料的，使用&amp;nbsp;jQuery&amp;nbsp;实现这一操作非常地简单。您可以使用&amp;nbsp;$.post()&amp;nbsp;或者&amp;nbsp;$.get()，这由所需的方法决定。如果需要的话，您还可以传递一个可选的数据对象和回调函数。清单&amp;nbsp;4&amp;nbsp;显示了一个发送数据和使用回调的简单示例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;4.&amp;nbsp;使用&amp;nbsp;Ajax&amp;nbsp;向页面发送数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$.post(&amp;nbsp;save.cgi&amp;nbsp;,&amp;nbsp;{
+text:&amp;nbsp;&amp;nbsp;my&amp;nbsp;string&amp;nbsp;,
+number:&amp;nbsp;23
+},&amp;nbsp;function()&amp;nbsp;{
+alert(&amp;nbsp;Your&amp;nbsp;data&amp;nbsp;has&amp;nbsp;been&amp;nbsp;saved.&amp;nbsp;);
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您确实需要编写一些复杂的&amp;nbsp;Ajax&amp;nbsp;脚本，那么需要用到&amp;nbsp;$.ajax()&amp;nbsp;函数。您可以指定&amp;nbsp;xml、script、html&amp;nbsp;或者&amp;nbsp;json，jQuery&amp;nbsp;将自动为回调函数准备合适的结果，这样您便可以立即使用该结果。还可以指定&amp;nbsp;beforeSend、error、success&amp;nbsp;或者&amp;nbsp;complete&amp;nbsp;回调函数，向用户提供更多有关&amp;nbsp;Ajax&amp;nbsp;体验的反馈。此外，还有一些其它的参数可供使用，您可以使用它们设置&amp;nbsp;Ajax&amp;nbsp;请求的超时，也可以设置页面&amp;nbsp;“最近一次修改”&amp;nbsp;的状态。清单&amp;nbsp;5&amp;nbsp;显示了一个使用一些我所提到的参数检索&amp;nbsp;XML&amp;nbsp;文档的示例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;5.&amp;nbsp;$.ajax()&amp;nbsp;使&amp;nbsp;Ajax&amp;nbsp;由复杂变简单
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$.ajax({
+url:&amp;nbsp;&amp;nbsp;document.xml&amp;nbsp;,
+type:&amp;nbsp;&amp;nbsp;GET&amp;nbsp;,
+dataType:&amp;nbsp;&amp;nbsp;xml&amp;nbsp;,
+timeout:&amp;nbsp;1000,
+error:&amp;nbsp;function(){
+alert(&amp;nbsp;Error&amp;nbsp;loading&amp;nbsp;XML&amp;nbsp;document&amp;nbsp;);
+},
+success:&amp;nbsp;function(xml){
+//&amp;nbsp;do&amp;nbsp;something&amp;nbsp;with&amp;nbsp;xml
+}
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当&amp;nbsp;success&amp;nbsp;回调函数返回&amp;nbsp;XML&amp;nbsp;文档后，您可以使用&amp;nbsp;jQuery&amp;nbsp;检索这个&amp;nbsp;XML&amp;nbsp;文档，其方式与检索&amp;nbsp;HTML&amp;nbsp;文档是一样的。这样使得处理&amp;nbsp;XML&amp;nbsp;文档变得相当地容易，并且把内容和数据集成到了您的&amp;nbsp;Web&amp;nbsp;站点里面。清单&amp;nbsp;6&amp;nbsp;显示了&amp;nbsp;success&amp;nbsp;函数的一个扩展，它为&amp;nbsp;XML&amp;nbsp;中的每个&amp;nbsp;&amp;amp;lt;item&amp;amp;gt;&amp;nbsp;元素都添加了一个列表项到&amp;nbsp;Web&amp;nbsp;页面中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;6.&amp;nbsp;使用&amp;nbsp;jQuery&amp;nbsp;处理&amp;nbsp;XML&amp;nbsp;文档
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;success:&amp;nbsp;function(xml){
+$(xml).find(&amp;nbsp;item&amp;nbsp;).each(function(){
+var&amp;nbsp;item_text&amp;nbsp;=&amp;nbsp;$(this).text();
+$(&amp;nbsp;&amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;nbsp;)
+.html(item_text)
+.appendTo(&amp;nbsp;ol&amp;nbsp;);
+});
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-31/1338422078.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

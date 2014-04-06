@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Dojo 1.6 API 文档</title>
+  <author>unknown</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-29 08:20:46</submit-date-time>
+  <img-link></img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Dojo是一个用JavaScript语言实现的开源DHTML工具包。它是在几个项目捐助基础上建立起来的(nWidgets,&amp;nbsp;Burstlib,&amp;nbsp;f(m))，这也是为什么叫它a&amp;nbsp;unifined&amp;nbsp;toolkit的原因。Dojo的目标是解决开发DHTML应用程序遇到的那些、长期存在&amp;nbsp;、历史问题，以及DHTML&amp;nbsp;跨浏览器问题。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Dojo能够让你更容易使Web页面具有动态能力，或者在任何能够稳定支持JavaScript语言的环境中发挥作用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Dojo&amp;nbsp;官方站点有完整的文档，而活跃的社区论坛为用户提供技术支持。如果需要职业的支持与咨询，Sitpen&amp;nbsp;是一家会为你提供Dojo&amp;nbsp;技术服务与咨询的公司。
+&lt;/p&gt;</book-intro>
+</root>

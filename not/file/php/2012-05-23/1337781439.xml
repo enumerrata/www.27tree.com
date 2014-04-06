@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>优化PHP程序的方法：双语版</title>
+<content>&amp;lt;p&amp;gt;
+	1.&amp;nbsp;If&amp;nbsp;a&amp;nbsp;method&amp;nbsp;c++an&amp;nbsp;be&amp;nbsp;static,&amp;nbsp;declare&amp;nbsp;it&amp;nbsp;static.&amp;nbsp;Speed&amp;nbsp;improvement&amp;nbsp;is&amp;nbsp;by&amp;nbsp;a&amp;nbsp;factor&amp;nbsp;of&amp;nbsp;4.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果一个方法可静态化，就对它做静态声明。速率可提升至4倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;echo&amp;nbsp;is&amp;nbsp;faster&amp;nbsp;than&amp;nbsp;print.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;比&amp;nbsp;print&amp;nbsp;快。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;Use&amp;nbsp;echo&amp;nbsp;s&amp;nbsp;multiple&amp;nbsp;parameters&amp;nbsp;instead&amp;nbsp;of&amp;nbsp;string&amp;nbsp;concatenation.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用echo的多重参数(译注：指用逗号而不是句点)代替字符串连接。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;Set&amp;nbsp;the&amp;nbsp;maxvalue&amp;nbsp;for&amp;nbsp;your&amp;nbsp;for-loops&amp;nbsp;before&amp;nbsp;and&amp;nbsp;not&amp;nbsp;in&amp;nbsp;the&amp;nbsp;loop.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在执行for循环之前确定最大循环数，不要每循环一次都计算最大值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;Unset&amp;nbsp;your&amp;nbsp;variables&amp;nbsp;to&amp;nbsp;free&amp;nbsp;memory,&amp;nbsp;especially&amp;nbsp;large&amp;nbsp;arrays.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注销那些不用的变量尤其是大数组，以便释放内存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;Avoid&amp;nbsp;magic&amp;nbsp;like&amp;nbsp;__get,&amp;nbsp;__set,&amp;nbsp;__autoload
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽量避免使用__get,__set,__autoload.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;require_once()&amp;nbsp;is&amp;nbsp;expensive
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	require_once()代价昂贵。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.&amp;nbsp;Use&amp;nbsp;full&amp;nbsp;paths&amp;nbsp;in&amp;nbsp;includes&amp;nbsp;and&amp;nbsp;requires,&amp;nbsp;less&amp;nbsp;time&amp;nbsp;spent&amp;nbsp;on&amp;nbsp;resolving&amp;nbsp;the&amp;nbsp;OS&amp;nbsp;paths.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在包含文件时使用完整路径，解析操作系统路径所需的时间会更少。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.&amp;nbsp;If&amp;nbsp;you&amp;nbsp;need&amp;nbsp;to&amp;nbsp;find&amp;nbsp;out&amp;nbsp;the&amp;nbsp;time&amp;nbsp;when&amp;nbsp;the&amp;nbsp;script&amp;nbsp;startedexecuting,&amp;nbsp;$_SERVER[&amp;nbsp;REQUEST_TIME&amp;nbsp;]&amp;nbsp;is&amp;nbsp;preferred&amp;nbsp;to&amp;nbsp;time()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你想知道脚本开始执行(译注：即服务器端收到客户端请求)的时刻，使用$_SERVER[&amp;nbsp;REQUEST_TIME&amp;nbsp;]要好于time()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.&amp;nbsp;See&amp;nbsp;if&amp;nbsp;you&amp;nbsp;can&amp;nbsp;use&amp;nbsp;strncasecmp,&amp;nbsp;strpbrk&amp;nbsp;and&amp;nbsp;stripos&amp;nbsp;instead&amp;nbsp;of&amp;nbsp;regex.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	检查是否能用strncasecmp,strpbrk,stripos函数代替正则表达式完成相同功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11.&amp;nbsp;str_replace&amp;nbsp;is&amp;nbsp;faster&amp;nbsp;than&amp;nbsp;preg_replace,&amp;nbsp;but&amp;nbsp;strtr&amp;nbsp;is&amp;nbsp;faster&amp;nbsp;thanstr_replace&amp;nbsp;by&amp;nbsp;a&amp;nbsp;factor&amp;nbsp;of&amp;nbsp;4.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	str_replace函数比preg_replace函数快，但strtr函数的效率是str_replace函数的四倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12.&amp;nbsp;If&amp;nbsp;the&amp;nbsp;function,&amp;nbsp;such&amp;nbsp;as&amp;nbsp;string&amp;nbsp;replacement&amp;nbsp;function,&amp;nbsp;acceptsboth&amp;nbsp;arrays&amp;nbsp;and&amp;nbsp;single&amp;nbsp;characters&amp;nbsp;as&amp;nbsp;arguments,&amp;nbsp;and&amp;nbsp;if&amp;nbsp;your&amp;nbsp;argumentlist&amp;nbsp;is&amp;nbsp;not&amp;nbsp;too&amp;nbsp;long,&amp;nbsp;consider&amp;nbsp;writing&amp;nbsp;a&amp;nbsp;few&amp;nbsp;redundant&amp;nbsp;replacementstatements,&amp;nbsp;passing&amp;nbsp;one&amp;nbsp;character&amp;nbsp;at&amp;nbsp;a&amp;nbsp;time,&amp;nbsp;instead&amp;nbsp;of&amp;nbsp;one&amp;nbsp;line&amp;nbsp;of&amp;nbsp;codethat&amp;nbsp;accepts&amp;nbsp;arrays&amp;nbsp;as&amp;nbsp;search&amp;nbsp;and&amp;nbsp;replace&amp;nbsp;arguments.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果一个字符串替换函数，可接受数组或字符作为参数，并且参数长度不太长，那么可以考虑额外写一段替换代码，使得每次传递参数是一个字符，而不是只写一行代码接受数组作为查询和替换的参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13.&amp;nbsp;It&amp;nbsp;s&amp;nbsp;better&amp;nbsp;to&amp;nbsp;use&amp;nbsp;select&amp;nbsp;statements&amp;nbsp;than&amp;nbsp;multi&amp;nbsp;if,&amp;nbsp;else&amp;nbsp;if,&amp;nbsp;statements.&amp;nbsp;使用选择分支语句(译注：即switch&amp;nbsp;case)好于使用多个if,else&amp;nbsp;if语句。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14.&amp;nbsp;Error&amp;nbsp;suppression&amp;nbsp;with&amp;nbsp;@&amp;nbsp;is&amp;nbsp;very&amp;nbsp;slow.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用@屏蔽错误消息的做法非常低效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15.&amp;nbsp;Turn&amp;nbsp;on&amp;nbsp;apache&amp;nbsp;s&amp;nbsp;mod_deflate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打开apache的mod_deflate模块。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16.&amp;nbsp;Close&amp;nbsp;your&amp;nbsp;database&amp;nbsp;connections&amp;nbsp;when&amp;nbsp;you&amp;nbsp;re&amp;nbsp;done&amp;nbsp;with&amp;nbsp;them.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数据库连接当使用完毕时应关掉。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	17.&amp;nbsp;$row[&amp;nbsp;id&amp;nbsp;]&amp;nbsp;is&amp;nbsp;7&amp;nbsp;times&amp;nbsp;faster&amp;nbsp;than&amp;nbsp;$row[id].
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$row[&amp;nbsp;id&amp;nbsp;]的效率是$row[id]的7倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	18.&amp;nbsp;Error&amp;nbsp;messages&amp;nbsp;are&amp;nbsp;expensive.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	错误消息代价昂贵。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	19.&amp;nbsp;Do&amp;nbsp;not&amp;nbsp;use&amp;nbsp;functions&amp;nbsp;inside&amp;nbsp;of&amp;nbsp;for&amp;nbsp;loop,&amp;nbsp;such&amp;nbsp;as&amp;nbsp;for&amp;nbsp;($x=0;&amp;nbsp;$x&amp;amp;lt;&amp;nbsp;count($array);&amp;nbsp;$x)&amp;nbsp;The&amp;nbsp;count()&amp;nbsp;function&amp;nbsp;gets&amp;nbsp;called&amp;nbsp;each&amp;nbsp;time.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽量不要在for循环中使用函数，比如for&amp;nbsp;($x=0;&amp;nbsp;$x&amp;nbsp;&amp;amp;lt;&amp;nbsp;count($array);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$x)每循环一次都会调用count()函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	20.&amp;nbsp;Incrementing&amp;nbsp;a&amp;nbsp;local&amp;nbsp;variable&amp;nbsp;in&amp;nbsp;a&amp;nbsp;method&amp;nbsp;is&amp;nbsp;the&amp;nbsp;fastest.&amp;nbsp;Nearlythe&amp;nbsp;same&amp;nbsp;as&amp;nbsp;calling&amp;nbsp;a&amp;nbsp;local&amp;nbsp;variable&amp;nbsp;in&amp;nbsp;a&amp;nbsp;function.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在方法中递增局部变量，速度是最快的。几乎与在函数中调用局部变量的速度相当。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	21.&amp;nbsp;Incrementing&amp;nbsp;a&amp;nbsp;global&amp;nbsp;variable&amp;nbsp;is&amp;nbsp;2&amp;nbsp;times&amp;nbsp;slow&amp;nbsp;than&amp;nbsp;a&amp;nbsp;local&amp;nbsp;var.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	递增一个全局变量要比递增一个局部变量慢2倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	22.&amp;nbsp;Incrementing&amp;nbsp;an&amp;nbsp;object&amp;nbsp;property&amp;nbsp;(eg.&amp;nbsp;$this-&amp;amp;gt;prop++)&amp;nbsp;is&amp;nbsp;3&amp;nbsp;timesslower&amp;nbsp;than&amp;nbsp;a&amp;nbsp;local&amp;nbsp;variable.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	递增一个对象属性(如：$this-&amp;amp;gt;prop++)要比递增一个局部变量慢3倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	23.&amp;nbsp;Incrementing&amp;nbsp;an&amp;nbsp;undefined&amp;nbsp;local&amp;nbsp;variable&amp;nbsp;is&amp;nbsp;9-10&amp;nbsp;times&amp;nbsp;slower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	than&amp;nbsp;a&amp;nbsp;pre-initialized&amp;nbsp;one.&amp;nbsp;递增一个未预定义的局部变量要比递增一个预定义的局部变量慢9至10倍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	24.&amp;nbsp;Just&amp;nbsp;declaring&amp;nbsp;a&amp;nbsp;global&amp;nbsp;variable&amp;nbsp;without&amp;nbsp;using&amp;nbsp;it&amp;nbsp;in&amp;nbsp;a&amp;nbsp;functionalso&amp;nbsp;slows&amp;nbsp;things&amp;nbsp;down&amp;nbsp;(by&amp;nbsp;about&amp;nbsp;the&amp;nbsp;same&amp;nbsp;amount&amp;nbsp;as&amp;nbsp;incrementing&amp;nbsp;a&amp;nbsp;local&amp;nbsp;var)。&amp;nbsp;PHP&amp;nbsp;probably&amp;nbsp;does&amp;nbsp;a&amp;nbsp;check&amp;nbsp;to&amp;nbsp;see&amp;nbsp;if&amp;nbsp;the&amp;nbsp;global&amp;nbsp;exists.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	仅定义一个局部变量而没在函数中调用它，同样会减慢速度(其程度相当于递增一个局部变量)。PHP大概会检查看是否存在全局变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	25.&amp;nbsp;Method&amp;nbsp;invocation&amp;nbsp;appears&amp;nbsp;to&amp;nbsp;be&amp;nbsp;independent&amp;nbsp;of&amp;nbsp;the&amp;nbsp;number&amp;nbsp;ofmethods&amp;nbsp;defined&amp;nbsp;in&amp;nbsp;the&amp;nbsp;class&amp;nbsp;because&amp;nbsp;I&amp;nbsp;added&amp;nbsp;10&amp;nbsp;more&amp;nbsp;methods&amp;nbsp;to&amp;nbsp;the&amp;nbsp;testclass&amp;nbsp;(before&amp;nbsp;and&amp;nbsp;after&amp;nbsp;the&amp;nbsp;test&amp;nbsp;method)&amp;nbsp;with&amp;nbsp;no&amp;nbsp;change&amp;nbsp;in&amp;nbsp;performance.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法调用看来与类中定义的方法的数量无关，因为我(在测试方法之前和之后都)添加了10个方法，但性能上没有变化。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	26.&amp;nbsp;Methods&amp;nbsp;in&amp;nbsp;derived&amp;nbsp;classes&amp;nbsp;run&amp;nbsp;faster&amp;nbsp;than&amp;nbsp;ones&amp;nbsp;defined&amp;nbsp;in&amp;nbsp;the&amp;nbsp;base&amp;nbsp;class.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	派生类中的方法运行起来要快于在基类中定义的同样的方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	27.&amp;nbsp;A&amp;nbsp;function&amp;nbsp;call&amp;nbsp;with&amp;nbsp;one&amp;nbsp;parameter&amp;nbsp;and&amp;nbsp;an&amp;nbsp;empty&amp;nbsp;function&amp;nbsp;bodytakes&amp;nbsp;about&amp;nbsp;the&amp;nbsp;same&amp;nbsp;time&amp;nbsp;as&amp;nbsp;doing&amp;nbsp;7-8&amp;nbsp;$localvar++&amp;nbsp;operations.&amp;nbsp;A&amp;nbsp;similarmethod&amp;nbsp;call&amp;nbsp;is&amp;nbsp;of&amp;nbsp;course&amp;nbsp;about&amp;nbsp;15&amp;nbsp;$localvar++&amp;nbsp;operations.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调用带有一个参数的空函数，其花费的时间相当于执行7至8次的局部变量递增操作。类似的方法调用所花费的时间接近于15次的局部变量递增操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	28.&amp;nbsp;Surrounding&amp;nbsp;your&amp;nbsp;string&amp;nbsp;by&amp;nbsp;&amp;nbsp;&amp;nbsp;instead&amp;nbsp;of&amp;nbsp;\"&amp;nbsp;will&amp;nbsp;make&amp;nbsp;thingsinterpret&amp;nbsp;a&amp;nbsp;little&amp;nbsp;faster&amp;nbsp;since&amp;nbsp;php&amp;nbsp;looks&amp;nbsp;for&amp;nbsp;variables&amp;nbsp;inside&amp;nbsp;\"…\"&amp;nbsp;butnot&amp;nbsp;inside&amp;nbsp;&amp;nbsp;…&amp;nbsp;.&amp;nbsp;Of&amp;nbsp;course&amp;nbsp;you&amp;nbsp;can&amp;nbsp;only&amp;nbsp;do&amp;nbsp;this&amp;nbsp;when&amp;nbsp;you&amp;nbsp;don&amp;nbsp;t&amp;nbsp;need&amp;nbsp;tohave&amp;nbsp;variables&amp;nbsp;in&amp;nbsp;the&amp;nbsp;string.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单引号则不会。当然，只有当你不需要在字符串中包含变量时才可以这么做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	29.&amp;nbsp;When&amp;nbsp;echoing&amp;nbsp;strings&amp;nbsp;it&amp;nbsp;s&amp;nbsp;faster&amp;nbsp;to&amp;nbsp;separate&amp;nbsp;them&amp;nbsp;by&amp;nbsp;commainstead&amp;nbsp;of&amp;nbsp;dot.&amp;nbsp;Note:&amp;nbsp;This&amp;nbsp;only&amp;nbsp;works&amp;nbsp;with&amp;nbsp;echo,&amp;nbsp;which&amp;nbsp;is&amp;nbsp;a&amp;nbsp;functionthat&amp;nbsp;can&amp;nbsp;take&amp;nbsp;several&amp;nbsp;strings&amp;nbsp;as&amp;nbsp;arguments.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输出多个字符串时，用逗号代替句点来分隔字符串，速度更快。注意：只有echo能这么做，它是一种可以把多个字符串当作参数的\"函数\"(译注：PHP手册中说echo是语言结构，不是真正的函数，故把函数加上了双引号)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	30.&amp;nbsp;A&amp;nbsp;PHP&amp;nbsp;script&amp;nbsp;will&amp;nbsp;be&amp;nbsp;served&amp;nbsp;at&amp;nbsp;least&amp;nbsp;2-10&amp;nbsp;times&amp;nbsp;slower&amp;nbsp;than&amp;nbsp;astatic&amp;nbsp;HTML&amp;nbsp;page&amp;nbsp;by&amp;nbsp;Apache.&amp;nbsp;Try&amp;nbsp;to&amp;nbsp;use&amp;nbsp;more&amp;nbsp;static&amp;nbsp;HTML&amp;nbsp;pages&amp;nbsp;and&amp;nbsp;fewer&amp;nbsp;scripts.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。尽量多用静态HTML页面，少用脚本。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	31.&amp;nbsp;Your&amp;nbsp;PHP&amp;nbsp;scripts&amp;nbsp;are&amp;nbsp;recompiled&amp;nbsp;every&amp;nbsp;time&amp;nbsp;unless&amp;nbsp;the&amp;nbsp;scripts&amp;nbsp;arecached.&amp;nbsp;Install&amp;nbsp;a&amp;nbsp;PHP&amp;nbsp;caching&amp;nbsp;product&amp;nbsp;to&amp;nbsp;typically&amp;nbsp;increase&amp;nbsp;performanceby&amp;nbsp;25-100%&amp;nbsp;by&amp;nbsp;removing&amp;nbsp;compile&amp;nbsp;times.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除非脚本可以缓存，否则每次调用时都会重新编译一次。引入一套PHP缓存机制通常可以提升25%至100%的性能，以免除编译开销。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	32.&amp;nbsp;Cache&amp;nbsp;as&amp;nbsp;much&amp;nbsp;as&amp;nbsp;possible.&amp;nbsp;Use&amp;nbsp;memcached&amp;nbsp;-&amp;nbsp;memcached&amp;nbsp;is&amp;nbsp;ahigh-performance&amp;nbsp;memory&amp;nbsp;object&amp;nbsp;caching&amp;nbsp;system&amp;nbsp;intended&amp;nbsp;to&amp;nbsp;speed&amp;nbsp;updynamic&amp;nbsp;web&amp;nbsp;applications&amp;nbsp;by&amp;nbsp;alleviating&amp;nbsp;database&amp;nbsp;load.&amp;nbsp;OP&amp;nbsp;code&amp;nbsp;cachesare&amp;nbsp;useful&amp;nbsp;so&amp;nbsp;that&amp;nbsp;your&amp;nbsp;script&amp;nbsp;does&amp;nbsp;not&amp;nbsp;have&amp;nbsp;to&amp;nbsp;be&amp;nbsp;compiled&amp;nbsp;on&amp;nbsp;everyrequest.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽量做缓存，可使用memcached.memcached是一款高性能的内存对象缓存系统，可用来加速动态Web应用程序，减轻数据库负载。对运算码(OP&amp;nbsp;code)的缓存很有用，使得脚本不必为每个请求做重新编译。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-23/1337781439.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

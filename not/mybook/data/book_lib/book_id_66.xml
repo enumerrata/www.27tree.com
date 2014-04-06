@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java语言程序设计(基础篇)</title>
+  <author>（美）梁（Liang，Y.D.）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:14:49</submit-date-time>
+  <img-link>6f6b9e79166f4a70a45f5f34ae7bb982.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	基础篇介绍基础内容，进阶篇介绍高级内容，教师可以按需选择理想的教材。全面融合了Java&amp;nbsp;5的特性，并对全书的内容进行了修订和更新，以反映Java程序设计方面的最新技术发展。包括面向对象程序设计的深入论述，包含GUI程序设计的基础和扩展实例。提供大量实例，实例中都包括问题求解的详细步骤，可激发学习兴趣。提供大量难易程度不同的习题，在作者的网站http://www.cs.armstrong.edu/liang/intro6e/index,html中还提供了1000多道自测题。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是JaVa语言的经典教材，畅销多年不衰。本书全面整合了Java&amp;nbsp;5的特性，采用“先讲基础”的教学方式，循序渐进地介绍了程序设计基础，问题解决、面向对象程序设计、图形用户界面设计、异常处理、I/0和递归等。另外，本书还全面且深入地覆盖了一些高级主题，包括数据结构，并发、网络、国际化、高级GUI、Web程序设计等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书影印版由《JaVa语言程序设计基础篇》与《JaVa语言程序设计进阶篇》组成。基础篇对应原书的第1-19章，进阶篇对应原书的第20-36章和附录。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

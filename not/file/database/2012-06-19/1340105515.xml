@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL 触发器，存储过程实例演示</title>
+<content>&amp;lt;p&amp;gt;
+	以下的文章主要是介绍MySQL&amp;nbsp;触发器，存储过程以及函数与视图的实例演示过程，以下就是触发器，存储过程以及函数与视图的具体操作方案的描述，希望在你今后的学习中会对你有所帮助。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;nbsp;触发器，存储过程以及函数与视图的实例演示：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	0.test数据库有userinfo用户信息表&amp;nbsp;和userinfolog用户信息日志表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.建立一个userinfo表新增记录时的MySQL&amp;nbsp;触发器&amp;nbsp;将新增日志加入到userinfolog
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.建立一个向userinfo表新增记录的存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.根据userinfo表的出生日期字段&amp;nbsp;我们将建立一个简单算得年龄的自定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.创建一个userinfo的视图&amp;nbsp;调用年龄函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	0.准备相关表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;use&amp;nbsp;test;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;table&amp;nbsp;userinfo(userid&amp;nbsp;int,username&amp;nbsp;varchar(10),userbirthday&amp;nbsp;date);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;table&amp;nbsp;userinfolog(logtime&amp;nbsp;datetime,loginfo&amp;nbsp;varchar(100));&amp;nbsp;&amp;nbsp;MySQL&amp;amp;gt;&amp;nbsp;describe&amp;nbsp;userinfo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.MySQL&amp;nbsp;触发器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;delimiter&amp;nbsp;&amp;brvbar;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;trigger&amp;nbsp;beforeinsertuserinfo&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;before&amp;nbsp;insert&amp;nbsp;on&amp;nbsp;userinfo&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;for&amp;nbsp;each&amp;nbsp;row&amp;nbsp;begin&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;insert&amp;nbsp;into&amp;nbsp;userinfolog&amp;nbsp;values(now(),CONCAT(new.userid,new.username));&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;end;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;&amp;brvbar;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;delimiter&amp;nbsp;;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;show&amp;nbsp;triggers;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;delimiter&amp;nbsp;//&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;procedure&amp;nbsp;spinsertuserinfo(&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;-&amp;amp;gt;&amp;nbsp;puserid&amp;nbsp;int,pusername&amp;nbsp;varchar(10),
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;puserbirthday&amp;nbsp;date)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;begin&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;insert&amp;nbsp;into&amp;nbsp;userinfo&amp;nbsp;values(puserid,pusername,puserbirthday);&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;end;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;//&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;show&amp;nbsp;procedure&amp;nbsp;status&amp;nbsp;like&amp;nbsp;&amp;nbsp;spinsertuserinfo&amp;nbsp;;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;call&amp;nbsp;spinsertuserinfo(1,&amp;nbsp;zhangsan&amp;nbsp;,current_date);&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;userinfo;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.自定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;update&amp;nbsp;userinfo&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;set&amp;nbsp;userbirthday=&amp;nbsp;2000.01.01&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;where&amp;nbsp;userid=&amp;nbsp;1&amp;nbsp;;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;drop&amp;nbsp;function&amp;nbsp;if&amp;nbsp;exists&amp;nbsp;fngetage;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;delimiter&amp;nbsp;//&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;function&amp;nbsp;fngetage(pbirthday&amp;nbsp;date)&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;returns&amp;nbsp;integer&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;begin
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;return&amp;nbsp;year(now())&amp;nbsp;-&amp;nbsp;year(pbirthday);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;end
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;//
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.视图
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;create&amp;nbsp;view&amp;nbsp;viewuserinfo
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-&amp;amp;gt;&amp;nbsp;as&amp;nbsp;select&amp;nbsp;*&amp;nbsp;,fngetage(userbirthday)&amp;nbsp;as&amp;nbsp;userage&amp;nbsp;from&amp;nbsp;userinfo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;viewuserinfo;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清除日志记录
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;truncate&amp;nbsp;table&amp;nbsp;userinfolog;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;amp;gt;&amp;nbsp;delete&amp;nbsp;from&amp;nbsp;userinfolog;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上的相关内容就是对MySQL&amp;nbsp;触发器&amp;nbsp;存储过程&amp;nbsp;函数&amp;nbsp;视图的介绍，望你能有所收获。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340105515.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

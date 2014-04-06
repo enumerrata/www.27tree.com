@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-02 13:20:33</datetime>
+  <title>php创建多级目录代码</title>
+  <content>&lt;p&gt;
+	function&amp;nbsp;createFolder($path)&amp;nbsp;{
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(!file_exists($path))&amp;nbsp;{
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;createFolder(dirname($path));
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mkdir($path,&amp;nbsp;0777);
+&lt;/p&gt;
+&lt;p&gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&lt;/p&gt;
+&lt;p&gt;
+	}
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>function createFolder($path) {
+
+
+	   if (!file_exists($path)) {
+
+
+	       createFolder(dirname($path));
+
+
+	       mkdir($path, 0777);
+
+
+	   }
+
+
+	}</contentx>
+  <tags>_null_</tags>
+</root>

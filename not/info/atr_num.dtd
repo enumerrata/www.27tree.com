@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/atr_num.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE root SYSTEM "atr_num.dtd">
+
+    <root>
+    ...
+    </root>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT root (wlw|web|php|c|java)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT java (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT c (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT php (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT web (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT wlw (#PCDATA)>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <n type="头条" code="hlt"/>
+    <n type="软件发布" code="swp"/>
+    <n type="程序员那些事" code="cds"/>
+    <n type="互联网" code="itn"/>
+    <n type="移动互联网" code="mob"/>
+    <n type="电子商务" code="ece"/>
+    <n type="物联网" code="iot"/>
+</root>

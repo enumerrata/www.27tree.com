@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVASE官方教程:接口之实现接口(3)</title>
+<content>&amp;lt;p&amp;gt;
+	在你的类声名中包含一个implements子句用来实现一个接口.一个类可以在implements关键字后跟一个以逗号分隔的接口列表来实现多个接口
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	.按照惯例,implements子句跟在extends子句后(如果有).
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个例子,Relatable:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;interface&amp;nbsp;Relatable&amp;nbsp;{
+	
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;this&amp;nbsp;(调用isLargerThan的对象)和
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;other&amp;nbsp;必须是相同类的实例
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;返回&amp;nbsp;1,&amp;nbsp;0,&amp;nbsp;-1&amp;nbsp;如果this大于,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;等于,小于other
+&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;isLargerThan(Relatable&amp;nbsp;other);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果你想比较两个相似对象的大小二不管他们真正是什么,那么这个类必须实现了Relatable然后实例化他们.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果你想要一种比较对象之间的\"大小\",那么任意类都可以实现它.对于字符串,\"大小\"可能指的是字符数;对于书来说,它可能指书的页数等等.所有这样的类都可以实现isLargerThan()方法.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果你知道了某个类实现了Relatable,那么你就知道你可以比较这个类的两个实例的大小.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;实现Relatable接口&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+这儿有一个矩形类:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;class&amp;nbsp;RectanglePlus&amp;nbsp;implements&amp;nbsp;Relatable&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;width&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;height&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;Point&amp;nbsp;origin;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;四个构造方法
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;RectanglePlus()&amp;nbsp;{
+	origin&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Point(0,&amp;nbsp;0);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;RectanglePlus(Point&amp;nbsp;p)&amp;nbsp;{
+	origin&amp;nbsp;=&amp;nbsp;p;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;RectanglePlus(int&amp;nbsp;w,&amp;nbsp;int&amp;nbsp;h)&amp;nbsp;{
+	origin&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Point(0,&amp;nbsp;0);
+	width&amp;nbsp;=&amp;nbsp;w;
+	height&amp;nbsp;=&amp;nbsp;h;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;RectanglePlus(Point&amp;nbsp;p,&amp;nbsp;int&amp;nbsp;w,&amp;nbsp;int&amp;nbsp;h)&amp;nbsp;{
+	origin&amp;nbsp;=&amp;nbsp;p;
+	width&amp;nbsp;=&amp;nbsp;w;
+	height&amp;nbsp;=&amp;nbsp;h;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;移动矩形的方法
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;move(int&amp;nbsp;x,&amp;nbsp;int&amp;nbsp;y)&amp;nbsp;{
+	origin.x&amp;nbsp;=&amp;nbsp;x;
+	origin.y&amp;nbsp;=&amp;nbsp;y;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;计算面积
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;getArea()&amp;nbsp;{
+	return&amp;nbsp;width&amp;nbsp;*&amp;nbsp;height;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//实现Relatable接口所需要的方法
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;int&amp;nbsp;isLargerThan(Relatable&amp;nbsp;other)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	RectanglePlus&amp;nbsp;otherRect&amp;nbsp;=&amp;nbsp;(RectanglePlus)other;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	if&amp;nbsp;(this.getArea()&amp;nbsp;&amp;amp;lt;&amp;nbsp;otherRect.getArea())
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;		return&amp;nbsp;-1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	else&amp;nbsp;if&amp;nbsp;(this.getArea()&amp;nbsp;&amp;amp;gt;&amp;nbsp;otherRect.getArea())
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;		return&amp;nbsp;1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	else
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;		return&amp;nbsp;0;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;		
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		因为RectanglePlus实现了Relatable接口,所有两个RectanglePlus对象是可以比较大小的.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		注意:isLargerThan方法接受一个Relatable类型.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;RectanglePlus&amp;nbsp;otherRect&amp;nbsp;=&amp;nbsp;(RectanglePlus)other;&amp;lt;/pre&amp;gt;
+这行代码将other转换成RectanglePlus实例.类型转换告诉编译器这个对象真正是什么.直接调用other.getArea()会失败,因为编译器不知道other是RectanglePlus的实例.
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-12/1336780533.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

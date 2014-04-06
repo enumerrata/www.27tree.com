@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP核心技术与最佳实践]]></title>
+  <author>列旭松，陈文</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:04:50</submit-date-time>
+  <img-link>067cc78048e1fa437fd9720fc9c4bd32.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	<strong><span style=\"font-size:14px;\">系统归纳和深刻解读PHP开发中的编程思想、底层原理、核心技术、开发技巧、编码规范和最佳实践，为PHP程序员进阶修炼提供全面而高效的指导！</span></strong>
+</p>
+<p>
+	<p>
+		这是一本致力于为希望成为中高级PHP程序员的读者提供高效而有针对性指导的经典著作。本书系统归纳和深刻解读了PHP开发中的编程思想、底层原理、核心技术、开发技巧、编码规范和最佳实践。
+	</p>
+	<p>
+		&nbsp; &nbsp;全书分为5个部分：
+	</p>
+	<p>
+		<strong>第一部分</strong>（1～2章）从不同的角度阐述了面向对象软件设计思想的核心概念、技术和原则，分析了面向对象的特性、设计模式的理念，指出了如何设计低耦合、高可扩展性的软件，等等；
+	</p>
+	<p>
+		<strong>第二部分</strong>（3～6章）详细讲解了PHP中正则表达式的规范和使用技巧，PHP网络编程的原理、方法、技巧和一些重要的操作，PDO、数据库应用优化，数据库设计和MySQL的高级应用，PHP扩展引擎的原理与实践；
+	</p>
+	<p>
+		<strong>第三部分</strong>（第7章）拨云见日，围绕PHP扩展开发进行了细致而深入的探讨，解析了PHP的底层实现和Zend虚拟机API，并用PHP扩展开发的实例带领读者走进PHP的底层世界，旨在让读者对PHP性能优化、底层原理进行深入的理解。
+	</p>
+	<p>
+		<strong>第四部分</strong>（8～11章）重点讨论了缓存的设计、Memcached的原理与实践、NoSQL数据库Redis源码分析与应用实践、高性能PHP网站的架构和设计等内容；
+	</p>
+	<p>
+		<strong>第五部分</strong>（12～14章）详细讲解了PHP代码的调试和测试、Hash算法和数据库的实现，以及PHP的编码规范，旨在帮助读者提高开发效率，养成良好编程习惯。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

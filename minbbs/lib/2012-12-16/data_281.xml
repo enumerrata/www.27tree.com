@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-16 13:18:51</datetime>
+  <title><![CDATA[在CI中引入外部的JS与CSS]]></title>
+  <content><![CDATA[<p>
+	1.首先，在.htaccess(位置在网站根目录)文件里设置（作用是隐藏index.php），如下：
+</p>
+<p>
+	RewriteEngine on
+</p>
+<p>
+	RewriteCond $1 !^(index\\.php|images|js|img|css|robots\\.txt) #在这里写要排除的资源等
+</p>
+<p>
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</p>
+<p>
+	<br />
+</p>
+<p>
+	2.把JS,CSS,IMG等资源文件夹与SYSTEM文件夹放在同一级下，然后在JS文件夹中建立ajax.js文件，在VIEW层中的文件index.html要引入JS时，如下：
+</p>
+<p>
+	&lt;script type=\"text/javascript\" src=\"网站绝对URL/js/ajax.js\'?&gt;\"&gt;&lt;/script&gt;：注网站绝对URL即 http://localhost/
+</p>
+<p>
+	<br />
+</p>
+<p>
+	3.在application\\config\\config.php文件中设置base_url :
+</p>
+<p>
+	$config[\'base_url\'] =http://www.exiplode/com; //这里是你的网站根目录
+</p>
+<p>
+	<br />
+</p>
+<p>
+	4.在contoler构造方法中调用如下代码:
+</p>
+<p>
+	$this-&gt;load-&gt;helper(\'url\')
+</p>
+<p>
+	<br />
+</p>
+<p>
+	5.在VIEW层中具体页面中引入即可：
+</p>
+<p>
+	&lt;script type=\"text/javascript\" src=\'&lt;?=base_url().\'js/Ajax.js\'?&gt;\'&gt;&lt;/script&gt;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	6.可以使用html的&lt;base href=\'\'&lt;?=base_url()?&gt;\"来简化:
+</p>
+<p>
+	&lt;script type=\"text/javascript\" src=\'js/Ajax.js\'&gt;&lt;/script&gt; 这一点在导入图片时非常有用.
+</p>
+<p>
+	注：“RewriteCond $1 !^(index\\.php|images|js|img|css|robots\\.txt) ”的意思是：任意你想访问的资源都不被重定向时，都可写在这里。有时，网站没有加载CSS,JS（它的路径都是正确的）时，都是被重定向了，这要注意.
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

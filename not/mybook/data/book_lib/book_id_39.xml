@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>数据结构与算法分析—C语言描述</title>
+  <author>（美）维斯</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 17:56:01</submit-date-time>
+  <img-link>94d75c21750017c06b1a4c4092f6427a.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《数据结构与算法分析：C语言描述（原书第2版）》中详细介绍了当前流行的论题和新的变化，讨论了算法设计技巧，并在研究算法的性能、效率以及对运行时间分析的基础上考查了一些高级数据结构，从历史的角度和近年的进展对数据结构的活跃领域进行了简要的概括。由于《数据结构与算法分析：C语言描述（原书第2版）》选材新颖，方法实用，题例丰富，取舍得当。《数据结构与算法分析：C语言描述（原书第2版）》的目的是培养学生良好的程序设计技巧和熟练的算法分析能力，使得他们能够开发出高效率的程序。从服务于实践又锻炼学生实际能力出发，书中提供了大部算法的C程序和伪码例程，但并不是全部。一些程序可从互联网上获得。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《数据结构与算法分析：C语言描述（原书第2版）》是《Data&amp;nbsp;Structures&amp;nbsp;and&amp;nbsp;Algorithm
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Analysis&amp;nbsp;in&amp;nbsp;C》一书第2版的简体中译本。原书曾被评为20世纪顶尖的30部计算机著作之一，作者Mark&amp;nbsp;Allen&amp;nbsp;Weiss在数据结构和算法分析方面卓有建树，他的数据结构和算法分析的著作尤其畅销，并受到广泛好评．已被世界500余所大学用作教材。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在《数据结构与算法分析：C语言描述（原书第2版）》中，作者更加精炼并强化了他对算法和数据结构方面创新的处理方法。通过C程序的实现，着重阐述了抽象数据类型的概念，并对算法的效率、性能和运行时间进行了分析。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	全书特点如下：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●专用一章来讨论算法设计技巧，包括贪婪算法、分治算法、动态规划、随机化算法以及回溯算法
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●介绍了当前流行的论题和新的数据结构，如斐波那契堆、斜堆、二项队列、跳跃表和伸展树
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●安排一章专门讨论摊还分析，考查书中介绍的一些高级数据结构
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●新开辟一章讨论高级数据结构以及它们的实现，其中包括红黑树、自顶向下伸展树。treap树、k-d树、配对堆以及其他相关内容
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●合并了堆排序平均情况分析的一些新结果
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《数据结构与算法分析：C语言描述（原书第2版）》是国外数据结构与算法分析方面的标准教材，介绍了数据结构（大量数据的组织方法）以及算法分析（算法运行时间的估算）。《数据结构与算法分析：C语言描述（原书第2版）》的编写目标是同时讲授好的程序设计和算法分析技巧，使读者可以开发出具有最高效率的程序。&amp;nbsp;《数据结构与算法分析：C语言描述（原书第2版）》可作为高级数据结构课程或研究生一年级算法分析课程的教材，使用《数据结构与算法分析：C语言描述（原书第2版）》需具有一些中级程序设计知识，还需要离散数学的一些背景知识。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

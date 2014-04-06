@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>POST 和 GET 对比</title>
+<content>&amp;lt;p&amp;gt;
+	今天来个关于HTTP的东西！也是最基础的东西——《POST与GET》
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1，Get中数据大小被限制：我们都知道很多老式浏览器把URL的字符串个数被限制在255个之内;虽然现在的新版浏览器早就没有这个蛋疼的限制，但是我们可不敢保证所有来站点访问的用户都是使用新版浏览器的。所以当我们需要用户在网页中填写一些信息时，使用Get方式肯定会出问题。相反Post方法中没有这个限制，我们可以传输任意大小的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2，Get中的数据类型不灵活：因为Get是使用url来传输数据的，那么比如空格字符以及类似&amp;amp;这样的字符就不方便传输。我们可以使用发送前编码，以及接受后解码的方法来解决。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3，安全性：在Get中，参数是以名值对的查询字符串挂接在url后缀来传输的，所以这个非常容易被浏览器历史记录中查询到。所有的数据也都是以文本方式提交，所以我们知道比如登录操作的密码是绝对不能使用Get方式来提交。相反，Post方法就安全多了。所有的名值对都是以消息体的方式在Http&amp;nbsp;Request的方式传输。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4，速度：显然Get比Post要快。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5，书签：其实有几个情况下用Get更好，比如你能将名值对参数以书签的方式存储并直接在子啊表单中使用。但在Post下是无法做到的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6，以表单方式上传文件只能使用&amp;nbsp;Post&amp;nbsp;方式实现，Get几乎不可能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7，在服务器对Get方式提交的数据编码时可能会数据丢失。但对于Post是不会的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8，Get使用栈方法传输表单变量，而Post使用HEAP方法来传输表单变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9，Get最多也就一次性传输18个参数而Post没有这个限制。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338939976.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

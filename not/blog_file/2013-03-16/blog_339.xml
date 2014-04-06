@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[php mysql与mysqli 区别]]></title>
+  <content><![CDATA[<p>
+	首先两个函数都是用来处理 php 与 mysql交互操作的。
+</p>
+<p>
+	首先， mysqli 连接是永久连接，而mysql是非永久连接。什么意思呢？ mysql连接每当第二次使用的时候，都会重新打开一个新的进程，而mysqli则只使用同一个进程，这样可以很大程度的减轻服务器端压力。
+</p>
+<p>
+	另外，mysqli封装了诸如事务等一些高级操作，同时封装了数据库操作过程中的很多可用的方法。具体查看 http://cn.php.net/mysqli
+</p>
+<p>
+	应用比较多的地方是 mysqli的事务。
+</p>
+<p>
+	比如下面的示例：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$mysqli = new mysqli(\'localhost\',\'root\',\'\',\'DB_Lib2Test\');
+$mysqli-&gt;autocommit(false);//开始事务
+$mysqli-&gt;query($sql1);
+$mysqli-&gt;query($sql2);
+if(!$mysqli-&gt;errno){
+  $mysqli-&gt;commit();
+  echo \'ok\';
+}else{
+ echo \'err\';
+  $mysqli-&gt;rollback();
+}</pre>
+<span style=\"color:#E53333;\"><strong>php手册上讲：php5.3中的mysqli才引入了持久连接，并且php5.3没有提供一个额外的函数来实现，需要在连接参数的hostname,前面加上“p:”标记，才会建立持久连接。</strong></span><span style=\"color:#E53333;\"><strong></strong></span>
+</p>]]></content>
+  <contentx><![CDATA[
+	首先两个函数都是用来处理 php 与 mysql交互操作的。
+
+
+	首先， mysqli 连接是永久连接，而mysql是非永久连接。什么意思呢？ mysql连接每当第二次使用的时候，都会重新打开一个新的进程，而mysqli则只使用同一个]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

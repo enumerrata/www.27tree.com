@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>300</uid>
+  <datetime>2013-01-04 13:41:57</datetime>
+  <title><![CDATA[JQuery让input从disabled变成enabled]]></title>
+  <content><![CDATA[<p>
+	document.getElementById(\"removeButton\").disabled = false;//普通Js写法
+</p>
+<p>
+	$(\"#removeButton\").removeAttr(\"disabled\");//要变成Enable，JQuery只能这么写
+</p>
+<p>
+	$(\"#removeButton\").attr(\"disabled\",\"disabled\");//再改成disabled
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

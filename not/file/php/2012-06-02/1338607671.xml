@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php header Content-Type类型小结</title>
+<content>&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+$mimetypes&amp;nbsp;=&amp;nbsp;array(&amp;nbsp;
+&amp;nbsp;ez&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/andrew-inset&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;hqx&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/mac-binhex40&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;cpt&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/mac-compactpro&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;doc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/msword&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;bin&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dms&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;lha&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;lzh&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;exe&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;class&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;so&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dll&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/octet-stream&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;oda&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/oda&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pdf&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/pdf&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ai&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/postscript&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;eps&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/postscript&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ps&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/postscript&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;smi&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/smil&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;smil&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/smil&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mif&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.mif&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xls&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.ms-excel&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ppt&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.ms-powerpoint&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wbxml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.wap.wbxml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wmlc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.wap.wmlc&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wmlsc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/vnd.wap.wmlscriptc&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;bcpio&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-bcpio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;vcd&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-cdlink&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pgn&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-chess-pgn&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;cpio&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-cpio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;csh&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-csh&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dcr&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-director&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dir&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-director&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dxr&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-director&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;dvi&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-dvi&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;spl&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-futuresplash&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;gtar&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-gtar&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;hdf&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-hdf&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;js&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-javascript&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;skp&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-koan&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;skd&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-koan&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;skt&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-koan&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;skm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-koan&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;latex&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-latex&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;nc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-netcdf&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;cdf&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-netcdf&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sh&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-sh&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;shar&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-shar&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;swf&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-shockwave-flash&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sit&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-stuffit&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sv4cpio&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-sv4cpio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sv4crc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-sv4crc&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tar&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-tar&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tcl&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-tcl&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tex&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-tex&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;texinfo&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-texinfo&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;texi&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-texinfo&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;t&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tr&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;roff&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;man&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff-man&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;me&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff-me&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ms&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-troff-ms&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ustar&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-ustar&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;src&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/x-wais-source&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xhtml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/xhtml+xml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xht&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/xhtml+xml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;zip&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;application/zip&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;au&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/basic&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;snd&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/basic&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mid&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/midi&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;midi&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/midi&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;kar&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/midi&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mpga&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mp2&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mp3&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;aif&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-aiff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;aiff&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-aiff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;aifc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-aiff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;m3u&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-mpegurl&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ram&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-pn-realaudio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;rm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-pn-realaudio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;rpm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-pn-realaudio-plugin&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ra&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-realaudio&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wav&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;audio/x-wav&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pdb&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;chemical/x-pdb&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xyz&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;chemical/x-xyz&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;bmp&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/bmp&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;gif&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/gif&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ief&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/ief&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;jpeg&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/jpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;jpg&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/jpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;jpe&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/jpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;png&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/png&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tiff&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/tiff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tif&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/tiff&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;djvu&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/vnd.djvu&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;djv&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/vnd.djvu&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wbmp&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/vnd.wap.wbmp&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ras&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-cmu-raster&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pnm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-portable-anymap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pbm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-portable-bitmap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;pgm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-portable-graymap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ppm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-portable-pixmap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;rgb&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-rgb&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xbm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-xbitmap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xpm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-xpixmap&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xwd&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;image/x-xwindowdump&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;igs&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/iges&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;iges&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/iges&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;msh&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/mesh&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mesh&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/mesh&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;silo&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/mesh&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wrl&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/vrml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;vrml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;model/vrml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;css&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/css&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;html&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/html&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;htm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/html&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;asc&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/plain&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;txt&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/plain&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;rtx&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/richtext&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;rtf&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/rtf&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sgml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/sgml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;sgm&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/sgml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;tsv&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/tab-separated-values&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/vnd.wap.wml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;wmls&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/vnd.wap.wmlscript&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;etx&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/x-setext&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xsl&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/xml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;xml&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;text/xml&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mpeg&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mpg&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mpe&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/mpeg&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;qt&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/quicktime&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mov&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/quicktime&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;mxu&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/vnd.mpegurl&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;avi&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/x-msvideo&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;movie&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;video/x-sgi-movie&amp;nbsp;,&amp;nbsp;
+&amp;nbsp;ice&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;x-conference/x-cooltalk&amp;nbsp;,&amp;nbsp;
+);&amp;nbsp;
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;</content>
+<json-link>./file/php/2012-06-02/1338607671.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-05+17%3A05%3A33</date-c>
+  <conf-c>mov&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;&amp;nbsp;video/quicktime&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;
+mxu&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;&amp;nbsp;video/vnd.mpegurl&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;
+avi&amp;nbsp;&amp;nbsp;=&amp;gt;&amp;nbsp;&amp;nbsp;video/x-msvideo&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-05+17%3A05%3A47</date-c>
+  <conf-c>);&amp;nbsp;&amp;nbsp;&amp;nbsp;
+?&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

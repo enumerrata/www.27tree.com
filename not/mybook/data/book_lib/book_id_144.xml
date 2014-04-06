@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>精通Spring——开发专家之Sun ONE</title>
+  <author>罗时飞</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-07 22:41:32</submit-date-time>
+  <img-link>4185312271afce9c77c70a5dc4926a0e.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p style=\"text-indent:2em;\"&gt;
+	本书深入剖析了当前流行的轻量级开发框架Spring技术。本书总共分成3部分。第一部分，重点阐述Spring的架构。这部分内容循序渐进带领开发者进入Spring中。主要在于阐述Spring IoC和Spring AOP。第二部分，重点阐述Spring的使用。这部分内容从简化Java/J2EE的角度出发，从J2EE平台各个技术层面分析、并给出大量的研究实例，对Spring提供的API进行阐述。主要在于阐述Spring对J2EE API提供的服务抽象。第三部分，重点阐述Spring高级专题。这部分内容重点对视图技术进行了研究，因为对于开发Web应用而言，前端界面的开发往往工作量很大。因此，使用合理的视图技术开发Web应用对于项目的成功与否很关键。另外，Web应用的安全性往往也是企业应用中最为重要的需求之一，而用于Spring的Acegi安全框架很好地解决了这个问题，这也是第三部分重点研究的内容之一。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	本书所有实例源代码文件请到http://www.fecit.com.cn“下载专区”下载。
+&lt;/p&gt;</book-intro>
+</root>

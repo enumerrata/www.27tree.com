@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>HTML5移动web开发指南</title>
+  <author>唐俊开</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-19 07:27:32</submit-date-time>
+  <img-link>484c0119fc41c2c14a02af6859d88249.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是为从未接触过HTML5新技术但同时又对移动web技术感兴趣的读者而编写的。如果你有一定的HTML开发经验，将会更容易掌握HTML5知识。本书共分为四大部分，第一部分主要讲述Web技术的发展及HTML5标准在移动Web技术中的应用；第二部分主要介绍HTML5的新功能和新特性如何在移动设备浏览器中使用及相关展望；第三部分主要介绍目前比较流行的两套　　JavaScript移动开发框架jQuery&amp;nbsp;Mobile、Sencha&amp;nbsp;Touch，以及PhoneGap，并配备丰富的例子作为实践；第四部分主要结合Sencha&amp;nbsp;Touch框架库和HTML5技术构建进行讲解，旨在帮助读者将HTML5技术运用于实践之中。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书主要围绕html5技术，讲述如何利用html5相关技术开发移动web网站和web&amp;nbsp;app应用程序。《HTML5移动Web开发指南》共分为四大部分，第一部分主要讲述web技术的发展及html5标准在移动web技术中的应用；第二部分主要介绍html5的新功能和新特性如何在移动设备浏览器中使用及相关展望；第三部分主要介绍目前比较流行的两套javascript移动开发框架jquery&amp;nbsp;mobile、sencha&amp;nbsp;touch，以及phonegap，并配备丰富的例子作为实践；第四部分主要结合sencha&amp;nbsp;touch框架库和html5技术构建进行讲解，旨在帮助读者将html5技术运用于实践之中。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书是为从未接触过html5新技术但同时又对移动web技术感兴趣的读者而编写的。如果你有一定的html开发经验，将会更容易掌握html5知识。
+	&lt;/p&gt;
+	&lt;p&gt;
+		同时，如果你是如下几类人群之一，那么《HTML5移动Web开发指南》非常适合你阅读。
+	&lt;/p&gt;
+	&lt;p&gt;
+		.有一定基础或者未来计划的职业是web前端开发工程师。
+	&lt;/p&gt;
+	&lt;p&gt;
+		.具有一定html基础的ui设计师。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

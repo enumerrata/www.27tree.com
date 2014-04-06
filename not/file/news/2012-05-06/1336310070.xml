@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>清除系统垃圾的bat脚本</title>
+<content>&amp;lt;p&amp;gt;
+	第一步:请打开您的记事本(notebook),如果您不知道记事本在哪里,点击右下&amp;nbsp;开始&amp;nbsp;,选择&amp;nbsp;程序&amp;nbsp;,再选择&amp;nbsp;附件&amp;nbsp;,在&amp;nbsp;附件&amp;nbsp;这层目录上,点击&amp;nbsp;记事本&amp;nbsp;,就ok了.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第二步:将以下代码复制(copy)到记事本(notebook)里面
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	代码如下:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;gt;@echo&amp;nbsp;off&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　echo&amp;nbsp;正在清除系统垃圾文件，请稍等......&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*.tmp&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*._mp&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*.log&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*.gid&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*.chk&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\*.old&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%systemdrive%\\recycled\\*.*&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%windir%\\*.bak&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%windir%\\prefetch\\*.*&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　rd&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;%windir%\\temp&amp;nbsp;&amp;amp;&amp;nbsp;md&amp;nbsp;%windir%\\temp&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/q&amp;nbsp;%userprofile%\\小甜饼s\\*.*&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/q&amp;nbsp;%userprofile%\\recent\\*.*&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;\"%userprofile%\\Local&amp;nbsp;Settings\\Temporary&amp;nbsp;Internet&amp;nbsp;Files\\*.*\"&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;\"%userprofile%\\Local&amp;nbsp;Settings\\Temp\\*.*\"&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　del&amp;nbsp;/f&amp;nbsp;/s&amp;nbsp;/q&amp;nbsp;\"%userprofile%\\recent\\*.*\"&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　echo&amp;nbsp;清除系统LJ完成！&amp;nbsp;&amp;nbsp;
+&amp;nbsp;
+　　echo.&amp;nbsp;&amp;amp;&amp;nbsp;pause&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		第三步:将文件保存为:\"清除系统LJ.bat\".注意了,请一定要以.bat的后缀名保存.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第四步:双击运行\"清除系统LJ.ba
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-05-06/1336310070.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

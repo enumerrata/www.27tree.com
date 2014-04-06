@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-03-30 00:30:51</datetime>
+  <title><![CDATA[DEMO - CacheM php 缓存类]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+$ROOT = $_SERVER[\'DOCUMENT_ROOT\'];
+include $ROOT . \'/inc/mCache/CacheM.php\'; // 反正把类文件导进来就好
+$Cache = new Cache_M(Cache_M::ZIP_GZIP); // 不添加参数表示不kaiq $ckey = \'clks\';
+if(!$Cache-&gt;is_cached($ckey)){
+    $Cache-&gt;cache_start($ckey); // 这里接着查表操作神马的
+} else {
+    $Cache-&gt;read_cache_file($ckey);
+    exit(0);
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        gziped
+    &lt;/body&gt;
+&lt;/html&gt;
+&lt;?php
+$Cache-&gt;cache_end();
+?&gt;
+</pre>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

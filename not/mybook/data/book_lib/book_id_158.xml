@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[iOS 5基础教程]]></title>
+  <author>（美）马克，（美）纳丁，（美）拉马赫</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-29 12:59:45</submit-date-time>
+  <img-link>cb80eb4ee050f8cc9bc7a66a0fb48fea.png</img-link>
+  <book-area>ios</book-area>
+  <book-intro><![CDATA[<p>
+	苹果公司的iOS已经开创了移动平台新纪元！ iOS与App Store的绝配为全世界的程序员提供了一个施展才华的全新大舞台。只要有新奇的创意，你完全有可能单枪匹马赢得全球市场，成功创业，改变人生。
+</p>
+<p>
+	本书英文原版自第1版问世以来在亚马逊计算机图书排行榜持续雄踞榜首，总排名一度在20名左右，被奉为经典。而中文版出版后也迅速荣登各大网店排行榜榜首，并创造了不到半年就印刷四次的销售奇迹。书中从到苹果公司网站注册账号、下载和安装相关工具开始，清晰透彻地讲述了创建iOS应用程序的全过程。作者在探讨基本概念和各个关键特性时，提供了丰富的实例。更难得的是，本书始终强调iOS开发中的各种最佳实践，即使是有经验的开发人员，也会受益匪浅。新版针对iOS 5和最新发布的SDK做了大幅修订，力求使新老读者都觉得物有所值。作者使用Xcode 4.2重写了所有项目代码，使之兼容新旧SDK，还专设两章介绍iOS 5新特性storyboard和iCloud，这些新特性大大增强了iOS对开发人员的吸引力。
+</p>
+<p>
+	立即展卷阅读，开始神奇的iOS 5开发之旅吧!
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

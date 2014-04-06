@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-19 10:18:44</datetime>
+  <title>spin.js 好用的loading 库</title>
+  <content>&lt;p&gt;
+	不多说，先上图了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-align:center;\"&gt;
+	&lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120819/20120819100334_79043.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&gt;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-align:left;\"&gt;
+	超级屌丝的特性，什么gif&amp;nbsp;loading&amp;nbsp;图片都是浮云了。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;
+		无图片,&amp;nbsp;
+	&lt;/li&gt;
+	&lt;li&gt;
+		无外部样式表
+	&lt;/li&gt;
+	&lt;li&gt;
+		不依赖其他Js库，例如Jquery,Dojo
+	&lt;/li&gt;
+	&lt;li&gt;
+		高度可定制新
+	&lt;/li&gt;
+	&lt;li&gt;
+		完全独立
+	&lt;/li&gt;
+	&lt;li&gt;
+		旧版IE，使用VML实现
+	&lt;/li&gt;
+	&lt;li&gt;
+		使用@关键帧动画
+	&lt;/li&gt;
+	&lt;li&gt;
+		兼容所有主流浏览器，包括IE6
+	&lt;/li&gt;
+	&lt;li&gt;
+		具有MIT许可证，麻省理工的许可证
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+	下面是用法：
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;var&amp;nbsp;opts&amp;nbsp;=&amp;nbsp;{
+&amp;nbsp;lines:&amp;nbsp;13,&amp;nbsp;//&amp;nbsp;多少个线条
+&amp;nbsp;length:&amp;nbsp;7,&amp;nbsp;//&amp;nbsp;每个线条的长度
+&amp;nbsp;width:&amp;nbsp;4,&amp;nbsp;//&amp;nbsp;线条的厚度
+&amp;nbsp;radius:&amp;nbsp;10,&amp;nbsp;//&amp;nbsp;线条的圆角
+&amp;nbsp;corners:&amp;nbsp;1,&amp;nbsp;//&amp;nbsp;
+&amp;nbsp;rotate:&amp;nbsp;0,&amp;nbsp;//&amp;nbsp;旋转偏移度
+&amp;nbsp;color:&amp;nbsp;&amp;nbsp;#000&amp;nbsp;,&amp;nbsp;//&amp;nbsp;颜色，你懂的
+&amp;nbsp;speed:&amp;nbsp;1,&amp;nbsp;//&amp;nbsp;转动速度
+&amp;nbsp;trail:&amp;nbsp;60,&amp;nbsp;//&amp;nbsp;余辉百分比，不知道干嘛用的
+&amp;nbsp;shadow:&amp;nbsp;false,&amp;nbsp;//&amp;nbsp;是否进行阴影渲染
+&amp;nbsp;hwaccel:&amp;nbsp;false,&amp;nbsp;//&amp;nbsp;是否启动硬件加速
+&amp;nbsp;className:&amp;nbsp;&amp;nbsp;spinner&amp;nbsp;,&amp;nbsp;//&amp;nbsp;对Spinner的CSS类声明，删除的时候可以调用
+&amp;nbsp;zIndex:&amp;nbsp;2e9,&amp;nbsp;//&amp;nbsp;z-index&amp;nbsp;(默认值2000000000&amp;nbsp;这么大)
+&amp;nbsp;top:&amp;nbsp;&amp;nbsp;auto&amp;nbsp;,&amp;nbsp;//&amp;nbsp;相对于父节点的高度，&amp;nbsp;单位像素&amp;nbsp;px
+&amp;nbsp;left:&amp;nbsp;&amp;nbsp;auto&amp;nbsp;&amp;nbsp;//&amp;nbsp;相对于父节点左边的距离，单位像素&amp;nbsp;px
+};&lt;/pre&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;下面产生Spinner
+var&amp;nbsp;target&amp;nbsp;=&amp;nbsp;document.getElementById(&amp;nbsp;foo&amp;nbsp;);
+var&amp;nbsp;spinner&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Spinner(opts).spin(target);&lt;/pre&gt;
+spin.js已成功通过测试以下浏览器：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;ul&gt;
+		&lt;li&gt;
+			Chrome
+		&lt;/li&gt;
+		&lt;li&gt;
+			Safari浏览器3.2&amp;nbsp;+
+		&lt;/li&gt;
+		&lt;li&gt;
+			火狐3.5&amp;nbsp;+
+		&lt;/li&gt;
+		&lt;li&gt;
+			IE浏览器6,7,8,9
+		&lt;/li&gt;
+		&lt;li&gt;
+			Opera10.6&amp;nbsp;+
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	Spin.js&amp;nbsp;&amp;nbsp;在Github&amp;nbsp;的&amp;nbsp;官方网站&amp;nbsp;http://fgnass.github.com/spin.js/
+	&lt;a&amp;nbsp;href=\"http://www.itsrcs.com\"&gt;IT技术&lt;/a&gt;
+</content>
+  <contentx>不多说，先上图了。
+
+	&lt;img&amp;nbsp;src=\"/mod/kd/attached/image/20120819/20120819100334_79043.jpg\" alt=\"\" /&gt; 
+
+	超级屌丝的特性，什么gif loading 图片都是浮云了。
+	
+		无图片, 
+	
+		无外部样式表
+	
+		不依赖其他Js库，例如Jquery,D</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-25 00:15:54</datetime>
+  <title>Javascript核心节点对象操作</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一、获取节点名称、值和类型
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	nodeName&amp;nbsp;-&amp;nbsp;节点标签名称
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	nodeValue&amp;nbsp;-&amp;nbsp;节点值
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	nodeType&amp;nbsp;-&amp;nbsp;节点类型
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	二、获取父节点、子节点和同辈节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	parentNode&amp;nbsp;-&amp;nbsp;指定节点的直接父节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	childNodes&amp;nbsp;-&amp;nbsp;指定节点的所有子节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	firstChild&amp;nbsp;-&amp;nbsp;指定节点的第一个子节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	lastChild&amp;nbsp;-&amp;nbsp;指定节点的最后一个子节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	previousSibling&amp;nbsp;-&amp;nbsp;当前节点的前面紧邻同辈节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	nextSibling&amp;nbsp;-&amp;nbsp;当前节点的后面紧邻同辈节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	三、操纵节点属性
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	attributes&amp;nbsp;-&amp;nbsp;当前节点的所有属性
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	attributes.getNamedItem(&amp;nbsp;属性名称&amp;nbsp;)&amp;nbsp;-&amp;nbsp;当前节点中指定名称的属性（与Element对象的getAttribute方法类似，不过attributes.getNamedItem方法在任何节点上都有效包括不是Element对象实例的节点）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	attributes.getNamedItem(&amp;nbsp;属性名称&amp;nbsp;).nodeValue&amp;nbsp;-&amp;nbsp;当前节点指定名称的属性值
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	四、节点的ownerDocument属性
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	ownerDocument&amp;nbsp;-&amp;nbsp;指向节点所属根文档的引用
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	五、操纵DOM节点树
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	appendChild(newChild)&amp;nbsp;-&amp;nbsp;添加子节点（子节点会添加到父节点的末尾）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	insertChild(newChild,referenceChild)&amp;nbsp;-&amp;nbsp;插入子节点(将子节点插入到指定子节点的前面)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	replaceChild(newChild,oldChild)&amp;nbsp;-&amp;nbsp;替换子节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	removeChild(oldChild)&amp;nbsp;-&amp;nbsp;删除子节点
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>一、获取节点名称、值和类型
+
+
+	nodeName - 节点标签名称
+
+
+	nodeValue - 节点值
+
+
+	nodeType - 节点类型
+
+
+	二、获取父节点、子节点和同辈节点
+
+
+	parentNode - 指定节点的直接父节点
+
+
+	childNodes - 指定节点的所有子节点
+
+
+	firstChild - 指定节点的第一个子节点
+
+
+	la</contentx>
+  <tags>_null_</tags>
+</root>

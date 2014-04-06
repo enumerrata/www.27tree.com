@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>汇编语言</title>
+  <author>王爽</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 11:18:22</submit-date-time>
+  <img-link>6200fcf11cbbd7ef5cd28cda1d340c40.png</img-link>
+  <book-area>hp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书自出版以来，受到业内专家和高校教师、广大计算机专业学生和计算机科学与技术学习者的热烈欢迎和高度评价。许多高校用作教材，教学效果很好。很多人在网络上将其与国外同专业名著相并列向广大读者推荐。事实上，本书已成了推动我国计算机科学与技术教育发展的一部重要著作。本书出版4年连续印刷了8次，成为本专业学生和广大学习者的必读书。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本社为满足广大读者的需求，特请王爽老师对原书进行修订补充，出版第2版，以飨读者。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书特色：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·采用全新的结构对课程内容进行了组织，对知识进行最小化分割，为读者构造了循序渐进的学习线索
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·在深入本质的层面上对汇编语言进行讲解
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·对关键环节进行深入的剖析
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容简介
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	汇编语言是各种CPU提供的机器指令的助记符的集合，人们可以用汇编语言直接控制硬件系统进行工作。汇编语言是很多相关课程(如数据结构、操作系统、微机原理等)的重要基础。为了更好地引导、帮助读者学习汇编语言，作者以循序渐进的思想精心创作了这本书。本书具有如下特点：采用了全新的结构对课程的内容进行组织，对知识进行最小化分割，为读者构造了循序渐进的学习线索；在深入本质的层面上对汇编语言进行讲解；对关键环节进行深入的剖析。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书可用作大学计算机专业本科生的汇编教材及希望深入学习计算机科学的读者的自学教材。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

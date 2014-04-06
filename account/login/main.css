@@ -1,0 +1,19 @@
+#lg-wapp{
+    width:450px;background:#fefefe;border:1px solid #ccc;padding:25px;position:relative;margin:5px auto;
+}
+#login-btn{
+    margin-top:10px;display:none;
+}
+#dp-lock-wapp{
+    height:29px;position:relative;text-align:left;
+}
+#dp-lock-btn{
+    background-attachment:fixed;
+    display:inline-block;height:29px;width:40px;border-left:1px solid #ccc;cursor:pointer;background:url('/img/arr-btn.png') -42px 0px no-repeat;
+}
+#dp-lock-btn:hover{
+    background-position-y:-48px;
+}
+.data-tip{
+    font-size:14px;margin:10px 0;color:#888;
+}

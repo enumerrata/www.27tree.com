@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Android中使用定时器TimerTask类介绍</title>
+<content>&amp;lt;p&amp;gt;
+	在Android平台中需要反复按周期执行方法可以使用Java上自带的TimerTask类，TimerTask相对于Thread来说对于资源消耗的更低，除了使用Android自带的AlarmManager使用Timer定时器是一种更好的解决方法。&amp;nbsp;我们需要引入
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;nbsp;java.util.Timer;&amp;nbsp;和&amp;nbsp;import&amp;nbsp;java.util.TimerTask;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;Timer&amp;nbsp;&amp;nbsp;mTimer&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Timer(true);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;TimerTask&amp;nbsp;mTimerTask;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;mTimerTask&amp;nbsp;=&amp;nbsp;new&amp;nbsp;TimerTask()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;run()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Log.v(\"android123\",\"cwj\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mTimer.schedule(mTimerTask,&amp;nbsp;5000,1000);&amp;nbsp;&amp;nbsp;//在1秒后每5秒执行一次定时器中的方法，比如本文为调用log.v打印输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;如果想取消可以调用下面方法，取消定时器的执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;while(!mTimerTask.cancel());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mTimer.cancel();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;最后提示大家，如果处理的东西比较耗时还是开个线程比较好，Timer还是会阻塞主线程的执行，更像是一种消息的执行方式。当然比Handler的postDelay等方法更适合处理计划任务。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-06-19/1340083466.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

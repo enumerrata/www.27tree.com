@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Secrets of the Oracle Database]]></title>
+  <author>Norbert Debes</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-06 00:06:50</submit-date-time>
+  <img-link>9c5b9db35a63cd732c8fdfb63b5c5ca0.JPEG</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	Secrets of the Oracle Database is the definitive guide to undocumented and partially documented features of the Oracle database server. Covering useful but little–known features from Oracle9i Database through Oracle Database 11g, this book will improve your efficiency as an Oracle database administrator or developer. Norbert Debes shines the light of day on features that help you master more difficult administrative, tuning, and troubleshooting tasks than you ever thought possible.
+</p>
+<p>
+	Finally, in one place, you have at your fingertips knowledge that previously had to be acquired through years of experience and word of mouth through knowing the right people. What Norbert writes is accurate, well–tested, well–illustrated by clear examples, and sure to improve your ability to make an impact in your day–to–day work with Oracle.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		目录:
+	</p>
+	<p>
+		Partially Documented Parameters
+	</p>
+	<p>
+		Hidden Initialization Parameters
+	</p>
+	<p>
+		Introduction to Data Dictionary Base Tables
+	</p>
+	<p>
+		IND$, V$OBJECT_USAGE, and Index Monitoring
+	</p>
+	<p>
+		Event 10027 and Deadlock Diagnosis
+	</p>
+	<p>
+		Event 10046 and Extended SQL Trace
+	</p>
+	<p>
+		Event 10053 and the Cost Based Optimizer
+	</p>
+	<p>
+		Event 10079 and Oracle Net Packet Contents
+	</p>
+	<p>
+		Introduction to X$ Fixed Tables
+	</p>
+	<p>
+		X$BH and Latch Contention
+	</p>
+	<p>
+		X$KSLED and Enhanced Session Wait Data
+	</p>
+	<p>
+		X$KFFXP and ASM Metadata
+	</p>
+	<p>
+		ALTER SESSION/SYSTEM SET EVENTS
+	</p>
+	<p>
+		ALTER SESSION SET CURRENT_SCHEMA
+	</p>
+	<p>
+		ALTER USER IDENTIFIED BY VALUES
+	</p>
+	<p>
+		SELECT FOR UPDATE SKIP LOCKED
+	</p>
+	<p>
+		DBMS_BACKUP_RESTORE
+	</p>
+	<p>
+		DBMS_IJOB
+	</p>
+	<p>
+		DBMS_SCHEDULER
+	</p>
+	<p>
+		DBMS_SYSTEM
+	</p>
+	<p>
+		DBMS_UTILITY
+	</p>
+	<p>
+		Perl DBI and DBD::Oracle
+	</p>
+	<p>
+		Application Instrumentation and End-to-End Tracing
+	</p>
+	<p>
+		Extended SQL Trace File Format Reference
+	</p>
+	<p>
+		Statspack
+	</p>
+	<p>
+		Integrating Extended SQL Trace and AWR
+	</p>
+	<p>
+		ESQLTRCPROF Extended SQL Trace Profiler
+	</p>
+	<p>
+		The MERITS Performance Optimization Method
+	</p>
+	<p>
+		TNS Listener IP Address Binding and IP=FIRST
+	</p>
+	<p>
+		TNS Listener TCP/IP Valid Node Checking
+	</p>
+	<p>
+		Local Naming Parameter ENABLE=BROKEN
+	</p>
+	<p>
+		Default Host Name in Oracle Net Configurations
+	</p>
+	<p>
+		Session Disconnection, Load Rebalancing, and TAF
+	</p>
+	<p>
+		Removing the RAC Option Without Reinstalling
+	</p>
+	<p>
+		OERR
+	</p>
+	<p>
+		Recovery Manager Pipe Interface
+	</p>
+	<p>
+		ORADEBUG SQL*Plus Command<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

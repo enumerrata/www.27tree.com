@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android中图片实现按钮点击效果 ]]></title>
+  <content><![CDATA[<p>
+	我们在开发的过程中，往往为了美化界面的需要，会修改按钮的默认外观，而因为Android中的按钮有三种状态—默认，被点击，被选中。所以，如果要改变按钮的外观，需要对这三种情况都做出修改，也许在以往，我们最容易想到的就是，手动监听按钮的选中和点击事件，然后写代码来替换按钮的背景，但是在android中，我们不需要这么麻烦，android早就替我们想好了解决方案，那就是selector资源。如果我们要实现按钮的三种背景，只需在res/drawable目录中建立这样一个XML文件：
+</p>
+<p>
+	selector.xml
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;selector xmlns:android=\"http://schemas.android.com/apk/res/android\"&gt;
+
+        &lt;item android:state_window_focused=\"false\"
+
+        android:drawable=\"@drawable/t3\"/&gt;
+
+        &lt;item android:state_focused=\"true\"
+
+        android:drawable=\"@drawable/t1\"/&gt;
+
+        &lt;item android:state_pressed=\"true\"
+
+        android:drawable=\"@drawable/t2\"/&gt;
+
+        &lt;item android:drawable=\"@drawable/t3\"/&gt;
+
+&lt;/selector&gt;</pre>
+	<p>
+		正如上面的资源文件所描述的，我们在这里定义了三种行为各自的图片资源，接下来，我们只需要在相应的按钮中,将背景资源指定为drawable/selector，就完成我们需要做的一切了～
+	</p>
+	<p>
+		&lt;ImageButton android:layout_width=\"100px\" android:layout_height=\"50px\" android:src=\"@drawable/selector\"/&gt;
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	我们在开发的过程中，往往为了美化界面的需要，会修改按钮的默认外观，而因为Android中的按钮有三种状态—默认，被点击，被选中。所以，如果要改变按钮的外观，需要对这三种情况都做出修改，也许在以往，我们最容易想到的就是，手动监听按钮的选中]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

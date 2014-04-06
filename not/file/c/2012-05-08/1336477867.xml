@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言设计初学者的十八颗地雷</title>
+<content>&amp;lt;p&amp;gt;
+	C语言的最大特点是：功能强、使用方便灵活。C编译的程序对语法检查并不象其它高级语言那么严格，这就给编程人员留下“灵活的余地”，但还是由于这个灵活给程序的调试带来了许多不便，尤其对初学C语言的人来说，经常会出一些连自己都不知道错在哪里的错误。看着有错的程序，不知该如何改起，本人通过对C的学习，积累了一些C编程时常犯的错误，写给各位学员以供参考。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.书写标识符时，忽略了大小写字母的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;main()
+{
+　int&amp;nbsp;a=5;
+　printf(\"%d\",A);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	编译程序把a和A认为是两个不同的变量名，而显示出错信息。C认为大写字母和小写字母是两个不同的字符。习惯上，符号常量名用大写，变量名用小写表示，以增加可读性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.忽略了变量的类型，进行了不合法的运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;main()
+{
+　float&amp;nbsp;a,b;
+　printf(\"%d\",a%b);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	%是求余运算，得到a/b的整余数。整型变量a和b可以进行求余运算，而实型变量则不允许进行“求余”运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.将字符常量与字符串常量混淆。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;char&amp;nbsp;c;
+c=\"a\";&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在这里就混淆了字符常量与字符串常量，字符常量是由一对单引号括起来的单个字符，字符串常量是一对双引号括起来的字符序列。C规定以“\\”作字符串结束标志，它是由系统自动加上的，所以字符串“a”实际上包含两个字符：‘a&amp;nbsp;和‘\\&amp;nbsp;，而把它赋给一个字符变量是不行的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.忽略了“=”与“==”的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在许多高级语言中，用“=”符号作为关系运算符“等于”。如在BASIC程序中可以写
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;if&amp;nbsp;(a=3)&amp;nbsp;then&amp;nbsp;…&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	但C语言中，“=”是赋值运算符，“==”是关系运算符。如：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;if&amp;nbsp;(a==3)&amp;nbsp;a=b;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	前者是进行比较，a是否和3相等，后者表示如果a和3相等，把b值赋给a。由于习惯问题，初学者往往会犯这样的错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.忘记加分号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分号是C语句中不可缺少的一部分，语句末尾必须有分号。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;a=1
+b=2&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	编译时，编译程序在“a=1”后面没发现分号，就把下一行“b=2”也作为上一行语句的一部分，这就会出现语法错误。改错时，有时在被指出有错的一行中未发现错误，就需要看一下上一行是否漏掉了分号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;{
+　z=x+y;
+　t=z/100;
+　printf(\"%f\",t);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于复合语句来说，最后一个语句中最后的分号不能忽略不写(这是和PASCAL不同的)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.多加分号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于一个复合语句，如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;{
+　z=x+y;
+　t=z/100;
+　printf(\"%f\",t);
+};&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	复合语句的花括号后不应再加分号，否则将会画蛇添足。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	又如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;if&amp;nbsp;(a%3==0);
+I++;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本是如果3整除a，则I加1。但由于if&amp;nbsp;(a%3==0)后多加了分号，则if语句到此结束，程序将执行I++语句，不论3是否整除a，I都将自动加1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	再如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;for&amp;nbsp;(I=0;I&amp;amp;lt;5;I++);
+{scanf(\"%d\",&amp;amp;x);
+printf(\"%d\",x);}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本意是先后输入5个数，每输入一个数后再将它输出。由于for()后多加了一个分号，使循环体变为空语句，此时只能输入一个数并输出它。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.输入变量时忘记加地址运算符“&amp;amp;”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;int&amp;nbsp;a,b;
+scanf(\"%d%d\",a,b);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是不合法的。Scanf函数的作用是：按照a、b在内存的地址将a、b的值存进去。“&amp;amp;a”指a在内存中的地址。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.输入数据的方式与要求不符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%d%d\",&amp;amp;a,&amp;amp;b);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输入时，不能用逗号作两个数据间的分隔符，如下面输入不合法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3，4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输入数据时，在两个数据之间以一个或多个空格间隔，也可用回车键，跳格键tab。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%d,%d\",&amp;amp;a,&amp;amp;b);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C规定：如果在“格式控制”字符串中除了格式说明以外还有其它字符，则在输入数据时应输入与这些字符相同的字符。下面输入是合法的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3，4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此时不用逗号而用空格或其它字符是不对的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3&amp;nbsp;4&amp;nbsp;3：4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	又如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"a=%d,b=%d\",&amp;amp;a,&amp;amp;b);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	输入应如以下形式：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;a=3,b=4&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.输入字符的格式与要求不一致。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在用“%c”格式输入字符时，“空格字符”和“转义字符”都作为有效字符输入。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%c%c%c\",&amp;amp;c1,&amp;amp;c2,&amp;amp;c3);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如输入a&amp;nbsp;b&amp;nbsp;c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符“a”送给c1，字符“&amp;nbsp;”送给c2，字符“b”送给c3，因为%c只要求读入一个字符，后面不需要用空格作为两个字符的间隔。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.输入输出的数据类型与所用格式说明符不一致。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如，a已定义为整型，b定义为实型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;a=3;b=4.5;
+printf(\"%f%d\\n\",a,b);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译时不给出出错信息，但运行结果将与原意不符。这种错误尤其需要注意。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11.输入数据时，企图规定精度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%7.2f\",&amp;amp;a);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样做是不合法的，输入数据时不能规定精度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12.switch语句中漏写break语句。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：根据考试成绩的等级打印出百分制数段。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;switch(grade)
+{
+　case&amp;nbsp;&amp;nbsp;A&amp;nbsp;:printf(\"85~100\\n\");
+　case&amp;nbsp;&amp;nbsp;B&amp;nbsp;:printf(\"70~84\\n\");
+　case&amp;nbsp;&amp;nbsp;C&amp;nbsp;:printf(\"60~69\\n\");
+　case&amp;nbsp;&amp;nbsp;D&amp;nbsp;:printf(\"&amp;amp;lt;60\\n\");
+　default:printf(\"error\\n\");
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于漏写了break语句，case只起标号的作用，而不起判断作用。因此，当grade值为A时，printf函数在执行完第一个语句后接着执行第二、三、四、五个printf函数语句。正确写法应在每个分支后再加上“break;”。例如
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	case&amp;nbsp;&amp;nbsp;A&amp;nbsp;:printf(\"85~100\\n\");break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13.忽视了while和do-while语句在细节上的区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;(1)main()
+{
+&amp;nbsp;&amp;nbsp;int&amp;nbsp;a=0,I;
+&amp;nbsp;&amp;nbsp;scanf(\"%d\",&amp;amp;I);
+&amp;nbsp;&amp;nbsp;while(I&amp;amp;lt;=10)
+&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a=a+I;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;I++;
+&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;printf(\"%d\",a);
+}
+
+(2)main()
+{
+&amp;nbsp;&amp;nbsp;int&amp;nbsp;a=0,I;
+&amp;nbsp;&amp;nbsp;scanf(\"%d\",&amp;amp;I);
+&amp;nbsp;&amp;nbsp;do
+&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a=a+I;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;I++;
+&amp;nbsp;&amp;nbsp;}while(I&amp;amp;lt;=10);
+&amp;nbsp;&amp;nbsp;printf(\"%d\",a);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以看到，当输入I的值小于或等于10时，二者得到的结果相同。而当I&amp;amp;gt;10时，二者结果就不同了。因为while循环是先判断后执行，而do-while循环是先执行后判断。对于大于10的数while循环一次也不执行循环体，而do-while语句则要执行一次循环体。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14.定义数组时误用变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"vb\"&amp;gt;int&amp;nbsp;n;
+scanf(\"%d\",&amp;amp;n);
+int&amp;nbsp;a[n];&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数组名后用方括号括起来的是常量表达式，可以包括常量和符号常量。即C不允许对数组的大小作动态定义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15.在定义数组时，将定义的“元素个数”误认为是可使的最大下标值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;main()
+{
+&amp;nbsp;&amp;nbsp;static&amp;nbsp;int&amp;nbsp;a[10]={1,2,3,4,5,6,7,8,9,10};
+&amp;nbsp;&amp;nbsp;printf(\"%d\",a[10]);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C语言规定：定义时用a[10]，表示a数组有10个元素。其下标值由0开始，所以数组元素a[10]是不存在的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16.初始化数组时，未使用静态存储。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;int&amp;nbsp;a[3]={0,1,2};&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样初始化数组是不对的。C语言规定只有静态存储(static)数组和外部存储(exterm)数组才能初始化。应改为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;static&amp;nbsp;int&amp;nbsp;a[3]={0,1,2};&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	17.在不应加地址运算符&amp;amp;的位置加了地址运算符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%s\",&amp;amp;str);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C语言编译系统对数组名的处理是：数组名代表该数组的起始地址，且scanf函数中的输入项是字符数组名，不必要再加地址符&amp;amp;。应改为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;scanf(\"%s\",str);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	18.同时定义了形参和函数中的局部变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;int&amp;nbsp;max(x,y)
+int&amp;nbsp;x,y,z;
+{
+z=x&amp;amp;gt;y?x:y;
+return(z);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	形参应该在函数体外定义，而局部变量应该在函数体内定义。应改为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;int&amp;nbsp;max(x,y)
+int&amp;nbsp;x,y;
+{
+int&amp;nbsp;z;
+z=x&amp;amp;gt;y?x:y;
+return(z);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-05-08/1336477867.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>%C3%A4%C2%BD%C2%A0%C3%A5%C2%8E%C2%BB%C3%A6%C2%83%C2%B3%C3%A5%C2%91%C2%80%C3%A5%C2%91%C2%80</author-c>
+  <uid-c>5</uid-c>
+  <date-c>2012-05-09+18%3A48%3A17</date-c>
+  <conf-c>哈哈英汉互译</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

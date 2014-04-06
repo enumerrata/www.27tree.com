@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[让Oracle跑得更快——Oracle 10g性能分析与优化思路]]></title>
+  <author>谭怀远</author>
+  <submiter-uid>309</submiter-uid>
+  <submit-date-time>2013-01-08 01:19:33</submit-date-time>
+  <img-link>2a474676fd58d9b79690d242a93b4a84.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	在《让Oracle跑得更快:Oracle 10g性能分析与优化思路》里读者将会学到作者在性能优化方面的一些思路和思考，一些故障处理的方法和原则，这些东西是作者在实践中长期积累的心得体会，当读者掌握了一些处理问题的基本思路之后，成为一名合格的DBA就是一件轻而易举的事情了。
+</p>
+<p>
+	《让Oracle跑得更快:Oracle 10g性能分析与优化思路》适用对象：Oracle DBA、Oracle开发人员，和其他对Oracle数据库感兴趣的人员。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		第1章 引起数据库性能问题的因素
+	</p>
+	<p>
+		1.1 软件设计对数据库的影响
+	</p>
+	<p>
+		1.1.1 软件架构设计对数据库性能的影响
+	</p>
+	<p>
+		1.1.2 软件代码的编写对数据库性能的影响
+	</p>
+	<p>
+		1.2 数据库的设计
+	</p>
+	<p>
+		1.2.1 0LTP数据库
+	</p>
+	<p>
+		1.2.2 0LAP数据库
+	</p>
+	<p>
+		1.3 数据库的硬件设计
+	</p>
+	<p>
+		1.3.1 存储容量
+	</p>
+	<p>
+		1.3.2 存储的物理设计
+	</p>
+	<p>
+		1.3.3 数据的安全
+	</p>
+	<p>
+		1.4 小结
+	</p>
+	<p>
+		第2章 锁和阻塞
+	</p>
+	<p>
+		2.1 关于锁
+	</p>
+	<p>
+		2.2 锁和阻塞
+	</p>
+	<p>
+		2.3 引起阻塞的其他情况
+	</p>
+	<p>
+		2.3.1 select for update
+	</p>
+	<p>
+		2.3.2 外键和索引
+	</p>
+	<p>
+		第3章 Latch和等待
+	</p>
+	<p>
+		3.1 共享池中的Latch争用
+	</p>
+	<p>
+		3.2 数据缓冲池Latch争用
+	</p>
+	<p>
+		3.2.1 表数据块
+	</p>
+	<p>
+		3.2.2 索引数据块
+	</p>
+	<p>
+		3.2.3 索引根数据块
+	</p>
+	<p>
+		3.2.4 段头数据块
+	</p>
+	<p>
+		第4章 优化器
+	</p>
+	<p>
+		4.1 RB0基于规则的优化器
+	</p>
+	<p>
+		4.2 CB0基于成本的优化器
+	</p>
+	<p>
+		第5章 执行计划
+	</p>
+	<p>
+		5.1 Cardinality（基数）
+	</p>
+	<p>
+		5.2 SQL的执行计划
+	</p>
+	<p>
+		第6章 Hint
+	</p>
+	<p>
+		6.1 和优化器相关的Hint
+	</p>
+	<p>
+		6.1.1 all_rows和flrst_rows（CB0）
+	</p>
+	<p>
+		6.1.2 RULE Hint
+	</p>
+	<p>
+		6.2 访问路径相关的Hint
+	</p>
+	<p>
+		6.2.1 RULE Hint
+	</p>
+	<p>
+		6.2.2 RULE Hint
+	</p>
+	<p>
+		6.2.3 RULE Hint
+	</p>
+	<p>
+		6.2.4 INDEX_DESC Hint
+	</p>
+	<p>
+		6.2.5 INDEX_COMBINE Hint
+	</p>
+	<p>
+		6.2.6 INDEX_FFS
+	</p>
+	<p>
+		6.2.7 INDEX_JOIN
+	</p>
+	<p>
+		6.2.8 INDEX_SSHint
+	</p>
+	<p>
+		6.3 表关联顺序的Hint
+	</p>
+	<p>
+		6.3.1 LEADING Hint
+	</p>
+	<p>
+		6.3.2 ORDERED Hint
+	</p>
+	<p>
+		6.4　表关联操作的Hint
+	</p>
+	<p>
+		6.4.1 USE_HASH，USE_NL和USE_MERGE Hint
+	</p>
+	<p>
+		6.4.2 N0USEHASH Hint
+	</p>
+	<p>
+		6.4.3 N0_USEMERGE Hint
+	</p>
+	<p>
+		6.4.4 NO_USENL Hint
+	</p>
+	<p>
+		6.5 并行执行相关的Hint
+	</p>
+	<p>
+		6.5.1 PARALLEL Hint
+	</p>
+	<p>
+		6.5.2 NO_PARALLEL Hint
+	</p>
+	<p>
+		6.6 其他方面的一些Hint
+	</p>
+	<p>
+		6.6.1 APPEND Hint
+	</p>
+	<p>
+		6.6.2 DYNAMIC_SAMPLING Hint
+	</p>
+	<p>
+		6.6.3 DRIVING_SITEHint
+	</p>
+	<p>
+		6.6.4 CACHE Hint
+	</p>
+	<p>
+		6.7 小结
+	</p>
+	<p>
+		第7章 分析及动态采样
+	</p>
+	<p>
+		7.1 直方图
+	</p>
+	<p>
+		7.2 DBMS-STATS包
+	</p>
+	<p>
+		7.3 动态采样
+	</p>
+	<p>
+		7.3.1 什么是动态采样
+	</p>
+	<p>
+		7.3.2 动态采样的级别
+	</p>
+	<p>
+		7.3.3 什么时候使用动态采样
+	</p>
+	<p>
+		7.4 小结
+	</p>
+	<p>
+		第8章 并行执行
+	</p>
+	<p>
+		8.1 并行和0LAP系统
+	</p>
+	<p>
+		8.2 并行处理的机制
+	</p>
+	<p>
+		8.3 读懂一个并行处理的执行计划
+	</p>
+	<p>
+		8.4 一个很常见的并行执行等待事件
+	</p>
+	<p>
+		8.5 并行执行的适用范围
+	</p>
+	<p>
+		8.5.1 并行查询
+	</p>
+	<p>
+		8.5.2 并行DDL操作
+	</p>
+	<p>
+		8.5.3 并行DML操作
+	</p>
+	<p>
+		8.6 并行执行的设定
+	</p>
+	<p>
+		8.6.1 并行相关的初始化参数
+	</p>
+	<p>
+		8.6.2 并行度的设定
+	</p>
+	<p>
+		8.7 直接加载
+	</p>
+	<p>
+		8.7.1 直接加载和REDO
+	</p>
+	<p>
+		8.7.2 直接加载和索引
+	</p>
+	<p>
+		8.7.3 直接加载和并行
+	</p>
+	<p>
+		8.7.4 直接加载和SQL*LOADER
+	</p>
+	<p>
+		第9章 变量绑定
+	</p>
+	<p>
+		9.1 什么是变量绑定，为什么要做变量绑定
+	</p>
+	<p>
+		9.2 为什么说0LTP必须要求变量绑定而0LAP不应该绑定变量
+	</p>
+	<p>
+		9.3 bind peaking
+	</p>
+	<p>
+		第10章 SQL_TRACE和10046事件
+	</p>
+	<p>
+		10.1 SQL_TRACE
+	</p>
+	<p>
+		10.2 TKPROF工具
+	</p>
+	<p>
+		10.3 10046事件
+	</p>
+	<p>
+		第11章 10053事件
+	</p>
+	<p>
+		第12章 性能视图和性能参数
+	</p>
+	<p>
+		12.1 性能视图
+	</p>
+	<p>
+		12.1.1 V$SQL
+	</p>
+	<p>
+		12.1.2 V$SOLSHAREDCURSOR
+	</p>
+	<p>
+		12.1.3 v$session
+	</p>
+	<p>
+		12.1.4 V$sessstat
+	</p>
+	<p>
+		12.1.5 V$session_wait
+	</p>
+	<p>
+		12.2 性能参数
+	</p>
+	<p>
+		12.2.1 Cursor_sharing
+	</p>
+	<p>
+		12.2.2 DB_FILE_MULTIBLOCK_READ_COUNT
+	</p>
+	<p>
+		12.2.3 PGA_AGGREGATE_TARGET和SGA_TARGET
+	</p>
+	<p>
+		12.2.4 OPTIMIZER_DYNAMIC_SAMPLING
+	</p>
+	<p>
+		第13章 性能报告
+	</p>
+	<p>
+		13.1 AWR性能报告
+	</p>
+	<p>
+		13.1.1 生成AWR性能报告
+	</p>
+	<p>
+		13.1.2 AWR性能报告分析
+	</p>
+	<p>
+		13.2 Statspack性能报告
+	</p>
+	<p>
+		13.2.1 Statspack的安装
+	</p>
+	<p>
+		13.2.2 Statspack性能采集
+	</p>
+	<p>
+		13.3 ASH性能报告
+	</p>
+	<p>
+		13.3.1 生成ASH性能报告
+	</p>
+	<p>
+		13.3.2 ASH性能报告分析
+	</p>
+	<p>
+		13.4 小结
+	</p>
+	<p>
+		附录A 常见的等待事件
+	</p>
+	<p>
+		后记 关于数据库的学习方法
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

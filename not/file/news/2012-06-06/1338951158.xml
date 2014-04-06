@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP中正则表达式的几则使用技巧归总</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;PCRE正则表达式函数：&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;preg_match()和preg_match_all()
+preg_quote()
+preg_split()
+preg_grep()
+preg_replace()&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;匹配action属性&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$str&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;$match&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;nbsp;preg_match_all(&amp;nbsp;/\s+action=\(?!http:)(.*?)\\s/&amp;nbsp;,&amp;nbsp;$str,&amp;nbsp;$match);
+&amp;nbsp;print_r($match);&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;在正则中使用回调函数&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;/**
+*&amp;nbsp;replace&amp;nbsp;some&amp;nbsp;string&amp;nbsp;by&amp;nbsp;callback&amp;nbsp;function
+*
+*/
+function&amp;nbsp;callback_replace()&amp;nbsp;{
+$url&amp;nbsp;=&amp;nbsp;&amp;nbsp;http://esfang.house.sina.com.cn&amp;nbsp;;
+$str&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+$str&amp;nbsp;=&amp;nbsp;preg_replace&amp;nbsp;(&amp;nbsp;&amp;nbsp;/(?&amp;amp;lt;=\saction=\)(?!http:)(.*?)(?=\\s)/e&amp;nbsp;,&amp;nbsp;&amp;nbsp;search(\$url,&amp;nbsp;\\1)&amp;nbsp;,&amp;nbsp;$str&amp;nbsp;);
+
+echo&amp;nbsp;$str;
+}
+
+function&amp;nbsp;search($url,&amp;nbsp;$match){
+return&amp;nbsp;$url&amp;nbsp;.&amp;nbsp;&amp;nbsp;/&amp;nbsp;&amp;nbsp;.&amp;nbsp;$match;
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;strong&amp;gt;带断言的正则匹配&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/span&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$match&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+$str&amp;nbsp;=&amp;nbsp;&amp;nbsp;xxxxxx.com.cn&amp;nbsp;bold&amp;nbsp;font
+paragraph&amp;nbsp;text
+
+&amp;nbsp;;
+preg_match_all&amp;nbsp;(&amp;nbsp;&amp;nbsp;/(?&amp;amp;lt;=&amp;amp;lt;(\w{1})&amp;amp;gt;).*(?=&amp;amp;lt;\/\1&amp;amp;gt;)/&amp;nbsp;,&amp;nbsp;$str,&amp;nbsp;$match&amp;nbsp;);
+echo&amp;nbsp;匹配没有属性的HTML标签中的内容：;
+print_r&amp;nbsp;(&amp;nbsp;$match&amp;nbsp;);&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;替换HTML源码中的地址&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$form_html&amp;nbsp;=&amp;nbsp;preg_replace&amp;nbsp;(&amp;nbsp;&amp;nbsp;/(?&amp;amp;lt;=\saction=\&amp;brvbar;\ssrc=\&amp;brvbar;\shref=\)(?!http:&amp;brvbar;javascript)(.*?)(?=\\s)/e&amp;nbsp;,&amp;nbsp;&amp;nbsp;add_url(\$url,&amp;nbsp;\&amp;nbsp;\\1\&amp;nbsp;)&amp;nbsp;,&amp;nbsp;$form_html&amp;nbsp;);&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	正则工具虽然强大，但是从效率和编写时间上来讲，有的时候可能没有explode来的更直接，对于一些紧急或者要求不高的任务，简单、粗暴的方法也许更好。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	而对于preg和ereg两个系列之间的执行效率，曾看到文章说preg要更快一点，具体由于使用ereg的时候并不多，而且也要推出历史舞台了，再加个个人更偏好于PCRE的方式，所以笔者就不做比较了，熟悉的朋友可以发表下意见，谢谢。
+&amp;lt;/p&amp;gt;
+&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-06/1338951158.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>position : static | absolute | fixed | relative 各含义</title>
+<content>&amp;lt;p&amp;gt;
+	static&amp;nbsp;&amp;nbsp;&amp;nbsp;:&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	默认值。无特殊定位，对象遵循HTML定位规则
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	absolute&amp;nbsp;&amp;nbsp;&amp;nbsp;:&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将对象从文档流中拖出，使用&amp;nbsp;left&amp;nbsp;，&amp;nbsp;right&amp;nbsp;，&amp;nbsp;top&amp;nbsp;，&amp;nbsp;bottom&amp;nbsp;等属性相对于其最接近的一个最有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据&amp;nbsp;body&amp;nbsp;对象。而其层叠通过&amp;nbsp;z-index&amp;nbsp;属性定义
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fixed&amp;nbsp;&amp;nbsp;&amp;nbsp;:&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	位置被设置为&amp;nbsp;fixed&amp;nbsp;的元素，可定位于相对于浏览器窗口的指定坐标。此元素的位置可通过&amp;nbsp;“left”、”top”、”right”&amp;nbsp;以及”bottom”&amp;nbsp;属性来规定。不论窗口滚动与否，元素都会留在那个位置。工作于&amp;nbsp;IE7（strict&amp;nbsp;模式）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	relative&amp;nbsp;&amp;nbsp;&amp;nbsp;:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;对象不可层叠，但将依据&amp;nbsp;left&amp;nbsp;，&amp;nbsp;right&amp;nbsp;，&amp;nbsp;top&amp;nbsp;，&amp;nbsp;bottom&amp;nbsp;等属性在正常文档流中偏移位置
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-11/1339394902.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php header()函数使用说明</title>
+<content>&amp;lt;p&amp;gt;
+	一、作用：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~~~~~~~~~
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP只是以HTTP协议将HTML文档的标头送到浏览器，告诉浏览器具体怎么处理这个页面，至于传送的内容则需要熟悉一下HTTP协议了，与PHP无关了，可参照http://www.w3.org/Protocols/rfc2616/rfc2616。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	传统的标头一定包含下面三种标头之一，并只能出现一次。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Location:&amp;nbsp;xxxx:yyyy/zzzz
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Content-Type:&amp;nbsp;xxxx/yyyy
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Status:&amp;nbsp;nnn&amp;nbsp;xxxxxx
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、先来了解一下HTTP协议的运作方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP协议是基于请求／响应范式的。一个客户机与服务器建立连接后，发送一个请求给服务器，请求方式的格式为，统一资源标识符、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。服务器接到请求后，给予相应的响应信息，其格式为一个状态行包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它分四个过程，在HTTP协议中，服务端是指提供HTTP服务的部分，客户端是指你使用的浏览器或者下载工具等等。在通讯时，由客户端发出请求连接，服务端建立连接；然后，客户端发出HTTP请求（Request），服务端返回响应信息（Respond），由此完成一个HTTP操作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、HTTP协议状态码表示的意思
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1××　　保留
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2××　　表示请求成功地接收
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3××　　为完成请求客户需进一步细化请求
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4××　　客户错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5××　　服务器错误
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四、操作实例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	~~~~~~~~~~~~~
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;1&amp;amp;gt;&amp;nbsp;重定向功能，这种最常见
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+Header(Location:&amp;nbsp;http://www.php.net);&amp;nbsp;
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;2&amp;amp;gt;&amp;nbsp;强制用户每次访问这个页面时获取最新资料，而不是使用存在客户端的缓存。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+//告诉浏览器此页面的过期时间(用格林威治时间表示)，只要是已经过去的日期即可。&amp;nbsp;
+header(Expires:&amp;nbsp;Mon,&amp;nbsp;26&amp;nbsp;Jul&amp;nbsp;1970&amp;nbsp;05:00:00&amp;nbsp;GMT);&amp;nbsp;
+//告诉浏览器此页面的最后更新日期(用格林威治时间表示)也就是当天,目的就是强迫浏览器获取最新资料&amp;nbsp;
+header(Last-Modified:&amp;nbsp;&amp;nbsp;.&amp;nbsp;gmdate(D,&amp;nbsp;d&amp;nbsp;M&amp;nbsp;Y&amp;nbsp;H:i:s)&amp;nbsp;.&amp;nbsp;GMT);&amp;nbsp;
+//告诉客户端浏览器不使用缓存&amp;nbsp;
+header(Cache-Control:&amp;nbsp;no-cache,&amp;nbsp;must-revalidate);&amp;nbsp;
+//参数（与以前的服务器兼容）,即兼容HTTP1.0协议&amp;nbsp;
+header(Pragma:&amp;nbsp;no-cache);&amp;nbsp;
+//输出MIME类型&amp;nbsp;
+header(Content-type:&amp;nbsp;application/file);&amp;nbsp;
+//文件长度&amp;nbsp;
+header(Content-Length:&amp;nbsp;227685);&amp;nbsp;
+//接受的范围单位&amp;nbsp;
+header(Accept-Ranges:&amp;nbsp;bytes);&amp;nbsp;
+//缺省时文件保存对话框中的文件名称&amp;nbsp;
+header(Content－Disposition:&amp;nbsp;attachment;&amp;nbsp;filename=$filename);&amp;nbsp;
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;amp;lt;3&amp;amp;gt;&amp;nbsp;输出状态值到浏览器，主要用于访问权限控制
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+header(&amp;nbsp;HTTP/1.1&amp;nbsp;401&amp;nbsp;Unauthorized&amp;nbsp;);&amp;nbsp;
+header(&amp;nbsp;status:&amp;nbsp;401&amp;nbsp;Unauthorized&amp;nbsp;);&amp;nbsp;
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+比如要限制一个用户不能访问该页，则可设置状态为404，如下所示，这样浏览器就显示为即该页不存在
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+header(&amp;nbsp;HTTP/1.1&amp;nbsp;404&amp;nbsp;Not&amp;nbsp;Found&amp;nbsp;);&amp;nbsp;
+header(status:&amp;nbsp;404&amp;nbsp;Not&amp;nbsp;Found);&amp;nbsp;
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-02/1338607875.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:44:55</datetime>
+  <title>深入认识Turbo C编译器</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	有谁真正的理解过一个编译器呢？许多人认为TC很简单很落后，但是即便是这样简单的工具，到底有几个人真正的深入理解了呢？一个简单的编译器都不能理解，如何能成为高手，如何能深入的使用更加高级的工具呢？不要以为自己使用的是VC就很了不起，因为使用这样傻瓜化的工具只能让你看不到事物的本质。接下来我们就来深入的认识Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C编译器。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	广义的编译器，包括了代码编译器(compiler)，目标文件链接器(linker)，库文件管理工具(如tc的tlib，gcc的ar)，编译驱动工具(如VC的NMake，gcc的make)，ANSI
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	c/c++标准的头文件和库文件，扩展的头文件和库文件，集成开发环境(IDE)，等等与编译相关的工具，所有这些工具的集合，就组成了广义上的编译器。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	狭义的编译器，则仅指compiler。compiler只负责将源代码，即.c/.cxx/.cpp文件编译成为目标文件.o/.obj。编译过程的输入是源文件，包括自己书写的.c和.h以及系统提供的.h文件，编译的输出是目标文件。需要强调的一点时，在compile阶段，只处理源文件，所以不需要库文件和额外的目标文件的参与，因此，只要代码在语法上没有错误，compile就一定能产生目标文件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对于一个广义的编译器来说以下几个部分是必备的：1.compiler，2.linker，3.系统提供的头文件和库文件。前面已经介绍了compiler，接下来看linker。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	linker的功能是将目标文件进行装配，将浮动的地址变为确定的地址，这个工作是通过修改目标文件的重定位项来实现的，其具体的过程可以参考\"Linker
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	loader\"这本书，这是一本详细介绍linker和loader的好书，在此做个推荐。总之，link这一阶段处理的输入是目标文件，其输出是可执行文件，或动态库。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	任何一个编译器都会提供库文件和与之对应的头文件，C/C++编译器一般都提供ANSI&amp;nbsp;C/C++的库和相应的头文件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	从现在起我们就需要建立起一个概念，就是广义的编译过程，实际上是由编译和链接两个基本步骤组成的，如果能深刻的理解这两个步骤，就是一大进步了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在编译器里，有一些默认的规定，我们需要了解。在编译器中，bin目录用于存放compiler、linker等工具，include目录用于存放头文件，lib目录用存放库文件，大多数的编译器的目录就是按这个来组织的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	接下来看Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C为我们提供了些什么(请到我的网站下载我动手制作的改良版TC编译器)。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	bin目录中：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CPP.EXE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;是一个C语言预处理工具，就是负责对源代码进行预编译处理，不要理解为c++编译器
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TCC.EXE&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;是一个C语言的编译器，可以将代码编译为目标文件，并且能自动调用tlink链接生成可执行文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TASM.exe&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	是一个汇编工具，可以将x86的汇编代码编译成为目标文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TLink.exe&amp;nbsp;&amp;nbsp;是一个链接器，负责对目标文件、库文件等进行链接
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TLib.exe&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	是一个库文件管理工具，可以将多个目标文件打包到一个库文件里
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	BGIOBJ.exe
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	可以将BGI文件转换为.obj文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	make.exe&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	符合GNU标准的make工具，可用于代码编译的管理(只有在我制作的TC中提供)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	TURBOC.CFG
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	tcc默认的编译参数配置文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	以上所有的工具的使用方法都可以直接键入相应的命令进行查看，如键入tcc即可看到tcc的使用方法，因此这里不再讲解。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	BGI目录中：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	EGAVGA.BGI&amp;nbsp;是EGAVGA的bgi驱动
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	FONT目录中：存放了BGI所使用到的各种字体文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	INCLUDE目录中：是Turbo&amp;nbsp;C的库函数的所有的头文件，当要使用某个库函数时可以在这个目录下搜索，找到其所在文件和原型，这里不在详细叙述。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	重点讲一下Lib目录：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	init.obj文件是C语言的启动代码，它负责建立C程序运行的堆栈、初始化内存、调用C入口函数等。这部分代码是使用汇编书写的，其源代码可以在TC(官方版)里找到，名称为Init.ASM。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	c0t.obj、c0s.obj、c0m.obj、c0c.obj、c0l.obj和c0h.obj文件，都是c
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	code的入口函数实现，入口函数将会读取环境变量，并调用c语言中的main函数，将命令行参数传入main函数中，之后的控制权就交给了main函数，也就是我们常说的C的主函数main。由于Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C中有不同的内存模式，因此以上6个文件分别对应TC中6种不同的内存模式。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cc.lib、ch.lib、cl.lib、cm.lib、cs.lib五个文件都是TC提供的ANSI
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C标准库的库文件，分别对用不同的内存模式：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cc&amp;nbsp;compact模式
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	ch&amp;nbsp;huge模式
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cl
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	large模式
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cm&amp;nbsp;medium模式
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cs&amp;nbsp;small模式
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	由于不同模式参数的入栈方式、函数的调用方式等等都各不一样，所以代码也不一样，因此需要分别提供各个模式的库文件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	再讲一下Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C中的内存模式。内存模式的出现不是由编译器决定的，而是由处理器的寻址方式决定的，在8086处理器中为了在16位寄存器的基础上寻址20位的地址，引入了段寄存器和分段寻址的方式。在编译器这一级，利用这种段式的寻址方式，可以实现多种不同的存储分配方法，因此就产生了所谓的不同的内存模式。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	1.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	tiny模式：&amp;nbsp;&amp;nbsp;&amp;nbsp;程序和数据在一个64K字节的段内
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	2.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	small模式：&amp;nbsp;&amp;nbsp;独立的代码段(64KB)和独立的数据段(64KB)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	3.&amp;nbsp;medium模式：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	单个数据段(64KB)和多个代码段(1MB)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	4.&amp;nbsp;compack模式：单个代码段(64KB)和多个数据段(1MB)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	5.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	large模式：&amp;nbsp;&amp;nbsp;多个代码段(1MB)和多个数据段(1MB)，数据指针不能跨越段边界，否则将回绕
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	6.&amp;nbsp;huge模式：&amp;nbsp;&amp;nbsp;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	多个代码段(1MB)和多个数据段(1MB)，数据指针可以跨越段边界，不会回绕
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在TC中内存模式与far、near、huge等关键字又有着密切的关系。在tiny、small模式下，所有的函数定义、全局变量定义和指针变量的定义，如果没有显示的加上far、near、huge等关键字，都默认为使用了near关键字；在medium模式下，函数定义默认使用了far关键字，变量定义默认使用了near关键字；在compact模式下函数定义模式使用了near关键字，变量定义默认使用了far关键字；large模式下函数定义和变量定义模认使用了far关键字；huge模式下函数定义模认使用了far关键字，变量定义默认使用了huge关键字。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	near、far、huge关键字的真正含义是什么？这三个关键字只能用于修改函数、全局变量和指针变量，对于非指针类型的局部变量，这些关键字没有实际意义。这些关键字用于修饰函数时，huge的含义与far相同，用于指明该函数的调用方式为far调用方式，即调用时需要一个段值和一个段偏移组成的32bits调用地址，使用far
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	call进行跳转，跳转前先压栈保存当前CS:IP。near修饰函数时，用于指明该函数的调用方式为near调用方式，调用时只需要一个16bits的近地址，即当前CS的段内偏移。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当这三个关键字用于修饰指针时，near型指针实质上为16bits的无符号整型数，该整数给出了所指向变量在当前数据段内的偏移地址，也就是说，在使用near型指针寻址时实际上是进行如下的寻址操作：[DS:指针变量值]。对于far型的指针变量，可以寻址1MB地址空间的任意一个地方，far型指针的实质是一个32bits的整型数，高16bits为段值，低16bits为段内偏移，Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C中在使用far型指针时，会先将高16bits放入ES寄存器中，然后再进行如下的寻址操作：[ES:指针变量低16bits值]。对于hug型的指针变量，与far性指针变量的不同之处在于，在对far型指针变量进行+/++/-/--等操作时，far型指针变量保持段值不变（也就是高16bits），而只对段内偏移进行加减操作，所以会出现段内回绕的现象，而huge型的指针，在进行加减操作时将会自动的改变段值，不会出现段内回绕。所以给人的感觉就是huge指针能比far指针寻址更大的内存空间。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对于局部变量，由于是创建在堆栈上，所以near、far等关键字将不具备任何意义，因为创建在堆栈上的变量的寻址方式就只有一种，即使用sp和bp维护函数堆栈，利用bp+/-一个偏移来寻址函数参数变量和局部变量。这样的寻址方式是固定而唯一的，near和far等关键字都派不上用场，这里的near和far将没有任何的实际含义。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对于使用near、far和huge修饰的全局变量的含义也很容易理解了。near型的全局变量，被分配到了当前的数据段上，寻址这个变量只需要一个16bits的偏移量，而far型全局变量在寻址时，需要给出段值和偏移量。huge型数组可以使用大于64K的内存空间。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	far、near、huge型指针变量之间的相互转换，从小尺寸的指针到大尺寸的指针将进行自动的类型转换，转换方式为加上当前的DS形成32bits的指针。从大尺寸的指针到小尺寸的指针需要进行强制类型转换，转换的结果为只保留低16bits，但是这样俄转换没有实际的意义或者说用处不大，并且极其容易引入内存访问的错误，所以要严格避免使用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	需要注意的是，near、far、huge三个关键字的使用，还需要内存模式的紧密配合。但并不是说tiny模式下就不能使用near、far、huge三个关键字。tiny模式下同样可以定义如下的指针：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	char
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	far&amp;nbsp;*pbuf&amp;nbsp;=
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	0xA0000000;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	并且我能保证这个指针能够绝对正确的工作，对函数、全局变量的修饰也是如此。但是如何正确的工作，如何才是最和合理的方式，请自己思考了。基本的原理我也讲的很清楚，就不再多费唇舌。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Turbo&amp;nbsp;C中，我想最为困惑的就是内存模式了，我也是费了很多时间和精力，通过分析Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C的汇编代码的出的以上结论。许多朋友都对此很困惑，所以这部分重点讲了下，和大家分享。如有不正确之处，请不吝赐教，旨在抛砖引玉。tcc编译汇编代码的方法为：tcc
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	-c&amp;nbsp;-mt&amp;nbsp;-S&amp;nbsp;filename.c，-c指明compile
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	only，-mx用于指定内存模式，-S指明生成汇编代码，如果大家有兴趣可以尝试使用这个方法分析tcc编译结果的汇编代码，从而更加深刻的理解C与汇编的关系。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当我们在编写、制作并向用户提供自己的库文件时，也需要注意内存模式的匹配，否则在进行链接时会存在问题。一个较为简单的方法就是向用户提供全套内存模式的库文件，这也是Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C的ANSI
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C库的做法，前文已经提到。如果不想提供多个内存模式的库文件，可以对程序中每个函数、全局变量和指针变量进行显式的类型声明，以精确定义每个变量的类型。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	关于TC中各种编译工具的使用方法，可以直接参考其帮助，并且许多参考文档都有说明，这里我就不再详细介绍了。关于GNU的make工具的使用，同样也可以在网上找到参考资料，因此不再介绍。还有就是关于Turboc的BGI驱动的，我也研究过多时，我这里有详细的参考文档，并且已经实现了一个BGI的框架，对于有兴趣自己开发BGI的朋友，我们可以交流。当然Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C最大的魅力，也是最让我着迷的也就是它简单而直接的图形编程，可以直接的访问硬件资源，因此能收获许多底层、硬件相关的知识。当然Turbo
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	C的图形编程是一个很大的课题，我也在不断的学习和研究之中，如果有机会也会继续写作相关的文章。
+&lt;/p&gt;</content>
+  <contentx>有谁真正的理解过一个编译器呢？许多人认为TC很简单很落后，但是即便是这样简单的工具，到底有几个人真正的深入理解了呢？一个简单的编译器都不能理解，如何能成为高手，如何能深入的使用更加高级的工具呢？不要以为自己使用的是VC就很了不起，因为使用这样傻瓜化的工具只能让你看不到事物的本质。接下来我们就来深入的认识Turbo
+
+
+	C编译器。
+
+
+	广义的编译器，包括了</contentx>
+  <tags>_null_</tags>
+</root>

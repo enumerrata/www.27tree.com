@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-11-11 23:21:58</datetime>
+  <title><![CDATA[IE下a的hover属性失效]]></title>
+  <content><![CDATA[<p>
+	原来是我没加href属性，都没链接怎么触发hover呢。
+</p>
+<p>
+	其他浏览器没有这个问题
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

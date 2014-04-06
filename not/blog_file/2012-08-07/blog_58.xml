@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:52:09</datetime>
+  <title>JDBC基础教程之CallableStatement</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	概述
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;对象为所有的&amp;nbsp;DBMS
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	提供了一种以标准形式调用已储存过程的方法。已储存过程储存在数据库中。对已储存过程的调用是
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement对象所含的内容。这种调用是用一种换码语法来写的，有两种形式：一种形式带结果参，另一种形式不带结果参数。结果参数是一种输出
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	(OUT)&amp;nbsp;参数，是已储存过程的返回值。两种形式都可带有数量可变的输入（IN&amp;nbsp;参数）、输出（OUT&amp;nbsp;参数）或输入和输出（INOUT
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数）的参数。问号将用作参数的占位符。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在&amp;nbsp;JDBC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	中调用已储存过程的语法如下所示。注意，方括号表示其间的内容是可选项；方括号本身并不是语法的组成部份。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	{call&amp;nbsp;过程名[(?,&amp;nbsp;?,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;...)]}&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	返回结果参数的过程的语法为：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	{?&amp;nbsp;=&amp;nbsp;call&amp;nbsp;过程名[(?,&amp;nbsp;?,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;...)]}&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	不带参数的已储存过程的语法类似：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	{call&amp;nbsp;过程名}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通常，创建&amp;nbsp;CallableStatement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对象的人应当知道所用的&amp;nbsp;DBMS&amp;nbsp;是支持已储存过程的，并且知道这些过程都是些什么。然而，如果需要检查，多种DatabaseMetaData
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	方法都可以提供这样的信息。例如，如果&amp;nbsp;DBMS&amp;nbsp;支持已储存过程的调用，则supportsStoredProcedures&amp;nbsp;方法将返回
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	true，而getProcedures&amp;nbsp;方法将返回对已储存过程的描述。CallableStatement&amp;nbsp;继承&amp;nbsp;Statement&amp;nbsp;的方法（它们用于处理一般的
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SQL&amp;nbsp;语句），还继承了&amp;nbsp;PreparedStatement&amp;nbsp;的方法（它们用于处理&amp;nbsp;IN&amp;nbsp;参）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	中定义的所有方法都用于处理&amp;nbsp;OUT&amp;nbsp;参数或&amp;nbsp;INOUT&amp;nbsp;参数的输出部分：注册&amp;nbsp;OUT&amp;nbsp;参数的&amp;nbsp;JDBC&amp;nbsp;类型（一般&amp;nbsp;SQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型）、从这些参数中检索结果，或者检查所返回的值是否为&amp;nbsp;JDBC&amp;nbsp;NULL。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	1、创建&amp;nbsp;CallableStatement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;对象是用&amp;nbsp;Connection&amp;nbsp;方法&amp;nbsp;prepareCall&amp;nbsp;创建的。下例创建
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;的实例，其中含有对已储存过程&amp;nbsp;getTestData&amp;nbsp;调用。该过程有两个变量，但不含结果参数：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;cstmt&amp;nbsp;=&amp;nbsp;con.prepareCall(\"{call&amp;nbsp;getTestData(?,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;?)}\");&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	其中?占位符为IN、OUT还是INOUT参数，取决于已储存过程getTestData。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	2、IN和OUT参数
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	将IN参数传给
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;对象是通过&amp;nbsp;setXXX&amp;nbsp;方法完成的。该方法继承自
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PreparedStatement。所传入参数的类型决定了所用的setXXX方法（例如，用&amp;nbsp;setFloat&amp;nbsp;来传入&amp;nbsp;float
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	值等）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果已储存过程返回&amp;nbsp;OUT&amp;nbsp;参数，则在执行&amp;nbsp;CallableStatement&amp;nbsp;对象以前必须先注册每个&amp;nbsp;OUT&amp;nbsp;参数的&amp;nbsp;JDBC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型（这是必需的，因为某些&amp;nbsp;DBMS&amp;nbsp;要求&amp;nbsp;JDBC&amp;nbsp;类型）。注册&amp;nbsp;JDBC&amp;nbsp;类型是用&amp;nbsp;registerOutParameter
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	方法来完成的。语句执行完后，CallableStatement&amp;nbsp;的&amp;nbsp;getXXX&amp;nbsp;方法将取回参数值。正确的&amp;nbsp;getXXX&amp;nbsp;方法是为各参数所注册的&amp;nbsp;JDBC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型所对应的&amp;nbsp;Java&amp;nbsp;类型。换言之，&amp;nbsp;registerOutParameter&amp;nbsp;使用的是&amp;nbsp;JDBC&amp;nbsp;类型（因此它与数据库返回的&amp;nbsp;JDBC&amp;nbsp;类型匹配），而
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	getXXX&amp;nbsp;将之转换为&amp;nbsp;Java&amp;nbsp;类型。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作为示例，下述代码先注册&amp;nbsp;OUT&amp;nbsp;参数，执行由&amp;nbsp;cstmt&amp;nbsp;所调用的已储存过程，然后检索在&amp;nbsp;OUT
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数中返回的值。方法&amp;nbsp;getByte&amp;nbsp;从第一个&amp;nbsp;OUT&amp;nbsp;参数中取出一个&amp;nbsp;Java&amp;nbsp;字节，而&amp;nbsp;getBigDecimal&amp;nbsp;从第二个&amp;nbsp;OUT&amp;nbsp;参数中取出一个
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	BigDecimal&amp;nbsp;对象（小数点后面带三位数）：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;cstmt&amp;nbsp;=&amp;nbsp;con.prepareCall(\"{call&amp;nbsp;getTestData(?,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;?)}\");&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cstmt.registerOutParameter(1,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;java.sql.Types.TINYINT);&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cstmt.registerOutParameter(2,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;java.sql.Types.DECIMAL,&amp;nbsp;3);&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	cstmt.executeQuery();
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	byte&amp;nbsp;x&amp;nbsp;=&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;cstmt.getByte(1);&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	java.math.BigDecimal&amp;nbsp;n&amp;nbsp;=&amp;nbsp;cstmt.getBigDecimal(2,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;3);&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CallableStatement&amp;nbsp;与&amp;nbsp;ResultSet&amp;nbsp;不同，它不提供用增量方式检索大&amp;nbsp;OUT&amp;nbsp;值的特殊机制。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		3、INOUT参数
+	&lt;/p&gt;
+	&lt;p&gt;
+		既支持输入又接受输出的参数（INOUT&amp;nbsp;参数）除了调用
+	&lt;/p&gt;
+	&lt;p&gt;
+		registerOutParameter&amp;nbsp;方法外，还要求调用适当的&amp;nbsp;setXXX&amp;nbsp;方法（该方法是从&amp;nbsp;PreparedStatement&amp;nbsp;继承来的）。setXXX
+	&lt;/p&gt;
+	&lt;p&gt;
+		方法将参数值设置为输入参数，而&amp;nbsp;registerOutParameter&amp;nbsp;方法将它的&amp;nbsp;JDBC&amp;nbsp;类型注册为输出参数。setXXX&amp;nbsp;方法提供一个&amp;nbsp;Java
+	&lt;/p&gt;
+	&lt;p&gt;
+		值，而驱动程序先把这个值转换为&amp;nbsp;JDBC&amp;nbsp;值，然后将它送到数据库中。这种&amp;nbsp;IN&amp;nbsp;值的&amp;nbsp;JDBC&amp;nbsp;类型和提供给&amp;nbsp;registerOutParameter&amp;nbsp;方法的
+	&lt;/p&gt;
+	&lt;p&gt;
+		JDBC&amp;nbsp;类型应该相同。然后，要检索输出值，就要用对应的&amp;nbsp;getXXX&amp;nbsp;方法。例如，Java&amp;nbsp;类型为byte&amp;nbsp;的参数应该使用方法&amp;nbsp;setByte
+	&lt;/p&gt;
+	&lt;p&gt;
+		来赋输入值。应该给registerOutParameter&amp;nbsp;提供类型为&amp;nbsp;TINYINT&amp;nbsp;的&amp;nbsp;JDBC&amp;nbsp;类型，同时应使用&amp;nbsp;getByte
+	&lt;/p&gt;
+	&lt;p&gt;
+		来检索输出值。
+	&lt;/p&gt;
+	&lt;p&gt;
+		下例假设有一个已储存过程&amp;nbsp;reviseTotal，其唯一参数是&amp;nbsp;INOUT&amp;nbsp;参数。方法setByte&amp;nbsp;把此参数设为
+	&lt;/p&gt;
+	&lt;p&gt;
+		25，驱动程序将把它作为&amp;nbsp;JDBC&amp;nbsp;TINYINT&amp;nbsp;类型送到数据库中。接着，registerOutParameter&amp;nbsp;将该参数注册为&amp;nbsp;JDBC
+	&lt;/p&gt;
+	&lt;p&gt;
+		TINYINT。执行完该已储存过程后，将返回一个新的&amp;nbsp;JDBC&amp;nbsp;TINYINT&amp;nbsp;值。方法&amp;nbsp;getByte&amp;nbsp;将把这个新值作为&amp;nbsp;Java&amp;nbsp;byte
+	&lt;/p&gt;
+	&lt;p&gt;
+		类型检索。
+	&lt;/p&gt;
+	&lt;p&gt;
+		CallableStatement&amp;nbsp;cstmt&amp;nbsp;=&amp;nbsp;con.prepareCall(\"{call&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;reviseTotal(?)}\");&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		cstmt.setByte(1,&amp;nbsp;25);
+	&lt;/p&gt;
+	&lt;p&gt;
+		cstmt.registerOutParameter(1,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;java.sql.Types.TINYINT);&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		cstmt.executeUpdate();
+	&lt;/p&gt;
+	&lt;p&gt;
+		byte&amp;nbsp;x&amp;nbsp;=&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;cstmt.getByte(1);&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		4、先检索结果，再检索&amp;nbsp;OUT
+	&lt;/p&gt;
+	&lt;p&gt;
+		参数
+	&lt;/p&gt;
+	&lt;p&gt;
+		由于某些&amp;nbsp;DBMS&amp;nbsp;的限制，为了实现最大的可移植性，建议先检索由执行CallableStatement
+	&lt;/p&gt;
+	&lt;p&gt;
+		对象所产生的结果，然后再用&amp;nbsp;CallableStatement.getXXX&amp;nbsp;方法来检索&amp;nbsp;OUT&amp;nbsp;参数。如果&amp;nbsp;CallableStatement&amp;nbsp;对象返回多个
+	&lt;/p&gt;
+	&lt;p&gt;
+		ResultSet&amp;nbsp;对象（通过调用&amp;nbsp;execute&amp;nbsp;方法），在检索&amp;nbsp;OUT&amp;nbsp;参数前应先检索所有的结果。这种情况下，为确保对所有的结果都进行了访问，必须对
+	&lt;/p&gt;
+	&lt;p&gt;
+		Statement&amp;nbsp;方法&amp;nbsp;getResultSet、getUpdateCount&amp;nbsp;和getMoreResults
+	&lt;/p&gt;
+	&lt;p&gt;
+		进行调用，直到不再有结果为止。
+	&lt;/p&gt;
+	&lt;p&gt;
+		检索完所有的结果后，就可用&amp;nbsp;CallableStatement.getXXX&amp;nbsp;方法来检索&amp;nbsp;OUT
+	&lt;/p&gt;
+	&lt;p&gt;
+		参数中的值。
+	&lt;/p&gt;
+	&lt;p&gt;
+		5、检索作为OUT参数的NULL值
+	&lt;/p&gt;
+	&lt;p&gt;
+		返回到&amp;nbsp;OUT
+	&lt;/p&gt;
+	&lt;p&gt;
+		参数中的值可能会是JDBC&amp;nbsp;NULL。当出现这种情形时，将对&amp;nbsp;JDBC&amp;nbsp;NULL&amp;nbsp;值进行转换以使&amp;nbsp;getXXX&amp;nbsp;方法所返回的值为&amp;nbsp;null、0&amp;nbsp;或
+	&lt;/p&gt;
+	&lt;p&gt;
+		false，这取决于getXXX&amp;nbsp;方法类型。对于&amp;nbsp;ResultSet
+	&lt;/p&gt;
+	&lt;p&gt;
+		对象，要知道0或false是否源于JDBCNULL的唯一方法，是用方法wasNull进行检测。如果&amp;nbsp;getXXX&amp;nbsp;方法读取的最后一个值是&amp;nbsp;JDBC
+	&lt;/p&gt;
+	&lt;p&gt;
+		NULL，则该方法返回&amp;nbsp;true，否则返回&amp;nbsp;flase。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>概述
+
+
+	CallableStatement 对象为所有的 DBMS
+
+
+	提供了一种以标准形式调用已储存过程的方法。已储存过程储存在数据库中。对已储存过程的调用是
+
+
+	CallableStatement对象所含的内容。这种调用是用一种换码语法来写的，有两种形式：一种形式带结果参，另一种形式不带结果参数。结果参数是一种输出
+
+
+	(OUT) 参数，是已储</contentx>
+  <tags>_null_</tags>
+</root>

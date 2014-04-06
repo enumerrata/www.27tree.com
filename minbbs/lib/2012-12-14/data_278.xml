@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-12-14 09:05:51</datetime>
+  <title><![CDATA[7 种流行 PHP IDE 的比较]]></title>
+  <content><![CDATA[<p>
+	<strong><span style=\"font-size:16px;\">Eclipse</span></strong> 
+</p>
+<p>
+	在 Eclipse 开发平台中有两个插件支持 PHP。第一个 PHP IDE 项目是 Eclipse Foundation 项目，这意味着它在 Eclipse 许可范围内发布，并使用 Eclipse Foundation 工具和方法开发。
+</p>
+<p>
+	另一个是 PHPEclipse，它是独立开发的。因为使用 Eclipse，所以这两个插件都可以在三大操作系统中运行：Windows、Linux® 和 Mac OS X。您可以只下载这两个插件（如果已经使用 Eclipse），或者下载包含所需要的全部内容的 pre-fab 版本。
+</p>
+<p>
+	这两个插件都支持核心 IDE 特性。特别是代码智能特性，它十分强大，可以在需要的时候弹出并显示所有需要的类、方法和参数信息。
+</p>
+<p>
+	左边是在项目中文件的项目视图。下面是类视图，显示所有已经定义的类。中间是代码。可以同时在多个选项卡中打开多个文件。右边是调试和浏览的面板。这是常用的 PHPEclipse 用户界面。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121214/20121214090146_79814.jpg\" alt=\"\" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">Komodo</span></strong> 
+</p>
+<p>
+	下一个要介绍的是 ActiveState 的 Komodo IDE。这个 IDE 在 Windows、Mac OS X 和 Linux 上运行，并支持通用的开源语言 —— Perl、PHP 和 Ruby。代码智能引擎非常可靠。它扫描所有语言安装找到定制扩展，比如 PEAR 模块。在项目方面，它支持与 CVS、Subversion 和 Perforce 的集成，也允许直接向服务器 FTP 传递代码。
+</p>
+<p>
+	左边是类视图，右边是项目视图。中间的主要部分是代码视图。下面是调试用的断点、命令输出等等。对于所有这些系统，都可以根据需要定制 UI 。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121214/20121214090225_58599.jpg\" alt=\"\" />
+</p>
+<p>
+	Komodo 是一个商业产品。在我写作本文的时候，这款 IDE 有个人版（US$29.95）和专业版（US$299.95）两个版本可选。它的一个独特的特性是常规表达式调试器。不管您是常规表达式的新手还是已经开始涉足高级常规表达式特性，这点购买的投入都是很值得的。
+</p>
+<p>
+	它的缺点是没有数据库集成（至少我没有找到），而且我还遇到了代码智能不总是在想要的时候弹出的小问题。但是，总的来说，Komodo 还堪称是一款健壮的、特色丰富的、可靠的 PHP IDE。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">PHP 设计器</span></strong> 
+</p>
+<p>
+	PHP 设计器与其他 IDE 不太相同。当然，它支持有限的代码智能。但是，它更集中于 PHP Web 应用程序的设计方面。这一点在其集成的浏览器上可见一斑，该浏览器特别地采用了像素标尺用于帮助在页面上定位元素。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121214/20121214090306_17620.jpg\" alt=\"\" /> 
+</p>
+<p>
+	PHP 设计器中的 PHP 的代码智能和调试特性不是很显著，而对 HTML、CSS 和 JavaScript 的代码智能支持上要相对更强一些。PHP 设计器介于程序员使用的 IDE （主要侧重于代码）和 Adobe Dreamweaver （更侧重于设计）之间。如果您正在寻找这类中间产品，那么 PHP 设计器很值得考虑，因为 IDE 对于个人使用是免费的，而其专业版也只需 US$55。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">PHPEdit</span></strong> 
+</p>
+<p>
+	来自 WaterProof Software 的 PHPEdit 感觉像是应用于 PHP 的 Microsoft msdev 环境 —— 这是个不错的事情。PHPEdit 是仅用于 Windows 的 IDE，很容易设置。它甚至还有 PHP 的版本。在 PHP、CSS 和 HTML 的代码智能方面它做得很好，但是却不提供对 JavaScript 的代码智能的支持。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121214/20121214090405_42040.jpg\" alt=\"\" /> 
+</p>
+<p>
+	为了便于部署，PHPEdit 可以连接到 CVS 和 Subversion，以及 FTP 和它自己专有的 ezDeployment 系统。除了代码智能特性，为了加速开发，这款 IDE 有一个极好的代码示例整体模板库，您还可以向库里面添加内容。PHPEdit 的评估版本可以免费使用，要得到正式版本，需要 US$89。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">Zend Studio</span></strong> 
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20121214/20121214090442_12029.jpg\" alt=\"\" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	在其他一些 IDE 中，代码片段是内置的以使代码编制更为容易。这款 IDE 也直接集成了数据库以给出可用的表格和字段。
+</p>
+<p>
+	Zend Studio 的标准版需要 US$99，专业版需要 US$299。我在这里提到的某些特性在标准版本中没有包含。Zend Studio 试用版本可以免费使用。
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>精通Android游戏开发</title>
+  <author>Vladimir Silva </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-14 12:52:33</submit-date-time>
+  <img-link>c276cd1496857d04f0dee579f20a85d1.png</img-link>
+  <book-area>android</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		将本地PC游戏轻松移植到Android的秘技。
+	&lt;/p&gt;
+	&lt;p&gt;
+		精彩炫酷游戏示例引人入胜。
+	&lt;/p&gt;
+	&lt;p&gt;
+		简明易读，一学就会。&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《精通Android游戏开发》讨论如何将PC上的3D游戏移植到Android平台。作者从必备的技能和软件工具入手，逐步介绍如何从头构建纯Java游戏，如何混合使用OpenGL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	3D图形和JNI，并以真实的PC游戏Wolfenstein&amp;nbsp;3D和Doom为例，介绍如何融合Java的优雅设计和C的强大功能，使混合游戏达到最佳性能。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《精通Android游戏开发》适合熟悉Android平台的开发人员阅读。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

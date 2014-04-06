@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-04-24 14:48:09</datetime>
+  <title><![CDATA[ubuntu12.04  N卡双显卡 解决方案]]></title>
+  <content><![CDATA[<p>
+	现在笔记本的配置如果是intel的i系列的cpu自带了核心显卡，加上独显就是双显卡。
+</p>
+<p>
+	当你美滋滋的装好了ubuntu之后，习惯性的用自带的驱动检测工具给装上显卡驱动，以为大功告成的时候，肯跌的事情来了，当你重启你会发现，黑屏！！！！！！！！！！！木有错，你进不去X桌面了，这就是双显卡的悲剧，咋办捏？就这样放弃么，肿么可能，用linux就必修经得起折腾，于是上网狂找资料，发现一个第三方的玩意貌似可以解决，叫Bumblebee(大黄蜂)，Nvidia的双显卡切换叫Optimus（擎天柱），还有一个双显卡切换的软件ironhide（铁皮）。大黄蜂是唯一完美解决的，废话不扯，入正题 = =》
+</p>
+<p>
+	<br />
+</p>
+<p>
+	第一步：安装Bumblebee(大黄蜂)
+</p>
+<p>
+	<strong>sudo </strong><strong>add-apt-repository ppa:bumblebee/stable</strong>
+</p>
+<p>
+	<strong>sudo apt-get update</strong>
+</p>
+<p>
+	<strong>sudo apt-get install bumblebee bumblebee-nvidia</strong>
+</p>
+<p>
+	<strong>sudo reboot</strong>
+</p>
+<p>
+	ps: Bumblebee3
+</p>
+<p>
+	已经非常完善，把所有的东西都配置好了
+</p>
+<p>
+	第二步：查看显卡工作状态
+</p>
+<p>
+	lspci |grep VGA
+</p>
+<p>
+	结果如下：
+</p>
+<p>
+	00:02.0 VGA
+</p>
+<p>
+	compatible controller: Intel Corporation 2nd Generation Core
+</p>
+<p>
+	Processor Family Integrated Graphics Controller <strong>(rev 09)</strong>
+</p>
+<p>
+	01:00.0 VGA compatible controller: NVIDIA Corporation GF108
+</p>
+<p>
+	[GeForce GT 540M] <strong>(rev ff)</strong>
+</p>
+<p>
+	独显的状态为rev ff 即为关闭状态，OK 大功告成！
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

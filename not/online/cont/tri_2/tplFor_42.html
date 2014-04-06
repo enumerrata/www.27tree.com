@@ -1,0 +1,85 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX XML 实例</h1>
+</div>
+<div>
+
+<p><b>AJAX 可与 XML 文件进行交互式通信。</b></p>
+	
+<h1>AJAX XML 实例</h1>
+
+<p>在下面的 AJAX 实例中，我们将演示网页如何使用 AJAX 技术从 XML 文件中读取信息。</p>
+
+<h1>在下面的下列列表中选择一个 CD</h1>
+
+<p>选择 CD：  Bob Dylan Bonnie Tyler Dolly Parton</p>
+<p>在此列出 CD 信息。本例包括三张页面：</p>
+
+<ul>
+<li>一个简单 HTML 表单</li>
+<li>一个 XML 文件</li>
+>li>一个 JavaScript 文件</li>
+<li>一张 PHP 页面</li>
+</ul>
+
+<h1>HTML 表单</h1>
+
+<p>上面的例子包含了一张简单的 HTML 表单，以及指向 JavaScript 的链接：</p>
+
+<code>
+&lt;html&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;src="selectcd.js"&gt;&lt;/script&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select&nbsp;a&nbsp;CD:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select&nbsp;name="cds"&nbsp;onchange="showCD(this.value)"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Bob&nbsp;Dylan"&gt;Bob&nbsp;Dylan&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Bee&nbsp;Gees"&gt;Bee&nbsp;Gees&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&nbsp;value="Cat&nbsp;Stevens"&gt;Cat&nbsp;Stevens&lt;/option&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;id="txtHint"&gt;&lt;b&gt;CD&nbsp;info&nbsp;will&nbsp;be&nbsp;listed&nbsp;here.&lt;/b&gt;&lt;/div&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>正如您看到的，它仅仅是一张简单的 HTML 表单，其中带有名为 "cds" 的下拉列表。</p>
+<p>表单下面的段落包含了一个名为 "txtHint" 的 div。这个 div 用作从 web 服务器检索到的数据的占位符。</p>
+<p>当用户选择数据时，会执行名为 "showCD" 的函数。这个函数的执行是由 "onchange" 事件触发的。</p>
+<p>换句话说，每当用户改变了下拉列表中的值，就会调用 showCD 函数。</p>
+
+<h1>XML 文件</h1>
+
+<p>XML 文件是 "cd_catalog.xml"。该文件中包含了有关 CD 收藏的数据。</p>
+
+<h1>JavaScript</h1>
+
+<p>这是存储在 "selectcd.js" 文件中的 JavaScript 代码：</p>
+
+<code>
+var&nbsp;xmlHttp<br /><br />function&nbsp;showCD(str)&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;xmlHttp=GetXmlHttpObject()<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(xmlHttp==null)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert&nbsp;("Browser&nbsp;does&nbsp;not&nbsp;support&nbsp;HTTP&nbsp;Request")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;url="getcd.php"<br />&nbsp;&nbsp;&nbsp;&nbsp;url=url+"?q="+str<br />&nbsp;&nbsp;&nbsp;&nbsp;url=url+"&sid="+Math.random()<br />&nbsp;&nbsp;&nbsp;&nbsp;xmlHttp.onreadystatechange=stateChanged&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;xmlHttp.open("GET",url,true)<br />&nbsp;&nbsp;&nbsp;&nbsp;xmlHttp.send(null)<br />}<br /><br />function&nbsp;stateChanged()&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(xmlHttp.readyState==4&nbsp;||&nbsp;xmlHttp.readyState=="complete")&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("txtHint").innerHTML=xmlHttp.responseText&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br />}<br /><br />function&nbsp;GetXmlHttpObject(){<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;xmlhttp=null;<br />&nbsp;&nbsp;&nbsp;&nbsp;try{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();<br />&nbsp;&nbsp;&nbsp;&nbsp;}catch(e)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;XMLHTTP_IDS&nbsp;=&nbsp;new&nbsp;Array('MSXML2.XMLHTTP.5.0',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP.4.0',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP.3.0',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Microsoft.XMLHTTP');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;success&nbsp;=&nbsp;false;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var&nbsp;i=0&nbsp;;&nbsp;i&nbsp;<&nbsp;XMLHTTP_IDS.length&nbsp;&&&nbsp;!success&nbsp;;&nbsp;i++)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp&nbsp;=&nbsp;new&nbsp;ActiveXObject(XMLHTTP_IDS[i]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success&nbsp;=&nbsp;true;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch(e){}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!success)&nbsp;if(console)&nbsp;console.log("Unable&nbsp;to&nbsp;create&nbsp;XMLHttpRequest!");<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;xmlhttp;<br />}
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>stateChanged() 和 GetXmlHttpObject 函数与上一节中的相同，您可以参阅上一页中的相关解释。</p>
+
+<p><b>showCD() 函数</b></p>
+
+<p>假如选择了下拉列表中的某个项目，则函数执行：</p>
+
+<p>1.调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象</p>
+<p>2.定义发送到服务器的 URL（文件名）</p>
+<p>3.向 URL 添加带有下拉列表内容的参数 (q)</p>
+<p>4.添加一个随机数，以防服务器使用缓存的文件</p>
+<p>5.当触发事件时调用 stateChanged</p>
+<p>6.通过给定的 URL 打开 XMLHTTP 对象</p>
+<p>7.向服务器发送 HTTP 请求</p>
+
+<h1>PHP 页面</h1>
+
+<p>这个被 JavaScript 调用的服务器页面，是一个名为 "getcd.php" 的简单 PHP 文件。</p>
+<p>这张页面是用 PHP 编写的，使用 XML DOM 来加载 XML 文档 "cd_catalog.xml"。</p>
+<p>代码运行针对 XML 文件的查询，并以 HTML 返回结果：</p>
+
+<code>&lt;?php<br />$q&nbsp;=&nbsp;$_GET["q"];<br />$xmlDoc&nbsp;=&nbsp;new&nbsp;DOMDocument();<br />$xmlDoc-&gt;load("cd_catalog.xml");<br />$x&nbsp;=&nbsp;$xmlDoc-&gt;getElementsByTagName('ARTIST');<br />for&nbsp;($i&nbsp;=&nbsp;0;&nbsp;$i&nbsp;&lt;=&nbsp;$x-&gt;length&nbsp;-&nbsp;1;&nbsp;$i++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($x-&gt;item($i)-&gt;nodeType&nbsp;==&nbsp;1)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($x-&gt;item($i)-&gt;childNodes-&gt;item(0)-&gt;nodeValue&nbsp;==&nbsp;$q)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$y&nbsp;=&nbsp;($x-&gt;item($i)-&gt;parentNode);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br />$cd&nbsp;=&nbsp;($y-&gt;childNodes);<br />for&nbsp;($i&nbsp;=&nbsp;0;&nbsp;$i&nbsp;&lt;&nbsp;$cd-&gt;length;&nbsp;$i++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($cd-&gt;item($i)-&gt;nodeType&nbsp;==&nbsp;1)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo($cd-&gt;item($i)-&gt;nodeName);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(":&nbsp;");<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo($cd-&gt;item($i)-&gt;childNodes-&gt;item(0)-&gt;nodeValue);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("&lt;br&nbsp;/&gt;");<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br />?&gt;
+</code>
+
+<p><b>例子解释</b></p>
+
+<p>当请求从 JavaScript 发送到 PHP 页面时，发生：</p>
+
+<p>1.PHP 创建 "cd_catalog.xml" 文件的 XML DOM 对象</p>
+<p>2.循环所有 "artist" 元素 (nodetypes = 1)，查找与 JavaScript 所传数据向匹配的名字</p>
+<p>3.找到 CD 包含的正确 artist</p>
+<p>4.输出 album 的信息，并发送到 "txtHint" 占位符</p>
+
+</div>

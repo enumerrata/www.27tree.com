@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>453</uid>
+  <datetime>2013-04-18 09:11:04</datetime>
+  <title><![CDATA[Win8系统设置WIFI热点 ]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	1、运行cmd
+</p>
+<p style=\"text-indent:2em;\">
+	首先找到你的cmd ，点右键“以管理员身份运行”（win8开始菜单貌似没有，我在“（win8安装盘）C:\\Windows\\System32\\cmd.exe”这里找到的）。
+</p>
+<p style=\"text-indent:2em;\">
+	2、启用并设定虚拟WiFi网卡，输入命令：netsh wlan set hostednetwork mode=allow ssid=Jaeden key=12345678
+</p>
+<p style=\"text-indent:2em;\">
+	(注意：上边命令“ssid”后红字为网络名称，也就是手机搜索到的wifi名称，自己命名，比如上面Jaeden可改为MyWiFi等等（汉语不识别）。\"key\"后边红字为密码，就是手机搜索到wifi之后连接时要输的密码，自己设定，密码需8位或者8位以上（字母数字均可）。运行完成先不要关闭cmd.
+</p>
+<p style=\"text-indent:2em;\">
+	3、启用连接
+</p>
+<p style=\"text-indent:2em;\">
+	打开“控制面板”—&gt;“网络和共享中心”—&gt;“更改适配器设置”，多出的这一项“MicrosoftVirtual WiFi Miniport Adapter”，右键启用连接。开启成功，网络连接中会多出一个网卡为“MicrosoftVirtual WiFi Miniport Adapter”的无线。为了方便区别，将其重命名为“虚拟Wi-Fi 2”
+</p>
+<p style=\"text-indent:2em;\">
+	3、设置Internet连接共享在“网络连接”窗口中，右键单击已连接到Internet的网络连接，右键选择 属性→共享，勾选“允许其他…连接”并选择“虚拟Wi-Fi 2”确定之后，提供共享的网卡图标旁会出现“共享的”字样，表示“有线以太网连接”已共享至“虚拟Wi-Fi 2”
+</p>
+<p style=\"text-indent:2em;\">
+	4、启用无线网络继续在命令提示符中输入:netsh wlan starthostednetwork运行(如果想关闭wifi ,输入：netsh wlan stop thostednetwork 运行)
+</p>
+<p style=\"text-indent:2em;\">
+	5、设置开关
+</p>
+<p style=\"text-indent:2em;\">
+	由于电脑重启后wifi网络要重新开启，新建一个记事本文件，输入：netsh wlan star thostednetwork 保存名称为：启动wifi.bat
+</p>
+<p style=\"text-indent:2em;\">
+	再建一个记事本文件，输入：netsh wlan stop hostednetwork &nbsp;保存名称为：关闭wifi.bat &nbsp;想开启（或者关闭）wifi时，右键“以管理员身份”运行就OK了
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>
+<div style=\"text-indent:2em;\">
+	<span style=\"color:#444444;font-family:Tahoma, \'Microsoft Yahei\', Simsun;font-size:14px;line-height:21px;white-space:normal;background-color:#FFFFFF;\"><br />
+</span>
+</div>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

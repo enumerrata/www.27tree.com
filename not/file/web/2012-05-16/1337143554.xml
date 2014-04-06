@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>开启MySQL 数据库远程登陆帐号</title>
+<content>&amp;lt;p&amp;gt;
+	在工作实践和学习中，如何开启&amp;nbsp;MySQL&amp;nbsp;数据库的远程登陆帐号算是一个难点的问题，以下内容便是在工作和实践中总结出来的两大步骤，能帮助DBA们顺利的完成开启&amp;nbsp;MySQL&amp;nbsp;数据库的远程登陆帐号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、确定服务器上的防火墙没有阻止&amp;nbsp;3306&amp;nbsp;端口
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL&amp;nbsp;默认的端口是&amp;nbsp;3306&amp;nbsp;，需要确定防火墙没有阻止&amp;nbsp;3306&amp;nbsp;端口，否则远程是无法通过&amp;nbsp;3306&amp;nbsp;端口连接到&amp;nbsp;MySQL&amp;nbsp;的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您在安装&amp;nbsp;MySQL&amp;nbsp;时指定了其他端口，请在防火墙中开启您指定的&amp;nbsp;MySQL&amp;nbsp;使用的端口号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果不知道怎样设置您的服务器上的防火墙，请向您的服务器管理员咨询。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、增加允许远程连接&amp;nbsp;MySQL&amp;nbsp;用户并授权
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1）首先以&amp;nbsp;root&amp;nbsp;帐户登陆&amp;nbsp;MySQL
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;Windows&amp;nbsp;主机中点击开始菜单，运行，输入“cmd”，进入控制台，MySQL&amp;nbsp;的&amp;nbsp;bin&amp;nbsp;目录下，然后输入下面的命令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;Linux&amp;nbsp;主机中在命令提示行下输入下面的命令。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;gt;&amp;nbsp;MySQL&amp;nbsp;-uroot&amp;nbsp;-p123456
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CODE:&amp;nbsp;[COPY]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;gt;&amp;nbsp;MySQL&amp;nbsp;-uroot&amp;nbsp;-p123456
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	123456&amp;nbsp;为&amp;nbsp;root&amp;nbsp;用户的密码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2）创建远程登陆用户并授权
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;gt;&amp;nbsp;grant&amp;nbsp;all&amp;nbsp;PRIVILEGES&amp;nbsp;on&amp;nbsp;discuz.*&amp;nbsp;to&amp;nbsp;ted@&amp;nbsp;123.123.123.123&amp;nbsp;&amp;nbsp;identified&amp;nbsp;by&amp;nbsp;&amp;nbsp;123456&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的语句表示将&amp;nbsp;discuz&amp;nbsp;数据库的所有权限授权给&amp;nbsp;ted&amp;nbsp;这个用户，允许&amp;nbsp;ted&amp;nbsp;用户在&amp;nbsp;123.123.123.123&amp;nbsp;这个&amp;nbsp;IP&amp;nbsp;进行远程登陆，并设置&amp;nbsp;ted&amp;nbsp;用户的密码为&amp;nbsp;123456&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面逐一分析所有的参数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	all&amp;nbsp;PRIVILEGES&amp;nbsp;表示赋予所有的权限给指定用户，这里也可以替换为赋予某一具体的权限，例如：select,insert,update,delete,create,drop&amp;nbsp;等，具体权限间用“,”半角逗号分隔。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	discuz.*&amp;nbsp;表示上面的权限是针对于哪个表的，discuz&amp;nbsp;指的是数据库，后面的&amp;nbsp;*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表示对于所有的表，由此可以推理出：对于全部数据库的全部表授权为“*.*”，对于某一数据库的全部表授权为“数据库名.*”，对于某一数据库的某一表授
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	权为“数据库名.表名”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ted&amp;nbsp;表示你要给哪个用户授权，这个用户可以是存在的用户，也可以是不存在的用户。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	123.123.123.123&amp;nbsp;表示允许远程连接的&amp;nbsp;IP&amp;nbsp;地址，如果想不限制链接的&amp;nbsp;IP&amp;nbsp;则设置为“%”即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	123456&amp;nbsp;为用户的密码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行了上面的语句后，再执行下面的语句，方可立即生效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;gt;&amp;nbsp;flush&amp;nbsp;privileges;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-16/1337143554.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

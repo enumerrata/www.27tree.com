@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-15 12:06:11</datetime>
+  <title>PHP 编码规范之 空白</title>
+  <content>&lt;p&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;1.空行&lt;/span&gt;&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	空行将逻辑相关的代码段分隔开，以提高可读性。
+&lt;/p&gt;
+&lt;p&gt;
+	下列情况应该总是使用两个空行：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;
+		一个源文件的两个片段(section)之间
+	&lt;/li&gt;
+	&lt;li&gt;
+		类声明声明之间
+	&lt;/li&gt;
+	&lt;li&gt;
+		下列情况应该总是使用一个空行：
+	&lt;/li&gt;
+	&lt;li&gt;
+		两个方法之间
+	&lt;/li&gt;
+	&lt;li&gt;
+		方法内的局部变量和方法的第一条语句之间
+	&lt;/li&gt;
+	&lt;li&gt;
+		块注释或单行注释之前
+	&lt;/li&gt;
+	&lt;li&gt;
+		-一个方法内的两个逻辑段之间，用以提高可读性
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:14px;\"&gt;2.空格&lt;/span&gt;&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		下列情况应该使用空格：
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;一个紧跟着括号的关键字应该被空格分开&lt;/strong&gt;，例如：
+	&lt;/p&gt;
+	&lt;p&gt;
+		while&amp;nbsp;(&amp;nbsp;true&amp;nbsp;)
+	&lt;/p&gt;
+	&lt;p&gt;
+		{
+	&lt;/p&gt;
+	&lt;p&gt;
+		...
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		注意：空格不应该置于方法名与其左括号之间。这将有助于区分关键字和方法调用。
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;空白应该位于参数列表中逗号的后面&lt;/strong&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		所有的二元运算符，除了\".\"，应该使用空格将之与操作数分开。一元操作符和操作数之间不因该加空格，比如：负号(\"-\")、自增(\"++\")和自减(\"--\")。例如：
+	&lt;/p&gt;
+	&lt;p&gt;
+		$a&amp;nbsp;+=&amp;nbsp;$c&amp;nbsp;+&amp;nbsp;$d;
+	&lt;/p&gt;
+	&lt;p&gt;
+		$a&amp;nbsp;=&amp;nbsp;(&amp;nbsp;$a&amp;nbsp;+&amp;nbsp;$b&amp;nbsp;)&amp;nbsp;/&amp;nbsp;(&amp;nbsp;$c&amp;nbsp;*&amp;nbsp;$d&amp;nbsp;);
+	&lt;/p&gt;
+	&lt;p&gt;
+		while&amp;nbsp;(&amp;nbsp;$d++&amp;nbsp;=&amp;nbsp;$s++&amp;nbsp;)&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		$n++;
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		printSize(&amp;nbsp;\"size&amp;nbsp;is&amp;nbsp;\"&amp;nbsp;+&amp;nbsp;$foo&amp;nbsp;+
+	&lt;/p&gt;
+	&lt;p&gt;
+		\"_%5c_n\"&amp;nbsp;);
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;for语句中的表达式应该被空格分开&lt;/strong&gt;，例如：
+	&lt;/p&gt;
+	&lt;p&gt;
+		for&amp;nbsp;(expr1;&amp;nbsp;expr2;&amp;nbsp;expr3)
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;strong&gt;强制转型后应该跟一个空格&lt;/strong&gt;，例如：
+	&lt;/p&gt;
+	&lt;p&gt;
+		myMethod(&amp;nbsp;(byte)&amp;nbsp;$aNum,&amp;nbsp;(int)&amp;nbsp;$x&amp;nbsp;);
+	&lt;/p&gt;
+	&lt;p&gt;
+		myMethod(&amp;nbsp;(int)&amp;nbsp;($cp
+	&lt;/p&gt;
+	&lt;p&gt;
+		+&amp;nbsp;5&amp;nbsp;),&amp;nbsp;(&amp;nbsp;(int)&amp;nbsp;($i&amp;nbsp;+&amp;nbsp;3))&amp;nbsp;+&amp;nbsp;1&amp;nbsp;);
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>1.空行
+
+
+	空行将逻辑相关的代码段分隔开，以提高可读性。
+
+
+	下列情况应该总是使用两个空行：
+
+
+	
+
+
+	
+		一个源文件的两个片段(section)之间
+	
+	
+		类声明声明之间
+	
+	
+		下列情况应该总是使用一个空行：
+	
+	
+		两个方法之间
+	
+	
+		方法内的局部变量和方法的第一条语句之间
+	
+	
+		块注释或单行注释之前
+	
+	
+		</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Getting Started with GEO, CouchDB, and Node.js]]></title>
+  <author>David Thompson</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-01-07 00:03:11</submit-date-time>
+  <img-link>cd5bb6dc87aba7c73a7b123e0fa17187.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	Today\'s mobile devices have GPS and standard APIs to give you access to coordinates - but what can you do with that data? With this concise book, application developers learn how to work with location data quickly and easily, using Node.js, CouchDB, and other open source tools and libraries. Node.js makes it simple to run event code on the Web, and the CouchDB document-oriented database lets you store location data and perform complex queries on it quickly. You\'ll learn how to get started with these tools, and then use them together to build an example project called MapChat, using HTML and JavaScript code samples. * Learn how to serve dynamic content with Node.js, and use its asynchronous IO to handle several requests at once * Become familiar with GeoJSON, Geohash, and the Geospatial Data Abstraction Library (GDAL) for working with spatial data * Build geospatial indexes using the GeoCouch branch of CouchDB * Combine these tools to build a project that lets users post real-time chat messages tagged with their current map location
+</p>
+<p>
+	<strong>David Thompson </strong>has been developing code using open source tools for 10 years. He is passionate about open source, web applications, and api design. He has work almost exclusively for startups where building applications on new and innovative technologies is the norm. Since location has become more available on mobile devices in the last few years he has focused his attention at enhancing existing projects with location.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

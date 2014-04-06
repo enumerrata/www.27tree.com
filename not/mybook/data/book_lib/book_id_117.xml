@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Dojo权威指南</title>
+  <author>（美）拉塞尔</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-26 13:03:48</submit-date-time>
+  <img-link>69976098f73f405048c1f335aea7fd79.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通过使用Dojo这个工业强度的JavaScript工具箱，我们可以比使用其他任何Ajax框架更高效、更容易地创建JavaScript或Ajax驱动的应用程序和站点。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书向读者展示了如何充分利用Dojo工具箱中包含的大量实用特性，以前所未有的效率开发出功能丰富、响应敏捷的Web应用程序。读者通过本书能够学习到创建复杂布局和表单控件（常见于高级桌面应用程序）的技巧，掌握精妙的JavaScript独有特性和通信机制。另外，读者还可以：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	了解适用于Dojo1.x版本的简明介绍。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	研究大量Dojo应用实例及经过测试的代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	探索Dojo的标准JavaScript库和基础实用程序。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	学习拖放、后退按钮处理及动画。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	创建并利用Dijit（Dojo部件）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		“Matthew不仅以简洁流畅的文笔深入浅出、通俗易懂地讲解了Dojo工具箱，而且他在遇到不正常情况时提出的问题也促进了Dojom具箱的完善。他的建议推动了Dojo的发展。本书的确是名副其实的Dojo权威指南。”
+	&lt;/p&gt;
+	&lt;p&gt;
+		——Dylan&amp;nbsp;Schiemann，SitePen，Inc.，CEO，Dojo工具箱共同创始人
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

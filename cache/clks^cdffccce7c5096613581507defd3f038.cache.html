@@ -1,0 +1,393 @@
+<__cache@1389781211-@1389781212@clks__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>二叉树社区 - 一个属于程序员的SNS社交网络</title>
+        <meta name="keywords" content="二叉树,IT技术,IT技术社区,程序员好书推荐,编程好书推荐,seo实战密码" />
+        <meta name="description" content="二叉树社区是一个IT技术社区,专业于提供IT技术资讯、编程开发技术资源。在这里你可以认识许多志同道合的朋友,通过交流提升自身技术水平。我们搞IT,IT不搞我们。" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="robots" content="all" />
+        <meta property="qc:admins" content="464152416762742556375" />
+        <meta name="chinaz-site-verification" content="89ec235c-38a8-49d0-84cb-d8429bb29041" />
+        <meta name="ujianVerification" content="e327460f95e32bb03e92155c44c6f043" />
+        <meta name="google-site-verification" content="vCNyYxLA3og3n4h-oR4E4cZI4iOl9XMw9PvSRu_T5sg" />
+        <meta name="360-site-verification" content="005c3f777b143dfa89b21877e641d042" />
+        <meta name="baidu-site-verification" content="8LpiEGHmcStKiCFg" />
+        <meta name="baidu_union_verify" content="19c4a3ed94202380a4fbb2e395b47939" />
+        <meta name="alexaVerifyID" content="VQ9ne6K29iHY0aiiZErNIuxWW5A" />
+        <meta http-equiv="expires" content="Thursday 16 January 2014 18:20 GMT" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" media="screen" />
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/sources-gz/core.css.php" />
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/sp_font.js"></script>
+        <script src="/sources-gz/coref.js.php"></script>
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <!--@body-->
+        <div class="sdCenter">
+            <!--@start-left-->
+            <div class="Shadow" style="width:720px;float:left;border:1px solid #ccc;position:relative;background:#fff;padding:10px 15px;"><div class="atr-bac-left"></div>
+                <div class="f-w-item">
+                    <div class="f-w-item-l">
+                        <span class="RedBar">
+                            <span class="RedBar-in">图文资讯</span>
+                        </span>
+                        <div style="margin-bottom:10px;padding-bottom:10px;line-height:19px;">
+    <h1 class="Elipsis"><a href="/blog/2013-05-09/content_400.html" target="_blank">张朝阳：我们这代人实际是没价值观也没原则</a></h1>
+    <div>
+        <a class="headwapper"><img src="http://upload.chinaz.com/2013/0509/1368062856320.jpg" width="90px" height="70px" alt="张朝阳：我们这代人实际是没价值观也没原则"/></a>
+        <div style="margin-left:105px;color:#444;">
+            导读：张朝阳近日对话云科技程苓峰，谈到搜狐的发展，也谈到他个人如何战胜精神的苦难，学会与自己相处。以下是对话全文：
+	
+	
+		张朝阳：媒体业变化太大了。前两年是要请很多记者到...        </div>
+        <div class="clear"></div>
+    </div>
+</div><div style="margin-bottom:10px;padding-bottom:10px;line-height:19px;">
+    <h1 class="Elipsis"><a href="/blog/2013-04-27/content_393.html" target="_blank">传阿里入股新浪微博即将揭晓 或全盘收购</a></h1>
+    <div>
+        <a class="headwapper"><img src="http://upload.chinaz.com/2013/0427/1367021109129.jpg" width="90px" height="70px" alt="传阿里入股新浪微博即将揭晓 或全盘收购"/></a>
+        <div style="margin-left:105px;color:#444;">
+            
+	
+
+
+	
+		中国互联网今年最重磅的交易或将很快揭晓。阿里巴巴入股新浪微博的传闻已流传很久，腾讯科技获悉，新浪或将很快宣布与阿里巴巴的资本合作，不排除阿里巴巴全盘收购新浪微...        </div>
+        <div class="clear"></div>
+    </div>
+</div><div style="margin-bottom:10px;padding-bottom:10px;line-height:19px;">
+    <h1 class="Elipsis"><a href="/blog/2013-04-20/content_387.html" target="_blank">戴一整天谷歌眼镜是啥感觉？</a></h1>
+    <div>
+        <a class="headwapper"><img src="http://www.27tree.com/mod/kd/attached/image/20130420/20130420075144_16836.jpg" width="90px" height="70px" alt="戴一整天谷歌眼镜是啥感觉？"/></a>
+        <div style="margin-left:105px;color:#444;">
+            
+	谷歌眼镜终于推向用户手中了，Numerate的CTO Brandon Allgood 有幸成为首批使用者之一。他在给大家分享了他第一天使用谷歌眼镜后的感想。表示电池续航能力...        </div>
+        <div class="clear"></div>
+    </div>
+</div>                    </div>
+                    <div class="f-w-item-r">
+                        <span class="RedBar">
+                            <span class="RedBar-in">推荐新闻</span>
+                        </span>
+                        <div>
+    <h1 class="Elipsis"><a href="/blog/2013-05-16/content_408.html" target="_blank">程序员你迷茫个鬼啊？你忧伤个毛啊？你寂寞个蛋啊？</a></h1>
+    <div style="color:#444;">你要是天天一大早六点起床，刷牙洗脸，吃顿早点，7点不到就去挤地铁公交，使劲的小心不被挤成饼。9点就老老实实的坐在办公室里...</div>
+</div><div>
+    <h1 class="Elipsis"><a href="/blog/2013-05-09/content_398.html" target="_blank">搜索引擎格局再生变：百度360腾讯竞购搜狗</a></h1>
+    <div style="color:#444;">新浪科技讯 5月8日晚间消息，投资界消息人士透露，搜狐旗下搜狗正寻求出售，目前百度、360、腾讯均在竞购，其中360竞购...</div>
+</div><div>
+    <h1 class="Elipsis"><a href="/blog/2013-04-17/content_366.html" target="_blank">中移动视微信为猛虎 欲重构飞信进行反击</a></h1>
+    <div style="color:#444;">
+	&nbsp; &nbsp; &nbsp;&nbsp;有消息透露中移动内部PPT显示：中移动欲重构飞信，反击微信！运营...</div>
+</div><div>
+    <h1 class="Elipsis"><a href="/blog/2013-04-17/content_365.html" target="_blank">中兴通讯发力物联网：行业标准不统一成制约</a></h1>
+    <div style="color:#444;">
+	在进军物联网多年后，中兴通讯于日前做出了一个重要决定，在终端领域成立了有关物联网的子公司。面对下一个“万亿级”产业，...</div>
+</div><div>
+    <h1 class="Elipsis"><a href="/blog/2013-03-31/content_352.html" target="_blank">《在你身边，为你设计》——腾讯的用户体验设计之道</a></h1>
+    <div style="color:#444;">
+	
+
+
+	书中文章的作者，都是来自腾讯最早也是最核心团队之一CDC，他们都有着丰富的设计经验，书中集合了他们多年沉淀下...</div>
+</div>                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--<div class="f-w-item">
+                    <span class="RedBar">
+                        <span class="RedBar-in">今日头条</span>
+                        <div class="RedBar-in-r">
+                            <div style="margin-top:5px;*margin-top:7px;">
+                                <a class="rb-btn rb-btn-active"></a><a class="rb-btn"></a><a class="rb-btn"></a>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="f-headline-items">
+                        <h1><a href="http://www.27tree.com/blog/2012-11-12/content_242.html">7个改变世界的Java项目</a></h1>
+                        <div style="color:#666;">
+                            <div class="f-headline-initems">
+                                <img src="fontBigt/9a232b1b8a3d4e0340232d106f012db3.jpg" />
+                            </div>
+                            <div style="margin-right:170px;">
+                                Java的开源生态系统是强大而健康的，这是我们（Oreilly）创建OSCON Java（Open Source Convention Java）的主要原因之一。在过去10年中，一些项目已经被广泛接受，并且已经统治了Java软件开发世界，一些甚至影响到了用户的日常生活。
+                                JUnit
+                                Kent Beck先生关于Smalltalk的单元测试被Kent Beck 和Erich Gamma带进Java——JUnit。在这十年里，JUnit带来了测试驱动开发的普及浪潮。许多其它流行语言的单元测试版本也跟着被创造出来了，例如.NET、C、Python、Perl。
+                                Eclipse
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="f-w-item">
+                    <div style="float:left;width:360px;">
+                        <span class="RedBar">
+                            <span class="RedBar-in">最新<a class="rb-more-btn" href="/blog/index.html">博客</a></span>
+                        </span>
+                        <div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/345" title="514458254的博客专栏">
+        <img src="/user/data/head-img/345_head.jpg" width="45px" alt="514458254的博客专栏"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/blog/2014-01-09/content_420.html">淘宝网禁售比特币等虚拟货币及软件教程</a></div>
+        <a>514458254</a>
+        <span class="block Gray">1月9日 21:40</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/851" title="leo的博客专栏">
+        <img src="/user/data/head-img/851_head.jpg" width="45px" alt="leo的博客专栏"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/blog/2013-09-14/content_419.html">linux 产生 随机密码</a></div>
+        <a>leo</a>
+        <span class="block Gray">2013年9月14日 20:41</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/2" title="koodo的博客专栏">
+        <img src="/user/data/head-img/2_head.jpg" width="45px" alt="koodo的博客专栏"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/blog/2013-07-19/content_418.html">尿液燃料电池</a></div>
+        <a>koodo</a>
+        <span class="block Gray">2013年7月19日 22:39</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/2" title="koodo的博客专栏">
+        <img src="/user/data/head-img/2_head.jpg" width="45px" alt="koodo的博客专栏"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/blog/2013-06-05/content_417.html">不想说再见：Google Reader是一辆迷人的手动挡汽车</a></div>
+        <a>koodo</a>
+        <span class="block Gray">2013年6月5日 18:12</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/640" title="diguo的博客专栏">
+        <img src="/img/tavatar.gif" width="45px" alt="diguo的博客专栏"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/blog/2013-05-25/content_416.html">求30天自制操作系统这本书</a></div>
+        <a>diguo</a>
+        <span class="block Gray">2013年5月25日 01:55</span>
+    </div>
+</div>                    </div>
+                    <div style="margin-left:370px;">
+                        <span class="RedBar">
+                            <span class="RedBar-in">最新<a class="rb-more-btn" href="/q_a/index.html">问答</a></span>
+                        </span>
+                        <div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/341">
+        <img src="/user/data/head-img/341_head.jpg" width="45px" height="45px" alt="baby的问题"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/q_a/question/1-1-1-61.html">BI 是什么</a></div>
+        [ <b style="color:#900;">1</b> ] 回答 [ <span style="color:#6d9906">223</span> ] 浏览
+        <span class="block Gray">由 <a href="/user/341">baby</a> 发表于2013年7月31日 10:59</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/2">
+        <img src="/user/data/head-img/2_head.jpg" width="45px" height="45px" alt="koodo的问题"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/q_a/question/0-0-0-60.html">Js如何判断点击了 不是某个元素</a></div>
+        [ <b style="color:#900;">4</b> ] 回答 [ <span style="color:#6d9906">627</span> ] 浏览
+        <span class="block Gray">由 <a href="/user/2">koodo</a> 发表于2013年5月17日 09:03</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/3">
+        <img src="/user/data/head-img/3_head.jpg" width="45px" height="45px" alt="caodan的问题"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/q_a/question/1-6-0-36.html">什么是XSS攻击，求解答</a></div>
+        [ <b style="color:#900;">5</b> ] 回答 [ <span style="color:#6d9906">581</span> ] 浏览
+        <span class="block Gray">由 <a href="/user/3">caodan</a> 发表于2013年2月23日 17:48</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/78">
+        <img src="/user/data/head-img/78_head.jpg" width="45px" height="45px" alt="Sohol的问题"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/q_a/question/3-8-2-38.html">来请教请教！！！！！！！！！</a></div>
+        [ <b style="color:#900;">6</b> ] 回答 [ <span style="color:#6d9906">568</span> ] 浏览
+        <span class="block Gray">由 <a href="/user/78">Sohol</a> 发表于2013年2月25日 18:47</span>
+    </div>
+</div><div style="margin-top:10px;">
+    <a class="headwapper" href="/user/visit/2">
+        <img src="/user/data/head-img/2_head.jpg" width="45px" height="45px" alt="koodo的问题"/>
+    </a>
+    <div style="margin-left:60px;">
+        <div class="Elipsis"><a style="font-weight:bold;font-size:15px;" href="/q_a/question/1-6-0-6.html">为什么 ++[[]][+[]]+[+[]] = 10？</a></div>
+        [ <b style="color:#900;">6</b> ] 回答 [ <span style="color:#6d9906">1153</span> ] 浏览
+        <span class="block Gray">由 <a href="/user/2">koodo</a> 发表于2012年10月24日 16:25</span>
+    </div>
+</div>                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--<div class="f-w-item">
+                    <span class="RedBar f-w-item">
+                        <span class="RedBar-in">新会员</span>
+                    </span>
+                    <div style="float:left;width:360px;">
+                        <div class="f-newus">
+                                        </div>
+                    </div>
+                    <div style="margin-left:360px;">
+                        <a id="signProm" class="borderR5" href="http://www.itsrcs.com/account/register/">马上加入我们吧</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>-->
+            </div><!--@end-left-->
+            <!--@start-right-->
+            <div style="margin-left:752px;padding-top:40px;">
+                <div style="border:1px solid #ccc;background:url('/img/br_r.png') repeat-y #fff;border-left:none;padding:10px 15px;border-top:3px solid #6d9906;">
+                    <div class="f-w-item">
+                        <span class="RedBar">
+                            <span class="RedBar-in">大家在吐槽什么?</span>
+                        </span>
+                        <div id="wapper_ss_set">
+                            <div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/800" title="yuger">
+        <img src="/img/tavatar.gif" width="32px" height="32px" alt="yuger" title="yuger"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/800">yuger</a> : 没想到有五个多月没来二叉树了，时间过得真快呀！寒假开始了，我要好好自学Android开发！</div>
+        <span class="Gray" style="font-size:12px;">1月11日 00:33 |&nbsp;<a href="/user/vistc/?s=884">评论(0)</a></span>
+    </div>
+</div><div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/2" title="koodo">
+        <img src="/user/data/head-img/2_head.jpg" width="32px" height="32px" alt="koodo" title="koodo"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/2">koodo</a> : 来逛</div>
+        <span class="Gray" style="font-size:12px;">1月3日 13:42 |&nbsp;<a href="/user/vistc/?s=883">评论(0)</a></span>
+    </div>
+</div><div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/345" title="514458254">
+        <img src="/user/data/head-img/345_head.jpg" width="32px" height="32px" alt="514458254" title="514458254"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/345">514458254</a> : 来看看</div>
+        <span class="Gray" style="font-size:12px;">1月2日 15:57 |&nbsp;<a href="/user/vistc/?s=882">评论(0)</a></span>
+    </div>
+</div><div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/907" title="wangcankun">
+        <img src="/user/data/head-img/907_head.jpg" width="32px" height="32px" alt="wangcankun" title="wangcankun"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/907">wangcankun</a> : 初来驾到，希望在这能学到各种知识~~~</div>
+        <span class="Gray" style="font-size:12px;">2013年12月21日 00:58 |&nbsp;<a href="/user/vistc/?s=881">评论(0)</a></span>
+    </div>
+</div><div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/903" title="dingxing">
+        <img src="/img/tavatar.gif" width="32px" height="32px" alt="dingxing" title="dingxing"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/903">dingxing</a> : c</div>
+        <span class="Gray" style="font-size:12px;">2013年11月20日 16:27 |&nbsp;<a href="/user/vistc/?s=880">评论(0)</a></span>
+    </div>
+</div><div class="f-newshuoshuo">
+    <a class="headwapper" style="margin-top:5px;" href="/user/848" title="lgbcscs">
+        <img src="/img/tavatar.gif" width="32px" height="32px" alt="lgbcscs" title="lgbcscs"/>
+    </a>
+    <div style="margin-left:44px;line-height:22px;font-size:13px;min-height:49px;color:#333;">
+        <div><a href="/user/848">lgbcscs</a> : 为什么书下载不了</div>
+        <span class="Gray" style="font-size:12px;">2013年10月28日 21:58 |&nbsp;<a href="/user/vistc/?s=879">评论(0)</a></span>
+    </div>
+</div>                        </div>
+                        <!--<div id="wapper_push_ss">
+                            <div id="alert-bar"></div>
+                            <div class="sdText" style="margin-top:-1px;">
+                                <textarea class="Gray" id="f-ss-tra" onfocus="javascript:$(this).removeClass('Gray').html('');">我也来一段</textarea>
+                            </div>
+                            <a href="javascript:;" class="push_ss_now" onclick="pushShuoShuo();"></a>
+                        </div>-->
+                    </div>
+                </div>
+            </div><!--@end-right-->
+            <div class="clear"></div>
+        </div>
+        <!--@body-->
+        <div id="footer">
+    <div id="footer-in">
+        <div class="fin-item" style="padding-right:30px;">
+            <div class="fin-title">关于我们</div>
+            <a href="http://www.27tree.com">二叉树社区</a> - 一个小小的SNS社交网络<br>
+            <a href="http://new.cnzz.com/v1/login.php?siteid=4991736" target="_blank" rel="nofollow">站长统计</a>
+        </div>
+        <div class="fin-item" style="padding:0 15px;">
+            <div class="fin-title">联系方式</div>
+            <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=XjUxMToxHi8vcD0xMw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+        </div>
+        <div class="fin-item" style="padding-left:30px;">
+            <div class="fin-title">友情链接</div>
+            <a href="http://www.toutoupiao.com/" target="_blank">&#25237;&#31080;&#32593;</a> |
+            <a href="http://www.chm-pdf.com/" target="_blank">E书家</a> |
+            <a href="http://www.ticmy.com/" target="_blank">Ticmy</a> |
+            <a href="http://www.qiguodu.com/" target="_blank">岐山</a> |
+            <a href="http://www.lgups.com/" target="_blank">ups</a> |
+            <a href="http://www.godorders.com/" target="_blank">天旨信息</a>
+        </div>
+        <div class="clear"></div>
+        <div id="footer-cpr">© Copyright 2011 - 2013 itsrcs.com All rights reserved</div>
+    </div>
+</div>
+<span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script></span>    </body>
+</html>

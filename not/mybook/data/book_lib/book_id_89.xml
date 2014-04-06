@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Oracle SQL必备参考</title>
+  <author>吴安青</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-21 16:08:53</submit-date-time>
+  <img-link>f09b817f670851ba83555e97882a8009.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书适用于任何一个需要使用SQL访问Oracle数据库的人——包括开发者、DBA、设计者和常用用户。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	它包含了大家需要掌握的标准SQL的所有信息，而且以单一、简明的参考方式包含了Oracle在该方面的扩展内容。它包含了快速参考表、性能提示和语句语法摘要、数据类型以及其他有用的SQL相关信息（也包括SQL从业者通常需要掌握的SQL*Plus和PL/SQL信息），所有的内容都以可访问的格式组合在一起。本书也包含了怎样调试SQL语句的扩展内容讨论，而且使读者在使用SQL的时候可以使用Oracle优化器得到数据库的最好性能。本书覆盖了Oracle&amp;nbsp;8、Oracle&amp;nbsp;8i和以上版本。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书是为使用SQL的Oracle开发者和数据库管理员(DBA)所写的。该书设计为参考手册；提供的材料尽可能准确、可靠。因为我假设读者已经在某种程度上熟悉了关系的概念和SQL语言的基础，所以试图提供给大家一些需要的信息，可以在一定位置和格式下允许大家根据需要对其进行快速查阅。如果你要查找有关Oracle实现SQL的清晰、精确的信息，利用大量的摘要表并快速参考语法和用途，即可到达正确的位置。但是，如果你试图学习SQL，或想要一本从头到尾进行指导的指南，则可能需要从一本介绍性的书开始。但是，坚持使用本书，你以后将发现其非常有用。
+	&lt;/p&gt;
+	&lt;p&gt;
+		我当然不想阻止你购买和使用本书，但是我想让你知道，我在书中使用了很多正在快速发展的材料，只能做到尽可能精确。
+	&lt;/p&gt;
+	&lt;p&gt;
+		Oracle版本本书是用Oracle&amp;nbsp;8．1．6写的，所有信息都精确适用于该版本。大部分材料也适用于7．3和8．0版，但8．1版(Oracle&amp;nbsp;8i)中向SQL加入了新的功能。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

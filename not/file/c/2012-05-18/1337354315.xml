@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>2009广东工业大学考试试卷（B）</title>
+<content>&amp;lt;p&amp;gt;
+	一、单项选择题（共40分，每题2分）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、一个可执行C程序的开始执行点是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.程序中的第一个语句&amp;nbsp;			B.包含文件的第一个函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.名为main的函数&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;			D.程序中的第一个函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、下列数据类型中，不属于基本数据类型的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.int&amp;nbsp;&amp;nbsp;					B.数组&amp;nbsp;&amp;nbsp;C.float&amp;nbsp;					D.char
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、不符合C语言语法法则的标识符是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A._file&amp;nbsp;		B.NAME&amp;nbsp;	C.x123&amp;nbsp;		D.case
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.、对于C程序的函数，下列叙述中正确的是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.函数的定义不能嵌套，但函数调用可以嵌套&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B.函数的定义可以嵌套，但函数的调用不能嵌套
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.函数的定义和调用均不能嵌套
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D.函数的定义和调用均可嵌套
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.、关于字符串和字符的说法，不正确的是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.\"A\"与&amp;nbsp;A&amp;nbsp;是相同的	&amp;nbsp;&amp;nbsp;	B.字符可以参加算术运算&amp;nbsp;&amp;nbsp;&amp;nbsp;C.可以有任何长度的字符串&amp;nbsp;&amp;nbsp;	D.转义字符的长度为1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、以下程序段输出的结果是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Printf(\"%d\\n\",strlen(\"ATS\\n012\\1\\\\\"));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.11		B.10		C.9		D.8
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、以下只有在使用时才为该类型变量分配存储空间的存储类说明是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.auto&amp;nbsp;和&amp;nbsp;static&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;				B.auto&amp;nbsp;和&amp;nbsp;register&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C.register&amp;nbsp;和&amp;nbsp;static&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;			D.extern&amp;nbsp;和&amp;nbsp;register
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、若变量为float&amp;nbsp;类型,要通过语句scanf(\"%f%f%f\",&amp;amp;a,&amp;amp;b,&amp;amp;c)；给a&amp;nbsp;赋予10.0，b赋予&amp;nbsp;22.0，c赋
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;予33.0，不正确的输入形式是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.10&amp;amp;lt;回车&amp;amp;gt;&amp;nbsp;&amp;nbsp;	B.10,22,33&amp;amp;lt;回车&amp;amp;gt;&amp;nbsp;&amp;nbsp;	C.10&amp;amp;lt;回车&amp;amp;gt;&amp;nbsp;&amp;nbsp;		D.10&amp;nbsp;&amp;nbsp;22&amp;amp;lt;回车&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;22&amp;amp;lt;回车&amp;amp;gt;				&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;22&amp;nbsp;33&amp;amp;lt;回车&amp;amp;gt;		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;33&amp;amp;lt;回车&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;33&amp;amp;lt;回车&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9、以下变量X、Y、Z均为double&amp;nbsp;类型且已正确赋值，对数字式子，不正确的C语言表达式	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.&amp;nbsp;X/Y*Z	B.X*(1/(Y*Z))		C.X/Y*1/Z		D.X/Y/Z
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10、以下程序的输出结果是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;x=&amp;nbsp;f&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(\"\\n%c\",&amp;nbsp;A&amp;nbsp;+(x-&amp;nbsp;&amp;nbsp;a&amp;nbsp;&amp;nbsp;));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.I		B.G		C.&amp;nbsp;F		D.J
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11、对两个数组a&amp;nbsp;和&amp;nbsp;b&amp;nbsp;进行初始化&amp;nbsp;，则叙述正确的是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;char&amp;nbsp;a[]=\"abcde\";	char&amp;nbsp;b[]={&amp;nbsp;a&amp;nbsp;,&amp;nbsp;b&amp;nbsp;,&amp;nbsp;c&amp;nbsp;,&amp;nbsp;d&amp;nbsp;,&amp;nbsp;e&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.&amp;nbsp;a与b数组类型不相同		B.&amp;nbsp;a与b长度相同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.&amp;nbsp;a和b都存放字符串			D.&amp;nbsp;a数组比b数组的长度长
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12.、参考下面的程序段，下面正确的判断是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#define&amp;nbsp;A&amp;nbsp;3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#define&amp;nbsp;B(a)&amp;nbsp;&amp;nbsp;((A+1)*a)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	……
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x=3*(&amp;nbsp;A+B(7)&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.&amp;nbsp;程序错误，不允许嵌套宏定义	B.&amp;nbsp;x=21
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.&amp;nbsp;程序错误，宏定义不允许有参数	D.&amp;nbsp;x=93
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13、数组名作为参数传递给函数，作为实参的数组名被处理为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.该数组的首地址			B.该数组元素的个数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.该数组中各元素的值			D.该数组的长度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14、以下程序输出的结果是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;w=4,x=3,y=2,z=1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;	&amp;nbsp;&amp;nbsp;printf(\"%d\\n\",(w&amp;amp;lt;x?&amp;nbsp;w&amp;nbsp;:&amp;nbsp;z&amp;nbsp;&amp;amp;lt;y?&amp;nbsp;z&amp;nbsp;:&amp;nbsp;x));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.&amp;nbsp;1		B.2		C.3		D.4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15、下列程序段中，正确的是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.int&amp;nbsp;x=0,y=10;				B.int&amp;nbsp;x=0,y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;switch(x)				&amp;nbsp;&amp;nbsp;switch(x)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;{case&amp;nbsp;y:&amp;nbsp;x++;break;			&amp;nbsp;&amp;nbsp;{case&amp;nbsp;x&amp;amp;gt;0:y=1;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;case&amp;nbsp;y+2:&amp;nbsp;x+=10;break;		&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;x==0:y=0;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;case&amp;nbsp;y-1:&amp;nbsp;x=-7;break;}		&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;x&amp;amp;lt;0:&amp;nbsp;y=-1;break;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.int&amp;nbsp;x=10,y=20,&amp;nbsp;z；			D.int&amp;nbsp;x=0，y；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;switch(x)				&amp;nbsp;&amp;nbsp;switch(x)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;{case&amp;nbsp;12：z=3;break；		&amp;nbsp;&amp;nbsp;{case&amp;nbsp;3：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;y+1：x+=10；break；		&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;-1；y=2；break；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;y-8：y=-3；break；}		&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;2：break；}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16、有以下函数的定义：int&amp;nbsp;fun(int&amp;nbsp;n&amp;nbsp;，double&amp;nbsp;x）{……}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;若选项中的变量都已经正确定义并赋值，则对函数fun&amp;nbsp;正确调用的语句是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.fun&amp;nbsp;(int&amp;nbsp;y,double&amp;nbsp;m)&amp;nbsp;;			B.&amp;nbsp;printf(\"%d\\n\"，fun&amp;nbsp;(10，12.5))；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C.fun&amp;nbsp;(x，n)；				D.int&amp;nbsp;fun&amp;nbsp;(10，12.5)；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	17、以下程序段while循环执行的次数是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;k=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while(k=1)&amp;nbsp;&amp;nbsp;&amp;nbsp;k++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.无限次		B.有语法错误，不能执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B.一次也不执行	D.执行一次
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	18、当执行下面的程序时，如果输入ABC，则输出的结果是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;nbsp;\"stdio.h\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;nbsp;\"string.h\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;char&amp;nbsp;ss[10]=\"12345\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;gets(ss);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;strcat(ss,&amp;nbsp;\"6789\"&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(\"%s\\n\",ss+1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.BC67&amp;nbsp;&amp;nbsp;		B.2345ABC67&amp;nbsp;&amp;nbsp;		C.BC6789&amp;nbsp;&amp;nbsp;	D.BC456789
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	19、以下程序输出的结果是；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;fun&amp;nbsp;(int&amp;nbsp;a,int&amp;nbsp;b,&amp;nbsp;int&amp;nbsp;c)&amp;nbsp;&amp;nbsp;{c=a*b;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(&amp;nbsp;)&amp;nbsp;{int&amp;nbsp;c;&amp;nbsp;&amp;nbsp;fun&amp;nbsp;(2,3,c);	printf&amp;nbsp;(\"%d\\n\",c);&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A.6&amp;nbsp;&amp;nbsp;	B.1&amp;nbsp;&amp;nbsp;		C.无定值&amp;nbsp;&amp;nbsp;	D.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	填空题（30分，每空2分）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	求下列表达式的值&amp;nbsp;（x，y为int&amp;nbsp;型变量）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、设x=4，y=8	（x++）*（--y）&amp;nbsp;（&amp;nbsp;&amp;nbsp;&amp;nbsp;28&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;				【1】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、45%8+（5&amp;amp;gt;4）+（3&amp;amp;gt;6）		&amp;nbsp;&amp;nbsp;&amp;nbsp;(	6				【2】)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	把下列条件用关系表达式或逻辑表达式描述（x为int&amp;nbsp;型变量，c为char型变量）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、c为数字字符。（	c&amp;amp;gt;=’0’&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;c&amp;amp;lt;=’9’&amp;nbsp;&amp;nbsp;&amp;nbsp;	or&amp;nbsp;&amp;nbsp;&amp;nbsp;c&amp;amp;gt;=48&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;c&amp;amp;lt;=57			【3】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、x是奇数。（	x%2!=0&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;&amp;nbsp;x%2==1						【4】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、c语言中，形参的缺省类型是（	auto					【5】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、以下程序段输入数据999ga67&amp;amp;lt;回车&amp;amp;gt;，x、y、z的值分别是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（									【6】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;x;&amp;nbsp;char&amp;nbsp;y&amp;nbsp;;&amp;nbsp;float&amp;nbsp;z&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	scanf&amp;nbsp;(\"%2d%c%f\",&amp;amp;x&amp;nbsp;,&amp;amp;y&amp;nbsp;,&amp;amp;z&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\"%d&amp;nbsp;,%c&amp;nbsp;,%f&amp;nbsp;\",&amp;nbsp;x,&amp;nbsp;y,&amp;nbsp;z);	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;99,&amp;nbsp;9,&amp;nbsp;-107374176.000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、写出输出单精度实数，其输出格式占5位整数和2位小数的格式说明符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（	%8.2f								【7】）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、下列程序是计算&amp;nbsp;1+2+3+4+……+100的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;main()
+{
+&amp;nbsp;int&amp;nbsp;i,&amp;nbsp;s;
+&amp;nbsp;s=0&amp;nbsp;【8】；i&amp;nbsp;=&amp;nbsp;1&amp;nbsp;;
+&amp;nbsp;do&amp;nbsp;{&amp;nbsp;s=s+i&amp;nbsp;【9】；i++;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;whlie&amp;nbsp;(i&amp;amp;lt;=100&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;【10】)；
+&amp;nbsp;printf(\"1+2+3+4+……+100=&amp;nbsp;%d&amp;nbsp;【11】\"，s)；
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	9、下列是用冒泡法对n&amp;nbsp;个数按由大到小的次序进行排序的函数（注：为提高排序速度，在算法中增加了下列措施：当某趟冒泡过程中未发生数据交换时，即表示数据已排序完毕，应提早结束排序工作）。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;void&amp;nbsp;bubble(int&amp;nbsp;a[]&amp;nbsp;,&amp;nbsp;int&amp;nbsp;n)
+{int&amp;nbsp;i,&amp;nbsp;j&amp;nbsp;,&amp;nbsp;t&amp;nbsp;,&amp;nbsp;flag&amp;nbsp;,&amp;nbsp;temp&amp;nbsp;;
+i&amp;nbsp;=&amp;nbsp;0;
+do&amp;nbsp;{i++;
+&amp;nbsp;&amp;nbsp;t&amp;nbsp;=&amp;nbsp;n-&amp;nbsp;i&amp;nbsp;;
+&amp;nbsp;&amp;nbsp;flag&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;for&amp;nbsp;(j&amp;nbsp;=&amp;nbsp;1&amp;nbsp;【12】；j&amp;amp;lt;=t&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;j&amp;amp;lt;=n-i&amp;nbsp;【13】；j++)
+if&amp;nbsp;(&amp;nbsp;a&amp;nbsp;[j-&amp;nbsp;1]&amp;nbsp;&amp;amp;lt;&amp;nbsp;a[j]&amp;nbsp;)
+{&amp;nbsp;temp&amp;nbsp;=a[j&amp;nbsp;-&amp;nbsp;1]&amp;nbsp;;&amp;nbsp;a[j&amp;nbsp;-&amp;nbsp;1]&amp;nbsp;=&amp;nbsp;a&amp;nbsp;[j]&amp;nbsp;;&amp;nbsp;&amp;nbsp;a[j]&amp;nbsp;=&amp;nbsp;temp;
+&amp;nbsp;flag&amp;nbsp;=&amp;nbsp;1;&amp;nbsp;【14】;
+}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}while&amp;nbsp;(&amp;nbsp;flag&amp;nbsp;!=&amp;nbsp;0&amp;nbsp;&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;&amp;nbsp;i&amp;amp;lt;n-1&amp;nbsp;【15】)；
+}&amp;lt;/pre&amp;gt;
+&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;p&amp;gt;
+	二、写出下列程序的运行结果（20分，每题5分）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、main&amp;nbsp;(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;static&amp;nbsp;char&amp;nbsp;x[&amp;nbsp;]&amp;nbsp;=&amp;nbsp;\"ABCDE\";&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;E
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;i;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;DE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for&amp;nbsp;(i=&amp;nbsp;4&amp;nbsp;;&amp;nbsp;i&amp;amp;gt;=0;&amp;nbsp;i--)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;CDE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf&amp;nbsp;(\"%s\\n\",x+i)；&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;BCDE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ABCDE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;cc;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for&amp;nbsp;(cc&amp;nbsp;=&amp;nbsp;1;&amp;nbsp;cc&amp;amp;lt;=4;cc++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;fun(&amp;nbsp;);&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2,4,6,8
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(\"\\n\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;void&amp;nbsp;fun(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;static&amp;nbsp;&amp;nbsp;int&amp;nbsp;&amp;nbsp;a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;a+=2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;printf(\"%d,\",&amp;nbsp;a&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for&amp;nbsp;(&amp;nbsp;a=&amp;nbsp;100;&amp;nbsp;a&amp;amp;gt;=0;&amp;nbsp;a--)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(a&amp;nbsp;%8==0)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(&amp;nbsp;a%2==0)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;continue;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\"%d,\"&amp;nbsp;,&amp;nbsp;a&amp;nbsp;)&amp;nbsp;;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;99,97,96
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(&amp;nbsp;\"%d&amp;nbsp;\",&amp;nbsp;a&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;char&amp;nbsp;st[&amp;nbsp;]&amp;nbsp;=&amp;nbsp;\"ToStringType\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;scanf(\"%s\",&amp;nbsp;st);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;i&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for&amp;nbsp;(&amp;nbsp;i=0;&amp;nbsp;st[i]&amp;nbsp;!=&amp;nbsp;&amp;nbsp;\\0&amp;nbsp;&amp;nbsp;;&amp;nbsp;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(st[i]&amp;amp;gt;=&amp;nbsp;A&amp;nbsp;&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;st[i]&amp;amp;lt;=&amp;nbsp;Z&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(\"%c\",&amp;nbsp;st[i]);&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;TST
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(\"\\n&amp;nbsp;i&amp;nbsp;=&amp;nbsp;%d\"&amp;nbsp;,&amp;nbsp;i&amp;nbsp;);&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;i=12
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-05-18/1337354315.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

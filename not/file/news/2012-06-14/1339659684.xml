@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>浅谈社区里的头衔</title>
+<content>&amp;lt;p&amp;gt;
+	社区和任何组织一样，是需要激励机制的。不过这种激励机制，主要是建立在荣誉和尊重上，通常是给核心社区成员授予更高的头衔，更多的特权。随便谈谈现有的几个技术社区，都是如何给成员授衔和授权的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Apache&amp;nbsp;(Apache&amp;nbsp;Software&amp;nbsp;Foundation，&amp;nbsp;ASF)&amp;nbsp;在开源软件界大名鼎鼎，&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它有个良好的制度保证其运行。社区成员分为几类：User，&amp;nbsp;Developer，&amp;nbsp;Committer，&amp;nbsp;PMC&amp;nbsp;member，&amp;nbsp;PMC
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Chair，&amp;nbsp;ASF&amp;nbsp;&amp;nbsp;memeber.&amp;nbsp;权限由低到高，&amp;nbsp;ASF&amp;nbsp;member&amp;nbsp;就是核心圈成员，有董事会选举的投票权，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	也可以参与董事会竞选。ASF&amp;nbsp;&amp;nbsp;member也有权利决定是否接受一个新项目。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ASF&amp;nbsp;member&amp;nbsp;通常要从developer，&amp;nbsp;committer&amp;nbsp;等这些角色起步，逐步通过行动证明自己后，才可能被接受成为ASF&amp;nbsp;&amp;nbsp;member。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	大家都知道Java社区很大，Java&amp;nbsp;User&amp;nbsp;Group(JUG)以及Java&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Champions在其中起了很重要的作用。Java社区只有一个最高荣誉-Java&amp;nbsp;Champion。&amp;nbsp;Java&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Champion的候选人通常有以下要求：项目领导，JUG领导，&amp;nbsp;很强的技术背景，观点中立，参与很酷的Java前沿技术，对人类和教育有贡献，&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	能够影响到他人。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;Champion的评选称为peer&amp;nbsp;review，&amp;nbsp;提名时需要另外一个Java&amp;nbsp;Champion，&amp;nbsp;是否能拿到这个头衔也需要现有的Java&amp;nbsp;&amp;nbsp;Champion认可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Oracle有ACE项目，头衔分为两类，&amp;nbsp;ACE和&amp;nbsp;ACE总监(ACE&amp;nbsp;Director)，&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有很详细的定义，在社区中做到什么程度，可以得到ACE头衔。什么程度可以升为ACE总监，如果成为ACE总监，还应该承担一系列的责任。而与之对应的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是，Oracle公司也会给ACE总监参加各类活动报销差旅费。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ACE和ACE总监的头衔都由Oracle某个部门来审批。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这三个社区都有其特点，很难说谁优谁劣，因为每个社区都有自己的定位和目标。Java社区开放的思路，以及酷，人文，自由，独立思想确实在价值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	观方面树起了大旗，吸引了众多的追随者。而当Java技术不再酷之后，如果给Java社区定位就是个难题了。另外，peer&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	review机制一方面容易形成物以类聚的局面，另一方面，也容易造成近亲繁殖。Oracle&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ACE项目一直很稳定，因为推广的更多是产品而不是技术，产品在很多公司和技术人员那里，像每天要吃饭一样，是必须要的，因此这个社区，稳定是最佳选择，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	产品在，社区就会在。在对ACE的授予上，公司方面把握着绝对的控制。Apache社区可贵在建立了一个良好的生态圈，技术人员，商业人员都可以从中得到
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	自己所需要的东西。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-14/1339659684.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

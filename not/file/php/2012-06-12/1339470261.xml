@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用PHP框架的十大理由</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	1.可以更好的组织代码和文件夹。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	不会因为你新建了一个/inc的文件夹，然后在里面写function.php文件，就能说明你的代码有组织了。但是当你使用一个PHP框架的时候，框架本身已经有一定的文件夹结构，你需要遵循框架的一些标准，这样就可以保证你始终用一定的方式来组织你的代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	不幸的是，一些命名行冠军仍然在使用着vi，这可能是一个挑战。你工作的时候将会遇到很多体积很小的文件，当你使用框架了，你就可以很方便的使用现代化的编辑器或IDE来浏览你的代码结构，这样你就能很快的找到你所需要的文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	2.公共代码和类库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP是一门伟大的web开发语言，它提供了无数的工具和类库。但是当你试图单独建立一个网站的时候，你要么自己写代码，要么使用第三方的代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所有优秀的php框架都会提供一些类库和辅助函数给你，它们能给你提供以下帮助：表单验证、输入输出的数据过滤、数据库抽象、Session和cookie处理、Email、日历和分页等，这样的例子不胜枚举。更何况，还有一些社区提供的大量的插件，你可以将它添加到你的框架中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	3.mvc模式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	着名的mvc模式要追溯到1979年，是一个叫哈维的挪威计算机科学家首次提出来的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP工作起来本身就像是一个模板引擎。但是，如果你很不负责任的使用它，这样将会使你的代码很丑陋，将会使代码难以维护。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	Mvc模式：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	模型：通常代表着你的数据结构和数据库的接口；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	视图：包含了页面模板和输出；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	控制器：处理页面的请求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这种分离是代码更整洁，更容易维护。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	4.安全
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	在PHP中，可能你已经想过很多办法对输入和输出进行过滤了，以防止您的网站被攻击。手动的处理这些过滤将会很累，当你使用了框架以后，你就可以忘掉那些累了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	对于一个框架，大部分过滤工作可以帮您自动完成。例如codeigniter框架：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	通过数据库的任何值将会被过滤这样防止sql注入性攻击。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所有html可以自动生成，如表单辅助函数和url辅助函数可以对输出自动过滤所有用户输入的数据都可以进行过滤防止xss攻击。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	想要加密cookie只需要改变一个配置选项就可以了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	5.使用少的代码，提高开发速度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所有的PHP框架都会有一个学习曲线，但是一点你越过了谷峰，你就会享受快速开发带来的乐趣了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	使用框架意味着你写更少的代码，这就意味着更少的时间花在打字上面。你不必为每个项目去查找第三方的类库，因为框架已经帮你提供了很多类库了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	此外，因为你的代码已经以一种方式默认的组织起来了，这样你就能更快的发现错误和维护代码，对你现在的代码进行更改。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	6.社区支持
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	所有流行的PHP框架在背后都有一个很活跃的社区。你可以和其他开发人员在寻求帮助、讨论或反馈。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	7.增强就业竞争力
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	不知道你最近有没有看过，一些公司的职位要求都需要有框架的使用经验，作为一个web开发人员拥有PHP框架的的使用经验将会增强就业竞争力。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	8.性能
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	反对使用PHP框架的大部分人都会说框架降低了PHP的性能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	不过首先你应该明白，开发的费用远远高于服务器硬件的价格。节省开发和维护的时间上的钱有可能超过任何额外需要花费在服务器上面的钱。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	把上面说的这些抛到一边去，你实际上也可以使用PHP框架获得性能上的优势。框架本身带有一些工具，它们能帮你做缓存、测试和分析等等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	现代的一些框架也都是动态的加载它所需要的一些代码的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	9.适合团队
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP框架可以为帮你创建一个合适的环境，提供良好的团队合作方式。你可以让设计师工作在视图层上面，让数据库工程师工作在模型层上面，让聪明的程序员反复的使用类库和插件。你也可以让别人建立单元测试，因为PHP框架本身带有很多工具。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	10.很有趣
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这点实际上可能是所有理由当中最重要的一点了。当你的工作充满乐趣的时候，你的工作就会更加高效。如果你一直使用老式的PHP编码多年，或者对它已经非常厌倦了。开始使用框架将会给你增加一些士气，就像一个新的玩具一样，并且你用框架同样可以做很多很酷的事情。至少我当初第一次使用框架的时候就是这种感觉。我相信很多web开发人员都会有类似的经历。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	结论：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	使用PHP框架可能不是你的最佳选择，但是，你应该使用对web世界保持开发的态度，不断从网络中新的技术新的发展来学习知识。今天框架很流行很火爆，我们仍然不知道PHP框架明天将会是怎样的，但我想要说的是，PHP框架绝对是值得探讨的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-12/1339470261.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Spring in Action</title>
+  <author>（美）沃尔斯，（美）布雷登巴赫</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-07 22:44:11</submit-date-time>
+  <img-link>0209032468c26793fab45d141bb2b054.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p style=\"text-indent:2em;\"&gt;
+	“真是一本好书……极度推荐。”
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	——Javalobby.org
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	“……这本书的确是一本易读、易懂又实在有用的Sprin9向导书。如果你认为自己在Spring方面还有全方位学习的需要，那么它应该有足够的理由在你的书架上占据一席之地。”
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	——熊节，ThoughtWorks咨询师
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	本书是畅销书《SpringinAction》的第二版。在上一版的基础上，本版扩展了很多内容，并涵盖TSpring的许多新特性。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	Spring是一种轻型容器式框架，能够利用简单的Java对象创建企业级组件。通过使用依赖注入和AOP，Spring能够生成松耦合代码。让老式普通的Java对象具有了以前由EJB所独有的功能。本书以实用为主要目标，通过大量的范例来展示Spring框架。结合一些实用代码片段，向读者介绍如何建立简单而有效的J2EE程序，如何解决数据存留问题、处理异步消息、创建和使用远程服务、建立Web程序以及与其他流行框架集成。读者将学习到如何利用Spring编写更简单、更易维护的代码，从而把主要精力集中到真正的核心问题上：关键的业务需求。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	本书针对想利用简单的Java对象来创建企业级程序的Java开发人员，即使是EJB的铁杆支持者也会喜欢本书。因为其中介绍了如何结合EJB组件与SPring。本书还涉及了软件体系，并介绍了如何把Spring应用到企业级程序的不同层次。
+&lt;/p&gt;</book-intro>
+</root>

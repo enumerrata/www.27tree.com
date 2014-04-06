@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-27 12:17:05</datetime>
+  <title><![CDATA[Xdebug教程之Xdebug调试]]></title>
+  <content><![CDATA[<p>
+	其实PHP函数debug_backtrace()也有类似的功能，但是要注意debug_backtrace()函数只在PHP4.3.0之后版本及
+</p>
+<p>
+	PHP5中才生效。这个函数是PHP开发团队在PHP5中新增的函数，然后又反向移植到PHP4.3中。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">Xdebug使调试信息更加美观</span></strong> 
+</p>
+<p>
+	Xdebug扩展加载后，Xdebug会对原有的某些PHP函数进行覆写，以便好更好地进行Debug。比如var_dump()函数，我们知道通常我们需要在函数前后加上”&lt;pre&gt;…&lt;/pre&gt;”才能够让输出的变量信息比较美观、可读性好。但是加载了Xdebug后，我们不再需要这样做了，Xdebug不但自动给我们加上了&lt;pre&gt;标签，还给变量加上颜色。
+</p>
+<p>
+	例：
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">&lt;?php
+$arrTest=array(
+       \"test\"=&gt;\"abc\",
+       \"test2\"=&gt;\"abc2\"
+);
+
+var_dump($arrTest);
+?&gt;
+</pre>
+<p>
+	<strong>数组元素的值自动显示颜色。</strong>
+</p>
+<p>
+	<strong><br />
+</strong>
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">Xdebug测试脚本执行时间</span></strong> 
+</p>
+<p>
+	测试某段脚本的执行时间，通常我们都需要用到microtime()函数来确定当前时间。例如PHP手册上的例子：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">&lt;?php
+/**
+* Simple function to replicate PHP 5 behaviour
+*/
+function microtime_float()
+{
+    list($usec, $sec) = explode(\" \", microtime());
+return ((float)$usec + (float)$sec);
+}
+
+$time_start = microtime_float();
+// Sleep for a while
+usleep(100);
+$time_end = microtime_float();
+$time = $time_end - $time_start;
+echo \"Did nothing in $time seconds\\n\";
+?&gt;</pre>
+	<p>
+		但是microtime()返回的值是微秒数及绝对时间戳（例如“0.03520000 1153122275”），没有可读性。所以如上程序，我们需要另外写一个函数microtime_float()，来将两者相加。
+	</p>
+	<p>
+		Xdebug自带了一个函数xdebug_time_index()来显示时间。
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<strong><span style=\"font-size:14px;\">PHP脚本占用的内存</span></strong>
+	</p>
+	<p>
+		有时候我们想知道程序执行到某个特定阶段时到底占用了多大内存，为此PHP提供了函数memory_get_usage()。这个函数只有当PHP编译时使用了--enable-memory-limit参数时才有效。
+	</p>
+	<p>
+		Xdebug同样提供了一个函数xdebug_memory_usage()来实现这样的功能，另外xdebug还提供了一个xdebug_peak_memory_usage()函数来查看内存占用的峰值。
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[其实PHP函数debug_backtrace()也有类似的功能，但是要注意debug_backtrace()函数只在PHP4.3.0之后版本及
+
+
+	PHP5中才生效。这个函数是PHP开发团队在PHP5中新增的函数，然后又反向移植到PHP4.3中。
+
+
+	
+
+
+	Xdebug使调试信息更加美观 
+
+
+	Xdebug扩展加载后，Xdebug会对原有的某些PHP]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

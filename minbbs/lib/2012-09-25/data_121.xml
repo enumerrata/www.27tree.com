@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-25 19:31:05</datetime>
+  <title> android学习和广告平台赚钱</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	android开发学习：&amp;nbsp;&amp;nbsp;&amp;nbsp;android学习的前提是java基础。如果你没有好的java基础，那就赶紧补充，我在这里不做介绍。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	android是基于linux的，如果你要做底层的东西，可以买一些关于linux&amp;nbsp;c开发和linux内核的书来补充一下基础。这里只介绍应用开发，linux底层的就不讨论了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	android应用开发方面的书，我建议《android应用开发详解》、《android疯狂讲义》、《android技术内幕:系统卷》，开发工具通常使用Eclipse，装上ADT插件就可以开发android程序了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	android应用开发学习流程简介：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	1.&amp;nbsp;搭建环境。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	包括Java、Eclipse、模拟器、web开发环境（可选）。真机运行速度是模拟器的几十倍，建议一定要买台android的手机来用，也不一定要很贵，我前期学android开发时用过的1100左右的索爱x8也挺不错的，至少可以流程地运行我的程序。另外，这里提到了web开发环境，因为我们大部分的程序都是要联网的、要从服务器获取数据，为用户提供更丰富的体验。如果你要做单机版的软件，那就可以不用搭建web开发环境。这样提醒一下：我的软件都是可单机可联网使用的，联网时可以得到在线的数据。我的服务器是在好空间网络上租的，几百块钱一年，很便宜，但也经常故障死机。通常，服务器一旦死机，当天我的收入就会直接减少40%以上。而且，好空间网络的服务器出问题之后，基本上是拖很久都解决不了的。建议钱多的话，到其他地方买个更好的服务器。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	前期使用eclipse就能完成程序打包、签名等任务，后期要学习一下android的工具tools和adb命令，让我们更深入了解android的程序结构。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	2.&amp;nbsp;android基础学习。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	环境搭好之后，要学习&amp;nbsp;Android应用的界面开发、事件处理、Activity、Service、使用Intent和IntentFilter进行通信、&amp;nbsp;图形与图像处理、数据存储和IO（包括文件系统、SQlite数据库）、Broadcast&amp;nbsp;Receiver、多媒体等基础知识。有了这些基础知识后，你就可以开发一些简单的android应用了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	然后要扩展一下基础，学习OpenGL与3D应用开发、Widget手机桌面的应用、网络应用（包括xml数据通信、json数据通信、http网络知识）、重力感应相关知识、GPS应用开发知识、google&amp;nbsp;map等基础扩展知识。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	建议：学好java&amp;nbsp;基础，&amp;nbsp;&amp;nbsp;多看SDK下的DEMO、API文档，多写学习总结、项目总结，多去官方网站develop.android.com，guide下有很多内容，多去eoe论坛&amp;nbsp;。&amp;nbsp;&amp;nbsp;&amp;nbsp;3.&amp;nbsp;知识水平提高提高
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	要成为一个专业的android程序员（我自己还远没有达到），还应该具备linux底层的一些知识，java&amp;nbsp;JNI方面的知识。熟悉一直web开发知识，让你能够自己搭建一个完整的android软件系统。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	4.&amp;nbsp;动手干活
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这阶段，你应该尝试分析应用市场，看看那些应用受欢迎，并且应用数量不多，还有让你的软件能生存的空间（当然也要考虑自己目前的水平问题，太难的程序在刚开始应该是写不出来的，除非你就是传说当中的那个万中无一的绝世高手）。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	分析确定好开发什么应用之后，就要开始着手干活了。先话2,3个星期写一款软件出来，然后发到各大应用市场，看看市场反应。然后根据用户使用的反馈信息，进行程序完善和bugfix。通过反复的修改及调试程序，可以学会界面布局、资源管理、logcat、调试、对activity、service、intentFilter等有一定的了解。这个时期最好的帮手是SDK目录下的doc、百度及google、破解工具（apktool、dex2jar、jd-gui，可以提取目标apk的资源及反编译源代码，这里反编译不是为了干坏事，而是从别人那里学习技术，了解别人的程序界面设计，资源光流等等。你并不能完全的得到一个好程序的破解代码，但你可以通过代码片段来获取信息学习或者进行搜索从而学到各种技术），这个阶段你就要多看别人的代码多动手了，你要开始熟悉和使用android的类库。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	5.&amp;nbsp;开始赚钱
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	经过上面的阶段，你应该开发出了第一款准备面向市场的手机应用了，这个时候，你就可以考虑怎样用你的程序来赚钱了。先来介绍下android下的常用的赚钱方法：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	1.&amp;nbsp;收费应用
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在国内，可以通过移动MM、机锋网的金币、支付宝等各种渠道进行付费，目前也有不少软件提供免费使用，然后在部分高级功能中需要付费开通功能，通常都是用支付宝提供进行支付，然后根据支付宝提供的接口知道用户是否付费成功了。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	中国人就是有那种吃免费午餐的习惯，收费软件在中国是很难赚钱的。而且直接收费容易让用户恶评软件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	2.&amp;nbsp;免费应用&amp;nbsp;+&amp;nbsp;广告
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这是目前国内个人开发者最普遍的赚钱方式，你可以利用嵌入国内外数十家移动广告平台的sdk、并在各渠道发布你的应用来获取展示广告，从而利用用户对广告的点击而获取收入。但需要注意的是，身为开发者你最好不要以不正当等方式来获得用户点击，别破坏市场环境(比如现在很多应用所有功能都要求用户下载广告应用获取积分而得到使用，特别是一些情、色的应用)。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	3.&amp;nbsp;应用内容的商业合作
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这种模式需要你的应用有影响力，能让商家为你买单。例如UC浏览器首页的导航栏中的那几十个链接（如新浪、腾讯、搜狐、各种手机软件网站等）都不是白放上去的，没有给UC大量的广告费，是不肯能在上面取得一席之地的。
+&lt;/p&gt;</content>
+  <state>0</state>
+</root>

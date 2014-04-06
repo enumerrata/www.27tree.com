@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用SimpleXML需要注意的问题</title>
+<content>&amp;lt;p&amp;gt;
+	SimpleXML提供了一套简单快速的XML操作方法，大大地提高了XML操作的效率。但是有时不小心也会带来不小的麻烦，看下面一段代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$xml&amp;nbsp;=&amp;nbsp;simplexml_load_string(&amp;nbsp;&amp;amp;lt;root&amp;amp;gt;&amp;amp;lt;title&amp;amp;gt;title&amp;amp;lt;/title&amp;amp;gt;&amp;amp;lt;/root&amp;amp;gt;&amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$title&amp;nbsp;=&amp;nbsp;$xml-&amp;amp;gt;title;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$title;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$xml-&amp;amp;gt;title&amp;nbsp;=&amp;nbsp;&amp;nbsp;test&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$title;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	猜猜第二个输出结果会是多少?是&amp;nbsp;test&amp;nbsp;，而不是想像中的&amp;nbsp;title&amp;nbsp;。为什么会这样呢？原因在这里：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;gettype($xml-&amp;amp;gt;title)&amp;nbsp;&amp;nbsp;//&amp;nbsp;object
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;get_class($xml-&amp;amp;gt;title);&amp;nbsp;&amp;nbsp;//&amp;nbsp;SimpleXMLElement
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	看到了吗，$xml-&amp;amp;gt;title是一个SimpleXMLElement类的实例，而不是字符串。所以$title实际上保存的是一个到SimpleXMLElement类的一个引用，而不是字符串的副本。想要得到字符串的副本只能进行类型转换：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$title&amp;nbsp;=&amp;nbsp;(string)$xml-&amp;amp;gt;title;&amp;nbsp;//&amp;nbsp;获得字符串
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$xml-&amp;amp;gt;title&amp;nbsp;=&amp;nbsp;&amp;nbsp;test&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$title;&amp;nbsp;//&amp;nbsp;输出title
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-12/1339470384.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

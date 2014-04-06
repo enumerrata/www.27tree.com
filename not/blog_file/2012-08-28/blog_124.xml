@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-28 12:41:16</datetime>
+  <title>Javascript 随机函数 Math.random()</title>
+  <content>&lt;p&gt;
+	random函数语法Math.random();
+&lt;/p&gt;
+&lt;p&gt;
+	random函数参数无参数random函数返回值返回0和1之间的伪随机数，可能为0，但总是小于1，[0,1)random函数示例console.log(Math.random());
+&lt;/p&gt;
+&lt;p&gt;
+	返回随机数
+&lt;/p&gt;
+&lt;p&gt;
+	console.log(Math.random()*(20-10)+10);
+&lt;/p&gt;
+&lt;p&gt;
+	返回10-20的随机数
+&lt;/p&gt;
+&lt;p&gt;
+	console.log(Math.random()*(n-m)+m);
+&lt;/p&gt;
+&lt;p&gt;
+	返回指定范围的随机数(m-n之间)的公式
+&lt;/p&gt;</content>
+  <contentx>random函数语法Math.random();
+
+
+	random函数参数无参数random函数返回值返回0和1之间的伪随机数，可能为0，但总是小于1，[0,1)random函数示例console.log(Math.random());
+
+
+	返回随机数
+
+
+	console.log(Math.random()*(20-10)+10);
+
+
+	返回10-2</contentx>
+  <tags>_null_</tags>
+</root>

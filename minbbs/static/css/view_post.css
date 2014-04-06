@@ -1,0 +1,76 @@
+/*原来css也可以注释的，辛苦前端们了*/
+#author-nickname{
+    width:150px;
+    font-size:14px;
+    letter-spacing:1px;
+    color:#fff;
+    font-weight:bold;
+    margin-top:2px;
+    text-align: center;
+    display:block;
+    background:#9cd722;
+}
+
+/*帖子 / 标题 / 内容 */
+#vps-body{
+    padding-left:25px;
+}
+#vps-title{
+    padding:0;font-size:17px;
+}
+#vps-title-wapp{
+    margin:15px 0;
+    border-bottom:1px dashed #ccc;padding-bottom:5px;
+}
+#vps-author{
+    background:url('/img/br_l.png') repeat-y right center #fefefe;
+}
+#vps-head{
+    width:150px;margin:10px auto;border:1px solid #ccc;padding:2px;display:block;
+}
+#vps-head img{
+    width:150px;display:block;
+}
+#vps-content{
+    margin:10px 0;
+    font-size:13px;
+    min-height:148px;
+    *min-height:128px;
+}
+#vps-content p{
+    text-indent:0;
+}
+#vps-content img{
+    max-width:790px;
+}
+#vps-title-info{
+    color:#666;
+}
+#ps-editor-wapper{
+    display:none;
+}
+.ps-left{
+    width:220px;float:left;padding-top:25px;
+}
+.ps-right{
+    margin-left:219px;
+}
+
+/*箭头*/
+i{
+    border-color:transparent #fcfcfc transparent transparent;
+}
+t{
+    border-color:transparent transparent #fcfcfc transparent;
+}
+
+/*帖子回复列表*/
+.vps-wapper{
+    margin-top:10px;position:relative;
+}
+.vps-wapper .headwapper img{
+    height:45px;width:45px;
+}
+.vps-wapper-i{
+    margin-left:65px;border:1px solid #ccc;position:relative;padding:5px 10px;background:#fcfcfc;
+}

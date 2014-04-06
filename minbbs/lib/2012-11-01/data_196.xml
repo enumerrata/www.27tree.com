@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-01 00:24:45</datetime>
+  <title><![CDATA[避免 json_encode 中文产生 unicode 转义]]></title>
+  <content><![CDATA[<p>
+	在PHP5.4&nbsp;Json 新增了一个选项: JSON_UNESCAPED_UNICODE, 故名思议, 就是说, Json不要编码Unicode.
+</p>
+<p>
+	看下面的例子:
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	echo json_encode(\"中文\", JSON_UNESCAPED_UNICODE);
+</p>
+<p>
+	//\"中文\"
+</p>
+<p>
+	同时&nbsp;Json在5.4还加入了: JSON_BIGINT_AS_STRING, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES等选项
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Javascript 如何操作url 呢]]></title>
+  <content><![CDATA[<p>
+	比如我要获取&nbsp;http://www.taobao.com/?spm=a1z09.5.0.12.ALQmKX 这个url里面 spm 的值
+</p>
+<p>
+	怎么做呢?
+</p>
+<p>
+	<img src=\"/mod/kd/plugins/emoticons/images/jx2/j_0022.gif\" border=\"0\" alt=\"\" />
+</p>]]></content>
+  <tags></tags>
+  <parseVersion>1.1</parseVersion>
+</root>

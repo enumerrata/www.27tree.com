@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-27 16:38:57</datetime>
+  <title><![CDATA[搜索引擎高级搜索指令 详解]]></title>
+  <content><![CDATA[<p>
+	做为一名合格的SEOr，除了会用搜索引擎搜索普通关键词外，还必须了解其他的一些的高级指令，一般人都不会用到的，但是对于seoer来说则是研究竞争对手和寻找外链资源的好方法。下面为大家一一介绍：
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">1：双引号：(“”)</span></strong>
+</p>
+<p>
+	在搜索引擎中将你要搜索的关键词放在双引号中，代表<strong>完全匹配搜索</strong>，换句话来说也就是搜索返回的结果中必须包含双引号中出现的所有词，顺序也必须完全匹配，因此说此方法对于seoer来说更能够精确的找到特定关键词的竞争对手，便于分析和研究竞争对手。(百度-google都支持此搜索方法)
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">2：减号：(-)</span></strong>
+</p>
+<p>
+	从字面上相信大家也能够理解此搜索指令的意思，减号(-)代表搜索结果中<strong>不包含减号后面的页面</strong>，使用这个指令必须注意的是<strong>减号前面要有“空格”减号后面没有“空格”</strong>减号后面则是要排除的词，例：搜索“彼岸seo”和“彼岸 –seo”则两者返回的结果显然不同(如下图所示)，使用此命令可以将不必要的重复词去掉，使搜索结果更符合用户需求，也是搜索结果更加准确。
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://www.admin5.com/upimg/allimg/110411/1208410.jpg\" alt=\"\" />
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://www.admin5.com/upimg/allimg/110411/1208411.jpg\" alt=\"\" />
+</p>
+<p>
+	<p>
+		<strong><span style=\"font-size:14px;\">3：inurl：</span></strong>
+	</p>
+	<p>
+		Inurl指令用于查询<strong>出现在url中包含的关键词</strong>(支持英文和中文查询)例如搜索 “inurl：西安seo”则出现的结果是网址中都包含关键词“西安seo”(如下图所示)由于关键词出现在url中对于网站排名有一定的影响，因此做为 seoer用来研究竞争对手也是一个不错的方法。
+	</p>
+	<p style=\"text-align:center;\">
+		<img src=\"http://www.admin5.com/upimg/allimg/110411/1208412.jpg\" alt=\"\" />
+	</p>
+	<p>
+		<p>
+			<strong><span style=\"font-size:14px;\">4：intitle：</span></strong>
+		</p>
+		<p>
+			Intitle指令从字面上理解，title为标题，然而标题却是网站优化的重要组成部分，也是seo优化的重点，做为seoer一般都会重视标题的写作，也都会把关键词适当的融入到标题中去，因此使用title指令找到的页面更具有竞争价值，当然如果关键词没有出现在title中而是出现在页面的课件文字中，那只能说明此页面没有针对关键词进行优化。
+		</p>
+		<p>
+			<strong><span style=\"font-size:14px;\">5：site：</span></strong>
+		</p>
+		<p>
+			Site指令相信各位是比较熟悉得了，site是用来搜索此域名下所有页面，例如在百度中搜索“site：www.***.com”则返回的搜索结果是包括www.***.com 域名下的所有页面(如下图所示)由此可见site指令是查询网站整体收录量的直接方法。
+		</p>
+		<p style=\"text-align:center;\">
+			<img src=\"http://www.admin5.com/upimg/allimg/110411/1208413.jpg\" alt=\"\" />
+		</p>
+		<p>
+			<p>
+				同样site指令也可以应用到子域名中，例：site:xian.qq.com 搜索的就是xian.qq.com子域名下所有的收录页面，如果你使用site:qq.com则返回的搜索结果中包含本身(qq.com)及下面所有子域名(xian.qq.com)的页面。
+			</p>
+			<p>
+				<strong><span style=\"font-size:14px;\">6：linkdomain：</span></strong>
+			</p>
+			<p>
+				Linkdomain指令只适用于<strong>Yahoo</strong>，相信很多seoer都非常看重雅虎外链把，适用这个指令返回的则是某域名下的反向链接，也是做为seo优化人员查找外链和分析竞争对手的重要依据。
+			</p>
+			<p>
+				例如：搜索：“linkdomain:***.com –site:***.com”则返回的结果是此网站的外部链接，其中已排除-***.com本身的内部优化页面，最终剩下的就是此网站的外部链接了。
+			</p>
+		</p>
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[做为一名合格的SEOr，除了会用搜索引擎搜索普通关键词外，还必须了解其他的一些的高级指令，一般人都不会用到的，但是对于seoer来说则是研究竞争对手和寻找外链资源的好方法。下面为大家一一介绍：
+
+
+	1：双引号：(“”)
+
+
+	在搜索引擎中将你要搜索的关键词放在双引号中，代表完全匹配搜索，换句话来说也就是搜索返回的结果中必须包含双引号中出现的所有词，顺序也必]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

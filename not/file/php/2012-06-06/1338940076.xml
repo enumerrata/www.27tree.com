@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTTP 和 HTTPS 对比</title>
+<content>&amp;lt;p&amp;gt;
+	什么是HTTPS？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTPS（全称：Hypertext&amp;nbsp;Transfer&amp;nbsp;Protocol&amp;nbsp;over&amp;nbsp;Secure&amp;nbsp;Socket&amp;nbsp;Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。也就是说：HTTPS=HTTP+SSL。&amp;nbsp;它是一个URI&amp;nbsp;scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司进行，提供了身份验证与加密通讯方法，现在它被广泛用于万维网上安全敏感的通讯，例如交易支付方面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTPS的作用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	什么是HTTP？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	超文本传送协议&amp;nbsp;(HTTP)&amp;nbsp;是一种通信协议，它允许将超文本标记语言&amp;nbsp;(HTML)&amp;nbsp;文档从&amp;nbsp;Web&amp;nbsp;服务器传送到&amp;nbsp;Web&amp;nbsp;浏览器。HTML&amp;nbsp;是一种用于创建文档的标记语言，这些文档包含到相关信息的链接。您可以单击一个链接来访问其它文档、图像或多媒体对象，并获得关于链接项的附加信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP工作在TCP/IP协议体系中的TCP协议上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	客户机和服务器必须都支持&amp;nbsp;HTTP，才能在万维网上发送和接收&amp;nbsp;HTML&amp;nbsp;文档并进行交互。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。前一段时间用的是HTTP/1.0，现在WWW中使用的是HTTP/1.1。而且HTTP-NG(Next&amp;nbsp;Generation&amp;nbsp;of&amp;nbsp;HTTP)的建议已经提出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP&amp;nbsp;和&amp;nbsp;HTTPS&amp;nbsp;的不同之处:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;HTTP&amp;nbsp;的&amp;nbsp;URL&amp;nbsp;以&amp;nbsp;http://&amp;nbsp;开头，而&amp;nbsp;HTTPS&amp;nbsp;的&amp;nbsp;URL&amp;nbsp;以&amp;nbsp;https://&amp;nbsp;开头
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;HTTP&amp;nbsp;是不安全的，而&amp;nbsp;HTTPS&amp;nbsp;是安全的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;HTTP&amp;nbsp;标准端口是&amp;nbsp;80&amp;nbsp;，而&amp;nbsp;HTTPS&amp;nbsp;的标准端口是&amp;nbsp;443
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;在&amp;nbsp;OSI&amp;nbsp;网络模型中，HTTP&amp;nbsp;工作于应用层，而&amp;nbsp;HTTPS&amp;nbsp;工作在传输层
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;HTTP&amp;nbsp;无需加密，而&amp;nbsp;HTTPS&amp;nbsp;对传输的数据进行加密
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;HTTP&amp;nbsp;无需证书，而&amp;nbsp;HTTPS&amp;nbsp;需要认证证书
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTPS&amp;nbsp;如何工作?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用&amp;nbsp;HTTPS&amp;nbsp;连接时，服务器要求有公钥和签名的证书。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当使用&amp;nbsp;https&amp;nbsp;连接，服务器响应初始连接，并提供它所支持的加密方法。作为回应，客户端选择一个连接方法，并且客户端和服务器端交换证书验证彼此身份。完成之后，在确保使用相同密钥的情况下传输加密信息，然后关闭连接。为了提供&amp;nbsp;https&amp;nbsp;连接支持，服务器必须有一个公钥证书，该证书包含经过证书机构认证的密钥信息，大部分证书都是通过第三方机构授权的，以保证证书是安全的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	换句话说，HTTPS&amp;nbsp;跟&amp;nbsp;HTTP&amp;nbsp;一样，只不过增加了&amp;nbsp;SSL。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP&amp;nbsp;包含如下动作：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;浏览器打开一个&amp;nbsp;TCP&amp;nbsp;连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;浏览器发送&amp;nbsp;HTTP&amp;nbsp;请求到服务器端
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;服务器发送&amp;nbsp;HTTP&amp;nbsp;回应信息到浏览器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;TCP&amp;nbsp;连接关闭
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SSL&amp;nbsp;包含如下动作：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;验证服务器端
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;允许客户端和服务器端选择加密算法和密码，确保双方都支持
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.&amp;nbsp;验证客户端(可选)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;使用公钥加密技术来生成共享加密数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;创建一个加密的&amp;nbsp;SSL&amp;nbsp;连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;基于该&amp;nbsp;SSL&amp;nbsp;连接传递&amp;nbsp;HTTP&amp;nbsp;请求
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	什么时候该使用&amp;nbsp;HTTPS?
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	银行网站、支付网关、购物网站、登录页、电子邮件以及一些企业部门的网站应该使用&amp;nbsp;HTTPS，例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	支付宝：https://www.alipay.com/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Google&amp;nbsp;AdSense:&amp;nbsp;https://www.google.com/adsense/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果某个网站要求你填写信用卡信息，首先你要检查该网页是否使用&amp;nbsp;https&amp;nbsp;加密连接，如果没有，那么请不要输入任何敏感信息如信用卡号。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338940076.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

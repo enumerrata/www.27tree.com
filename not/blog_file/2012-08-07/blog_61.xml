@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 14:12:58</datetime>
+  <title>PHP中使用XML-RPC构造Web Service简单入门</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[&amp;nbsp;&amp;nbsp;Web&amp;nbsp;Service介绍&amp;nbsp;]
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Web&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Service就是为了异构系统的通信而产生的，它基本的思想就是使用基于XML的HTTP的远程调用提供一种标准的机制，而省去建立一种新协议的需求。目前进行Web&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Service通信有两种协议标准，一种是XML-RPC，另外一种是SOAP。XML-RPC比较简单，出现时间比较早，SOAP比较复杂，主要是一些需要稳定、健壮、安全并且复杂交互的时候使用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP中集成了XML-RPC和SOAP两种协议的访问，都是集中在xmlrpc扩展当中。另外，在PHP的PEAR中，不管是PHP&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;4还是PHP&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;5，都已经默认集成了XML-RPC扩展，而且该扩展跟xmlrpc扩展无关，能够独立实现XML-RPC的协议交互，如果没有xmlrpc扩展，建议使用PEAR::XML-RPC扩展。&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	我们这里主要是以XML-RPC来简单描述Web&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Service的交互过程，部分内容来自PHP手册，更详细内容，建议参考手册。&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[&amp;nbsp;&amp;nbsp;安装xmlrpc扩展&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;]&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你的系统中没有安装xmlrpc的php扩展，那么请正确安装。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在Windows平台下，首先把PHP安装目录下的扩展php_xmlrpc.dll放到C:_%5c_Windows或者C:_%5c_Winnt目录下，(PHP4的扩展在C:_%5c_php_%5c_extensions目录中，PHP5的扩展在C:_%5c_php_%5c_ext目录中)，同时在C:_%5c_Windows_%5c_php.ini或者C:_%5c_Winnt_%5c_php.ini中把extension=php_xmlrpc.dll前面的分号\";\"去掉，然后重启Web服务器后查看phpinfo()有没有XML-RPC项目就能够确定是否已经正确安装xmlrpc扩展。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在Unix/Linux平台下，如果没有安装xmlrpc扩展，请在重新编译PHP，在configure的时候请加入&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;--with-xmlrpc&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;选项，然后查看phpinfo()看是否正常安装xmlrpc。&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	(注意：以下操作都是建立在xmlrpc扩张正常安装前提下，请务必正确安装。)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[&amp;nbsp;&amp;nbsp;XML-RPC工作原理&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;]&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	XML-RPC大致就是整个过程就是使用XML来进行通信。首先构造一个RPC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	服务器端用来出来从RPC客户端传递过来的使用XML封装的请求，并且把处理结果通过XML的形式返回给RPC客户端，客户端就去分析XML获取自己需要的数据。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	XML-RPC的服务器端必须有现成的函数提供给客户端调用，并且客户端提交的请求中的函数和方法必须和服务器端的一致，否则将无法获取所需要的结果。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	下面我进行简单的代码来描述整个过程。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[&amp;nbsp;&amp;nbsp;XML-RPC实践&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;]&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	服务器端使用xmlrpc_server_create函数产生一个服务器端，然后把需要需要暴露的RPC调用接口进行注册，接受RPC客户端POST过来的XML数据，然后进行处理，处理结果通过XML的形式显示给客户端。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	代码如下：&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;rpc_server.php&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&gt;&amp;lt;?php
+/**
+*&amp;nbsp;函数：提供给RPC客户端调用的函数
+*&amp;nbsp;参数：
+*$method&amp;nbsp;客户端需要调用的函数
+*&amp;nbsp;$params&amp;nbsp;客户端需要调用的函数的参数数组
+*返回：返回指定调用结果
+*/
+function&amp;nbsp;rpc_server_func($method,&amp;nbsp;$params)&amp;nbsp;{
+$parameter=&amp;nbsp;$params[0];
+if&amp;nbsp;($parameter&amp;nbsp;==&amp;nbsp;\"get\")
+{
+$return&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;This&amp;nbsp;data&amp;nbsp;by&amp;nbsp;get&amp;nbsp;method&amp;nbsp;&amp;nbsp;;
+}
+else
+{
+$return&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;Not&amp;nbsp;specify&amp;nbsp;method&amp;nbsp;or&amp;nbsp;params&amp;nbsp;&amp;nbsp;;
+}
+return&amp;nbsp;$return;
+}
+//产生一个XML-RPC的服务器端
+$xmlrpc_server&amp;nbsp;=&amp;nbsp;xmlrpc_server_create();
+//注册一个服务器端调用的方法rpc_server，实际指向的是rpc_server_func函数
+xmlrpc_server_register_method($xmlrpc_server,\"rpc_server\",&amp;nbsp;\"rpc_server_func\");
+//接受客户端POST过来的XML数据
+$request&amp;nbsp;=$HTTP_RAW_POST_DATA;
+//执行调用客户端的XML请求后获取执行结果
+$xmlrpc_response&amp;nbsp;=xmlrpc_server_call_method($xmlrpc_server,&amp;nbsp;$request,&amp;nbsp;null);
+//把函数处理后的结果XML进行输出
+header(&amp;nbsp;&amp;nbsp;Content-Type:&amp;nbsp;text/xml&amp;nbsp;&amp;nbsp;);
+echo&amp;nbsp;$xmlrpc_response;
+//销毁XML-RPC服务器端资源
+xmlrpc_server_destroy($xmlrpc_server);
+?&amp;gt;
+服务器端构造好了，那么再构造我们的RPC客户端。客户端大致通过Socket访问XML-RPC服务器端的80端口，然后把需要调用的RPC接口封装到XML里，通过POST请求提交给RPC服务器端，最后获取服务器端返回结果。
+代码如下：rpc_client.php
+&amp;lt;?php
+/**
+*
+函数：提供给客户端进行连接XML-RPC服务器端的函数
+*&amp;nbsp;参数：
+*&amp;nbsp;$host&amp;nbsp;&amp;nbsp;需要连接的主机
+*
+$port&amp;nbsp;&amp;nbsp;连接主机的端口
+*&amp;nbsp;$rpc_server&amp;nbsp;XML-RPC服务器端文件
+*&amp;nbsp;$request&amp;nbsp;&amp;nbsp;封装的XML请求信息
+*
+返回：连接成功成功返回由服务器端返回的XML信息，失败返回false
+*/
+function&amp;nbsp;rpc_client_call($host,
+$port,&amp;nbsp;$rpc_server,&amp;nbsp;$request)&amp;nbsp;{
+//打开指定的服务器端
+$fp&amp;nbsp;=
+fsockopen($host,&amp;nbsp;$port);
+//构造需要进行通信的XML-RPC服务器端的查询POST请求信息
+$query&amp;nbsp;=&amp;nbsp;\"POST&amp;nbsp;$rpc_server
+HTTP/1.0_%5c_nUser_Agent:&amp;nbsp;XML-RPC&amp;nbsp;Client_%5c_nHost:&amp;nbsp;\".$host.\"_%5c_nContent-Type:
+text/xml_%5c_nContent-Length:&amp;nbsp;\".strlen($request).\"_%5c_n_%5c_n\".$request.\"_%5c_n\";
+//把构造好的HTTP协议发送给服务器，失败返回false
+if&amp;nbsp;(!fputs($fp,&amp;nbsp;$query,
+strlen($query)))
+{
+$errstr&amp;nbsp;=&amp;nbsp;\"Write&amp;nbsp;error\";
+return
+false;
+}
+//获取从服务器端返回的所有信息，包括HTTP头和XML信息
+$contents&amp;nbsp;=
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+while&amp;nbsp;(!feof($fp))
+{
+$contents&amp;nbsp;.=&amp;nbsp;fgets($fp);
+}
+//关闭连接资源后返回获取的内容
+fclose($fp);
+return&amp;nbsp;$contents;
+}
+//构造连接RPC服务器端的信息
+$host&amp;nbsp;&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;localhost&amp;nbsp;&amp;nbsp;;
+$port&amp;nbsp;&amp;nbsp;=&amp;nbsp;80;
+$rpc_server&amp;nbsp;=
+&amp;nbsp;&amp;nbsp;/~heiyeluren/rpc_server.php&amp;nbsp;&amp;nbsp;;
+//把需要发送的XML请求进行编码成XML，需要调用的方法是rpc_server，参数是get
+$request
+=&amp;nbsp;xmlrpc_encode_request(&amp;nbsp;&amp;nbsp;rpc_server&amp;nbsp;&amp;nbsp;,&amp;nbsp;&amp;nbsp;&amp;nbsp;get&amp;nbsp;&amp;nbsp;);
+//调用rpc_client_call函数把所有请求发送给XML-RPC服务器端后获取信息
+$response&amp;nbsp;=
+rpc_client_call($host,&amp;nbsp;$port,&amp;nbsp;$rpc_server,&amp;nbsp;$request);
+//分析从服务器端返回的XML，去掉HTTP头信息，并且把XML转为PHP能识别的字符串
+$split&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;?xml
+version=\"1.0\"&amp;nbsp;encoding=\"iso-8859-1\"?&amp;gt;&amp;nbsp;&amp;nbsp;;
+$xml&amp;nbsp;=&amp;nbsp;&amp;nbsp;explode($split,
+$response);
+$xml&amp;nbsp;=&amp;nbsp;$split&amp;nbsp;.&amp;nbsp;array_pop($xml);
+$response&amp;nbsp;=
+xmlrpc_decode($xml);
+//输出从RPC服务器端获取的信息
+print_r($response);
+?&amp;gt;&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	大致我们上面的例子就是提交一个叫做rpc_server的方法过去，参数是get，然后获取服务器端的返回，服务器端返回的XML数据是：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		&amp;lt;?xml&amp;nbsp;version=\"1.0\"&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;encoding=\"iso-8859-1\"?&amp;gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;methodResponse&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;params&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;param&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;value&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;string&amp;gt;This&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;data&amp;nbsp;by&amp;nbsp;get&amp;nbsp;&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;method&amp;lt;/string&amp;gt;&lt;/span&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/value&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;/param&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;/params&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;/methodResponse&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	那么我们再通过xmlrpc_decode函数把这个XML编码为PHP的字符串，我们就能够随意处理了，整个Web
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Service交互完成。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>[  Web Service介绍 ]
+
+
+	Web Service就是为了异构系统的通信而产生的，它基本的思想就是使用基于XML的HTTP的远程调用提供一种标准的机制，而省去建立一种新协议的需求。目前进行Web
+
+
+	Service通信有两种协议标准，一种是XML-RPC，另外一种是SOAP。XML-RPC比较简单，出现时间比较早，SOAP比较复杂，主要是一</contentx>
+  <tags>_null_</tags>
+</root>

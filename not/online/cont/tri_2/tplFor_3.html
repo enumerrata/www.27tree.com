@@ -1,0 +1,56 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 语法</h1>
+</div>
+<div>
+
+<p><b>您无法在浏览器中通过查看源文档的方式来查看 PHP 的源代码 - 您只能看到 PHP 文件的输出，即纯粹的 HTML。这是因为在页面返回浏览器之前，脚本就已经在服务器执行了。</b></p>
+
+<h1>基本的 PHP 语法</h1>
+
+<p>PHP 的代码块以 <b>&lt;?php</b> 开始，以 <b>?&gt;</b> 结束。您可以把 PHP 的代码块放置在页面文档中的任何位置。</p>
+<p>当然，在支持简写的服务器上，您可以使用 &lt;? 和 ?&gt; 来开始和结束脚本块。</p>
+<p>为了达到最好的兼容性，亿柿网推荐你使用标准形式 (&lt;?php)，而不是简写形式。</p>
+
+<code>
+&lt;?php ?&gt;
+</code>
+
+<P>PHP 文件通常会包含 HTML 标签，就像一个 HTML 文件，以及一些 PHP 脚本代码。</P>
+<p>下面是一段简单的 PHP 脚本，它可以向浏览器输出文本 "Hello World"：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+echo "Hello World";<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>PHP 中的每个代码行都必须以分号结束。分号是一种分隔符，用于把指令集区分开来。</p>
+<p>PHP 有两种基础指令来输入文本：<b>echo</b> 和 <b>print</b>。在上面的例子中，我们使用了 echo 语句来输出文本 "Hello World"。</p>
+<p>在性能优化方面，我们推荐使用 echo 语句来输出文本。因为print输出后会返回true或false，即输出是否成功，在大量输出的情况echo会比print要快。</p>
+<h1>PHP 中的注释</h1>
+
+<p>在 PHP 中，我们使用 // 来编写单行注释，或者使用 /* 和 */ 来编写大的注释块。</p>
+<p><b>也可以使用 # 来进行单行注释</b></p>
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+&lt;?php<br />
+//我是注释<br />
+<br />
+/*<br />
+我是<br />
+注释<br />
+块<br />
+*/<br />
+?&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+</div>

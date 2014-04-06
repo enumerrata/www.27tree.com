@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>276</uid>
+  <datetime>2012-12-16 23:06:05</datetime>
+  <title><![CDATA[php 常量 const 教程]]></title>
+  <content><![CDATA[<p>
+	在类里面定义常量用 const 关键字，而不是通常的 define() 函数。
+</p>
+<p>
+	语法是&nbsp;const constant = \"value\";&nbsp;
+</p>
+<p>
+	下面是一个简单的例子
+</p>
+<p>
+	<p>
+		&lt;?php
+	</p>
+	<p>
+		Class Person{
+	</p>
+	<p>
+		&nbsp; &nbsp;// 定义常量
+	</p>
+	<p>
+		&nbsp; &nbsp;const country = \"中国\";
+	</p>
+	<p>
+		&nbsp; &nbsp;public function myCountry() {
+	</p>
+	<p>
+		&nbsp; &nbsp; &nbsp; &nbsp;//内部访问常量
+	</p>
+	<p>
+		&nbsp; &nbsp; &nbsp; &nbsp;echo \"我是\".self::country.\"人&lt;br /&gt;\";
+	</p>
+	<p>
+		&nbsp; &nbsp;}
+	</p>
+	<p>
+		}
+	</p>
+	<p>
+		// 输出常量
+	</p>
+	<p>
+		echo Person::country.\"&lt;br /&gt;\";
+	</p>
+	<p>
+		// 访问方法
+	</p>
+	<p>
+		$p1 = new Person();
+	</p>
+	<p>
+		$p1 -&gt; myCountry();
+	</p>
+	<p>
+		?&gt;
+	</p>
+注意！常量的值一旦被定义后就不可在程序中更改。
+</p>]]></content>
+  <contentx><![CDATA[在类里面定义常量用 const 关键字，而不是通常的 define() 函数。
+
+
+	语法是 const constant = \"value\"; 
+
+
+	下面是一个简单的例子
+
+
+	
+		&lt;?php
+	
+	
+		Class Person{
+	
+	
+		   // 定义常量
+	
+	
+		   const country = \"中国\";
+	
+	
+		   ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

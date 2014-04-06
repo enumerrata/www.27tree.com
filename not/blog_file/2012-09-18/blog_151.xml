@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-18 10:41:05</datetime>
+  <title>SQL Server 数据库中触发器的安全隐患</title>
+  <content>&lt;p&gt;
+	&lt;strong&gt;1.触发器权限和所有权&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	create&amp;nbsp;TRIGGER权限默认授予定义触发器的表所有者、sysadmin&amp;nbsp;固定服务器角色成员以及&amp;nbsp;db_owner&amp;nbsp;和&amp;nbsp;db_ddladmin&amp;nbsp;固定数据库角色成员，并且不可转让。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;2.需要的环境&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	本文需要的环境是已经获取了sql服务器的以上其中一个权限，目的是为了留下隐蔽的后门，不被管理员发现。即使发现了也是加密的（可以破解，不过有些管理员不懂，也不会注意，相关信息google下）。
+&lt;/p&gt;
+&lt;p&gt;
+	触发器是在对表进行插入（insert）、更新（update）或删除（delete）操作时，自动执行的存储过程。最常见用于执行敏感数据操作时做历史记录。
+&lt;/p&gt;
+&lt;p&gt;
+	本文以动网论坛dvbbs为例，我们已经拿到了db_owner权限（注意：并不是说dvbbs本身有漏洞）。因为只是db_owner权限，所以读者想去执行“xp_cmdshell”，就不再本文范围了，相信读过本文后，只要有系统权限，作个系统的后门也是简单的。先回想一下通常我们使用数据库时要做什么和关心什么。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;3.为什么要使用触发器作后门？&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	管理员首先会把sql文件执行下，然后导入mdb的内容，平时使用顶多备份下，还原下。通常不会有人去看触发器的内容，查看触发器可以使用命令“exec&amp;nbsp;sp_helptrigger&amp;nbsp;’dv_admin’”，或者在企业管理器中选择“管理触发器”。因为动网根本没有用到触发器，也没有提到触发器，所以动网的管理员不会去看的。于是我们在里面写的内容就相对安全了。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;4.思路&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	触发器主要是用来做历史记录的，当然可以把管理员更改密码和添加用户的历史记录下。放进一个管理员通常不会注意的、普通用户又可以看到的地方。
+&lt;/p&gt;
+&lt;p&gt;
+	动网的密码有md5加过密的，加密的操作是asp程序在服务器上来完成的，等数据库拿到数据的时候已经是加过密的了。但是动网同时把密码以明文方式放入dv_log表中，就给了我们方便。只要拿到dv_log表中l_content字段的内容，然后判断是否管理员在执行敏感操作，后门思路就形成了。
+&lt;/p&gt;
+&lt;p&gt;
+	使用过程――代码解析
+&lt;/p&gt;
+&lt;p&gt;
+	代码片断：创建触发器。
+&lt;/p&gt;
+&lt;p&gt;
+	create&amp;nbsp;trigger&amp;nbsp;dv_admin_history
+&lt;/p&gt;
+&lt;p&gt;
+	on&amp;nbsp;Dv_log
+&lt;/p&gt;
+&lt;p&gt;
+	with&amp;nbsp;encryption
+&lt;/p&gt;
+&lt;p&gt;
+	for&amp;nbsp;insertas
+&lt;/p&gt;
+&lt;p&gt;
+	as
+&lt;/p&gt;
+&lt;p&gt;
+	触发器需要建立在Dv_log表上，这里放入的是明文密码。我们并不知道管理员密码设置有多长，只能是把里面的有密码的字段内容全部取出。触发器最好是加密的，加密后，管理员即使看到了，也不知道这里是什么东西。在insert（加入）数据时执行触发器。
+&lt;/p&gt;
+&lt;p&gt;
+	取出来的值应该放入一个普通用户能看到的地方，这样只要有了普通用户的权限就可以看到密码。动网数据库中，最大并且可以存放数据的字段管理员通常都会看到。所以必须找出来一个管理员不会看，而其他用户也不会注意的地方。
+&lt;/p&gt;
+&lt;p&gt;
+	我选择放在一个新建用户的用户信息里（以下通称这个用户为“gus”，亲切点），这样我们登陆时就可以看到了（注意：登陆时有日志的，记录最后登陆ip，大家自己解决）。
+&lt;/p&gt;
+&lt;p&gt;
+	有以下几个字段适于存放：
+&lt;/p&gt;
+&lt;p&gt;
+	(1)Userphoto，字段类型：varchar(255)。记录了gus的照片地址。可以存放小于255的数据。
+&lt;/p&gt;
+&lt;p&gt;
+	(2)Usersign，字段类型：varchar(255)。gus的签名，如果放这里，汪财就不能发贴了，否则后果自负（发贴会显示签名，地球人都能看到）。
+&lt;/p&gt;
+&lt;p&gt;
+	(3)Useremail，字段类型：nvarchar(255)。gus的email，使用时需要转换类型。
+&lt;/p&gt;
+&lt;p&gt;
+	(4)Userinfo，字段类型：text。gus的用户资料。该字段很特殊，有很多“”，每一对“”之间都有着不同的含义。动网很懒的，为了避免字段太多，就把一堆信息全都放入一个字段里，用“”分开，当查询某一项信息时，取出来全部，然后分割下，就是需要的数据了。
+&lt;/p&gt;</content>
+  <contentx>1.触发器权限和所有权
+
+
+	create TRIGGER权限默认授予定义触发器的表所有者、sysadmin 固定服务器角色成员以及 db_owner 和 db_ddladmin 固定数据库角色成员，并且不可转让。
+
+
+	2.需要的环境
+
+
+	本文需要的环境是已经获取了sql服务器的以上其中一个权限，目的是为了留下隐蔽的后门，不被管理员发现。即使发现了也是加</contentx>
+  <tags>_null_</tags>
+</root>

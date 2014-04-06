@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>C++ Templates中文版</title>
+  <author>David Vandevoorde Nicolai，M.Josuttis</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-29 17:26:24</submit-date-time>
+  <img-link>3e5159cb78864b8a312c3c51b6e04f94.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	全书共5个部分，22章。第1章全面介绍了本书的内容结构和相关情况。第1部分（第2～7章）以教程的风格介绍了模板的基本概念，第2部分（第8～13章）阐述了模板的语言细节，第3部分（第14～18章）介绍了C++模板所支持的基本设计技术，第4部分（第19～22章）深入探讨了各种使用模板的普通应用程序。附录部分是“一处定义”原则和重载解析的相关资料。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是C++模板编程的完全指南，旨在通过基本概念、常用技巧和应用实例3方面的有用资料，为读者打下C++模板知识的坚实基础。&amp;nbsp;全书共5个部分，22章。第1章全面介绍了本书的内容结构和相关情况。第1部分（第2～7章）以教程的风格介绍了模板的基本概念，第2部分（第8～13章）阐述了模板的语言细节，第3部分（第14～18章）介绍了C++模板所支持的基本设计技术，第4部分（第19～22章）深入探讨了各种使用模板的普通应用程序。附录部分是“一处定义”原则和重载解析的相关资料。&amp;nbsp;本书适合C++模板技术的初学者阅读，也可供有一定编程经验的C++程序员参考。
+&lt;/p&gt;</book-intro>
+</root>

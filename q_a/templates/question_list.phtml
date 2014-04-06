@@ -1,0 +1,24 @@
+<div class="f-qalist-item">
+    <em class="headwapper">
+        <img src="<?php echo $p['ush']; ?>" width="45px" height="45px"/>
+    </em>
+    <div class="f-qalist-l">
+        <span class="block Elipsis">
+            <a class="f-qalist-l-title" href="<?php echo $p['href']; ?>"><?php echo $p['title']; ?></a>
+        </span>
+        <span class="block"><?php echo $p['tags']; ?></span>
+        <span class="block Gray"><a href="/user/<?php echo $p['uid'];?>"><?php echo urldecode($p['usn']); ?></a> 发布于 <?php echo $p['datetime']; ?></span>
+    </div>
+    <div class="f-qalist-r">
+        <span class="qa-list-defalut <?php if ($p['vote'] !== '0') echo "qa-list-voted Shadow" ?>">
+            <b class="block"><?php echo $p['vote']; ?></b>顶
+        </span>
+        <span class="qa-list-defalut <?php if ($p['ansi'] !== '0') echo "qa-list-ansed Shadow" ?>" style="margin-left:5px">
+            <b class="block"><?php echo $p['ansi']; ?></b>回答
+        </span>
+        <span class="qa-list-defalut" style="margin-left:5px">
+            <b class="block"><?php echo $p['readi']; ?></b>浏览
+        </span>
+    </div>
+    <div class="clear"></div>
+</div>

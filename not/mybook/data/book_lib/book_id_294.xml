@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[OSGi in Depth]]></title>
+  <author>Alexandre de Castro Alves, David Bosschaert</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-02-17 01:15:15</submit-date-time>
+  <img-link>f22bfa9e889aab809f34538a56e4a50f.jpg</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>Summary</strong>
+</p>
+<p>
+	OSGi in Depth shows Java developers how to develop to the OSGi Service Platform Enterprise specification, an emerging Java-based technology for developing modular enterprise applications.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>About the Technology</strong>
+</p>
+<p>
+	OSGi is a mature framework for developing modular Java applications. Because of its unique architecture, you can modify, add, remove, start, and stop parts of an application without taking down the whole system. You get a lot of benefit by mastering the basics, but OSGi really pays off when you dig in a little deeper.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>About this Book</strong>
+</p>
+<p>
+	OSGi in Depth presents practical techniques for implementing OSGi, including enterprise services such as management, configuration, event handling, and software component models. You\'ll learn to custom-tailor the OSGi platform, which is itself modular, and discover how to pick and choose services to create domain-specific frameworks for your business. Also, this book shows how you can use OSGi with existing JEE services, such as JNDI and JTA.
+</p>
+<p>
+	Written for Java developers who already know the basics, OSGi in Depth picks up where OSGi in Action leaves off.
+</p>
+<p>
+	Purchase of the print book comes with an offer of a free PDF, ePub, and Kindle eBook from Manning. Also available is all code from the book.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>What\'s Inside</strong>
+</p>
+<p>
+	Deep dives into modularization, implementation decoupling, and class-loading
+</p>
+<p>
+	Practical techniques for using JEE services
+</p>
+<p>
+	Customizing OSGi for specific business domains
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>Table of Contents</strong><strong></strong>
+</p>
+<p>
+	OSGi as a new platform for application development
+</p>
+<p>
+	An OSGi framework primer
+</p>
+<p>
+	The auction application: an OSGi case study
+</p>
+<p>
+	In-depth look at bundles and services
+</p>
+<p>
+	Configuring OSGi applicationsA world of events
+</p>
+<p>
+	The persistence bundleTransactions and containers
+</p>
+<p>
+	Blending OSGi and Java EE using JNDI
+</p>
+<p>
+	Remote services and the cloudLaunching OSGi using start levels
+</p>
+<p>
+	Managing with JMX
+</p>
+<p>
+	Putting it all together by extending Blueprint
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

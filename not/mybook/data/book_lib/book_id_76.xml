@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Essential C++（中文版）</title>
+  <author>[美]Stanley B. Lippman  </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-16 11:30:44</submit-date-time>
+  <img-link>d3b042108101a9605ca7389a925bfc1e.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书以4个面向来表现C++的本质：procedural（程序性的）、generic（泛型的）、object-based（个别对象的）、object-oriented（面向对象的）。本书的组织围绕着一系列逐渐繁复的程序问题，以及用以解决这些问题的语言特性。循此方式，你不只学到C++的函数和结构，也会学习到它们的设计目的和基本原理。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	你可以由本书发现以下关键主题：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●&amp;nbsp;Generic&amp;nbsp;（泛型）编程风格和Standard&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Template&amp;nbsp;Library(STL)&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●&amp;nbsp;Object-based(个别对象)编程风格和class的设计
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Object-oriented(面向对象)编程风格和classes阶层体系的设计&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●&amp;nbsp;Function&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;template&amp;nbsp;和class&amp;nbsp;template&amp;nbsp;的设计和运用&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	●&amp;nbsp;Exception&amp;nbsp;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;handling(异常处理)与执行期型别鉴定（Run-Time&amp;nbsp;Type&amp;nbsp;&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;Identification）&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	此外，书后的两份附录极具价值。附录A提供每章最后所列的练习题的完整解答和详细说明。附录B提供一份泛型演算法快速参考手册（含运用实例）。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

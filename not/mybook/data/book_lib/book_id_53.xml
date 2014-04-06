@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>C++入门经典</title>
+  <author>Ivor Horton</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-09 22:18:44</submit-date-time>
+  <img-link>afff9d0825aebf5c2e486610fe553711.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在几乎所有的计算机应用中，C++可以说是非常普及的，而且可以用于几乎所有的应用程序。C++从C语言中继承了高效的过程编程思想，并集成了面向对象编程的功能。在其标准库中，C++提供了大量的功能。有许多商业C++库支持数量众多的操作系统环境和专业应用程序。但因为它的内容太多了，所以掌握C++并不十分容易。本书详尽论述了C++语言的各个方面，包括数据类型、程序控制、函数、指针、调试、类、重载、继承、多态性、模板、异常和I/O等内容。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	读者不需要具备任何C++知识，书中包含了理解C++的所有必要知识，读者可以从头开始编写自己的C++程序。本书也适合于具备另一种语言编程经验但希望全面掌握C++语言的读者。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作者Ivor&amp;nbsp;Horton是世界著名的计算机图书作家，主要从事与编程相关的顾问及撰写工作，曾帮助无数程序员步入编程的殿堂。他曾在IBM工作多年，能使用多种语言进行编程(在多种机器上使用汇编语言和高级语言)，设计和实现了实时闭环工业控制系统。Horton拥有丰富的教学经验《教学内容包括C、C++、Fortran、PL／1、APL等)，同时还是机械、加工和电子CAD系统、机械CAM系统和DNC／CNC系统方面的专家。Ivor&amp;nbsp;Horton还著有Beginning&amp;nbsp;visual&amp;nbsp;C++6、Beginning&amp;nbsp;CProgramming和BeginningJava&amp;nbsp;2等多部入门级好书。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

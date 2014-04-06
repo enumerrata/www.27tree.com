@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JDBC入门</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1要学JDBC&amp;amp;nbsp;你首先要有一点DBMS的基础。象我这样的低手低手低低手，首先拿了一个ACCESS做试验。用ACCESS建立一张TABLE之后就可以了。当然，你还要系统知道你有这样一张T&amp;amp;nbsp;ABLE。这时候，你可以用控制面板里面的ODBC数据源来完成。（这也是许多教材上没写的）&amp;amp;nbsp;或者是我笨，连这也烦了好多天。：（&amp;amp;nbsp;如果这个你都会了
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这一段你就可以直接跳过去了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我就懒得切图片给大家看了。一步一步跟着做就好了！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1&amp;amp;nbsp;点开ODBC数据源
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2&amp;amp;nbsp;选择“文件DSN”标签。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3&amp;amp;nbsp;点击添加。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4&amp;amp;nbsp;双击MICROSOFT&amp;amp;nbsp;ACCESS&amp;amp;nbsp;DRIVER
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5&amp;amp;nbsp;点击“浏览”，找到你刚才建立ACCESS表的文件，点击“保存”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6&amp;amp;nbsp;点击下一步。。。然后完成，OK！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这样你就把系统就知道你有一个数据库了。。。。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是不是觉得我的废话很多&amp;amp;nbsp;呵。。不好意思&amp;amp;nbsp;浪费你宝贵的时间了
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在可以开始学怎么弄JDBC编程了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.学习JDBC&amp;amp;nbsp;首先你要知道什么是JDBC&amp;amp;nbsp;这我就不废话了。但是有一点必须知道，JDBC包主要是放在java.sql包里面的。所以，要写一个JDBC的程序&amp;amp;nbsp;首先要写的一句话是:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;java.sql.*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2。对于JDBC编程，有一个专门的异常类（兄弟&amp;amp;nbsp;异常类知道吧？说白了就是系统有可能碰到的错误情况），这个异常类叫SQLException。SQL是标准化查询语言的意思，由于应用非常广，简直就成了数据库的商标。所以S&amp;amp;nbsp;QLException就是专门针对在数据库编程中出现的异常情况而提供的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以&amp;amp;nbsp;程序中必须包含的一句话是&amp;amp;nbsp;throws&amp;amp;nbsp;SQLException
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.然后就是让你的程序与数据库连接了。在这里&amp;amp;nbsp;你需要用一个路径指明你的数据库在哪里。。。。你可以这样定义
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;amp;nbsp;path=jdbcdbc:mydb
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里的mydb就是你所建立的数据源名。顺便说一下，如果你不知道你的数据源名是什么（偶当时就不知道），还是在控制面板里可以看到地！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3(1)&amp;amp;nbsp;然后你要做的是调用DBMS的驱动程序，这就好象你要用声卡必须装声卡驱动程序一样，用JDBC必须用JDBC的驱动程序。SUN公司没有把JDB&amp;amp;nbsp;C的驱动自动加载的原因恐怕是因为有一些特殊的数据库并不支持ODBC标准的原因。当然&amp;amp;nbsp;这个你暂时不用担心，因为我们一般用的数据库都是支持ODBC的。调用DBMS的驱动具体做法是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Class.forName(sun.jdbc.odbc.JdbcOdbcDriver);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//这里的Class.forName用SUN公司的解释是：this&amp;amp;nbsp;method&amp;amp;nbsp;attempts&amp;amp;nbsp;to&amp;amp;nbsp;locate,&amp;amp;nbsp;load,&amp;amp;nbsp;and&amp;amp;nbsp;link&amp;amp;nbsp;the&amp;amp;nbsp;class&amp;amp;nbsp;or&amp;amp;nbsp;interface.&amp;amp;nbsp;意思说明白点就是：“好了，现在我要用这个类（接口）了！”也就是让系统加载的意思。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	然后你就可以用刚才建立的路径建立连接了：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Connection&amp;amp;nbsp;myjdbc1=DriverManager.getConnection(path,user,password)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	呵呵，这句话里面内容就丰富了，包含了以下几个内容，由于是入门教程，我就把我觉得最基本也是最需要的写出来吧-----其实也就是我知道的：）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先是DriverManager，用来管理驱动程序的类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getConnection()&amp;amp;nbsp;这个意思很直白&amp;amp;nbsp;就是对所指定path的数据库建立一个连接。这其中的三个参数，PATH不解释了，user&amp;amp;nbsp;password是你需要访问数据库时候提供的用户名和密码&amp;amp;nbsp;这个同样可以在控制面板中看到。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	知道了这两个，你大概也就知道Connection的意思了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Connection就是创建一个连接对象。（在这里是myjdbc1).&amp;amp;nbsp;这个对象就好象是JAVA程序和DBS之间的一个通路，你通过这个来访问，操作你的数据库。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	打个比方&amp;amp;nbsp;你的数据库是一个房子，COnnection对象就是通向这个房子一条路，而SQL语言就好象是你使用的交通工具：比如脚踏车。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/br&amp;amp;nbsp;&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-07-03/1341277865.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

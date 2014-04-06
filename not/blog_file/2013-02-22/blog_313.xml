@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Discuz!X/数据库操作方法 ]]></title>
+  <content><![CDATA[<br>
+<p>
+	DB::table($tablename)
+</p>
+<p>
+	获取正确带前缀的表名，转换数据库句柄，
+</p>
+<p>
+	DB::delete($tablename, 条件,条数限制)
+</p>
+<p>
+	删除表中的数据
+</p>
+<p>
+	DB::insert($tablename, 数据(数组),是否返回插入ID,是否是替换式,是否silent)
+</p>
+<p>
+	插入数据操作
+</p>
+<p>
+	DB::update($tablename, 数据(数组)条件)
+</p>
+<p>
+	更新操作
+</p>
+<p>
+	DB::fetch(查询后的资源)
+</p>
+<p>
+	从结果集中取关联数组，注意如果结果中的两个或以上的列具有相同字段名，最后一列将优先。
+</p>
+<p>
+	DB::fetch_first($sql)
+</p>
+<p>
+	取查询的第一条数据fetch
+</p>
+<p>
+	DB::result_first($sql)
+</p>
+<p>
+	查询结果集的第一个字段值
+</p>
+<p>
+	DB::query($sql)
+</p>
+<p>
+	普通查询
+</p>
+<p>
+	DB::num_rows(查询后的资源)
+</p>
+<p>
+	获得记录集总条数
+</p>
+<p>
+	DB::_execute(命令,参数)
+</p>
+<p>
+	执行mysql类的命令
+</p>
+<p>
+	注意：由于 X1.5 里增加了SQL的安全性检测。因此，如果你的SQL语句里包含以下开头的函数
+</p>
+<p>
+	load_file，hex，substring，if，ord，char。或者包含以下操作
+</p>
+<p>
+	intooutfile，intodumpfile，unionselect，(select\')都将被拒绝执行。
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+
+	DB::table($tablename)
+
+
+	获取正确带前缀的表名，转换数据库句柄，
+
+
+	DB::delete($tablename, 条件,条数限制)
+
+
+	删除表中的数据
+
+
+	DB::insert($tablename, ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

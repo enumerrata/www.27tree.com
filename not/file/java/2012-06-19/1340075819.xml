@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVA程序员必读：基础篇</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	JAVA是有SUN公司开发的新一代编程语言，它可以用在各种不同的机器、操作系统的网络环境中进行开发。不论你使用哪种浏览器或者使用哪种操作系统（Windows、Unix等等），只要浏览器支持JAVA，你就可以看到生动的主页。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	JAVA正在逐步成为Internet应用的主要开发语言，它彻底改变了应用软件的开发模式，为迅速发展的信息世界增添了新的活力。所以作为Internet应用的开发技术人员不可不看JAVA，而JAVA程序不可不先从基础学起，这正是JAVA程序员必读：基础篇的用意。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	本JAVA教程将讨论JAVA编程语言的基础知识。其中内容涉及以下几个方面：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;1.面向对象编程概念&amp;nbsp;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	将教会你面向对象编程的核心概念，比如对象、消息、类和继承等等。本节教程最后将给出实例将这些概念编程代码实现。如果你对面向对象编程很熟悉了，你可以跳过本节日教程，直接进入第二节教程。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;2.语言基础&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	本节教程讲述了传统的语言特性，其中包括变量、数据类型、运算符以及控制流程等等。&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;3.对象和简单数据对象&amp;nbsp;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	本节教程将介绍常规的创建和使用任何类型对象的原则。然后，本教程还描述了怎样使用数组、字符串以及数字对象，它们都通常被用于对象类型。最后，还将介绍怎样为输出格式化数据。&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;4.类和继承&amp;nbsp;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	描述了怎样编写从已经创建了的对象来编写类。&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;5.接口和包&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	界面和包是JAVA编程语言的特性，它帮助你组织和构造类以及跟其它类的关系。&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;strong&amp;gt;6.编程中的一些共同的问题&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	解释了在学习JAVA语言过程中可以出现的问题的解决方法。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-06-19/1340075819.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-21+01%3A10%3A57</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

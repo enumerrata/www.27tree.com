@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>使用阿里云低成本打造站内搜索引擎</title>
+  <content>&lt;p&gt;
+	目前阿里云还在内测阶段，要获得邀请码才可以进行开发。
+&lt;/p&gt;
+&lt;p&gt;
+	读者可以在&lt;a href=\"http://css.aliyun.com/user/index\" target=\"_blank\"&gt;http://css.aliyun.com/user/index&lt;/a&gt;申请，申请成功之后阿里云会给你一个&lt;strong&gt;client_id&lt;/strong&gt;和&lt;strong&gt;密钥&lt;/strong&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img src=\"/mod/kd/attached/image/20130507/20130507170313_48075.png\" alt=\"\" /&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+	然后在下载中心可以找到SDK的下载，目前&lt;strong&gt;只支持PHP和ASP&lt;/strong&gt;，Java的朋友只能自己开发SDK的，有开发SDK经验的一般不会很难。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img src=\"/mod/kd/attached/image/20130507/20130507170530_73262.png\" alt=\"\" /&gt; 
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	在索引管理，创建一个索引：
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img src=\"/mod/kd/attached/image/20130507/20130507170614_23395.png\" alt=\"\" /&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+	本文创建的是test索引以作测试，索引模板随便选一个。
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	我下载的是 php-sdk.tar.gz，文件目录大致是这样的：
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	&lt;img src=\"/mod/kd/attached/image/20130507/20130507171139_84502.png\" alt=\"\" /&gt; 
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	首先修改 /examples/config.php 里面的&amp;nbsp;CLIENT_ID和CLIENT_SECRET 也就是阿里云给你的&amp;nbsp;CLIENT_ID和CLIENT_SECRET
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;img src=\"/mod/kd/attached/image/20130507/20130507172523_45191.png\" alt=\"\" /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	然后用浏览器打开 ~/examples/index.php 记得把这个文件夹放到你的Web服务器目录 ，search是我自己创建的目录。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	下面是代码解释：
+&lt;/p&gt;
+&lt;p&gt;
+	首先在文件引入&amp;nbsp;cloudsearchapi.php 和&amp;nbsp;cloudsearchindex.php 这个两个类文件&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	require_once(\'../cloudsearchapi.php\');
+&lt;/p&gt;
+&lt;p&gt;
+	require_once(\'../cloudsearchindex.php\');
+&lt;/p&gt;
+&lt;p&gt;
+	然后新建一个云搜索Api的类
+&lt;/p&gt;
+&lt;p&gt;
+	$api = new CloudSearchApi(APIROOT, CLIENT_ID, CLIENT_SECRET);
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;&lt;span style=\"font-size:14px;color:#FF9900;\"&gt;通过SDK上传文档，下面是官方给出的例子&lt;/span&gt;&lt;/strong&gt; 
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;pre name=\"code\" id=\"prettyprint\" class=\"javascript\"&gt;///API访问入口
+define(\'APIROOT\', \'http://css.aliyun.com\');
+/// 请替换成您的用户编码
+define(\'CLIENT_ID\', 6100098522958080);
+/// 请替换成您的密钥
+define(\'CLIENT_SECRET\', \'2e58ba4e81e092e616a73fb63845c043\');
+ 
+$api = new CloudSearchApi(APIROOT, CLIENT_ID, CLIENT_SECRET);
+ 
+///获取CloudSearch对象，如果索引不存在，需要先创建索引。
+$indexName = \'test_index_1\';
+$index = $api-&amp;gt;getIndex($indexName);
+try {
+    $fields = array(\'title\' =&amp;gt; \'黄金大劫案\',
+                \'body\' =&amp;gt; \'八吨神秘黄金，混世小太岁、金镖十三郎\');
+    $docId =&amp;gt; \'8dac2812baa0b2\';
+ 
+    $index-&amp;gt;addDocument($docId, $fields);
+} catch (InvalidArgumentException $e) {
+    exit($e-&amp;gt;getMessage());
+} catch (CloudSearchAuthorizeFailed $e) {
+    exit($e-&amp;gt;getMessage());
+} catch (CloudSearchHttpException $e) {
+    exit($e-&amp;gt;getMessage());
+}&lt;/pre&gt;
+&lt;strong&gt;&lt;span style=\"font-size:14px;color:#FF9900;\"&gt;通过SDK搜索文档，下面是官方给出的例子：&lt;/span&gt;&lt;/strong&gt; 
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;pre name=\"code\" id=\"prettyprint\" class=\"javascript\"&gt;///API访问入口
+define(\'APIROOT\', \'http://css.aliyun.com\');
+/// 请替换成您的用户编码
+define(\'CLIENT_ID\', 6100098522958080);
+/// 请替换成您的密钥
+define(\'CLIENT_SECRET\', \'2e58ba4e81e092e616a73fb63845c043\');
+ 
+$api = new CloudSearchApi(APIROOT, CLIENT_ID, CLIENT_SECRET);
+ 
+///获取CloudSearch对象，假设索引已经创建，并且已经上传过文档。
+$indexName = \'test_index_1\';
+$index = $api-&amp;gt;getIndex($indexName);
+try {
+    $result = $index-&amp;gt;search(\'q=云搜索\');
+} catch (Exception $e) {
+    exit($e-&amp;gt;getMessage());
+} &lt;/pre&gt;
+另外还有一些高级搜索，索引管理等一大堆东西，有兴趣的可以去官方看文档
+&lt;p&gt;
+	&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;http://css.aliyun.com/wiki/index.php/%E9%A6%96%E9%A1%B5&lt;/strong&gt;&lt;strong&gt;&lt;/strong&gt; 
+&lt;/p&gt;</content>
+  <contentx>
+	目前阿里云还在内测阶段，要获得邀请码才可以进行开发。
+
+
+	读者可以在http://css.aliyun.com/user/index申请，申请成功之后阿里云会给你一个client_id和密钥 
+
+
+	 
+
+
+	然后在下载中心可以找到S</contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

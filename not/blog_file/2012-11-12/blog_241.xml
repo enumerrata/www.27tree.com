@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-12 23:31:46</datetime>
+  <title><![CDATA[5个让人激动的Java项目]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	每个Java/JVM领域的技术专家都应从那些项目中获益，他们中有2011在SanJose举办的Jax&nbsp;<span style=\"text-indent:2em;\">会议中提名为最好的技术产品奖的。我之所以选择他们是因为他们可以广泛用于一系列的项目中解决真实问题。作为开发者，我们也不得不在每天都讨论这些，那么我们赶紧来看看究竟有哪些值得令人激动的项目。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\"><strong>1.Neo4j 图形数据库</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	Neo4j是一个高性能图形引擎，该引擎拥有成熟稳健的数据库的所有特性。程序员利用面向对象、灵活网络结构而不是严格的静态表操作，但是他们可以完全享受到具备完全事务特性、企业级数据库的所有好处。对于很多应用来说，Neo4j相比关系型数据库性能提升1000倍，同时Spring和其他框架有相应的插件支持。
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\"><strong>2.JRebel &nbsp;</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	不需再重新部署&nbsp;<span style=\"text-indent:2em;\">JRebel是一个小型的JVM插件，它能使Java程序员在不需重新部署情况下即时地看到代码改变后的结果。JRebel</span>
+</p>
+<p style=\"text-indent:2em;\">
+	能够在一个时间点让你单独地更新管理类文件和资源的版本来替换块应用部署，当开发者在IDE中对类和资源有任何的修改时，变化能立刻地反映到已经部署好的应用中。通过省略从构建到重新部署期所花时间每年能节省约5.25周。
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\"><strong>3.Gradle &nbsp;一个更好的构建工具</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	Gradle充分吸取了Maven和Ant的优点。Gradle站点说道：“工程自动化是软件项目成功的必要条件，而且它应该是实现起来简单、易用、好玩的。构建没有千篇一律的方法，所以Gradle没有死板的强加方法于我们，尽管你会认为查找和描述你的方法很重要，然而Gradle对于如何描述它有着非常好的支持。我不认为工具能够拯救我们，但是Gradle能给你所需要的自由，你可以利用Gradle构建易描述的、可维护的、简洁的、高性能项目”。
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\"><strong>4.Akka 更加简单的可伸缩性、容错性、并发性、远程调用的Actor模型应用</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	编写出可靠的并发、容错、可伸缩的应用简直太难了，很多时候是因为我们使用不合理的工具和错误的抽象级别，Akka正是用来解决这些难题的。使用&nbsp;<span style=\"text-indent:2em;\">Actor模型与STM(软件事务内存)提高抽象级别，Actor提供了更好的平台来建立可靠的并发和可伸缩的应用，对于容错采取任其崩溃、接受失败的模型(Let it&nbsp;</span><span style=\"text-indent:2em;\">crash/Embrace failure),它已经成功运用在电信行业。系统几乎不会宕机（高可用性99.9999999 % 一年只有31 ms宕机,这里有详细介绍），Actors同样为透明的分布式提供了抽象化，为真正的可扩展和容错的应用提供了基本要素。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:16px;\"><strong>5.Play</strong></span>
+</p>
+<p style=\"text-indent:2em;\">
+	Framework —关注开发者效率和RESTful风格的架构。&nbsp;<span style=\"text-indent:2em;\">Ruby中有Rails框架，Groovy有Grails，现在Java有了Play！Play</span>
+</p>
+<p style=\"text-indent:2em;\">
+	是一个纯Java框架，因此可以继续使用你钟爱的开发工具和类库。如果你已经在使用Java作为开发平台，那样也不需要切换到另一种语言、另一种IDE和库文件，你要做的仅仅是切换到一个更高效的Java环境中。
+</p>
+<p style=\"text-indent:2em;\">
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[每个Java/JVM领域的技术专家都应从那些项目中获益，他们中有2011在SanJose举办的Jax 会议中提名为最好的技术产品奖的。我之所以选择他们是因为他们可以广泛用于一系列的项目中解决真实问题。作为开发者，我们也不得不在每天都讨论这些，那么我们赶紧来看看究竟有哪些值得令人激动的项目。
+
+
+	1.Neo4j 图形数据库
+
+
+	Neo4j是一个高性能图形引]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

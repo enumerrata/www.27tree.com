@@ -1,0 +1,96 @@
+#nav{
+    margin-top:0;
+}
+.nav-v3{
+    width:974px;
+}
+.sdText input{
+    text-align:left;
+}
+#sign-btn{
+    margin-top:15px;
+}
+.sign-succ-btn{
+    line-height:55px;
+    font-size:30px;
+    height:55px;
+    margin:15px 0px;
+    background:url('./goto.png') right center no-repeat;
+    background-position-x:400px;
+    display:block;
+    border:1px solid #ccc;
+    text-align:center;
+    color:#666;
+}
+.sign-succ-btn:hover{
+    background-image:url('./goto2.png');
+    border-color:#aaa;
+}
+#succ-wapper{
+    display:none;
+}
+#alert-bar{
+    padding:5px 0;
+    font-size:13px;
+}
+.ug-usn{
+    display:block;
+    font-size:14px;
+    color:#666;
+}
+.ug-job{
+    display:block;
+    font-size:13px;
+    color:#777;
+}
+.ug-wapp{
+    margin-left:79px;height:68px;line-height:24px;
+}
+.ug-mapp{
+    cursor:pointer;
+    float:left;width:200px;border:1px solid #ccc;padding:10px;background:#f6f6f6;margin-right:10px;margin-top:15px;margin-left:11px;
+    -webkit-transition-duration:150ms;
+}
+.ug-mapp-click{
+    background:url('/user/sources/img/cur_pot.png') right top no-repeat #f6f6f6;
+}
+.ug-mapp-ho{
+    border-color:#bbb;
+}
+#add-fol-btn,#add-info-btn{
+    width:220px;margin:0 auto;font-size:16px;height:35px;;line-height:35px;
+}
+#skip-btn{
+    margin-right:0;
+}
+.headwapper:hover{
+    border-color:#ccc;
+    -webkit-transform:rotate(0deg);
+}
+.add-fol-su{
+    padding-left:20px;
+    background:url('/img/loading_19_13.gif?b=b') left center no-repeat;
+}
+#am-if-wapp{
+    margin-left:10px;margin-right:20px;margin-top:10px;
+}
+.am-cii{
+    padding:10px 0;
+    border-bottom:1px dashed #eee;
+}
+.am-cii label{
+    color:green;
+    letter-spacing:1px;
+    font-size:15px;
+    display:inline-block;
+    width:50px;
+}
+.lga{
+    margin-top:5px;
+}
+.data-tip{
+    font-size:14px;margin:10px 0;color:#888;
+}
+#sign-info-wapp{
+    width:740px;padding:30px 20px;border:1px solid #ccc;margin-top:30px;background:#fefefe;margin-bottom:30px;
+}

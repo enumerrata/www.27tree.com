@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>配置 Mysql 允许远程连接</title>
+<content>&amp;lt;p&amp;gt;
+	MySql-Server&amp;nbsp;出于安全方面考虑只允许本机(localhost,&amp;nbsp;127.0.0.1)来连接访问.&amp;nbsp;这对于&amp;nbsp;Web-Server&amp;nbsp;与&amp;nbsp;MySql-Server&amp;nbsp;都在同一台服务器上的网站架构来说是没有问题的.&amp;nbsp;但随着网站流量的增加,&amp;nbsp;后期服务器架构可能会将&amp;nbsp;Web-Server&amp;nbsp;与&amp;nbsp;MySql-Server&amp;nbsp;分别放在独立的服务器上,&amp;nbsp;以便得到更大性能的提升,&amp;nbsp;此时&amp;nbsp;MySql-Server&amp;nbsp;就要修改成允许&amp;nbsp;Web-Server&amp;nbsp;进行远程连接.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设我们有:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Web-Server&amp;nbsp;&amp;nbsp;&amp;nbsp;:&amp;nbsp;192.168.1.100&amp;nbsp;&amp;nbsp;//ubuntu
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Mysql-Server&amp;nbsp;:&amp;nbsp;192.168.1.101&amp;nbsp;&amp;nbsp;//xp
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们可以按照下面的步骤修改:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,&amp;nbsp;登录&amp;nbsp;Mysql-Server&amp;nbsp;连接本地&amp;nbsp;mysql&amp;nbsp;(默认只允许本地连接)
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;Microsoft&amp;nbsp;Windows&amp;nbsp;XP&amp;nbsp;[版本&amp;nbsp;5.1.2600]
+(C)&amp;nbsp;版权所有&amp;nbsp;1985-2001&amp;nbsp;Microsoft&amp;nbsp;Corp.
+
+C:\Documents&amp;nbsp;and&amp;nbsp;Settings\kuco&amp;amp;gt;mysql&amp;nbsp;-h&amp;nbsp;localhost&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-p
+Enter&amp;nbsp;password:
+Welcome&amp;nbsp;to&amp;nbsp;the&amp;nbsp;MySQL&amp;nbsp;monitor.&amp;nbsp;&amp;nbsp;Commands&amp;nbsp;end&amp;nbsp;with&amp;nbsp;;&amp;nbsp;or&amp;nbsp;\g.
+Your&amp;nbsp;MySQL&amp;nbsp;connection&amp;nbsp;id&amp;nbsp;is&amp;nbsp;13
+Server&amp;nbsp;version:&amp;nbsp;5.1.45-community-log&amp;nbsp;MySQL&amp;nbsp;Community&amp;nbsp;Server&amp;nbsp;(GPL)
+
+Type&amp;nbsp;&amp;nbsp;help;&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;\h&amp;nbsp;&amp;nbsp;for&amp;nbsp;help.&amp;nbsp;Type&amp;nbsp;&amp;nbsp;\c&amp;nbsp;&amp;nbsp;to&amp;nbsp;clear&amp;nbsp;the&amp;nbsp;current&amp;nbsp;input&amp;nbsp;statement.
+
+mysql&amp;amp;gt;&amp;lt;/pre&amp;gt;
+2,&amp;nbsp;修改&amp;nbsp;Mysql-Server&amp;nbsp;用户配置
+&amp;lt;p&amp;gt;
+	&amp;nbsp;
+&amp;lt;pre&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;mysql&amp;amp;gt;&amp;nbsp;USE&amp;nbsp;mysql;&amp;nbsp;--&amp;nbsp;切换到&amp;nbsp;mysql&amp;nbsp;DB
+Database&amp;nbsp;changed
+mysql&amp;amp;gt;&amp;nbsp;SELECT&amp;nbsp;User,&amp;nbsp;Password,&amp;nbsp;Host&amp;nbsp;FROM&amp;nbsp;user;&amp;nbsp;--&amp;nbsp;查看现有用户,密码及允许连接的主机
++------+----------+-----------+
+&amp;brvbar;&amp;nbsp;User&amp;nbsp;&amp;brvbar;&amp;nbsp;Password&amp;nbsp;&amp;brvbar;&amp;nbsp;Host&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;brvbar;
++------+----------+-----------+
+&amp;brvbar;&amp;nbsp;root&amp;nbsp;&amp;brvbar;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;brvbar;&amp;nbsp;localhost&amp;nbsp;&amp;brvbar;
++------+----------+-----------+
+1&amp;nbsp;row&amp;nbsp;in&amp;nbsp;set&amp;nbsp;(0.00&amp;nbsp;sec)
+
+mysql&amp;amp;gt;&amp;nbsp;--&amp;nbsp;只有一个默认的&amp;nbsp;root&amp;nbsp;用户,&amp;nbsp;密码为空,&amp;nbsp;只允许&amp;nbsp;localhost&amp;nbsp;连接
+mysql&amp;amp;gt;&amp;nbsp;--&amp;nbsp;下面我们另外添加一个新的&amp;nbsp;root&amp;nbsp;用户,&amp;nbsp;密码为空,&amp;nbsp;只允许&amp;nbsp;192.168.1.100&amp;nbsp;连接
+mysql&amp;amp;gt;&amp;nbsp;GRANT&amp;nbsp;ALL&amp;nbsp;PRIVILEGES&amp;nbsp;ON&amp;nbsp;*.*&amp;nbsp;TO&amp;nbsp;&amp;nbsp;root&amp;nbsp;@&amp;nbsp;192.168.1.100&amp;nbsp;&amp;nbsp;IDENTIFIED&amp;nbsp;BY&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;WITH&amp;nbsp;GRANT&amp;nbsp;OPTION;
+
+mysql&amp;amp;gt;&amp;nbsp;--&amp;nbsp;当然我们也可以直接用&amp;nbsp;UPDATE&amp;nbsp;更新&amp;nbsp;root&amp;nbsp;用户&amp;nbsp;Host,&amp;nbsp;但不推荐,&amp;nbsp;SQL如下:
+mysql&amp;amp;gt;&amp;nbsp;--&amp;nbsp;UPDATE&amp;nbsp;user&amp;nbsp;SET&amp;nbsp;Host=&amp;nbsp;192.168.1.100&amp;nbsp;&amp;nbsp;WHERE&amp;nbsp;User=&amp;nbsp;root&amp;nbsp;&amp;nbsp;AND&amp;nbsp;Host=&amp;nbsp;localhost&amp;nbsp;&amp;nbsp;LIMIT&amp;nbsp;1;
+&amp;lt;/pre&amp;gt;
+3,&amp;nbsp;修改&amp;nbsp;Mysql&amp;nbsp;配置文件&amp;nbsp;my.ini
+&amp;lt;pre&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;bind-address&amp;nbsp;=&amp;nbsp;127.0.0.1
+将&amp;nbsp;bind-address&amp;nbsp;=&amp;nbsp;127.0.0.1&amp;nbsp;这一行注释掉,&amp;nbsp;即修改为:
+#bind-address&amp;nbsp;=&amp;nbsp;127.0.0.1
+到此&amp;nbsp;Mysql-Server&amp;nbsp;端配置就完成了.&amp;nbsp;&amp;lt;/pre&amp;gt;
+4,&amp;nbsp;连接&amp;nbsp;Web-Server&amp;nbsp;,&amp;nbsp;检查一下是否能连上
+&amp;lt;pre&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;kuco@kuco-desktop:/$&amp;nbsp;/opt/lampp/bin/mysql&amp;nbsp;-h&amp;nbsp;192.168.1.101&amp;nbsp;-u&amp;nbsp;root&amp;nbsp;-p
+Enter&amp;nbsp;password:
+Welcome&amp;nbsp;to&amp;nbsp;the&amp;nbsp;MySQL&amp;nbsp;monitor.&amp;nbsp;&amp;nbsp;Commands&amp;nbsp;end&amp;nbsp;with&amp;nbsp;;&amp;nbsp;or&amp;nbsp;\g.
+Your&amp;nbsp;MySQL&amp;nbsp;connection&amp;nbsp;id&amp;nbsp;is&amp;nbsp;23
+Server&amp;nbsp;version:&amp;nbsp;5.1.45-community-log&amp;nbsp;MySQL&amp;nbsp;Community&amp;nbsp;Server&amp;nbsp;(GPL)
+
+Type&amp;nbsp;&amp;nbsp;help;&amp;nbsp;&amp;nbsp;or&amp;nbsp;&amp;nbsp;\h&amp;nbsp;&amp;nbsp;for&amp;nbsp;help.&amp;nbsp;Type&amp;nbsp;&amp;nbsp;\c&amp;nbsp;&amp;nbsp;to&amp;nbsp;clear&amp;nbsp;the&amp;nbsp;current&amp;nbsp;input&amp;nbsp;statement.
+
+mysql&amp;amp;gt;&amp;nbsp;--&amp;nbsp;一切OK
+&amp;lt;/pre&amp;gt;
+当然也可以用&amp;nbsp;php&amp;nbsp;程序去验证:
+&amp;lt;pre&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;&amp;amp;lt;?php
+mysql_connect(\"192.168.1.101\",&amp;nbsp;\"root\",&amp;nbsp;\"\")&amp;nbsp;or&amp;nbsp;die(\"Could&amp;nbsp;not&amp;nbsp;connect:&amp;nbsp;\"&amp;nbsp;.&amp;nbsp;mysql_error());
+?&amp;amp;gt;
+&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;class=\"sql\"&amp;nbsp;name=\"code\"&amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;br&amp;nbsp;/&amp;gt;
+	&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-08/1339117025.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

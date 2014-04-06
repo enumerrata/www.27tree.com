@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android应用性能优化]]></title>
+  <author>Hervé Guihot</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-03 11:45:40</submit-date-time>
+  <img-link>2a91ce4ed887331d349418696cbeee4f.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	<strong><span style=\"font-size:14px;\">全面剖析Android应用性能优化技巧</span></strong>
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">详尽的代码示例供您举一反三</span></strong>
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">开发优秀的Android应用必备指南</span></strong>
+</p>
+<p>
+	《Android应用性能优化》主要介绍如何调优Android应用，以使应用更健壮并提高其执行速度。内容包括用Java、NDK优化应用，充分利用内存以使性能最大化，尽最大可能节省电量，何时及如何使用多线程，如何使用基准问题测试代码，如何优化OpenGL代码和使用Renderscript等。《Android应用性能优化》面向熟悉Java和Android SDK的想要进一步学习如何用本地代码优化应用性能的Android开发人员。
+</p>
+<p>
+	<p>
+		本书详细介绍了优化Android代码的各种规则和技巧，揭开了Android和JAVA核心数据结构的神秘面纱。最值得称道的是，作者展示了使用缓存、SQLite以及延长电池使用寿命的技术，这是每个严谨的开发人员都必须要掌握的内容。
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<strong>市面上这种书并不多见！我想把这本书推荐给所有Android高级程序员。</strong>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

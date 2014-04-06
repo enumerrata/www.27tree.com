@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Oracle性能诊断艺术]]></title>
+  <author>安东尼尼</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-09 14:13:58</submit-date-time>
+  <img-link>1a4ae88a0e3d63c75b245886b148126b.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>Oracle数据库优化的里程碑式著作</strong>，涵盖Oracle各版本，源自实战的真知灼见。
+</p>
+<p>
+	前端业务应用炙手可热之日，便是优化后端数据库性能之时。当此之际，身怀数据库优化的绝技，可以让你平步职场，傲视群英。
+</p>
+<p>
+	本书是Oracle数据库优化专家Christian Antognini的一部继往开来的里程碑式著作。书中的最佳实践和诸多建议全部来源于作者在实战一线的丰富积累。不仅简单实用，而且发人深省，堪称一座“宝库”，适合各层次读者研读和发掘。
+</p>
+<p>
+	与其他同类图书不同，本书不仅涵盖了市面上常见的各种Oracle版本，还指明了各个版本独有的性能优化特性。全书以崭新的视角开篇立论，围绕查明问题真相和搜寻有效方略，透彻讲解了查询优化器的配置，表访问、连接和物理表布局的优化，以及加速SQL执行计划等重要主题，被读者誉为<strong>“最透彻，但又</strong><strong>最通俗的性能优化好书”</strong>。值得拥有!
+</p>
+<p>
+	<p>
+		全书以优化Oracle应用程序为目的，先介绍Oracle性能优化的基本原理、关键概念，从业务角度和系统角度分析性能。接着深入细致地讲述如何找出性能问题及所用工具。重点关注查询优化器及其使用的统计信息，查询优化器的配置，获取执行计划的方法，SQL优化技术，解析的工作原理及问题，如何高效地访问单表和多个相关联的表。并且延伸到高级优化技术，及如何优化物理设计。
+	</p>
+	<p>
+		本书适合<strong>Oracle数据库应用程序开发人员、性能分析人员与数据库管理员</strong>。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

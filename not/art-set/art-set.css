@@ -1,0 +1,228 @@
+#tip-em {
+    margin:0px 5px;
+    border-bottom:1px dashed #ccc;
+    color: #bbb;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+    margin-top:-5px;
+    margin-bottom:5px;
+}
+.art-usi{
+    background-color: #fff;
+    border:1px solid #ccc;
+}
+#usi-head{
+    display:block;
+    margin:10px;
+    margin-bottom:-5px;
+}
+#usi-head-img{
+    float:left;
+    height:64px;
+    width:64px;
+}
+#usi-head-nick{
+    display:block;
+    font-size:15px;
+    font-weight: bold;
+    color:#999999;
+}
+#usi-head-username{
+    display:block;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+    background-color: #fafafa;
+    margin-top:5px;
+    padding:5px 0px;
+    font-size:18px;
+    font-weight: bold;
+}
+.usi-items{
+    margin:10px;
+    display:block;
+    border-bottom:1px dashed #ccc;
+    padding-bottom:5px;
+    text-align:left;
+    line-height:16px;
+}
+.goToTop{
+    display: block;
+    position: absolute;
+    width:32px;
+    height:32px;
+    bottom:220px;
+    line-height: 32px;
+    text-align: center;
+    background-image: url('/img/totop.png');
+}
+
+#editollbar{
+    border:1px solid #ccc;
+    background-color:#fefefe;
+    float:right;
+}
+.more-author-p{
+    border:1px solid #ccc;
+}
+#bdshare{
+    margin-left: 50px;
+}
+.toobaritem{
+    padding:3px;
+    padding-top:0px;
+    padding-left:1px;
+    margin:1px;
+    float:left;
+    width:32px;
+    height:32px;
+    display:none;
+}
+.editarea {
+    display: none;
+    margin: 0px auto;
+    width: 100%;
+    height: 1024px;
+}
+
+#edit-top {
+    display: none;
+    margin-bottom: 5px;
+}
+
+#edit-h1 {
+    line-height: 28px;
+    font-weight: normal;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+#edit-bottom {
+    display: none;
+    margin-top: 5px;
+}
+a#next-cp {
+    margin-top: 5px;
+}
+#next-cp-comm{
+    line-height:25px;
+    height:25px;
+    cursor:pointer;
+    margin-top:10px;
+}
+.movie-img-wapper {
+    cursor: crosshair;
+}
+
+.art-content {
+    font-size: 13px;
+    padding:0px 15px;
+    margin-bottom:5px;
+}
+.art-content p{
+    text-indent:15px;
+}
+.art-content img{
+    max-width:700px;
+    *width = expression(this.width >= 700 ? "700px" : this.width);
+}
+
+#left-art {
+    background-color:#fcfcfc;
+    border:1px solid #ccc;
+    border-top:3px solid #6397CB;
+    float:left;
+    width:768px;
+    font-size: 15px;
+    line-height: 1.3em;
+    position: relative;
+    margin:10px;
+    margin-top:-5px;
+}
+
+#left-art h1,#left-art h5 {
+    text-align: center;
+    line-height: 20px;
+}
+.articleBar{
+    border-bottom:1px solid #E1E4E6;text-align:right;padding-right:15px;padding-bottom:5px;
+}
+#tit_div h5{
+    font-weight:normal;
+    font-size:13px;
+}
+#left-art h1 {
+    margin-top: 15px;
+    line-height: 28px;
+    display: block;
+    font-weight: normal;
+    font-size: 25px;
+}
+#ad-right {
+    margin:10px;
+    margin-left:0;
+    margin-top:-5px;
+    float:left;
+    width:256px;
+    text-align:center;
+}
+#bbs-sugg-posts,#randBooklist{
+    text-align:left;
+    line-height:20px;
+    margin:10px 0;
+    border:1px solid #bbb;
+    border-top:none;
+    background-color:#FFF;
+}
+#bbs-sugg-posts span.tipS-blocked,#randBooklist span.tipS-blocked{
+    margin-left:-1px;margin-right:-1px;
+}
+.more {
+    background-color:#fbfbfb;
+    margin: 5px 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-top:3px solid #6397CB;
+    display: block;
+}
+.more span.tipS{
+    border-top:none;color:#D4341C;margin-left:-5px;margin-right:-5px;
+    font-weight:bold;
+}
+.more-item {
+    border: 1px solid #ddd;
+    margin: 5px;
+    width: 226px;
+    float: left;
+    background-color: #fff;
+}
+.more-item-content {
+    margin: 3px 0px;
+    margin-left:36px;
+    word-wrap: break-word;
+    word-break: normal;
+}
+.more-item-content a {
+    display: block;
+    font-size: 13px;
+}
+.more-item-content span {
+    cursor: default;
+    display: block;
+    font-size: 10px;
+    color: #bbb;
+}
+.more-item-p {
+    float: left;
+    margin: 3px;
+    padding-top:2px;
+}
+#loadmore-button{
+    padding:5px;text-align:right;color:#900;display:block;font-size:14px;margin:2px 5px;text-align:center;border:1px solid #ccc;background:#f2f2f2;height:20px;line-height:20px;
+}
+#loadmore-button:hover{
+    color:#111;
+    background:#fff;
+}

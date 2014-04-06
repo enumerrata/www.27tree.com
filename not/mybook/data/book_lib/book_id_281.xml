@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[GWT in Action - Easy Ajax with the Google Web Toolkit]]></title>
+  <author>Robert Hanson, Adam Tacy</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-02-04 11:23:50</submit-date-time>
+  <img-link>f34973fb31e0c3de141fa6603186193e.jpg</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[The Google Web Toolkit (GWT) is a new technology from Google that automatically translates Java into JavaScript, making Ajax applications easier to code and deploy. GWT in Action is a comprehensive tutorial for Java developers interested in building the next generation of rich, web-based applications. This book was written by Robert Hanson, creator of the popular GWT Widget Library, and Adam Tacy, a major contributor to the GWT Widget Library.]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

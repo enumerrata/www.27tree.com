@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-14 10:39:54</datetime>
+  <title><![CDATA[Mozilla 将从 Firefox 17 开始屏蔽旧插件]]></title>
+  <content><![CDATA[Mozilla上周宣布它将会在不久之后通知Windows用户升级旧版Adobe和Silverlight插件，但它当时没有透露具体时间表。现在，Mozilla官方博客详述了这项计划， 从Firefox 17开始将默认启用“黑名单插件点击播放（click-to-play plugins）”功能——即浏览器不提前载入黑名单中的旧插件，需要用户手动点击之后载入和展示内容——Firefox 16用户可以在about:config中将plugins.click_to_play的值设为“true”。对于旧版本的Adobe Reader，Adobe Flash和Microsoft Silverligh插件，用户将会看到建议升级的通知和下载链接。]]></content>
+  <contentx><![CDATA[Mozilla上周宣布它将会在不久之后通知Windows用户升级旧版Adobe和Silverlight插件，但它当时没有透露具体时间表。现在，Mozilla官方博客详述了这项计划， 从Firefox 17开始将默认启用“黑名单插件点击播放（click-to-play plugins）”功能——即浏览器不提前载入黑名单中的旧插件，需要用户手动点击之后载入和展示]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-17 08:03:03</datetime>
+  <title><![CDATA[使用 PHP 限制下载速度]]></title>
+  <content><![CDATA[<p>
+	各位做运维的童鞋，会经常遇到一个问题，那就是有人再办公室下载东西，影响大家上网、办公。同样的问题，要是出现在了服务器上面，估计会让老板发火，事情发展的会更糟……今天特此想大家推荐几行关于PHP限制网速的代码，希望给大家一些帮助。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">// local file that should be send to the client
+$local_file = \'test-file.zip\';
+
+// filename that the user gets as default
+$download_file = \'your-download-name.zip\';
+
+// set the download rate limit (=&gt; 20,5 kb/s)
+$download_rate = 20.5;
+
+if(file_exists($local_file) &amp;&amp; is_file($local_file)) {
+
+ // send headers
+ header(\'Cache-control: private\');
+ header(\'Content-Type: application/octet-stream\');
+ header(\'Content-Length: \'.filesize($local_file));
+ header(\'Content-Disposition: filename=\'.$download_file);
+
+ // flush content
+ flush();
+
+ // open file stream
+ $file = fopen($local_file, \"r\");
+
+ while (!feof($file)) {
+
+ // send the current file part to the browser
+ print fread($file, round($download_rate * 1024));
+
+ // flush the content to the browser
+ flush();
+
+ // sleep one second
+ sleep(1);
+ }
+
+ // close file stream
+ fclose($file);
+
+}
+
+else {
+ die(\'Error: The file \'.$local_file.\' does not exist!\');
+}</pre>
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[各位做运维的童鞋，会经常遇到一个问题，那就是有人再办公室下载东西，影响大家上网、办公。同样的问题，要是出现在了服务器上面，估计会让老板发火，事情发展的会更糟……今天特此想大家推荐几行关于PHP限制网速的代码，希望给大家一些帮助。
+
+
+// local file that should be send to the client
+$local_file = \']]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

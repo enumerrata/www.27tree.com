@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用mysql触发器获得新增id</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	我们平时使用AUTO_INCREMENT&amp;nbsp;来给id赋值，这个方法的好处就是方便，快捷，我们不用想怎么样来递增id，但是这个方法有一个坏处：就是你不知道这个值是多少，我们一般会关联几个表，我们用这个id来关联，所以我们要知道这个值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	为了获得这个值，我一般是使用&amp;nbsp;mysql&amp;nbsp;函数：insert_id()&amp;nbsp;这个mysql函数来获得数据库新添加的值，刚刚上课的时候看到新的方法，使用mysql触发器来获得AUTO_INCREMENT&amp;nbsp;自动新增的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	CREATE&amp;nbsp;TRIGGER&amp;nbsp;触发器名字&amp;nbsp;AFTER&amp;nbsp;INSERT&amp;nbsp;ON&amp;nbsp;表名&amp;nbsp;FOR&amp;nbsp;EACH&amp;nbsp;ROW&amp;nbsp;SELECT&amp;nbsp;NEW.ID
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	使用这种方法应该可以更加方便得到刚刚插入数据库的数据id
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340095777.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

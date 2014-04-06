@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-04 00:28:54</datetime>
+  <title>PHP中 is_numeric与ctype_digit 区别</title>
+  <content>&lt;p&gt;
+	PHP中的两个函数is_numeric和ctype_digit都是检测字符串是否是数字，但也存在一点区别
+&lt;/p&gt;
+&lt;p&gt;
+	is_numeric：检测是否为数字字符串，可为负数和小数
+&lt;/p&gt;
+&lt;p&gt;
+	ctype_digit：检测字符串中的字符是否都是数字，负数和小数会检测不通过
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;注意，参数一定要是字符串，如果不是字符串，则会返回0/FASLE&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	下面是测试例子：&lt;br&amp;nbsp;/&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&gt;
+$a&amp;nbsp;=&amp;nbsp;&amp;nbsp;0001111222&amp;nbsp;;
+var_dump($a);
+var_dump(is_numeric($a));&amp;nbsp;//true
+var_dump(ctype_digit($a));&amp;nbsp;//true
+$a&amp;nbsp;=&amp;nbsp;&amp;nbsp;0.1&amp;nbsp;;
+var_dump($a);
+var_dump(is_numeric($a));&amp;nbsp;//true
+var_dump(ctype_digit($a));&amp;nbsp;//false
+&amp;nbsp;
+$a&amp;nbsp;=&amp;nbsp;&amp;nbsp;-1&amp;nbsp;;
+var_dump($a);
+var_dump(is_numeric($a));&amp;nbsp;//true
+var_dump(ctype_digit($a));&amp;nbsp;//false
+&amp;nbsp;
+$a&amp;nbsp;=&amp;nbsp;&amp;nbsp;a&amp;nbsp;;
+var_dump($a);
+var_dump(is_numeric($a));&amp;nbsp;//false
+var_dump(ctype_digit($a));&amp;nbsp;//false
+&amp;nbsp;
+&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>PHP中的两个函数is_numeric和ctype_digit都是检测字符串是否是数字，但也存在一点区别
+	is_numeric：检测是否为数字字符串，可为负数和小数
+	ctype_digit：检测字符串中的字符是否都是数字，负数和小数会检测不通过
+	注意，参数一定要是字符串，如果不是字符串，则会返回0/FASLE</contentx>
+  <tags>_null_</tags>
+</root>

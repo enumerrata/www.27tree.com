@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用位运算实现循环移位</title>
+<content>&amp;lt;p&amp;gt;
+	循环移位区别于一般移位的是移位时没有数位的丢失。循环左移时，用从左边移出的位填充字的右端，而循环右移时，用从右边移出的位填充字的左侧。这种情况在系统程序中时有使用，在一些控制程序中用得也不少。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	设有数据说明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=01111011，循环左移2位&amp;nbsp;正确结果：&amp;nbsp;11101101
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	过程：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=a&amp;amp;gt;&amp;amp;gt;（8-2）&amp;nbsp;用来得到正常左移丢失的位和循环移位后其正确位置&amp;nbsp;b=00000001；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=a&amp;amp;lt;&amp;amp;lt;2；左移&amp;nbsp;a=11101100
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=a&amp;brvbar;b；&amp;nbsp;a=11101101
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果不是用中间变量&amp;nbsp;a=（a&amp;amp;gt;&amp;amp;gt;（8-2））&amp;brvbar;（a&amp;amp;lt;&amp;amp;lt;2）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总长度N（8&amp;nbsp;16&amp;nbsp;32）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	循环左移n&amp;nbsp;（a&amp;amp;gt;&amp;amp;gt;（N-n））&amp;brvbar;（a&amp;amp;gt;&amp;amp;gt;n）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	循环右移n&amp;nbsp;（a&amp;amp;lt;&amp;amp;lt;（N-n））&amp;brvbar;（a&amp;amp;gt;&amp;amp;gt;n）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C语言的位运算功能是其区别于其他大多数高级程序设计语言的特色之一，用它可以方便实现一些特殊功能，灵活掌握是用C程序编写系统程序的基础。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-14/1339661096.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-15+00%3A20%3A09</date-c>
+  <conf-c>C语言的位运算功能是其区别于其他大多数高级程序设计语言的特色之一，用它可以方便实现一些特殊功能，灵活掌握是用C程序编写系统程序的基础。&amp;nbsp;</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

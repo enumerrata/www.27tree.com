@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Mysql LIMIT如何正确对其进行优化</title>
+<content>&amp;lt;p&amp;gt;
+	以下的文章主要是对Mysql&amp;nbsp;LIMIT简单介绍，我们大家都知道LIMIT子句一般是用来限制SELECT语句返回的实际行数。LIMIT取1个或是2个数字参数，如果给定的是2个参数，第一个指定要返回的第一行的偏移量，第二个指定返回行的最大数目。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	初始行的偏移
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	量是0(不是1)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mysql&amp;amp;gt;&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;LIMIT&amp;nbsp;6,10;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		得到第7-16行
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果给定一个参数，它指出返回行的最大数目。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		mysql&amp;amp;gt;&amp;nbsp;select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;LIMIT&amp;nbsp;5;&amp;nbsp;得到前5行
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		换句话说，LIMIT&amp;nbsp;n等价于Mysql&amp;nbsp;LIMIT&amp;nbsp;0,n。MYSQL的优化是非常重要的。其他最常用也最需要优化的就是limit。mysql的limit给分页带来了极大的方便，但数据量一大的时候，limit的性能就急剧下降。同样是取10条数据
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;yanxue8_visit&amp;nbsp;limit&amp;nbsp;10000,10&amp;nbsp;和
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;yanxue8_visit&amp;nbsp;limit&amp;nbsp;0,10&amp;nbsp;就不是一个数量级别的。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		网上也很多关于limit的五条优化准则，都是翻译自mysql手册，虽然正确但不实用。今天发现一篇文章写了些关于limit优化的，很不错。原文地址：http://www.zhenhua.org/article.asp?id=200（下面附有原文）
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		文中不是直接使用limit，而是首先获取到offset的id然后直接使用Mysql&amp;nbsp;limit&amp;nbsp;size来获取数据。根据他的数据，明显要好于直接使用limit。这里我具体使用数据分两种情况进行测试。（测试环境win2033+p4双核(3GHZ)&amp;nbsp;+4G内存&amp;nbsp;mysql&amp;nbsp;5.0.19）
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		1、offset比较小的时候。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;yanxue8_visit&amp;nbsp;limit&amp;nbsp;10,10&amp;nbsp;多次运行，时间保持在0.0004-0.0005之间
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;yanxue8_visit&amp;nbsp;Where&amp;nbsp;vid&amp;nbsp;&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;vid&amp;nbsp;From&amp;nbsp;yanxue8_visit&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;vid&amp;nbsp;limit&amp;nbsp;10,1&amp;nbsp;&amp;nbsp;)&amp;nbsp;limit&amp;nbsp;10&amp;nbsp;多次运行，时间保持在0.0005-0.0006之间，主要是0.0006结论：偏移offset较小的时候，直接使用limit较优。这个显然是子查询的原因。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		2、offset大的时候
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;yanxue8_visit&amp;nbsp;limit&amp;nbsp;10000,10&amp;nbsp;多次运行，时间保持在0.0187左右
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;yanxue8_visit&amp;nbsp;Where&amp;nbsp;vid&amp;nbsp;&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;vid&amp;nbsp;From&amp;nbsp;yanxue8_visit&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;vid&amp;nbsp;limit&amp;nbsp;10000,1&amp;nbsp;&amp;nbsp;)&amp;nbsp;limit&amp;nbsp;10&amp;nbsp;多次运行，时间保持在0.0061左右，只有前者的1/3。可以预计offset越大，后者越优。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		附上原文：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;LIMIT&amp;nbsp;5,10;&amp;nbsp;#返回第6-15行数据
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;LIMIT&amp;nbsp;5;&amp;nbsp;#返回前5行
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		select&amp;nbsp;*&amp;nbsp;from&amp;nbsp;table&amp;nbsp;LIMIT&amp;nbsp;0,5;&amp;nbsp;#返回前5行
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		性能优化：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		基于MySQL5.0中Mysql&amp;nbsp;limit的高性能,我对数据分页也重新有了新的认识.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Where&amp;nbsp;ID&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;Max(ID)&amp;nbsp;From&amp;nbsp;(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;ID&amp;nbsp;limit&amp;nbsp;90001&amp;nbsp;&amp;nbsp;)&amp;nbsp;As&amp;nbsp;tmp&amp;nbsp;&amp;nbsp;)&amp;nbsp;limit&amp;nbsp;100;&amp;nbsp;&amp;nbsp;Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Where&amp;nbsp;ID&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;Max(ID)&amp;nbsp;From&amp;nbsp;(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;ID&amp;nbsp;limit&amp;nbsp;90000,1&amp;nbsp;&amp;nbsp;)&amp;nbsp;As&amp;nbsp;tmp&amp;nbsp;&amp;nbsp;)&amp;nbsp;limit&amp;nbsp;100;&amp;nbsp;&amp;nbsp;同样是取90000条后100条记录,第1句快还是第2句快?
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第1句是先取了前90001条记录,取其中最大一个ID值作为起始标识,然后利用它可以快速定位下100条记录
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第2句择是仅仅取90000条记录后1条,然后取ID值作起始标识定位下100条记录
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第1句执行结果.100&amp;nbsp;rows&amp;nbsp;in&amp;nbsp;set&amp;nbsp;(0.23)&amp;nbsp;sec
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第2句执行结果.100&amp;nbsp;rows&amp;nbsp;in&amp;nbsp;set&amp;nbsp;(0.19)&amp;nbsp;sec
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		很明显第2句胜出.看来limit好像并不完全像我之前想象的那样做全表扫描返回limit&amp;nbsp;offset+length条记录,这样看来limit比起MS-SQL的Top性能还是要提高不少的.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		其实第2句完全可以简化成
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Where&amp;nbsp;ID&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;limit&amp;nbsp;90000,1&amp;nbsp;&amp;nbsp;)limit&amp;nbsp;100;&amp;nbsp;直接利用第90000条记录的ID,不用经过Max运算,这样做理论上效率因该高一些,但在实际使用中几乎看不到效果,因为本身定位ID返回的就是1条记录,Max几乎不用运作就能得到结果,但这样写更清淅明朗,省去了画蛇那一足.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		可是,既然MySQL有limit可以直接控制取出记录的位置,为什么不干脆用Select&amp;nbsp;*&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;limit&amp;nbsp;90000,1呢?岂不更简洁?
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		这样想就错了,试了就知道,结果是:1&amp;nbsp;row&amp;nbsp;in&amp;nbsp;set&amp;nbsp;(8.88)&amp;nbsp;sec,怎么样,够吓人的吧,让我想起了昨天在4.1中比这还有过之的\"高分\".Select&amp;nbsp;*&amp;nbsp;最好不要随便用,要本着用什么,选什么的原则,&amp;nbsp;Select的字段越多,字段数据量越大,速度就越慢.&amp;nbsp;上面2种分页方式哪种都比单写这1句强多了,虽然看起来好像查询的次数更多一些,但实际上是以较小的代价换取了高效的性能,是非常值得的.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		第1种方案同样可用于MS-SQL,而且可能是最好的.因为靠主键ID来定位起始段总是最快的.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;Top&amp;nbsp;100&amp;nbsp;*&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Where&amp;nbsp;ID&amp;amp;gt;=(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;Top&amp;nbsp;90001&amp;nbsp;Max(ID)&amp;nbsp;From&amp;nbsp;(&amp;nbsp;&amp;nbsp;Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;Order&amp;nbsp;By&amp;nbsp;ID&amp;nbsp;&amp;nbsp;)&amp;nbsp;As&amp;nbsp;tmp&amp;nbsp;&amp;nbsp;)&amp;nbsp;&amp;nbsp;但不管是实现方式是存贮过程还是直接代码中,瓶颈始终在于MS-SQL的TOP总是要返回前N个记录,这种情况在数据量不大时感受不深,但如果成百上千万,效率肯定会低下的.相比之下MySQL的Mysql&amp;nbsp;limit就有优势的多,执行:
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;limit&amp;nbsp;90000&amp;nbsp;&amp;nbsp;Select&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;limit&amp;nbsp;90000,1
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		而MS-SQL只能用Select&amp;nbsp;Top&amp;nbsp;90000&amp;nbsp;ID&amp;nbsp;From&amp;nbsp;cyclopedia&amp;nbsp;执行时间是390ms,执行同样的操作时间也不及MySQL的360ms.
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340095900.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

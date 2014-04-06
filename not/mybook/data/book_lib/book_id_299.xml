@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Introducing Regular Expressions]]></title>
+  <author>Michael Fitzgerald</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-19 18:29:49</submit-date-time>
+  <img-link>f460f635610639986e78ce0479285315.jpg</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	If you’re a programmer new to regular expressions, this easy-to-follow guide is a great place to start. You’ll learn the fundamentals step-by-step with the help of numerous examples, discovering first-hand how to match, extract, and transform text by matching specific words, characters, and patterns.
+</p>
+<p>
+	Regular expressions are an essential part of a programmer’s toolkit, available in various Unix utlilities as well as programming languages such as Perl, Java, JavaScript, and C#. When you’ve finished this book, you’ll be familiar with the most commonly used syntax in regular expressions, and you’ll understand how using them will save you considerable time.
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\">Discover what regular expressions are and how they work</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Learn many of the differences between regular expressions used with command-line tools and in various programming languages</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Apply simple methods for finding patterns in text, including digits, letters, Unicode characters, and string literals</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Learn how to use zero-width assertions and lookarounds</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Work with groups, backreferences, character classes, and quantifiers</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Use regular expressions to mark up plain text with HTML5</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

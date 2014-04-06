@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-02 09:34:05</datetime>
+  <title><![CDATA[RIA的未来是HTML5？]]></title>
+  <content><![CDATA[<p>
+	富互联网应用（RIA）是WEB应用的未来发展趋势。不同于创建在静态WEB范式上的第一代SaaS应用，RIA为台式机带来了进入云端的经验。下一代云应用将会是基于RIA的，合并了我们所期待的桌面应用的交互性和响应性。
+</p>
+<p>
+	这就像一场安静的变革，因为我们没有得到预先的RIA炒作。Adobe 是RIA 的最早支持者，创建知名度提供技术和工具便于RIA的创建。
+</p>
+<p>
+	但为题也出现了，RIA的未来是不会围绕着像Flex或者Silverlight这样的专利技术，而是就有关开放标准进行，即HTML5和Javascript。在众多的增强功能中，HTML5为渲染图形介入了新的标准。还提供了脱机客户端存储，这对我们所期望的云应用产生了深远的影响。事实上，每家公司申请创建云应该思考富HTML5/Javascript客户端的互动处理和分离模式的工作能力。
+</p>
+<p>
+	这不单是Ajax代码，由于像Sproutcore这样的本机Web应用程序框架的存在，所以它不只是对未来的，是实际存在的现实。
+</p>
+<p>
+	Sproutcore是全面的Javascript/HTML5框架，而且是开源的。重要的是要明白，Sproutcore不只是像JQuery这样的插件库，而是精心设计，充分开发的RIA功能架构。它采用客户端模型视图控制器（MVC）范式，并提供属性绑定、事件处理和客户端存储/对象关系映射这样的附加功能。
+</p>
+<p>
+	想要为iPhone/ipad创建应用？Sproutcore还提供了一个接触界面，旨在移动开发。
+</p>
+<p>
+	像Apple、Other Inbox和Eloqua这些公司已经或正在使用Sproutcore创建应用程序。Apple的MobileMe应用程序是“冰山一角”。与Flex和Silverlight不同，Sproutcore运行在在浏览器中，无需使用使得部署变得复杂的插件的援助。
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <contentx><![CDATA[富互联网应用（RIA）是WEB应用的未来发展趋势。不同于创建在静态WEB范式上的第一代SaaS应用，RIA为台式机带来了进入云端的经验。下一代云应用将会是基于RIA的，合并了我们所期待的桌面应用的交互性和响应性。
+
+
+	这就像一场安静的变革，因为我们没有得到预先的RIA炒作。Adobe 是RIA 的最早支持者，创建知名度提供技术和工具便于RIA的创建。
+
+
+]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

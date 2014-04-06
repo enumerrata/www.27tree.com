@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP实战]]></title>
+  <author>Dagfinn Reiersφl / Marcus Baker / Chris Shiflett</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-20 17:16:37</submit-date-time>
+  <img-link>bbdf152320ddd8cbdd518274aaec8d8f.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	《PHP实战》内容简介：随着 PHP 5的发布和 Zend框架项目的应用，PHP和敏捷思想、设计模式以及单元测试的联姻成为主流话题。
+</p>
+<p>
+	《PHP实战》首先介绍了面向对象设计的原则、模式和技巧，然后讲述了如何在 PHP上利用其语法和特性，处理和实施这些原则、模式和技巧，并应用于 Web编程中遇到的难题上。
+</p>
+<p>
+	《PHP实战》适合所有使用 PHP开发 Web应用程序的人员阅读。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		<strong>编辑推荐</strong>
+	</p>
+	<p>
+		《PHP实战》：近几年，PHP的发展突飞猛进，业已超越Java和ASP。成为目前最流行的Web开发语言。而随着PHP 5的发布和Zend框架的应用，PHP和敏捷思想、设计模式以及单元测试的联姻成为主流话题。
+	</p>
+	<p>
+		《PHP实战》首先介绍了面向对象设计的原则、模式和技巧，然后讲述了如何运用PHP的语法和特性来解决Web编程中遇到的难题。涵盖了单元测试、重构、用户交互、MVC模式、输入验证、表单处理、数据库连接和查询。以及抽象的持久性对象等内容。通过研读《PHP实战》，读者将对PHP有更深层、更透彻的理解。可以借鉴先进的面向对象实践。极大地提升自己面向对象设计和编程的能力。
+	</p>
+	<p>
+		理论和实践的完美结合
+	</p>
+	<p>
+		Web开发人员必读之作
+	</p>
+	<p>
+		大量PHP核心技巧和最佳实践
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

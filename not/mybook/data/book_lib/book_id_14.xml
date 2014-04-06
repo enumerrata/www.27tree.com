@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[精通Android 3]]></title>
+  <author>印）克曼特内尼，（美）麦克莱恩，（美）哈希米</author>
+  <submiter-uid>1</submiter-uid>
+  <submit-date-time>2012-10-29 23:50:14</submit-date-time>
+  <img-link>3b6a83a017895219f38a5319123755ae.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	Android是Google的开源移动开发平台，业已成为移动设备领域的主流。近几年，随着越来越多硬件供应商"加入Andfoid操作系统的阵营。Google有望成为移动领域的微软。
+</p>
+<p>
+	本书是备受推崇的Android参考书，在上一版的基础上进行了全面修改和重新规划，同时新增了大量内容。涵盖了100多个主题，介绍了分别针对移动电话和平板电脑而优化的AndI"oid2.3 和Android3.0。
+</p>
+<p>
+	本书强调实用，突出趣味。寓教于乐。作者通过妙趣横生、切实可行的示例，向读者展示了如何使用Google"最新的And『old3.0SDK。构建贴近实际且意趣盎然的应用，深入全面地介绍了为嵌入式设备、手机、平板电脑构建应用所需的一切知识，同时介绍了自定义3D组件和多任务等高级主题。
+</p>
+<p>
+	本书是移动开发大师的真知灼见与实际应用相结合的产物。如果你对Android移动开发感兴趣。那么本书绝对不容错过。
+</p>
+<p>
+	亚马逊畅销书，读者好评如潮、涉及版本2.3 和3.0、Android移动开发的制胜宝典！
+</p>
+<p>
+	本书在上一版的基础上进行了全面改进，增加了Android内部构件的相关知识，介绍了线程、进程、长期运行的服务、广播接收程序和闹钟管理器。本版还介绍了更多UI控件，并用150多页的篇幅专门介绍了Android3.0版，包括碎片、碎片对话框、ActionBar和拖放。此外，本书对服务和传感器的相关章节做了大幅改进，还对介绍OpenGL的章节做了修订，涵盖了OpenGLES2.0。.本书囊括了Android开发人员所需的一切知识，既可为Android开发人员夯实基础，又能提高Android开发人员的技能。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

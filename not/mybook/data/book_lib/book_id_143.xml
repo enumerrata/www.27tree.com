@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>锋利的jQuery</title>
+  <author>单东林，张晓菲，魏然</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-07 22:39:32</submit-date-time>
+  <img-link>4e64d09156328fc8709582ef385caa3a.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p style=\"text-indent:2em;\"&gt;
+	本书循序渐进地对jQuery的各种函数和方法调用进行了介绍，读者可以系统地掌握jQuery的DOM操作、事件监听和动画、表单操作、AJAX以及插件方面等知识点，并结合每个章节后面的案例演示进行练习，达到掌握核心知识点的目的。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	为使读者更好地进行开发实践，本书的最后一章将前7章讲解的知识点和效果进行了整合，打造出一个非常有个性的网站，并从案例研究、网站材料、网站结构、网站样式和网站脚本等方面指导读者参与到项目建设中来。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	本书适合Web开发人员阅读和参考。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		每多学一点知识，就少写一行代码。
+	&lt;/p&gt;
+	&lt;p&gt;
+		jQuery，顾名思议，也就是JavaScript和查询（Query），即是辅助JavaScript开发的库。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书循序渐进地对jQuery的各种方法和使用进行介绍，读者可以系统地掌握jQuery关于DOM操作、事件监听和动画、表单操作、Ajax，以及插件方面知识点，并结合每个章节后面的案例演示进行练习，达到掌握本章节知识点的目的。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

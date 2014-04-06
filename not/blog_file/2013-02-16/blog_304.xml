@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[DedeCMS反馈页面SQL注入漏洞]]></title>
+  <content><![CDATA[<p>
+	SQL注入攻击就是攻击者通过欺骗数据库服务器执行非授权的任意查询过程。
+</p>
+<p>
+	<span style=\"line-height:1.5;\">漏洞形成的原因：DedeCMS的plus\\feedback.php中对变量 $typeid未做过滤，导致SQL注入漏洞</span><span style=\"line-height:1.5;\"></span>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		被SQL注入后可能导致以下后果：
+	</p>
+	<p>
+		1.网页被篡改;
+	</p>
+	<p>
+		2.数据被篡改;
+	</p>
+	<p>
+		感谢各位站长朋友的反馈，有了你们的反馈和支持，我们才能做得更好。
+	</p>
+	<p>
+		我们已对规则进行了优化调整，请站长朋友们重新扫描一下。
+	</p>
+	<p>
+		<br />
+	</p>
+请打上官方提供的补丁：http://bbs.dedecms.com/551651.html
+</p>]]></content>
+  <contentx><![CDATA[
+	SQL注入攻击就是攻击者通过欺骗数据库服务器执行非授权的任意查询过程。
+
+
+	漏洞形成的原因：DedeCMS的plus\\feedback.php中对变量 $typeid未做过滤，导致SQL注入漏洞
+
+
+	
+
+
+	
+		被SQL注入后可]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

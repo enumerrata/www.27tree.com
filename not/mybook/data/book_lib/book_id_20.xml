@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>PHP5权威编程</title>
+  <author>（美）古曼兹，（美）贝肯，（美）瑞桑斯</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 11:07:43</submit-date-time>
+  <img-link>d116b17b135849b18db8b71e84c087a2.png</img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	近年来，随着使用PHP的大流量网站逐渐增加，企业在使用：PHP的时候开始面临新的问题，代码的规范与维护就是其中比较突出的问题。另外，在PHP的速度满足业务需求后，人们对项目的稳健性、可升级性提出了新的要求。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书为大家全面介绍了PHP&amp;nbsp;5中的新功能、面向对象编程方法及设计模式，还分析阐述了PHP&amp;nbsp;5中新的数据库连接处理、错误处理和XML处理等机制。希望能够帮助读者系统了解、熟练掌握PHP，最大程度地挖掘PHP的潜力，以更低的成本搭建更加稳健、高效的PHP应用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书适合PHP程序员及具备其他高级语言编程经验的Web开发人员阅读。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

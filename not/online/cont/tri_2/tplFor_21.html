@@ -1,0 +1,114 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 发送电子邮件</h1>
+</div>
+<div>
+
+<p><b>PHP 允许您从脚本直接发送电子邮件。</b></p>
+
+<h1>PHP mail() 函数</h1>
+
+<p>PHP mail() 函数用于从脚本中发送电子邮件。</p>
+
+<h2>语法</h2>
+
+<code>mail(to,subject,message,headers,parameters)</code>
+
+<table class="dataintable">
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>to</td>
+<td>必需。规定 email 接收者。</td>
+</tr>
+ 
+<tr>
+<td>subject</td>
+<td>必需。规定 email 的主题。注释：该参数不能包含任何新行字符。</td>
+</tr>
+ 
+<tr>
+<td>message</td>
+<td>必需。定义要发送的消息。应使用 LF (\n) 来分隔各行。</td>
+</tr>
+ 
+<tr>
+<td>headers</td>
+<td><p>可选。规定附加的标题，比如 From、Cc 以及 Bcc。</p>
+<p>应当使用 CRLF (\r\n) 分隔附加的标题。</p></td>
+</tr>
+ 
+<tr>
+<td>parameters</td>
+<td>可选。对邮件发送程序规定额外的参数。</td>
+</tr>
+</table>
+
+<p><b>注释</b>：PHP 需要一个已安装且正在运行的邮件系统，以便使邮件函数可用。所用的程序通过在 php.ini 文件中的配置设置进行定义。</p>
+
+<h1>PHP 简易 E-Mail</h1>
+
+<p>通过 PHP 发送电子邮件的最简单的方式是发送一封文本 email。</p>
+<p>在下面的例子中，我们首先声明变量($to, $subject, $message, $from, $headers)，然后我们在 mail() 函数中使用这些变量来发送了一封 e-mail：</p>
+
+<code>
+&lt;?php<br />
+<br />
+$to = "someone@example.com";<br />
+$subject = "Test mail"<br />
+$message = "Hello! This is a simple email message.";<br />
+$from = "someonelse@example.com";<br />
+$headers = "From: $from";<br />
+mail($to,$subject,$message,$headers);<br />
+echo "Mail Sent.";<br />
+<br />
+?&gt;
+</code>
+
+<h1>PHP Mail Form</h1>
+
+<p>通过 PHP，您能够在自己的站点制作一个反馈表单。下面的例子向指定的 e-mail 地址发送了一条文本消息：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+if&nbsp(isset($_REQUEST['email']))<br />
+//if&nbsp"email"&nbspis&nbspfilled&nbspout,&nbspsend&nbspemail<br />
+  &nbsp&nbsp{<br />
+&nbsp&nbsp//send&nbspemail<br />
+&nbsp&nbsp$email&nbsp=&nbsp$_REQUEST['email']&nbsp;&nbsp<br />
+&nbsp&nbsp$subject&nbsp=&nbsp$_REQUEST['subject']&nbsp;<br />
+&nbsp&nbsp$message&nbsp=&nbsp$_REQUEST['message']&nbsp;<br />
+&nbsp&nbspmail(&nbsp"someone@example.com",&nbsp"Subject:&nbsp$subject",<br />
+&nbsp&nbsp$message,&nbsp"From:&nbsp$email"&nbsp);<br />
+&nbsp&nbspecho&nbsp"Thank&nbspyou&nbspfor&nbspusing&nbspour&nbspmail&nbspform";<br />
+&nbsp&nbsp}<br />
+else<br />
+//if&nbsp"email"&nbspis&nbspnot&nbspfilled&nbspout,&nbspdisplay&nbspthe&nbspform<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"&lt;form&nbspmethod='post'&nbspaction='mailform.php'&gt;<br />
+&nbsp&nbspEmail:&nbsp&lt;input&nbspname='email'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspSubject:&nbsp&lt;input&nbspname='subject'&nbsptype='text'&nbsp/&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbspMessage:&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;textarea&nbspname='message'&nbsprows='15'&nbspcols='40'&gt;<br />
+&nbsp&nbsp&lt;/textarea&gt;&lt;br&nbsp/&gt;<br />
+&nbsp&nbsp&lt;input&nbsptype='submit'&nbsp/&gt;<br />
+&nbsp&nbsp&lt;/form&gt;";<br />
+&nbsp&nbsp}<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>例子解释：</p>
+<p>1.首先，检查是否填写了邮件输入框</p>
+<p>2.如果未填写（比如在页面被首次访问时），输出 HTML 表单</p>
+<p>3.如果已填写（在表单被填写后），从表单发送邮件</p>
+<p>4.当点击提交按钮后，重新载入页面，显示邮件发送成功的消息</p>
+
+</div>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>276</uid>
+  <datetime>2013-02-14 10:46:47</datetime>
+  <title><![CDATA[打印JVM的系统属性]]></title>
+  <content><![CDATA[<p>
+	/**
+</p>
+<p>
+	*打印JAVA虚拟机的系统属性
+</p>
+<p>
+	*/
+</p>
+<p>
+	import java.util.*;
+</p>
+<p>
+	class &nbsp;Jproperties
+</p>
+<p>
+	{
+</p>
+<p>
+	public static void main(String[] args)
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp;Properties p = System.getProperties();
+</p>
+<p>
+	&nbsp;Enumeration e = p.propertyNames();
+</p>
+<p>
+	&nbsp;while(e.hasMoreElements())
+</p>
+<p>
+	&nbsp;{
+</p>
+<p>
+	&nbsp; String key = (String)e.nextElement();
+</p>
+<p>
+	&nbsp; System.out.println(key + \"=\" + p.getProperty(key));
+</p>
+<p>
+	&nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	}
+</p>
+<p>
+	如果user.timezone为空，并且JAVA虚拟机时间和操作系统时间不对，那么需要重新导入XP时区的注册表信息。
+</p>
+<p>
+	如果file.encoding=GBK，如果这个属性的编码不对，那么要通过控制面板---区域和语言----高级来设置GBK或者GB2312，
+</p>
+<p>
+	重启后就可以了。
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

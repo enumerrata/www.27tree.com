@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>面向对象编程:Java中的抽象数据类型</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在本文中，我们将考察Java中的数据类型，但是我们将介绍抽象数据类型（ADT）的概念。我们还将通过介绍Java&amp;nbsp;Collections&amp;nbsp;Framework（Java&amp;nbsp;集合架构）来学习Java定义的一些ADT。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ADT&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个ADT是一个仅由保存的数据类型和可能在这个数据类型上进行的操作定义的。开发者们只能通过ADT的操作方法来访问ADT的属性，而且他们不会知道这个数据类型内部各种操作是如何实现的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Java中，我们常常使用一个接口来给出一个操作集合而不需要透露这些操作实现的细节。记住一个接口定义了一个方法集而Java类必须实现这个集合以便满足它的强制性条件或者实现这个接口的一个实例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;线性表，堆栈和队列&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当我们谈论ADT的时候，经常会说到线性表，堆栈和队列。我们不会讨论这些数据结构的细节，但我们会讨论为什么它们被称为ADT。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个线性表是有限个元素的集合，其元素以线性的方式进行排列并提供对它的元素的直接访问。一个堆栈是一个后进先出（LIFO）的有序线性表，元素从堆栈头加入，并从堆栈头取出。一个队列是一个先进先出的有序线性表，元素从队列尾加入，并从队列头取出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	线性表，堆栈和队列的内部结构可以用许多方式实现。例如，我们可以使用一个有序数组或者一个链表来实现每个结构。关键的一点是不论你如何实现其内部结构，它对外的接口总是不变的。这使得你能够修改或者升级底层的实现过程而不需要改变公共接口部分。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Java&amp;nbsp;集合架构&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;2软件开发包（SDK）提供了一些新类来支持大多数常用的ADT。这些类被称为Java集合类（类似于MFC中的集合类），它们协同工作从而形成Java&amp;nbsp;集合架构。这个集合架构提供了一套将数据表示成所谓的集合抽象数据的接口和类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	java.util.Collection接口被用来表示任意的成组的对象，也就是元素。这个接口提供基本的诸如添加，删除，和查询这样的操作。Collection接口还提供了一个iterator方法。iterator方法返回java.util.Iterator接口的一个实例。而Iterator接口又提供了hasNext,&amp;nbsp;next,&amp;nbsp;和&amp;nbsp;remove方法。使用Iterator接口提供的方法，你可以从头到尾循环遍历一个Collection对象中的实例并能够安全的删除iterator(游标)所表示的元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	java.util.AbstractCollection&amp;nbsp;是所有集合架构类的基础。AbstractCollection&amp;nbsp;类提供了对　　java.util.Collection&amp;nbsp;接口中除iterator和size方法以外的所有方法的实现。这两个例外的方法由所有继承java.util.AbstractCollection的子类实现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现一个接口的类必须提供对所有接口方法的实现。因为集合架构中的一些接口方法是可选的，所以必须有一种方法来通知调用者某种方法没有实现。当一个可选的方法被实现而这个方法又并没有被实现的时候，就会抛出一个UnsupportedOperationException&amp;nbsp;异常。UnsupportedOperationException&amp;nbsp;类继承了RuntimeException&amp;nbsp;类。这使得调用者能够调用所有的集合操作而不需要把每次调用都放在一个try-catch对里。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;List线性表&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List接口继承了Collection接口并定义了一个允许相同元素存在的有序集合。List接口还附加了一些使用一个数值型索引值并基于元素在线性表中的位置来操作Collection中元素的方法。这些操作包括add,get,set和remove。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List接口还提供了listIterator方法。这个方法返回java.util.ListIterator&amp;nbsp;接口的一个实例，这个实例能够让你从头至尾或者从尾至头的遍历一个线性表。java.util.ListIterator&amp;nbsp;继承了java.util.Iterator&amp;nbsp;接口。因此，它支持对它代表的Collection中的元素的添加和修改。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面的例子演示了如何从后向前遍历一个列表的元素。要完成这个工作，必须在遍历开始之前把ListIterator定位于列表最后一个元素之后。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ListIterator&amp;nbsp;iter&amp;nbsp;=&amp;nbsp;aList.listIterator(aList.size());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while&amp;nbsp;(iter.hasPrevious())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(iter.previous().toString());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	集合架构提供了对List接口的两个实现：LinkedList（链表）和ArrayList（数组列表，即静态列表）。这两个实现都支持对其元素的随机访问。一个ArrayList实例支持数组风格的操作并支持数组大小的改变操作。一个LinkedList的实例则提供了在列表开始和结尾添加，删除和提供元素的显式的支持。使用这些新方法，一个程序员可以简单的把一个LinedList当做堆栈或者队列使用，如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LinkedList&amp;nbsp;aQueue&amp;nbsp;=&amp;nbsp;new&amp;nbsp;LinkedList(aCollection);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	aQueue.addFirst(newElement);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Object&amp;nbsp;&amp;nbsp;&amp;nbsp;anElement&amp;nbsp;=&amp;nbsp;aQueue.removeLast();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	LinkedList&amp;nbsp;&amp;nbsp;aStack&amp;nbsp;=&amp;nbsp;new&amp;nbsp;LinkedList(aCollection);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	aStack.addFirst(newElement);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Object&amp;nbsp;&amp;nbsp;&amp;nbsp;anElement=&amp;nbsp;aStack.removeFirst();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表A中的代码片段使用java.util.ArrayList&amp;nbsp;和&amp;nbsp;java.util.LinkedList演示了对java.util.List接口的实现实例的一些常用的操作。这些操作包括添加元素，随机访问元素和显式的在列表尾删除元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;知其然不知其所以然是大有好处的&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ADT提供了一个将对象公共接口中的操作和其具体的实现分开的强有力的工具。这使得一个ADT的实现可以不断变化和演化同时保持其公共接口不变。Java集合架构提供了大量的接口和其实现用来代表基本元素的集合并可以用来创建有用的ADT。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-06-03/1338711896.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

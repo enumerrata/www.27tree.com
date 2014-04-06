@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>UTF-8 下 php include 注意空行问题</title>
+<content>&amp;lt;p&amp;gt;
+	情况：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用php5开发站点，字符集是utf-8，,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在页头用include来包含共用的程序文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	包了之后总是空一行出来，奇怪。。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果把包含文件去掉，那空行就不见了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在火孤里没这个问题，可以IE6跟IE7就出这个问题了。。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	解决：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用vs2005或者ultraEdit打开文件，另存为不带签名的utf-8&amp;nbsp;(65001)&amp;nbsp;就是无BOM头&amp;nbsp;文件&amp;nbsp;带签名的utf-8文件头最前面两个字节是识别码(FF&amp;nbsp;FE)，在普通的编辑器里看不见的，但输出时就会变成空行
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-08/1339119553.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

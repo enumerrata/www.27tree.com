@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Android实现全屏正确方法介绍</title>
+<content>&amp;lt;p&amp;gt;
+	Android手机操作系统是由谷歌推出的一款基于Linux的开源手机操作系统。我们可以在模拟器中对其进行相应的操作来实现各种功能以满足用户的需求。在这里就简要介绍一下Android实现全屏的相关方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	新版本的Android&amp;amp;nbsp;Framework和老版本的实现起来有些不同。这里只给出新版本的Android实现全屏代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;amp;nbsp;name=\"code\"&amp;amp;nbsp;id=\"prettyprint\"&amp;amp;nbsp;class=\"Java\"&amp;gt;　　package&amp;amp;nbsp;pub.tetris;
+　　import&amp;amp;nbsp;android.app.Activity;
+　　import&amp;amp;nbsp;android.os.Bundle;
+　　import&amp;amp;nbsp;android.view.Window;
+　　import&amp;amp;nbsp;android.view.WindowManager;
+　　public&amp;amp;nbsp;class&amp;amp;nbsp;TetrisActivity&amp;amp;nbsp;extends&amp;amp;nbsp;Activity&amp;amp;nbsp;{
+　　/**&amp;amp;nbsp;Called&amp;amp;nbsp;when&amp;amp;nbsp;the&amp;amp;nbsp;activity&amp;amp;nbsp;is&amp;amp;nbsp;first&amp;amp;nbsp;created.&amp;amp;nbsp;*/
+　　@Override
+　　public&amp;amp;nbsp;void&amp;amp;nbsp;onCreate(Bundle&amp;amp;nbsp;savedInstanceState)&amp;amp;nbsp;{
+　　super.onCreate(savedInstanceState);
+　　/**全屏设置，隐藏窗口所有装饰*/
+　&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+　　WindowManager.LayoutParams.FLAG_FULLSCREEN);
+　　/**标题是属于View的，所以窗口所有的修饰部分被隐藏后标题依然有效*/
+　　requestWindowFeature(Window.FEATURE_NO_TITLE);
+　　TileView&amp;amp;nbsp;tile&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;TileView(this);
+　　Tetris&amp;amp;nbsp;tetris&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;Tetris();
+　　tetris.init(tile);
+　　Thread&amp;amp;nbsp;engine&amp;amp;nbsp;=&amp;amp;nbsp;new&amp;amp;nbsp;Thread(tetris);
+　　setContentView(tile);
+　　engine.start();
+　　}
+　　}&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-07-03/1341276703.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

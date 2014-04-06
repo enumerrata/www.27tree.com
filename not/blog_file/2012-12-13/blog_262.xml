@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-12-13 22:17:09</datetime>
+  <title><![CDATA[PHP6版本 即将删除的PHP特性]]></title>
+  <content><![CDATA[<p>
+	PHP V6 在添加一些新特性的同时，也删除了以前版本中的一些函数和特性。被删除的大部分东西，比如<span style=\"line-height:1.5;\">register_globals 和 safe_mode，在当前的 PHP 中都被广泛认为是</span><span style=\"line-height:1.5;\">“有漏洞的”，因为它们可能招致安全风险。为了保持 PHP 的简洁性，将删除下面小节列出的函数和特性。在 ISP 或企业升级到 PHP V6</span><span style=\"line-height:1.5;\">之后，反对删除这些内容的人很可能会给现有的脚本带来安全问题，而支持删除的人将会很幸运，因为 PHP</span><span style=\"line-height:1.5;\">团队为他们修复了一些漏洞，并且提供更加干净、安全的实现。</span>
+</p>
+<p>
+	从 PHP V6 删除的特性包括：
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>magic_quotes</strong>
+</p>
+<p>
+	<strong>register_globals</strong>
+</p>
+<p>
+	<strong>register_long_arrays</strong>
+</p>
+<p>
+	<strong>safe_mode</strong>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">magic_quotes</span></strong>
+</p>
+<p>
+	由于 magic_quotes 导致可移植性、性能和易用性方面的问题，所以 PHP 文档不鼓励使用它。鉴于这个原因，PHP V6<span style=\"line-height:1.5;\">干脆删除了该特性。因此，在升级到 PHP V6 之前，要确保您的代码没有使用 magic_quotes。如果您正在使用</span><span style=\"line-height:1.5;\">magic_quotes</span><span style=\"line-height:1.5;\">为数据库调用转换字符串类型，请使用数据库实现的参数化查询（如果支持的话）。如果不支持参数化查询，请使用数据库实现的类型转换函数，比如针对 MySQL 的</span><span style=\"line-height:1.5;\">mysql_escape_string 或针对 PostgreSQL 的</span><span style=\"line-height:1.5;\">pg_escape_string。</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">下面是一个使用 magic_quotes 的例子。</span>
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	// Assuming magic_quotes is on...
+</p>
+<p>
+	$sql = \"INSERT INTO USERS (USERNAME) VALUES $_GET[\'username\']\";
+</p>
+<p>
+	?&gt;
+</p>
+在针对新版本 PHP 进行处理之后，您的 PHP 代码应该类似于下面的。
+<p>
+	&lt;?php
+</p>
+<p>
+	// Using the proper parameterized query method for MySQL, as an example
+</p>
+<p>
+	$statement = $dbh-&gt;prepare(\"INSERT INTO USERS (USERNAME) VALUES ?\");
+</p>
+<p>
+	$statement-&gt;execute(array($_GET[\'username\']));
+</p>
+<p>
+	?&gt;
+</p>
+既然即将完全删除对 magic_quotes 的支持，get_magic_quotes_gpc() 函数就不再可用。这可能会影响一些老版本的 PHP 脚本，因此在更新之前，确保对所有存在这些函数的地方进行修复。
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style=\"font-size:16px;\">register_globals</span></strong>
+</p>
+<p>
+	register_globals 配置键在 PHP V4.2 中已经默认关闭，当时也引起了争议。当 register_globals 打开之后，就能轻松地使用可能注入了来自 HTML 表单的值的变量。因为在脚本中并不真正需要初始化这些变量，所以很容易编写出带有安全漏洞的脚本。下面是一个使用 register_globals 的例子。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	// A security hole, because if register_globals is on, the value for user_authorized
+</p>
+<p>
+	// can be set by a user sending them on the query string
+</p>
+<p>
+	// (i.e., http://www.example.com/myscript.php?user_authorized=true)
+</p>
+<p>
+	if ($user_authorized) {
+</p>
+<p>
+	&nbsp; &nbsp;// Show them everyone\'s sensitive data...
+</p>
+<p>
+	}
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	<span style=\"line-height:1.5;\">如果您的 PHP 代码使用了全局变量，那么应该更新它。即便不是为了使用新版本的 PHP 而更新它，从安全角度考虑，您也应该进行更新。更新完成之后，您的代码应该类似于下面的。</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\"></span>
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	function is_authorized() {
+</p>
+<p>
+	&nbsp; &nbsp;if (isset($_SESSION[\'user\'])) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return true;
+</p>
+<p>
+	&nbsp; &nbsp;} else {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return false;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	$user_authorized = is_authorized();
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	<br />
+</p>
+<strong><span style=\"font-size:16px;\">register_long_arrays</span></strong>
+<p>
+	<br />
+</p>
+<p>
+	<span style=\"line-height:1.5;\">当打开 register_long_arrays 设置时，它将注册 $HTTP_*_VARS 预定义变量。如果您目前使用更长的变量，那么需要进行更新，以适应更短的变量。这个设置是在 PHP V5 中引入的（考虑到向后兼容性），但出于性能考虑，PHP 团队建议关闭它。下面是一个使用 register_long-arrays 的例子。</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\"></span>
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	&nbsp; &nbsp;// Echo\'s the name of the user value given on the query string, like
+</p>
+<p>
+	&nbsp; &nbsp;// http://www.example.com/myscript.php?username=ngood
+</p>
+<p>
+	&nbsp; &nbsp;echo \"Welcome, $HTTP_GET_VARS[\'username\']!\";
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	<span style=\"line-height:1.5;\">如果您的 PHP 代码类似于上面，那么更新它，如下面的代码所示。如果 register_long_arrays 设置是打开的，那么关闭它，然后再次测试脚本。</span>
+</p>
+<p>
+	&lt;?php
+</p>
+<p>
+	&nbsp; &nbsp;// Using the supported $_GET array instead.
+</p>
+<p>
+	&nbsp; &nbsp;echo \"Welcome, $_GET[\'username\']!\";
+</p>
+<p>
+	?&gt;
+</p>
+<p>
+	<span style=\"line-height:1.5;\"><br />
+</span>
+</p>
+<span style=\"font-size:16px;\"><strong>safe_mode</strong></span>
+<p>
+	<span style=\"line-height:1.5;\">当打开了 safe_mode 配置键时，它确保所操作的文件的所有者与所执行的脚本的所有者匹配。这最初作为在共享服务器环境中进行操作时（许多 ISP 都这样做）处理安全性的一种方法。（要获得受 safe_mode 更改影响的函数列表的链接，请参见 参考资料）。您的 PHP 代码不会受这一更改的影响，但是有必要了解它，免得在未来设置 PHP 时使用它或在脚本中依赖它。</span><span style=\"line-height:1.5;\"></span><span style=\"line-height:1.5;\"></span>
+</p>]]></content>
+  <contentx><![CDATA[PHP V6 在添加一些新特性的同时，也删除了以前版本中的一些函数和特性。被删除的大部分东西，比如register_globals 和 safe_mode，在当前的 PHP 中都被广泛认为是“有漏洞的”，因为它们可能招致安全风险。为了保持 PHP 的简洁性，将删除下面小节列出的函数和特性。在 ISP 或企业升级到 PHP V6之后，反对删除这些内容的人很可能]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

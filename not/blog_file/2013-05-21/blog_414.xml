@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[jQuery判断点击事件是否在目标区域]]></title>
+  <content><![CDATA[<p>
+	很多时候需要在鼠标点击非目标区域div将目标div隐藏的效果，这是需要判断点击事件是否在目标区域内，
+</p>
+<br>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">// 判断点击区域 隐藏/显示其他区域
+document.onclick = function(e) {
+	e = window.event || e; // 兼容IE7
+	obj = $(e.srcElement || e.target);
+	// 点击区域位于当前节点
+	if (obj.attr(\'id\') == \'more_groups\') {
+		if ($(\'.groups_list\').is(\':visible\')) {
+			$(\'.groups_list\').show();
+		} else {
+			$(\'.groups_list\').hide();
+		}
+	}else{
+		//不是当前节点
+		$(\'.groups_list\').hide();	
+	}
+};</pre>
+</p>]]></content>
+  <contentx><![CDATA[很多时候需要在鼠标点击非目标区域div将目标div隐藏的效果，这是需要判断点击事件是否在目标区域内，
+
+
+
+// 判断点击区域 隐藏/显示其他区域
+document.onclick = function(e) {
+	e = window]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

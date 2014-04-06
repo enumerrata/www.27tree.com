@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root SYSTEM "navlist.dtd">
+<!--
+@author cBoss
+@param acti 0/1 开启或者关闭
+@param dt 板块标题
+-->
+<root>
+     <n type="news">
+          <dt>IT资讯</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="互联网" url="web"/>
+               <band isrc="" name="移动互联网" url="moweb"/>
+               <band isrc="" name="物联网" url="pweb"/>
+               <band isrc="" name="云计算" url="cloud"/>
+          </sband>
+     </n>
+     <n type="gdutnews">
+          <dt>工大资讯</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="大事记" url="bevent" />
+               <band isrc="" name="校园活动" url="event" />
+               <band isrc="" name="校园招聘" url="employ" />
+          </sband>
+     </n>
+     <n type="java">
+          <dt>JAVA</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="开发基础" url="basejava" />
+               <band isrc="" name="网络编程" url="netjava" />
+               <band isrc="" name="JDBC/JDO" url="jdbc" />
+               <band isrc="" name="多线程" url="thread" />
+          </sband>
+     </n>
+     <n type="php">
+          <dt>PHP</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="开发基础" url="basephp" />
+               <band isrc="" name="面向对象" url="phpop" />
+               <band isrc="" name="MVC设计模式" url="mvc" />
+               <band isrc="" name="Web服务" url="webserver" />
+               <band isrc="" name="Smarty模板引擎" url="smarty" />
+               <band isrc="" name="Zend FrameWork" url="zf" />
+          </sband>
+     </n>
+     <n type="c">
+          <dt>C/C++</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="开发基础" url="basec" />
+               <band isrc="" name="VC++" url="vcpp" />
+               <band isrc="" name="MFC框架" url="mfc" />
+          </sband>
+     </n>
+
+     <n type="mobile">
+          <dt>移动开发</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="Android" url="android" />
+               <band isrc="" name="Objective-C" url="ojc" />
+          </sband>
+     </n>
+
+     <n type="database">
+          <dt>数据库</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="SQL技术" url="sql" />
+               <band isrc="" name="性能调优" url="optim" />
+               <band isrc="" name="MySQL" url="mysql" />
+          </sband>
+     </n>
+
+     <n type="web">
+          <dt>Web前端开发</dt>
+          <acti>1</acti>
+          <sband>
+               <band isrc="" name="CSS2/3" url="css" />
+               <band isrc="" name="HTML4/5" url="html5" />
+               <band isrc="" name="JQuery" url="jquery" />
+               <band isrc="" name="Dojo" url="dojo" />
+               <band isrc="" name="Ext" url="ext" />
+               <band isrc="" name="RIA/AJAX" url="ajax" />
+               <band isrc="" name="Regex正则" url="regex" />
+          </sband>
+     </n>
+     <!--<n type="wlw">
+          <dt>物联网</dt>
+          <acti>0</acti>
+          <sband>
+               <band isrc="" name="JQuery" />
+          </sband>
+     </n>-->
+     <!--
+     <n type="TODO">
+          <dt>TODO</dt>
+          <acti>0</acti>
+          <sband>
+               <band isrc="" name="C++bulider" />
+          </sband>
+     </n>
+     -->
+</root>

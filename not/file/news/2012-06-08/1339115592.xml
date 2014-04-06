@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>黑客利用火狐浏览器严重漏洞盗取用户密码</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	火狐浏览器刚刚发现的一个漏洞可以让黑客很容易就偷走用户在他们自己的网页上留下的信息，比如在MySpace.com上留下的用户资料。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这个漏洞存在于火狐用户登录管理系统，可以将用户的登录信息发送到攻击者指定的网页，Chapin信息服务集团的总裁RobertChapin说道。为了让这个攻击可以执行，攻击者需要有能力在他们指定的站点建立一个HTML页面，这个页面可以记录日志并且可以登录外部网站。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	关于这个曾被用于MySpace的网络钓鱼攻击的报道出现在十月份。在那次攻击中，用户用一个MySpace的账号登录了一个叫做“login_home_index_html”的页面，结果进入了利用漏洞所生成的伪装页面。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这个页面将MySpace用户的ID和通行证信息发送到另外一个站点上，查看站点的MySpace用户如果使用了火狐浏览器的话将会很容易使信息处于危险之中，Chapin说。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	根据这个项目开发时的测试数据库留下的目录，火狐的开发者将这个漏洞定义为危急级别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这个漏洞之所以出现，是因为当用户开始登录时，火狐的登录管理器没有一个足够彻底的检查去决定到底是否要发送这个信息，而且不能确定这个通行证信息是否发送到被要求的服务器。Chapin进一步解释道。例如，在这次针对MySpace的攻击中，火狐可以确定这个信息是否来自MySpace.com，但是并不能确定这个密码是否发回到MySpace的服务器上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	“从编程的角度来看，这个行为几乎就像是印刷”，他继续说道，“讽刺地是，我在想这个漏洞为什么直到现在也没有被发现，它的行为已经表现得如此明显了。”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	Chapin已经将此事的详细报分析报告，在报告里，他详细地给出了这个攻击的实证。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	微软的IE同样也容易受到这些类型攻击的影响，像火狐一样，它不能确定所提交的用户信息是否发送到了被请求的页面。Chapin说。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	但是IE并不那么容易受骗。因为它做了更多彻底的工作在自动提交用户信息之前检查这些它们的来源，他补充说。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-08/1339115592.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

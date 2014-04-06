@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>RIA发展态势及RIA相关客户端开发技术</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-align:left;\"&amp;gt;
+	在过去的两到三年中，Web开发人员一直是想构建一种比传统HTML更丰富的客户端：这是一个用户接口，它比用HTML能实现的接口更加健壮、反应更加灵敏和更具有令人感兴趣的可视化特性。RIA技术的出现允许我们在因特网上以一种像使用Web一样简单的方式来部署富客户端程序。无论将来RIA是否能够如人们所猜测的那样完全代替HTML应用系统，对于那些采用C/S架构的胖客户端技术运行复杂应用系统的机构和采用基于B/S架构的瘦客户端技术部署Web应用系统地机构来说，RIA确实提供了一种廉价的选择。下面介绍一下目前出现的几种比较有实力或者有特点的RIA客户端开发技术：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:left;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;1）&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;Adobe&amp;nbsp;Flash/Flex&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flash&amp;nbsp;从6.0开始Flash就逐步具备建立窗体风格的应用程序的功能。据Adobe称已经有98%以上的桌面系统的浏览器都安装了&amp;nbsp;Adobe&amp;nbsp;Flash&amp;nbsp;Player。这使得以Adobe&amp;nbsp;Flash&amp;nbsp;Player为客户端的RIA可以支持种类广泛的平台和设备。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flex是为满足希望开发
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RIA的企业级程序员的需求而推出的表示服务器和应用程序框架，它可以运行于J2EE和.NET平台。Flex表示服务器提供基于标准的、声明性的编程方
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	法和流程，并提供运行时服务，用于开发和部署丰富客户端应用程序的表示层。Flex开发者使用直观的基于XML的MXML来定义丰富的用户界面。该语言由
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flex服务器翻译成SWF格式的客户端应用程序，在Flash&amp;nbsp;Player中运行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;2）&amp;nbsp;Laszlo&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Laszlo&amp;nbsp;是一个开源的RIA开发环境。使用Laszlo平
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	台时，开发者只需编写名为LZX的描述语言（其中整合了XML和Javascript），运行在J2EE
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应用服务器上的Laszlo平台会将其编译成SWF格式的文件并传输给客户端展示。从这点上来说，Laszlo的本质和Flex是一样的。Flash是任
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	何浏览器都支持的展示形式，从而一举解决了浏览器之间的移植问题。而且，在未来的计划中，Laszlo还可以将LZX编译成Java或.NET本地代码，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从而大大提高运行效率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;3）&amp;nbsp;Avalon&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Microsoft的Avalon是下一版本的Windows（代号Longhorn）的一部分，是一个图形和展示引擎，主要由新加到.NET框架中的一组类集合而成。Avalon定义了一个在
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Longhorn中使用的新标记语言，其代号为XAML（可扩展应用程序标记语言）。可以使用XAML来定义文本、图像和控件的布局，程序代码可以直
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	接嵌入到XAML中，也可以将它保留在一个单独的文件内。这与Flex中的MXML或者Laszlo中的LZX非常相似。不同的是：基于
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Avalon的应用程序必须运行在Longhorn环境中，而Flex和Laszlo是不依赖于平台的，仅仅需要装有Flash播放器的浏览器即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;4）&amp;nbsp;Java&amp;nbsp;SWT&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;已经出现几年了，并且完全支持创建基于窗体的用户界面。除了Java基础类（JFC/Swing）中的用户界面组件之外，开发人员还可以使用来自于&amp;nbsp;Eclipse&amp;nbsp;Project的SWT工具箱和许多第三方工具箱进行开发。对于图形来说，可以采用Java&amp;nbsp;2D&amp;nbsp;API：一个非常完整且非常复杂的图形API。你可以通过一个Web浏览器使用Java插件软件，或使用Java运行时环境中较新的Java&amp;nbsp;Web&amp;nbsp;Start技术来部署应用程序。使用Java建立Rich&amp;nbsp;Client的主要缺陷是它的复杂性（即使对简单的窗体和图形也要求编写非常烦琐的代码）和Java浏览器插件的低市场占有率。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;5）&amp;nbsp;XUL&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	XUL（念作zool）是一种基于XML的用户界面语言，它来自于Mozilla的开放源码项目。它可用于建立窗体应用程序，这些应用程序不但可以在
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Mozilla浏览器上运行，而且也可以运行在其他描述引擎上，如Zulu（一个FlashMX组件）和Thinleys（一个Java实现）。XUL描
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	述引擎都非常小（100K以下），它可以使用XML数据也可以生成XML数据。XUL的一个主要缺点在于它目前还没有获得一个主要商业实体的支持。XUL
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最大的优点在于它与Gecko引擎的集成（打开了通向大量Web标准的大门），以及与大多数其它XML用户界面描述语言相比它是一种非常具有表达力和简洁的语言。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;6）&amp;nbsp;Bindow&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Bindow&amp;nbsp;是用Javascript和DHTML开发的Web窗体框架。Javascript用于客户端界面的显示和处理，XMLHTTP用于客户端与服务器的信息传输。Javascript在客户端的表现力不容置疑，利用Javascript几乎可以实现Windows应用程序所能干的大部分事情，XMLHTTP&amp;nbsp;一直以来常被用于实现无刷新的Web页面，它和&amp;nbsp;Javascript配合，可以完成数据从服务器和客户端的传输。Bindows的一个主要的缺点是它采用一次全部载入的方式来实现脚本库，在窗口的加载期，需要一个漫长的等待过程，甚至浏览器的进程会产生无响应的情况。这点Bindows根本没有遵循用多少去多少的准则。另外，内部大量利用了IE6&amp;nbsp;的技术，没有考虑到非IE的浏览器，限制了Bindows的流行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;7)&amp;nbsp;&amp;nbsp;&amp;nbsp;JavaFX&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2008年12月05日&amp;nbsp;Sun微系统公司今天正式发布了基于Java语言的平台JavaFX&amp;nbsp;1.0，这个平台建立在其广泛应用的Java编程语言的基础上，旨在建立大量可在电脑和手机上运行的网络程序。&amp;nbsp;Java一直以来就是编程语言，但是随着JavaFX的发布，Sun公司开始允许将编程内容创新这一任务转移到以设计艺术为重点而非编程科学为重点的设计人员身上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“我们的目标群体是叫做创造者的人群”，Sun公司Java平台组的高级副主任&amp;nbsp;OctavianTanase对&amp;nbsp;说，“随着1.0版的发布，我们将目标锁定在网页开发人员，这群可能拓展Java界面体验的人。到2011年，主要的目标是大量使用诸如Adobe系统等设计工具的设计人员”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然，通向这个以设计为导向的工具还需要一些时间。Sun公司最后打算提供自己的程序给设计人员来建立RIAS，但是直到如今，这些设计人员还得使用程序员所使用的Netbeans或Eclipse集成开发环境(IDE)。新工具将在来年夏天面市。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;8)&amp;nbsp;&amp;nbsp;&amp;nbsp;Curl&amp;nbsp;&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Curl诞生于1995年的美国，Curl是由美国国防部高级研究项目代理资助，马萨诸塞州科技学院的David&amp;nbsp;A.&amp;nbsp;Kranz开发的Web开发语言，&amp;nbsp;HTML语言的创建者Tim&amp;nbsp;Berners-Lee也参与其中，并扮演了重要的角色。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该语言的目标是用一种统一的面向对象的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	语言代替HTML、Cascading&amp;nbsp;Style
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Sheets、JavaScript等；仅使用Curl便可开发出Web应用的各种软件；Curl程序在浏览器中运行，并且因为它以类似JRE的形式提供
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	了客户端运行环境Surge&amp;nbsp;RTE，能够轻松开发出日益流行的Rich&amp;nbsp;Client应用程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Curl是为了实现富客户端（rich&amp;nbsp;client）应运而生的Web开发语言，&amp;nbsp;仅仅从其外观的丰富性上就能体现其富客户端理念。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了实现真正有益的富客户端，它能有效地实现各种复杂处理，具备提供高信赖、高扩展性、高维护性的应用程序所应拥有的各种编码能力。其拥有在Web环境上便利的分配、管理以及低廉的维护费以及在C/S环境上的用户便利性、迅速的应答，华丽的图像显示等重多优点于一身。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Curl语言于2002年在美国正式开始商业化，在美国和日本拥有重多的客户和合作伙伴，现已进军北美及韩国市场，发展势头迅猛。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;9)&amp;nbsp;&amp;nbsp;&amp;nbsp;SilverLight&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	微软在Mix07上发布一些重大通告，其中最值得关注的就是SilverLight的发布，SilverLight的前身就是WPF/E技术。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是一种新的Web&amp;nbsp;呈现技术的名称，创建该技术的目的是使其能够在各种平台上运行。该技术支持创建丰富的、具有绚丽视觉效果的交互式体验，并且可以随处实现：无论是在浏览器内、在多个设备上还是在桌面操作系统（如&amp;nbsp;Apple&amp;nbsp;Macintosh）中。可扩展应用程序标记语言&amp;nbsp;(XAML)&amp;nbsp;遵循&amp;nbsp;Windows&amp;nbsp;演示基础&amp;nbsp;(WPF)，前者是”WPF/E”呈现功能的基础。XAML&amp;nbsp;是&amp;nbsp;Microsoft&amp;nbsp;.NET&amp;nbsp;Framework3.0（Windows&amp;nbsp;编程基础结构）中的呈现技术。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-23/1337775133.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

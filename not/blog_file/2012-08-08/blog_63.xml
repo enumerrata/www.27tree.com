@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-08 11:55:39</datetime>
+  <title>Dojo特效教程：Fading</title>
+  <content>&lt;p&gt;
+	Dojo&amp;nbsp;1.7&amp;nbsp;有两个版本的特效模块&amp;nbsp;:&amp;nbsp;dojo/_base/fx&amp;nbsp;和&amp;nbsp;dojo/fx.dojo/_base/fx&amp;nbsp;
+&lt;/p&gt;
+&lt;p&gt;
+	其在上一个dojo版本中就已经提供了基础的特效方法。包括:&amp;nbsp;animateProperty,&amp;nbsp;anim,&amp;nbsp;fadeIn,&amp;nbsp;和&amp;nbsp;fadeOut；
+&lt;/p&gt;
+&lt;p&gt;
+	dojo/fx&amp;nbsp;提供了更多的高级特效方法，包括&amp;nbsp;：chain,&amp;nbsp;combine,&amp;nbsp;wipeIn,wipeOut&amp;nbsp;和&amp;nbsp;slideTo；
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		你可能会看到一个动画在Web页面或者一个节点淡入或淡出。这种效果很常见,也很简单,这是Dojo&amp;nbsp;base的一部分。我们可以用它来隐藏或显示页面上的元素,感觉非常不错的。下面是一个例子:
+	&lt;/p&gt;
+	&lt;p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&gt;&amp;lt;button&amp;nbsp;id=\"fadeOutButton\"&amp;gt;Fade&amp;nbsp;block&amp;nbsp;out&amp;lt;/button&amp;gt;
+&amp;lt;button&amp;nbsp;id=\"fadeInButton\"&amp;gt;Fade&amp;nbsp;block&amp;nbsp;in&amp;lt;/button&amp;gt;
+&amp;nbsp;
+&amp;lt;div&amp;nbsp;id=\"fadeTarget\"&amp;nbsp;class=\"red-block\"&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A&amp;nbsp;red&amp;nbsp;block
+&amp;lt;/div&amp;gt;
+&amp;lt;script&amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;require([\"dojo/_base/fx\",&amp;nbsp;\"dojo/on\",&amp;nbsp;\"dojo/dom\",&amp;nbsp;\"dojo/domReady!\"],&amp;nbsp;function(fx,&amp;nbsp;on,&amp;nbsp;dom)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;fadeOutButton&amp;nbsp;=&amp;nbsp;dom.byId(\"fadeOutButton\"),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fadeInButton&amp;nbsp;=&amp;nbsp;dom.byId(\"fadeInButton\"),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fadeTarget&amp;nbsp;=&amp;nbsp;dom.byId(\"fadeTarget\");
+&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;on(fadeOutButton,&amp;nbsp;\"click\",&amp;nbsp;function(evt){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fx.fadeOut({&amp;nbsp;node:&amp;nbsp;fadeTarget&amp;nbsp;}).play();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;on(fadeInButton,&amp;nbsp;\"click\",&amp;nbsp;function(evt){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fx.fadeIn({&amp;nbsp;node:&amp;nbsp;fadeTarget&amp;nbsp;}).play();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+		&lt;p&gt;
+			所有动画函数需要的参数:一个对象的属性（一个DOM节点或一个节点的ID）。另一个属性是持续时间,以毫秒为单位。默认值为350毫秒。&lt;br&amp;nbsp;/&gt;
+&lt;br&amp;nbsp;/&gt;
+			&lt;p&gt;
+				动画函数返回一个&amp;nbsp;dojo.Animation&amp;nbsp;对象。该对象包含了几个方法:播放、暂停、停止、状态和gotoPercent。
+			&lt;/p&gt;
+			&lt;p&gt;
+				返回对象的同时，动画并不会自动播放。而是要调用其play方法。类似&amp;nbsp;fx.fadeIn({&amp;nbsp;node:&amp;nbsp;fadeTarget&amp;nbsp;}).play();
+			&lt;/p&gt;
+			&lt;p&gt;
+				&lt;p&gt;
+					&lt;br&amp;nbsp;/&gt;
+				&lt;/p&gt;
+			&lt;/p&gt;
+		&lt;/p&gt;
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>Dojo 1.7 有两个版本的特效模块 : dojo/_base/fx 和 dojo/fx.dojo/_base/fx 
+
+
+	其在上一个dojo版本中就已经提供了基础的特效方法。包括: animateProperty, anim, fadeIn, 和 fadeOut；
+
+
+	dojo/fx 提供了更多的高级特效方法，包括 ：chain, combine, </contentx>
+  <tags>_null_</tags>
+</root>

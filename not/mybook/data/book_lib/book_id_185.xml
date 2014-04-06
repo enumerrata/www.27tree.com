@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP与jQuery开发实例]]></title>
+  <author>(印) 乔希 (Joshi,V.) </author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-11-16 22:52:13</submit-date-time>
+  <img-link>692e5fca752f724d110b586aed4affc3.png</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	本书循序渐进地讲述了如何使用PHP 与jQuery 构建高度交互的Web 应用。每一章聚焦一个主题，讨论Web 开发人员经常需要解决的一类具体问题。书中以实际示例及代码解释的方式给出了有针对性的快速解决之道，主要内容包括使用jQuery 处理事件，在PHP 和jQuery 中使用XML、JSON、表单，向表单添加视觉效果，创建漂亮的导航菜单以及使用PHP 绑定数据和改进网站等。另外，附录介绍如何使用Firebug 来调试网页中的HTML 和JavaScript。
+</p>
+<p>
+	&nbsp; &nbsp; 本书适合对使用PHP 与jQuery 构建Web 应用感兴趣的所有读者。
+</p>
+<p>
+	<p>
+		第1章 &nbsp;使用jQuery 处理事件
+	</p>
+	<p>
+		&nbsp;1.1 &nbsp;简介
+	</p>
+	<p>
+		&nbsp;1.2 &nbsp;在页面加载完成时执行函数
+	</p>
+	<p>
+		&nbsp;1.3 &nbsp;绑定和解绑元素
+	</p>
+	<p>
+		&nbsp;1.4 &nbsp;向即将创建的元素添加事件
+	</p>
+	<p>
+		&nbsp;1.5 &nbsp;使用jQuery 提交表单
+	</p>
+	<p>
+		&nbsp;1.6 &nbsp;检查缺少的图像
+	</p>
+	<p>
+		&nbsp;1.7 &nbsp;创建选择/取消所有复选框的功能
+	</p>
+	<p>
+		&nbsp;1.8 &nbsp;捕获鼠标事件
+	</p>
+	<p>
+		&nbsp;1.9 &nbsp;创建键盘快捷键
+	</p>
+	<p>
+		&nbsp;1.10 &nbsp;显示用户选择的文本
+	</p>
+	<p>
+		&nbsp;1.11 &nbsp;在页面上拖动元素
+	</p>
+	<p>
+		第2章 &nbsp;使用PHP 和jQuery
+	</p>
+	<p>
+		&nbsp;2.1 &nbsp;简介
+	</p>
+	<p>
+		&nbsp;2.2 &nbsp;使用jQuery 从PHP 获取数据
+	</p>
+	<p>
+		&nbsp;2.3 &nbsp;为所有表单元素自动创建查询字符串
+	</p>
+	<p>
+		&nbsp;2.4 &nbsp;在PHP 中检测AJAX 请求
+	</p>
+	<p>
+		&nbsp;2.5 &nbsp;向PHP 发送数据
+	</p>
+	<p>
+		&nbsp;2.6 &nbsp;终止AJAX 请求
+	</p>
+	<p>
+		&nbsp;2.7 &nbsp;创建空页面并按区域加载它
+	</p>
+	<p>
+		&nbsp;2.8 &nbsp;处理AJAX 请求中的错误
+	</p>
+	<p>
+		&nbsp;2.9 &nbsp;禁止浏览器缓存AJAX 请求
+	</p>
+	<p>
+		&nbsp;2.10 &nbsp;按需加载JavaScript 以减少页面加载时间
+	</p>
+	<p>
+		第3章 &nbsp;处理XML 文档
+	</p>
+	<p>
+		&nbsp;3.1 &nbsp;简介
+	</p>
+	<p>
+		&nbsp;3.2 &nbsp;使用SimpleXML 从文件和字符串加载XML
+	</p>
+	<p>
+		&nbsp;3.3 &nbsp;使用SimpleXML 访问元素和特性
+	</p>
+	<p>
+		&nbsp;3.4 &nbsp;使用XPath 搜索元素
+	</p>
+	<p>
+		&nbsp;3.5 &nbsp;使用DOM 扩展读取XML
+	</p>
+	<p>
+		&nbsp;3.6 &nbsp;使用DOM 扩展创建XML
+	</p>
+	<p>
+		&nbsp;3.7 &nbsp;使用DOM 扩展修改XML
+	</p>
+	<p>
+		&nbsp;3.8 &nbsp;使用jQuery 解析XML
+	</p>
+	<p>
+		第4章 &nbsp;使用JSON
+	</p>
+	<p>
+		第5章 &nbsp;使用表单
+	</p>
+	<p>
+		第6章 &nbsp;向表单添加视觉效果
+	</p>
+	<p>
+		第7章 &nbsp;创建漂亮的导航菜单
+	</p>
+	<p>
+		第8章 &nbsp;使用PHP 和jQuery 绑定数据
+	</p>
+	<p>
+		第9章 &nbsp;使用PHP 和jQuery 改进网站
+	</p>
+	<p>
+		附录A &nbsp;Firebug
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

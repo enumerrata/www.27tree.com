@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tutorial-desc>HTML教程</tutorial-desc>
+    <tutorial-menu>
+        <sector desc="HTML 基础教程">
+            <atom article-link="510" title="HTML 入门"/>
+            <atom article-link="510" title="HTML 标签"/>
+            <atom article-link="510" title="HTML 元素"/>
+            <atom article-link="510" title="HTML 属性"/>
+            <atom article-link="510" title="HTML 标题"/>
+            <atom article-link="510" title="HTML 段落"/>
+            <atom article-link="510" title="HTML 格式化"/>
+            <atom article-link="510" title="HTML 样式"/>
+            <atom article-link="510" title="HTML 链接"/>
+            <atom article-link="510" title="HTML 表格"/>
+            <atom article-link="510" title="HTML 列表"/>
+            <atom article-link="510" title="HTML 表单和输入"/>
+            <atom article-link="510" title="HTML 图像"/>
+            <atom article-link="510" title="HTML 背景"/>
+            <atom article-link="510" title="HTML 颜色"/>
+            <atom article-link="510" title="HTML 颜色值"/>
+            <atom article-link="510" title="HTML 颜色名"/>
+            <atom article-link="510" title="HTML 快速参考"/>
+        </sector>
+        <sector desc="HTML 高级教程">
+            <atom article-link="510" title="HTML 框架"/>
+            <atom article-link="510" title="HTML 字体"/>
+            <atom article-link="510" title="HTML 4.0"/>
+            <atom article-link="510" title="HTML CSS"/>
+            <atom article-link="510" title="HTML 字符实体"/>
+            <atom article-link="510" title="HTML 头部"/>
+            <atom article-link="510" title="HTML 元信息Meta"/>
+            <atom article-link="510" title="HTML URL"/>
+            <atom article-link="510" title="HTML 脚本"/>
+            <atom article-link="510" title="HTML 标准属性"/>
+            <atom article-link="510" title="HTML 事件属性"/>
+            <atom article-link="510" title="HTML URL 编码"/>
+            <atom article-link="510" title="HTML 网页服务器"/>
+        </sector>
+    </tutorial-menu>
+</root>

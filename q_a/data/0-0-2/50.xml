@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[请看下面代码；我想嵌入css 但不知道怎么嵌入；求一些教程；要不就发一个用到下面问题补充的有关的代码吧]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;框窗实作&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;FRAMESET COLS=\"120,*\" &gt; 
+　&lt;FRAME SRC=\"a.htm\" NAME=\"1\"&gt;
+　&lt;FRAME SRC=\"b.htm\" NAME=\"2\"&gt; 
+&lt;/FRAMESET&gt; 
+&lt;/HTML&gt;</pre>]]></content>
+  <tags></tags>
+  <parseVersion>1.1</parseVersion>
+</root>

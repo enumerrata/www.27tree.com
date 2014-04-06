@@ -1,0 +1,25 @@
+<div class="tips-list-items">
+    <!--postid-->
+    <!--<input type="hidden" value="<?php echo $template_data['postid']; ?>" />-->
+    <span class="list-items-img">
+        <img id="user-img" class="borderR5 block" src="<?php echo $template_data['head-img']; ?>_32x" width="32px" height="32px" />
+    </span>
+    <span class="list-items-author">
+        <a href="<?php echo $template_data['uc-url']; ?>"><?php echo $template_data['author']; ?></a>
+    </span>
+    <span class="list-items-title">
+        <?php
+        $TITLE = "";
+        if (isset($template_data['stateConv']))
+            $TITLE .= "<span class=\"Gray\">[" . $template_data[stateConv] . "]</span>&nbsp;";
+        $TITLE .= NULL != $template_data['postType'] ? "[{$template_data['postType']}]<a class=\"renderPatch\" " : "<a class=\"renderPatch\" ";
+        if (isset($template_data['Rd']))
+            $TITLE .= "style=\"color:" . $template_data[Rd] . ";font-weight:bold;\" ";
+        $TITLE .= "href=\"" . $template_data['url'] . "\">" . $template_data['title'] . "</a>";
+        echo $TITLE;
+        ?>
+    </span>
+    <span class="list-items-date Gray">发布于 : <?php echo G::tTimeFormat_vs($template_data['date']); ?></span>
+    <span class="list-items-readc"><?php echo $template_data['commi']; ?>评论 / <?php echo $template_data['readi']; ?>阅读</span>
+    <div class="clear"></div>
+</div>

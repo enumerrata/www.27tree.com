@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <sp desc="技术问题" stype="teh">
+        <band type="Web开发" url="web">
+            <sband type="JavaScript"/>
+            <sband type="HTML(CSS)"/>
+            <sband type="HTML5移动开发"/>
+            <sband type="高性能Web开发"/>
+        </band>
+        <band type="Java技术" url="web">
+            <sband type="Java SE"/>
+            <sband type="Java ME"/>
+            <sband type="Java EE"/>
+            <sband type="Eclipse"/>
+        </band>
+        <band type="PHP" url="web">
+            
+        </band>
+        <band type="C/C++" url="web">
+            
+        </band>
+    </sp>
+    <sp desc="职业困扰" stype="job"></sp>
+    <sp desc="情感生活" stype="eom"></sp>
+</root>

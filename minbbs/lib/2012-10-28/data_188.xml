@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-28 18:43:49</datetime>
+  <title><![CDATA[ ubuntu smplayer 电影播放器 名字有点邪恶]]></title>
+  <content><![CDATA[<p>
+	sudo apt-get install smplayer
+</p>
+<p>
+	再安装解码器：
+</p>
+<p>
+	安装win32codecs包
+</p>
+<p>
+	如果是你电脑是英特尔的CPU
+</p>
+<p>
+	sudo apt-get install w32codecs
+</p>
+<p>
+	如果是64位 CPU
+</p>
+<p>
+	sudo apt-get install w64codecs
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

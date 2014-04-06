@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>451</uid>
+  <datetime>2013-04-17 16:09:39</datetime>
+  <title><![CDATA[解决VPS系统时间不能同步更新]]></title>
+  <content><![CDATA[<p>
+	win2003系统有一个DOS命令可以实现日期时间的更新同步： W32TM /resync
+</p>
+<p>
+	那么，这时我们设定一个计划任务，定时让它执行就可以了。
+</p>
+<p>
+	在C盘根目录建立一个time.bat文件，文件的内容就是W32TM /resync。
+</p>
+<p>
+	然后，在控制面板添加新的计划任务，设置定期执行这个批处理文件就可以解决了。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

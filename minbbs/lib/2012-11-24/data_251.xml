@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>66</uid>
+  <datetime>2012-11-24 19:18:40</datetime>
+  <title><![CDATA[UNIX 的哲学]]></title>
+  <content><![CDATA[<p>
+	&nbsp;&nbsp;<span style=\"font-size:16px;\">&nbsp; UNIX like 世界里的基本准则，你能做到几个——</span>
+</p>
+<ol>
+	<li>
+		<span style=\"font-size:16px;\">小即是美</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">只做一件事情，然后做好它</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">可移植性第一，高效率第二</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">可以建立原型就尽快</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">使用纯文本文件来存储数据</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">充分利用程序的杠杆作用</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">使用shell脚本来提高杠杆作用和可移植性</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">每一个程序都应该成为过滤器</span>
+	</li>
+	<li>
+		<span style=\"font-size:16px;\">避免强制性的用户界面</span>
+	</li>
+</ol>
+<p>
+	<p>
+		<br />
+	</p>
+</p>
+<br />]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

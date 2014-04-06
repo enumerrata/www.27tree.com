@@ -1,0 +1,10 @@
+<div class="borderR5 Shadow Elipsis" style="border:1px solid #ccc;margin:10px 35px;text-align:left;line-height:20px;padding:5px 10px;background-color:#fff;">
+     <?php
+     $line_xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/not/info/learnLine/tech-learn-line-$templates_nottype.xml");
+     $str = array();
+     foreach($line_xml->xpath("//line") as $line){
+     array_push($str,"<a href='$line[articleURL]'>$line[desc]</a>");
+     }
+     echo implode(" <strong>&gt;</strong> ", $str);
+     ?>
+</div>

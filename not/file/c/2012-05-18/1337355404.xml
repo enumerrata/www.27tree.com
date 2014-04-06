@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>广东工业大学C语言试卷及答案</title>
+<content>&amp;lt;p&amp;gt;
+	一、单选题（每题2分，共60分）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1．以下描述正确的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;C程序的执行是从main()函数开始,到本程序的最后一个函数结束
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;编译程序对C源程序编译时不检查语法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;C程序中没有输入输出语句
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;在一个C程序中main()函数必须出现在所有函数之前
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2．结构化程序设计不应该使用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;B&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;自顶向下，逐步细化的方法&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;灵活、简洁的goto结构
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;模块化设计
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;三种基本结构：顺序结构、选择结构、循环结构的编码方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3．将C源程序进行&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;可得到目标文件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;编辑		B)&amp;nbsp;编译&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;连接		&amp;nbsp;D)&amp;nbsp;运行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.&amp;nbsp;在C语言中，变量所分配的内存空间大小&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;均为两个字节&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;由用户自己定义&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;由变量的类型决定&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;是随意的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.&amp;nbsp;以下不能定义为用户标识符是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;min&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)_01&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)_int&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;3a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.&amp;nbsp;以下选项中可作为C语言合法常量的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;D&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;3e2.0&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;081&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;e3&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;123L
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;&amp;nbsp;若有语句char&amp;nbsp;c;，并要将字符a赋给变量c，则下列赋值表达式正确的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;B&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;c=a		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	B)&amp;nbsp;c=’a’&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;c=”a”			D)&amp;nbsp;c=’97’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.&amp;nbsp;有程序段:&amp;nbsp;int&amp;nbsp;a,b;&amp;nbsp;&amp;nbsp;scanf(“%d,%d”,&amp;amp;a,&amp;amp;b);&amp;nbsp;请为之选择运行时正确的输入方法_____&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;B_&amp;lt;/strong&amp;gt;__
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2↙&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;1,2↙&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)1↙2↙&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)1;2↙
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9．若有语句int&amp;nbsp;x=5;&amp;nbsp;则执行语句x+=x*=10;后，a的值是&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;A&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;100		B)&amp;nbsp;55		C)&amp;nbsp;60		D)&amp;nbsp;105
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10．下列语句合法的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;B&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;4+a=b=0;			&amp;nbsp;B)&amp;nbsp;a=++b;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;a=2=b=6;	&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;a=4++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11．执行以下语句，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;x=2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d”,&amp;nbsp;((x=4*5,&amp;nbsp;x*5),&amp;nbsp;x+20));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;120		B)&amp;nbsp;100		C)&amp;nbsp;40&amp;nbsp;&amp;nbsp;		D)&amp;nbsp;20
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12．C语言规定，简单变量做实参时，它和对应形参之间的数据传递方式为_&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C_&amp;lt;/strong&amp;gt;_
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;由实参传给形参，再由形参传回给实参
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;地址传递
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;单向值传递
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;由用户指定传递方式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13．以下选项中非法的表达式是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;A&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;7.5%2/2			B)&amp;nbsp;x=y=0&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;(char)(66+1)		&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;’c’+1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14．下列程序的输出结果是&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;D&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;float&amp;nbsp;a=3.2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;int&amp;nbsp;b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;b=1.2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;c=(b+3.8)/5.0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;printf(“%d\\n”,&amp;nbsp;a*c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;3			B)&amp;nbsp;3.2			C)&amp;nbsp;3.07		&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15．C语言中用于结构化程序设计的三种基本结构是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;A&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;顺序结构、选择结构、循环结构
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;if,&amp;nbsp;&amp;nbsp;switch,&amp;nbsp;&amp;nbsp;&amp;nbsp;break
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;for,&amp;nbsp;&amp;nbsp;while,&amp;nbsp;&amp;nbsp;do-while
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;if,&amp;nbsp;&amp;nbsp;for,&amp;nbsp;&amp;nbsp;&amp;nbsp;continue
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16.&amp;nbsp;&amp;nbsp;执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;D&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;x,&amp;nbsp;y=3,&amp;nbsp;z=2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x=(--y==z++)?--y:++z;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“x=%d&amp;nbsp;y=%d&amp;nbsp;z=%d”,x,y,z);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;x=4&amp;nbsp;y=2&amp;nbsp;z=4				B)&amp;nbsp;&amp;nbsp;x=3&amp;nbsp;y=2&amp;nbsp;z=3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;&amp;nbsp;x=4&amp;nbsp;y=1&amp;nbsp;z=4			&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;&amp;nbsp;x=1&amp;nbsp;y=1&amp;nbsp;z=3
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	17.&amp;nbsp;已有定义:&amp;nbsp;char&amp;nbsp;a[]=\"abc\",b[]={&amp;nbsp;a&amp;nbsp;,&amp;nbsp;b&amp;nbsp;,&amp;nbsp;c&amp;nbsp;};&amp;nbsp;&amp;nbsp;以下叙述中正确的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;C&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;数组a和b的长度相同&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;a数组长度小于b数组长度
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;a数组长度大于b数组长度&amp;nbsp;&amp;nbsp;&amp;nbsp;D)上述说法都不对
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	18．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;int&amp;nbsp;x=3,y=4,z=2,i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;i=x&amp;amp;lt;!y&amp;amp;&amp;amp;(z=10)&amp;amp;gt;y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;printf(“i=%d&amp;nbsp;z=%d”,&amp;nbsp;i,z);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;i=0&amp;nbsp;z=10
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;i=1&amp;nbsp;z=10&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;i=0&amp;nbsp;z=2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;i=1&amp;nbsp;z=2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	19.&amp;nbsp;用数组名作为函数调用时的实参，实际上传送给形参的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;A&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;数组首地址&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;数组的第一个元素值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;数组中全部元素的值&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;数组元素的个数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	20.&amp;nbsp;执行如下语句,&amp;nbsp;输出c的值是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c=1,&amp;nbsp;x=3;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	switch(x+1)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;case&amp;nbsp;4:&amp;nbsp;c++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;case&amp;nbsp;6:&amp;nbsp;c++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;default:&amp;nbsp;c++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d”,&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;1			B)&amp;nbsp;&amp;nbsp;2			C)&amp;nbsp;&amp;nbsp;3			D)&amp;nbsp;&amp;nbsp;4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	21.&amp;nbsp;若有定义：int&amp;nbsp;a[2][3];&amp;nbsp;则对a数组的第i行j列元素的正确引用为&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;A&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;*(a[i]+j)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;*(a+i)+j&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;*(a+i+j)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;a[i]+j
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	22．若有如下程序：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;int&amp;nbsp;x=1,a=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;do
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;{&amp;nbsp;a++;&amp;nbsp;}while(x,x--);&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	则语句a++;&amp;nbsp;执行的次数是&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;0				B)&amp;nbsp;&amp;nbsp;1&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;&amp;nbsp;2			D)&amp;nbsp;&amp;nbsp;无限次
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	23．以下程序中，while循环的循环次数是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;D&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;int&amp;nbsp;i=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;while(i&amp;amp;lt;10)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;if(i&amp;amp;lt;1)&amp;nbsp;continue;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(i==5)&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;i++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	……&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;1			B)&amp;nbsp;&amp;nbsp;10&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;&amp;nbsp;6		&amp;nbsp;D)&amp;nbsp;&amp;nbsp;死循环，不能确定次数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	24．下面能正确定义一维数组的选项是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;B&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;int&amp;nbsp;num[];						B)&amp;nbsp;&amp;nbsp;#define&amp;nbsp;N&amp;nbsp;10
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;num[N];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;&amp;nbsp;int&amp;nbsp;num[0..10];			&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	D)&amp;nbsp;&amp;nbsp;int&amp;nbsp;N=10;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;num[N];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	25．在C语言中，函数的隐含存储类别是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;C&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;auto		B)&amp;nbsp;&amp;nbsp;static&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;&amp;nbsp;extern	&amp;nbsp;&amp;nbsp;&amp;nbsp;	D)&amp;nbsp;&amp;nbsp;无存储类别
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	26．以下程序的输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;C&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	char&amp;nbsp;str[20]=”hell\\0o\\t”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d&amp;nbsp;%d\\n”,&amp;nbsp;strlen(str),sizeof(str));&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;9&amp;nbsp;7			B)&amp;nbsp;7&amp;nbsp;20&amp;nbsp;			C)&amp;nbsp;&amp;nbsp;4&amp;nbsp;20		D)&amp;nbsp;&amp;nbsp;20&amp;nbsp;20
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	27．下列选项中不正确的语句组是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;A&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;char&amp;nbsp;s[10];&amp;nbsp;s=“Beijing”;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;B)&amp;nbsp;&amp;nbsp;char&amp;nbsp;s[&amp;nbsp;]=“Beijing”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;&amp;nbsp;char&amp;nbsp;*s&amp;nbsp;=“Beijing”;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;D)&amp;nbsp;&amp;nbsp;char&amp;nbsp;*s&amp;nbsp;;&amp;nbsp;s=“Beijing”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	28．有如下程序,&amp;nbsp;执行后输出的结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;f(int&amp;nbsp;x,&amp;nbsp;int&amp;nbsp;y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;t;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(x&amp;amp;lt;y)&amp;nbsp;{t=x;x=y;y=t;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;a=1,b=3,c=2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	f(a,b);&amp;nbsp;f(a,c);&amp;nbsp;f(b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d,%d,%d\\n”,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;3,2,1		B)&amp;nbsp;&amp;nbsp;1,2,3			C)&amp;nbsp;&amp;nbsp;1,3,2		D)&amp;nbsp;&amp;nbsp;2,3,1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	29．执行如下程序段后，a的值为&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;C&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;*p,&amp;nbsp;a=1,b=2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=&amp;amp;a;&amp;nbsp;a=*p+b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;1		B)&amp;nbsp;&amp;nbsp;2&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C)&amp;nbsp;&amp;nbsp;3		D)&amp;nbsp;&amp;nbsp;4
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	30．下列关于C语言数据文件的叙述中正确的是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;C&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A)&amp;nbsp;&amp;nbsp;文件由ASCII码字符序列组成，C语言只能读写文本文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B)&amp;nbsp;&amp;nbsp;文件由二进制数据序列组成，C语言只能读写二进制文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C)&amp;nbsp;&amp;nbsp;文件由数据流形式组成，可按数据的存放形式分为二进制文件和文本文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	D)&amp;nbsp;&amp;nbsp;文件由记录序列组成，可按数据的存放形式分为二进制文件和文本文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、填空题（每空2分，共40分）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1．若输入字符串：abcde&amp;amp;lt;回车&amp;amp;gt;，则以下while循环体将执行&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(1)&amp;lt;strong&amp;gt;&amp;nbsp;0&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;次。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while((ch=getchar())==’d’)&amp;nbsp;&amp;nbsp;putchar(ch);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2．设有下列定义语句int&amp;nbsp;x[3]={3,4,5},&amp;nbsp;*p1=x,&amp;nbsp;**p2=&amp;amp;p1;则表达式**p2的值是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;3&amp;lt;/strong&amp;gt;&amp;nbsp;(2)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;，表达式*(*p2+1)的值是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;4&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(3)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3．以下函数的功能是：求x的y次方，请填空。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;fun(double&amp;nbsp;x,&amp;nbsp;int&amp;nbsp;y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;z;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=1,&amp;nbsp;z=x;&amp;nbsp;i&amp;amp;lt;y;&amp;nbsp;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	z=z*&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;x&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(4)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;z;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4．若有以下程序段，请填空。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;str
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;str&amp;nbsp;*next;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}*p1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p1=(&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;struct&amp;nbsp;str&amp;nbsp;*&amp;nbsp;&amp;lt;/strong&amp;gt;(5)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)malloc(sizeof(struct&amp;nbsp;str));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5．设有以下定义：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;s
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;info;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	struct&amp;nbsp;s&amp;nbsp;*next;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;x,y,z;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	已建立如下图所示链表结构：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	请写出删除节点y的赋值语句&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;x.next=y.next;&amp;nbsp;&amp;lt;/strong&amp;gt;(6)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6．以下程序的功能是：从键盘上输入一个字符串，把该字符串中的小写字母转换为大写字母(字母A的ASCII码为65，字母a的ASCII码为97)，输出到文件test.txt中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	FILE&amp;nbsp;*fp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;str[100];&amp;nbsp;int&amp;nbsp;i=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if((fp=fopen(“text.txt”,&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;“w”&amp;lt;/strong&amp;gt;&amp;nbsp;(7)&amp;nbsp;&amp;nbsp;&amp;nbsp;))==NULL)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	printf(“can’t&amp;nbsp;open&amp;nbsp;this&amp;nbsp;file.\\n”);&amp;nbsp;exit(0);&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“input&amp;nbsp;a&amp;nbsp;string:\\n”);&amp;nbsp;gets(str);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	while(str[i])
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	if(str[i]&amp;amp;gt;=’a’&amp;amp;&amp;amp;str[i]&amp;amp;lt;=’z’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;str[i]=&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;str[i]-32&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(8)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fputc(str[i],fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	i++;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fclose(fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.&amp;nbsp;下面程序是对10个数排序（由小到大）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;nbsp;&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;int&amp;nbsp;a[11];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;i,j,t;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(″input&amp;nbsp;10&amp;nbsp;numbers&amp;nbsp;:\\n″);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for&amp;nbsp;(i=1;i&amp;amp;lt;=10;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;scanf(\"%d\"，&amp;amp;a[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(\"\\n\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=1;i&amp;amp;lt;=9;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;for(j=i+1;j&amp;amp;lt;=10;j++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;a[i]&amp;amp;gt;a[j]&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;(9)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{t=a[i];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;a[i]=a[j]&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;(10)&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a[j]=t;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;printf(″the&amp;nbsp;sorted&amp;nbsp;numbers&amp;nbsp;:\\n″);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;for(i=1;i&amp;amp;lt;11;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;printf(″%d&amp;nbsp;″,a[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;printf(″\\n″);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.&amp;nbsp;有3个学生，各学3门课，计算总平均分数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;nbsp;&amp;amp;lt;stdio.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;&amp;nbsp;average（float&amp;nbsp;*p，int&amp;nbsp;n）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;float&amp;nbsp;sum=0,&amp;nbsp;aver&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;float&amp;nbsp;*p_end；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p_end=&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;p+n&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;(11)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;for（；p＜p_end；p＋＋）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;&amp;nbsp;sum=sum+(*p)&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(12)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;aver&amp;nbsp;=&amp;nbsp;sum&amp;nbsp;/&amp;nbsp;n;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;printf（″average＝％5.2f＼n″，aver）；}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;float&amp;nbsp;score[3][3]={{65，67，70}，{80，87，90}，{90，99，100}};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;average(*score,9)&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;(13)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;;&amp;nbsp;&amp;nbsp;／*求9个分数的平均分*／
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	｝
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;4&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(14)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;int&amp;nbsp;a=6,b=5,c=4,d=3;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;if(a&amp;amp;gt;b&amp;amp;gt;c)&amp;nbsp;&amp;nbsp;printf(“%d\\n”,d);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;else&amp;nbsp;if&amp;nbsp;((c-1&amp;amp;gt;=d)==1)&amp;nbsp;&amp;nbsp;printf(“%d\\n”,&amp;nbsp;d+1);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;&amp;nbsp;printf(“%d\\n”,d+2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;24&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;(15)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;int&amp;nbsp;a[4][4]={{1,2,-3,-4},{0,-5,-6,7},{-8,9,0,-10},{-11,12,-13,0}};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;int&amp;nbsp;i,j,s=0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;for(i=0;i&amp;amp;lt;4;i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;for(j=0;j&amp;amp;lt;4;j++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{	if(a[i][j]&amp;amp;lt;0)&amp;nbsp;continue;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if(a[i][j]==0)&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s+=a[i][j];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;printf(”%d\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;&amp;nbsp;125&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;(16)&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;fun(int&amp;nbsp;x)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	if(x/2&amp;amp;gt;0)&amp;nbsp;&amp;nbsp;fun(x/2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d”,&amp;nbsp;x);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	fun(5);&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;357&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;(17)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;fun()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	static&amp;nbsp;int&amp;nbsp;a=1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a+=2;&amp;nbsp;&amp;nbsp;printf(“%d”,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(c=1;&amp;nbsp;c&amp;amp;lt;4;&amp;nbsp;c++)&amp;nbsp;fun();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“\\n”);&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;6&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;(18)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;x[8]={1,2,3,4,5,6,0,0},&amp;nbsp;*s;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=x+3;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d\\n”,&amp;nbsp;s[2]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;2,1&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;(19)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;swap(&amp;nbsp;int&amp;nbsp;*pt1,&amp;nbsp;int&amp;nbsp;*pt2)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;int&amp;nbsp;p;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;p=*pt1;&amp;nbsp;&amp;nbsp;*pt1=*pt2;&amp;nbsp;&amp;nbsp;*pt2=p;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;int&amp;nbsp;a=1,&amp;nbsp;b=2,&amp;nbsp;*p1,&amp;nbsp;*p2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;p1=&amp;amp;a;&amp;nbsp;&amp;nbsp;p2=&amp;amp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;if&amp;nbsp;(*p1&amp;amp;lt;*p2)&amp;nbsp;&amp;nbsp;swap(p1,&amp;nbsp;p2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;printf(“%d,&amp;nbsp;%d\\n”,&amp;nbsp;a,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15．执行以下程序，输出结果是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;strong&amp;gt;4&amp;lt;/strong&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;(20)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{	int&amp;nbsp;a[4][4]={&amp;nbsp;{10,2,3,4},&amp;nbsp;{1,6,7,8},&amp;nbsp;{19,10,11,12},&amp;nbsp;{1,14,15,16}&amp;nbsp;};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;(*p)[4],&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	p=a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“%d”,&amp;nbsp;*(p+2)-*(p+1));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-05-18/1337355404.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

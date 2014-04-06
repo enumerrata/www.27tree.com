@@ -1,0 +1,97 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">HTML 链接</h1>
+</div>
+<div>
+<p><b>HTML 使用超级链接与网络上的另一个文档相连。</b></p>
+<p><b>几乎可以在所有的网页中找到链接。点击链接可以从一张页面跳转到另一张页面。</b></p>
+
+<h1>HTML 超链接（链接）</h1>
+
+<p>超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，您可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。</p>
+<p>当您把鼠标指针移动到网页中的某个链接上时，箭头会变为一只小手。</p>
+<p>我们通过使用 &lt;a&gt; 标签在 HTML 中创建链接。</p>
+<p>有两种使用 &lt;a&gt; 标签的方式：</p>
+   <p>1.通过使用 href 属性 - 创建指向另一个文档的链接</p>
+   <p>2.通过使用 name 属性 - 创建文档内的书签</p>
+
+<h1>HTML 链接语法</h1>
+
+<p>链接的 HTML 代码很简单。它类似这样：</p>
+
+<code>
+&lt;a href="url"&gt;Link text&lt;/a&gt;
+</code>
+
+<p>href 属性规定链接的目标。</p>
+<p>开始标签和结束标签之间的文字被作为超级链接来显示。</p>
+
+<p><b>实例</b></p>
+<code>
+&lt;a href="http://www.itsrcs.com"&gt;Visit itsrcs&lt;/a&gt;
+</code>
+
+<p>上面这行代码显示为：Visit itsrcs</p>
+<p>点击这个超链接会把用户带到 itsrcs 的首页。</p>
+<p>提示："链接文本" 不必一定是文本。图片或其他 HTML 元素都可以成为链接。</p>
+
+<h1>HTML 链接 - target 属性</h1>
+ 
+<p>使用 Target 属性，你可以定义被链接的文档在何处显示。</p>
+<p>下面的这行会在新窗口打开文档：</p>
+
+<code>&lt;a href="http://www.itsrcs.com" target="_blank"&gt;Visit itsrcs!&lt;/a&gt;</code>
+
+<h1>HTML 链接 - name 属性</h1>
+
+<p>name 属性规定锚（anchor）的名称。</p>
+<p>name 属性用于创建 HTML 内部的书签。</p>
+<p>书签不会以任何特殊方式显示，它对读者是不可见的。</p>
+<p>当使用命名锚（named anchors）时，我们可以创建直接跳至页面中某个节的链接，这样使用者就无需不停的滚动页面来寻找他们需要的信息。</p>
+
+<p><b>命名锚的语法：</b></p>
+
+<code>&lt;a name="label"&gt;Text to be displayed&lt;/a&gt;</code>
+
+<p>提示：锚的名称可以是任何你喜欢的名字。</p>
+
+<p><b>实例</b></p>
+<p>HTML 文档内部的已命名的锚：</p>
+
+<code>&lt;a name="tips"&gt;Useful Tips Section&lt;/a&gt;</code>
+
+<p>然后，我们创建指向相同文档中"有用的提示"部分的链接：</p>
+
+<code>&lt;a href="#tips"&gt;Visit the Useful Tips Section&lt;/a&gt;</code>
+
+<p>或者，创建从另一个页面指向该文档中"有用的提示"部分的链接：</p>
+
+<code>
+&lt;a href="http://www.itsrcs.com/html_links.htm#tips"&gt;<br />
+Visit the Useful Tips Section<br />
+&lt;/a&gt;
+</code>
+
+<p>在上面的代码中，我们将 # 符号和锚名称添加到 URL 的末端，就可以直接链接到 tips 这个命名锚了。</p>
+
+<h1>基本的注意事项 - 有用的提示：</h1>
+
+<p>注释：请始终将正斜杠添加到子文件夹。假如这样书写链接：href="http://www.itsrcs"，就会向服务器产生两次 HTTP 请求。这是因为服务器会添加正斜杠到这个地址，然后创建一个新的请求，就像这样：href="http://www.itsrcs.com"。</p>
+<p>提示：命名锚经常用于在大型文档开始位置上创建目录。可以为每个章节赋予一个命名锚，然后把链接到这些锚的链接放到文档的上部。如果您经常访问百度百科，您会发现其中几乎每个词条都采用这样的导航方式。</p>
+<p>提示：假如浏览器找不到已定义的命名锚，那么就会定位到文档的顶端。不会有错误发生。</p>
+
+<div>
+
+<h1>HTML 链接标签</h1>
+
+<table class="dataintable">
+<tr>
+<th style="width:25%;">标签</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>&lt;a&gt;</td>
+<td>定义锚。</td>
+</tr>
+</table>
+</div>

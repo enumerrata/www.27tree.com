@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>22</uid>
+  <datetime>2013-02-16 15:59:09</datetime>
+  <title><![CDATA[获取鼠标坐标的兼容性写法]]></title>
+  <content><![CDATA[<p>
+	用 javascript 获取当页面上鼠标（光标）位置在许多情况下都会用到，比如拖放，悬停提示（tooltip） 等等。当然，这里我们依然 要面对浏览器的兼容问题，在不同的浏览器下，对这些相关的属性处理方式也不同，本文详细介绍了浏览器在处理这些属性时的差异和最终的解决方法。
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function mousePosition(ev){
+   if(ev.pageX || ev.pageY){
+       return {x:ev.pageX, y:ev.pageY};
+   }
+   return {
+       x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+       y:ev.clientY + document.body.scrollTop  - document.body.clientTop
+   };
+}</pre>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

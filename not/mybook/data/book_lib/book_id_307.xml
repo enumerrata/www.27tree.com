@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Java Web Services: Up and Running]]></title>
+  <author>Martin Kalin</author>
+  <submiter-uid>354</submiter-uid>
+  <submit-date-time>2013-02-21 15:15:14</submit-date-time>
+  <img-link>54fceeedf364d13ad5ca8d70a0cbc455.jpg</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	This example-driven book offers a thorough introduction to Java\'s APIs for XML Web Services (JAX-WS) and RESTful Web Services (JAX-RS).
+</p>
+<p>
+	Java Web Services: Up and Running takes a clear, pragmatic approach to these technologies by providing a mix of architectural overview, complete working code examples, and short yet precise instructions for compiling, deploying, and executing an application. You\'ll learn how to write web services from scratch and integrate existing services into your Java applications. With Java Web Services: Up and Running, you will:
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\">Understand the distinction between SOAP-based and REST-style services</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Write, deploy, and consume SOAP-based services in core Java</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Understand the Web Service Definition Language (WSDL) service contract</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Recognize the structure of a SOAP message</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Learn how to deliver Java-based RESTful web services and consume commercial RESTful services</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Know security requirements for SOAP- and REST-based web service</span><span style=\"line-height:1.5;\">s</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Learn how to implement JAX-WS in various application servers</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Linux开发工具箱--项目开发的最有效途径]]></title>
+  <author>（美）法斯克（Fusco，J）</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-06 00:02:39</submit-date-time>
+  <img-link>77192b1a7b43cbfbf71c27a1be8bfbf9.png</img-link>
+  <book-area>system</book-area>
+  <book-intro><![CDATA[<p>
+	本书将系统性地介绍GNU/Linux的开源工具，并通过可以被读者容易修改的简明示例说明如何使用这些工具，以满足读者的实际需求。
+</p>
+<p>
+	本书首先介绍如何下载、构建和安装开源项目，如何发布开源工具，以及如何避免将时间浪费到还未准备好的项目中，并引导读者构建自己的项目。然后通过示例演示了如何在文本编辑器中进行查找操作，展示了几个常用文本编辑器中会用到的小技巧。
+</p>
+<p>
+	书中接下来对Linux内核的基础知识和操作系统的内部原理进行了详细且通俗易懂的阐述，并示范了如何将这些知识应用到更高级的工具中。还重点讲解sar、vmstat、valpind和strace等工具的输出，以及如何将它们运用到应用程序中；如何利用各种编程API来开发适用于自己的工具。
+</p>
+<p>
+	最后，作者介绍了可以提高软件性能的工具；解释了如今市面上的多芯CPU的内在原理，并演示了如何从这些系统中获取最佳性能；以及介绍了在各种环境下调试代码的工具和技术。
+</p>
+<p>
+	对于程序员来说，如果希望自己开发出来的程序更为简洁有效，如果想对Linux编程环境有更深刻的理解，那么，本书提供的资料相信能给您带来惊喜！
+</p>
+<p>
+	<p>
+		《Linux开发工具箱》主要内容：
+	</p>
+	<p>
+		最大化编辑器、版本控制工具和源代码浏览器的生产效率
+	</p>
+	<p>
+		理解进程及用来管理它们的工具
+	</p>
+	<p>
+		使用gprof和valgrind跟踪和解决应用瓶颈
+	</p>
+	<p>
+		在需要时如何快速找到帮助、解决方案和工作区
+	</p>
+	<p>
+		使用sar、vmstat、iostat及其他工具优化程序代码
+	</p>
+	<p>
+		使用shell命令调试IPC：信号、管道、套接字、文件和IPC对象
+	</p>
+	<p>
+		使用printf、gdb和其他基本的调试工具 <span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

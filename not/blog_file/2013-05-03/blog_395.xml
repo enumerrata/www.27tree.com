@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Apache Struts OGNL安全绕过漏洞]]></title>
+  <content><![CDATA[<p>
+	<strong>描述</strong>：Apache Struts 2.0.0 -2.3.1.1内存在远程命令执行漏洞，ParametersInterceptor允许使用括号，这样在处理不匹配的属性数据类型时，ParametersInterceptor又可将参数值解释为OGNL表达式，远程攻击者可通过特制的参数利用此漏洞执行任意代码。
+</p>
+<br>
+<p>
+	<strong>危害</strong>：黑客可以利用该漏洞直接在网站执行任意命令，从而有可能直接控制网站服务器，盗取网站数据，影响网站的正常运营。
+</p>
+<br>
+<p>
+	<strong>解决方案</strong>：
+</p>
+<p>
+	升级struts至最新版本2.3.4:
+</p>
+<p>
+	<a href=\"http://struts.apache.org/download.cgi#struts234\" target=\"_blank\">http://struts.apache.org/download.cgi#struts234</a>
+</p>]]></content>
+  <contentx><![CDATA[描述：Apache Struts 2.0.0 -2.3.1.1内存在远程命令执行漏洞，ParametersInterceptor允许使用括号，这样在处理不匹配的属性数据类型时，ParametersInterceptor又可将参数值解释为]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

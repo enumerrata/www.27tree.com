@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Programming Concurrency on the JVM]]></title>
+  <author>Venkat Subramaniam</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-15 11:31:18</submit-date-time>
+  <img-link>35cf9e61c7d8ed715031539d5e5ecc5d.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[More than ever, learning to program concurrency is critical to creating faster, responsive applications. Speedy and affordable multicore hardware is driving the demand for high-performing applications, and you can leverage the Java platform to bring these applications to life. Concurrency on the Java platform has evolved, from the synchronization model of JDK to software transactional memory (STM) and actor-based concurrency. This book is the first to show you all these concurrency styles so you can compare and choose what works best for your applications. You\'ll learn the benefits of each of these models, when and how to use them, and what their limitations are. Through hands-on exercises, you\'ll learn how to avoid shared mutable state and how to write good, elegant, explicit synchronization-free programs so you can create easy and safe concurrent applications. The techniques you learn in this book will take you from dreading concurrency to mastering and enjoying it. Best of all, you can work with Java or a JVM language of your choice - Clojure, JRuby, Groovy, or Scala - to reap the growing power of multicore hardware. If you are a Java programmer, you\'d need JDK 1.5 or later and the Akka 1. 0 library. In addition, if you program in Scala, Clojure, Groovy or JRuby you\'d need the latest version of your preferred language. Groovy programmers will also need GPars.]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

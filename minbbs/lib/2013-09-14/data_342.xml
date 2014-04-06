@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>851</uid>
+  <datetime>2013-09-14 22:11:08</datetime>
+  <title><![CDATA[修改默认SSH和vsftpd端口号，禁止远程root登陆]]></title>
+  <content><![CDATA[<p>
+	SSH 端口默认是22. 但从安全方面考虑，建议修改这个端口。 端口的取值范围是 0 – 65535(即2的16次方)，0到1024是系统使用的端口，如 http服务的端口80。我们可以使用的端口范围：1024到65535。这个是socket规定的。
+</p>
+<p>
+	Linux修改ssh端口2212vi /etc/ssh/ssh_configvi /etc/ssh/sshd_config取消Port前的#注释，并将端口22改成65535
+</p>
+<p>
+	重启SSH服务1service sshd restart此时在用SSH连接，就需要修改ssh 的端口为6535才能连接了。
+</p>
+<p>
+	禁用Root 远程登陆
+</p>
+<p>
+	先在ssh的配置文件里修改Root 远程登陆参数。 禁用root远程登陆。 然后创建一个远程登陆用户。 用这个用户登陆之后，在切换到root用户，拿到最高权限。
+</p>
+<p>
+	创建普通权限的用户12useradd ruserpasswd ruser禁止ROOT远程SSH登录1vi /etc/ssh/sshd_config把PermitRootLogin yes改为PermitRootLogin no
+</p>
+<p>
+	重启sshd服务1service sshd restart
+</p>
+<p>
+	注意： 如果系统开起了iptables防火墙，那么还需要把修改之后的端口号添加到防火墙里面，不然SSH会连不上。关于防火墙端口的添加，参考
+</p>
+<p>
+	更改 vsftpd 的端口号 &nbsp;vsftpd启动后，默认的ftp端口是21，现在我想把ftp端口改成 801 ,修改后能保证
+</p>
+<p>
+	用户上传下载不受影响
+</p>
+<p>
+	1.编辑 /etc/vsftpd/vsftpd.conf 文件，在该配置文件中添加此行：listen_port=801
+</p>
+<p>
+	2.编辑 /etc/services 文件，将其中的 ftp 21/tcp 改为 ftp 801/tcp , ftp
+</p>
+<p>
+	21/udp
+</p>
+<p>
+	改为 ftp 801/udp
+</p>
+<p>
+	3.执行 /etc/init.d/vsftpd restart 重新启动 vsftpd 服务。启动完成后可以使
+</p>
+<p>
+	用 netstat -ntpl | grep vsftpd 命令可以查看到系统现
+</p>
+<p>
+	监听的 vsftpd 的端口为 801
+</p>
+<p>
+	4.使用 lftp 192.168.0.1:801(192.168.0.1 是 vsftpd 服务器的地址 )，这样既
+</p>
+<p>
+	可以访问到 ftp 服务器了。
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

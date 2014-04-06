@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[PHP_PEAR_PHP_BIN is not set correctly的解决方法]]></title>
+  <content><![CDATA[<p>
+	Windows中PHP_PEAR_PHP_BIN is not set correctly的解决方法
+</p>
+<p>
+	windows下安装Pear（点击php目录中的go-pear.bat，按照提示安装。比如输入all，疯狂回车，其中有个选system或者local的大家自己看情况选择。）以后，pear已经被配置到系统中，但是我们cmd后输入命令pear的时候，会收到下面的提示：
+</p>
+<br>
+<p>
+	pear
+</p>
+<p>
+	PHP_PEAR_PHP_BIN is not set correctly.
+</p>
+<p>
+	Please fix it using your environment variable or modify
+</p>
+<p>
+	<strong>the default value in pear.bat</strong>
+</p>
+<p>
+	The current value is:
+</p>
+<p>
+	.\\php.exe
+</p>
+<br>
+<p>
+	第一句，PHP_PEAR_PHP_BIN这个变量设置不正确，有些人看到第一句就开始google甚至百度了，当然有些人撑到了第二句。
+</p>
+<br>
+<p>
+	其实看看第三句我们就豁然开朗了，默认值其实在<strong>pear.bat</strong>中，只要修改这个值就可以了。可是我看网上很多人居然去修改注册表文件PEAR_ENV.reg，为什么你们不看看提示呢？
+</p>
+<br>
+<p>
+	我们打开pear.bat，看来这样一行：
+</p>
+<p>
+	IF “%PHP_PEAR_PHP_BIN%”==”\" SET “PHP_PEAR_PHP_BIN=.\\php.exe”
+</p>
+<br>
+<br>
+<p>
+	我们把“.\\php.exe”修改成php.exe程序的绝对路径（比如我的就是“D:\\software\\php\\php.exe”），重启cmd（用emacs的重启emacs），我们便可以看到pear成功的运行了。
+</p>
+<br>
+<p>
+	很多朋友想继续安装PHPUnit，可以参考我的使用Pear安装PHPUnit。如果有任何遗漏，还请大家补充，如果大家中间升级了pear，上面的问题也许还会出现，重复修改一遍就可以了。
+</p>]]></content>
+  <contentx><![CDATA[Windows中PHP_PEAR_PHP_BIN is not set correctly的解决方法
+
+
+	windows下安装Pear（点击php目录中的go-pear.bat，按照提示安装。比如输入all，疯狂回车，其中有个选sys]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

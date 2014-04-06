@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-23 19:01:01</datetime>
+  <title>修改JQuery源文件使其支持Chrome浏览器判断</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用JQuery判断Chrome时，发现JQuery将其判断为Safari，这个是错误的。反正Jquery不会再修改$.browser了，那还是自己修改，和上次的修改类似。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	打开jquery的代码，查找msie，将前面的
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	o.browser={version:(C.match(/.+(?:rv|it|ra|ie)[\/:&amp;nbsp;]([\d.]+)/)||[0,\"0\"])
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	修改为
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	o.browser={version:(C.match(/.+(?:rv|it|ra|ie|firefox|chrome)[\/:&amp;nbsp;]([\d.]+)/)||[0,\"0\"])
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	将前面的
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	safari:/webkit/.test(C)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	修改为
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	chrome:/chrome/.test(C),safari:/webkit/.test(C)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	这样，就可以正常判断Chrome及其版本了。以上修改在Chrome上测试通过。
+&lt;/p&gt;</content>
+  <contentx>使用JQuery判断Chrome时，发现JQuery将其判断为Safari，这个是错误的。反正Jquery不会再修改$.browser了，那还是自己修改，和上次的修改类似。
+
+
+	打开jquery的代码，查找msie，将前面的
+
+
+	o.browser={version:(C.match(/.+(?:rv|it|ra|ie)[\\/: ]([\\d.]+)/)|</contentx>
+  <tags>_null_</tags>
+</root>

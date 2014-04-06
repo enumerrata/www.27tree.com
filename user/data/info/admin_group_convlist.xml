@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+     <ag lev="5" name="cBoss" />
+     <ag lev="4" name="管理员" />
+     <ag lev="3" name="超级版主" />
+     <ag lev="2" name="版主" />
+     <ag lev="1" name="编辑" />
+     <ag lev="0" name="实习生" />
+</root>

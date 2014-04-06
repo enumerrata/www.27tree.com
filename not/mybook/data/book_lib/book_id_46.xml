@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>RESTful Web Service中文版</title>
+  <author>[美]Subbu Allamaraju（沙布•阿拉马拉尤）</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-07 09:24:33</submit-date-time>
+  <img-link>3dcb19d4aeb0d26e90f22f0a16d42ed0.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	编辑推荐
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	REST设计哲学激起了Web与企业应用开发者的无尽遐想，但用这种方式来开发真正的Web服务并非易事。本书包含了超过100个技巧，帮助您充分利用REST，HTTP和Web基础设施。无论使用何种编程语言和开发框架，您都将了解到如何为客户端/服务器应用设计满足性能、可扩展性、可靠性及安全目标的RESTful&amp;nbsp;Web服务。&amp;nbsp;《RESTful&amp;nbsp;Web&amp;nbsp;Services
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Cookbook》(中文版)的每一节都包含一到两个问题描述，带有简单易学、步骤详尽的解决方案，还有使用HTTP请求与响应、XML、JSON和Atom片段的例子。您还将看到针对每个解决方案的实现指南，讨论其中的利弊和权衡。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容简介
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是《RESTful&amp;nbsp;Web&amp;nbsp;Services&amp;nbsp;Cookbook》的中文翻译版，由Subbu&amp;nbsp;Allamaraju所著。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《RESTful&amp;nbsp;Web&amp;nbsp;Services&amp;nbsp;Cookbook》(中文版)从实践出发，涉及设计&amp;nbsp;RESTful&amp;nbsp;Web服务的各个方面，通过问题描述、解决方案、问题讨论的形式在14个章节中详细讨论了统一接口、资源、表述、URI、链接、请求、缓存、安全等诸多内容。无论读者是否设计过RESTful&amp;nbsp;Web服务，具体使用哪种语言，都能在阅读过程中有所收获。本书也可作为手册，根据具体问题描述在书中查找解决办法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

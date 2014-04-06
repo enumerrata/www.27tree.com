@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android A ProGrammer\'s Guide]]></title>
+  <author>J.F. DiMarzio</author>
+  <submiter-uid>306</submiter-uid>
+  <submit-date-time>2013-01-10 00:47:45</submit-date-time>
+  <img-link>d526222ab25deac99e9e9a771c00e526.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	Android applications are developed using Java and can be ported rather easily to the&nbsp;<span style=\"line-height:1.5;\">new platform. If you have not yet downloaded Java or are unsure about which version you&nbsp;</span><span style=\"line-height:1.5;\">need, I detail the installation of the development environment in Chapter 2. Other features&nbsp;</span><span style=\"line-height:1.5;\">of Android include an accelerated 3-D graphics engine (based on hardware support),&nbsp;</span><span style=\"line-height:1.5;\">database support powered by SQLite, and an integrated web browser.</span>
+</p>
+<p>
+	If you are familiar with Java programming or are an OOP developer of any sort, you&nbsp;<span style=\"line-height:1.5;\">are likely used to programmatic user interface (UI) development—that is, UI placement&nbsp;</span><span style=\"line-height:1.5;\">which is handled directly within the program code. Android, while recognizing and allowing&nbsp;</span><span style=\"line-height:1.5;\">for programmatic UI development, also supports the newer, XML-based UI layout. XML&nbsp;</span><span style=\"line-height:1.5;\">UI layout is a fairly new concept to the average desktop developer. I will cover both&nbsp;</span><span style=\"line-height:1.5;\">the XML UI layout and the programmatic UI development in the supporting chapters&nbsp;</span><span style=\"line-height:1.5;\">of this book.</span>
+</p>
+<p>
+	One of the more exciting and compelling features of Android is that, because of its&nbsp;<span style=\"line-height:1.5;\">architecture, third-party applications—including those that are “home grown”—are&nbsp;</span><span style=\"line-height:1.5;\">executed with the same system priority as those that are bundled with the core system.&nbsp;</span><span style=\"line-height:1.5;\">This is a major departure from most systems, which give embedded system apps a&nbsp;</span><span style=\"line-height:1.5;\">greater execution priority than the thread priority available to apps created by third-party&nbsp;</span><span style=\"line-height:1.5;\">developers. Also, each application is executed within its own thread using a very&nbsp;</span><span style=\"line-height:1.5;\">lightweight virtual machine.</span>
+</p>
+<p>
+	Aside from the very generous SDK and the well-formed libraries that are available to&nbsp;<span style=\"line-height:1.5;\">us to develop with, the most exciting feature for Android developers is that we now have&nbsp;</span><span style=\"line-height:1.5;\">access to anything the operating system has access to. In other words, if you want to&nbsp;</span><span style=\"line-height:1.5;\">create an application that dials the phone, you have access to the phone’s dialer; if you&nbsp;</span><span style=\"line-height:1.5;\">want to create an application that utilizes the phone’s internal GPS (if equipped), you have&nbsp;</span><span style=\"line-height:1.5;\">access to it. The potential for developers to create dynamic and intriguing applications is&nbsp;</span><span style=\"line-height:1.5;\">now wide open.</span>
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,452 @@
+<__cache@1389663779-@1389667379@3php__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            PHP_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=php />
+                    <input type="hidden" id="pages" value=3/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/php/'>PHP</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/php.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">PHP，是英文超级文本预处理语言Hypertext Preprocessor的缩写。PHP 是一种 HTML 内嵌式的语言，是一种在服务器端执行的嵌入HTML文档的脚本语言，语言的风格有类似于C语言，被广泛的运用。PHP 独特的语法混合了 C、Java、Perl 以及 PHP 自创的语法。  PHP安装它可以比 CGI或者Perl更快速的执行动态网页。用PHP做出的动态页面与其他的编程语言相比，PHP是将程序嵌入到HTML文档中去执行，执行效率比完全生成HTML标记的CGI要高许多；PHP还可以执行编译后代码，编译可以达到加密和优化代码运行，使代码运行更快。PHP具有非常强大的功能，所有的CGI的功能PHP都能实现，而且支持几乎所有流行的数据库以及操作系统。最重要的是PHP可以用C、C++进行程序的扩展！PHP 极其适合网站开发，其代码可以直接嵌入 HTML 代码。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/php-basephp/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/php/content/2012-11-16/1353069067.html">
+        &nbsp;PHP PEAR DB类安装与使用实例详解    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/php-basephp/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/php/content/2012-06-15/1339716029.html">
+        &nbsp;项目经理的要求，你达到没有    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/php-basephp/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/php/content/2012-06-15/1339715769.html">
+        &nbsp;在58同城看到的php高级程序员招聘信息    </a><span class="Gray">(0)</span>
+    <ul>
+              </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/php-basephp/" class="borderR15 sband">开发基础</a><a href="/art/php-phpop/" class="borderR15 sband">面向对象</a><a href="/art/php-mvc/" class="borderR15 sband">MVC设计模式</a><a href="/art/php-webserver/" class="borderR15 sband">Web服务</a><a href="/art/php-smarty/" class="borderR15 sband">Smarty模板引擎</a><a href="/art/php-zf/" class="borderR15 sband">Zend FrameWork</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-phpop/>[面向对象]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-06/1338950626.html>PHP类的使用和归纳</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一：结构和调用(实例化)：
+
+
+	class className{} ，调用：$obj = new className();当类有构造函数时，还应传入参数。如$obj = new className($v,$v2...);
+
+
+	二：构造函数和析构函数：
+
+
+	1、构造函数用于初始化：使用__construct()，可带参数。
+
+
+	2、但析构函数不能带参数...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(383)</span>
+                           <em>2012年6月6日 10:43</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-06/1338950564.html>PHP实现gzip页面压缩方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">示例一（用php的内置压缩函数）：
+
+
+	&lt;?PHP  
+
+
+	if(Extension_Loaded(’zlib’)) Ob_Start(’ob_gzhandler’);  
+
+
+	Header(\"Content-type: text/html\");  
+
+
+	?&gt;  
+
+
+	&lt;!DOCTYPE html PUBLIC \"-//W3C//...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(362)</span>
+                           <em>2012年6月6日 10:42</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-06/1338940076.html>HTTP 和 HTTPS 对比</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">什么是HTTPS？
+
+
+	HTTPS（全称：Hypertext Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。也就是说：HTTPS=HTTP+SSL。 它是一个URI sch...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(741)</span>
+                           <em>2012年6月6日 07:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-06/1338939976.html>POST 和 GET 对比</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">今天来个关于HTTP的东西！也是最基础的东西——《POST与GET》
+
+
+	1，Get中数据大小被限制：我们都知道很多老式浏览器把URL的字符串个数被限制在255个之内;虽然现在的新版浏览器早就没有这个蛋疼的限制，但是我们可不敢保证所有来站点访问的用户都是使用新版浏览器的。所以当我们需要用户在网页中填写一些信息时，使用Get方式肯定会出问题。相反Post方法...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(361)</span>
+                           <em>2012年6月6日 07:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-06/1338939900.html>实用：生成简单的验证码</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">这篇文章主要介绍生成一个自定义位数验证码的生成并且在表单中验证，还实现输入验证码不区分大小写。
+
+
+	你可能觉得验证码很神奇，是怎么生成的呢？应该很难吧！其实没有你想象中的那么，其实很简单。这里只要你知道怎么生成一串字符串就能把她做出来，当然要实现验证输入是否正确，这需要你了解PHP的Session会话控制。废话不多说，直接上代码：（这里放在了一个文件中，当...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(732)</span>
+                           <em>2012年6月6日 07:44</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-03/1338713994.html>PHP编程常用技巧四则</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">PHP编程常用技巧四则:
+
+
+	1.配置PHP文件目录
+
+
+	作为服务器端解释执行的脚本语言,PHP程序放置在某个服务器可以访问的目录下，一般可以通过修改Apache的httpd.conj进行配置，例如我们在该文件中的一句：
+
+
+	Alias /test/ d:brhpwebsitebrhp/ 那么在浏览器端输入：“http://localhost/test...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(331)</span>
+                           <em>2012年6月3日 16:58</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-03/1338711610.html>专家预言：PHP将比Java更受欢迎</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Netscape共同创办人Marc Andreessen在周三（10/19）举行的Zend/PHP会议上预言，简单的PHP描述性语言撰写工具，在Web-based应用程序的开发上，将会比Java更受欢迎。
+
+
+	在升阳（Sun Microsystems）于1995年发表Java之后，由于Java的友善接口让工程师设计软件更为容易，受到工程师欢迎，但十年下来J...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(361)</span>
+                           <em>2012年6月3日 16:19</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-03/1338687189.html>影响PHP+MySQL网站打开速度的几个因素</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">最近经常听朋友说网站打开很慢，导致每天会损失很多IP。网站打开速度慢，原因是多方面的，除去网络本身的原因不说，服务器及程序本身的原因也是影响网站打开慢的重要原因。下面结合自己的一些经验，谈谈PHP+MySQL网站的哪些因素会影响网站打开慢。
+
+
+	1、数据库表结构不合理 
+
+
+	在创建MySQL数据库表时，把经常作为查询条件的字段设置为索引，这样可以提高数据...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(504)</span>
+                           <em>2012年6月3日 09:31</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/php-basephp/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-03/1338687060.html>提高编程效率 引入缓存机制提升性能</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单引号则不会，注意：只有echo能这么做，它是一种可以把多个字符串当作参数的“函数”（译注：PHP手册中说echo是语言结构，不是真正的函数，故把函数加上了双引号）。
+
+
+	1、如果能将类的方法定义成static，就尽量定义成static，它的速度会提升将近4倍。
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(317)</span>
+                           <em>2012年6月3日 09:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-02/1338607875.html>php header()函数使用说明</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、作用：
+
+
+	~~~~~~~~~
+
+
+	PHP只是以HTTP协议将HTML文档的标头送到浏览器，告诉浏览器具体怎么处理这个页面，至于传送的内容则需要熟悉一下HTTP协议了，与PHP无关了，可参照http://www.w3.org/Protocols/rfc2616/rfc2616。
+
+
+	传统的标头一定包含下面三种标头之一，并只能出现一次。
+
+
+	Loc...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(414)</span>
+                           <em>2012年6月2日 11:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-02/1338607671.html>php header Content-Type类型小结</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">&lt;?php 
+$mimetypes = array( 
+\'ez\' =&gt; \'application/andrew-inset\', 
+\'hqx\' =&gt; \'application/mac-binhex40\', 
+\'cpt\' =&gt; \'application/mac-compactpro\', 
+\'doc\' =&gt; \'application/...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(559)</span>
+                           <em>2012年6月2日 11:27</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-06-01/1338528008.html>为什么说PHP是个集中营</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">本文是从 Why PHP Was a Ghetto 这篇文章翻译而来。
+
+
+	
+
+
+	有一天我跟在DUMBO的一个非常棒的创业公司的老板聊天，谈到为什么非PHP界的开发人员普遍轻视PHP和PHP相关社区。他提出了一个观点让我印象很深，很大程度上是因为以前从来没有听到过这样的说法。
+
+
+	如果你不知道大多数的程序员都会对PHP发什么样的牢骚，那么，这些牢骚差不...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(362)</span>
+                           <em>2012年6月1日 13:19</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-05-31/1338422417.html>PHP与AJAX的交互，构建部分页面刷新技术</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">AJAX无疑是2005年炒的最热的Web开发技术之一，当然，这个功劳离不开Google。我只是一个普通开发者，使用AJAX的地方不是特别多，我就简单的把我使用的心得说一下。（本文假设用户已经具有JavaScript、HTML、CSS等基本的Web开发能力）
+
+
+	[AJAX介绍] 
+
+
+	Ajax是使用客户端脚本与Web服务器交换数据的Web应用开发方法。W...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(557)</span>
+                           <em>2012年5月31日 08:00</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-05-29/1338259539.html>新浪微博API开发简介之PHP基础篇-用户授权</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">现在玩微博的人越来越多了，而关于微博的第三方应用开发也越来越多，自己在偶然间开始接触了新浪微博API开发，新浪微博API开发的资源比较多，新浪微博提供了一个开发者的平台，网址是：http://open.weibo.com，它里面有很全面的新浪微博开发的资料，包括开发者的使用和介绍，各种语言的API函数介绍文档，SDK等多种资料。
+
+
+	自己在开发和学习的过程...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(331)</span>
+                           <em>2012年5月29日 10:44</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/php/content/2012-05-28/1338208823.html>提高PHP编程效率的要点</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单引号则不会，注意：只有echo能这么做，它是一种可以把多个字符串当作参数的“函数”(译注：PHP手册中说echo是语言结构，不是真正的函数，故把函数加上了双引号)。
+
+
+	      1、如果能将类的方法定义成static，就尽量定义成static，它的速度会提升...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(336)</span>
+                           <em>2012年5月28日 20:39</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>PHP</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/329">
+    <img src="/not/mybook/data/book_image_lib/2279dbf196ba2e9471520a7fafbd722d.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/329">
+    《Symfony Book 2.2》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/57">
+    <img src="/not/mybook/data/book_image_lib/8ca9fcd15a6b5f73dfe92384bb0e279d.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/57">
+    《MySQL开发者SQL权威指南》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/185">
+    <img src="/not/mybook/data/book_image_lib/692e5fca752f724d110b586aed4affc3.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/185">
+    《PHP与jQuery开发实例》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/184">
+    <img src="/not/mybook/data/book_image_lib/557ed3d43f410716a334f8c4625f7d19.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/184">
+    《Web开发入门经典——使用PHP6、Apache和MySQL》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/208">
+    <img src="/not/mybook/data/book_image_lib/067cc78048e1fa437fd9720fc9c4bd32.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/208">
+    《PHP核心技术与最佳实践》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=5 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/php/0'>1</a></li><li><a href='http://www.27tree.com/art/php/1'>2</a></li><li><a href='http://www.27tree.com/art/php/2'>3</a></li><li><a href='http://www.27tree.com/art/php/3'>4</a></li><li><a href='http://www.27tree.com/art/php/4'>5</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

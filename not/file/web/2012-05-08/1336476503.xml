@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Ajax跨域问题解决</title>
+<content>&amp;lt;p&amp;gt;
+	从ajax诞生那天起，xmlHttprequest对象在firefox下不能跨域请求的问题就一直存在，等待浏览器们去解决这个问题显然不太现实，聪明的web开发人员们早就想了一系列的方法来解决这个问题，下面列举两个比较不错的方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;使用中间层过渡的方式：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	中间过渡，很明显，就是在ajax与不同域的服务器进行通讯的中间加一层过渡，这一层过渡可以是php、jsp、c++等任何具备网络通讯功能的语言，由中间层向不同域的服务器进行读取数据的操作。拿php做一个例子，如果需要对不同域的某一个php进行通讯，现在客户端的xmlhttprequest先query本域的一个php，然后由本域的这个php去和不同域的php进行通讯，然后由本域的php输出response；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.&amp;nbsp;使用&amp;amp;lt;script&amp;amp;gt;标签
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个方法是利用&amp;amp;lt;script&amp;amp;gt;标签中的src来query一个php获得response，因为&amp;amp;lt;script&amp;amp;gt;标签的src属性不存在跨域的问题。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	举个例子来让大家看得更清楚一点吧：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;script&amp;nbsp;LANGUAGE=Javascript&amp;nbsp;src=&amp;nbsp;id=get&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;script&amp;nbsp;LANGUAGE=Javascript&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;!--&amp;nbsp;
+function&amp;nbsp;get(url)&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;obj&amp;nbsp;=&amp;nbsp;document.getElementById(get);&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;obj.src&amp;nbsp;=&amp;nbsp;url;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(obj.readStatus&amp;nbsp;==&amp;nbsp;200)&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alert(param);&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;
+function&amp;nbsp;query()&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;
+get(get.php);&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;
+//--&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/script&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;BODY&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;INPUT&amp;nbsp;TYPE=button&amp;nbsp;value=CLICK&amp;nbsp;ME&amp;nbsp;onclick=query()&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/BODY&amp;amp;gt;&amp;nbsp;
+&amp;amp;lt;/HTML&amp;amp;gt;&amp;lt;/pre&amp;gt;
+其中get.php的代码是
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php&amp;nbsp;
+echo&amp;nbsp;var&amp;nbsp;param&amp;nbsp;=&amp;nbsp;&amp;nbsp;www.itsrcs.com&amp;nbsp;;&amp;nbsp;
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	最后的运行结果是，当你点击那个button，它会出现一个内容为”www.itsrcs.com”的对话框。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个方法又叫做ajaj或者ajax&amp;nbsp;without&amp;nbsp;xmlHttprequest，把x换成了j，是因为使用了&amp;amp;lt;script&amp;amp;gt;标签而没有用到xml和xmlHttprequest的缘故。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	怎么样，很简单吧，我看到过很多人不愿意去正视ajax所存在的技术瓶颈，其实ajax更应该是Ajax而不是AJAX，突出第一个A是想强调其实ajax发扬的是一种异步传输的方法，而不是具体到底使用了哪种技术。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-08/1336476503.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

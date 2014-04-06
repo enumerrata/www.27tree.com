@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>66</uid>
+  <datetime>2012-12-07 23:39:01</datetime>
+  <title><![CDATA[vim配置文件中最常用的6个配置命令]]></title>
+  <content><![CDATA[<p>
+	无事，写一个极简的 vim 配置档供大家参考，仅包含最常用的6个配置命令。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	&lt; 文件一 &gt;
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"\">  set number
+
+  syntax on
+
+  set ruler
+
+  set tabstop=4
+
+  set hlsearch
+
+  set smartindent
+
+</pre>
+<p>
+	编辑文件 ~/.vimrc ，依次输入（或复制）以上信息保存即可。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	详情 ：
+</p>
+<p>
+	一、
+</p>
+<p>
+	这6条配置命令可以说是 vim 编辑器配置档中最常被使用到的，基本上可以满足大部分使用者的需求。
+</p>
+<p>
+	各条命令的意思分别是：
+</p>
+<p>
+	<br />
+</p>
+<p>
+	&lt; 文件二 &gt;
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"\"> &nbsp;set number                //自动输入行号
+
+  syntax on               &nbsp; //语法高亮
+
+  set ruler                &nbsp;//显示标尺
+
+  set tabstop=4          &nbsp; //设置 TAB 键为 4 个空格
+
+  set hlsearch             //搜索到的字符串进行特别标识
+
+  set smartindent       &nbsp; &nbsp;//自动缩进</pre>
+没有把注释放置到供大家使用的文件（&lt;&nbsp; 文件一 &gt;）中是因为有少部分版本的 vim 编辑器若没有进行设置，将不能正常识别中文字符，启动编辑器时会输出“无法识别”等信息。
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	二、
+</p>
+<p>
+	编辑文件 ~/.vimrc 可使用命令 ：
+</p>
+<ol>
+	<li>
+		vi ~/.vimrc 或<br />
+	</li>
+	<li>
+		gedit ~/.vimrc &amp;
+	</li>
+</ol>
+<p>
+	\"~\"表示当前帐号的家目录，例如：/home/test/
+</p>
+<p>
+	\"/\"后有一点“.”，表示该文件为隐藏文件
+</p>
+<p>
+	\"rc\"为\"run command\"的缩写
+</p>
+<p>
+	<br />
+</p>
+<p>
+	三、
+</p>
+<p>
+	无论是输入编辑命令，又或者是键入配置信息（建议直接复制&lt; 文件一&gt;），需确认输入的都是英文字符。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

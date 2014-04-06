@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-15 07:43:07</datetime>
+  <title>Java IO 列出指定目录的全部文件（包括隐藏文件）</title>
+  <content>&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&gt;	/**
+	&amp;nbsp;*&amp;nbsp;使用list列出指定目录的全部文件
+	&amp;nbsp;*&amp;nbsp;*/
+	import&amp;nbsp;java.io.*;
+	class&amp;nbsp;hello{
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;static&amp;nbsp;void&amp;nbsp;main(String[]&amp;nbsp;args)&amp;nbsp;{
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;fileName=\"D:\"+File.separator;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;File&amp;nbsp;f=new&amp;nbsp;File(fileName);
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String[]&amp;nbsp;str=f.list();
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;(int&amp;nbsp;i&amp;nbsp;=&amp;nbsp;;&amp;nbsp;i&amp;nbsp;&amp;lt;&amp;nbsp;str.length;&amp;nbsp;i++)&amp;nbsp;{
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(str[i]);
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	}&lt;/pre&gt;</content>
+  <contentx>/**
+	 * 使用list列出指定目录的全部文件
+	 * */
+	import java.io.*;
+	class hello{
+	    public static void main(String[] args) {
+	        String fileName=\"D:\"+File.separator;
+	        File f=new Fi</contentx>
+  <tags>_null_</tags>
+</root>

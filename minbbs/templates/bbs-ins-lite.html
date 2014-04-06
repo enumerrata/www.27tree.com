@@ -1,0 +1,31 @@
+<div class="ins-lite" style="margin:10px auto;width:1060px;">
+    <div style="background:#FFF;border:1px solid #ccc;" class="borderR5 Shadow">
+        <a href="javascript:;" onclick="javascript:;" class="next-cp borderR5" id="tips-submit-cast" style="margin:5px;"><?php {echo $buttonTitle;}?></a>
+    </div>
+    <div id="edit-area" style="display:none;">
+        <div style="width:65%;float:left;background:#FFF;padding:10px;border:1px solid #ccc;" class="borderR5 Shadow">
+            <span class="sdText" style="margin-bottom:5px;">
+                <input id="tipsub-title" class="Gray" value="请输入标题"/>
+            </span>
+            <span class="warning-title" style="">标题请不要包含特殊字符。</span>
+            <textarea id="tipsub-area" style="width:99.9%;"></textarea>
+            <a class="next-cp" id="tipsub-button" style="margin-top:5px;width:49.4%;float:left;display:block;" href="javascript:;">点我<?php {echo $buttonTitle;}?></a>
+            <a class="next-cp" id="tipsub-back" style="margin-top:5px;margin-left:50.2%;display:block;" href="javascript:void(0);">返回</a>
+        </div>
+        <div style="margin-left:67.5%;border:1px solid #ccc;background:#FFF;padding:10px;border-top:4px solid #426ab3;">
+            <div style="height:34px;line-height:34px;font-size:14px;color:#666;margin-top:-4px;border-bottom:1px dashed #ccc;">
+                <label>请选择分类：</label>
+                <select id="postType">
+                    <?php
+                    $xml = simplexml_load_file(dirname(__FILE__).'/../data/postType.xml');
+                    foreach($xml->xpath("//type") as $type){
+                    echo "<option value=\"$type[desc]\">",$type['name'],"</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>

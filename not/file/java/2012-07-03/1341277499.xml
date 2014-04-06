@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JDBC数据库连接驱动注册3种方法</title>
+<content>&amp;lt;p&amp;gt;
+	ftp://121.10.143.43:3390/wwww/train/2009/index.htmlJDBC是使用Bridge模式进行设计的，DriverManager就是其中的Abstraction，java.sql.Driver是Implementor，com.mysql.jdbc.Driver是Implementor的一个具体实现（请参考GOF的Bridge模式的描述）。大家注意了，前一个Driver是一个接口，后者却是一个类，它实现了前面的Driver接口。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一&amp;amp;nbsp;DriverManager.registerDriver(new&amp;amp;nbsp;com.mysql.jdbc.Driver());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二&amp;amp;nbsp;System.setProperty(\"jdbc.drivers\",&amp;amp;nbsp;\"oracle.jdbc.driver.OracleDriver:com.mysql.jdbc.Driver\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System指的是JRE&amp;amp;nbsp;(runtime)system,，不是指OS。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	多个驱动用：号分隔，在连结时JDBC会按顺序搜索,直到找到第一个能成功连结指定的URL的驱动程序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三&amp;amp;nbsp;Class.forName(\"com.mysql.jdbc.Driver\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Class.forName(Driver&amp;amp;nbsp;driver)是返回一个类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作用是要求JVM查找并加载指定的类，也就是说JVM会执行该类的静态代码段
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	好处在于你不用编译/运行时依赖于特定的&amp;amp;nbsp;JDBC&amp;amp;nbsp;Driver&amp;amp;nbsp;库,&amp;amp;nbsp;也就减少了项目代码的依赖性.&amp;amp;nbsp;而且也很容易改造成从配置文件读取JDBC配置,&amp;amp;nbsp;从而可以在运行时动态更换JDBC/DB.
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-07-03/1341277499.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

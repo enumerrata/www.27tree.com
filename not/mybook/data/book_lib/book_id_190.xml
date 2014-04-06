@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript DOM编程艺术]]></title>
+  <author>（英）基思</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2012-12-05 15:27:39</submit-date-time>
+  <img-link>5aa16d74d5ab4c150b6936f207b74cb2.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	“本书理应奉为经典。文笔清晰，采用了优秀的编程原则，严格遵守相应的标准。真是完美的结合。” ——Slashdot
+</p>
+<p>
+	“我要隆重推荐本书。它前所未有地演示了DOM脚本编程的真正潜力。无论你是JavaScript新手还是专家，本书都绝对必读。”——Garrent Dimon,Digital-Web.com
+</p>
+<p>
+	随着Ajax的兴起，JavaScript再一次成为炙手可热的技术。然而，在历史上，它并不是一直这么幸运，由于主流浏览器之间的不兼容，以JavaScript为核心的DHTML曾经昙花一现，很快被人遗忘。
+</p>
+<p>
+	俱往矣，如今的网页设计已经翻开了新的一页。在CSS彻底改变了Web页面布局的方式之后，万维网联盟跨浏览器的DOM标准的制定，使JavaScript终于突破瓶颈，成了大大改善网页用户体验的利器。
+</p>
+<p>
+	本书在简洁明快地讲述JavaScript和DOM的基本知识之后，通过几个实例演示了大师级的网页开发技术，并透彻阐述了一些至关重要的JavaScript编程原则和最佳实践，包括预留退路、循序渐进和以用户为中心等。读者可以非常直观地加以领悟，迅速使自己的编程技术更上一层楼。
+</p>
+<p>
+	<p>
+		&nbsp; &nbsp; &nbsp;&nbsp;本书讲述了JavaScript和DOM的基础知识，但重点放在DOM编程技术背后的思路和原则：预留退路、循序渐进和以用户为中心等，这些概念对于任何前端Web开发工作都非常重要。本书将这些概念贯穿在书中的所有代码示例中，使你看到用来创建图片库页面的脚本、用来创建动画效果的脚本和用来丰富页面元素呈现效果的脚本，最后结合所讲述的内容创建了一个实际的网站。
+	</p>
+	<p>
+		本书适合Web设计师和开发人员阅读。<span style=\"line-height:1.5;\"></span>
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>实例代码：实现远程下载文件到本地的函数</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	经常写采集器发布接口需要使用到远程附件的功能，所以自己写了一个PHP远程下载文件到本地的函数，一般情况下已经够用了，如果服务器支持CURL函数，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	程序则会优先选择CURL，因为测试结果表明CURL的响应时间及资源占用率比file_get_contents小得多
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+echo&amp;nbsp;httpcopy(http://www.baidu.com/img/baidu_sylogo1.gif);
+
+function&amp;nbsp;httpcopy($url,&amp;nbsp;$file=,&amp;nbsp;$timeout=60)&amp;nbsp;{
+$file&amp;nbsp;=&amp;nbsp;empty($file)&amp;nbsp;?&amp;nbsp;pathinfo($url,PATHINFO_BASENAME)&amp;nbsp;:&amp;nbsp;$file;
+$dir&amp;nbsp;=&amp;nbsp;pathinfo($file,PATHINFO_DIRNAME);
+!is_dir($dir)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;@mkdir($dir,0755,true);
+$url&amp;nbsp;=&amp;nbsp;str_replace(&amp;nbsp;,%20,$url);
+
+if(function_exists(&amp;nbsp;curl_init&amp;nbsp;))&amp;nbsp;{
+$ch&amp;nbsp;=&amp;nbsp;curl_init();
+curl_setopt($ch,&amp;nbsp;CURLOPT_URL,&amp;nbsp;$url);
+curl_setopt($ch,&amp;nbsp;CURLOPT_TIMEOUT,&amp;nbsp;$timeout);
+curl_setopt($ch,&amp;nbsp;CURLOPT_RETURNTRANSFER,&amp;nbsp;TRUE);
+$temp&amp;nbsp;=&amp;nbsp;curl_exec($ch);
+if(@file_put_contents($file,&amp;nbsp;$temp)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;!curl_error($ch))&amp;nbsp;{
+return&amp;nbsp;$file;
+}&amp;nbsp;else&amp;nbsp;{
+return&amp;nbsp;false;
+}
+}&amp;nbsp;else&amp;nbsp;{
+$opts&amp;nbsp;=&amp;nbsp;array(
+http=&amp;amp;gt;array(
+method=&amp;amp;gt;GET,
+header=&amp;amp;gt;,
+timeout=&amp;amp;gt;$timeout)
+);
+$context&amp;nbsp;=&amp;nbsp;stream_context_create($opts);
+if(@copy($url,&amp;nbsp;$file,&amp;nbsp;$context))&amp;nbsp;{
+//$http_response_header
+return&amp;nbsp;$file;
+}&amp;nbsp;else&amp;nbsp;{
+return&amp;nbsp;false;
+}
+}
+}
+?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338959072.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[精通正则表达式（第3版）]]></title>
+  <author>Jeffrey E.F.Friedl</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-15 11:29:42</submit-date-time>
+  <img-link>4188afd7a61dafa6210ac5f443671dca.png</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	随着互联网的迅速发展，几乎所有工具软件和程序语言都支持的正则表达式也变得越来越强大和易于使用。本书是讲解正则表达式的经典之作。本书主要讲解了正则表达式的特性和流派、匹配原理、优化原则、实用诀窍以及调校措施，并详细介绍了正则表达式在perl、java、．net、php中的用法。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		前言
+	</p>
+	<p>
+		第1章 &nbsp;正则表达式入门
+	</p>
+	<p>
+		第2章 &nbsp;入门示例拓展
+	</p>
+	<p>
+		第3章 &nbsp;正则表达式的特性和流派概览
+	</p>
+	<p>
+		第4章 &nbsp;表达式的匹配原理
+	</p>
+	<p>
+		第5章 &nbsp;正则表达式实用技巧
+	</p>
+	<p>
+		第6章 &nbsp;打造高效正则表达式
+	</p>
+	<p>
+		第7章 &nbsp;Perl
+	</p>
+	<p>
+		第8章 &nbsp;Java
+	</p>
+	<p>
+		第9章 &nbsp;.Net
+	</p>
+	<p>
+		第10章 &nbsp;PHP
+	</p>
+	<p>
+		索引
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-23 20:53:40</datetime>
+  <title><![CDATA[使用crul检查超链接的有效性]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php
+function check_remote_file_exists($url) {
+    $curl = curl_init($url);
+// 不取回数据
+    curl_setopt($curl, CURLOPT_NOBODY, true);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, \'GET\'); //不加这个会返回403，加了才返回正确的200，原因不明
+// 发送请求
+    $result = curl_exec($curl);
+    $found = false;
+// 如果请求没有发送失败
+    if ($result !== false) {
+// 再检查http响应码是否为200
+        $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($statusCode == 200) {
+            $found = true;
+        }
+    }
+    curl_close($curl);
+    return $found;
+}
+
+$exists = check_remote_file_exists(\'http://www.baidu.com/img/baidu_sylogo1.gif\');
+echo $exists ? \'存在\' : \'不存在\';
+
+$exists = check_remote_file_exists(\'http://www.baidu.com/test.jpg\');
+echo $exists ? \'存在\' : \'不存在\'
+?&gt;
+</pre>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

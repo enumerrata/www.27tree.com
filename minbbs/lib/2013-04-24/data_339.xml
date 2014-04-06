@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2013-04-24 15:38:45</datetime>
+  <title><![CDATA[Ubuntu安装徽软雅黑字体]]></title>
+  <content><![CDATA[<p>
+	Ubuntu安装<strong>徽软雅黑字体</strong> 要在ubuntu 12.04下安装微软雅黑字体，非常简单，通过以下几个简单步骤就可轻松搞定了。 &nbsp;&nbsp;
+</p>
+<p>
+	&nbsp; &nbsp;&nbsp;
+</p>
+<p>
+	1、下载http://dl.vmall.com/c0z2rqzjwf字体，或者从win7中将(windows/fonts/目录下msyh.ttf和msyhbd.ttf)拷贝。 &nbsp; &nbsp; &nbsp;&nbsp;
+</p>
+<p>
+	2、执行命令：sudo mkdir &nbsp;/usr/share/fonts/truetype/msyahei，创建msyahei目录，并且将下载好的字体拷入其中。&nbsp;
+</p>
+<p>
+	3、执行命令：sudo chmod 664 msyh* 更改字体权限。 &nbsp; &nbsp; &nbsp;
+</p>
+<p>
+	4、刷新字体缓存，执行命令：sudo &nbsp;fc-cahce -fv，然后sudo reboot&nbsp;即可。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<img src=\"/mod/kd/plugins/emoticons/images/jx2/j_0037.gif\" border=\"0\" alt=\"\" />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

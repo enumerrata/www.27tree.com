@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Regular Expressions Cookbook]]></title>
+  <author>Jan Goyvaerts</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-19 18:27:52</submit-date-time>
+  <img-link>10e20673cccb35f7bf9bdae5ac8a8c8c.jpg</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	This O\'Reilly Cookbook provides more than a hundred recipes to help programmers use regular expressions to manipulate text and crunch data. Every programmer needs a grasp of regular expressions, but their power doesn\'t come without problems--even seasoned users often have trouble tackling performance issues. With recipes for popular programming languages such as C#, Java, JavaScript, Perl, PHP, Python, Ruby, and VB.NET, this book offers step-by-step solutions to scores of common tasks involving regular expressions. This cookbook will help you:
+</p>
+<p>
+	<p>
+		<ul>
+			<li>
+				<span style=\"line-height:1.5;\">Understand the basics of regular expressions through a concise tutorial</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Use regular expressions effectively in several programming and scripting languages</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Learn how to validate and format input</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Manage words, lines, special characters, and numerical valuesFind solutions for using regular expressions in URLs, paths, markup, and data exchange</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Learn the nuances of more advanced regex features</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Understand how regular expression APIs differ from language to language</span>
+			</li>
+			<li>
+				<span style=\"line-height:1.5;\">Write better regular expressions for custom needs</span>
+			</li>
+		</ul>
+	</p>
+Whether you\'re a novice or an experienced user, Regular Expressions Cookbook will help deepen your understanding of this tool. You\'ll learn powerful new tricks, avoid language-specific gotchas, and save valuable time with this huge library of proven solutions to difficult, real-world problems.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

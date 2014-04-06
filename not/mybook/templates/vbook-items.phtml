@@ -1,0 +1,15 @@
+<div class="vbook-items">
+    <div class="vbook-items-img-wapper Shadow">
+        <img src="<?php echo $param['bookimg']; ?>" width="130px" />
+    </div>
+    <div class="vbook-items-cont">
+        <h1><a href="/bookLib/<?php echo $param['bookid']; ?>" target="_blank">《<?php echo $param['title']; ?>》</a><?php if (false !== $param['has_download']) echo '<span class="vBookList-pdfs">PDF</span>'; ?></h1>
+        <span style="display:block;"><span class="Gray">作者&nbsp;:&nbsp;</span><?php echo $param['author']; ?></span>
+        <p class="vcont autowarp"><?php echo $param['intro']; ?></p>
+        <div class="item-bar">
+            <span class="Gray borderR5"><?php echo $param['clickstat']; ?></span>
+            <span class="clear" />
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

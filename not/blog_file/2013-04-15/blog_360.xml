@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Win7系统中Telnet服务的安装和启动]]></title>
+  <content><![CDATA[<p>
+	Telnet是常用的远程登录和管理工具，在Win7以前的系统中只要打开服务管理找到Telnet服务项设置其启动类型为“手动”或者“自动”，然后启动该服务即可。不过在Win7系统的服务管理器中我们找不到Telnet服务，也许是出于安全考虑，Win7系统默认状态下没有安装Telnet服务。如果我们需要在Win7中使用Telnet服务，需要手动设置一下。
+</p>
+<p>
+	<strong>在Win7系统中安装和启动Telnet服务非常简单</strong>：依次点击“开始”→“控制面板”→“程序”，“在程序和功能”找到并点击“打开或关闭Windows功能”进入Windows 功能设置对话框。找到并勾选“Telnet客户端”和“Telnet服务器”，最后“确定”按钮，稍等片刻即可完成安装。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130415/20130415112907_77567.jpg\" alt=\"\" />
+</p>
+<p>
+	Win7系统的Telnet服务安装完成后，默认情况下是禁用的，还需要启动服务。点击Win7桌面左下角的圆形开始按钮，在Win7的万能搜索框中输入“服务”，从搜索结果中点击“服务”程序，进入Win7的服务设置。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130415/20130415112936_81009.jpg\" alt=\"\" />
+</p>
+<p>
+	在Win7的服务项列表中找到telnet，可以看到它的状态是被禁用的。
+</p>
+<p>
+	双击Telnet项或者从右键菜单选择“属性”，将“禁用”改为“手动”。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130415/20130415113017_18354.jpg\" alt=\"\" />
+</p>
+<p>
+	回到服务项列表，从Telnet的右键菜单中选择“启动”。这样Win7系统的Telnet服务就启动了。
+</p>
+<p>
+	<img src=\"/mod/kd/attached/image/20130415/20130415113046_67499.jpg\" alt=\"\" />
+</p>]]></content>
+  <contentx><![CDATA[
+	Telnet是常用的远程登录和管理工具，在Win7以前的系统中只要打开服务管理找到Telnet服务项设置其启动类型为“手动”或者“自动”，然后启动该服务即可。不过在Win7系统的服务管理器中我们找不到Telnet服务，也许是出于安全考虑]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

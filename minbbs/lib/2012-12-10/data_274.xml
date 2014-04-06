@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-10 13:05:02</datetime>
+  <title><![CDATA[自己写的一个数据库类]]></title>
+  <content><![CDATA[<p>
+	&lt;?php
+</p>
+<p>
+	class Conn_mysql {
+</p>
+<p>
+	&nbsp; &nbsp;protected static $_instance = NULL;
+</p>
+<p>
+	&nbsp; &nbsp;private $con;
+</p>
+<p>
+	&nbsp; &nbsp;private $ini;
+</p>
+<p>
+	&nbsp; &nbsp;private $lastid;
+</p>
+<p>
+	&nbsp; &nbsp;private $affected_rows;
+</p>
+<p>
+	&nbsp; &nbsp;private function __construct() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;ini = parse_ini_file($_SERVER[\'DOCUMENT_ROOT\'] . \'/j1/admin/config_itsrcs.php_local.ini\');
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;con = mysql_connect($this-&gt;ini[\'host\'], $this-&gt;ini[\'user\'], $this-&gt;ini[\'password\']);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;mysql_select_db($this-&gt;ini[\'dbname\'], $this-&gt;con);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;mysql_query(\"SET NAMES \'UTF8\'\");
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public static function getInstance() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;if (!self::$_instance instanceof self) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;self::$_instance = new Conn_mysql();
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return self::$_instance;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public final function query($sql) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;$result = mysql_query($sql);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;if (preg_match(\"/INSERT/is\", $sql)) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//匹配数据插入操作，获取自增列最新id
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;lastid = @mysql_insert_id($this-&gt;con);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if ($this-&gt;lastid == null) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//极端自增id提取
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$result_lastid = mysql_fetch_array(mysql_query(\"SELECT LAST_INSERT_ID() as ID;\"));
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;lastid = intval($result_lastid[\'ID\']);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;if (preg_match(\"/INSERT|UPDATE|DELETE/is\", $sql)) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//匹配影响列
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;affected_rows = @mysql_affected_rows($this-&gt;con);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $result;//返回数据查询结果集
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public function getLastId() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $this-&gt;lastid;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public function close() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;mysql_close($this-&gt;con);
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public function get_affected_rows() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $this-&gt;affected_rows;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;public function getConnectionHandle() {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;//返回数据库连接句柄
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $this-&gt;con;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

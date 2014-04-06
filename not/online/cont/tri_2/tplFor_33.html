@@ -1,0 +1,82 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP MySQL Update</h1>
+</div>
+<div>
+
+<p><b>UPDATE 语句用于中修改数据库表中的数据。</b></p>
+
+<h1>更新数据库中的数据</h1>
+
+<p>UPDATE 语句用于在数据库表中修改数据。</p>
+
+<h2>语法</h2>
+
+<code>
+UPDATE table_name<br />
+SET column_name = new_value<br />
+WHERE column_name = some_value
+</code>
+
+<p><b>注释</b>：SQL 对大小写不敏感。UPDATE 与 update 等效。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysql_query( 函数。该函数用于向 SQL 连接发送查询和命令。</p>
+
+<h2>例子</h2>
+
+<p>稍早时，我们在本教程中创建了一个名为 "Persons" 的表。它看起来类似这样：</p>
+
+<table class="dataintable">
+	<tr>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<td>Peter</td>
+		<td>Griffin</td>
+		<td>35</td>
+	</tr>
+	<tr>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>33</td>
+	</tr>
+</table>
+
+<p>下面的例子更新 "Persons" 表的一些数据：</p>
+
+<code>
+&lt;?php<br />
+$con&nbsp=&nbspmysql_connect("localhost","peter","abc123");<br />
+if&nbsp(!$con)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp&nbsp}<br />
+<br />
+mysql_select_db("my_db",&nbsp$con);<br />
+<br />
+mysql_query("UPDATE&nbspPersons&nbspSET&nbspAge&nbsp=&nbsp'36'<br />
+WHERE&nbspFirstName&nbsp=&nbsp'Peter'&nbspAND&nbspLastName&nbsp=&nbsp'Griffin'");<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<table class="dataintable">
+	<tr>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<td>Peter</td>
+		<td>Griffin</td>
+		<td>36</td>
+	</tr>
+	<tr>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>33</td>
+	</tr>
+</table>
+
+</div>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[编写可维护的JavaScript]]></title>
+  <author>Nicholas Zakas</author>
+  <submiter-uid>341</submiter-uid>
+  <submit-date-time>2013-04-05 16:03:12</submit-date-time>
+  <img-link>db880ed51d3ca0f4acdbf63a0c8bdaf3.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	《编写可维护的JavaScript》向开发人员阐述了如何在团队开发中编写具备高可维护性的JavaScript代码，书中详细说明了作为团队一分子，应该怎么写JavaScript。书中内容涵盖了编码风格、编程技巧、自动化、测试等几方面，既包括具体风格和原则的介绍，也包括示例和技巧说明，最后还介绍了如何通过自动化的工具和方法来实现一致的编程风格。&nbsp;
+</p>
+<p>
+	《编写可维护的JavaScript》作者Nicholas C. Zakas是顶级的Web技术专家，也是《JavaScript高级程序设计》一书的作者。他曾是Yahoo！的首席前端开发工程师，在完成了从一名“独行侠”到“团队精英”的蜕变后，他站在前端工程师的角度提炼出众多的最佳编程实践，其中包括很多业内权威所推崇的最佳法则，而这些宝贵经验正是本书的核心内容。
+</p>
+<p>
+	《编写可维护的JavaScript》适合前端开发工程师、JavaScript程序员和学习JavaScript编程的读者阅读，也适合开发团队负责人、项目负责人阅读。运用书中讲述的技巧和技术，可以使JavaScript团队编程从侠义的个人偏好的阴霾走出来，走向真正的高可维护性、高效能和高水准。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Nicholas C. Zakas是一名前端开发顾问、作者、演讲家。他在Yahoo! 供职超过5年时间。在这期间，他曾是Yahoo！首页首席前端工程 师和YUI代码贡献者。他著有《JavaScript高级程序设计》、《Ajax 高级程序设计》和《高性能JavaScript》。他的博客地址是：http:// www.nczonline.net/。他的Twitter是：@slicknet。&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	李晶，花名拔赤，淘宝前端工程师，具有多年前端开发经验，在团队协作、组件开发、移动Web App等方面有深入研究，曾经参与淘宝首页、KISSY等项目开发。他翻译过《JavaScript Web富应用开发》、《JavaScript权威指南（第六版）》、《What is Node?》等书籍，热爱分享，喜欢折腾。微博http://weibo.com/jayli。&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	郭凯，花名流火，淘宝前端工程师，喜欢登山，也喜欢夜深人静时一人静静地写代码，折腾过许多小站均未能持久，有In、Juicer等开源项目。钟爱JavaScript，也喜欢Python，自嘲所学杂而不精。博客http://benben.cc。&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	张散集，花名一舟，淘宝前端工程师。他主要从事技术管理，负责淘宝网（北京）的新业务技术和前端团队，热爱前端新技术的推广与应用。翻译作品有《JavaScript Web富应用开发》和《JavaScript权威指南（第六版）》。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

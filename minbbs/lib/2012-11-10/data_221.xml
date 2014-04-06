@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-10 21:24:45</datetime>
+  <title><![CDATA[Apache Rewrite 拟静态配置]]></title>
+  <content><![CDATA[<p>
+	1、mod_rewrite 简介和配置
+</p>
+<p>
+	Rewirte主要的功能就是实现URL的跳转和隐藏真实地址，基于Perl语言的正则表达式规范。平时帮助我们实现拟静态，拟目录，域名跳转，防止盗链等
+</p>
+<p>
+	2、mod_rewrite 规则的使用
+</p>
+<p>
+	RewriteEngine on
+</p>
+<p>
+	RewriteCond %{HTTP_HOST} !^www.php100.com [NC]
+</p>
+<p>
+	RewriteRule ^/(.*) http://www.php100.com/ [L]
+</p>
+<p>
+	--------
+</p>
+<p>
+	RewriteEngine on
+</p>
+<p>
+	RewriteRule ^/test([0-9]*).html$ /test.php?id=$1
+</p>
+<p>
+	RewriteRule ^/new([0-9]*)/$ /new.php?id=$1 [R]
+</p>
+<p>
+	3、mod_rewrite 规则修正符
+</p>
+<p>
+	1) R 强制外部重定向
+</p>
+<p>
+	2) F 禁用URL,返回403HTTP状态码。
+</p>
+<p>
+	3) G 强制URL为GONE，返回410HTTP状态码。
+</p>
+<p>
+	4) P 强制使用代理转发。
+</p>
+<p>
+	5) L 表明当前规则是最后一条规则，停止分析以后规则的重写。
+</p>
+<p>
+	6) N 重新从第一条规则开始运行重写过程。
+</p>
+<p>
+	7) C 与下一条规则关联8) T=MIME-type(force MIME type) 强制MIME类型
+</p>
+<p>
+	9) NS &nbsp;只用于不是内部子请求
+</p>
+<p>
+	10) NC 不区分大小写
+</p>
+<p>
+	11) QSA 追加请求字符串
+</p>
+<p>
+	12) NE 不在输出转义特殊字符 &nbsp; \\%3d$1 &nbsp;等价于 =$1
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

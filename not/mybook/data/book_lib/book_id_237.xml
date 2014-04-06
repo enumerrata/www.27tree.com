@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[The Definitive Guide to MongoDB]]></title>
+  <author>Tim Hawkins  , Eelco Plugge , Peter Membrey</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-01-05 14:15:14</submit-date-time>
+  <img-link>d5cdc465b26a5c1d0ccfc4a2ee549d99.png</img-link>
+  <book-area>nos</book-area>
+  <book-intro><![CDATA[<strong>MongoDB, a cross-platform NoSQL database</strong>, is the fastest-growing new database in the world. MongoDB provides a rich document-oriented structure with dynamic queries that you\'ll recognize from RDBMS offerings such as MySQL. In other words, this is a book about a NoSQL database that does not require the SQL crowd to re-learn how the database world works! MongoDB has reached 1.0 and boasts 50,000+ users. The community is strong and vibrant and MongoDB is improving at a fast rate. With scalable and fast databases becoming critical for today\'s applications, this book shows you how to install, administer and program MongoDB without pretending SQL never existed. What you\'ll learn * Set up MongoDB on all major platforms, including Linux and Cloud platforms * Model data within a document-oriented database * Work with your data using non-SQL commands * Write applications using MongoDB\'s PHP API * Optimize MongoDB * Master MongoDB administration, including replication Who this book is for This book will appeal to everyone with some experience in database administration, and provides the entry point for those of us who don\'t want to hear about database theory but still need to implement a NoSQL-based database. PHP developers will also profit from this book, since it will add an important NoSQL database to their toolkit. Table of Contents * Introduction to MongoDB * Installing MongoDB * The Data Model * Working with Data * GridFS * PHP and MongoDB * Python and MongoDB * Creating a Blog Application with the PHP Driver * Database Administration * Optimization * Replication * Sharding]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

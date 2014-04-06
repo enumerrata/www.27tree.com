@@ -1,0 +1,247 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX responseXML 实例</h1>
+</div>
+<div>
+
+<p><b>AJAX 可用于以 XML 返回数据库信息。</b></p>
+	
+<h1>AJAX Database 转 XML 实例 （测试说明：该实例功能未实现）</h1>
+
+<p>在下面的 AJAX 实例中，我们将演示网页如何从 MySQL 数据库中读取信息，把数据转换为 XML 文档，并在不同的地方使用这个文档来显示信息。</p>
+<p>本例与上一节中的 "PHP AJAX Database" 这个例子很相似，不过有一个很大的不同：在本例中，我们通过使用 responseXML 函数从 PHP 页面得到的是 XML 形式的数据。</p>
+<p>把 XML 文档作为响应来接收，使我们有能力更新页面的多个位置，而不仅仅是接收一个 PHP 输出并显示出来。</p>
+<p>在本例中，我们将使用从数据库接收到的信息来更新多个 <span> 元素。</p>
+
+<h1>在下拉列表中选择一个名字</h1>
+
+<p>Select a User:  Peter Griffin Lois Griffin Joseph Swanson Glenn Quagmire </p>
+ 
+<p>此列由四个元素组成：</p>
+
+<ul>
+<li>MySQL 数据库</li>
+<li>简单的 HTML 表单</li>
+<li>JavaScript</li>
+<li>PHP 页面</li>
+</ul>
+
+<h1>数据库</h1>
+
+<p>将在本例中使用的数据库看起来类似这样：</p>
+
+<table class="dataintable">
+	<tr>
+		<th>id</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Age</th>
+		<th>Hometown</th>
+		<th>Job</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Peter</td>
+		<td>Griffin</td>
+		<td>41</td>
+		<td>Quahog</td>
+		<td>Brewery</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Lois</td>
+		<td>Griffin</td>
+		<td>40</td>
+		<td>Newport</td>
+		<td>Piano Teacher</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>Joseph</td>
+		<td>Swanson</td>
+		<td>39</td>
+		<td>Quahog</td>
+		<td>Police Officer</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Glenn</td>
+		<td>Quagmire</td>
+		<td>41</td>
+		<td>Quahog</td>
+		<td>Pilot</td>
+	</tr>
+</table>
+ 
+<h1>HTML 表单</h1>
+
+<p>上面的例子包含了一个简单的 HTML 表单，以及指向 JavaScript 的链接：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script src="responsexml.js"&gt;&lt;/script&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form&gt; <br />
+Select a User:<br />
+&lt;select name="users" onchange="showUser(this.value)"&gt;<br />
+&lt;option value="1"&gt;Peter Griffin&lt;/option&gt;<br />
+&lt;option value="2"&gt;Lois Griffin&lt;/option&gt;<br />
+&lt;option value="3"&gt;Glenn Quagmire&lt;/option&gt;<br />
+&lt;option value="4"&gt;Joseph Swanson&lt;/option&gt;<br />
+&lt;/select&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;h2&gt;<br />
+&lt;span id="firstname"&gt;&lt;/span&gt;&nbsp;&lt;span id="lastname"&gt;&lt;/span&gt;<br />
+&lt;/h2&gt;<br />
+<br />
+&lt;span id="job"&gt;&lt;/span&gt;<br />
+<br />
+&lt;div style="text-align: right"&gt;<br />
+&lt;span id="age_text"&gt;&lt;/span&gt;<br />
+&lt;span id="age"&gt;&lt;/span&gt;<br />
+&lt;span id="hometown_text"&gt;&lt;/span&gt;<br />
+&lt;span id="hometown"&gt;&lt;/span&gt;<br />
+&lt;/div&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>例子解释 - HTML 表单</b></p>
+
+<ul>
+<li>HTML 表单是一个下拉列表，其 name 属性的值是 "users"，可选项的值与数据库的 id 字段相对应</li>
+<li>表单下面有几个 &lt;span&gt; 元素，它们用作我们所接收到的不同的值的占位符</li>
+<li>当用户选择了具体的选项，函数 "showUser()" 就会执行。该函数的执行由 "onchange" 事件触发</li>
+</ul>
+
+<p>换句话说，每当用户在下拉列表中改变了值，函数 showUser() 就会执行，并在指定的 &lt;span&gt; 元素中输出结果。</p>
+
+<h1>JavaScript</h1>
+
+<p>这是存储在文件 "responsexml.js" 中的 JavaScript 代码：</p>
+
+<code>
+var&nbspxmlHttp<br />
+<br />
+function&nbspshowUser(str)<br />
+&nbsp{&nbsp<br />
+&nbspxmlHttp=GetXmlHttpObject()<br />
+&nbspif&nbsp(xmlHttp==null)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspalert&nbsp("Browser&nbspdoes&nbspnot&nbspsupport&nbspHTTP&nbspRequest")<br />
+&nbsp&nbspreturn<br />
+&nbsp&nbsp}&nbsp<br />
+&nbspvar&nbspurl="responsexml.php"<br />
+&nbspurl=url+"?q="+str<br />
+&nbspurl=url+"&sid="+Math.random()<br />
+&nbspxmlHttp.onreadystatechange=stateChanged&nbsp<br />
+&nbspxmlHttp.open("GET",url,true)<br />
+&nbspxmlHttp.send(null)<br />
+&nbsp}<br />
+<br />
+function&nbspstateChanged()&nbsp<br />
+{&nbsp<br />
+if&nbsp(xmlHttp.readyState==4&nbsp||&nbspxmlHttp.readyState=="complete")<br />
+{<br />
+&nbspxmlDoc=xmlHttp.responseXML;<br />
+&nbspdocument.getElementById("firstname").innerHTML=<br />
+&nbspxmlDoc.getElementsByTagName("firstname")[0].childNodes[0].nodeValue;<br />
+&nbspdocument.getElementById("lastname").innerHTML=<br />
+&nbspxmlDoc.getElementsByTagName("lastname")[0].childNodes[0].nodeValue;<br />
+&nbspdocument.getElementById("job").innerHTML=<br />
+&nbspxmlDoc.getElementsByTagName("job")[0].childNodes[0].nodeValue;<br />
+&nbspdocument.getElementById("age_text").innerHTML="Age:&nbsp";<br />
+&nbspdocument.getElementById("age").innerHTML=<br />
+&nbspxmlDoc.getElementsByTagName("age")[0].childNodes[0].nodeValue;<br />
+&nbspdocument.getElementById("hometown_text").innerHTML="<br/>From:&nbsp";<br />
+&nbspdocument.getElementById("hometown").innerHTML=<br />
+&nbspxmlDoc.getElementsByTagName("hometown")[0].childNodes[0].nodeValue;<br />
+&nbsp}<br />
+}<br />
+<br />
+function&nbspGetXmlHttpObject()<br />
+&nbsp{&nbsp<br />
+&nbspvar&nbspobjXMLHttp=null<br />
+&nbspif&nbsp(window.XMLHttpRequest)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspobjXMLHttp=new&nbspXMLHttpRequest()<br />
+&nbsp&nbsp}<br />
+&nbspelse&nbspif&nbsp(window.ActiveXObject)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspobjXMLHttp=new&nbspActiveXObject("Microsoft.XMLHTTP")<br />
+&nbsp&nbsp}<br />
+&nbspreturn&nbspobjXMLHttp<br />
+&nbsp}
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>showUser() 与 GetXmlHttpObject 函数与 PHP 和 AJAX MySQL 数据库实例 这一节中的例子是相同的。您可以参阅其中的相关解释。</p>
+
+<p><b>stateChanged() 函数</b></p>
+
+<p>如果选择了下拉列表中的项目，该函数执行：</p>
+<p>1.通过使用 responseXML 函数，把 "xmlDoc" 变量定义为一个 XML 文档</p>
+<p>2.从这个 XML 文档中取回数据，把它们放在正确的 "span" 元素中</p>
+
+<h1>PHP 页面</h1>
+
+<p>这个由 JavaScript 调用的服务器页面，是一个名为 "responsexml.php" 的简单的 PHP 文件。</p>
+<p>该页面由 PHP 编写，并使用 MySQL 数据库。</p>
+<p>代码会运行一段针对数据库的 SQL 查询，并以 XML 文档返回结果：</p>
+
+<code>
+&lt;?php<br />
+header('Content-Type:&nbsptext/xml');<br />
+header("Cache-Control:&nbspno-cache,&nbspmust-revalidate");<br />
+//A&nbspdate&nbspin&nbspthe&nbsppast<br />
+header("Expires:&nbspMon,&nbsp26&nbspJul&nbsp1997&nbsp05:00:00&nbspGMT");<br />
+<br />
+$q=$_GET["q"];<br />
+<br />
+$con&nbsp=&nbspmysql_connect('localhost',&nbsp'peter',&nbsp'abc123');<br />
+if&nbsp(!$con)<br />
+&nbsp{<br />
+&nbspdie('Could&nbspnot&nbspconnect:&nbsp'&nbsp.&nbspmysql_error());<br />
+&nbsp}<br />
+<br />
+mysql_select_db("ajax_demo",&nbsp$con);<br />
+<br />
+$sql="SELECT&nbsp*&nbspFROM&nbspuser&nbspWHERE&nbspid&nbsp=&nbsp".$q."";<br />
+<br />
+$result&nbsp=&nbspmysql_query($sql);<br />
+<br />
+echo&nbsp'&lt;?xml&nbspversion="1.0"&nbspencoding="ISO-8859-1"?&gt;<br />
+&lt;person&gt;';<br />
+while($row&nbsp=&nbspmysql_fetch_array($result))<br />
+&nbsp{<br />
+&nbspecho&nbsp"&lt;firstname&gt;"&nbsp.&nbsp$row['FirstName']&nbsp.&nbsp"&lt;/firstname&gt;";<br />
+&nbspecho&nbsp"&lt;lastname&gt;"&nbsp.&nbsp$row['LastName']&nbsp.&nbsp"&lt;/lastname&gt;";<br />
+&nbspecho&nbsp"&lt;age&gt;"&nbsp.&nbsp$row['Age']&nbsp.&nbsp"&lt;/age&gt;";<br />
+&nbspecho&nbsp"&lt;hometown&gt;"&nbsp.&nbsp$row['Hometown']&nbsp.&nbsp"&lt;/hometown&gt;";<br />
+&nbspecho&nbsp"&lt;job&gt;"&nbsp.&nbsp$row['Job']&nbsp.&nbsp"&lt;/job&gt;";<br />
+&nbsp}<br />
+echo&nbsp"&lt;/person&gt;";<br />
+<br />
+mysql_close($con);<br />
+?&gt;
+</code>
+
+<p><b>例子解释：</b></p>
+
+<p>当查询从 JavaScript 送达 PHP 页面时，会发生：</p>
+
+<ul>
+<li>PHP 文档的 content-type 被设置为 "text/xml"</li>
+<li>PHP 文档被设置为 "no-cache"，以防止缓存</li>
+<li>用 HTML 页面送来的数据设置 $q 变量</li>
+<li>PHP 打开与 MySQL 服务器的连接</li>
+<li>找到带有指定 id 的 "user"</li>
+<li>以 XML 文档输出数据</li>
+</ul>
+
+</div>

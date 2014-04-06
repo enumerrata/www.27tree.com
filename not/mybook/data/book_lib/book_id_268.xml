@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Professional CSharp 2008]]></title>
+  <author>Christian Nagel / Bill Evjen  / Jay Glynn / Morgan Skinner / Karli Watson</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-11 19:46:57</submit-date-time>
+  <img-link>63f12c1e06b7b61b90d23ef8fb109b3b.png</img-link>
+  <book-area>csharp</book-area>
+  <book-intro><![CDATA[<p>
+	Updated for .NET 3.5 and Visual Studio&amp;reg; 2008, this book is the ultimate guide to C# 2008 and its environment. Beginning with a look into the architecture and methodology of .NET, the team of superlative authors explains why the C# language cannot be viewed in isolation, but rather, must be considered in parallel with the .NET Framework. After gaining an understanding of the foundation of C#, you\'ll then go on to examine the fundamentals of C# programming with each successive chapter.
+</p>
+<p>
+	New examples provide helpful explanations on how to use C# to solve various tasks. Plus, completely new chapters on LINQ, SQL, ADO.NET entities, Windows Communication Foundation, Windows Workflow Foundation, Windows Presentation Foundation, arrays, system transactions, tracing, and event logging all deliver essential information to help you gain a clear and thorough understanding of all that C# 2008 has to offer.
+</p>
+<p>
+	What you will learn from this book
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\">How to write Window&nbsp;</span><span style=\"line-height:1.5;\">applications and Windows services</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Ways to use ASP.NET 3.5 to write web pages</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Techniques for manipulating XML using C#How to use ADO.NET to access databases</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Ways to generate graphics using C# 2008</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Numerous C# add-ins</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">How to use LINQ to easily work with your SQL Server databases and XML</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

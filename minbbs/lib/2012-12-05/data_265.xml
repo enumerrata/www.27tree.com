@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-05 13:03:37</datetime>
+  <title><![CDATA[10个技巧，玩转PHP的关联数组]]></title>
+  <content><![CDATA[<p>
+	关联数组是描述一组键及其关联值时经常使用的一种数据类型，可以说它是所有编程语言的支柱，当然，<a href=\"http://www.itsrcs.com/bbs/Sector-1/\" target=\"_blank\">PHP</a>也不例外，实际上，关联数组对是非常重要的，PHP支持多种操作关联数组的方法，对php开发人员来说，要从中找出最有效，最合适自己所开发程序的方法来操纵这些数组才是最重要的。
+</p>
+<p>
+	这篇文章将介绍10个操作PHP关联数组的技巧，熟练运用能帮助你提高开发效率。
+</p>
+<p>
+	<strong>1、添加数组元素</strong>
+</p>
+<p>
+	PHP是一种弱类型语言，这意味着你不需要显示声明一个数组及其大小，相反，你可以同时声明并填充数组
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Alabama\' =&gt; \'Montgomery\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Arizona\' =&gt; \'Phoenix\'  
+); </pre>
+额外的数组元素可以象下面这样追加：
+<p>
+	<br />
+</p>
+<p>
+	$capitals[\'Arkansas\'] = \'Little Rock\';&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	如果你正在处理数字索引数组，你可能想使用显示命名的函数前置和追加元素，如array_push()和array_unshift()函数，但这些函数不能操作关联数组。
+</p>
+<p>
+	<strong>2、删除数组元素</strong>
+</p>
+<p>
+	如果要从数组中删除一个元素，请使用unset()函数，如：
+</p>
+<p>
+	<br />
+</p>
+<p>
+	unset($capitals[\'California\']);&nbsp;
+</p>
+<p>
+	<span style=\"line-height:1.5;\">
+	<p>
+		使用数字索引数组时，删除数组元素的办法更多，更灵活，可以使用array_shift()和array_pop()函数分别从数组的开头和末尾删除一个元素。
+	</p>
+	<p>
+		<strong>3、交换键和值</strong>
+	</p>
+	<p>
+		假设你想创建一个名叫$states的新数组，使用州府作为索引，使用州名作为关联值，使用array_flip()函数很容易完成这个任务。
+	</p>
+	<p>
+		<span style=\"line-height:1.5;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Alabama\' =&gt; \'Montgomery\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Arizona\' =&gt; \'Phoenix\'  
+);  
+$states = array_flip($capitals);  
+// $states = array(  
+//  \'Montgomery\' =&gt; string \'Alabama\',  
+//  \'Juneau\'     =&gt; string \'Alaska\',  
+//  \'Phoenix\'    =&gt; string \'Arizona\'  
+// ); </pre>
+		<p>
+			<strong>4、合并数组</strong>
+		</p>
+		<p>
+			假设前面的数组由一个基于Web的“FlashCard”服务使用，你想提供一种方法测试学生对美国各州首府的掌握情况，你可以使用array_merge()函数合并包含州和首府的数组。
+		</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$stateCapitals = array(  
+  \'Alabama\' =&gt; \'Montgomery\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Arizona\' =&gt; \'Phoenix\'  
+);  
+$countryCapitals = array (  
+  \'Australia\' =&gt; \'Canberra\',  
+  \'Austria\'   =&gt; \'Vienna\',  
+  \'Algeria\'   =&gt; \'Algiers\'  
+);  
+$capitals = array_merge($stateCapitals, $countryCapitals); </pre>
+		<p>
+			<strong>5、编辑数组的值</strong>
+		</p>
+		<p>
+			假设在数组中的数据存在大小写错误，在插入到数据库之前，你想纠正这些错误，你可以使用array_map()函数给每个数组元素应用一个回调。
+		</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">function capitalize($element)  
+{  
+  $element = strtolower($element);  
+  return ucwords($element);  
+}  
+$capitals = array(  
+  \'Alabama\' =&gt; \'montGoMEry\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Arizona\' =&gt; \'phoeniX\'  
+);  
+$capitals = array_map(\"capitalize\", $capitals); </pre>
+		<p>
+			<strong>6、按</strong><strong>键</strong><strong>对数组进行排序</strong>
+		</p>
+		<p>
+			FlashCard程序常常使用各种排序，如按字母顺序排序，你可以使用ksort()函数按键对关联数组进行排序。
+		</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+ksort($capitals); </pre>
+		<p>
+			因为数组是通过参数传递给ksort()函数的，意味着你不再需要将排序结果分配给另一个变量。
+		</p>
+		<p>
+			<strong>7、随机数组排序</strong>
+		</p>
+		<p>
+			在FlashCard程序中还涉及到另一种随机排序技术，这时你要使用shuffle()函数实现数组项目的随机排序。
+		</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+shuffle($capitals); </pre>
+		<p>
+			如果不需要打乱数组顺序，你只是想随机选择一个值，那么使用array_rand()函数即可。
+		</p>
+		<p>
+			<strong>8、确定键和值是否存在</strong>
+		</p>
+		<p>
+			你可以使用in_array()函数确定一个数组元素是否存在。
+		</p>
+		<p>
+			<span style=\"line-height:1.5;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+if (in_array(\"Juneau\", $capitals))  
+{  
+  echo \"Exists!\";  
+} else {  
+  echo \"Does not exist!\";  
+} </pre>
+很少有人知道这个函数也可以确定一个数组键是否存在，在这一点上，它和array_key_exists()函数的功能一样。</span>
+		</p>
+		<p>
+			<span style=\"line-height:1.5;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+if (array_key_exists(\"Alaska\", $capitals))  
+{  
+  echo \"Key exists!\";  
+} else {  
+  echo \"Key does not exist!\";  
+} </pre>
+			<p>
+				<strong>9、搜索数组</strong>
+			</p>
+			<p>
+				你可能想搜索数组资源，这样用户就可以方便地用一个特定的州府检索关联的州，可以通过array_search()函数实现数组搜索。
+			</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+$state = array_search(\'Juneau\', $capitals);  
+// $state = \'Alaska\' </pre>
+			<p>
+				<strong>10、SPL 标准PHP库</strong>
+			</p>
+			<p>
+				标准PHP库（Standard PHP Library，SPL）为开发人员提供了许多数据结构，迭代器，接口，异常和其它以前PHP语言没有的功能，使用这些功能可以通过面向对象的语法遍历数组。
+			</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">$capitals = array(  
+  \'Arizona\' =&gt; \'Phoenix\',  
+  \'Alaska\'  =&gt; \'Juneau\',  
+  \'Alabama\' =&gt; \'Montgomery\'  
+);  
+$arrayObject = new ArrayObject($capitals);  
+foreach ($arrayObject as $state =&gt; $capital)  
+{  
+  printf(\"The capital of %s is %s&lt;br /&gt;\", $state, $capital);  
+}  
+// The capital of Arizona is Phoenix  
+// The capital of Alaska is Juneau  
+// The capital of Alabama is Montgomery</pre>
+</span>
+		</p>
+</span>
+	</p>
+</span>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

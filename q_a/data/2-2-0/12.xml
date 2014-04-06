@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[用Javascript写一段求今天是星期几]]></title>
+  <content><![CDATA[<p>
+	我的代码是这样
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">var a = new Array(\"日\", \"一\", \"二\", \"三\", \"四\", \"五\", \"六\");  
+var week = new Date().getDay();  
+var str = \"今天是星期\"+ a[week];  
+alert(str); </pre>
+有没有性能跟好的～！<img src=\"/mod/kd/plugins/emoticons/images/jx2/j_0003.gif\" border=\"0\" alt=\"\" />
+</p>]]></content>
+  <tags>技术问题|Web开发|JavaScript</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

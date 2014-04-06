@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[XSS脚本注入攻击 \\ SQL注入攻击防御脚本]]></title>
+  <content><![CDATA[<p>
+	&lt;?php
+</p>
+<p>
+	//Code By Safe3
+</p>
+<p>
+	//Add HTTP_REFERER by D.
+</p>
+<p>
+	$referer = empty($_SERVER[\'HTTP_REFERER\']) ? array() : array($_SERVER[\'HTTP_REFERER\']);
+</p>
+<p>
+	function customError($errno, $errstr, $errfile, $errline) {
+</p>
+<p>
+	&nbsp; &nbsp;echo \"&lt;b&gt;Error number:&lt;/b&gt; [$errno],error on line $errline in $errfile&lt;br /&gt;\";
+</p>
+<p>
+	&nbsp; &nbsp;die();
+</p>
+<p>
+	}
+</p>
+<p>
+	set_error_handler(\"customError\", E_ERROR);
+</p>
+<p>
+	$getfilter = \"\'|\\\\b(and|or)\\\\b.+?(&gt;|&lt;|=|\\\\bin\\\\b|\\\\blike\\\\b)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?SELECT|UPDATE.+?SET|INSERT\\\\s+INTO.+?VALUES|(SELECT|DELETE).+?FROM|(CREATE|ALTER|DROP|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+</p>
+<p>
+	$postfilter = \"\\\\b(and|or)\\\\b.{1,6}?(=|&gt;|&lt;|\\\\bin\\\\b|\\\\blike\\\\b)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?SELECT|UPDATE.+?SET|INSERT\\\\s+INTO.+?VALUES|(SELECT|DELETE).+?FROM|(CREATE|ALTER|DROP|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+</p>
+<p>
+	$cookiefilter = \"\\\\b(and|or)\\\\b.{1,6}?(=|&gt;|&lt;|\\\\bin\\\\b|\\\\blike\\\\b)|\\\\/\\\\*.+?\\\\*\\\\/|&lt;\\\\s*script\\\\b|\\\\bEXEC\\\\b|UNION.+?SELECT|UPDATE.+?SET|INSERT\\\\s+INTO.+?VALUES|(SELECT|DELETE).+?FROM|(CREATE|ALTER|DROP|TRUNCATE)\\\\s+(TABLE|DATABASE)\";
+</p>
+<p>
+	function StopAttack($StrFiltKey, $StrFiltValue, $ArrFiltReq) {
+</p>
+<p>
+	&nbsp; &nbsp;$StrFiltValue = arr_foreach($StrFiltValue);
+</p>
+<p>
+	&nbsp; &nbsp;if (preg_match(\"/\" . $ArrFiltReq . \"/is\", $StrFiltValue) == 1) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;exit();
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;if (preg_match(\"/\" . $ArrFiltReq . \"/is\", $StrFiltKey) == 1) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;exit();
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	}
+</p>
+<p>
+	//$ArrPGC=array_merge($_GET,$_POST,$_COOKIE);
+</p>
+<p>
+	foreach ($_GET as $key =&gt; $value) {
+</p>
+<p>
+	&nbsp; &nbsp;StopAttack($key, $value, $getfilter);
+</p>
+<p>
+	}
+</p>
+<p>
+	foreach ($_POST as $key =&gt; $value) {
+</p>
+<p>
+	&nbsp; &nbsp;StopAttack($key, $value, $postfilter);
+</p>
+<p>
+	}
+</p>
+<p>
+	foreach ($_COOKIE as $key =&gt; $value) {
+</p>
+<p>
+	&nbsp; &nbsp;StopAttack($key, $value, $cookiefilter);
+</p>
+<p>
+	}
+</p>
+<p>
+	foreach ($referer as $key =&gt; $value) {
+</p>
+<p>
+	&nbsp; &nbsp;StopAttack($key, $value, $getfilter);
+</p>
+<p>
+	}
+</p>
+<p>
+	function slog($logs) {
+</p>
+<p>
+	&nbsp; &nbsp;$toppath = $_SERVER[\"DOCUMENT_ROOT\"] . \"/log.htm\";
+</p>
+<p>
+	&nbsp; &nbsp;$Ts = fopen($toppath, \"a+\");
+</p>
+<p>
+	&nbsp; &nbsp;fputs($Ts, $logs . \"\\r\\n\");
+</p>
+<p>
+	&nbsp; &nbsp;fclose($Ts);
+</p>
+<p>
+	}
+</p>
+<p>
+	function arr_foreach($arr) {
+</p>
+<p>
+	&nbsp; &nbsp;static $str;
+</p>
+<p>
+	&nbsp; &nbsp;if (!is_array($arr)) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;return $arr;
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;foreach ($arr as $key =&gt; $val) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;if (is_array($val)) {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;arr_foreach($val);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;} else {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$str[] = $val;
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;}
+</p>
+<p>
+	&nbsp; &nbsp;return implode($str);
+</p>
+<p>
+	}
+</p>
+<p>
+	?&gt;
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+	&lt;?php
+
+
+	//Code By Safe3
+
+
+	//Add HTTP_REFERER by D.
+
+
+	$referer = empty($_SERVER[\'HTTP_REFERER\']) ? array() : ar]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

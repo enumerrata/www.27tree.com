@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Android系统架构基本模式解析</title>
+<content>&amp;lt;p&amp;gt;
+	如今，大家面对市场中种类繁多的手机必然挑的眼花缭乱。不过，在智能手机占据主要地位的今天，挑选手机的主要因素就是挑选一款性能高的手机操作系统，Android就是其中的一个必然选择。Android系统架构和其操作系统一样，采用了分层的架构。Android分为四个层，从高层到低层分别是应用程序层、应用程序框架层、系统运行库层和linux核心层。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android系统架构之应用程序
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android会同一系列核心应用程序包一起发布，该应用程序包包括email客户端，SMS短消息程序，日历，地图，浏览器，联系人管理程序等。所有的应用程序都是使用JAVA语言编写的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android系统架构之应用程序框架
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	开发人员也可以完全访问核心应用程序所使用的API框架。该应用程序的架构设计简化了组件的重用;任何一个应用程序都可以发布它的功能块并且任何其它的应用程序都可以使用其所发布的功能块(不过得遵循框架的安全性限制)。同样，该应用程序重用机制也使用户可以方便的替换程序组件。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	隐藏在每个应用后面的是一系列的服务和系统,&amp;amp;nbsp;其中包括;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;丰富而又可扩展的视图(Views)，可以用来构建应用程序，&amp;amp;nbsp;它包括列表(lists)，网格(grids)，文本框(text&amp;amp;nbsp;boxes)，按钮(buttons)，&amp;amp;nbsp;甚至可嵌入的web浏览器。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;内容提供器(Content&amp;amp;nbsp;Providers)使得应用程序可以访问另一个应用程序的数据(如联系人数据库)，&amp;amp;nbsp;或者共享它们自己的数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;资源管理器(Resource&amp;amp;nbsp;Manager)提供&amp;amp;nbsp;非代码资源的访问，如本地字符串，图形，和布局文件(&amp;amp;nbsp;layout&amp;amp;nbsp;files&amp;amp;nbsp;)。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;通知管理器&amp;amp;nbsp;(Notification&amp;amp;nbsp;Manager)&amp;amp;nbsp;使得应用程序可以在状态栏中显示自定义的提示信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;活动管理器(&amp;amp;nbsp;Activity&amp;amp;nbsp;Manager)&amp;amp;nbsp;用来管理应用程序生命周期并提供常用的导航回退功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有关更多的细节和怎样从头写一个应用程序，请参考&amp;amp;nbsp;如何编写一个&amp;amp;nbsp;Android&amp;amp;nbsp;应用程序.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android系统架构之系统运行库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1)程序库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;包含一些C/C++库，这些库能被Android系统中不同的组件使用。它们通过&amp;amp;nbsp;Android&amp;amp;nbsp;应用程序框架为开发者提供服务。以下是一些核心库：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;系统&amp;amp;nbsp;C&amp;amp;nbsp;库&amp;amp;nbsp;-&amp;amp;nbsp;一个从&amp;amp;nbsp;BSD&amp;amp;nbsp;继承来的标准&amp;amp;nbsp;C&amp;amp;nbsp;系统函数库(&amp;amp;nbsp;libc&amp;amp;nbsp;)，&amp;amp;nbsp;它是专门为基于&amp;amp;nbsp;embedded&amp;amp;nbsp;linux的设备定制的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;媒体库&amp;amp;nbsp;-&amp;amp;nbsp;基于&amp;amp;nbsp;PacketVideo&amp;amp;nbsp;OpenCORE;该库支持多种常用的音频、视频格式回放和录制，同时支持静态图像文件。编码格式包括MPEG4,&amp;amp;nbsp;H.264,&amp;amp;nbsp;MP3,&amp;amp;nbsp;AAC,&amp;amp;nbsp;AMR,&amp;amp;nbsp;JPG,&amp;amp;nbsp;PNG&amp;amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;Surface&amp;amp;nbsp;Manager&amp;amp;nbsp;-&amp;amp;nbsp;对显示子系统的管理，并且为多个应用程序提&amp;amp;nbsp;供了2D和3D图层的无缝融合。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;LibWebCore&amp;amp;nbsp;-&amp;amp;nbsp;一个最新的web浏览器引擎用，支持Android浏览器和一个可嵌入的web视图。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;SGL&amp;amp;nbsp;-&amp;amp;nbsp;底层的2D图形引擎
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;3D&amp;amp;nbsp;libraries&amp;amp;nbsp;-&amp;amp;nbsp;基于OpenGL&amp;amp;nbsp;ES&amp;amp;nbsp;1.0&amp;amp;nbsp;APIs实现;该库可以使用硬件&amp;amp;nbsp;3D加速(如果可用)或者使用高度优化的3D软加速。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;FreeType&amp;amp;nbsp;-位图(bitmap)和矢量(vector)字体显示。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;SQLite&amp;amp;nbsp;-&amp;amp;nbsp;一个对于所有应用程序可用，功能强劲的轻型关系型数据库引擎。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2)Android&amp;amp;nbsp;运行库
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;包括了一个核心库，该核心库提供了JAVA编程语言核心库的大多数功能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例。Dalvik被设计成一个设备可以同时高效地运行多个虚拟系统。&amp;amp;nbsp;Dalvik虚拟机执行(.dex)的Dalvik可执行文件，该格式文件针对小内存使用做了优化。同时虚拟机是基于寄存器的，所有的类都经由JAVA编译器编译，然后通过SDK中&amp;amp;nbsp;的&amp;amp;nbsp;“dx”&amp;amp;nbsp;工具转化成.dex格式由虚拟机执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dalvik虚拟机依赖于linux内核的一些功能，比如线程机制和底层内存管理机制。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android系统架构之Linux&amp;amp;nbsp;内核
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Android&amp;amp;nbsp;的核心系统服务依赖于&amp;amp;nbsp;Linux&amp;amp;nbsp;2.6&amp;amp;nbsp;内核，如安全性，内存管理，进程管理，&amp;amp;nbsp;网络协议栈和驱动模型。&amp;amp;nbsp;Linux&amp;amp;nbsp;内核也同时作为硬件和软件栈之间的抽象层。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-07-03/1341276515.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-04+11%3A12%3A49</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

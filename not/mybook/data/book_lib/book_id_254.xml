@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Enterprise JavaBeans 3.0]]></title>
+  <author>Bill Burke, Richard Monson-Haefel</author>
+  <submiter-uid>309</submiter-uid>
+  <submit-date-time>2013-01-08 01:10:14</submit-date-time>
+  <img-link>0c3f772ad8c784fd0fd82f002e880c20.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	Enterprise JavaBeans 3.0是有关EJB 3.0及Java Persistence新标准的权威指南。EJB 3.0代表了EJB规范的一个全新的思考，新规范极大地简化了EJB编程模型。如果你是一位EJB开发人员，那就需要理解这一新的开发范式。
+</p>
+<p>
+	EJB 3.0简化标准所采用的所有方法在本书中都有详细介绍： 新的Persistence API将entity bean替代为“普通的Java对象”（POJOs）；改用Java注解来提供以往包含于XML部署描述文件中的信息；免除了实现EnterpriseBean接口的需要。畅销书Enterprise JavaBeans的第5版对大量示例都做了更新，这些示例将向你展示上述新特性的使用方法。此外，它还将告诉你，如何将这些示例全都部署到JBoss 4应用服务器中。
+</p>
+<p>
+	本书内容主要涵盖以下几个方面：
+</p>
+<p>
+	*Entity bean、session bean及message-driven bean的开发
+</p>
+<p>
+	*Entity Manager与Persistence API的使用
+</p>
+<p>
+	*Entity bean间的实体关联
+</p>
+<p>
+	*实体查询与EJB查询语言
+</p>
+<p>
+	*实体继承映射
+</p>
+<p>
+	还有许多其他的内容。如果你正在使用EJB 3.0，或者计划向EJB 3.0做移植，又或者想考查一下其所提供的功能，那么Enterprise JavaBeans 3.0就是你的不二之选。它是你所需的唯一资源。
+</p>
+<p>
+	Bill Burke是JBoss（Red Hat的子公司）的首席开发者，并且他还是EJB 3.0与Java EE 5规范委员会中JBoss公司的代表。
+</p>
+<p>
+	Richard Monson-Haefel是Enterprise Java领域的世界顶级专家之一。
+</p>
+<p>
+	“EJB 3.0为EE的关键性规范注入了新的活力。借助Java 5注解和重新实现的持久化方案，EJB3.0对Java EE编程进行了重新定义。它极度简洁的特点令其使用起来颇有乐趣。Richard的经典之作，由Bill改编后的新版本，为你介绍了这一新规范的使用方法。如果你涉足企业应用领域，那么这本EJB书籍无疑就是你的唯一所需”。
+</p>
+<p>
+	—Marc Fleury，CEO，JBoss
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

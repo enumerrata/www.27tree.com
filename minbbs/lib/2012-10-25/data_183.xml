@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-25 17:12:18</datetime>
+  <title><![CDATA[解决vsftpd 530 Permission denied]]></title>
+  <content><![CDATA[<p>
+	使用在vsftpd.conf中添加userlist_*阻止特定的本地用户 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+<p>
+	userlist_enable=YES &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+<p>
+	userlist_deny=YES &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+<p>
+	userlist_file=/etc/vsftpd/user_list
+</p>
+<p>
+	编辑/etc/vsftpd/user_list ，添加上需要阻止的本地用户，一个用户名一行 用被阻止的用户登录FTP显示的消息为：530 Permission denied
+</p>
+<p>
+	我本机的etc/vsftpd/vsftpd.conf文件里，只有userlist_enable=YES 于是用root用户登录报错530 Permission denied 把YES改成NO就OK了
+</p>
+<p>
+	还有一种情况，就是没有指定 userlist_file文件位置。解决：加上userlist_file=/etc/vsftpd/user_list
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

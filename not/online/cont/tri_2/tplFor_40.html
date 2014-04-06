@@ -1,0 +1,74 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">AJAX XMLHttpRequest</h1>
+</div>
+<div>
+	
+<p><b>XMLHttpRequest 对象使 AJAX 成为可能。</b></p>
+
+<h1>XMLHttpRequest</h1>
+
+<p>XMLHttpRequest 对象是 AJAX 的关键。</p>
+<p>该对象在 Internet Explorer 5.5 与 2000 年 7 月发布之后就已经可用了，但是在 2005 人们开始讨论 AJAX 和 Web 2.0 之前，这个对象并没有得到充分的认识。</p>
+
+<h1>创建 XMLHttpRequest 对象</h1>
+
+<p>不同的浏览器使用不同的方法来创建 <b>XMLHttpRequest</b> 对象。</p>
+<p>Internet Explorer 使用 <b>ActiveXObject</b>。</p>
+<p>其他浏览器使用名为 <b>XMLHttpRequest</b> 的 JavaScript 内建对象。</p>
+<p>要克服这个问题，可以使用这段简单的代码：</p>
+
+<code>
+var&nbsp;XMLHttp=null<br />
+if&nbsp;(window.XMLHttpRequest){<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XMLHttp=new&nbsp;XMLHttpRequest();<br />
+}<br />
+else&nbsp;if&nbsp;(window.ActiveXObject){<br />
+&nbsp;&nbsp;&nbsp;&nbsp;XMLHttp=new&nbsp;ActiveXObject("Microsoft.XMLHTTP");<br />
+}
+</code>
+	
+<p>代码解释：</p>
+<p>1.首先创建一个作为 XMLHttpRequest 对象使用的 <b>XMLHttp</b> 变量。把它的值设置为 null。</p>
+<p>2.然后测试 <b>window.XMLHttpRequest</b> 对象是否可用。在新版本的 Firefox, Mozilla, Opera 以及 Safari 浏览器中，该对象是可用的。</p>
+<p>3.如果可用，则用它创建一个新对象：<b>XMLHttp=new XMLHttpRequest()</b></p>
+<p>4.如果不可用，则检测 <b>window.ActiveXObject</b> 是否可用。在 Internet Explorer version 5.5 及更高的版本中，该对象是可用的。</p>
+<p>5.如果可用，使用它来创建一个新对象：<b>XMLHttp=new ActiveXObject()</b></p>
+
+<h1>改进的例子</h1>
+
+<p>一些程序员喜欢使用最新最快的版本的 XMLHttpRequest 对象。</p>
+<p>下面的例子试图加载微软最新版本的 "Msxml2.XMLHTTP"，在 Internet Explorer 6 中可用，如果无法加载，则后退到 "Microsoft.XMLHTTP"，在 Internet Explorer 5.5 及其后版本中可用。</p>
+
+<code>
+function&nbsp;GetXmlHttpObject(){<br />
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;xmlhttp=null;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;try{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}catch(e)&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;XMLHTTP_IDS&nbsp;=&nbsp;new&nbsp;Array('MSXML2.XMLHTTP.5.0',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP.4.0',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP.3.0',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MSXML2.XMLHTTP',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Microsoft.XMLHTTP');<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;success&nbsp;=&nbsp;false;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var&nbsp;i=0&nbsp;;&nbsp;i&nbsp;<&nbsp;XMLHTTP_IDS.length&nbsp;&&&nbsp;!success&nbsp;;&nbsp;i++)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp&nbsp;=&nbsp;new&nbsp;ActiveXObject(XMLHTTP_IDS[i]);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success&nbsp;=&nbsp;true;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch(e){}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!success)&nbsp;if(console)&nbsp;console.log("Unable&nbsp;to&nbsp;create&nbsp;XMLHttpRequest!");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;xmlhttp;<br />
+}
+</code>
+
+<p>代码解释：</p>
+<p>1.首先创建用作 XMLHttpRequest 对象的 <b>XMLHttp</b> 变量。把它的值设置为 null。</p>
+<p>2.按照 web 标准创建对象 (Mozilla, Opera 以及 Safari)：<b>XMLHttp=new XMLHttpRequest()</b></p>
+<p>3.按照微软的方式创建对象，在 Internet Explorer 6 及更高的版本可用：<b>XMLHttp=new ActiveXObject("Msxml2.XMLHTTP")</b></p>
+<p>4.如果捕获错误，则尝试更老的方法 (Internet Explorer 5.5) ：<b>XMLHttp=new ActiveXObject("Microsoft.XMLHTTP")</b></p>
+
+</div>

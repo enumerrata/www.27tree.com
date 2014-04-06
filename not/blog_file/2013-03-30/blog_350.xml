@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[css样式表中的样式覆盖顺序]]></title>
+  <content><![CDATA[<p>
+	有时候在写CSS的过程中，某些限制总是不起作用，这就涉及了CSS样式覆盖的问题，如下
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">#navigator {  
+    height: 100%;  
+    width: 200;  
+    position: absolute;  
+    left: 0;  
+    border: solid 2 #EEE;  
+}  
+  
+.current_block {  
+    border: solid 2 #AE0;  
+}  </pre>
+	<p>
+		查找一些教材中（w3schools等），只说css的顺序是“元素上的style” &gt; “文件头上的style元素” &gt;“外部样式文件”，但对于样式文件中的多个相同样式的优先级怎样排列，没有详细说明。经过测试和继续搜索，得知优先级如下排列：
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<strong>1. 样式表的元素选择器选择越精确，则其中的样式优先级越高：</strong>
+	</p>
+	<p>
+		id选择器指定的样式 &gt; 类选择器指定的样式 &gt; 元素类型选择器指定的样式
+	</p>
+	<p>
+		所以上例中，#navigator的样式优先级大于.current_block的优先级，及时.current_block是最新添加的，也不起作用。
+	</p>
+	<p>
+		<br />
+	</p>
+	<p>
+		<strong>2. 对于相同类型选择器制定的样式，在样式表文件中，越靠后的优先级越高</strong>
+	</p>
+	<p>
+		注意，这里是样式表文件中越靠后的优先级越高，而不是在元素class出现的顺序。比如.class2 在样式表中出现在.class1之后：
+	</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">.class1 {  
+    color: black;  
+}  
+  
+.class2 {  
+    color: red;  
+}  </pre>
+而某个元素指定class时采用 class=\"class2 class1\"这种方式指定，此时虽然class1在元素中指定时排在class2的后面，但因为在样式表文件中class1处于class2前面，此时仍然是class2的优先级更高，color的属性为red，而非black。
+</p>
+<br>
+<p>
+	<strong>3. 如果要让某个样式的优先级变高，可以使用!important来指定：</strong>
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">.class1 {  
+    color: black !important;  
+}  
+  
+.class2 {  
+    color: red;  
+}  </pre>
+	<p>
+		此时class将使用black，而非red。
+	</p>
+</p>]]></content>
+  <contentx><![CDATA[
+	有时候在写CSS的过程中，某些限制总是不起作用，这就涉及了CSS样式覆盖的问题，如下
+
+
+#navigator {  
+    height: 100%;  
+    width: 200;  
+    position: absolu]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

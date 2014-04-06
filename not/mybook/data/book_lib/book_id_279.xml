@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HTML标签压缩算法]]></title>
+  <author>任仲晟</author>
+  <submiter-uid>276</submiter-uid>
+  <submit-date-time>2013-01-31 19:01:32</submit-date-time>
+  <img-link>24fd09425d31333a28c17ce3a8fa87ae.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	HTML页面的预处理．是几乎任何一种自然语言处理系统．<span style=\"line-height:1.5;\">Web信息抽取系统必须完成的步骤。页面预处理的目的通常有</span><span style=\"line-height:1.5;\">两个．</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">其一是通过页面清洗来修正HTML源文件中的错误，</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">其二</span><span style=\"line-height:1.5;\">是对页面进行压缩．删除无关内容。降低后续处理步骤的复杂</span><span style=\"line-height:1.5;\">度．提高信息抽取的效率和精度。</span>
+</p>
+<p>
+	国内外不少学者对HTML页面清洗压缩技术展开了研究．
+</p>
+<p>
+	<span style=\"line-height:1.5;\">提出了一些方法 。</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">利用边界信息来分隔HTML页面，</span><span style=\"line-height:1.5;\">将页面划分成若干个连续区域，实现对页面的清洗压缩；</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">将HTML页面转化成WML(Wireless Markup Language)页面，然</span><span style=\"line-height:1.5;\">后去除页面中的图片等信息，实现对页面的压缩；</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">将</span><span style=\"line-height:1.5;\">HTML页面改造成一种被称为语义文本单元STU(Sementic Tex．</span><span style=\"line-height:1.5;\">tual Unit)的独立内容单元，通过对sTU信息的识别来压缩页</span><span style=\"line-height:1.5;\">面。这些方法均略显复杂，并且未能充分利用页面固有的</span><span style=\"line-height:1.5;\">层次结构信息。</span>
+</p>
+<p>
+	<span style=\"line-height:1.5;\">本文在研究有关HTML页面清洗压缩技术的基础上．提出</span><span style=\"line-height:1.5;\">了基于HTML树的页面清洗压缩方法通过把HTML页面转化</span><span style=\"line-height:1.5;\">成HTML树．利用标签元素的相对位置信息，实现对HTML页面</span><span style=\"line-height:1.5;\">的清洗．并引入可删除集合的概念。完成对HTML页面的压缩处</span><span style=\"line-height:1.5;\">理。</span>
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

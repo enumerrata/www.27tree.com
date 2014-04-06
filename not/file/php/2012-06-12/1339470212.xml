@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP程序员易忽略的PHP精华和技巧</title>
+<content>&amp;lt;p&amp;gt;
+	很多的PHP程序员，尤其是学习还不是很久的，都不知道PHP的精华所在。Perl当年如何在商界出名?其强大的正则表达式。而PHP呢?他是一门从Unix下发展起来的语言，当然也就继承了Perl的很多特点，同时C的优点都有。快速、简洁、明了，尤其是C程序员，PHP是至爱，我就是深爱着“PHP”(都忘了女友了)。这里，我想来写一篇PHP的变量、数组应用技巧和PHP的正则表达式、PHP的模板应用，以后有时间再写PHP与COM、PHP与XML的完全结合。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;hr&amp;nbsp;/&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1、变量、数组的应用技巧&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(1)很多人用得不多的数组函数。foreach、list、each。分别举几个例子，应该就能知道了。例：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$data&amp;nbsp;=&amp;nbsp;array(&amp;nbsp;a&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;data1&amp;nbsp;,&amp;nbsp;&amp;nbsp;b&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;data2&amp;nbsp;,&amp;nbsp;&amp;nbsp;c&amp;nbsp;&amp;nbsp;=&amp;amp;gt;&amp;nbsp;&amp;nbsp;data3&amp;nbsp;);
+　　while(list($subscript,&amp;nbsp;$value)&amp;nbsp;=&amp;nbsp;each($data))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　echo&amp;nbsp;\"$subscript&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$value&amp;nbsp;::&amp;nbsp;\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　echo&amp;nbsp;\"$subscript&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$valuen\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　reset($data);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　foreach($data&amp;nbsp;as&amp;nbsp;$subscript&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$value)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　echo&amp;nbsp;\"$subscript&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$value&amp;nbsp;::&amp;nbsp;\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;　　echo&amp;nbsp;\"$subscript&amp;nbsp;=&amp;amp;gt;&amp;nbsp;$valuen\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;}&amp;lt;/pre&amp;gt;
+(2)函数的变量、变量的变量、变量的“指针”：看下例：
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;　$var&amp;nbsp;=&amp;nbsp;\"this&amp;nbsp;is&amp;nbsp;a&amp;nbsp;var\";
+
+　　$varname&amp;nbsp;=&amp;nbsp;\"var\";
+
+　　echo&amp;nbsp;$$varname;
+
+　　//函数的变量
+
+　　function&amp;nbsp;fun1($str)&amp;nbsp;{
+　　echo&amp;nbsp;$str;
+　　}
+
+　　$funname&amp;nbsp;=&amp;nbsp;\"fun1\";
+
+　　$funname(\"This&amp;nbsp;is&amp;nbsp;a&amp;nbsp;function&amp;nbsp;!\");
+
+　　?&amp;amp;gt;&amp;nbsp;&amp;nbsp;变量的“指针”。这个指针加上了双引号，表明他不是真正的指针。看看下例：
+
+　　function($a)&amp;nbsp;{
+
+　　$a&amp;nbsp;++;
+
+　　}
+
+　　$c&amp;nbsp;=&amp;nbsp;0;
+
+　　function($c);
+
+　　echo&amp;nbsp;$c;&amp;nbsp;//$c仍为0
+
+　　function(&amp;amp;$a)&amp;nbsp;{
+
+　　$a&amp;nbsp;++;
+
+　　}
+
+　　$c&amp;nbsp;=&amp;nbsp;0;
+
+　　echo&amp;nbsp;$c;&amp;nbsp;//$c为1
+
+　　?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	之所以称其为“指针”，就是因为他有了和C语言中指针相同的功能。但这又不是真正的指针，只能够是这样的去理解。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;2、正则表达式&amp;lt;/strong&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		&amp;lt;strong&amp;gt;正则表达式是一个非常大的题目&amp;lt;/strong&amp;gt;，Perl的正则表达式的强大是闻了名的。而PHP也不弱，他继承了Perl的正则表达式法则，还有自己的一套法则。这里只说PHP自己的正则表达式。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		正则表达式是最基本的元素。简单地说就是一套规则，用于去判定其它的元素是不是符合自身的规则，或者说是不是有相同的特征描述。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		正则表达式的开始符：^，结尾符$，这两个符号间的是匹配的元素。如检查一个电话号码是不是打往北京的号，用正则表达式表示就是“^010$”。只要前3位区号是010，就是北京的号，后面的电话号码就不用管了。然后，用正则表达式匹配函数ereg来判断，例：
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;　　$pattern&amp;nbsp;=&amp;nbsp;\"^010$\";
+　　$phone&amp;nbsp;=&amp;nbsp;\"01080718828\";
+　　if(ereg($pattern,&amp;nbsp;$phone))
+　　echo&amp;nbsp;\"打往北京的号\";
+　　else
+　　echo&amp;nbsp;\"不是打往北京的号\";
+　　?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		这就是正则表达式。北京的电话都是8位数字的，那我要知道这个号码是不是正确了?假如他按了9位号呢?如果判断正误?这就要用到正则表达式的字符簇。那么上例的正则表达式就要这样写：^010[0-9]{8}$，就能同时判断号码是不是符合规则。正则表达式有很多的应用，像LBB、VBB论坛在发贴时的所谓&amp;nbsp;VBB代码LBB代码的解析，都是用正则表达式完成的。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		3、模板
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		知道了正则表达式的功能，那么就可以知道模板了。什么是模板?举个例子吧?一般写网页用到了后台程序的时候，都是在网页里面插入程序代码。如PHP。这就是HTML和PHP的混写。这样的优点是读取速度快，缺点是如果大家分工合作做网站，那么非程序员就不会改网了。
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		而用模板，则可以达到分工的最合理化。美工只做页面，程序只写后台，然后再合起来。优秀的Jsp提供了自定义标签的功能很好地完成了模板功能。而主流的PHP如何做到呢?就是利用正则表达式来做到的。可以去网上下载一个PHPLIB，里面的PHP目录下有一个template.inc的源代码文件，那就是用PHP实现模板套用的类。
+	&amp;lt;/p&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-12/1339470212.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[疯狂JAVA讲义]]></title>
+  <author>李刚</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-30 16:00:57</submit-date-time>
+  <img-link>dd6f27f7f7d77bca8165e5301894ab44.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	本书是《疯狂Java讲义》的第2版，第2版保持了第1版系统、全面、讲解浅显、细致的特性，全面介绍了新增的Java 7的新特性。
+</p>
+<p>
+	本书深入介绍了Java编程的相关方面，全书内容覆盖了Java的基本语法结构、Java的面向对象特征、Java集合框架体系、Java泛型、异常处理、Java GUI编程、JDBC数据库编程、Java注释、Java的IO流体系、Java多线程编程、Java网络通信编程和Java反射机制；覆盖了java.lang、java.util、java.text、java.io和java.nio、java.sql、java.awt、javax.swing包下绝大部分类和接口。本书全面介绍了Java 7的二进制整数、菱形语法、增强switch语句、多异常捕获、自动关闭资源的try语句、JDBC 4.1新特性、NIO.2、AIO等新特性。
+</p>
+<p>
+	与第1版类似，本书并不单纯从知识角度来讲解Java，而是从解决问题的角度来介绍Java语言，所以本书中涉及大量的实用案例开发：五子棋游戏、梭哈游戏、仿QQ的游戏大厅、MySQL企业管理器、仿EditPlus的文本编辑器、多线程、断点下载工具、Spring框架的IoC容器……这些案例既能让读者巩固每章的知识，又可以让读者学以致用，激发编程自豪感，进而引爆内心的编程激情。本书光盘里包含书中所有示例的代码和《疯狂Java实战演义》的所有项目代码，这些项目可以作为本书课后练习的“非标准答案”。如果读者需要获取关于课后习题的解决方法、编程思路，可以登录http://www.crazyit.org站点与笔者及本书庞大的读者群相互交流。
+</p>
+<p>
+	本书为所有打算深入掌握Java编程的读者而编写，适合各种层次的Java学习者和工作者阅读，也适合作为大学教育、培训机构的Java教材。但如果只是想简单涉猎Java，则本书过于庞大，不适合阅读。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

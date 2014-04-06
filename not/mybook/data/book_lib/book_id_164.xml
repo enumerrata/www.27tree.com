@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[【Hacks系列】 Debug Hacks中文版 深入调试的技术和工具]]></title>
+  <author>（日）吉冈弘隆</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2012-11-09 07:54:46</submit-date-time>
+  <img-link>d35122fe6b6753546f9be5d21dedc202.png</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	吉冈弘隆编著的《DEBUG HACKS中文版--深入调试的技术和工具》从调试器的基本使用方法、汇编的基础知识开始，到内核错误信息捕捉、应用程序调试、内核调试，深入浅出地讲解了Linux 下应用程序和内核的调试技巧。本书汇集了大量从实践中来的实用技巧，是高效率、高质量开发的必备读物之一。
+</p>
+<p>
+	<p>
+		《DEBUG HACKS中文版--深入调试的技术和工具》是Miracle Linux 的创始人吉冈弘隆和几位工程师们多年从事内核开发的经验积累。从调试器的基本使用方法、汇编的基础知识开始，到内核错误信息捕捉、应用程序调试、内核调试，本书深入浅出地讲解了Linux 下应用程序和内核的调试技巧。
+	</p>
+	<p>
+		&nbsp; &nbsp; 虽然《DEBUG HACKS中文版--深入调试的技术和工具》的出发点是 Linux 内核调试，但书中的绝大部分知识在许多领域都能派上用场。如 Linux 应用程序开发，嵌入式Linux 开发，甚至时下流行的iOS 应用程序开发，只要从事应用程序开发的工作，就会涉及调试，那么读一读本书也不无裨益。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

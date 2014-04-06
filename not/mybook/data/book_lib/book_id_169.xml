@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[【Hacks系列】 SQL Hacks]]></title>
+  <author>（美）古明，（美）鲁赛尔</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2012-11-09 08:04:52</submit-date-time>
+  <img-link>68849bb8d06e3ea6c87d876504b7bf54.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	不论你是只想从数据库排序数据，还是要执行复杂的计算，本书向你揭示了数据库专家挖掘数据并得到他们所需答案的方法．本书包含了100个排序、筛选、打乱数据的技巧，大大增强了传统SQL语句的功能。通过本书，你可以学习到：
+</p>
+<p>
+	从命令行和程序往数据库发送SQL命令。
+</p>
+<p>
+	使用高级的联合、过滤和分组技术，为数据报表获得数据。
+</p>
+<p>
+	解决使用SQL的一些疑难问题。
+</p>
+<p>
+	在字符串、日期等数据上执行复杂的查询与排序。
+</p>
+<p>
+	设置你的事务，这样用户之间就不会发生冲突。
+</p>
+<p>
+	管理用户，审计他们对数据库所做的修改。
+</p>
+<p>
+	优化SQL操作，使CPU和网络的负载最小化。
+</p>
+<p>
+	即使你使用Access、MySQL、SQL Server、Oracle或PostgreSQL数据库多年，本书保证你从没有像这样使用SELECT、INSERT、UPDATE和DELETE语句。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

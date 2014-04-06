@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP 程序员学数据结构与算法之《栈》</title>
+<content>&amp;lt;p&amp;gt;
+	介绍
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“要成高手，必练此功”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要成为优秀的程序员，数据结构和算法是必修的内容。而现在的Web程序员使用传统算法和数据结构都比较少，因为很多算法都是包装好的，不用我们去操心具体的实现细节，如PHP的取栈操作array_pop,进栈操作array_push，都有指定的库函数，导致我们对基础算法的研究越来越少，最后成为一个工具的傀儡而已。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以我还是建议更多的coder从基础开始学习。这篇就先讲我们最熟悉的栈操作开始入手,让我们熟悉栈。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566477.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	栈为何物？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	口诀“后进先出”，这是我印象最深的一句话，也是老师一坨讲解中，印象最深刻的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义：栈是限制插入和删除都只能发生在一个位置上进行的线性表，该位置是线性表的末端，叫做栈的顶。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	过程：先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。
+&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566372.jpg\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	分析
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	通过定义和过程，我们分析出数据结构（红色标识），动作部分（蓝色标识），以及动作的规则（黄色标识）。
+&amp;lt;/p&amp;gt;
+&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566506.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数据：线性表（用array结构保存命名为data），末端索引（用int结构保存命名为end，初始值为null——因为开始线性表是没有元素的，所以就没有末端索引这么一说，而且由于不断取数据，添加数据，这个末端是变化的元素。）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	动作（方法）：压入（push：规则，放在线性表最后面），弹出（pop：规则，从最后取出，并且末端位置向前移动）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566708.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编码
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566670.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0604/1338772566278.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总结
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以上是本人对栈的分析理解过程，由于我是一名php&amp;nbsp;coder，所以我用php的角度去分析和编码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果是C语言去编码，数组应该指定最大宽度，因为C语言数组不像php数组能自行增长，必须要有一个初始宽度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-08/1339116052.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

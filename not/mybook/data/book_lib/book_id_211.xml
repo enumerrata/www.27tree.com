@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[MySQL技术内幕 : 第4版]]></title>
+  <author>(美) 杜波依斯</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:16:02</submit-date-time>
+  <img-link>c43c55ec5bcbe05ed1f8c17ad3a78593.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	《MySQL技术内幕(第4版)》介绍了MySQL的基础知识及其有别于其他数据库系统的独特功能，包括SQL的工作原理和MySQL API的相关知识；讲述了如何将MySQL与Perl或PHP等语言结合起来，为数据库查询结果生成动态Web页面，如何编写MySQL数据访问程序；详细讨论了数据库管理和维护、数据目录的组织和内容、访问控制、安全连接等。附录还提供了软件的安装信息，罗列了MySQL数据类型、函数、变量、语法、程序、API等重要细节。
+</p>
+<p>
+	《MySQL技术内幕(第4版)》是一部全面的MySQL指南，对数据库系统感兴趣的读者都能从中获益。
+</p>
+<p>
+	作者简介：
+</p>
+<p>
+	Paul DuBois &nbsp;Sun 公司MySQL文档团队的技术作者、开源社区和MySQL社区活跃的技术专家，同时也是一名数据库管理员。他曾参与过MySQL在线文档的编写工作。除本书外，他还著有MySQL and Perl for the Web、MySQL Cookbook、Using csh and tcsh以及Software Portability with imake等书。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

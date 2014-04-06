@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>对学习技术，工作的一些看法，两个工作经验</title>
+<content>&amp;lt;p&amp;gt;
+	大学毕业到现在，再有三月即工作满两年，这两年换了一次
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	工作，分别在每家工作待了一年，一直走到现在其实很不容易，回头看看不管是工作还是生活，发觉自己成熟得太慢！和自己的期望还是有很大差距！刚开始工作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	时，不断被老板打压到基本只能满足生活的3K月薪，到现在每个月稍有结余的xK月薪，IT这个行业付出和回报是永远不成比例的，我不是科班出生，本科读的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;生物工程&amp;lt;/strong&amp;gt;，也没有读过研究生，像我这样的普通人，一抓一大把！以下是我对自己工作，学习的一点看法，目的一：用来反思自己，目的二：给别人一些参考的意
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	见！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	软件行业是一个更新非常快的行业，昨天还非常火热的Android，现在意见慢慢趋于平淡，并且也发现了不少问题，现在即将来临的又是云计算，仿佛只要是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	知道“云计算”这几个字的人都突然变得很牛了，这个就中国，国情摆在这里，正在做事实的少，虚头比较多，不过我们还是得承认，如果真云了，还是非常有前途
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	的！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;span&amp;nbsp;style=\"font-size:12px;\"&amp;gt;如果你想在这个行业从事技术并且要想做好，那么下边的技术你都应该掌握，不然最多也就是混几年然后转行，做得太肤浅，跟别人说你写了好多年代码，其实你连门都还没有入。&amp;lt;/span&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;hr&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;基本技术&amp;lt;/strong&amp;gt;：《数据结构》，《算法》这是最基本的，最好能掌握50-60%,全部了解是不现实的，你看完一遍就都明白了也不可能，要时常温习，多思考，多实际！最好可以在自己有时间的时候参加一下：《ACM》的算法比赛，多锻炼自己的思维和迅速解决问题的能力；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;开发语言&amp;lt;/strong&amp;gt;：C,C++,JAVA,PHP,Python
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我觉得这几种编程语言至少有两种要做到精通，即很有感觉，而对几种至少要做到能够开发，对自己感兴趣的语言只要要阅读一下人家的源码，可以看看和别人的差
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	距到底有多大；设计模式，原则，基本要烂熟于心，可以只由运用，多学习一些开源框架，试着自己来写，看看自己的思路和别人思路的不同，慢慢自己成长就会很
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	快，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;操作系统&amp;lt;/strong&amp;gt;：window,linux&amp;nbsp;对linux至少也要做到准系统管理员的程度，对基本的系统管理，软件安装，shell脚本的书写不存在太大的问题，内核至少也要了解一下，特别对整个架构要有一个大致的了解；
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;企业框架&amp;lt;/strong&amp;gt;：Struts,spring,hibernate,EJB&amp;nbsp;等至少要了解基本原理，然后会用即可，如果感兴趣可以具体分析架构的设计，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;前端&amp;lt;/strong&amp;gt;：html/css,javascript,jquery,extjs&amp;nbsp;等这些东西至少也要了解，不只要后台很强大，结果前台页面很难看，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;数据库&amp;lt;/strong&amp;gt;：mysql,oracle&amp;nbsp;&amp;nbsp;sql语句书写不能存在问题，基本的数据备份导入会用即可
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不断关注前沿的技术，补充一些好的软件开发的思想，方法，然后选择一个行业，选择一个你热爱的技术，一直做下去，直到你是行业的NO1，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:right;\"&amp;gt;
+	From&amp;nbsp;--&amp;amp;gt;&amp;nbsp;xpp02
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-05-11/1336668905.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

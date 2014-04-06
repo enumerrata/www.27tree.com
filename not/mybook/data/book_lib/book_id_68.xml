@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Oracle Database 9i/10g/11g编程艺术：深入数据库体系结构</title>
+  <author>（美）凯特</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:26:10</submit-date-time>
+  <img-link>9314b8dfd0648f0adf42342f621d3a31.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		无论你是开发人员还是DBA．要创建和管理稳定、高质量的Oracle系统，归根结底都需要理解Oracle数据库的体系结构。
+	&lt;/p&gt;
+	&lt;p&gt;
+		《Oracle&amp;nbsp;Database&amp;nbsp;9i/10g/11g编程艺术：深入数据库体系结构（第2版）》是公认的Oracle数据库权威指南，凝聚了世界顶尖的Oracle专家Thomas&amp;nbsp;Kyte数十年的宝贵经验和真知灼见。书中深入分析了Oracle数据库体系结构，包括文件、内存结构以及构成Oracle数据库和实例的底层进程，利用具体示例讨论了一些重要的数据库主题，如锁定、并发控制、事务等。同时分析了数据库中的物理结构；如表、索引和数据类型，并介绍采用哪些技术能最优地使用这些物理结构。《Oracle&amp;nbsp;Database&amp;nbsp;9i/10g/11g编程艺术：深入数据库体系结构（第2版）》在上一版的基础上做了大量增补，以涵盖11g最受关注的多项特性，尤其针对数据加密进行了详细的阐释。
+	&lt;/p&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Oracle&amp;nbsp;Database&amp;nbsp;9i/10g/11g编程艺术：深入数据库体系结构（第2版）》是一本关于Oraclc&amp;nbsp;Database&amp;nbsp;9i、lOg和llg数据库体系结构的权威图书，涵盖了所有重要的，Oraclc体系结构特性，包括文件、内存结构和进程，锁和闩，事务、并发和多版本，表和索引，数据类型，分区和并行，以及数据加密等，并利用具体的例子来全面介绍每个特性，不仅讨论了各个特性是什么，还说明了它是如何工作的，如何使用这个特性来开发软件，以及有关的常见陷阱。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Oracle&amp;nbsp;Database&amp;nbsp;9i/10g/11g编程艺术：深入数据库体系结构（第2版）》面向所有Oracle数据库应用开发人员和DBA。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

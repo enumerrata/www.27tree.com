@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[程序员的数学]]></title>
+  <author>[日] 结城浩</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-18 19:33:16</submit-date-time>
+  <img-link>0e6132a9e9b2736eea915205b297a3af.png</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	&nbsp; &nbsp; &nbsp;&nbsp;没有晦涩的公式，只有好玩的数学题。
+</p>
+<p>
+	帮你掌握编程所需的“数学思维”。
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">日文版已重印14次！</span></strong>
+</p>
+<p>
+	<p>
+		编程的基础是计算机科学，而计算机科学的基础是数学。因此，学习数学有助于巩固编程的基础，写出更健壮的程序。
+	</p>
+	<p>
+		本书面向程序员介绍了编程中常用的数学知识，借以培养初级程序员的数学思维。读者无需精通编程，也无需精通数学，只需具备四则运算和乘方等基础知识，就可以阅读本书。
+	</p>
+	<p>
+		书中讲解了二进制计数法、逻辑、余数、排列组合、递归、指数爆炸、不可解问题等许多与编程密切相关的数学方法，分析了哥尼斯堡七桥问题、少年高斯求和方法、汉诺塔、斐波那契数列等经典问题和算法。引导读者深入理解编程中的数学方法和思路。
+	</p>
+	<p>
+		本书还对程序员和计算机的分工进行了有益的探讨。读完此书，你会对以程序为媒介的人机合作有更深刻的理解。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

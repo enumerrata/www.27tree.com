@@ -1,0 +1,1 @@
+default32.jpg

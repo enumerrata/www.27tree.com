@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Professional IronPython]]></title>
+  <author>John Mueller</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-02 12:33:24</submit-date-time>
+  <img-link>05f10f8accc4ce4ccb9fa7e0037dc78e.png</img-link>
+  <book-area>py</book-area>
+  <book-intro><![CDATA[<p>
+	Thorough coverage of Microsoft’s new dynamic programming language: IronPython
+</p>
+<p>
+	IronPython is a powerful and vital part of any .NET developer s toolbox, and although it is several years old, very little literature exists on the topic. This essential resource fills that void and provides you with an in-depth understanding of IronPython.
+</p>
+<p>
+	A brief introduction walks you through the installation, usage, and tools of IronPython and also explains what makes IronPython different from other programming languages. Coverage quickly moves on to explaining how to use and work with the IronPython language, and an in-depth look at its environment sheds light on how it can be stand alone or with the .NET Framework. You ll see how IronPython can be used to create either desktop or Web-based applications and you’ll witness how it interacts with other existing technologies. In addition, coverage of advanced topics shares techniques for extending IronPython and making it a robust language.
+</p>
+<p>
+	<ul>
+		<li>
+			Provides you with an in-depth look at IronPython, how it is different from other programming languages, what it is capable of, and how to maximize its potential
+		</li>
+		<li>
+			Explores how IronPython interacts with existing technologies and how it can perform administration tasks
+		</li>
+		<li>
+			Answers popular questions, such as how to extend IronPython and make it a more robust language
+		</li>
+		<li>
+			Tackles topics not addressed anywhere else, including executing IronPython using Mono
+		</li>
+	</ul>
+	<p>
+		You ll want to devour every topic covered in Professional IronPython so you can get started working with this powerful programming language today.
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

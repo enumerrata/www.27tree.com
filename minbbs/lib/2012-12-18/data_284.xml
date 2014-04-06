@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-18 21:13:12</datetime>
+  <title><![CDATA[巧用static实现表格的行背景色轮换]]></title>
+  <content><![CDATA[<p>
+	我们从数据库查询数据，如果结果有很多行，一般都会用表格形式来显示。此时如果表格的bgcolor（背景色）如果全是一个颜色，浏览者会感觉不太舒服。那么怎样做使表格各行的颜色不同呢？请看下面代码：
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php 
+function getcolor() 
+{ 
+  static $colorvalue;//定义一个静态变量 
+  if($colorvalue==\"#EEEEEE\") 
+    $colorvalue=\"#F0F0F0\"; 
+  else 
+    $colorvalue=\"#EEEEEE\"; 
+  return $colorvalue; 
+} 
+
+echo \"&lt;table border=1&gt;\";//下面输出10行 
+for($i=0;$i&lt;10;$i++) 
+{ 
+  $bcolor=getcolor();//换背景颜色 
+  echo \"&lt;tr bgcolor=$bcolor&gt;\"; 
+  echo \"&lt;td&gt;$i&lt;/td&gt;\"; 
+  echo \"&lt;/tr&gt;\"; 
+} 
+echo \"&lt;/table&gt;\"; 
+?&gt;</pre>
+	<p>
+		说明：
+	</p>
+	<p>
+		此程序中定义了一个静态变量static $colorvalue意思是在函数调用结束后，此变量$colorvalue还保留值，没有消失。当再次调用getcolor()函数时，变量$colorvalue的值是上次函数调用结束时$colorvalue的值。
+	</p>
+	<p>
+		而在Smarty模板中则可以使用cycle来更加轻松地实现，例如只需要在模板文件的相应位置使用：
+	</p>
+	<p>
+		&lt;tr bgcolor=\"{cycle values=\"#EEEEEE,#F0F0F0\"}\"&gt;
+	</p>
+	<p>
+		这样的语句就可以实现上面的功能了。
+	</p>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

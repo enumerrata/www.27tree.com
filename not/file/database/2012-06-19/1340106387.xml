@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MySQL dump 的用法</title>
+<content>&amp;lt;p&amp;gt;
+	MySQL有很多可以导入数据的方法，然而这些只是数据传输中的一半，另外的一般是从MySQL数据库中导出数据。有许多的原因我们需要导出数据。一个重要的原因是用于备份数据库。数据的造价常常是昂贵的，需要谨慎处理它们。经常地备份可以帮助防止宝贵数据地丢失；另外一个原因是，也许您希望导出数据来共享。&amp;nbsp;在这个信息技术不断成长的世界中，共享数据变得越来越常见。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	比方说Macmillan&amp;nbsp;USA维护护着一个将要出版的书籍的大型数据库。这个数据库在许多书店之间共享，这样他们就知道哪些书将会很快出版。医院越来越走向采用无纸病历记录，这样这些病历可以随时跟着你。世界变得越来越小，信息也被共享得越来越多。有很多中导出数据得方法，它们都跟导入数据很相似。因为，毕竟，这些都只是一种透视得方式。从数据库导出的数据就是从另一端导入的数据。这里我们并不讨论其他的数据库各种各样的导出数据的方法，您将学会如何用MySQL来实现数据导出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用mysqldump:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(mysqldump命令位于mysql/bin/目录中)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mysqldump工具很多方面类似相反作用的工具mysqlimport。它们有一些同样的选项。但mysqldump能够做更多的事情。它可以把整个数据库装载到一个单独的文本文件中。这个文件包含有所有重建您的数据库所需要的SQL命令。这个命令取得所有的模式（Schema，后面有解释）并且将其转换成DDL语法（CREATE语句，即数据库定义语句），取得所有的数据，并且从这些数据中创建INSERT语句。这个工具将您的数据库中所有的设计倒转。因为所有的东西都被包含到了一个文本文件中。这个文本文件可以用一个简单的批处理和一个合适SQL语句导回到MySQL中。这个工具令人难以置信地简单而快速。决不会有半点让人头疼地地方。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因此，如果您像装载整个数据库Meet_A_Geek的内容到一个文件中，可以使用下面的命令：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bin/mysqldump&amp;nbsp;–p&amp;nbsp;Meet_A_Geek&amp;nbsp;&amp;amp;gt;&amp;nbsp;MeetAGeek_Dump_File.txt
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个语句也允许您指定一个表进行dump(备份/导出/装载?)。如果您只是希望把数据库Meet_A_Geek中的表Orders中的整个内容导出到一个文件，可以使用下面的命令：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bin/mysqldump&amp;nbsp;–p&amp;nbsp;Meet_A_Geek&amp;nbsp;Orders&amp;nbsp;&amp;amp;gt;MeetAGeek_Orders.txt
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个非常的灵活，您甚至可以使用WHERE从句来选择您需要的记录导出到文件中。要达到这样的目的，可以使用类似于下面的命令：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	bin/mysqldump&amp;nbsp;–p&amp;nbsp;–where=\"Order_ID&amp;nbsp;&amp;amp;gt;&amp;nbsp;2000\"&amp;nbsp;Meet_A_Geek&amp;nbsp;Orders&amp;nbsp;&amp;amp;gt;&amp;nbsp;Special_Dump.txt
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mysqldump工具有大量的选项，部分选项如下表：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	选项/Option&amp;nbsp;作用/Action&amp;nbsp;Performed
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--add-drop-table
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个选项将会在每一个表的前面加上DROP&amp;nbsp;TABLE&amp;nbsp;IF&amp;nbsp;EXISTS语句，这样可以保证导回MySQL数据库的时候不会出错，因为每次导回的时候，都会首先检查表是否存在，存在就删除
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--add-locks
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个选项会在INSERT语句中捆上一个LOCK&amp;nbsp;TABLE和UNLOCK&amp;nbsp;TABLE语句。这就防止在这些记录被再次导入数据库时其他用户对表进行的操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-c&amp;nbsp;or&amp;nbsp;-&amp;nbsp;complete_insert
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个选项使得mysqldump命令给每一个产生INSERT语句加上列（field）的名字。当把数据导出导另外一个数据库时这个选项很有用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--delayed-insert&amp;nbsp;在INSERT命令中加入DELAY选项
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-F&amp;nbsp;or&amp;nbsp;-flush-logs&amp;nbsp;使用这个选项，在执行导出之前将会刷新MySQL服务器的log.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-f&amp;nbsp;or&amp;nbsp;-force&amp;nbsp;使用这个选项，即使有错误发生，仍然继续导出
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	--full&amp;nbsp;这个选项把附加信息也加到CREATE&amp;nbsp;TABLE的语句中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-l&amp;nbsp;or&amp;nbsp;-lock-tables&amp;nbsp;使用这个选项，导出表的时候服务器将会给表加锁。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-t&amp;nbsp;or&amp;nbsp;-no-create-&amp;nbsp;info
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个选项使的mysqldump命令不创建CREATE&amp;nbsp;TABLE语句，这个选项在您只需要数据而不需要DDL（数据库定义语句）时很方便。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	-d&amp;nbsp;or&amp;nbsp;-no-data&amp;nbsp;这个选项使的mysqldump命令不创建INSERT语句。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-19/1340106387.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

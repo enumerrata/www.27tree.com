@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>12</uid>
+  <datetime>2012-10-12 09:23:56</datetime>
+  <title><![CDATA[Firefox 发布 16.01 紧急安全补丁版本]]></title>
+  <content><![CDATA[<p>
+	Firefox 刚刚发布的 16.0 正式版，就被发现存在严重的安全漏洞，详情请看这里。
+</p>
+<p>
+	目前官方已经紧急发布了修复版本 16.01 ，下载地址：<a href=\"http://www.mozilla.org/en-US/firefox/new/\" target=\"_blank\">http://www.mozilla.org/en-US/firefox/new/</a>
+</p>]]></content>
+  <contentx><![CDATA[Firefox 刚刚发布的 16.0 正式版，就被发现存在严重的安全漏洞，详情请看这里。
+
+
+	目前官方已经紧急发布了修复版本 16.01 ，下载地址：http://www.mozilla.org/en-US/firefox/new/]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

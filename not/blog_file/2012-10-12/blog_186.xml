@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>12</uid>
+  <datetime>2012-10-12 09:22:51</datetime>
+  <title><![CDATA[Apache Kafka 0.7.2-incubating 发布]]></title>
+  <content><![CDATA[<p>
+	Apache Kafka 0.7.2-incubating 发布了，完整改进记录请看<a href=\"https://issues.apache.org/jira/browse/KAFKA/fixforversion/12322475\" target=\"_blank\">这里</a>。
+</p>
+<p>
+	kafka是一种高吞吐量的分布式发布订阅消息系统，她有如下特性：
+</p>
+<p>
+	<ul>
+		<li>
+			通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。
+		</li>
+		<li>
+			高吞吐量：即使是非常普通的硬件kafka也可以支持每秒数十万的消息。
+		</li>
+		<li>
+			支持通过kafka服务器和消费机集群来分区消息。
+		</li>
+		<li>
+			支持Hadoop并行数据加载。
+		</li>
+	</ul>
+</p>]]></content>
+  <contentx><![CDATA[Apache Kafka 0.7.2-incubating 发布了，完整改进记录请看这里。
+
+
+	kafka是一种高吞吐量的分布式发布订阅消息系统，她有如下特性：
+
+
+	
+		
+			通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。
+		
+		
+			高吞吐量：即使是非常普通的硬件kafka也可以支持]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

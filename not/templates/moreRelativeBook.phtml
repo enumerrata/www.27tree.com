@@ -1,0 +1,12 @@
+<?php
+if($contLast){
+    echo "<div style=\"float:left;padding:10px 32px;margin:20px 0;\">";
+} else echo "<div style=\"float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;\">";
+?>
+<a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="<?php echo $Params['URL']?>">
+    <img src="<?php echo $Params['img']?>" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="<?php echo $Params['URL']?>">
+    《<?php echo $Params['title']?>》
+</a>
+</div>

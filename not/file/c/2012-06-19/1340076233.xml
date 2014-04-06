@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>写好C程序的秘籍(文言文版)</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	神乎其技，惟C程序，功到自成，十大建议！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	1、汝应频繁催动lint工具，据其语法声明修习内力，此事皆因lint之思虑决断实远在君上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	2、不可依随NULL指针，如若不然，混沌痴颠必俟君于彼岸。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	3、纵有天赋大智慧，知晓其事无碍，汝亦当尽数强制挪移函数参数为原型所期之数据类型，以免一时疏忽，致使数据类型向汝讨还血债。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	4、若头文件未于函数原型之中声明返回值类型，汝当亲为此事，更须谨慎再三，以防不测降临汝身。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	5、汝须亲核字符串、数组操作之越界与否。古之圣人有言：&amp;nbsp;尝祈门人对答“然也”，不意门人答曰“吾了然于胸无须多虑尽请宽心他日趋庭必当重谢”——所期者短，所获者长，此于数组，实最险要处也。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	6、若函数声明内提及，于异常时将返回错误代码云云，汝当谨慎校核该返回值。或有校核语句使汝之代码增大数倍，令汝之手指因敲键而痛楚莫名之事，汝亦当如此。不然，汝固以为此异常之事难得一见，上苍亦必借此惩戒汝之傲慢。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	7、汝应研习库函数，不当亲笔重写之。如是，汝之代码必短小易读，汝之心境必清爽恬淡。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	8、纵汝不愿，汝亦应借括号、缩进之属，使汝之代码间架清晰，可为后者借鉴。汝之大智慧施于决疑解难则可，施于敷设谜团、淆乱文体则万万不可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	9、外部标识符之前六字符当与众不同。此律法看似粗陋，和者寥寥，然其效用自能延续永远。汝若不从此言，他日，汝欲连接程序于旧作之上时，必抓耳挠腮、蓬头垢面，狼狈之相尽现矣。&amp;nbsp;　　&amp;nbsp;&amp;nbsp;&amp;nbsp;10、或有族类，大言炎炎，云“普天之下，莫非VAX”。于此等异端，汝当摒弃之、断绝之、远避之。更有异人，笃信魔道，以为纵汝所用电脑频繁换代，汝之程序亦能长久适用。汝亦不可与此类恶人来往，谨记谨记。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	反正我是没看懂了。。。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-19/1340076233.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

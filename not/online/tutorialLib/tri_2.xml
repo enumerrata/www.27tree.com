@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tutorial-desc>HTML教程</tutorial-desc>
+    <tutorial-menu>
+        <sector desc="PHP 基础教程">
+            <atom title="PHP 简介"/>
+            <atom title="PHP 安装"/>
+            <atom title="PHP 语法"/>
+            <atom title="PHP 变量"/>
+            <atom title="PHP 字符串"/>
+            <atom title="PHP 运算符"/>
+            <atom title="PHP If...Else 语句"/>
+            <atom title="PHP Switch 语句"/>
+            <atom title="PHP 数组"/>            
+            <atom title="PHP 循环"/>
+            <atom title="PHP Function"/>
+            <atom title="PHP 表单和input"/>
+            <atom title="PHP $_GET"/>
+            <atom title="PHP $_POST"/>
+        </sector>
+        <sector desc="PHP 中级教程">
+            <atom title="Date()"/>
+            <atom title="文件引用"/>
+            <atom title="文件处理"/>
+            <atom title="文件上传"/>            
+            <atom title="$_COOKIE"/>
+            <atom title="$_SESSION"/>
+            <atom title="电子邮件"/>
+            <atom title="安全的电子邮件"/>
+            <atom title="错误处理"/>
+            <atom title="异常处理"/>
+            <atom title="Filter"/>
+        </sector>
+        <sector desc="PHP 与 MySQL数据库">
+            <atom title="MySQL 简介"/>
+            <atom title="MySQL 连接数据库"/>
+            <atom title="MySQL 创建数据库和表"/>
+            <atom title="MySQL Insert Into"/>            
+            <atom title="MySQL Select"/>
+            <atom title="MySQL Where 子句"/>
+            <atom title="MySQL Order By 关键词"/>
+            <atom title="MySQL Update"/>
+            <atom title="Database ODBC"/>
+            <atom title="MySQL Delete From"/>        
+        </sector>
+        <sector desc="PHP 与 XML">
+            <atom title="XML Expat 解析器"/>
+            <atom title="XML DOM"/>
+            <atom title="SimpleXML"/>
+        </sector>
+        <sector desc="PHP 与 AJAX">
+            <atom title="AJAX 简介"/>            
+            <atom title="AJAX XMLHttpRequest"/>
+            <atom title="AJAX 请求"/>
+            <atom title="AJAX XML 实例"/>
+            <atom title="AJAX MySQL 数据库实例"/>
+            <atom title="AJAX responseXML 实例"/>
+            <atom title="AJAX Live Search"/>
+            <atom title="AJAX RSS 阅读器"/>
+            <atom title="AJAX 投票系统"/>
+        </sector>
+        <sector desc="PHP 高级编程">
+            <atom title="PHP cURL技术"/>    
+        </sector>
+    </tutorial-menu>
+</root>

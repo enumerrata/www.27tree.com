@@ -1,0 +1,103 @@
+h1{
+    border-bottom:1px #008200 dashed;
+    font-size:15px;
+}
+b{
+    font-size:13px;
+}
+p{
+    line-height:20px;
+    font-size:13px;
+}
+code{
+    font-family:'微软雅黑', Tahoma, Helvetica, Arial, sans-serif;
+    font-size:13px;
+    word-wrap:break-word;
+    word-break:normal;
+    color:#444;
+    border:1px solid #BF0A10;display:block;margin:5px;
+    background-color:#fafafa;line-height:18px;padding:10px;
+}
+.header{
+    display:block;font-size:20px;text-align:center;padding-bottom:15px;
+    border:none;
+}
+ul{
+    line-height:20px;
+}
+table.dataintable {
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top:10px;
+    border-collapse:collapse;
+    border:1px solid #888;
+    width:100%;
+}
+table.dataintable pre {
+    width:auto;
+    margin:0;
+    padding:0;
+    border:0;
+    background-color:transparent;
+}
+table.dataintable th {
+    vertical-align:baseline;
+    padding:5px 15px 5px 5px;
+    background-color:#fcfcfc;
+    border:1px solid #888;
+    text-align:left;
+}
+table.dataintable td {
+    vertical-align:text-top;
+    padding:5px 15px 5px 5px;
+    background-color:#f2f2f2;
+    border:1px solid #aaa;
+}
+table.dataintable p {margin:0 0 2px 0;}
+div#maincontent table.dataintable ul, div#maincontent table.dataintable li {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+table.dataintable td em{
+    color:#0000ff;
+    font-weight:normal;
+}
+table.dataintable .table_value {color:#0F93D2;}
+.no_wrap {white-space:nowrap;}
+div#maincontent table.dataintable ul.listintable {
+    margin:20px;
+    padding:0;
+}
+div#maincontent table.dataintable ul.listintable  li{
+    list-style-type:disc;
+}
+table.dataintable td.html5_new {
+    background: #EFEFEF url(/i/site_table_bg.gif) top right no-repeat;
+}
+#navswapper{
+    width:1024px;
+}
+dt{
+    padding-left:2em;font-weight:bold;
+}
+.deprecated{
+    color:#999;
+}
+.adSet{
+    background:url('/img/ad.gif') no-repeat center #FFF;display:block;padding:5px 0;border:1px solid #bbb;height:90px;width:1024px;margin:auto;margin-bottom:15px;
+}
+#main-tri-list{
+    background-color:#FFF;width:180px;float:left;border:1px solid #bbb;margin:10px;border-top:4px solid #BF0A10
+}
+.secUL{
+    margin:5px auto;padding:0;line-height:20px;border-left:1px dotted #aaa;padding-left:10px;font-size:13px;font-weight:normal;margin-left:15px
+}
+.triUL{
+    margin:0;padding:0;font-size:13px;line-height:20px;padding-left:5px;
+}
+#main_shower{
+    background-color:#FEFEFE;border:1px solid #bbb;margin:10px;margin-left:200px;padding:10px 50px;
+}
+.sdCenter{
+    width:1024px;
+}

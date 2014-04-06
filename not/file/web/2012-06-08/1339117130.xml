@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>怎样使用AJAX进行WEB应用程序开发</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;一、常规属性和方法&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表1和2提供了一个属性和方法的概述-&amp;nbsp;它们为Windows&amp;nbsp;Internet&amp;nbsp;Explorer&amp;nbsp;5，Mozilla，Netscape&amp;nbsp;7，Safari&amp;nbsp;1.2，和Opera等浏览器所支持。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表1属性
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	属性&amp;nbsp;描述
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	onreadystatechange&amp;nbsp;当请求对象变化时该事件处理器激活。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	readyState&amp;nbsp;返回指示对象的当前状态的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	responseText&amp;nbsp;来自服务器的响应串的版本&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	responseXML&amp;nbsp;来自服务器的响应的DOM兼容的文档对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	status&amp;nbsp;来自服务器的响应的&amp;nbsp;状态码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	statusText&amp;nbsp;以一个字符串形式返回的状态消息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表2方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法&amp;nbsp;描述
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Abort()&amp;nbsp;取消当前HTTP请求。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getAllResponseHeaders()&amp;nbsp;检索所有的HTTP头值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	getResponseHeader(headerLabel)&amp;nbsp;从响应体中检索一个HTTP头部的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	open(method,URL[,asyncFlag[,userName&amp;nbsp;[,password]]])&amp;nbsp;初始化一个MSXML2.XMLHTTP请求，并从该请求指定方法，URL和认证信息&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	send(content)&amp;nbsp;发送一个HTTP请求到服务器并接收响应。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	setRequestHeader&amp;nbsp;(label,&amp;nbsp;value)&amp;nbsp;指定一个HTTP头的名字。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;二、从哪里开始&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先，你需要创建XML文件-后面我们对之进行请求并作为页面内容进行分析。你正在请求的文件必须与&amp;nbsp;目标工程驻留在相同的服务器上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下一步，创建发出请求的HTML文件。当页面通过使用页面主体&amp;nbsp;中的onload方法进行加载时，该请求发生。接着，该文件需要一个有ID的div标签，这样当我们准备好要&amp;nbsp;显示内容时就可以对之进行定位。当你做完所有这些，你的页面的主体上去，如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;＜body&amp;nbsp;onload=makeRequest(&amp;nbsp;xml/content.xml&amp;nbsp;);&amp;nbsp;＞
+
+＜div&amp;nbsp;id=copy＞＜/div＞
+
+＜/body＞&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;三、创建请求对象&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了创建请求对&amp;nbsp;象，你必须检查是否浏览器使用XMLHttpRequest或ActiveXObject。这两个对象之间的主要区别在于使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它们的浏览器。Windows&amp;nbsp;IE&amp;nbsp;5&amp;nbsp;及以上版本使用ActiveX对象;&amp;nbsp;而Mozilla，Netscape&amp;nbsp;7，Opera和Safari
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.2及以上版本使用XMLHttpRequest对象。另外一个区别是你创建对象的方式：Opera，Mozilla，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Netscape和Safari允许你简单地调用该对象的构造器，但是Windows&amp;nbsp;IE需要把对象的名字传递到ActiveX
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	构造器中。下面是怎样创建代码来决定要使用哪个对象和怎样创建它的示例：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;if&amp;nbsp;(window.XMLHttpRequest)
+{&amp;nbsp;request&amp;nbsp;=&amp;nbsp;new&amp;nbsp;XMLHttpRequest();&amp;nbsp;}
+else&amp;nbsp;if&amp;nbsp;(window.ActiveXObject)
+{&amp;nbsp;request&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ActiveXObject(MSXML2.XMLHTTP);&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;四、发出请求&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在既然你已经创建了你的请求对象，那么你已经为向服务器发
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	出请求作了准备。创建一个到事件处理器的参考以听取onreadystatechange事件。然后，该事件处理器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法将在状态发生变化时作出响应。一旦我们完成请求，我们就开始创建这个方法。打开连接以GET或
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	POST一个定制的URL-在此是一个content.xml，并且设置一个布尔定义-是否你想要进行异步调用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在到了发出请求的时间了。在这个示例中，我使用了null，因为我们使用的是GET;&amp;nbsp;为了使用&amp;nbsp;POST，你需要使用下面这个方法发出一个查询串：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;equest.onreadystatechange&amp;nbsp;=&amp;nbsp;onResponse;
+
+request.open(GET.&amp;nbsp;url,&amp;nbsp;true);
+
+request.send&amp;nbsp;(null);&amp;nbsp;
+&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;五、定制加载和错误处理消息&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	你为onreadystatechange方法创建的事件处理器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	正是集中进行加载和处理错误的场所。现在到了考虑用户并针对他们与之交互的内容的状态提供反馈的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	时候了。在这个实例中，我针对所有的装载状态代码提供反馈，并且也对最经常发生的错误处理状态代
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	码提供一些基本的反馈。为了显示请求对象的当前状态，readyState属性包括显示在下表中的一些值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	值&amp;nbsp;描述
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	0&amp;nbsp;未初始化，对象没有用数据进行初始化。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1&amp;nbsp;装载中，对象正在装载它&amp;nbsp;的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2&amp;nbsp;装载结束，对象完成了它的数据的装载。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3&amp;nbsp;可交互，用户能与对象交互了，&amp;nbsp;尽管它还没有装载结束。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4&amp;nbsp;完成，对象已经完全被初始化。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	W3C中有很长的一串有关HTTP&amp;nbsp;状态代码的定义。我选择了两个状态代码:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	200:请求成功了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	404:服务器没有找到与所&amp;nbsp;请求的文件相匹配的任何东西。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最后，我检查任何另外的状况代码-它们将生成一个错误并提供
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个一般错误信息。下面是一个代码示例-你可以用之来处理这些情况。注意，我在定位我们前面在HTML&amp;nbsp;文件的主体中创建的div
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ID并且对它应用装载和/或错误信息-通过innerHTML方法-这个方法用于设置在&amp;nbsp;div对象的开始和结束标签之间的HTML:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;if(obj.readyState&amp;nbsp;==&amp;nbsp;0)
+{&amp;nbsp;document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;Sending&amp;nbsp;Request...;&amp;nbsp;}
+if(obj.readyState&amp;nbsp;==&amp;nbsp;1)
+{&amp;nbsp;document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;Loading&amp;nbsp;Response...;&amp;nbsp;}
+if(obj.readyState&amp;nbsp;==&amp;nbsp;2)
+{&amp;nbsp;document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;Response&amp;nbsp;Loaded...;&amp;nbsp;}
+if(obj.readyState&amp;nbsp;==&amp;nbsp;3)
+{&amp;nbsp;document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;Response&amp;nbsp;Ready...;&amp;nbsp;}
+if(obj.readyState&amp;nbsp;==&amp;nbsp;4){
+if(obj.status&amp;nbsp;==&amp;nbsp;200){&amp;nbsp;return&amp;nbsp;true;&amp;nbsp;}
+else&amp;nbsp;if(obj.status&amp;nbsp;==&amp;nbsp;404)
+{
+//&amp;nbsp;添加一个定制消息或把用户重定&amp;nbsp;向到另外一个页面
+document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;File&amp;nbsp;not&amp;nbsp;found;
+}
+else
+{document.getElementById(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;There&amp;nbsp;was&amp;nbsp;a&amp;nbsp;problem&amp;nbsp;retrieving&amp;nbsp;the&amp;nbsp;XML.;&amp;nbsp;}
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	当状况代码为200&amp;nbsp;时，这意味着请求成功。下面开始进行响应了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;六、分析响应&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当你准备好分析来自请求&amp;nbsp;对象的响应时，真正的工作开始了。现在你可以用你请求的数据开始工作。仅为测试目的，在开发期间
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	，可以使用responseText和responseXML属性来显示来自响应的原始数据。为了存取XML响应中的结点，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先使用你创建的请求对象，定位到responseXML属性以检索(你可能已经猜测出来)来自响应的XML。定
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	位到documentElement-它检索一个到XML响应的根结点的参考。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;response&amp;nbsp;=&amp;nbsp;request.responseXML.documentElement;&amp;lt;/pre&amp;gt;
+现在既然你有了到响应的根结点的参考，那么你可以使&amp;nbsp;用getElementsByTagName()以结点名字来检索childNodes。下面一行用一个头部的nodeName来定位一个&amp;nbsp;childNode：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;response.getElementsByTagName(&amp;nbsp;header&amp;nbsp;)&amp;nbsp;[0].firstChild.data;&amp;lt;/pre&amp;gt;
+使用firstChild.data可以允许你存取该元素中的文本：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;response.getElementsByTagName(&amp;nbsp;header&amp;nbsp;)[0].firstChild.data;&amp;lt;/pre&amp;gt;
+下面是怎样&amp;nbsp;创建这些代码的完整的例子：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;response&amp;nbsp;=&amp;nbsp;request.responseXML.documentElement;
+var&amp;nbsp;header&amp;nbsp;=&amp;nbsp;response.getElementsByTagName&amp;nbsp;(&amp;nbsp;header&amp;nbsp;)[0].firstChild.data;
+document.getElementById&amp;nbsp;(&amp;nbsp;copy&amp;nbsp;).innerHTML&amp;nbsp;=&amp;nbsp;header;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;七、需求分析&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在既然你知道怎样使用&amp;nbsp;AJAX的基础知识，那么下一步就是决定是否在一工程使用它。须记住的最重要的事情是，在你还没有刷
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	新页面时你无法使用Back按钮。为此，可以先专注于你的工程中的一小部分-它能够从使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这种类型的交互中受益。例如，你可以创建一个表单-它在用户每次输入一个输入字段或一个字母时查询
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个脚本以便进行实时校验。你可以创建一个拖放页面-在释放一项时，它能够把数据发送到一个脚本中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并把该页面的状态保存到一个数据库中。使用AJAX的理由毫无疑问是存在的;&amp;nbsp;并且这种使用无论对开发&amp;nbsp;者还是用户都会带来益处;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这全依赖于具体的条件和执行情况。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	还有其它方法可用来解决&amp;nbsp;Back按钮的问题，例如使用Google&amp;nbsp;Gmail-它现在能够为你的操作提供一种撤消功能而不刷&amp;nbsp;新该页面。以后还会出现许多更具创造性的例子-它们将通过提供给开发者创建独特实时的体验的手段给&amp;nbsp;用户带来更大的好处。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;八、结论&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽管AJAX允许我们构建新的和改进的方式来与一个WEB页&amp;nbsp;面进行交互;&amp;nbsp;但是作为开发者，我们需要牢记产品是不考虑技术的;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它关心的是用户以及其如何与用户&amp;nbsp;进行交互。没有了用户群，我们构建的工程毫无用处。基于这个标准，我们就能评估应该使用什么技术
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以及何时使用它们来创建对相应用户有用的应用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-08/1339117130.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

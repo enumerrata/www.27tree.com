@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[深入NoSQL]]></title>
+  <author>[印]Shashank Tiwari</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:19:10</submit-date-time>
+  <img-link>177a1ecc2173706adf0f0262b9021c9a.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>云计算时代关键数据库技术</strong>
+</p>
+<p>
+	<strong>全面展示NoSQL基础概念和实践方案</strong>
+</p>
+<p>
+	<strong>理解大数据的各种技术架构和思想</strong>
+</p>
+<p>
+	全面的NoSQL实践指南
+</p>
+<p>
+	《深入NoSQL》是一本全面的NoSQL实践指南。书中主要关注NoSQL的基本概念，以及使用NoSQL数据库的切实可行的解决方案。书中介绍了基于MapReduce的可伸缩处理，演示Hadoop用例，还有Hive和Pig这样的高层抽象。《深入NoSQL》包含许多用例演示，同时也会讨论Google、Amazon、Facebook、Twitter和LinkedIn的可伸缩数据架构。
+</p>
+<p>
+	《深入NoSQL》适合NoSQL数据库管理人员和开发人员阅读。
+</p>
+<p>
+	作者简介：
+</p>
+<p>
+	Shashank Tiwari，创业者、开发者、技术作家、演讲者和导师，技术性创业公司Treasury of ldeas的创始人。他是一位经验丰富的软件开发者和企业家，长期关注高性能应用、分析、Web应用以及移动平台，对数据可视化和统计机器学习有着浓厚的兴趣，喜欢喝咖啡、吃甜点、骑自行车。他撰写了许多技术文章和著作，并且应邀在全球各地的技术会议上进行演讲。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

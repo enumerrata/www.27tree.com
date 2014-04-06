@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>PHP类的使用和归纳</title>
+<content>&amp;lt;p&amp;gt;
+	一：结构和调用(实例化)：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;className{}&amp;nbsp;，调用：$obj&amp;nbsp;=&amp;nbsp;new&amp;nbsp;className();当类有构造函数时，还应传入参数。如$obj&amp;nbsp;=&amp;nbsp;new&amp;nbsp;className($v,$v2...);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二：构造函数和析构函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、构造函数用于初始化：使用__construct()，可带参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、但析构函数不能带参数（用于在销去一个类之前执行一些操作或功能）。析构函数用__destruct()做名称。在脚本执行结束时，PHP会销掉内存中的对象，因此可不用析造函数，但有些比如COOKIE等，就应当要用此函数销掉。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	知识点：在PHP4中也提供了构造函数，但使用的是与类同名的类方法，在PHP5仍能兼容这种做法，当一个类中没有包含__construct时，会查找与类同名的方法，如果找到，就认为是构造函数，如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;var&amp;nbsp;$b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;test()&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;b=5;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;addab($c)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;b+$c;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$a-&amp;amp;gt;addab(4);&amp;nbsp;//&amp;nbsp;返回&amp;nbsp;9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、PHP不会自动调用父类的构造函数(不支持构造函数重载)，必须使用parent关键字显式地调用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;employee{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__construct()....
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;Manager&amp;nbsp;extents&amp;nbsp;Employee{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__construct(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;parent::_construct();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’这个子类的父类构造函数调用了！’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然也可以调用与该实例没有任何关系的其它类的构造函数。只需在__construct()前加上类名即可。如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	otherClassName::__construct();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类的主家庭成员：属性、方法、常量、静态成员
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、类的属性：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有两种方法对类的属性赋值或取值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、使用公共作用域public关键词。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、使用__set()和__get()来分别赋值和取值，前者称为设置方法（setter）或修改方法(mutator)，后者称为访问方法(accessor)或获取方法(getter)。建议使用这种方法：优点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	A、可在__set（）统一进行数据验证。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	B、便于统一管理属性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第一：__set()和__get()只对私有属性起作用，对于用public定义的属性，它们两个都懒理搭理，如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	protected&amp;nbsp;$a=9,$b=2,$c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;public&amp;nbsp;$d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__set($n,$v)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;$n&amp;nbsp;=&amp;nbsp;$v+2;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__get($name)&amp;nbsp;{&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;$name+2;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a-&amp;amp;gt;b&amp;nbsp;=5;&amp;nbsp;echo&amp;nbsp;\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\";&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$a-&amp;amp;gt;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实例只对$a,$b,$c的设置会经过__set和__get过滤与返回，对于$d，就不会起作用。如$a-&amp;amp;gt;d=5,再返回还是5。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	第二：__set($n,$v)要带两个参数。而__get($n)只能有一个参数。实例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;private&amp;nbsp;$a=5,$b=6,$c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__set($n,$v)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if($n==’a’&amp;amp;&amp;amp;$n&amp;amp;gt;0)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;$n&amp;nbsp;=&amp;nbsp;$v;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;$n&amp;nbsp;=&amp;nbsp;$v+2;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__get($name)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;$name;&amp;nbsp;//如果改为return&amp;nbsp;$this-&amp;amp;gt;$name&amp;nbsp;+&amp;nbsp;$this-&amp;amp;gt;addab();&amp;nbsp;&amp;nbsp;&amp;nbsp;如调用a的值，实际返回的是a+a+b的值。默认为5+5+6=16。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;addab()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;a&amp;nbsp;+&amp;nbsp;$this-&amp;amp;gt;b;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e=new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e-&amp;amp;gt;a&amp;nbsp;=&amp;nbsp;11;&amp;nbsp;&amp;nbsp;&amp;nbsp;//注意写法：类的内部用$this-&amp;amp;gt;$n即变量的写法，但外部实例要用$e-&amp;amp;gt;a的方式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e-&amp;amp;gt;b&amp;nbsp;=&amp;nbsp;12;&amp;nbsp;&amp;nbsp;&amp;nbsp;//get&amp;nbsp;14
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e-&amp;amp;gt;k&amp;nbsp;=&amp;nbsp;22;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类的属性可自由扩展，如上例的k，不管是否用__set，当一个实例建立起来后，可以用$e-&amp;amp;gt;newProperty&amp;nbsp;=&amp;nbsp;xx;直接来创造一个属性，但不建议这么做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四、类的方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	理解成类当中的函数即可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调用：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、内部调用：可使用$this-&amp;amp;gt;Fanname();或$this-&amp;amp;gt;addab()或test::addab();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、实例化调用时，用$e-&amp;amp;gt;addab();即可。对于在该方法中没有使用$this关键字的，如上例中的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;addab()&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;a+$this-&amp;amp;gt;b;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	改为：&amp;nbsp;function&amp;nbsp;addab()&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;25;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}那在在外部实例调用该方法，也可用“$e::addab();”或“test::addab();”
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	五、类的常量：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果类的属性理解成类中的变量，那么类的常量和变量是不一样的，其定义方法为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;private&amp;nbsp;$a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;const&amp;nbsp;PI&amp;nbsp;=&amp;nbsp;’3.14’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;.....
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//在类中调用上面的常量用两种方法，“$this::PI”,或&amp;nbsp;“类名::PI”,这里就是test::PI,如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;getvalue(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;a&amp;nbsp;*&amp;nbsp;$this::PI;&amp;nbsp;//或$this-&amp;amp;gt;a&amp;nbsp;*&amp;nbsp;test::PI,用this关键字或类名均可，但都要用双冒号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$e-&amp;amp;gt;PI&amp;nbsp;=5;&amp;nbsp;&amp;nbsp;&amp;nbsp;//注意，这里用&amp;nbsp;-&amp;amp;gt;只是创造了一个也是名为PI的属性，而不是改变类中的PI常量的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$e::PI;&amp;nbsp;//这个才是调用类的常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	常量只能用双冒号::来调用。并且不能更改其值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在类外部实例化后调用类常量同样也有两种方法。方法为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	“$e::PI”&amp;nbsp;&amp;nbsp;&amp;nbsp;或&amp;nbsp;“test::PI”，共同点是都要用冒号，不同点是外部不能用this关键字，只能用实例名，但类名::PI是通用的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	六、类的静态成员（静态属性或静态方法）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果需要创建供所有类的实例共享的字段或方法。就得用静态成员。有两个特征：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、静态成员是********者，它让脚本上的所有该类的实例调用，但不能借助类的特定实例名调用，而是在类的外部，统一使用“类名::$成员名”的方式调用。而类的内部则统一使用&amp;nbsp;“self::$成员名”来调用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、当每一次新创建实例时，静态成员会从上次创建的实例最后值开始重新计算，而不是类中初始的值开始计算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、对于用public定义的静态成员，可以在外部更改它的值。private等则不行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;static&amp;nbsp;$v&amp;nbsp;=&amp;nbsp;0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__construct(){&amp;nbsp;&amp;nbsp;self::$v++;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;static&amp;nbsp;function&amp;nbsp;getV(){&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;self::$v;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;test::getV();&amp;nbsp;//&amp;nbsp;返回&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$b&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;test::getV();&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;返回&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	test::$v=8;&amp;nbsp;&amp;nbsp;&amp;nbsp;//由于public定义的成员，改变静态成员的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$c&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;test::getV();&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;返回&amp;nbsp;9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	七、关键字：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（一）this关键字：用于类的内部指代类的本身。来访问属性或方法或常量，如$this-&amp;amp;gt;属性名或方法名。$this::常量名。this还可以用在该类的子类中，来指代本身的属性或方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（二）双冒号“::”关键字：用于调用常量、静态成员。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（三）self关键字:在类的内部与双冒号配合调用静态成员，如&amp;nbsp;self::$staticVar.，在类的内部，不能用$this来调用静态成员。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（四）__toString()：在类中使用__toString()，用于将类转成字串并打印类，用处不大：如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;$p;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;__toString(){&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;var_export($this,TRUE);&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a=new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$a;&amp;nbsp;//输出：test::__set_state(array(&amp;nbsp;’p’&amp;nbsp;=&amp;amp;gt;&amp;nbsp;NULL,&amp;nbsp;))，或写成：echo&amp;nbsp;$a-&amp;amp;gt;__toString();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（五）__clone()&amp;nbsp;：当克隆对象时，这个关键字才会发生作用，用于更改克隆时某些值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（六）__call()：方法重载，参下面示例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;cB{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;__call($method,$n){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;if($method==’showVarType’){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(is_numeric($n[0])){&amp;nbsp;&amp;nbsp;&amp;nbsp;//不能用$n。要用$n[0];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;displayNum();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else&amp;nbsp;if&amp;nbsp;(is_array($n[0])){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;displayArr();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;displayOther();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;displayNum()&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’&amp;amp;lt;h3&amp;amp;gt;这是数字!&amp;amp;lt;/h3&amp;amp;gt;’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;displayArr()&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’&amp;amp;lt;h3&amp;amp;gt;这是数组!&amp;amp;lt;/h3&amp;amp;gt;’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;displayOther()&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’&amp;amp;lt;h3&amp;amp;gt;不是数组也不是数字!&amp;amp;lt;/h3&amp;amp;gt;’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$x=’a’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$y=array(’a’,’b’);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$b=new&amp;nbsp;cB;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$b-&amp;amp;gt;showVarType($x);&amp;nbsp;//不是数组也不是数字
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$b-&amp;amp;gt;showVarType($y);&amp;nbsp;//这是数组
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，不能在类中定义showVarType（）方法，否则代码不能用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（七）extends:继承:&amp;nbsp;如class&amp;nbsp;a{}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;class&amp;nbsp;b&amp;nbsp;extends&amp;nbsp;a{}&amp;nbsp;类b继承了类a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附：记忆：以后统一在调用方法或属性时用&amp;nbsp;\"-&amp;amp;gt;&amp;nbsp;\",调用常量则用双冒号“::”，不会搞晕。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	八、方法和属性的作用域：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	共有6种：public(默认，可省略，也等同于php6的var声明),private（私有，也不能由子类使用），protected(私有，但可由子类使用)&amp;nbsp;，abstract(抽象，参下文)，final(阻止在子类中覆盖—也称重载，阻止被继承，用于修饰类名及方法，如final&amp;nbsp;class&amp;nbsp;test{&amp;nbsp;final&amp;nbsp;function&amp;nbsp;fun(){}}&amp;nbsp;，但不能用于属性),static(静态)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	九：抽象类和抽象方法（abstract——注意：没有所谓抽象属性）:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	抽象可以理解成父类为子类定义了一个模板或基类。作用域abstract只在父类中声明，但在子类中实现。注意事项：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、抽象类不能被实例化，只能被子类（具体类）继承后实现。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、抽象类必须在其子类中实现该抽象类的所有抽象方法。否则会出错。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、在抽象方法中，只是声明，但不能具体实现：如abstract&amp;nbsp;function&amp;nbsp;gettow(){&amp;nbsp;return&amp;nbsp;$this-&amp;amp;gt;p;&amp;nbsp;}是错的，只能声明这个方法：abstract&amp;nbsp;function&amp;nbsp;gettow();（连方括号{}都不要出现）,抽象方法和抽象类主要用于复杂的类层次关系中。该层次关系需要确保每一个子类都包含并重载了某些特定的方法。这也可以通过接口实现
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、属性不能被命名为抽象属性，如abstract&amp;nbsp;$p&amp;nbsp;=&amp;nbsp;5是错的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、只有声明为抽象的类可以声明抽象方法，但如果方法声明为抽象，就不能具体实现。如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	abstract&amp;nbsp;class&amp;nbsp;Employee
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;abstract&amp;nbsp;function&amp;nbsp;a(...);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;abstract&amp;nbsp;function&amp;nbsp;b(...);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以后再对这个父类扩展，组成各种子类（如经理，员工，出纳）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、抽象类中，如果要实现具体的方法，不能声明为抽象。这样可能实际意义更大。可以把几个类库****同的部分提取到抽象类中，其它的类继承抽象类即可。如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	abstract&amp;nbsp;class&amp;nbsp;BaseShop{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Const&amp;nbsp;TAX=0.06;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;在抽象类中定义常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;buy($gid)&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;如果定义为抽象方法abstract&amp;nbsp;function&amp;nbsp;buy（）就不能在这里实现主体。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo(’你购买了ID为&amp;nbsp;:’.$gid.’的商品’);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;sell($gid)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo(’你卖了ID为&amp;nbsp;:’.$gid.’的商品’);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;view($gid)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo(’你查看了ID为&amp;nbsp;:’.$gid.’的商品’);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;BallShop&amp;nbsp;extends&amp;nbsp;BaseShop{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;$itme_id&amp;nbsp;=&amp;nbsp;null;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;__construct()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;itme_id&amp;nbsp;=&amp;nbsp;2314;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;open()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;sell($this-&amp;amp;gt;itme_id);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;function&amp;nbsp;getTax()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;printf(’&amp;amp;lt;h3&amp;amp;gt;平均税率是&amp;nbsp;%d%%。&amp;amp;lt;/h3&amp;amp;gt;’,$this::TAX*100);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$s&amp;nbsp;=&amp;nbsp;new&amp;nbsp;BallShop;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$s-&amp;amp;gt;open();&amp;nbsp;//你卖了ID为&amp;nbsp;:2314的商品
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$shop-&amp;amp;gt;getTax();&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十：类型提示：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，类型提示功能只能用于参数为对象的提示，而无法用于为整数，字串，浮点等类型提示。有些类的方法需要传入的参数为所期望的对象类型，可以用下面的方法达到强制实施此替则。要达到类型提示，只要在方法的对象型参数前加一个已存在的类的名称，如：function&amp;nbsp;funname(OtherClassName&amp;nbsp;$otherclassINSName,$c....)，注意，OtherClassName必须是存在的类。如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;em{&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;$k=56;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;__construct()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$this-&amp;amp;gt;addab(new&amp;nbsp;em(),2);&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	function&amp;nbsp;addab(em&amp;nbsp;$j,$c)&amp;nbsp;&amp;nbsp;&amp;nbsp;//这个方法，即可以在内部调用，也可以在外部调用。只要作用域许可。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$j-&amp;amp;gt;k+$c;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$b&amp;nbsp;=&amp;nbsp;new&amp;nbsp;em();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	echo&amp;nbsp;$a-&amp;amp;gt;addab($b,2);&amp;nbsp;//或&amp;nbsp;$a-&amp;amp;gt;addab(new&amp;nbsp;em(),2);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十一、类的管理：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1、instanceof关键字：用于分析一个对象是否是某一个类的实例或子类或是实现了某个特定的接口：如下例，但要注意：&amp;nbsp;类名没有任何引号等定界符，否则会出错。如test不能用’test’
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test2{}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;test{}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;testChilern&amp;nbsp;Extends&amp;nbsp;test{}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test2();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$m&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$i&amp;nbsp;=&amp;nbsp;($m&amp;nbsp;instanceof&amp;nbsp;test);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if($i)echo&amp;nbsp;’$m是类test的实例！&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;’;&amp;nbsp;//&amp;nbsp;get&amp;nbsp;this&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	switch&amp;nbsp;($a&amp;nbsp;instanceof&amp;nbsp;test){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;case&amp;nbsp;true&amp;nbsp;:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’YES&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;’;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;case&amp;nbsp;false&amp;nbsp;:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;’No&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;’;&amp;nbsp;&amp;nbsp;&amp;nbsp;//get&amp;nbsp;this&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;break;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$d=new&amp;nbsp;testChilern();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if($d&amp;nbsp;instanceof&amp;nbsp;test)echo&amp;nbsp;’$d是类test的子类！&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;’;&amp;nbsp;//&amp;nbsp;get&amp;nbsp;this&amp;nbsp;value
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2、确定类是否存在：boolean&amp;nbsp;class_exists(string&amp;nbsp;class_name):&amp;nbsp;class_exists(’test’);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、返回类名：string&amp;nbsp;get_class(object)，成功时返回实例的类名，失败则返回FALSE：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$a&amp;nbsp;=&amp;nbsp;new&amp;nbsp;test2();&amp;nbsp;echo&amp;nbsp;get_class($a);&amp;nbsp;&amp;nbsp;&amp;nbsp;//返回&amp;nbsp;test2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4、了解类的公用属性：array&amp;nbsp;get_class_vars(’className’)&amp;nbsp;,返回关键数组：包含所有定义的public属性名及其相应的值。这个函数不能用实例名做变量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5、返回类方法：get_class_methods(’test’);&amp;nbsp;//或：&amp;nbsp;get_class_methods($a);可用实例名做参数，返回包括构造函数在内的所有非私有方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6、print_r(get_declared_classes())了解当前PHP版本中所有的类名。PHP5有149个。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7、get_object_vars($a)返回实例中所有公用的属性及其值的关联数组。注意它和get_class_vars()的区别：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/*&amp;nbsp;(1)&amp;nbsp;get_object_vars($a)是用实例名做参数，而get_class_vars(’test’)是用类名做参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;(2)&amp;nbsp;get_object_vars($a)获得的属性值是实例运行后的值，而get_class_vars(’test’)获得的属性值是类中的初始定义。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;nbsp;(3)&amp;nbsp;两者均返回关联数组，且均对未赋值的属性返回NULL的值。如类test中有定义了public&amp;nbsp;$q;则返回Array&amp;nbsp;(&amp;nbsp;[v]&amp;nbsp;=&amp;amp;gt;&amp;nbsp;5&amp;nbsp;[q]=&amp;amp;gt;)&amp;nbsp;,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8、返回父类的名称：get_parent_class($b);//或get_parent_class(’test2’);&amp;nbsp;返回test
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9、确定接口是否存在：boolean&amp;nbsp;interface_exists($string&amp;nbsp;interface[,boolean&amp;nbsp;autoload])
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10、确定对象类型：&amp;nbsp;boolean&amp;nbsp;is_a($obj,’className’)，当$obj属于CLASSNAME类时，或属于其子类时，返回TRUE，如果$obj与class类型无关则返回FALSE。如：is_a($a,’test’)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11、确定是否是某类的子对象：当$b是继承自TEST类时，返回TRUE，否则FALSE。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-06/1338950626.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>游客</author-c>
+  <uid-c>-1</uid-c>
+  <date-c>2012-07-03+22%3A49%3A31</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

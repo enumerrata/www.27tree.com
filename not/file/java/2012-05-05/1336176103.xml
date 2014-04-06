@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>​java泛型什么是泛型？</title>
+<content>&amp;lt;p&amp;gt;
+	java泛型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	什么是泛型？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型（Generic&amp;nbsp;type&amp;nbsp;或者&amp;nbsp;generics）是对&amp;nbsp;Java&amp;nbsp;语言的类型系统的一种扩展，以支持创建可以按类型进行参数化的类。可以把类型参数看作是使用参数化类型时指定的类型的一个占位符，就像方法的形式参数是运行时传递的值的占位符一样。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以在集合框架（Collection&amp;nbsp;framework）中看到泛型的动机。例如，Map&amp;nbsp;类允许您向一个&amp;nbsp;Map&amp;nbsp;添加任意类的对象，即使最常见的情况是在给定映射（map）中保存某个特定类型（比如&amp;nbsp;String）的对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因为&amp;nbsp;Map.get()&amp;nbsp;被定义为返回&amp;nbsp;Object，所以一般必须将&amp;nbsp;Map.get()&amp;nbsp;的结果强制类型转换为期望的类型，如下面的代码所示：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;nbsp;m&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	m.put(\"key\",&amp;nbsp;\"blarg\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;(String)&amp;nbsp;m.get(\"key\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要让程序通过编译，必须将&amp;nbsp;get()&amp;nbsp;的结果强制类型转换为&amp;nbsp;String，并且希望结果真的是一个&amp;nbsp;String。但是有可能某人已经在该映射中保存了不是&amp;nbsp;String&amp;nbsp;的东西，这样的话，上面的代码将会抛出&amp;nbsp;ClassCastException。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	理想情况下，您可能会得出这样一个观点，即&amp;nbsp;m&amp;nbsp;是一个&amp;nbsp;Map，它将&amp;nbsp;String&amp;nbsp;键映射到&amp;nbsp;String&amp;nbsp;值。这可以让您消除代码中的强制类型转换，同时获得一个附加的类型检查层，该检查层可以防止有人将错误类型的键或值保存在集合中。这就是泛型所做的工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型的好处
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;语言中引入泛型是一个较大的功能增强。不仅语言、类型系统和编译器有了较大的变化，以支持泛型，而且类库也进行了大翻修，所以许多重要的类，比如集合框架，都已经成为泛型化的了。这带来了很多好处：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型安全。&amp;nbsp;泛型的主要目标是提高&amp;nbsp;Java&amp;nbsp;程序的类型安全。通过知道使用泛型定义的变量的类型限制，编译器可以在一个高得多的程度上验证类型假设。没有泛型，这些假设就只存在于程序员的头脑中（或者如果幸运的话，还存在于代码注释中）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java&amp;nbsp;程序中的一种流行技术是定义这样的集合，即它的元素或键是公共类型的，比如“String&amp;nbsp;列表”或者“String&amp;nbsp;到&amp;nbsp;String&amp;nbsp;的映射”。通过在变量声明中捕获这一附加的类型信息，泛型允许编译器实施这些附加的类型约束。类型错误现在就可以在编译时被捕获了，而不是在运行时当作&amp;nbsp;ClassCastException&amp;nbsp;展示出来。将类型检查从运行时挪到编译时有助于您更容易找到错误，并可提高程序的可靠性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	消除强制类型转换。&amp;nbsp;泛型的一个附带好处是，消除源代码中的许多强制类型转换。这使得代码更加可读，并且减少了出错机会。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	尽管减少强制类型转换可以降低使用泛型类的代码的罗嗦程度，但是声明泛型变量会带来相应的罗嗦。比较下面两个代码例子。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该代码不使用泛型：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	li.put(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Integer&amp;nbsp;i&amp;nbsp;=&amp;nbsp;(Integer)&amp;nbsp;li.get(0);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该代码使用泛型：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	li.put(new&amp;nbsp;Integer(3));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Integer&amp;nbsp;i&amp;nbsp;=&amp;nbsp;li.get(0);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在简单的程序中使用一次泛型变量不会降低罗嗦程度。但是对于多次使用泛型变量的大型程序来说，则可以累积起来降低罗嗦程度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	潜在的性能收益。&amp;nbsp;泛型为较大的优化带来可能。在泛型的初始实现中，编译器将强制类型转换（没有泛型的话，程序员会指定这些强制类型转换）插入生成的字节码中。但是更多类型信息可用于编译器这一事实，为未来版本的&amp;nbsp;JVM&amp;nbsp;的优化带来可能。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于泛型的实现方式，支持泛型（几乎）不需要&amp;nbsp;JVM&amp;nbsp;或类文件更改。所有工作都在编译器中完成，编译器生成类似于没有泛型（和强制类型转换）时所写的代码，只是更能确保类型安全而已。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型用法的例子
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型的许多最佳例子都来自集合框架，因为泛型让您在保存在集合中的元素上指定类型约束。考虑这个使用&amp;nbsp;Map&amp;nbsp;类的例子，其中涉及一定程度的优化，即&amp;nbsp;Map.get()&amp;nbsp;返回的结果将确实是一个&amp;nbsp;String：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;nbsp;m&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	m.put(\"key\",&amp;nbsp;\"blarg\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;(String)&amp;nbsp;m.get(\"key\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果有人已经在映射中放置了不是&amp;nbsp;String&amp;nbsp;的其他东西，上面的代码将会抛出&amp;nbsp;ClassCastException。泛型允许您表达这样的类型约束，即&amp;nbsp;m&amp;nbsp;是一个将&amp;nbsp;String&amp;nbsp;键映射到&amp;nbsp;String&amp;nbsp;值的&amp;nbsp;Map。这可以消除代码中的强制类型转换，同时获得一个附加的类型检查层，这个检查层可以防止有人将错误类型的键或值保存在集合中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面的代码示例展示了&amp;nbsp;JDK&amp;nbsp;5.0&amp;nbsp;中集合框架中的&amp;nbsp;Map&amp;nbsp;接口的定义的一部分：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;interface&amp;nbsp;Map&amp;amp;lt;K,&amp;nbsp;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;put(K&amp;nbsp;key,&amp;nbsp;V&amp;nbsp;value);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;V&amp;nbsp;get(K&amp;nbsp;key);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意该接口的两个附加物：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型参数&amp;nbsp;K&amp;nbsp;和&amp;nbsp;V&amp;nbsp;在类级别的规格说明，表示在声明一个&amp;nbsp;Map&amp;nbsp;类型的变量时指定的类型的占位符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;get()、put()&amp;nbsp;和其他方法的方法签名中使用的&amp;nbsp;K&amp;nbsp;和&amp;nbsp;V。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了赢得使用泛型的好处，必须在定义或实例化&amp;nbsp;Map&amp;nbsp;类型的变量时为&amp;nbsp;K&amp;nbsp;和&amp;nbsp;V&amp;nbsp;提供具体的值。以一种相对直观的方式做这件事：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;amp;lt;String,&amp;nbsp;String&amp;amp;gt;&amp;nbsp;m&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap&amp;amp;lt;String,&amp;nbsp;String&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	m.put(\"key\",&amp;nbsp;\"blarg\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;m.get(\"key\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当使用&amp;nbsp;Map&amp;nbsp;的泛型化版本时，您不再需要将&amp;nbsp;Map.get()&amp;nbsp;的结果强制类型转换为&amp;nbsp;String，因为编译器知道&amp;nbsp;get()&amp;nbsp;将返回一个&amp;nbsp;String。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在使用泛型的版本中并没有减少键盘录入；实际上，比使用强制类型转换的版本需要做更多键入。使用泛型只是带来了附加的类型安全。因为编译器知道关于您将放进&amp;nbsp;Map&amp;nbsp;中的键和值的类型的更多信息，所以类型检查从执行时挪到了编译时，这会提高可靠性并加快开发速度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	向后兼容
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;Java&amp;nbsp;语言中引入泛型的一个重要目标就是维护向后兼容。尽管&amp;nbsp;JDK&amp;nbsp;5.0&amp;nbsp;的标准类库中的许多类，比如集合框架，都已经泛型化了，但是使用集合类（比如&amp;nbsp;HashMap&amp;nbsp;和&amp;nbsp;ArrayList）的现有代码将继续不加修改地在&amp;nbsp;JDK&amp;nbsp;5.0&amp;nbsp;中工作。当然，没有利用泛型的现有代码将不会赢得泛型的类型安全好处。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二&amp;nbsp;泛型基础
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型参数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在定义泛型类或声明泛型类的变量时，使用尖括号来指定形式类型参数。形式类型参数与实际类型参数之间的关系类似于形式方法参数与实际方法参数之间的关系，只是类型参数表示类型，而不是表示值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型类中的类型参数几乎可以用于任何可以使用类名的地方。例如，下面是&amp;nbsp;java.util.Map&amp;nbsp;接口的定义的摘录：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;interface&amp;nbsp;Map&amp;amp;lt;K,&amp;nbsp;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;put(K&amp;nbsp;key,&amp;nbsp;V&amp;nbsp;value);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;V&amp;nbsp;get(K&amp;nbsp;key);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;nbsp;接口是由两个类型参数化的，这两个类型是键类型&amp;nbsp;K&amp;nbsp;和值类型&amp;nbsp;V。（不使用泛型）将会接受或返回&amp;nbsp;Object&amp;nbsp;的方法现在在它们的方法签名中使用&amp;nbsp;K&amp;nbsp;或&amp;nbsp;V，指示附加的类型约束位于&amp;nbsp;Map&amp;nbsp;的规格说明之下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当声明或者实例化一个泛型的对象时，必须指定类型参数的值：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Map&amp;amp;lt;String,&amp;nbsp;String&amp;amp;gt;&amp;nbsp;map&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap&amp;amp;lt;String,&amp;nbsp;String&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，在本例中，必须指定两次类型参数。一次是在声明变量&amp;nbsp;map&amp;nbsp;的类型时，另一次是在选择&amp;nbsp;HashMap&amp;nbsp;类的参数化以便可以实例化正确类型的一个实例时。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器在遇到一个&amp;nbsp;Map&amp;amp;lt;String,&amp;nbsp;String&amp;amp;gt;&amp;nbsp;类型的变量时，知道&amp;nbsp;K&amp;nbsp;和&amp;nbsp;V&amp;nbsp;现在被绑定为&amp;nbsp;String，因此它知道在这样的变量上调用&amp;nbsp;Map.get()&amp;nbsp;将会得到&amp;nbsp;String&amp;nbsp;类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除了异常类型、枚举或匿名内部类以外，任何类都可以具有类型参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	命名类型参数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	推荐的命名约定是使用大写的单个字母名称作为类型参数。这与&amp;nbsp;C++&amp;nbsp;约定有所不同（参阅&amp;nbsp;附录&amp;nbsp;A：与&amp;nbsp;C++&amp;nbsp;模板的比较），并反映了大多数泛型类将具有少量类型参数的假定。对于常见的泛型模式，推荐的名称是：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	K&amp;nbsp;——&amp;nbsp;键，比如映射的键。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	V&amp;nbsp;——&amp;nbsp;值，比如&amp;nbsp;List&amp;nbsp;和&amp;nbsp;Set&amp;nbsp;的内容，或者&amp;nbsp;Map&amp;nbsp;中的值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	E&amp;nbsp;——&amp;nbsp;异常类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	T&amp;nbsp;——&amp;nbsp;泛型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型不是协变的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	关于泛型的混淆，一个常见的来源就是假设它们像数组一样是协变的。其实它们不是协变的。List&amp;amp;lt;Object&amp;amp;gt;&amp;nbsp;不是&amp;nbsp;List&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;的父类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果&amp;nbsp;A&amp;nbsp;扩展&amp;nbsp;B，那么&amp;nbsp;A&amp;nbsp;的数组也是&amp;nbsp;B&amp;nbsp;的数组，并且完全可以在需要&amp;nbsp;B[]&amp;nbsp;的地方使用&amp;nbsp;A[]：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Integer[]&amp;nbsp;intArray&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Integer[10];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Number[]&amp;nbsp;numberArray&amp;nbsp;=&amp;nbsp;intArray;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码是有效的，因为一个&amp;nbsp;Integer&amp;nbsp;是&amp;nbsp;一个&amp;nbsp;Number，因而一个&amp;nbsp;Integer&amp;nbsp;数组是&amp;nbsp;一个&amp;nbsp;Number&amp;nbsp;数组。但是对于泛型来说则不然。下面的代码是无效的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;intList&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Number&amp;amp;gt;&amp;nbsp;numberList&amp;nbsp;=&amp;nbsp;intList;&amp;nbsp;//&amp;nbsp;invalid
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最初，大多数&amp;nbsp;Java&amp;nbsp;程序员觉得这缺少协变很烦人，或者甚至是“坏的（broken）”，但是之所以这样有一个很好的原因。如果可以将&amp;nbsp;List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;赋给&amp;nbsp;List&amp;amp;lt;Number&amp;amp;gt;，下面的代码就会违背泛型应该提供的类型安全：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;intList&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Number&amp;amp;gt;&amp;nbsp;numberList&amp;nbsp;=&amp;nbsp;intList;&amp;nbsp;//&amp;nbsp;invalid
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	numberList.add(new&amp;nbsp;Float(3.1415));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	因为&amp;nbsp;intList&amp;nbsp;和&amp;nbsp;numberList&amp;nbsp;都是有别名的，如果允许的话，上面的代码就会让您将不是&amp;nbsp;Integers&amp;nbsp;的东西放进&amp;nbsp;intList&amp;nbsp;中。但是，正如下一屏将会看到的，您有一个更加灵活的方式来定义泛型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型通配符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假设您具有该方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;printList(List&amp;nbsp;l)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(Object&amp;nbsp;o&amp;nbsp;:&amp;nbsp;l)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(o);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面的代码在&amp;nbsp;JDK&amp;nbsp;5.0&amp;nbsp;上编译通过，但是如果试图用&amp;nbsp;List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;调用它，则会得到警告。出现警告是因为，您将泛型（List&amp;amp;lt;Integer&amp;amp;gt;）传递给一个只承诺将它当作&amp;nbsp;List（所谓的原始类型）的方法，这将破坏使用泛型的类型安全。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果试图编写像下面这样的方法，那么将会怎么样？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;printList(List&amp;amp;lt;Object&amp;amp;gt;&amp;nbsp;l)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(Object&amp;nbsp;o&amp;nbsp;:&amp;nbsp;l)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(o);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	它仍然不会通过编译，因为一个&amp;nbsp;List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;不是&amp;nbsp;一个&amp;nbsp;List&amp;amp;lt;Object&amp;amp;gt;（正如前一屏&amp;nbsp;泛型不是协变的&amp;nbsp;中所学的）。这才真正烦人&amp;nbsp;——&amp;nbsp;现在您的泛型版本还没有普通的非泛型版本有用！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	解决方案是使用类型通配符：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;printList(List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;l)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(Object&amp;nbsp;o&amp;nbsp;:&amp;nbsp;l)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(o);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	上面代码中的问号是一个类型通配符。它读作“问号”。List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;是任何泛型&amp;nbsp;List&amp;nbsp;的父类型，所以您完全可以将&amp;nbsp;List&amp;amp;lt;Object&amp;amp;gt;、List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;或&amp;nbsp;List&amp;amp;lt;List&amp;amp;lt;List&amp;amp;lt;Flutzpah&amp;amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;nbsp;传递给&amp;nbsp;printList()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型通配符的作用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	前一屏&amp;nbsp;类型通配符&amp;nbsp;中引入了类型通配符，这让您可以声明&amp;nbsp;List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;类型的变量。您可以对这样的&amp;nbsp;List&amp;nbsp;做什么呢？非常方便，可以从中检索元素，但是不能添加元素。原因不是编译器知道哪些方法修改列表哪些方法不修改列表，而是（大多数）变化的方法比不变化的方法需要更多的类型信息。下面的代码则工作得很好：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	li.add(new&amp;nbsp;Integer(42));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;lu&amp;nbsp;=&amp;nbsp;li;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(lu.get(0));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为什么该代码能工作呢？对于&amp;nbsp;lu，编译器一点都不知道&amp;nbsp;List&amp;nbsp;的类型参数的值。但是编译器比较聪明，它可以做一些类型推理。在本例中，它推断未知的类型参数必须扩展&amp;nbsp;Object。（这个特定的推理没有太大的跳跃，但是编译器可以作出一些非常令人佩服的类型推理，后面就会看到（在&amp;nbsp;底层细节&amp;nbsp;一节中）。所以它让您调用&amp;nbsp;List.get()&amp;nbsp;并推断返回类型为&amp;nbsp;Object。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另一方面，下面的代码不能工作：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	li.add(new&amp;nbsp;Integer(42));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;lu&amp;nbsp;=&amp;nbsp;li;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	lu.add(new&amp;nbsp;Integer(43));&amp;nbsp;//&amp;nbsp;error
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在本例中，对于&amp;nbsp;lu，编译器不能对&amp;nbsp;List&amp;nbsp;的类型参数作出足够严密的推理，以确定将&amp;nbsp;Integer&amp;nbsp;传递给&amp;nbsp;List.add()&amp;nbsp;是类型安全的。所以编译器将不允许您这么做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以免您仍然认为编译器知道哪些方法更改列表的内容哪些不更改列表内容，请注意下面的代码将能工作，因为它不依赖于编译器必须知道关于&amp;nbsp;lu&amp;nbsp;的类型参数的任何信息：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;Integer&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	li.add(new&amp;nbsp;Integer(42));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;lu&amp;nbsp;=&amp;nbsp;li;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	lu.clear();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（在&amp;nbsp;类型参数&amp;nbsp;一节中）您已经看到，通过在类的定义中添加一个形式类型参数列表，可以将类泛型化。方法也可以被泛型化，不管它们定义在其中的类是不是泛型化的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型类在多个方法签名间实施类型约束。在&amp;nbsp;List&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;中，类型参数&amp;nbsp;V&amp;nbsp;出现在&amp;nbsp;get()、add()、contains()&amp;nbsp;等方法的签名中。当创建一个&amp;nbsp;Map&amp;amp;lt;K,&amp;nbsp;V&amp;amp;gt;&amp;nbsp;类型的变量时，您就在方法之间宣称一个类型约束。您传递给&amp;nbsp;add()&amp;nbsp;的值将与&amp;nbsp;get()&amp;nbsp;返回的值的类型相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类似地，之所以声明泛型方法，一般是因为您想要在该方法的多个参数之间宣称一个类型约束。例如，下面代码中的&amp;nbsp;ifThenElse()&amp;nbsp;方法，根据它的第一个参数的布尔值，它将返回第二个或第三个参数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;T&amp;nbsp;ifThenElse(boolean&amp;nbsp;b,&amp;nbsp;T&amp;nbsp;first,&amp;nbsp;T&amp;nbsp;second)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;b&amp;nbsp;?&amp;nbsp;first&amp;nbsp;:&amp;nbsp;second;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，您可以调用&amp;nbsp;ifThenElse()，而不用显式地告诉编译器，您想要&amp;nbsp;T&amp;nbsp;的什么值。编译器不必显式地被告知&amp;nbsp;T&amp;nbsp;将具有什么值；它只知道这些值都必须相同。编译器允许您调用下面的代码，因为编译器可以使用类型推理来推断出，替代&amp;nbsp;T&amp;nbsp;的&amp;nbsp;String&amp;nbsp;满足所有的类型约束：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;ifThenElse(b,&amp;nbsp;\"a\",&amp;nbsp;\"b\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类似地，您可以调用：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Integer&amp;nbsp;i&amp;nbsp;=&amp;nbsp;ifThenElse(b,&amp;nbsp;new&amp;nbsp;Integer(1),&amp;nbsp;new&amp;nbsp;Integer(2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是，编译器不允许下面的代码，因为没有类型会满足所需的类型约束：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;ifThenElse(b,&amp;nbsp;\"pi\",&amp;nbsp;new&amp;nbsp;Float(3.14));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为什么您选择使用泛型方法，而不是将类型&amp;nbsp;T&amp;nbsp;添加到类定义呢？（至少）有两种情况应该这样做：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当泛型方法是静态的时，这种情况下不能使用类类型参数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当&amp;nbsp;T&amp;nbsp;上的类型约束对于方法真正是局部的时，这意味着没有在相同类的另一个&amp;nbsp;方法签名中使用相同&amp;nbsp;类型&amp;nbsp;T&amp;nbsp;的约束。通过使得泛型方法的类型参数对于方法是局部的，可以简化封闭类型的签名。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有限制类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在前一屏&amp;nbsp;泛型方法&amp;nbsp;的例子中，类型参数&amp;nbsp;V&amp;nbsp;是无约束的或无限制的&amp;nbsp;类型。有时在还没有完全指定类型参数时，需要对类型参数指定附加的约束。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	考虑例子&amp;nbsp;Matrix&amp;nbsp;类，它使用类型参数&amp;nbsp;V，该参数由&amp;nbsp;Number&amp;nbsp;类来限制：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Matrix&amp;amp;lt;V&amp;nbsp;extends&amp;nbsp;Number&amp;amp;gt;&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器允许您创建&amp;nbsp;Matrix&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;或&amp;nbsp;Matrix&amp;amp;lt;Float&amp;amp;gt;&amp;nbsp;类型的变量，但是如果您试图定义&amp;nbsp;Matrix&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;类型的变量，则会出现错误。类型参数&amp;nbsp;V&amp;nbsp;被判断为由&amp;nbsp;Number&amp;nbsp;限制&amp;nbsp;。在没有类型限制时，假设类型参数由&amp;nbsp;Object&amp;nbsp;限制。这就是为什么前一屏&amp;nbsp;泛型方法&amp;nbsp;中的例子，允许&amp;nbsp;List.get()&amp;nbsp;在&amp;nbsp;List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;上调用时返回&amp;nbsp;Object，即使编译器不知道类型参数&amp;nbsp;V&amp;nbsp;的类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三&amp;nbsp;一个简单的泛型类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编写基本的容器类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此时，您可以开始编写简单的泛型类了。到目前为止，泛型类最常见的用例是容器类（比如集合框架）或者值持有者类（比如&amp;nbsp;WeakReference&amp;nbsp;或&amp;nbsp;ThreadLocal）。我们来编写一个类，它类似于&amp;nbsp;List，充当一个容器。其中，我们使用泛型来表示这样一个约束，即&amp;nbsp;Lhist&amp;nbsp;的所有元素将具有相同类型。为了实现起来简单，Lhist&amp;nbsp;使用一个固定大小的数组来保存值，并且不接受&amp;nbsp;null&amp;nbsp;值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Lhist&amp;nbsp;类将具有一个类型参数&amp;nbsp;V（该参数是&amp;nbsp;Lhist&amp;nbsp;中的值的类型），并将具有以下方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Lhist&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;Lhist(int&amp;nbsp;capacity)&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;int&amp;nbsp;size()&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;add(V&amp;nbsp;value)&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;remove(V&amp;nbsp;value)&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;V&amp;nbsp;get(int&amp;nbsp;index)&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要实例化&amp;nbsp;Lhist，只要在声明时指定类型参数和想要的容量：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Lhist&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;stringList&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Lhist&amp;amp;lt;String&amp;amp;gt;(10);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现构造函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在实现&amp;nbsp;Lhist&amp;nbsp;类时，您将会遇到的第一个拦路石是实现构造函数。您可能会像下面这样实现它：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Lhist&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;V[]&amp;nbsp;array;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;Lhist(int&amp;nbsp;capacity)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array&amp;nbsp;=&amp;nbsp;new&amp;nbsp;V[capacity];&amp;nbsp;//&amp;nbsp;illegal
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这似乎是分配后备数组最自然的一种方式，但是不幸的是，您不能这样做。具体原因很复杂，当学习到&amp;nbsp;底层细节&amp;nbsp;一节中的“擦除”主题时，您就会明白。分配后备数组的实现方式很古怪且违反直觉。下面是构造函数的一种可能的实现（该实现使用集合类所采用的方法）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Lhist&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;V[]&amp;nbsp;array;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;Lhist(int&amp;nbsp;capacity)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array&amp;nbsp;=&amp;nbsp;(V[])&amp;nbsp;new&amp;nbsp;Object[capacity];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另外，也可以使用反射来实例化数组。但是这样做需要给构造函数传递一个附加的参数&amp;nbsp;——&amp;nbsp;一个类常量，比如&amp;nbsp;Foo.class。后面在&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;一节中将讨论类常量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现方法
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现&amp;nbsp;Lhist&amp;nbsp;的方法要容易得多。下面是&amp;nbsp;Lhist&amp;nbsp;类的完整实现：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Lhist&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;V[]&amp;nbsp;array;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;int&amp;nbsp;size;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;Lhist(int&amp;nbsp;capacity)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array&amp;nbsp;=&amp;nbsp;(V[])&amp;nbsp;new&amp;nbsp;Object[capacity];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;add(V&amp;nbsp;value)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(size&amp;nbsp;==&amp;nbsp;array.length)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	throw&amp;nbsp;new&amp;nbsp;IndexOutOfBoundsException(Integer.toString(size));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else&amp;nbsp;if&amp;nbsp;(value&amp;nbsp;==&amp;nbsp;null)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	throw&amp;nbsp;new&amp;nbsp;NullPointerException();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array[size++]&amp;nbsp;=&amp;nbsp;value;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;void&amp;nbsp;remove(V&amp;nbsp;value)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;removalCount&amp;nbsp;=&amp;nbsp;0;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(int&amp;nbsp;i=0;&amp;nbsp;i&amp;amp;lt;size;&amp;nbsp;i++)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(array[i].equals(value))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	++removalCount;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else&amp;nbsp;if&amp;nbsp;(removalCount&amp;nbsp;&amp;amp;gt;&amp;nbsp;0)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array[i-removalCount]&amp;nbsp;=&amp;nbsp;array[i];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	array[i]&amp;nbsp;=&amp;nbsp;null;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	size&amp;nbsp;-=&amp;nbsp;removalCount;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;int&amp;nbsp;size()&amp;nbsp;{&amp;nbsp;return&amp;nbsp;size;&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;V&amp;nbsp;get(int&amp;nbsp;i)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(i&amp;nbsp;&amp;amp;gt;=&amp;nbsp;size)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	throw&amp;nbsp;new&amp;nbsp;IndexOutOfBoundsException(Integer.toString(i));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;array[i];
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注意，您在将会接受或返回&amp;nbsp;V&amp;nbsp;的方法中使用了形式类型参数&amp;nbsp;V，但是您一点也不知道&amp;nbsp;V&amp;nbsp;具有什么样的方法或域，因为这些对泛型代码是不可知的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用&amp;nbsp;Lhist&amp;nbsp;类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	使用&amp;nbsp;Lhist&amp;nbsp;类很容易。要定义一个整数&amp;nbsp;Lhist，只需要在声明和构造函数中为类型参数提供一个实际值即可：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Lhist&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;li&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Lhist&amp;amp;lt;Integer&amp;amp;gt;(30);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器知道，li.get()&amp;nbsp;返回的任何值都将是&amp;nbsp;Integer&amp;nbsp;类型，并且它还强制传递给&amp;nbsp;li.add()&amp;nbsp;或&amp;nbsp;li.remove()&amp;nbsp;的任何东西都是&amp;nbsp;Integer。除了实现构造函数的方式很古怪之外，您不需要做任何十分特殊的事情以使&amp;nbsp;Lhist&amp;nbsp;是一个泛型类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四&amp;nbsp;Java类库中的泛型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	集合类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	到目前为止，Java&amp;nbsp;类库中泛型支持存在最多的地方就是集合框架。就像容器类是&amp;nbsp;C++&amp;nbsp;语言中模板的主要动机一样（参阅&amp;nbsp;附录&amp;nbsp;A：与&amp;nbsp;C++&amp;nbsp;模板的比较）（尽管它们随后用于很多别的用途），改善集合类的类型安全是&amp;nbsp;Java&amp;nbsp;语言中泛型的主要动机。集合类也充当如何使用泛型的模型，因为它们演示了泛型的几乎所有的标准技巧和方言。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所有的标准集合接口都是泛型化的&amp;nbsp;——&amp;nbsp;Collection&amp;amp;lt;V&amp;amp;gt;、List&amp;amp;lt;V&amp;amp;gt;、Set&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;和&amp;nbsp;Map&amp;amp;lt;K,V&amp;amp;gt;。类似地，集合接口的实现都是用相同类型参数泛型化的，所以&amp;nbsp;HashMap&amp;amp;lt;K,V&amp;amp;gt;&amp;nbsp;实现&amp;nbsp;Map&amp;amp;lt;K,V&amp;amp;gt;&amp;nbsp;等。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	集合类也使用泛型的许多“技巧”和方言，比如上限通配符和下限通配符。例如，在接口&amp;nbsp;Collection&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;中，addAll&amp;nbsp;方法是像下面这样定义的：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	interface&amp;nbsp;Collection&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	boolean&amp;nbsp;addAll(Collection&amp;amp;lt;?&amp;nbsp;extends&amp;nbsp;V&amp;amp;gt;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	该定义组合了通配符类型参数和有限制类型参数，允许您将&amp;nbsp;Collection&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;的内容添加到&amp;nbsp;Collection&amp;amp;lt;Number&amp;amp;gt;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果类库将&amp;nbsp;addAll()&amp;nbsp;定义为接受&amp;nbsp;Collection&amp;amp;lt;V&amp;amp;gt;，您就不能将&amp;nbsp;Collection&amp;amp;lt;Integer&amp;amp;gt;&amp;nbsp;的内容添加到&amp;nbsp;Collection&amp;amp;lt;Number&amp;amp;gt;。不是限制&amp;nbsp;addAll()&amp;nbsp;的参数是一个与您将要添加到的集合包含相同类型的集合，而有可能建立一个更合理的约束，即传递给&amp;nbsp;addAll()&amp;nbsp;的集合的元素&amp;nbsp;适合于添加到您的集合。有限制类型允许您这样做，并且使用有限制通配符使您不需要使用另一个不会用在其他任何地方的占位符名称。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应该可以将&amp;nbsp;addAll()&amp;nbsp;的类型参数定义为&amp;nbsp;Collection&amp;amp;lt;V&amp;amp;gt;。但是，这不但没什么用，而且还会改变&amp;nbsp;Collection&amp;nbsp;接口的语义，因为泛型版本的语义将会不同于非泛型版本的语义。这阐述了泛型化一个现有的类要比定义一个新的泛型类难得多，因为您必须注意不要更改类的语义或者破坏现有的非泛型代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为泛型化一个类（如果不小心的话）如何会更改其语义的一个更加微妙的例子，注意&amp;nbsp;Collection.removeAll()&amp;nbsp;的参数的类型是&amp;nbsp;Collection&amp;amp;lt;?&amp;amp;gt;，而不是&amp;nbsp;Collection&amp;amp;lt;?&amp;nbsp;extends&amp;nbsp;V&amp;amp;gt;。这是因为传递混合类型的集合给&amp;nbsp;removeAll()&amp;nbsp;是可接受的，并且更加限制地定义&amp;nbsp;removeAll&amp;nbsp;将会更改方法的语义和有用性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其他容器类
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	除了集合类之外，Java&amp;nbsp;类库中还有几个其他的类也充当值的容器。这些类包括&amp;nbsp;WeakReference、SoftReference&amp;nbsp;和&amp;nbsp;ThreadLocal。它们都已经在其包含的值的类型上泛型化了，所以&amp;nbsp;WeakReference&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;是对&amp;nbsp;T&amp;nbsp;类型的对象的弱引用，ThreadLocal&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;则是到&amp;nbsp;T&amp;nbsp;类型的线程局部变量的句柄。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型不止用于容器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	泛型最常见最直观的使用是容器类，比如集合类或引用类（比如&amp;nbsp;WeakReference&amp;amp;lt;T&amp;amp;gt;）。Collection&amp;amp;lt;V&amp;amp;gt;&amp;nbsp;中类型参数的含义很明显&amp;nbsp;——&amp;nbsp;“一个所有值都是&amp;nbsp;V&amp;nbsp;类型的集合”。类似地，ThreadLocal&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;也有一个明显的解释&amp;nbsp;——&amp;nbsp;“一个其类型是&amp;nbsp;T&amp;nbsp;的线程局部变量”。但是，泛型规格说明中没有指定容积。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	像&amp;nbsp;Comparable&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;或&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;这样的类中类型参数的含义更加微妙。有时，就像&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;中一样，类型变量主要是帮助编译器进行类型推理。有时，就像隐含的&amp;nbsp;Enum&amp;amp;lt;E&amp;nbsp;extends&amp;nbsp;Enum&amp;amp;lt;E&amp;amp;gt;&amp;amp;gt;&amp;nbsp;中一样，类型变量只是在类层次结构上加一个约束。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Comparable&amp;amp;lt;T&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Comparable&amp;nbsp;接口已经泛型化了，所以实现&amp;nbsp;Comparable&amp;nbsp;的对象声明它可以与什么类型进行比较。（通常，这是对象本身的类型，但是有时也可能是父类。）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;interface&amp;nbsp;Comparable&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;boolean&amp;nbsp;compareTo(T&amp;nbsp;other);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以&amp;nbsp;Comparable&amp;nbsp;接口包含一个类型参数&amp;nbsp;T，该参数是一个实现&amp;nbsp;Comparable&amp;nbsp;的类可以与之比较的对象的类型。这意味着如果定义一个实现&amp;nbsp;Comparable&amp;nbsp;的类，比如&amp;nbsp;String，就必须不仅声明类支持比较，还要声明它可与什么比较（通常是与它本身比较）：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;String&amp;nbsp;implements&amp;nbsp;Comparable&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现在来考虑一个二元&amp;nbsp;max()&amp;nbsp;方法的实现。您想要接受两个相同类型的参数，二者都是&amp;nbsp;Comparable，并且相互之间是&amp;nbsp;Comparable。幸运的是，如果使用泛型方法和有限制类型参数的话，这相当直观：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;static&amp;nbsp;&amp;amp;lt;T&amp;nbsp;extends&amp;nbsp;Comparable&amp;amp;lt;T&amp;amp;gt;&amp;amp;gt;&amp;nbsp;T&amp;nbsp;max(T&amp;nbsp;t1,&amp;nbsp;T&amp;nbsp;t2)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(t1.compareTo(t2)&amp;nbsp;&amp;amp;gt;&amp;nbsp;0)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;t1;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;t2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在本例中，您定义了一个泛型方法，在类型&amp;nbsp;T&amp;nbsp;上泛型化，您约束该类型扩展（实现）&amp;nbsp;Comparable&amp;amp;lt;T&amp;amp;gt;。两个参数都必须是&amp;nbsp;T&amp;nbsp;类型，这表示它们是相同类型，支持比较，并且相互可比较。容易！
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	更好的是，编译器将使用类型推理来确定当调用&amp;nbsp;max()&amp;nbsp;时&amp;nbsp;T&amp;nbsp;的值表示什么意思。所以根本不用指定&amp;nbsp;T，下面的调用就能工作：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;max(\"moo\",&amp;nbsp;\"bark\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器将计算出&amp;nbsp;T&amp;nbsp;的预定值是&amp;nbsp;String，因此它将进行编译和类型检查。但是如果您试图用不实现&amp;nbsp;Comparable&amp;amp;lt;X&amp;amp;gt;&amp;nbsp;的&amp;nbsp;类&amp;nbsp;X&amp;nbsp;的参数调用&amp;nbsp;max()，那么编译器将不允许这样做。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Class&amp;amp;lt;T&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类&amp;nbsp;Class&amp;nbsp;已经泛型化了，但是很多人一开始都感觉其泛型化的方式很混乱。Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;中类型参数&amp;nbsp;T&amp;nbsp;的含义是什么？事实证明它是所引用的类接口。怎么会是这样的呢？那是一个循环推理？如果不是的话，为什么这样定义它？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在以前的&amp;nbsp;JDK&amp;nbsp;中，Class.newInstance()&amp;nbsp;方法的定义返回&amp;nbsp;Object，您很可能要将该返回类型强制转换为另一种类型：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;Class&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Object&amp;nbsp;newInstance();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是使用泛型，您定义&amp;nbsp;Class.newInstance()&amp;nbsp;方法具有一个更加特定的返回类型：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	T&amp;nbsp;newInstance();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如何创建一个&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;类型的实例？就像使用非泛型代码一样，有两种方式：调用方法&amp;nbsp;Class.forName()&amp;nbsp;或者使用类常量&amp;nbsp;X.class。Class.forName()&amp;nbsp;被定义为返回&amp;nbsp;Class&amp;amp;lt;?&amp;amp;gt;。另一方面，类常量&amp;nbsp;X.class&amp;nbsp;被定义为具有类型&amp;nbsp;Class&amp;amp;lt;X&amp;amp;gt;，所以&amp;nbsp;String.class&amp;nbsp;是&amp;nbsp;Class&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;类型的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	让&amp;nbsp;Foo.class&amp;nbsp;是&amp;nbsp;Class&amp;amp;lt;Foo&amp;amp;gt;&amp;nbsp;类型的有什么好处？大的好处是，通过类型推理的魔力，可以提高使用反射的代码的类型安全。另外，还不需要将&amp;nbsp;Foo.class.newInstance()&amp;nbsp;强制类型转换为&amp;nbsp;Foo。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	考虑一个方法，它从数据库检索一组对象，并返回&amp;nbsp;JavaBeans&amp;nbsp;对象的一个集合。您通过反射来实例化和初始化创建的对象，但是这并不意味着类型安全必须完全被抛至脑后。考虑下面这个方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;static&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;List&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;getRecords(Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;c,&amp;nbsp;Selector&amp;nbsp;s)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//&amp;nbsp;Use&amp;nbsp;Selector&amp;nbsp;to&amp;nbsp;select&amp;nbsp;rows
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;list&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ArrayList&amp;amp;lt;T&amp;amp;gt;();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for&amp;nbsp;(/*&amp;nbsp;iterate&amp;nbsp;over&amp;nbsp;results&amp;nbsp;*/)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	T&amp;nbsp;row&amp;nbsp;=&amp;nbsp;c.newInstance();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//&amp;nbsp;use&amp;nbsp;reflection&amp;nbsp;to&amp;nbsp;set&amp;nbsp;fields&amp;nbsp;from&amp;nbsp;result
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	list.add(row);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;list;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以像下面这样简单地调用该方法：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	List&amp;amp;lt;FooRecord&amp;amp;gt;&amp;nbsp;l&amp;nbsp;=&amp;nbsp;getRecords(FooRecord.class,&amp;nbsp;fooSelector);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器将会根据&amp;nbsp;FooRecord.class&amp;nbsp;是&amp;nbsp;Class&amp;amp;lt;FooRecord&amp;amp;gt;&amp;nbsp;类型的这一事实，推断&amp;nbsp;getRecords()&amp;nbsp;的返回类型。您使用类常量来构造新的实例并提供编译器在类型检查中要用到的类型信息。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	用&amp;nbsp;Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;替换&amp;nbsp;T[]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Collection&amp;nbsp;接口包含一个方法，用于将集合的内容复制到一个调用者指定类型的数组中：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;Object[]&amp;nbsp;toArray(Object[]&amp;nbsp;prototypeArray)&amp;nbsp;{&amp;nbsp;...&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toArray(Object[])&amp;nbsp;的语义是，如果传递的数组足够大，就会使用它来保存结果，否则，就会使用反射分配一个相同类型的新数组。一般来说，单独传递一个数组作为参数来提供想要的返回类型是一个小技巧，但是在引入泛型之前，这是与方法交流类型信息最方便的方式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有了泛型，就可以用一种更加直观的方式来做这件事。不像上面这样定义&amp;nbsp;toArray()，泛型&amp;nbsp;toArray()&amp;nbsp;可能看起来像下面这样：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;T[]&amp;nbsp;toArray(Class&amp;amp;lt;T&amp;amp;gt;&amp;nbsp;returnType)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调用这样一个&amp;nbsp;toArray()&amp;nbsp;方法很简单：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	FooBar[]&amp;nbsp;fba&amp;nbsp;=&amp;nbsp;something.toArray(FooBar.class);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Collection&amp;nbsp;接口还没有改变为使用该技术，因为这会破坏许多现有的集合实现。但是如果使用泛型从新构建&amp;nbsp;Collection，则当然会使用该方言来指定它想要返回值是哪种类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Enum&amp;amp;lt;E&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	JDK&amp;nbsp;5.0&amp;nbsp;中&amp;nbsp;Java&amp;nbsp;语言另一个增加的特性是枚举。当您使用&amp;nbsp;enum&amp;nbsp;关键字声明一个枚举时，编译器就会在内部为您生成一个类，用于扩展&amp;nbsp;Enum&amp;nbsp;并为枚举的每个值声明静态实例。所以如果您说：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;enum&amp;nbsp;Suit&amp;nbsp;{HEART,&amp;nbsp;DIAMOND,&amp;nbsp;CLUB,&amp;nbsp;SPADE};
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	编译器就会在内部生成一个叫做&amp;nbsp;Suit&amp;nbsp;的类，该类扩展&amp;nbsp;java.lang.Enum&amp;amp;lt;Suit&amp;amp;gt;&amp;nbsp;并具有叫做&amp;nbsp;HEART、DIAMOND、CLUB&amp;nbsp;和&amp;nbsp;SPADE&amp;nbsp;的常量（public&amp;nbsp;static&amp;nbsp;final）成员，每个成员都是&amp;nbsp;Suit&amp;nbsp;类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与&amp;nbsp;Class&amp;nbsp;一样，Enum&amp;nbsp;也是一个泛型类。但是与&amp;nbsp;Class&amp;nbsp;不同，它的签名稍微更复杂一些：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	class&amp;nbsp;Enum&amp;amp;lt;E&amp;nbsp;extends&amp;nbsp;Enum&amp;amp;lt;E&amp;amp;gt;&amp;amp;gt;&amp;nbsp;{&amp;nbsp;.&amp;nbsp;.&amp;nbsp;.&amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这究竟是什么意思？这难道不会导致无限递归？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们逐步来分析。类型参数&amp;nbsp;E&amp;nbsp;用于&amp;nbsp;Enum&amp;nbsp;的各种方法中，比如&amp;nbsp;compareTo()&amp;nbsp;或&amp;nbsp;getDeclaringClass()。为了这些方法的类型安全，Enum&amp;nbsp;类必须在枚举的类上泛型化。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以&amp;nbsp;extends&amp;nbsp;Enum&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;部分如何理解？该部分又具有两个部分。第一部分指出，作为&amp;nbsp;Enum&amp;nbsp;的类型参数的类本身必须是&amp;nbsp;Enum&amp;nbsp;的子类型，所以您不能声明一个类&amp;nbsp;X&amp;nbsp;扩展&amp;nbsp;Enum&amp;amp;lt;Integer&amp;amp;gt;。第二部分指出，任何扩展&amp;nbsp;Enum&amp;nbsp;的类必须传递它本身&amp;nbsp;作为类型参数。您不能声明&amp;nbsp;X&amp;nbsp;扩展&amp;nbsp;Enum&amp;amp;lt;Y&amp;amp;gt;，即使&amp;nbsp;Y&amp;nbsp;扩展&amp;nbsp;Enum。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	总之，Enum&amp;nbsp;是一个参数化的类型，只可以为它的子类型实例化，并且这些子类型然后将根据子类型来继承方法。幸运的是，在&amp;nbsp;Enum&amp;nbsp;情况下，编译器为您做这些工作，一切都很好。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	与非泛型代码相互操作
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数百万行现有代码使用已经泛型化的&amp;nbsp;Java&amp;nbsp;类库中的类，比如集合框架、Class&amp;nbsp;和&amp;nbsp;ThreadLocal。JDK&amp;nbsp;5.0&amp;nbsp;中的改进不要破坏所有这些代码是很重要的，所以编译器允许您在不指定其类型参数的情况下使用泛型类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然，以“旧方式”做事没有新方式安全，因为忽略了编译器准备提供的类型安全。如果您试图将&amp;nbsp;List&amp;amp;lt;String&amp;amp;gt;&amp;nbsp;传递给一个接受&amp;nbsp;List&amp;nbsp;的方法，它将能够工作，但是编译器将会发出一个可能丧失类型安全的警告，即所谓的“unchecked&amp;nbsp;conversion（不检查转换）”警告。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	没有类型参数的泛型，比如声明为&amp;nbsp;List&amp;nbsp;类型而不是&amp;nbsp;List&amp;amp;lt;Something&amp;amp;gt;&amp;nbsp;类型的变量，叫做原始类型。原始类型与参数化类型的任何实例化是赋值兼容的，但是这样的赋值会生成&amp;nbsp;unchecked-conversion&amp;nbsp;警告。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	为了消除一些&amp;nbsp;unchecked-conversion&amp;nbsp;警告，假设您不准备泛型化所有的代码，您可以使用通配符类型参数。使用&amp;nbsp;List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;而不使用&amp;nbsp;List。List&amp;nbsp;是原始类型；List&amp;amp;lt;?&amp;amp;gt;&amp;nbsp;是具有未知类型参数的泛型。编译器将以不同的方式对待它们，并很可能发出更少的警告。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	无论在哪种情况下，编译器在生成字节码时都会生成强制类型转换，所以生成的字节码在每种情况下都不会比没有泛型时更不安全。如果您设法通过使用原始类型或类文件来破坏类型安全，就会得到与不使用泛型时得到的相同的&amp;nbsp;ClassCastException&amp;nbsp;或&amp;nbsp;ArrayStoreException。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	已检查集合
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	作为从原始集合类型迁移到泛型集合类型的帮助，集合框架添加了一些新的集合包装器，以便为一些类型安全&amp;nbsp;bug&amp;nbsp;提供早期警告。就像&amp;nbsp;Collections.unmodifiableSet()&amp;nbsp;工厂方法用一个不允许任何修改的&amp;nbsp;Set&amp;nbsp;包装一个现有&amp;nbsp;Set&amp;nbsp;一样，Collections.checkedSet()（以及&amp;nbsp;checkedList()&amp;nbsp;和&amp;nbsp;checkedMap()）工厂方法创建一个包装器（或者视图）类，以防止您将错误类型的变量放在集合中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	checkedXxx()&amp;nbsp;方法都接受一个类常量作为参数，所以它们可以（在运行时）检查这些修改是允许的。典型的实现可能像下面这样：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;class&amp;nbsp;Collections&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;static&amp;nbsp;&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;Collection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;checkedCollection(Collection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;c,&amp;nbsp;Class&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;type&amp;nbsp;)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;new&amp;nbsp;CheckedCollection&amp;amp;lt;E&amp;amp;gt;(c,&amp;nbsp;type);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;static&amp;nbsp;class&amp;nbsp;CheckedCollection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;implements&amp;nbsp;Collection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;final&amp;nbsp;Collection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;final&amp;nbsp;Class&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;type;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CheckedCollection(Collection&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;c,&amp;nbsp;Class&amp;amp;lt;E&amp;amp;gt;&amp;nbsp;type)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	this.c&amp;nbsp;=&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	this.type&amp;nbsp;=&amp;nbsp;type;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;nbsp;boolean&amp;nbsp;add(E&amp;nbsp;o)&amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	if&amp;nbsp;(!type.isInstance(o))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	throw&amp;nbsp;new&amp;nbsp;ClassCastException();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	return&amp;nbsp;c.add(o);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-05/1336176103.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

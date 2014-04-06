@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>精通Struts：基于MVC的JavaWeb设计与开发</title>
+  <author>孙卫琴</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-19 23:50:29</submit-date-time>
+  <img-link>69df01938c74be9ed664f072696a362c.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Struts是目前非常流行的基于MVC的&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/java/\"&amp;nbsp;target=\"_blank\"&gt;Java&amp;nbsp;Web&lt;/a&gt;框架。本书详细介绍了在最新的Struts1.1以及不久将推出的Struts1.2版本上设计和开发Java&amp;nbsp;Web应用的各种技术。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书第1章到第3章为入门篇，通过两个Struts应用实例，引导读者把握设计、开发和部署Struts应用的整体流程，充分体会Struts框架在开放大型、可扩展的Web应用方面发挥的优势。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	第4章到第7章深入探讨了Struts框架的核心组件ActionServlet和RequestProcessor的实现原理，详细介绍了开发Struts应用的模型、视图和控制器的各种技术，细致的描述了Struts配置文件的每个元素的使用方法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	第8章到第9章介绍了开发Struts应用的一些实用技术，如Struts框架的扩展点、Struts应用的国际化，Validator验证框架和异常处理机制等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	第12章到第16章结合具体的Struts应用实例，详细介绍了Struts的标签库以及Tiles框架的使用方法。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	第17章和第18章介绍如何采用EJB和&lt;a&amp;nbsp;href=\"http://www.itsrcs.com/art/web/\"&amp;nbsp;target=\"_blank\"&gt;Web&lt;/a&gt;服务来实现Struts框架的模型。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	第19章到第21章介绍了如何采用第三方软件，如Apache&amp;nbsp;Common&amp;nbsp;Logging&amp;nbsp;API、Log4J、ANT和StrutsTestCase，来控制Struts应用的输出日志、管理以及测试Struts应用项目。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

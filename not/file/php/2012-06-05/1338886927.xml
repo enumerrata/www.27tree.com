@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>高级编程：PHP 迭代器小介绍</title>
+<content>&amp;lt;p&amp;gt;
+	PHP数组一般地说是一个十分强大的对象容器。但我们仍然可以给他来点涡轮增压。把迭代器对象设想为一种数组的包装。我们要在这里试着完成的是为遍历数组和在如何创建对象上加入一点额外的控制去创建一个唯一的接口。接口迭代器有一个简单的和经常被看到的接口
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;Iterator($array)&amp;nbsp;//&amp;nbsp;构造函数。使需要遍历的数组作为一个参数
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;reset()&amp;nbsp;//&amp;nbsp;设置内部指针指向第一个元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;end()&amp;nbsp;//&amp;nbsp;设置内部指针指向最后一个元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;seek($position)&amp;nbsp;//&amp;nbsp;设置内部指针指向一个指定的元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;next()&amp;nbsp;//&amp;nbsp;返回后一个元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;previous()&amp;nbsp;//&amp;nbsp;返回前一个元素
+&amp;nbsp;?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+有了这样的接口，我们就可以在任何时间，任何地点，用我们喜欢的任何方法轻轻松松执行我们的日常事务(像数组遍历)。使用这个东西相对于PHP本身的数组函数的一个优势就是你有了一个为你的所有数组任务[工作]的接口。你就用不着在一段代码里用foreach()构造，另外一段用list和each的组合，然后还有别的地方一会儿用到next()，一会儿用到perv()。另一个优势是现在你可以简单的定位于一个确定的元素并且可以从这里开始遍历(以你想要得任何方式).&amp;nbsp;这里有一些例子:
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+&amp;nbsp;&amp;nbsp;$iterator&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Iterator($array);
+//&amp;nbsp;遍历数组
+&amp;nbsp;&amp;nbsp;while&amp;nbsp;($elem&amp;nbsp;=&amp;nbsp;$iterator-&amp;amp;gt;next())&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$elem;
+&amp;nbsp;&amp;nbsp;}
+
+//&amp;nbsp;反序便利
+$iterator-&amp;amp;gt;end();
+while&amp;nbsp;($elem&amp;nbsp;=&amp;nbsp;$iterator-&amp;amp;gt;previous())&amp;nbsp;{
+echo&amp;nbsp;$elem;
+}
+
+//&amp;nbsp;从第五元素开始遍历
+$iterator-&amp;amp;gt;seek(5);
+
+while&amp;nbsp;($elem&amp;nbsp;=&amp;nbsp;$iterator-&amp;amp;gt;next())&amp;nbsp;{
+echo&amp;nbsp;$elem;
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这是很不错，但是没有什么我不能使用原始的PHP函数组合来完成的。除了这个事实，你能通过唯一的接口存取你的所有数组，另外(也是最重要的)优势是迭代器的对象结构容许你轻松的扩展它的功能
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;对像迭代器器接口&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对象迭代器的代码十分简单
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;amp;lt;?php
+
+class&amp;nbsp;ObjectIterator&amp;nbsp;extends&amp;nbsp;Iterator&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;$_objectName;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;构造函数
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;调用初始化方法(参考Iterator::_initialize())
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;做一些特殊的配置
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@参数数组&amp;nbsp;$array&amp;nbsp;要遍历的对象id的数组
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@参数字符串&amp;nbsp;$objectName&amp;nbsp;要被创建的对象的类
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;ObjectIterator($array,&amp;nbsp;$objectName)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;_initialize($array);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;_objectName&amp;nbsp;=&amp;nbsp;$objectName;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/**
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;用给出的id返回对象
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@参数对象&amp;nbsp;$id&amp;nbsp;标示一个对象
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@返回对象&amp;nbsp;集合里的下一个对象
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@存取&amp;nbsp;私有
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/&amp;nbsp;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;_fetchObject($id)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;new&amp;nbsp;$this-&amp;amp;gt;_objectName($id);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}
+?&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	类成员$_objectName代表对象所属的类它必须被next()和pervious()方法返回。构造函数设置内部变量并且调用初始化函数(已经在迭代器类定义了)。最重要的事情是_fetchObject()函数。他封装了对象创建的代码。它被next()和pervious()方法调用并且用对象的id作为参数)。这样一来你所有的对象创建代码都在这里了，因此他被制作的容易改变和扩展
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这里是我们创建新的一类迭代器的方法。第一，制作你的构造函数(它有一个数组作为参数),它调用从迭代器类_initialize()函数。第二，重载&amp;nbsp;_fetchObject方法去做任何你必须对你的对象做的。这就是全部。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	结论
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;迭代器不会以任何方式减慢你的应用程序除非它需要一套新的硬件去运行。它有一些负荷，但是给了你清晰易读的代码，这将使今后软件的扩展十分方便&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-05/1338886927.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

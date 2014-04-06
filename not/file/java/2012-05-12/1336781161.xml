@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVASE官方教程:继承之重写和隐藏方法(7)</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;实例方法&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一个与父类中的实例方法有相同标签(名字,参数个数和类型)和返回类型的子类实例方法会重写父类中的方法.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	子类重写的方法具有修改对象的行为的能力,他也可以返回被重写方法返回类型的子类型.这叫做协变返回类型(covariant&amp;nbsp;return&amp;nbsp;type).
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在重写某个方法时,你可能想用@Override注解来告诉编译器你打算重写父类中的某个方法.这时候,如果编译器不能在父类中找到这样的方法,将会产生一个错误.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;类方法&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果子类中定义了一个类方法与父类中的某个类方法具有相同的标签,那么子类中的方法隐藏(hides)了父类中的方法.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	重写和隐藏的区别有重要的意义.调用重写的方法是子类中的版本,调用隐藏的方法的版本依赖于你是用子类还是用父类来调用的.让我们看一个例子:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;class&amp;nbsp;Animal&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;static&amp;nbsp;void&amp;nbsp;testClassMethod()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(The&amp;nbsp;class&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Animal.);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;testInstanceMethod()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(The&amp;nbsp;instance&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Animal.);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}
+
+public&amp;nbsp;class&amp;nbsp;Cat&amp;nbsp;extends&amp;nbsp;Animal&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;static&amp;nbsp;void&amp;nbsp;testClassMethod()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(The&amp;nbsp;class&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Cat.);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;void&amp;nbsp;testInstanceMethod()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System.out.println(The&amp;nbsp;instance&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Cat.);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;public&amp;nbsp;static&amp;nbsp;void&amp;nbsp;main(String[]&amp;nbsp;args)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Cat&amp;nbsp;myCat&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Cat();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Animal&amp;nbsp;myAnimal&amp;nbsp;=&amp;nbsp;myCat;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Animal.testClassMethod();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;myAnimal.testInstanceMethod();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	输出:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	The&amp;nbsp;class&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Animal.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	The&amp;nbsp;instance&amp;nbsp;method&amp;nbsp;in&amp;nbsp;Cat.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	修饰符访问修饰符的权限只能比在父类中更大或者一样.例如,父类中有个protected实例方法,在子类中修饰符可以是public或protected,但不能是private.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	小结下面的表格总结了当你定义一个与父类中的方法居于相同的标签时会发生什么.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-12/1336781161.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

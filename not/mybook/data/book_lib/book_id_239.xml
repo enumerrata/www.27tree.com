@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Android Application Development For Dummies]]></title>
+  <author>Donn Felker</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-01-05 18:48:09</submit-date-time>
+  <img-link>12babf170fe4ed2d95432f30f3fd017b.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	The fun and friendly guide to creating applications on the Android platform
+</p>
+<p>
+	The popularity of the Android market is soaring with no sign of slowing down. The open nature of the Android OS offers programmers the freedom to access the platform\'s capabilities and this straightforward guide walks you through the steps for creating amazing Android applications. Android programming expert Donn Felker explains how to download the SDK, get Eclipse up and running, code Android applications, and submit your finished products to the Android Market. Featuring two sample programs, this introductory book explores everything from the simple basics to more advanced aspects of the Android platform.
+</p>
+<p>
+	<ul>
+		<li>
+			Takes you soup through nuts of developing applications for the Android platform
+		</li>
+		<li>
+			Begins with downloading the SDK, then explains how to code Android applications and submit projects to the Android Market
+		</li>
+		<li>
+			Written by Android guru Donn Felker, who breaks every aspect of developing applications for the Android platform into easily digestible pieces
+		</li>
+		<li>
+			No matter your level of programming experience, Android Application Development For Dummies is an ideal guide for getting started with developing applications for the Android platform.
+		</li>
+	</ul>
+</p>
+<p>
+	Unlike the ultra-competitive iPhone application market, the Android market still has plenty of room for beginning programmers to be competitive. \"Android Application Development For Dummies\" shows new Android programmers how to get started by downloading the SDK, getting Eclipse up and running, understand how Dalvik differs from other Java implementations, code Android applications, and submit the projects to the Android market.Two programs will be provided, a simple program to get started and an intermediate program that uses more advanced aspects of the Android platform. Understanding of Java is helpful but not necessary.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

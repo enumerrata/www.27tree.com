@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>linux 产生 随机密码</title>
+  <content>&lt;p&gt;
+	&lt;p&gt;
+		首先介绍一下mutt这个软件，它是一款基于文字界面的邮件客户端，非常小巧，但功能强大，可以用它来读写，回复保存和删除你的邮件，能在linux命令行模式下收发邮件附件。
+	&lt;/p&gt;
+	&lt;p&gt;
+		我只讲它很小的一部分功能，因为我也是刚刚开始摸索这个软件。更多的用法请查阅官网：http://www.mutt.org
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br /&gt;
+	&lt;/p&gt;
+&lt;pre name=\"code\" id=\"prettyprint\" class=\"Java\"&gt;package com.mvn.redis;
+
+import redis.clients.jedis.Jedis;
+
+public class Master {
+
+    private static final String  IP   = \"192.168.6.188\";
+    private static final Integer PORT = 10099;
+
+    public static void main(String[] args) {
+        try {
+            run(50200);
+            
+//            o(String.valueOf(jedis.keys(\"^u\").size()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public static void run(final int total) {
+        final int size = 500;
+        final int threads = mod(total, size);
+        for (int i = 0; i &amp;lt; threads; i++) {
+            final Jedis jedis = new Jedis(IP, PORT);
+            final int start = i;
+            final int j = i + 1;
+            new Thread(new Runnable() {
+                public void run() {
+             </content>
+  <contentx>
+	
+		首先介绍一下mutt这个软件，它是一款基于文字界面的邮件客户端，非常小巧，但功能强大，可以用它来读写，回复保存和删除你的邮件，能在linux命令行模式下收发邮件附件。
+	
+	
+		我只讲它很小的一部分功能，因为我也是刚刚开始摸索这</contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

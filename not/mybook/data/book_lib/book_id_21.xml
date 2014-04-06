@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>PHP程序设计中文版</title>
+  <author>（美）勒道夫，（美）塔特罗，（美）麦肯泰尔</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 11:09:17</submit-date-time>
+  <img-link>909b9f08fe9a3c11065d2c2fe942b22c.png</img-link>
+  <book-area>php</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是很好的基础书籍，通过对PHP语法的细细梳理，有助于读者进行全面系统的学习，构建起完整的PHP知识体系。它没有提供一个完整的项目例子，只是一些零散的示例，但是整本书涵盖了PHP语言本身所有真正的精华，值得反复细致地阅读。本书还给出了设计风格提示和实际的程序设计建议，这些将帮助你不仅成为一个PHP程序员，而且将是出色的PHP程序员。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是关于PHP5的权威指南书籍，书中包含了PHP创始人&amp;nbsp;(Rasmus&amp;nbsp;Lerdorf)和其他PHP专家的独特见解。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP是一种简单而强大的开源脚本语言，用于创建动态&amp;nbsp;Web内容。全球数百万运行着PHP程序的站点证明了它的流行程度和易用性。程序员和Web设计师都喜欢PHP，前者喜欢PHP的灵活性和速度，后者则喜欢它的易用和方便。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作为PHP的行业标准书籍，本书中所有的技术要点（如语法和编程技巧）都用简洁的文字和表达方式来阐述，并附带有正确用法及习惯用法的代码示例。本书还包含了代码风格技巧和实际开发方面的建议。这些不仅会帮助你成为一名PHP程序员，而且会帮助你成为一名优秀的PHP程序员。《PHP程序设计（第二版）》涵盖了使用PHP创建高效Web站点你所需要知道的一切，其内容包括：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PHP语言基础，包括数据类型、变量、操作符和流控制语句
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·函数、字符串处理、数组和对象
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·基本的PHP&amp;nbsp;Web开发技术，如表单处理和验证，session跟踪和cookie。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·与关系型数据库，如MySQL和Oracle的结合应用，使用独立的数据库抽象层&amp;nbsp;PEAR::DB库和PHP5中新的PDO扩展库
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·生成动态的图像文件，创建PDF文件，使用PHP解析XML文件
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·高级主题，例如创建安全的脚本、错误处理、性能调节和开发你自己C语言扩展库
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	·PHP中所有核心函数和标准扩展的快速参考
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

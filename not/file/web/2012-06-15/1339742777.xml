@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTML发展历程</title>
+<content>&amp;lt;p&amp;gt;
+	从&amp;nbsp;IETF&amp;nbsp;到&amp;nbsp;W3C:&amp;nbsp;HTML&amp;nbsp;4&amp;nbsp;之路
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML&amp;nbsp;1&amp;nbsp;并未曾存在，HTML&amp;nbsp;得第一个官方版本便是由&amp;nbsp;IETF&amp;nbsp;(互联网工程任务组)&amp;nbsp;推出得&amp;nbsp;HTML&amp;nbsp;2.0。问世之前，这个版本中得很多细则已经被实现，比如，1994年得&amp;nbsp;Mosaic&amp;nbsp;欣赏器已经实现了在文档中嵌入图片得方式，其后&amp;nbsp;HTML&amp;nbsp;2.0&amp;nbsp;便吸纳了&amp;nbsp;img&amp;nbsp;这个标签。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其后，W3C&amp;nbsp;取代&amp;nbsp;IETF&amp;nbsp;得角色，成为&amp;nbsp;HTML&amp;nbsp;得标准构造，1990年代得后半页，HTML&amp;nbsp;得版本被频繁点窜，直到1999年得&amp;nbsp;HTML&amp;nbsp;4.01，至此，HTML&amp;nbsp;到达了它得第一个拐点。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	XHTML&amp;nbsp;1:&amp;nbsp;XML&amp;nbsp;风格得&amp;nbsp;HTML
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML&amp;nbsp;在&amp;nbsp;HTML&amp;nbsp;4.01&amp;nbsp;之后得第一个修订版本便是&amp;nbsp;XHTML&amp;nbsp;1.0，此中&amp;nbsp;X&amp;nbsp;代表&amp;nbsp;“eXtensible”&amp;nbsp;，扩展，固然也有人将之解读为&amp;nbsp;“eXtreme”，极度。XHTML&amp;nbsp;1.0&amp;nbsp;是基于&amp;nbsp;HTML&amp;nbsp;4.01&amp;nbsp;得，并没有引入任何新标签或属性，唯一得区别是语法，HTML&amp;nbsp;对语法比力任意，而&amp;nbsp;XHTML&amp;nbsp;则要求&amp;nbsp;XML&amp;nbsp;般得严格语法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	利用严格得语法规范并非坏事，要求开辟者利用单一得代码风格，比如，HTML&amp;nbsp;4.01&amp;nbsp;容许你利用大写或不大写字母标识标记元素和属性，XHTML&amp;nbsp;则只容许不大写字母。XHTML&amp;nbsp;1.0&amp;nbsp;得推出恰好碰上了&amp;nbsp;CSS&amp;nbsp;得崛起，Web&amp;nbsp;开辟计划者们开始意识到&amp;nbsp;Web&amp;nbsp;标准题目，基于&amp;nbsp;XHTML&amp;nbsp;得严格语法规范被视为编写&amp;nbsp;HTML&amp;nbsp;代码得最佳实践。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	于是，W3C&amp;nbsp;推出&amp;nbsp;XHTML&amp;nbsp;1.1。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果说&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;是&amp;nbsp;XML&amp;nbsp;风格得&amp;nbsp;HTML，XHTML&amp;nbsp;1.1&amp;nbsp;则是货真价实得&amp;nbsp;XML。这意味着&amp;nbsp;XHTML&amp;nbsp;1.1&amp;nbsp;无法利用&amp;nbsp;text/html&amp;nbsp;mime-type&amp;nbsp;直接输出，然而，如果&amp;nbsp;Web&amp;nbsp;开辟者利用&amp;nbsp;XML&amp;nbsp;mime-type，则当时得主流欣赏器，IE&amp;nbsp;则压根不支持。看上去，W3C&amp;nbsp;好像正在与当时得&amp;nbsp;Web&amp;nbsp;挣脱。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	着力不讨好得&amp;nbsp;XHTML&amp;nbsp;2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对&amp;nbsp;W3C&amp;nbsp;而言，到了&amp;nbsp;HTML&amp;nbsp;4&amp;nbsp;已经是功德圆满，他们得下一步事变是&amp;nbsp;XHTML&amp;nbsp;2，盼望将&amp;nbsp;Web&amp;nbsp;带向&amp;nbsp;XML&amp;nbsp;得光亮将来。固然&amp;nbsp;XHTML&amp;nbsp;2&amp;nbsp;听上去和&amp;nbsp;XHTML&amp;nbsp;1&amp;nbsp;雷同，它们却有很多不同，XHTML&amp;nbsp;2&amp;nbsp;不向前兼容，乃至不兼容之前得&amp;nbsp;HTML。它是一种全新得语言，赤条条来去无牵挂。这着实是一场灾祸。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	WHATWG：与&amp;nbsp;W3C&amp;nbsp;决裂
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	W3C&amp;nbsp;凭空杜撰得作风引起了部分人得不满，来自&amp;nbsp;Opera,&amp;nbsp;Apple,&amp;nbsp;以及&amp;nbsp;Mozilla&amp;nbsp;得代表开始表达反对声音。2004年，Opera&amp;nbsp;得&amp;nbsp;Ian&amp;nbsp;Hickson&amp;nbsp;发起在&amp;nbsp;HTML&amp;nbsp;根本上举行扩展以适应新得&amp;nbsp;Web&amp;nbsp;应用，该发起遭到&amp;nbsp;W3C&amp;nbsp;得拒绝。于是，他们自发构造创建了超文本应用技术事变组，便是&amp;nbsp;WHATWG。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从&amp;nbsp;Web&amp;nbsp;Apps&amp;nbsp;1.0&amp;nbsp;到&amp;nbsp;HTML5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从一起头，WHATWG&amp;nbsp;就和&amp;nbsp;W3C&amp;nbsp;走不同得蹊径，W3C&amp;nbsp;对题目得会商是团体投票，而&amp;nbsp;WHATWG&amp;nbsp;则由主笔&amp;nbsp;Ian&amp;nbsp;Hickson&amp;nbsp;定度。表面上看，W3C&amp;nbsp;更夷易近主，然而毕竟上，种种内部纷争会使部分决议限于泥潭，在&amp;nbsp;WHATWG，事变得盼望会更方便，不过，主笔得权利并非无穷大，他们得委员会可以对那些过于偏执得主笔举行弹劾。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一起头，WHATWG&amp;nbsp;得重要事变包罗两部分，Web&amp;nbsp;Forms&amp;nbsp;2.0&amp;nbsp;和&amp;nbsp;Web&amp;nbsp;Apps&amp;nbsp;1.0，它们都是&amp;nbsp;HTML&amp;nbsp;得扩展，其后，他们归并到一起成为如今得&amp;nbsp;HTML5&amp;nbsp;范例。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	言归于好
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在&amp;nbsp;WHATWG&amp;nbsp;致力于&amp;nbsp;HTML5&amp;nbsp;得同时，W3C&amp;nbsp;连续他们得&amp;nbsp;XHTML&amp;nbsp;2.0，然而，他们徐徐地陷入窘境。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2006年10月，Web&amp;nbsp;之父&amp;nbsp;Tim&amp;nbsp;Berners-Lee&amp;nbsp;发表了一篇部落格文章，表现，从&amp;nbsp;HTML&amp;nbsp;走向&amp;nbsp;XML&amp;nbsp;得路是行不通得，几个月后，W3C&amp;nbsp;组建了一个新得&amp;nbsp;HTML&amp;nbsp;事变组，他们非常明智地选择了&amp;nbsp;WHATWG&amp;nbsp;得成果作为根本。这一变化带来部分怀疑，W3C&amp;nbsp;同时举行这两套范例，XHTML&amp;nbsp;2&amp;nbsp;和&amp;nbsp;HTML&amp;nbsp;5&amp;nbsp;(看重，W3C&amp;nbsp;得&amp;nbsp;HTTML&amp;nbsp;5&amp;nbsp;在&amp;nbsp;5&amp;nbsp;之前有个空格，而&amp;nbsp;WHATWG&amp;nbsp;得&amp;nbsp;HTML5&amp;nbsp;则没有空格)，而&amp;nbsp;WHATWG&amp;nbsp;也在举行着同样得事变。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	XHTML&amp;nbsp;已去世:&amp;nbsp;XHTML&amp;nbsp;语法永存
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这一紊乱场合场面到了&amp;nbsp;2009&amp;nbsp;年开始变得明白，W3C&amp;nbsp;颁布发表停止&amp;nbsp;XHTML&amp;nbsp;2&amp;nbsp;得事变，这是一份关于&amp;nbsp;XHTML&amp;nbsp;2&amp;nbsp;得迟到得讣告。这一消息被那些&amp;nbsp;XML&amp;nbsp;得反对者视为珍宝，他们借此嘲笑那些利用&amp;nbsp;XHTML&amp;nbsp;1&amp;nbsp;范例得人，然而他们好像忘记了，XHTML&amp;nbsp;1&amp;nbsp;和&amp;nbsp;XHTML&amp;nbsp;2&amp;nbsp;是大相径庭得东西。于此同时，XHTML&amp;nbsp;1&amp;nbsp;范例得订定者担心，XHTML&amp;nbsp;1&amp;nbsp;中得严格语法规范会被&amp;nbsp;HTML5&amp;nbsp;弃用，这种担心其后证明是多余得，HTML5&amp;nbsp;既支持疏松语法，也支持&amp;nbsp;XHTML&amp;nbsp;1&amp;nbsp;般得严格语法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5&amp;nbsp;蹊径图
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5&amp;nbsp;得近况是，它不再象过去那样让人怀疑，然而仍不敷开阔开朗。有两个构造在同时订定它得范例，这两个构造有着完全不同得行事风格，WHATWG&amp;nbsp;是先买后尝，W3C&amp;nbsp;是先尝后买，他们形成了一个不太靠谱得联姻，终极人们必将面对一个&amp;nbsp;HTML5&amp;nbsp;还是&amp;nbsp;HTML&amp;nbsp;5&amp;nbsp;得题目。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	更让开辟者怀疑得是，他们什么时间才可以试淼HTML5。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在一次访谈中，Ian&amp;nbsp;Hickson&amp;nbsp;提到了&amp;nbsp;2022，表现要到当时&amp;nbsp;HTML5&amp;nbsp;才会形成\”保举标准\”，此话一出，顿时招来&amp;nbsp;Web&amp;nbsp;计划者们得末路怒，只管他们不知道保举标定时什么意思，但他们大白，2022&amp;nbsp;已经是猴年马月得事了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这还不算，更重要得是，这个保举标准涉及两套范例，思量到&amp;nbsp;HTML5&amp;nbsp;标准得范围，这个日期还是太乐不都雅了，毕竟了局，各大欣赏器以往对既有标准得兼容并不遂人意，想当初，IE&amp;nbsp;花了10年才采取&amp;nbsp;abbr&amp;nbsp;这个标签。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2012&amp;nbsp;年，HTML5&amp;nbsp;会被采取为候选标准，这将是&amp;nbsp;HTML5&amp;nbsp;真正开始发力得日子。对&amp;nbsp;Web&amp;nbsp;开辟计划者来说，这并不重要，重要得是欣赏器得支持，就像&amp;nbsp;CSS&amp;nbsp;2.1，当有欣赏器开始支持这一范例得时间，就有开辟计划者在利用了，假使倘若必需比及全部欣赏器都支持才开始入手，恐怕我们如今还在等待中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5&amp;nbsp;也一样，并不会有一个时候点，颁布发表&amp;nbsp;HTML5&amp;nbsp;已经筹办妥当，相反，我们会先开始利用它得部分成果，HTML5&amp;nbsp;并不是一个从零开始全新得东西，它是旧得&amp;nbsp;HTML&amp;nbsp;标准得改进，毕竟上，不管你正在利用得&amp;nbsp;HTML&amp;nbsp;是哪个版本，你已经在利用&amp;nbsp;HTML5&amp;nbsp;了。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-15/1339742777.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>Serria</author-c>
+  <uid-c>19</uid-c>
+  <date-c>2012-06-15+18%3A30%3A13</date-c>
+  <conf-c>哈哈哈</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

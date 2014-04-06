@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-17 19:55:38</datetime>
+  <title><![CDATA[Firefox下的浏览器兼容性检测工具:Compatibility Detector]]></title>
+  <content><![CDATA[<p>
+	这里给大家推荐一个Firefox下的浏览器兼容性检测工具——Compatibility Detector。这个工具对于新手来说是非常不错的一个东东，下面我就简单说下它的优点。
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://litanwei-wordpress.stor.sinaapp.com/uploads/2012/02/1.png\" alt=\"\" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	作为一个前端开发者来说，最痛苦的事情之一就是要兼容现在各种五花八门的浏览器，而在实际的调试中这个调试过程又是让人劳心劳力。而Compatibility Detector能把目前很多已知的兼容性问题很easy的展现在我们面前。Compatibility Detector下有两种：基本检测和高级检测。
+</p>
+<p>
+	基本检测会检测一些基本的DTD标准、标签、属性等，如下图中提示没有设置DTD、一些不兼容使用的标签和不建议使用的属性。（特别是align属性，很多新手喜欢使用align属性来布局，这个容易引起浏览器中的兼容性问题。）
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://litanwei-wordpress.stor.sinaapp.com/uploads/2012/02/2.png\" alt=\"\" /> 
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://litanwei-wordpress.stor.sinaapp.com/uploads/2012/02/3.png\" alt=\"\" /> 
+</p>
+<p>
+	如果使用高级测试功能，这个插件会把页面重新刷新一遍来获取页面中更多的兼容性问题。这当中分为“错误级别”和“警告级别”两种，警告级别中出现的问题一般不影响页面的兼容性。
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://ued.ctrip.com/blog/wp-content/uploads/2011/10/xcompatibility3.png.pagespeed.ic.JNhohgpQF_.png\" alt=\"\" /> 
+</p>
+<p style=\"text-align:center;\">
+	<img src=\"http://litanwei-wordpress.stor.sinaapp.com/uploads/2012/02/5.png\" alt=\"\" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	同时在页面上可以所见即所得的标示出问题元素的位置和兼容性问题的原因。这个对于新人同学来说是不是很不错啊。
+</p>
+<p>
+	我自己在使用这个插件的时候最多看到的提示就是容器大小限制和haslayout两种。前一种需要注意这个元素中是否放一下不确定的内容，如果内容太多的情况下可能影响到你的布局。后一种就是大家常常遇到的父容器无法撑开的问题，如果有在父级容器上设置边框、背景之类样式时就要特别小心了。
+</p>
+<p style=\"text-align:center;\">
+	最后附上这个插件的下载地址：mozilla.com.cn
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

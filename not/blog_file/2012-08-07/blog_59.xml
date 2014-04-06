@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:56:02</datetime>
+  <title>JDBC基础教程之PreparedStatement</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	概述
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	该&amp;nbsp;PreparedStatement&amp;nbsp;接口继承
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Statement，并与之在两方面有所不同：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PreparedStatement&amp;nbsp;实例包含已编译的&amp;nbsp;SQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	语句。这就是使语句“准备好”。包含于&amp;nbsp;PreparedStatement&amp;nbsp;对象中的&amp;nbsp;SQL&amp;nbsp;语句可具有一个或多个&amp;nbsp;IN&amp;nbsp;参数。IN参数的值在&amp;nbsp;SQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	语句创建时未被指定。相反的，该语句为每个&amp;nbsp;IN&amp;nbsp;参数保留一个问号（“？”）作为占位符。每个问号的值必须在该语句执行之前，通过适当的setXXX
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	方法来提供。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	由于&amp;nbsp;PreparedStatement&amp;nbsp;对象已预编译过，所以其执行速度要快于&amp;nbsp;Statement&amp;nbsp;对象。因此，多次执行的
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SQL&amp;nbsp;语句经常创建为&amp;nbsp;PreparedStatement&amp;nbsp;对象，以提高效率。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作为&amp;nbsp;Statement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	的子类，PreparedStatement&amp;nbsp;继承了&amp;nbsp;Statement&amp;nbsp;的所有功能。另外它还添加了一整套方法，用于设置发送给数据库以取代&amp;nbsp;IN
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数占位符的值。同时，三种方法&amp;nbsp;execute、&amp;nbsp;executeQuery&amp;nbsp;和&amp;nbsp;executeUpdate&amp;nbsp;已被更改以使之不再需要参数。这些方法的
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Statement&amp;nbsp;形式（接受&amp;nbsp;SQL&amp;nbsp;语句参数的形式）不应该用于&amp;nbsp;PreparedStatement&amp;nbsp;对象。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;&lt;span&amp;nbsp;style=\"font-size:12px;\"&gt;1、创建&lt;/span&gt;&lt;/strong&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;&lt;strong&gt;PreparedStatement&amp;nbsp;对象&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	以下的代码段（其中&amp;nbsp;con&amp;nbsp;是&amp;nbsp;Connection&amp;nbsp;对象）创建包含带两个&amp;nbsp;IN&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;参数占位符的&amp;nbsp;SQL&amp;nbsp;语句的&amp;nbsp;PreparedStatement&amp;nbsp;对象：&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PreparedStatement&amp;nbsp;pstmt&amp;nbsp;=&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;con.prepareStatement(\"UPDATE&amp;nbsp;table4&amp;nbsp;SET&amp;nbsp;m&amp;nbsp;=&amp;nbsp;?&amp;nbsp;WHERE&amp;nbsp;x&amp;nbsp;=&amp;nbsp;?\");&lt;/span&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;pstmt&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对象包含语句&amp;nbsp;\"UPDATE&amp;nbsp;table4&amp;nbsp;SET&amp;nbsp;m&amp;nbsp;=&amp;nbsp;?&amp;nbsp;WHERE&amp;nbsp;x&amp;nbsp;=
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	?\"，它已发送给DBMS，并为执行作好了准备。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;2、传递&amp;nbsp;IN&amp;nbsp;参数&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在执行
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PreparedStatement&amp;nbsp;对象之前，必须设置每个&amp;nbsp;?&amp;nbsp;参数的值。这可通过调用&amp;nbsp;setXXX&amp;nbsp;方法来完成，其中&amp;nbsp;XXX
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	是与该参数相应的类型。例如，如果参数具有Java&amp;nbsp;类型&amp;nbsp;long，则使用的方法就是&amp;nbsp;setLong。setXXX
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	方法的第一个参数是要设置的参数的序数位置，第二个参数是设置给该参数的值。例如，以下代码将第一个参数设为&amp;nbsp;123456789，第二个参数设为
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	100000000：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.setLong(1,&amp;nbsp;123456789);
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.setLong(2,&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;100000000);&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	一旦设置了给定语句的参数值，就可用它多次执行该语句，直到调用clearParameters
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	方法清除它为止。在连接的缺省模式下（启用自动提交），当语句完成时将自动提交或还原该语句。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果基本数据库和驱动程序在语句提交之后仍保持这些语句的打开状态，则同一个
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	PreparedStatement&amp;nbsp;可执行多次。如果这一点不成立，那么试图通过使用PreparedStatement&amp;nbsp;对象代替&amp;nbsp;Statement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对象来提高性能是没有意义的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	利用&amp;nbsp;pstmt（前面创建的&amp;nbsp;PreparedStatement
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对象），以下代码例示了如何设置两个参数占位符的值并执行&amp;nbsp;pstmt&amp;nbsp;10&amp;nbsp;次。如上所述，为做到这一点，数据库不能关闭&amp;nbsp;pstmt。在该示例中，第一个参数被设置为
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	\"Hi\"并保持为常数。在&amp;nbsp;for&amp;nbsp;循环中，每次都将第二个参数设置为不同的值：从&amp;nbsp;0&amp;nbsp;开始，到&amp;nbsp;9&amp;nbsp;结束。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.setString(1,&amp;nbsp;\"Hi\");
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	for&amp;nbsp;(int&amp;nbsp;i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;i&amp;nbsp;&amp;lt;&amp;nbsp;10;&amp;nbsp;i++)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	{
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.setInt(2,&amp;nbsp;i);
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	int&amp;nbsp;rowCount&amp;nbsp;=
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.executeUpdate();
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	}
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;3、&lt;strong&gt;IN&lt;/strong&gt;&lt;/strong&gt;&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;&lt;strong&gt;参数中数据类型的一致性&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	setXXX&amp;nbsp;方法中的&amp;nbsp;XXX&amp;nbsp;是&amp;nbsp;Java&amp;nbsp;类型。它是一种隐含的&amp;nbsp;JDBC&amp;nbsp;类型（一般&amp;nbsp;SQL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型），因为驱动程序将把&amp;nbsp;Java&amp;nbsp;类型映射为相应的&amp;nbsp;JDBC&amp;nbsp;类型（遵循该&amp;nbsp;JDBCGuide中§8.6.2&amp;nbsp;“映射&amp;nbsp;Java&amp;nbsp;和&amp;nbsp;JDBC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型”表中所指定的映射），并将该&amp;nbsp;JDBC&amp;nbsp;类型发送给数据库。例如，以下代码段将&amp;nbsp;PreparedStatement&amp;nbsp;对象&amp;nbsp;pstmt&amp;nbsp;的第二个参数设置为&lt;span&amp;nbsp;style=\"text-indent:2em;\"&gt;44，Java&amp;nbsp;类型为&amp;nbsp;short：&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	pstmt.setShort(2,&amp;nbsp;44);
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	驱动程序将&amp;nbsp;44&amp;nbsp;作为&amp;nbsp;JDBC
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	SMALLINT&amp;nbsp;发送给数据库，它是&amp;nbsp;Java&amp;nbsp;short&amp;nbsp;类型的标准映射。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	程序员的责任是确保将每个&amp;nbsp;IN&amp;nbsp;参数的&amp;nbsp;Java
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型映射为与数据库所需的&amp;nbsp;JDBC&amp;nbsp;数据类型兼容的&amp;nbsp;JDBC&amp;nbsp;类型。不妨考虑数据库需要&amp;nbsp;JDBC&amp;nbsp;SMALLINT&amp;nbsp;的情况。如果使用方法&amp;nbsp;setByte
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	，则驱动程序将&amp;nbsp;JDBC&amp;nbsp;TINYINT&amp;nbsp;发送给数据库。这是可行的，因为许多数据库可从一种相关的类型转换为另一种类型，并且通常&amp;nbsp;TINYINT
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	可用于SMALLINT&amp;nbsp;适用的任何地方
+&lt;/p&gt;</content>
+  <contentx>概述
+
+
+	该 PreparedStatement 接口继承
+
+
+	Statement，并与之在两方面有所不同：
+
+
+	PreparedStatement 实例包含已编译的 SQL
+
+
+	语句。这就是使语句“准备好”。包含于 PreparedStatement 对象中的 SQL 语句可具有一个或多个 IN 参数。IN参数的值在 SQL
+
+
+	语句创建时未被指</contentx>
+  <tags>_null_</tags>
+</root>

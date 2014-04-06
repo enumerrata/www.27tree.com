@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Flame：史上最危险的病毒</title>
+<content>&amp;lt;p&amp;gt;
+	最近国内外众媒体纷纷报道出现了一种新的恶意病毒&amp;nbsp;Flame&amp;nbsp;(&amp;nbsp;Worm.Win32.Flame&amp;nbsp;，又称&amp;nbsp;Flamer&amp;nbsp;或&amp;nbsp;sKyWlper&amp;nbsp;、Skywiper&amp;nbsp;等），中文名“火焰病毒”、“超级火焰病毒”。Flame&amp;nbsp;被包括世界电信联盟等官方以及卡巴斯基等国际权威厂商认定为迄今为止最复杂、最危险、最致命的病毒威胁。那么这个&amp;nbsp;Flame&amp;nbsp;到底是什么样的病毒呢，值得被冠以“最复杂、最危险”“最厉害”甚至“设计最巧妙”“最隐密”“最致命”等众多称号呢？面对&amp;nbsp;Flame&amp;nbsp;病毒我们到底值不值得防范，以及又应当如何防范呢？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Flame&amp;nbsp;病毒是什么？&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flame&amp;nbsp;是于&amp;nbsp;2012&amp;nbsp;年&amp;nbsp;5&amp;nbsp;月被发现的电脑病毒，其构造复杂，可以通过USB存储器以及网络复制和传播，并能接受来自世界各地多个服务器的指令。目前被定性为“工业病毒”。
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048299747.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;最复杂&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flame&amp;nbsp;病毒用上了&amp;nbsp;5&amp;nbsp;种不同的加密算法，3&amp;nbsp;种不同的压缩技术，和至少&amp;nbsp;5&amp;nbsp;种不同的文件格式，包括其专有的格式。并将它感染的系统信息以高度结构化的格式存储在SQLite&amp;nbsp;等数据库中，病毒文件达到&amp;nbsp;20MB&amp;nbsp;之巨（代码打印出来的纸张长度达到2400米）。此外，还使用了游戏开发用的&amp;nbsp;Lua&amp;nbsp;脚本语言编写，使得结构更加复杂。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	卡巴斯基表示由于“火焰”病毒是由大量相当复杂的组件和某些体积庞大的文件组成的，且编写方式非常复杂，在如此有限的时间内提供全面的分析是几乎没有可能性的，因此可能需花上数年时间，才能完全了解该病毒的全部情况。赛门铁克也表示，“火焰”的一些特点是前所未见的，它的复杂性犹如“用核武器去砸核桃”。截至目前国内外杀毒软件没人一家正式发布完整发现该病毒并能够完美拦截。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;最危险&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	高潜伏性据悉&amp;nbsp;Flame&amp;nbsp;病毒出现的最早时间可追溯到&amp;nbsp;2007&amp;nbsp;年，并推测可能于&amp;nbsp;2010&amp;nbsp;年&amp;nbsp;3&amp;nbsp;月就被攻击者放出（攻击伊朗石油部门的商业情报），但由于其结构的复杂性和攻击目标具有选择性，安全软件一直未能发现它。目前一致看法是&amp;nbsp;Flame&amp;nbsp;病毒可能已经以某种形式活跃了长达&amp;nbsp;5&amp;nbsp;至&amp;nbsp;8&amp;nbsp;年的时间，甚至还可能更久。这种高潜伏性很是危险。此外，一旦完成搜集数据任务，这些病毒还可自行毁灭，这也是其能够长期潜伏的原因之一。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;高危害性&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一旦感染&amp;nbsp;Flame&amp;nbsp;病毒并激活组件后，它会运用包括键盘，屏幕，麦克风，移动存储设备，网络，WIFI，蓝牙，USB和系统进程在内的所有的可能条件去收集信息，然后将用户浏览网页、通讯通话、账号密码以至键盘输入等纪录，甚至利用蓝牙功能窃取与被感染电脑相连的智能手机、平板电脑中的文件发送给远程操控病毒的服务器。此外，即便与服务器的联系被切断，攻击者依然可通过蓝牙信号对被感染计算机进行近距离控制。从功能角度是非常强大的，可以称之为偷盗技术全能，覆盖了用户使用电脑的所有输入输出的接口。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然这种全方位的获取信息并不是针对每个人的，微软也表示&amp;nbsp;Flame&amp;nbsp;病毒主要用于进行高度复杂且极具针对性的攻击，它会从&amp;nbsp;PDF、电子表格和&amp;nbsp;Word&amp;nbsp;文档等文件中提取&amp;nbsp;1KB&amp;nbsp;样本，压缩和上传样本到命令控制服务器，然后攻击者发出指令抓取他们感兴趣的特定文档。据悉&amp;nbsp;Flame&amp;nbsp;病毒在所有文件中对&amp;nbsp;AutoCAD&amp;nbsp;绘图文件最为比较感兴趣。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最近，微软安全调查人员表示，此前具有高针对性的&amp;nbsp;Flame病毒目前已经开始攻击使用&amp;nbsp;Windows&amp;nbsp;Update&amp;nbsp;的微软用户，微软认为这种情况是&amp;nbsp;Flame&amp;nbsp;病毒使用的某些技术被一些低级攻击者用于了更广泛的攻击，它通过设置伪造的服务器，绕过合法的&amp;nbsp;Windows&amp;nbsp;Update，当电脑连接到网络上时，用户们就会看到伪装成正版的微软更新软件，而此时&amp;nbsp;Flame&amp;nbsp;病毒就从伪造的服务器传输到电脑里。这种利用微软数字签名欺骗漏洞进行伪装，使其看起来“像是由微软发布的软件”，突破了众多杀毒软件的拦截。目前微软已发布“灭火”补丁并新增了三个证书授权来消除此风险。虽然这些措施缓解了目前&amp;nbsp;Windows&amp;nbsp;用户受到的威胁，但其还还没有彻底根治解决&amp;nbsp;Flame&amp;nbsp;病毒。Flame&amp;nbsp;病毒开始主要集中攻击中东地区，包括伊朗&amp;nbsp;189&amp;nbsp;例、以色列和巴勒斯坦&amp;nbsp;98&amp;nbsp;例，以及叙利亚、黎巴嫩、沙特等国家。目前世界范围内受感染电脑数量估测在&amp;nbsp;1000&amp;nbsp;至&amp;nbsp;5000&amp;nbsp;台之间。目前推测&amp;nbsp;Flame&amp;nbsp;病毒与之前攻击伊朗核设施和工业控制系统的&amp;nbsp;stuxnet&amp;nbsp;（震网）和&amp;nbsp;Duqu&amp;nbsp;（毒区）有关联，并被认为可能是由某些国家政府机构提供大量资金和技术支持而研制的，目的为用于网络战争。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-align:center;\"&amp;gt;
+	&amp;lt;img&amp;nbsp;src=\"http://upload.chinaz.com/2012/0607/1339048299643.png\"&amp;nbsp;alt=\"\"&amp;nbsp;/&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	来源目前不得而知，但是它的危险性是无容置疑的，对于政企等涉密机构来说&amp;nbsp;Flame&amp;nbsp;病毒绝对是需要重点防范的对象，那么对于普通用户来说值不值得防范呢？先看一下国内安全公司的反应。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.&amp;nbsp;&amp;lt;strong&amp;gt;金山&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	金山表示最早收集到&amp;nbsp;Flame&amp;nbsp;病毒的一个组件是在&amp;nbsp;2010年10&amp;nbsp;月，因该样本的来源不是实际感染渠道（样本广度为&amp;nbsp;0），因而该样本未被关注，并认为该病毒未在中国造成实质性的感染。此外根据公开的&amp;nbsp;Flame&amp;nbsp;病毒技术资料，开发了简单的&amp;nbsp;Flame&amp;nbsp;病毒检测工具，并建议网民勿须对&amp;nbsp;Flame&amp;nbsp;病毒感到紧张。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2.&amp;nbsp;360&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	360&amp;nbsp;安全中心表示，火焰病毒以伊朗等中东地区的特定机构和个人为攻击目标，中国并不在其攻击范围内。目前已检测到国内感染该病毒残体的少量电脑（百余台），疑似用户不慎通过&amp;nbsp;U&amp;nbsp;盘将火焰携带入境。360&amp;nbsp;已经向用户推送微软官方“灭火”补丁来预防病毒的攻击。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;3.&amp;nbsp;瑞星&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	发布红色安全警报，“目前，瑞星公司已对全线产品进行了紧急升级，瑞星用户已能够拦截并彻底查杀此病毒。”综合来说，Flame&amp;nbsp;病毒依旧处于“雷声大，雨点小”的状态，目前还没有证据表明&amp;nbsp;Flame&amp;nbsp;病毒在中国存在实际上感染的事例，因此确实我们无需太过紧张。Flame&amp;nbsp;病毒因为之前的stuxnet&amp;nbsp;和&amp;nbsp;Duqu&amp;nbsp;病毒所带来的“狼来了”效应使得它获得很大的关注，这在一定程度上使其危害性得到了不少放大，那些“最**”就是记号。诚然，它本身的危险性确实很高，但综合来说还是一款针对政企的工业病毒，对普通用户来说直接威胁性不是很大。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当然这也不能作为我们麻痹大意的借口，该预防一下还是要预防一下。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/news/2012-06-08/1339115758.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

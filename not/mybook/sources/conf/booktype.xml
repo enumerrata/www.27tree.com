@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+     <b type="java" desc="JAVA开发技术" />
+     <b type="php" desc="PHP开发技术" />
+     <!--<b type="mfc" desc="MFC框架" />-->
+     <b type="cocpp" desc="C/C++" />
+     <b type="android" desc="Android" />
+     <b type="py" desc="Python" />
+     <b type="web" desc="Web开发" />
+     <b type="ios" desc="IOS开发" />
+     <b type="database" desc="数据库技术" />
+     <b type="system" desc="操作系统" />
+     <b type="hp" desc="汇编语言" />
+     <!--<b type="dpj" desc="单片机" />-->
+     <b type="other" desc="其他" />
+</root>

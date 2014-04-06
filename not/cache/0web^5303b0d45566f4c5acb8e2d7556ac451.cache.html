@@ -1,0 +1,487 @@
+<__cache@1389762947-@1389766547@0web__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            Web前端开发_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=web />
+                    <input type="hidden" id="pages" value=0/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/web/'>Web前端开发</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/web.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">web本意是蜘蛛网和网的意思。现广泛译作网络、互联网等技术领域。表现为三种形式，即超文本(Hypertext)、超媒体(Hypermedia)、超文本传输协议(Http)等。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-html5/>[HTML4/5]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-15/1339742777.html">
+        &nbsp;HTML发展历程    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;这篇文章...应该是用翻译器翻译的吧？还是...文章中的“得”频频出错，另外“欣赏器”这种说法，为什么不说是“浏览器”呢？</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-26/1340685984.html">
+        &nbsp;.Is() VS .HasClass()    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-11/1339350787.html">
+        &nbsp;Jquery的自适应宽度圆角按钮    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/266">%E5%95%8A%E5%93%A6</a>:&nbsp;按钮我都没有看到哦？</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/web-css/" class="borderR15 sband">CSS2/3</a><a href="/art/web-html5/" class="borderR15 sband">HTML4/5</a><a href="/art/web-jquery/" class="borderR15 sband">JQuery</a><a href="/art/web-dojo/" class="borderR15 sband">Dojo</a><a href="/art/web-ext/" class="borderR15 sband">Ext</a><a href="/art/web-ajax/" class="borderR15 sband">RIA/AJAX</a><a href="/art/web-regex/" class="borderR15 sband">Regex正则</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-26/1348615822.html>CSS 强制换行&强制不换行</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">在CSS网页布局中，常常会遇到这样的问题，强制文字换行，而不是在一行内显示撑开容器影响布局。而有些时候可能会强制内容不换行，多出的部分隐藏掉即可，关于强制不换行与强制换行的一些CSS属性www.itsrcs.com作一些整理，希望能给大家的工作和学习提供参考。</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(1357)</span>
+                           <em>2012年9月25日 14:08</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-/>[]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-22/1348300388.html>KindEditor 编辑器使用方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">1. 下载KindEditor编辑器
+	下载 KindEditor 最新版本，下载之后打开 examples/index.html 就可以看到演示。
+	下载页面: http://www.kindsoft.net/down.php
+2. 部署KindEditor编辑器
+	解压 kindeditor-x.x.x.zip 文件，将所有文</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/37'>_KOODO</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(1194)</span>
+                           <em>2012年9月17日 18:57</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-dojo/>[Dojo]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-22/1348300360.html>Dojo特效教程：Wiping</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">另外一个效果你可能看到的是Wiping（擦拭）:改变一个节点的高度,同时使得内容独立起来。这使它看起来像有人正在使用一个雨刷在刷那个节点。通常,Wiping可以在某些场合很有用，例如在页面很少被访问的内容上创建一个下拉菜单。</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(841)</span>
+                           <em>2012年8月9日 09:33</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-dojo/>[Dojo]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-22/1348300409.html>用Dojo进行浏览器检测</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">尽管Dojo能够在消除浏览器不一致性方面替我们做很多工作，但有时候读者可能仍然需要检测一下浏览器（无论出于什么原因）。
+
+
+	读者就可以使用下面Dojo_base中提供的属性，并将它们当作布尔值来对待，以省去编写大量繁琐代码的麻烦
+
+
+	
+		
+			dojo.isOpera
+		
+		
+			dojo.isKhtml
+		
+		
+			dojo.isSaf</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(859)</span>
+                           <em>2012年8月9日 09:44</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-22/1348300357.html>CSS清除浮动的三个方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">.clr {clear: both;}
+一般在要清除的位置插入<div class=\"clr\"></div>
+
+	
+
+
+	
+
+
+#layout {overflow:auto; zoom:1;}
+#layout:after{
+display: block;
+clear: both; content: \'\';
+visibility:hid</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(843)</span>
+                           <em>2012年8月9日 15:34</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-09-22/1348300343.html>Javascript内存分配机制</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">原始值和引用值
+
+
+	在ECMAScript中，变量可以存放两种类型的值，即原始值和引用值。原始值指的就是代表原始数据类型（基本数据类型）的值，即Undefined,Null,Number,String,Boolean类型所表示的值。引用值指的就是复合数据类型的值，即Object,Function,Array,以及自定义对象,等等。
+
+
+	栈和堆
+
+
+	与原</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(868)</span>
+                           <em>2012年9月1日 13:37</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346129063.html>Javascript 随机函数 Math.random()</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">random函数语法Math.random();
+
+
+	random函数参数无参数random函数返回值返回0和1之间的伪随机数，可能为0，但总是小于1，[0,1)random函数示例console.log(Math.random());
+
+
+	返回随机数
+
+
+	console.log(Math.random()*(20-10)+10);
+
+
+	返回10-2</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1510)</span>
+                           <em>2012年8月28日 12:41</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346128980.html>使用JavaScript打开新窗口的两种方式</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一般常使的方式有window.open()和window.showModalDialog()两种
+
+
+	1、window.open(url)
+
+
+	将在浏览器中新开一个选项卡，可以在其中使用window.opener.document文档对象来进行对父窗口的操作。
+
+
+	2、window.showModalDialog(url，obj，style)
+
+
+	可</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(818)</span>
+                           <em>2012年8月26日 09:30</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346129032.html>Javascript核心Element对象</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、操纵Element对象的属性
+
+
+	getAttribute(name) - 基于一个字符串形式的属性名称取得相应属性的值
+
+
+	setAttribute(name,value) - 基于一个字符串形式的属性名称设置相应属性的值
+
+
+	removeAttribute(name) - 基于一个字符串形式的属性名称删除相应属性的值
+
+
+	getAttribu</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(730)</span>
+                           <em>2012年8月25日 00:18</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346129054.html>Javascript核心节点对象操作</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、获取节点名称、值和类型
+
+
+	nodeName - 节点标签名称
+
+
+	nodeValue - 节点值
+
+
+	nodeType - 节点类型
+
+
+	二、获取父节点、子节点和同辈节点
+
+
+	parentNode - 指定节点的直接父节点
+
+
+	childNodes - 指定节点的所有子节点
+
+
+	firstChild - 指定节点的第一个子节点
+
+
+	la</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(830)</span>
+                           <em>2012年8月25日 00:15</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346128981.html>修改JQuery源文件使其支持Chrome浏览器判断</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">使用JQuery判断Chrome时，发现JQuery将其判断为Safari，这个是错误的。反正Jquery不会再修改$.browser了，那还是自己修改，和上次的修改类似。
+
+
+	打开jquery的代码，查找msie，将前面的
+
+
+	o.browser={version:(C.match(/.+(?:rv|it|ra|ie)[\\/: ]([\\d.]+)/)|</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1301)</span>
+                           <em>2012年8月23日 19:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-28/1346129068.html>Javascript实现文本框高度自适应 </a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">第一个方案是用一个div装下textarea中的文本, 让各种相关样式相同, 这样div的高就应该是textarea的高了. 于是很快写了出来. 但因为毕竟一个是text, 一个是html, 各种转换也比较麻烦. 遇到了不换行的长文本(英文), 处理起来就更不方便了. 还有空格什么的处理. 比如 \"abc&nbsp;abc\" 这样, 中间是不会换行的</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(883)</span>
+                           <em>2012年8月28日 10:59</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-js/>[Javascript]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-19/1345343210.html>spin.js 好用的loading 库</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">不多说，先上图了。
+
+	<img&nbsp;src=\"/mod/kd/attached/image/20120819/20120819100334_79043.jpg\" alt=\"\" /> 
+
+	超级屌丝的特性，什么gif loading 图片都是浮云了。
+	
+		无图片, 
+	
+		无外部样式表
+	
+		不依赖其他Js库，例如Jquery,D</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(1593)</span>
+                           <em>2012年8月19日 10:18</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-dojo/>[Dojo]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-08-08/1344398617.html>Dojo特效教程：Fading</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Dojo 1.7 有两个版本的特效模块 : dojo/_base/fx 和 dojo/fx.dojo/_base/fx 
+
+
+	其在上一个dojo版本中就已经提供了基础的特效方法。包括: animateProperty, anim, fadeIn, 和 fadeOut；
+
+
+	dojo/fx 提供了更多的高级特效方法，包括 ：chain, combine, </p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>5</strong>) / <img src='/img/read.png' align='absmiddle' />(838)</span>
+                           <em>2012年8月8日 11:55</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-26/1340685984.html>.Is() VS .HasClass()</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、.hasClass()
+
+
+	hasClass()方法是用来检查被选择的元素是否包含指定的class名，其语法：
+
+
+	$(selector).hasClass(\"className\");//其中class是必须的值，规定需要在指定元素中查找的类名。 hasClass()也可以同时写多个class但他们之前用空格隔开，如下：
+
+
+	$(selector)...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(652)</span>
+                           <em>2012年6月26日 12:44</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>Web前端开发</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/288">
+    <img src="/not/mybook/data/book_image_lib/bc21b7a5447b78f1320b865144626990.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/288">
+    《JavaScript DOM高级程序设计》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/210">
+    <img src="/not/mybook/data/book_image_lib/bf2f2a64202cc51894346ec0ce4a9788.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/210">
+    《高性能网站构建实战 》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/247">
+    <img src="/not/mybook/data/book_image_lib/611753ddfa824eec139c93c3be575c5d.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/247">
+    《TCP/IP详解 3：TCP事务协议、HTTP、NNTP和UNIX域协议》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/190">
+    <img src="/not/mybook/data/book_image_lib/5aa16d74d5ab4c150b6936f207b74cb2.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/190">
+    《JavaScript DOM编程艺术》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/25">
+    <img src="/not/mybook/data/book_image_lib/e902b73d2554e342ec9609a32a2685f8.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/25">
+    《程序员修炼之道——从小工到专家》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/web/0'>1</a></li><li><a href='http://www.27tree.com/art/web/1'>2</a></li><li><a href='http://www.27tree.com/art/web/2'>3</a></li><li><a href='http://www.27tree.com/art/web/3'>4</a></li><li><a href='http://www.27tree.com/art/web/4'>5</a></li><li><a href='http://www.27tree.com/art/web/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

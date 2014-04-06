@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Javascript:跨浏览器解析XML</title>
+<content>&amp;lt;p&amp;gt;
+	首先介绍简单的理论：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于XML，我们可以理解它是一种树结构，它包含根，元素，属性，文本等内容。不同浏览器都有自己的解析器，把XML读入内存，并把它转换为可被&amp;nbsp;JavaScript&amp;nbsp;访问的&amp;nbsp;XML&amp;nbsp;DOM&amp;nbsp;对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	微软的&amp;nbsp;XML&amp;nbsp;解析器与其他浏览器中的解析器是有差异的。微软的解析器支持对&amp;nbsp;XML&amp;nbsp;文件和&amp;nbsp;XML&amp;nbsp;字符串（文本）的加载，而其他浏览器使用单独的解析器。不过，所有的解析器都含有遍历&amp;nbsp;XML&amp;nbsp;树、访问、插入及删除节点的函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你使用的是一个本地文件或者网络文件且该文件在是在本服务器，那么对于IE和其他浏览器来说都可以通过load(uRl)，loadXML(strXML)来创建Xdom对象。但是对于文本，除IE外需要一个单独的解析器来处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下函数用于根据不同的浏览器来创建Xdom对象：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;loadXMLDoc()&amp;nbsp;{
+	var&amp;nbsp;xmlDoc;
+	//&amp;nbsp;code&amp;nbsp;for&amp;nbsp;IE
+	if&amp;nbsp;(window.ActiveXObject){
+	&amp;nbsp;&amp;nbsp;xmlDoc=new&amp;nbsp;ActiveXObject(\"Microsoft.XMLDOM\");//创建空的微软&amp;nbsp;XML&amp;nbsp;文档对象
+	&amp;nbsp;&amp;nbsp;//xmlDoc.load(uRl);
+	&amp;nbsp;&amp;nbsp;//loadXML()&amp;nbsp;方法用于加载字符串（文本），而&amp;nbsp;load()&amp;nbsp;用于加载文件
+	&amp;nbsp;&amp;nbsp;xmlDoc.loadXML(xmlstr);
+	}
+	//&amp;nbsp;code&amp;nbsp;for&amp;nbsp;Mozilla,&amp;nbsp;Firefox,&amp;nbsp;Opera,&amp;nbsp;etc.
+	else&amp;nbsp;if(document.implementation&amp;amp;&amp;amp;document.implementation.createDocument){&amp;nbsp;
+	&amp;nbsp;&amp;nbsp;xmlDoc=document.implementation.createDocument(\"\",\"\",null);
+	&amp;nbsp;&amp;nbsp;//xmlDoc.load(uRl);
+	&amp;nbsp;&amp;nbsp;//Internet&amp;nbsp;Explorer&amp;nbsp;使用&amp;nbsp;loadXML()&amp;nbsp;方法来解析&amp;nbsp;XML&amp;nbsp;字符串，而其他浏览器使用&amp;nbsp;DOMParser&amp;nbsp;对象
+	&amp;nbsp;&amp;nbsp;parser=new&amp;nbsp;DOMParser();
+	&amp;nbsp;&amp;nbsp;xmlDoc=parser.parseFromString(txt,\"text/xml\");
+	}else{
+	&amp;nbsp;&amp;nbsp;alert(&amp;nbsp;Your&amp;nbsp;browser&amp;nbsp;cannot&amp;nbsp;handle&amp;nbsp;this&amp;nbsp;script&amp;nbsp;);
+	}
+	//关闭异步加载，这样可确保在文档完整加载之前，解析器不会继续执行脚本
+	xmlDoc.async=false;	
+	createTable(xmlDoc);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	方法内有具体的解析，我不再啰嗦，对于解析的内容，分为字符串和文本两种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	首先定义一个字符串：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;xmlstr=\"&amp;amp;lt;?xml&amp;nbsp;version=\\\"1.0\\\"&amp;nbsp;encoding=\\\"UTF-8\\\"?&amp;amp;gt;&amp;amp;lt;goodss&amp;amp;gt;&amp;amp;lt;goods&amp;nbsp;id=\\\"1\\\"&amp;amp;gt;&amp;amp;lt;name&amp;amp;gt;数码相机&amp;amp;lt;/name&amp;amp;gt;&amp;amp;lt;price&amp;amp;gt;3206(元)&amp;amp;lt;/price&amp;amp;gt;&amp;amp;lt;/goods&amp;amp;gt;&amp;amp;lt;goods&amp;nbsp;id=\\\"2\\\"&amp;amp;gt;&amp;amp;lt;name&amp;amp;gt;联想笔记本电脑&amp;amp;lt;/name&amp;amp;gt;&amp;amp;lt;price&amp;amp;gt;3206(元)&amp;amp;lt;/price&amp;amp;gt;&amp;amp;lt;/goods&amp;amp;gt;&amp;amp;lt;/goodss&amp;amp;gt;\";&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	然后定义一个goods.xml文件：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文件内容为：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"xml\"&amp;gt;&amp;amp;lt;?xml&amp;nbsp;version=\"1.0\"&amp;nbsp;encoding=\"UTF-8\"?&amp;amp;gt;
+&amp;amp;lt;goodss&amp;amp;gt;
+	&amp;amp;lt;goods&amp;nbsp;id=\"1\"&amp;amp;gt;
+		&amp;amp;lt;name&amp;amp;gt;数码相机&amp;amp;lt;/name&amp;amp;gt;
+		&amp;amp;lt;price&amp;amp;gt;3206(元)&amp;amp;lt;/price&amp;amp;gt;
+	&amp;amp;lt;/goods&amp;amp;gt;
+	&amp;amp;lt;goods&amp;nbsp;id=\"2\"&amp;amp;gt;
+		&amp;amp;lt;name&amp;amp;gt;联想笔记本电脑&amp;amp;lt;/name&amp;amp;gt;
+		&amp;amp;lt;price&amp;amp;gt;3206(元)&amp;amp;lt;/price&amp;amp;gt;
+	&amp;amp;lt;/goods&amp;amp;gt;
+&amp;amp;lt;/goodss&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	通过取消和注释方式来选择是文本还是字符串。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个方法可以是通用的，下面再来解析这个Xdom对象：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;function&amp;nbsp;createTable(xmldoc){
+	var&amp;nbsp;goodss=xmldoc.getElementsByTagName(\"goods\");
+	for(var&amp;nbsp;i=0;i&amp;amp;lt;goodss.length;i++){
+		var&amp;nbsp;g=goodss[i];
+		if&amp;nbsp;(g.nodeType==1){
+			var&amp;nbsp;name=g.getElementsByTagName(\"name\")[0].childNodes[0].nodeValue;
+			var&amp;nbsp;price=g.getElementsByTagName(\"price\")[0].childNodes[0].nodeValue;
+			var&amp;nbsp;id=g.getAttribute(\"id\");
+			document.write(id&amp;nbsp;+&amp;nbsp;&amp;nbsp;\"--&amp;amp;gt;\"&amp;nbsp;+&amp;nbsp;name&amp;nbsp;+&amp;nbsp;\"--&amp;amp;gt;\"&amp;nbsp;+&amp;nbsp;price);
+			document.write(\"&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;\");
+		}
+	}	
+}&amp;lt;/pre&amp;gt;
+对于使用到的函数和属性我们来解析一下：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;/*
+一些典型的&amp;nbsp;DOM&amp;nbsp;属性
+x.nodeName&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的名称&amp;nbsp;
+x.nodeValue&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的值&amp;nbsp;
+x.parentNode&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的父节点&amp;nbsp;
+x.childNodes&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的子节点&amp;nbsp;
+x.attributes&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的属性节点
+x.firstChild&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的第一个子节点，等同于childNodes[0]
+x.lastChild&amp;nbsp;&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的最后一个子节点
+x.data&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的内容，等同nodeValue
+x.length&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的长度
+x.nodeType&amp;nbsp;-&amp;nbsp;x&amp;nbsp;的类型：1,元素,2,属性,3,文本,4,注释,5,文档
+在上面的列表中，x&amp;nbsp;是一个节点对象
+XML&amp;nbsp;DOM&amp;nbsp;方法
+x.getElementsByTagName(name)&amp;nbsp;-&amp;nbsp;获取带有指定标签名称的所有元素，返回的是数组
+x.getAttribute(name)&amp;nbsp;-&amp;nbsp;返回属性的值
+*/
+/*出于安全方面的原因，现代的浏览器不允许跨域的访问。
+这意味着，网页以及它试图加载的&amp;nbsp;XML&amp;nbsp;文件，都必须位于相同的服务器上。
+否则，xmlDoc.load()&amp;nbsp;将产生错误&amp;nbsp;\"Access&amp;nbsp;is&amp;nbsp;denied\"。
+*/&amp;lt;/pre&amp;gt;
+在页面增加一个按钮来调用函数：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;input&amp;nbsp;type=\"button\"&amp;nbsp;name=\"bxml\"&amp;nbsp;value=\"Read\"&amp;nbsp;onclick=\"loadXMLDoc()\"&amp;nbsp;/&amp;amp;gt;&amp;lt;/pre&amp;gt;
+页面将会输出XMl内节点的属性和子节点的内容。对于一般应用来说，我觉得上面内容已经足够了。我会在之后补充一些其他操作。
+</content>
+<json-link>./file/web/2012-05-25/1337926379.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Java消息服务</title>
+  <author>（美）理查兹</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-29 09:30:22</submit-date-time>
+  <img-link>f27e66290be0923683227b0bd81b7fef.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书深入浅出地讲解了JMS&amp;nbsp;1.1规范的底层技术、Java类和接口、编程模型及其不同实现等Java消息服务（JMS）和消息传送机制关键技术。通过对支持点对点和发布/订阅“消息传送”的标准API的完全解读以及具体实例，介绍了如何利用“厂商无关”的JMS来解决许多体系结构的面临的挑战。本书适用于掌握Java语言并有业务解决方案开发经验的读者，或者需要学习消息传送技术的读者。
+&lt;/p&gt;</book-intro>
+</root>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>OpenGL编程指南</title>
+  <author>(美)施瑞奈尔　</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-07 09:18:36</submit-date-time>
+  <img-link>306bd626b77830640268cb68965da9f7.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书对OpenGL以及OpenGL实用函数库进行了全面而又权威的介绍，素有“OpenGL红宝书”之誉。本书的上一个版本覆盖了到OpenGL&amp;nbsp;2.1版的内容。本版涵盖了OpenGL&amp;nbsp;3.0和3.1的最新特性。本书以清晰的语言描述了OpenGL的功能以及许多基本的计算机图形技巧，例如创建和渲染3D模型、从不同的透视角度观察物体、使用着色、光照和纹理贴图使场景更加逼真等。另外，本书还深入探讨了许多高级技巧，包括纹理贴图、抗锯齿、雾和大气效果、NURBS、图像处理子集等。此外，本书还对一些重要的主题进行了讨论，例如提高性能、OpenGL扩展以及跨平台技术等。本书内容详实，讲解生动，图文并茂，是OpenGL程序员的绝佳编程指南。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	OpenGL是一种功能强大的软件接口，既可以用于生成高质量的计算机图像，也可以用于编写使用2D和3D物体、位图和彩色图像的交互式应用程序。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

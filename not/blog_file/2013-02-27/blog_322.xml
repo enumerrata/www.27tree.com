@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[使用oledb访问excel方法，及office版本区别代码修改]]></title>
+  <content><![CDATA[<br>
+<pre name=\"code\" id=\"prettyprint\" class=\"c-sharp\">//加载Excel   
+public static DataSet LoadDataFromExcel(string filePath)  
+{  
+    try  
+    {  
+        string strConn;  
+        strConn = \"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\" + filePath + \";Extended Properties=\'Excel 8.0;HDR=False;IMEX=1\'\";  
+        OleDbConnection OleConn = new OleDbConnection(strConn);  
+        OleConn.Open();  
+        String sql = \"SELECT * FROM  [Sheet1$]\";//可是更改Sheet名称，比如sheet2，等等   
+  
+        OleDbDataAdapter OleDaExcel = new OleDbDataAdapter(sql, OleConn);  
+        DataSet OleDsExcle = new DataSet();  
+        OleDaExcel.Fill(OleDsExcle, \"Sheet1\");  
+        OleConn.Close();  
+        return OleDsExcle;  
+    }  
+    catch (Exception err)  
+    {  
+        MessageBox.Show(\"数据绑定Excel失败!失败原因：\" + err.Message, \"提示信息\",  
+            MessageBoxButtons.OK, MessageBoxIcon.Information);  
+        return null;  
+    }  
+}  </pre>
+<br>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"c-sharp\">public static bool SaveDataTableToExcel(System.Data.DataTable excelTable, string filePath)  
+        {  
+            Microsoft.Office.Interop.Excel.Application app =  
+                new Microsoft.Office.Interop.Excel.ApplicationClass();  
+            try  
+            {  
+                app.Visible = false;  
+                Workbook wBook = app.Workbooks.Add(true);  
+                Worksheet wSheet = wBook.Worksheets[1] as Worksheet;  
+                if (excelTable.Rows.Count &gt; 0)  
+                {  
+                    int row = 0;  
+                    row = excelTable.Rows.Count;  
+                    int col = excelTable.Columns.Count;  
+                    for (int i = 0; i &lt; row; i++)  
+                    {  
+                        for (int j = 0; j &lt; col; j++)  
+                        {  
+                            string str = excelTable.Rows[i][j].ToString();  
+                            wSheet.Cells[i + 2, j + 1] = str;  
+                        }  
+                    }  
+                }  
+  
+                int size = excelTable.Columns.Count;  
+                for (int i = 0; i &lt; size; i++)  
+                {  
+                    wSheet.Cells[1, 1 + i] = excelTable.Columns[i].ColumnName;  
+                }  
+                //设置禁止弹出保存和覆盖的询问提示框   
+                app.DisplayAlerts = false;  
+                app.AlertBeforeOverwriting = false;  
+                //保存工作簿   
+                wBook.Save();  
+                //保存excel文件   
+                app.Save(filePath);  
+                app.SaveWorkspace(filePath);  
+                app.Quit();  
+                app = null;  
+                return true;  
+            }  
+            catch (Exception err)  
+            {  
+                MessageBox.Show(\"导出Excel出错！错误原因：\" + err.Message, \"提示信息\",  
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);  
+                return false;  
+            }  
+            finally  
+            {  
+            }  
+        }  </pre>
+转载自<a href=\"http://blog.csdn.net/gisfarmer\" target=\"_blank\">http://blog.csdn.net/gisfarmer</a>/
+</p>
+<br>
+<p>
+	//2003（Microsoft.Jet.Oledb.4.0）
+</p>
+<p>
+	string strConn = string.Format(\"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=\'Excel 8.0;HDR=Yes;IMEX=1;\'\", excelFilePath);
+</p>
+<p>
+	//2010（Microsoft.ACE.OLEDB.12.0）
+</p>
+<p>
+	string strConn = string.Format(\"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=\'Excel 8.0;HDR=Yes;IMEX=1;\'\", excelFilePath);
+</p>
+<br>
+<p>
+	转载自<a href=\"http://blog.csdn.net/jiajiayouba/article/details/7531707\" target=\"_blank\">http://blog.csdn.net/jiajiayouba/article/details/7531707</a>
+</p>]]></content>
+  <contentx><![CDATA[
+//加载Excel   
+public static DataSet LoadDataFromExcel(string filePath)  
+{  
+    try  
+    {  
+        string strConn;  ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-24 17:47:00</datetime>
+  <title><![CDATA[MYSQL 如何建立索引及如何使用索引]]></title>
+  <content><![CDATA[<p>
+	CREATE [UNIQUE] INDEX &lt;index_name&gt; ON &lt;table_name&gt;(字段 [ASC|DESC]);
+</p>
+<p>
+	UNIQUE --确保所有的索引列中的值都是可以区分的。
+</p>
+<p>
+	[ASC|DESC] --在列上按指定排序创建索引。
+</p>
+<p>
+	(创建索引的准则：
+</p>
+<p>
+	1.如果表里有几百行记录则可以对其创建索引(表里的记录行数越多索引的效果就越明显)。
+</p>
+<p>
+	2.不要试图对表创建两个或三个以上的索引。
+</p>
+<p>
+	3.为频繁使用的行创建索引。
+</p>
+<p>
+	)
+</p>
+<p>
+	示例
+</p>
+<p>
+	create index i_1 on emp(empno asc);
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

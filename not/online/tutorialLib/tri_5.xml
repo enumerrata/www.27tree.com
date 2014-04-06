@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tutorial-desc>CSS3教程</tutorial-desc>
+    <tutorial-menu>
+        <sector desc="CSS3 基础教程">
+            <atom title="CSS3 简介"/>
+            <atom title="CSS3 圆角"/>
+            <atom title="CSS3 阴影"/>
+            <atom title="CSS3 渐变"/>
+            <atom title="CSS3 变形"/>
+        </sector>
+    </tutorial-menu>
+</root>

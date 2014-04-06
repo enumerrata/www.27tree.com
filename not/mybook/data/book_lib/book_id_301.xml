@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript Step by Step]]></title>
+  <author>Steve Suehring</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2013-02-19 18:33:56</submit-date-time>
+  <img-link>0bf9fcace05bfee49bbc09abb9e68022.jpg</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	Teach yourself how to program with JavaScript -- one step at time. Ideal for developers with fundamental programming skills, this practical tutorial provides the clear guidance and hands-on examples you need to create or customize interactive Web applications using core JavaScript features and techniques.
+</p>
+<p>
+	Discover how to:
+</p>
+<p>
+	<ul>
+		<li>
+			<span style=\"line-height:1.5;\">Write and deploy JavaScript code with Microsoft® Visual Studio® 2010, the Eclipse IDE, or text editors</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Work with JavaScript syntax and data types</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Use the Document Object Model to retrieve, create, and change HTML elements</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Create rollover images and slideshow effects</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Validate and provide feedback for user input on Web forms</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Manipulate CSS styles and respond to browser events</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Develop interactive Web applications using AJAX</span>
+		</li>
+		<li>
+			<span style=\"line-height:1.5;\">Help speed development with JavaScript frameworks such as jQuery</span><span style=\"line-height:1.5;\"></span>
+		</li>
+	</ul>
+	<p>
+		The print version of this book includes free digital content online. To download, please visit O\'Reilly\'s web site, search for the title of this book to find its catalog page, and click on the link below the cover image (Examples, Companion Content, or Practice Files). Note that while we provide as much of the media content as we are able via free download, we are sometimes limited by licensing restrictions. Please direct any questions or concerns to booktech@oreilly.com.
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

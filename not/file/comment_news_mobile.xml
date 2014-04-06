@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<comment-list>
+	<num>5</num>
+ 
+<c>
+  <author-c>koodo</author-c>
+  <date-c>2012-04-23 09:52:42</date-c>
+  <conf-c>fffffffff</conf-c>
+  <url-c>http://127.0.0.1/not/log.php?path=./file/kaos/1335067267&amp;type=kaos</url-c>
+  <title-c>『 vvvvvvvvvvvvvvvvvv 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-26 16:21:27</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <url-c>http://127.0.0.1/art/mobile/content/2012-06-19/1340083466.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;Android中使用定时器TimerTask类介绍&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <date-c>2012-06-26 16:22:30</date-c>
+  <conf-c>谁点这么多</conf-c>
+  <url-c>http://www.itsrcs.com/art/mobile/content/2012-06-24/1340544584.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;手机连不上wifi，一直显示正在获取ip地址的解决办法&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <date-c>2012-07-04 09:21:14</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <url-c>http://www.itsrcs.com/art/mobile/content/2012-07-03/1341276770.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;Eclipse来开发Android源码&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>游客</author-c>
+  <date-c>2012-07-04 11:12:49</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <url-c>http://www.itsrcs.com/art/mobile/content/2012-07-03/1341276515.html</url-c>
+  <title-c>『 &lt;span id=\"art-title\"&gt;Android系统架构基本模式解析&lt;/span&gt; 』</title-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

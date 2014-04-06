@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Erlang程序设计]]></title>
+  <author>（瑞典）阿姆斯特朗</author>
+  <submiter-uid>201</submiter-uid>
+  <submit-date-time>2012-12-05 15:23:51</submit-date-time>
+  <img-link>e0c543e432618f26aa8ab742d2c279f6.png</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p style=\"text-indent:2em;\">
+	Erlang之父权威著作，领先一步，精通下一代主流编程语言，从这里开始，拥抱未来。
+</p>
+<p style=\"text-indent:2em;\">
+	在多核、并发、分布为王的时代，谁将成为下一个主流编程语言？来自全世界的众多专家都认为，Erlang最有可能在竞争中胜出。
+</p>
+<p style=\"text-indent:2em;\">
+	Erlang开源语言系出名门，通信巨头爱立信公司用它开发出了可靠性惊人的交换机系统AXD301。它天生就是面向并发、分布和高容错的，兼有函数式语言和脚本语言的各种优点，而且已经用于商业开发多年，具有稳定性极高的虚拟机和平台库。有了这些天时地利，无怪乎Erlang能够迅速成为热门的开发语言，除了广泛应用于通信行业之外，它已经进入了各个领域：Facebook用它实现了聊天系统，Yahoo用它重写了Delicious，Amazon用它开发了云计算数据服务SimpleDB，还有多人游戏、测试工具、电子支付、数据采集与监控、企业消息、电子邮件、空中交通管制……
+</p>
+<p style=\"text-indent:2em;\">
+	本书由Erlang之父Joe Armstrong编写，是毋庸置疑的经典著作。书中兼顾了顺序编程、并发编程和分布式编程，较深入地讨论了开发Erlang应用中至关重要的文件和网络编程、OTP、MNesia、Ets和Dets等主题，更为精彩的是，大师亲自操刀，构建了MapReduce实例和多人聊天实例，一定让你大呼过瘾。
+</p>
+<p style=\"text-indent:2em;\">
+	本书是讲述下一代编程语言Erlang 的权威著作，主要涵盖顺序型编程、异常处理、编译和运行代码、并发编程、并发编程中的错误处理、分布式编程、多核编程等内容。本书将帮助读者在消息传递的基础上构建分布式的并发系统，免去锁与互斥技术的羁绊，使程序在多核CPU 上高效运行。本书讲述的各种设计方法和行为将成为设计容错与分布式系统中的利器。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

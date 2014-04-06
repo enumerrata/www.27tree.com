@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-20 12:09:52</datetime>
+  <title><![CDATA[PHP的网站主要存在下面几种攻击方式]]></title>
+  <content><![CDATA[<p>
+	1、命令注入(Command Injection)
+</p>
+<p>
+	2、eval注入(Eval Injection)
+</p>
+<p>
+	3、客户端脚本攻击(Script Insertion)
+</p>
+<p>
+	4、跨网站脚本攻击(Cross Site Scripting, XSS)
+</p>
+<p>
+	5、SQL注入攻击(SQL injection)
+</p>
+<p>
+	6、跨网站请求伪造攻击(Cross Site Request Forgeries, CSRF)
+</p>
+<p>
+	7、Session 会话劫持(Session Hijacking)
+</p>
+<p>
+	8、Session 固定攻击(Session Fixation)
+</p>
+<p>
+	9、HTTP响应拆分攻击(HTTP Response Splitting)
+</p>
+<p>
+	10、文件上传漏洞(File Upload Attack)
+</p>
+<p>
+	11、目录穿越漏洞(Directory Traversal)
+</p>
+<p>
+	12、远程文件包含攻击(Remote Inclusion)
+</p>
+<p>
+	13、动态函数注入攻击(Dynamic Variable Evaluation)
+</p>
+<p>
+	14、URL攻击(URL attack)
+</p>
+<p>
+	15、表单提交欺骗攻击(Spoofed Form Submissions)
+</p>
+<p>
+	16、HTTP请求欺骗攻击(Spoofed HTTP Requests)
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

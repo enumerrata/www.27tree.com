@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /account/register
+
+RewriteRule ^(.*)foll(/)?$ $1/account/register/after_process/add_foll.php
+RewriteRule ^(.*)info(/)?$ $1/account/register/after_process/add_info.php

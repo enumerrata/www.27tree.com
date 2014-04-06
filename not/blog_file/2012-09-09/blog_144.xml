@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-09 09:05:36</datetime>
+  <title>根据变量的类型，选择echo或var_dump</title>
+  <content>&lt;p&gt;
+	有时候，我们想输出一个变量，如果是数组的，则var_dump，如果是字符串之类的，则echo即可
+&lt;/p&gt;
+&lt;p&gt;
+	此时，is_scalar内置函数就派上用场了。
+&lt;/p&gt;
+&lt;p&gt;
+	is_scalar&amp;nbsp;--&amp;nbsp;&amp;nbsp;检测变量是否是一个标量
+&lt;/p&gt;
+&lt;p&gt;
+	标量变量是指那些包含了&amp;nbsp;integer、float、string&amp;nbsp;或&amp;nbsp;boolean的变量，而&amp;nbsp;array、object&amp;nbsp;和&amp;nbsp;resource&amp;nbsp;则不是标量。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		&amp;lt;?php
+	&lt;/p&gt;
+	&lt;p&gt;
+		function&amp;nbsp;show_var($var)&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(is_scalar($var))&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;$var;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;else&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var_dump($var);
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	&lt;/p&gt;
+	&lt;p&gt;
+		}
+	&lt;/p&gt;
+	&lt;p&gt;
+		$pi&amp;nbsp;=&amp;nbsp;3.1416;
+	&lt;/p&gt;
+	&lt;p&gt;
+		$proteins&amp;nbsp;=&amp;nbsp;array(\"hemoglobin\",&amp;nbsp;\"cytochrome&amp;nbsp;c&amp;nbsp;oxidase\",&amp;nbsp;\"ferredoxin\");
+	&lt;/p&gt;
+	&lt;p&gt;
+		show_var($pi);
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;打印：3.1416
+	&lt;/p&gt;
+	&lt;p&gt;
+		show_var($proteins)
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;打印：
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;array(3)&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;[0]=&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;string(10)&amp;nbsp;\"hemoglobin\"
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;[1]=&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;string(20)&amp;nbsp;\"cytochrome&amp;nbsp;c&amp;nbsp;oxidase\"
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;[2]=&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;&amp;nbsp;&amp;nbsp;string(10)&amp;nbsp;\"ferredoxin\"
+	&lt;/p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;}
+	&lt;/p&gt;
+	&lt;p&gt;
+		?&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>有时候，我们想输出一个变量，如果是数组的，则var_dump，如果是字符串之类的，则echo即可
+
+
+	此时，is_scalar内置函数就派上用场了。
+
+
+	is_scalar --  检测变量是否是一个标量
+
+
+	标量变量是指那些包含了 integer、float、string 或 boolean的变量，而 array、object 和 resource </contentx>
+  <tags>_null_</tags>
+</root>

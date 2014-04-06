@@ -1,0 +1,57 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 表单和用户输入</h1>
+</div>
+<div>
+
+<p><b>PHP 的 $_GET 和 $_POST 用于检索表单中的值，比如用户输入。</b></p>
+
+<h1>PHP 表单处理</h1>
+
+<h2>表单实例：</h2>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;form action="welcome.php" method="post"&gt;<br />
+Name: &lt;input type="text" name="name" /&gt;<br />
+Age: &lt;input type="text" name="age" /&gt;<br />
+&lt;input type="submit" /&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>上面的 HTML 页面实例包含了两个输入框和一个提交按钮。当用户填写该表单并单击提交按钮时，表单的数据会被送往 "welcome.php" 这个文件。</p>
+
+<h2>"welcome.php" 文件类似这样：</h2>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+Welcome &lt;?php echo $_POST["name"]; ?&gt;.&lt;br /&gt;<br />
+You are &lt;?php echo $_POST["age"]; ?&gt; years old.<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>上面这个脚本的输出样本类似这样：</p>
+
+<code>
+Welcome John.<br />
+You are 28 years old.
+</code>
+
+<p>我们将在下一章解释 PHP $_GET 和 $_POST。</p>
+
+
+<h1>表单验证</h1>
+
+<p>应该在任何可能的时候对用户输入进行验证。客户端的验证速度更快，并且可以减轻服务器的负载。</p>
+<p>不过，任何流量很高以至于不得不担心服务器资源的站点，也有必要担心站点的安全性。如果表单访问的是数据库，就非常有必要采用服务器端的验证。</p>
+<p>在服务器验证表单的一种好的方式是，把表单传给它自己，而不是跳转到不同的页面。这样用户就可以在同一张表单页面得到错误信息。用户也就更容易发现错误了。</p>
+
+</div>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Professional Android 2 Application Development]]></title>
+  <author>Reto Meier</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-05 00:59:09</submit-date-time>
+  <img-link>446fd82ee06e69fd6fe1d68b269a54f0.png</img-link>
+  <book-area>android</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>媒体推荐</strong>
+</p>
+<p>
+	<strong>\"Professional Android Application Development\"</strong> is a professional developer\'s guide to building mobile applications using the next major release of the Android SDK. This hands-on approach provides in-depth coverage of the Android SDK through a series of projects, each introducing a new Android platform feature and highlighting the techniques and best practices to get the most out of Android. Providing concise and compelling examples, \"Professional Android Application Development\" is an updated guide that let\'s developers quickly construct real-world mobile applications for Android phones running the latest version of Android.
+</p>
+<p>
+	<strong>作者简介</strong>
+</p>
+<p>
+	<strong>Reto Meier</strong> is a software developer who has been involved in Android since the initial release in 2007. He is an Android Developer Advocate at Google.
+</p>
+<p>
+	<strong>目录</strong>
+</p>
+<p>
+	INTRODUCTION.&nbsp;
+</p>
+<p>
+	CHAPTER 1 Hello, Android.&nbsp;
+</p>
+<p>
+	CHAPTER 2 Getting Started.&nbsp;
+</p>
+<p>
+	CHAPTER 3 Creating Applications and Activities.&nbsp;
+</p>
+<p>
+	CHAPTER 4 Creating User Interfaces.&nbsp;
+</p>
+<p>
+	CHAPTER 5 Intents, Broadcast Receivers, Adapters, and the Internet.&nbsp;
+</p>
+<p>
+	CHAPTER 6 Files, Saving State, and Preferences.&nbsp;
+</p>
+<p>
+	CHAPTER 7 Databases and Content Providers.&nbsp;
+</p>
+<p>
+	CHAPTER 8 Maps, Geocoding, and Location-Based Services.&nbsp;
+</p>
+<p>
+	CHAPTER 9 Working in the Background.&nbsp;
+</p>
+<p>
+	CHAPTER 10 Invading the Phone-Top.&nbsp;
+</p>
+<p>
+	CHAPTER 11 Audio, Video, and Using the Camera.&nbsp;
+</p>
+<p>
+	CHAPTER 12 Telephony and SMS.&nbsp;
+</p>
+<p>
+	CHAPTER 13 Bluetooth, Networks, andWi-Fi.&nbsp;
+</p>
+<p>
+	CHAPTER 14 Sensors.&nbsp;
+</p>
+<p>
+	CHAPTER 15 <strong>Advanced Android Development</strong>. INDEX.
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

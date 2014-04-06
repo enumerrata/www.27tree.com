@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php大量session存储到内存中,散列及过期回收</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	一台服务器流量比较大，因为程序的需要，session的过期时间设置的是3小时，导致/tmp下堆积了近20万的session文件。进而导致内核占用的cpu急剧上升。因为session的读写涉及到大量小文件的随机读写，并且是集中在一个目录下，iowait也急剧升高。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	首先考虑将session放入内存中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	最简单的办法莫过于将/tmp挂载为&amp;nbsp;tmpfs文件系统，也就是内存中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	第二步，将session存储到不通的目录中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	php本身支持session的多级散列
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	在php.ini中，将
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	;session.save_path&amp;nbsp;=&amp;nbsp;/tmp
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	改为
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	session.save_path&amp;nbsp;=&amp;nbsp;\"2;/tmp/session\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	表示将session存储到&amp;nbsp;/tmp/session这个文件夹中，并且是用2及散列。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	保存退出，等第三步结束后重启php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	第三步，创建session存储文件夹
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	php并不会自动去创建这些文件夹，不过在源文件中提供了一些创建文件夹的脚本。下面这个脚本也好用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;I=\"0&amp;nbsp;1&amp;nbsp;2&amp;nbsp;3&amp;nbsp;4&amp;nbsp;5&amp;nbsp;6&amp;nbsp;7&amp;nbsp;8&amp;nbsp;9&amp;nbsp;a&amp;nbsp;b&amp;nbsp;c&amp;nbsp;d&amp;nbsp;e&amp;nbsp;f\"
+for&amp;nbsp;acm&amp;nbsp;in&amp;nbsp;$I;
+do
+for&amp;nbsp;x&amp;nbsp;in&amp;nbsp;$I;
+do
+mkdir&amp;nbsp;-p&amp;nbsp;/tmp/session/$acm/$x;
+done;
+done
+chown&amp;nbsp;-R&amp;nbsp;nobody:nobody&amp;nbsp;/tmp/session
+chmod&amp;nbsp;-R&amp;nbsp;1777&amp;nbsp;/tmp/session&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	因为/tmp是用的内存，服务器重启后，里面的所有文件都会丢失，所以，需要把上面的脚本加入到&amp;nbsp;/etc/rc.local中，并且要放在启动php之前
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	第四步，session的回收
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	session在经过session.gc_maxlifetime后会过期，但并不会马上被删除，时间长了以后会造成/tmp空间占用很大。具体的删除算法懒得去研究。下面这个命令可以删除过期的session，我这里定义的过期时间是3小时。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	find&amp;nbsp;/tmp/session&amp;nbsp;-amin&amp;nbsp;+180&amp;nbsp;-exec&amp;nbsp;rm&amp;nbsp;-rf&amp;nbsp;{}&amp;nbsp;\;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	放入cron中，10分钟执行一次，完事
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660233.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

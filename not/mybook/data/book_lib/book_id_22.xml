@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Web编程入门经典：HTML、XHTML和CSS</title>
+  <author>（美）达科特</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 11:10:39</submit-date-time>
+  <img-link>c9c96ce96900a68dacd20fffe2c705e7.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书为这个大家熟悉的主题，提供了一种新的学习方法：如何创建当今存在的Web页面——以及在可预见的未来如何创建它们。仅使用HTML代码编写Web页面的年代已经一去不复返。随着Web技术的发展，为了创建有效、吸引人的Web页面，开发人员需要学习很多技术。本书回顾了HTML，也介绍了如何使用XHTML构造Web页面和用于控制页面外观的层叠样式表(CSS)。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书通过一些典型示例探索了Web浏览器的演化，以及其如何反映Web页面的开发方式。读者将学习到如何利用浏览器的最新功能，以及如何确保所创建的页面能够工作于较老但仍在使用的浏览器中。另外，读者将了解如何为许多能够访问Web页面的设备编写页面。通过结合可用性和可访问性，开发人员将能够编写外观优美、代码专业并采用了最新技术的Web页面。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书主要内容
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	组成HTML和XHTML的不同元素和属性，以及如何使用它们编写Web页面
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	利用CSS使页面吏吸引入并更容易操作
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	JavaScript的基础知识，以便开发人员在Web页面中添加交互
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

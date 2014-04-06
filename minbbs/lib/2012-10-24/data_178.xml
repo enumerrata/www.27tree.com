@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-24 22:54:41</datetime>
+  <title><![CDATA[在Ubuntu安装完成后更改默认的语言LANG，出现Cannot set LC_CTYPE to default locale: No such file or directory错误的解决办法]]></title>
+  <content><![CDATA[<p>
+	在安装ubuntu的时候选了中文，但后来发现SVN客户端需要utf8来支持中文。
+</p>
+<p>
+	于是修改 /etc/default/locale为：
+</p>
+<p>
+	LANG=\"en_US.UTF-8\"
+</p>
+<p>
+	LANGUAGE=\"en_US:en\"
+</p>
+<p>
+	但是，后来perl, locale,export LANG=en_US.UTF-8之类的命令都出现warning：
+</p>
+<p>
+	&gt; locale
+</p>
+<p>
+	locale: Cannot set LC_CTYPE to default locale: No such file or directory
+</p>
+<p>
+	locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+</p>
+<p>
+	locale: Cannot set LC_ALL to default locale: No such file or directory
+</p>
+<p>
+	LANG=en_US.UTF-8
+</p>
+<p>
+	LANGUAGE=en_US:en
+</p>
+<p>
+	LC_CTYPE=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_NUMERIC=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_TIME=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_COLLATE=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_MONETARY=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_MESSAGES=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_PAPER=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_NAME=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_ADDRESS=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_TELEPHONE=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_MEASUREMENT=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_IDENTIFICATION=\"en_US.UTF-8\"
+</p>
+<p>
+	LC_ALL=
+</p>
+<p>
+	解决办法：
+</p>
+<p>
+	locale-gen en_US.UTF-8
+</p>
+<p>
+	如果Ubuntu Server在安装过程中，选择的是中文（很多新手都会在安装时选择中文，便于上手），这样在完成安装后，系统默认的语言将会是中文zh_CN.UTF- 8。但问题是我们安装的是服务器，只需要运行命令行终端，但在终端下无法正常的显示默认中文编码zh_CN.UTF-8。
+</p>
+<p>
+	可以有三种方法解决该问题，分别详细介绍如下。
+</p>
+<p>
+	第一种：安装zhcon软件包
+</p>
+<p>
+	$ sudo apt-get install zhcon
+</p>
+<p>
+	即可将zhcon软件包安装上，它其实就相当于一个Ubuntu的UC-DOS程序，是一个汉字外挂。既然是外挂就必然要占用一定的系统资源，根据实际需求可选用该方法。
+</p>
+<p>
+	第二种：使用putty、securteCRT等虚拟终端软件
+</p>
+<p>
+	直接修改虚拟终端界面配置项目中的字体编码为UTF-8即可。其实就是仍然采用了Ubuntu Server默认的zh_CN.UTF-8汉字编码，但在虚拟终端中经过“编码修正”后正确显示出来，因为Windows系统下是采用GBK作为系统默认 编码的，故在Windows下，无论是虚拟机，还是默认的虚拟终端界面，显示汉字都是乱码或菱形符号。该方法使用较广，但在实际终端下，仍然无法正常显示 汉字，因为此时系统的默认编码还是zh_CN.UTF-8，服务器上的实际终端还是不能认识zh_CN.UTF-8这种编码。故引出第三种方法。
+</p>
+<p>
+	第三种：修改Ubuntu的配置文件/etc/default/locale
+</p>
+<p>
+	将原来的配置内容修改为
+</p>
+<p>
+	LANG=”en_US.UTF-8″
+</p>
+<p>
+	LANGUAGE=”en_US:en”
+</p>
+<p>
+	再在终端下运行：
+</p>
+<p>
+	$ locale-gen -en_US:en
+</p>
+<p>
+	注销或重启后，Ubuntu Server真正服务器实体终端就恢复成了英文的语言环境。
+</p>
+<p>
+	所以，此方法不是真正意义上的中文化，而是恢复英文的默认编码
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

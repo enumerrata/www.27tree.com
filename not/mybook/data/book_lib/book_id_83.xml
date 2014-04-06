@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Objective-C.2.0程序设计</title>
+  <author>（美）科施恩　</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-16 11:24:43</submit-date-time>
+  <img-link>0911c503558841e771813a0adda28195.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书是Objective-C领域的经典著作，对Objective-C进行了系统而全面的阐述，权威性毋庸置疑。全书共分为四大部分：第一部分全面讲解了Objective-C语言的基础知识，包括类、对象、方法、数据类型、表达式、程序结构、继承、多态、动态类型和动态绑定、函数、数组、结构和指针等；第二部分详细阐述了Foundation框架，涵盖数字、字符串、集合、文件操作、内存管理、对象复制和归档等重要内容；第三部分简要介绍了Cocoa和iPhone&amp;nbsp;SDK；第四部分是附录，主要列出了Objective-C的快速参考。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书结构合理、内容翔实，简单易学，既适合程序设计初学者和所有程序员阅读，也可作为程序设计语言课题的入门教材。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

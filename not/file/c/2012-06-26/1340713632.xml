@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言教程：数据类型</title>
+<content>&amp;lt;p&amp;gt;
+	在第一课中，我们已经看到程序中使用的各种变量都应预先加以说明，即先说明，后使用。对变量的说明可以包括三个方面：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·数据类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·存储类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·作用域
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在本课中，我们只介绍数据类型说明。其它说明在以后各章中陆续介绍。所谓数据类型是按被说明量的性质，表示形式，占据存储空间的多少，构造特点来划分的。在Ｃ语言中，数据类型可分为：基本数据类型，构造数据类型，指针类型，空类型四大类。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.基本数据类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本数据类型最主要的特点是，其值不可以再分解为其它类型。也就是说，基本数据类型是自我说明的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.构造数据类型构造数据类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是根据已定义的一个或多个数据类型用构造的方法来定义的。也就是说，一个构造类型的值可以分解成若干个“成员”或“元素”。每个“成员”都是一个基本数据类型或又是一个构造类型。在C语言中，构造类型有以下几种：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·数组类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·结构类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	·联合类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.指针类型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	指针是一种特殊的，同时又是具有重要作用的数据类型。其值用来表示某个量在内存储器中的地址。虽然指针变量的取值类似于整型量，但这是两个类型完全不同的量，因此不能混为一谈。4.空类型在调用函数值时，通常应向调用者返回一个函数值。这个返回的函数值是具有一定的数据类型的，应在函数定义及函数说明中给以说明，例如在例题中给出的max函数定义中，函数头为：&amp;nbsp;int&amp;nbsp;max(int&amp;nbsp;a,int&amp;nbsp;b);其中“int&amp;nbsp;”类型说明符即表示该函数的返回值为整型量。又如在例题中，使用了库函数&amp;nbsp;sin，由于系统规定其函数返回值为双精度浮点型，因此在赋值语句s=sin&amp;nbsp;(x);中，s&amp;nbsp;也必须是双精度浮点型，以便与sin函数的返回值一致。所以在说明部分，把s说明为双精度浮点型。但是，也有一类函数，调用后并不需要向调用者返回函数值，&amp;nbsp;这种函数可以定义为“空类型”。其类型说明符为void。在第五章函数中还要详细介绍。在本章中，我们先介绍基本数据类型中的整型、浮点型和字符型。其余类型在以后各章中陆续介绍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	对于基本数据类型量，按其取值是否可改变又分为常量和变量两种。在程序执行过程中，其值不发生改变的量称为常量，取值可变的量称为变量。它们可与数据类型结合起来分类。例如，可分为整型常量、整型变量、浮点常量、浮点变量、字符常量、字符变量、枚举常量、枚举变量。在程序中，常量是可以不经说明而直接引用的，而变量则必须先说明后使用。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型量包括整型常量、整型变量。整型常量就是整常数。在Ｃ语言中，使用的整常数有八进制、十六进制和十进制三种。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.八进制整常数八进制整常数必须以0开头，即以0作为八进制数的前缀。数码取值为0～7。八进制数通常是无符号数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数是合法的八进制数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	015(十进制为13)　0101(十进制为65)　0177777(十进制为65535)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数不是合法的八进制数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	256(无前缀0)&amp;nbsp;03A2(包含了非八进制数码)　-0127(出现了负号)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.十六进制整常数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十六进制整常数的前缀为0X或0x。其数码取值为0~9，A~F或a~f。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数是合法的十六进制整常数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	0X2A(十进制为42)　　0XA0&amp;nbsp;(十进制为160)　　0XFFFF&amp;nbsp;(十进制为65535)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数不是合法的十六进制整常数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5A&amp;nbsp;(无前缀0X)　　0X3H&amp;nbsp;(含有非十六进制数码)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.十进制整常数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十进制整常数没有前缀。其数码为0～9。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数是合法的十进制整常数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	237&amp;nbsp;-568&amp;nbsp;65535&amp;nbsp;1627
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以下各数不是合法的十进制整常数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	023&amp;nbsp;(不能有前导0)　23D&amp;nbsp;(含有非十进制数码)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在程序中是根据前缀来区分各种进制数的。因此在书写常数时不要把前缀弄错造成结果不正确。4.整型常数的后缀在16位字长的机器上，基本整型的长度也为16位，因此表示的数的范围也是有限定的。十进制无符号整常数的范围为0～65535，有符号数为-32768～+32767。八进制无符号数的表示范围为0～0177777。十六进制无符号数的表示范围为0X0～0XFFFF或0x0～0xFFFF。如果使用的数超过了上述范围，就必须用长整型数来表示。长整型数是用后缀“L”或“l”来表示的。例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十进制长整常数&amp;nbsp;158L&amp;nbsp;(十进制为158)&amp;nbsp;358000L&amp;nbsp;(十进制为-358000)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	八进制长整常数&amp;nbsp;012L&amp;nbsp;(十进制为10)&amp;nbsp;077L&amp;nbsp;(十进制为63)　0200000L&amp;nbsp;(十进制为65536)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十六进制长整常数&amp;nbsp;0X15L&amp;nbsp;(十进制为21)&amp;nbsp;0XA5L&amp;nbsp;(十进制为165)　0X10000L&amp;nbsp;(十进制为65536)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	长整数158L和基本整常数158&amp;nbsp;在数值上并无区别。但对158L，因为是长整型量，Ｃ编译系统将为它分配4个字节存储空间。而对158，因为是基本整型，只分配2&amp;nbsp;个字节的存储空间。因此在运算和输出格式上要予以注意，避免出错。无符号数也可用后缀表示，整型常数的无符号数的后缀为“U”或“u”。例如：&amp;nbsp;358u,0x38Au,235Lu&amp;nbsp;均为无符号数。前缀，后缀可同时使用以表示各种类型的数。如0XA5Lu表示十六进制无符号长整数A5，其十进制为165。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型变量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型变量可分为以下几类：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.基本型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符为int，在内存中占2个字节，其取值为基本整常数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.短整量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符为short&amp;nbsp;int或short&amp;nbsp;C110F1。所占字节和取值范围均与基本型相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.长整型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符为long&amp;nbsp;int或long&amp;nbsp;，在内存中占4个字节，其取值为长整常数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.无符号型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符为unsigned。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	无符号型又可与上述三种类型匹配而构成：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(1)无符号基本型&amp;nbsp;类型说明符为unsigned&amp;nbsp;int或unsigned。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(2)无符号短整型&amp;nbsp;类型说明符为unsigned&amp;nbsp;short
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	(3)无符号长整型&amp;nbsp;类型说明符为unsigned&amp;nbsp;long
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	各种无符号类型量所占的内存空间字节数与相应的有符号类型量相同。但由于省去了符号位，故不能表示负数。&amp;nbsp;下表列出了Turbo&amp;nbsp;C中各类整型量所分配的内存字节数及数的表示范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符　　　　数的范围&amp;nbsp;　　　　分配字节数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;　　　　　　-32768~32767&amp;nbsp;　　　　■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	short&amp;nbsp;int&amp;nbsp;　　　-32768~32767&amp;nbsp;　　　　■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	signed&amp;nbsp;int&amp;nbsp;　　&amp;nbsp;-32768~32767&amp;nbsp;　　　　■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;int&amp;nbsp;　&amp;nbsp;0~65535&amp;nbsp;　　　　　　&amp;nbsp;■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;int&amp;nbsp;　-2147483648~2147483647　　■■■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;long&amp;nbsp;　0~4294967295&amp;nbsp;　　　　■■■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	整型变量的说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量说明的一般形式为：&amp;nbsp;类型说明符&amp;nbsp;变量名标识符，变量名标识符，...;&amp;nbsp;例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b,c;&amp;nbsp;(a,b,c为整型变量)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;x,y;&amp;nbsp;(x,y为长整型变量)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;p,q;&amp;nbsp;(p,q为无符号整型变量)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在书写变量说明时，应注意以下几点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.允许在一个类型说明符后，说明多个相同类型的变量。各变量名之间用逗号间隔。类型说明符与变量名之间至少用一个空格间隔。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.最后一个变量名之后必须以“；”号结尾。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.变量说明必须放在变量使用之前。一般放在函数体的开头部分。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//1int&amp;nbsp;a,b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	short&amp;nbsp;int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	short&amp;nbsp;d=100;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=d-20;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=a+d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a+b+d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=d-a+c-b;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,2,100
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,0;2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,100
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,80
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,180
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,360
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,200
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//2int&amp;nbsp;a=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;b=9;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a+b-7;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=a*b*c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=d*d*d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=c-d;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c,4,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,4,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,9
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,7
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,315
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,31255875
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,-5112
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//3int&amp;nbsp;a=6,b=19;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	unsigned&amp;nbsp;int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=a-b+7;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=b*c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=b+c+d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=-a;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,6
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,2,19
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,6;2,19
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,65530
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4,-114
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,-101
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,101
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;x,y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b,c,d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	y=6;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=7;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=8;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=x+a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=y+b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(c=x+a=%d,d=y+b=%d\n,c,d);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将main说明为返回void,即不返回任何类型的值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x,y被定义为long型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,b,c,d被定义为int型
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5-&amp;amp;gt;x
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6-&amp;amp;gt;y
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7-&amp;amp;gt;a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8-&amp;amp;gt;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x+a-&amp;amp;gt;c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	y+b-&amp;amp;gt;d
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序运行结果&amp;nbsp;of&amp;nbsp;long&amp;nbsp;x,y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b,c,d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=x+a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=y+b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从程序中可以看到：x,&amp;nbsp;y是长整型变量，a,&amp;nbsp;b是基本整型变量。它们之间允许进行运算，运算结果为长整型。但c，d被定义为基本整型，因此最后结果为基本整型。本例说明，不同类型的量可以参与运算并相互赋值。其中的类型转换是由编译系统自动完成的。有关类型转换的规则将在以后介绍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型也称为浮点型。实型常量也称为实数或者浮点数。在Ｃ语言中，实数只采用十进制。它有二种形式：&amp;nbsp;十进制数形式指数形式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.十进制数形式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由数码0~&amp;nbsp;9和小数点组成。例如：0.0，.25，5.789，0.13，5.0，300.，-267.8230等均为合法的实数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.指数形式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由十进制数，加阶码标志“e”或“E”以及阶码（只能为整数，可以带符号）组成。其一般形式为a&amp;nbsp;E&amp;nbsp;n&amp;nbsp;（a为十进制数，n为十进制整数）其值为&amp;nbsp;a*10,n　如：&amp;nbsp;2.1E5&amp;nbsp;(等于2.1*10,5),&amp;nbsp;3.7E-2&amp;nbsp;(等于3.7*10,)-2*)　0.5E7&amp;nbsp;(等于0.5*10,7),&amp;nbsp;-2.8E-2&amp;nbsp;(等于-2.8*10,)-2*)以下不是合法的实数&amp;nbsp;345&amp;nbsp;(无小数点)　E7&amp;nbsp;(阶码标志E之前无数字)　&amp;nbsp;-5&amp;nbsp;(无阶码标志)　53.-E3&amp;nbsp;(负号位置不对)　2.7E&amp;nbsp;(无阶码)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	标准Ｃ允许浮点数使用后缀。后缀为“f”或“F”即表示该数为浮点数。如356f和356.是等价的。例2.2说明了这种情况：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%f\n%f\n,356.,356f);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;指明main不返回任何值　利用printf显示结果　结束
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型变量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型变量分为两类：单精度型和双精度型，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其类型说明符为float&amp;nbsp;单精度说明符，double&amp;nbsp;双精度说明符。在Turbo&amp;nbsp;C中单精度型占4个字节（32位）内存空间，其数值范围为3.4E-38～3.4E+38，只能提供七位有效数字。双精度型占8&amp;nbsp;个字节（64位）内存空间，其数值范围为1.7E-308～1.7E+308，可提供16位有效数字。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型变量说明的格式和书写规则与整型相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：&amp;nbsp;float&amp;nbsp;x,y;&amp;nbsp;(x,y为单精度实型量)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;a,b,c;&amp;nbsp;(a,b,c为双精度实型量)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实型常数不分单、双精度，都按双精度double型处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=33333.33333;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=33333.33333333333333;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%f\n%f\n,a,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此程序说明float、double的不同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;nbsp;■■■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;■■■■■■■■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;amp;lt;---33333.33333
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;amp;lt;---33333.33333333333;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此程序说明float、double的不同
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=33333.33333;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=33333.33333333333333;&amp;nbsp;从本例可以看出，由于a&amp;nbsp;是单精度浮点型，有效位数只有七位。而整数已占五位，故小数二位后之后均为无效数字。b&amp;nbsp;是双精度型，有效位为十六位。但Turbo&amp;nbsp;C&amp;nbsp;规定小数后最多保留六位，其余部分四舍五入。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//floatint&amp;nbsp;a=32;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=12345678;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=b*100;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=d+a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=d+58.123456;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,32
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,4,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,8,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,32
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,12345678.00000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,1234567800
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,1234567832
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,1234567890.123456
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//1int&amp;nbsp;a=543;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=123.123962+a;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=b-100;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=b;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,543
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,4,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,543
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,0.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,123.123962
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,23.123962
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,23
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符型量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符型量包括字符常量和字符变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符常量是用单引号括起来的一个字符。例如&amp;nbsp;a&amp;nbsp;,&amp;nbsp;b&amp;nbsp;,&amp;nbsp;=&amp;nbsp;,&amp;nbsp;+&amp;nbsp;,&amp;nbsp;?&amp;nbsp;都是合法字符常量。在Ｃ语言中，字符常量有以下特点：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.字符常量只能用单引号括起来，不能用双引号或其它括号。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.字符常量只能是单个字符，不能是字符串。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.字符可以是字符集中任意字符。但数字被定义为字符型之后就
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不能参与数值运算。如&amp;nbsp;5&amp;nbsp;和5&amp;nbsp;是不同的。&amp;nbsp;5&amp;nbsp;是字符常量，不能参与运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	转义字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	转义字符是一种特殊的字符常量。转义字符以反斜?quot;\开头，后跟一个或几个字符。转义字符具有特定的含义，不同于字符原有的意义，故称“转义”字符。例如，在前面各例题printf函数的格式串中用到的“\n”就是一个转义字符，其意义是“回车换行”。转义字符主要用来表示那些用一般字符不便于表示的控制代码。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	常用的转义字符及其含义
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	转义字符&amp;nbsp;　转义字符的意义
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\n&amp;nbsp;　　　　　回车换行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\t&amp;nbsp;　　　　　横向跳到下一制表位置
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\v&amp;nbsp;　　　　　竖向跳格
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\b&amp;nbsp;　　　　　退格
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\r&amp;nbsp;　　　　　回车
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\f　　　　&amp;nbsp;　走纸换页
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\\&amp;nbsp;　　　　　反斜线符\
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\&amp;nbsp;&amp;nbsp;　　　　　单引号符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\a&amp;nbsp;　　　　　鸣铃
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\ddd&amp;nbsp;　　　　1～3位八进制数所代表的字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	\xhh&amp;nbsp;　　　　1～2位十六进制数所代表的字符
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	广义地讲，Ｃ语言字符集中的任何一个字符均可用转义字符来表示。表2.2中的\ddd和\xhh正是为此而提出的。ddd和hh分别为八进制和十六进制的ASCII代码。如\101表示字?quot;A&amp;nbsp;，\102表示字母B，\134表示反斜线，\XOA表示换行等。转义字符的使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a,b,c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=5;&amp;nbsp;b=6;&amp;nbsp;c=7;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n\t%d&amp;nbsp;%d\n&amp;nbsp;%d&amp;nbsp;%d\t\b%d\n,a,b,c,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	此程序练习转义字符的使用
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a、b、c为整数　5-&amp;amp;gt;a,6-&amp;amp;gt;b,7-&amp;amp;gt;c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	调用printf显示程序运行结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%d\n\t%d&amp;nbsp;%d\n&amp;nbsp;%d&amp;nbsp;%d\t\b%d\n,a,b,c,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	程序在第一列输出a值5之后就是“\n”，故回车换行；接着又是“\t”，于是跳到下一制表位置（设制表位置间隔为8），再输出b值6；空二格再输出c&amp;nbsp;值7后又是\n，因此再回车换行；再空二格之后又输出a值5；再空三格又输出b的值6；再次后\t跳到下一制表位置（与上一行的6&amp;nbsp;对齐），但下一转义字符“\b”又使退回一格，故紧挨着6再输出c值7。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符变量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符变量的取值是字符常量，即单个字符。字符变量的类型说明符是char。字符变量类型说明的格式和书写规则都与整型变量相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a,b;&amp;nbsp;每个字符变量被分配一个字节的内存空间，因此只能存放一个字符。字符值是以ASCII码的形式存放在变量的内存单元之中的。如x的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	十进制ASCII码是120，y的十进制ASCII码是121。对字符变量a,b赋予&amp;nbsp;x&amp;nbsp;和&amp;nbsp;y&amp;nbsp;值：&amp;nbsp;a=&amp;nbsp;x&amp;nbsp;;b=&amp;nbsp;y&amp;nbsp;;实际上是在a,b两个单元内存放120和121的二进制代码：&amp;nbsp;a　0&amp;nbsp;1&amp;nbsp;1&amp;nbsp;1&amp;nbsp;1&amp;nbsp;0&amp;nbsp;0&amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b　0&amp;nbsp;1&amp;nbsp;1&amp;nbsp;1&amp;nbsp;1&amp;nbsp;0&amp;nbsp;0&amp;nbsp;1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以也可以把它们看成是整型量。&amp;nbsp;Ｃ语言允许对整型变量赋以字符值，也允许对字符变量赋以整型值。在输出时，&amp;nbsp;允许把字符变量按整型量输出，也允许把整型量按字符量输出。&amp;nbsp;整型量为二字节量，字符量为单字节量，当整型量按字符型量处理时，&amp;nbsp;只有低八位字节参与处理。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a,b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=120;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=121;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%c,%c\n%d,%d\n,a,b,a,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;nbsp;■&amp;nbsp;b&amp;nbsp;■
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;nbsp;&amp;amp;lt;--&amp;nbsp;120
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;&amp;amp;lt;---&amp;nbsp;121
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序结果&amp;nbsp;char&amp;nbsp;a,b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=120;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=121;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本程序中说明a，b为字符型，但在赋值语句中赋以整型值。从结果看，a，b值的输出形式取决于printf函数格式串中的格式符，当格式符为c时，对应输出的变量值为字符，当格式符为d时，对应输出的变量值为整数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a,b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=&amp;nbsp;x&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=&amp;nbsp;y&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a=a-32;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=b-32;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(%c,%c\n%d,%d\n,a,b,a,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a，b被说明为字符变量并赋予字符值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	把小写字母换成大写字母
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以整型和字符型输出
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例中，a，b被说明为字符变量并赋予字符值，Ｃ语言允许字符变量参与数值运算，即用字符的ASCII&amp;nbsp;码参与运算。由于大小写字母的ASCII&amp;nbsp;码相差32，因此运算后把小写字母换成大写字母。然后分别以整型和字符型输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//charint&amp;nbsp;a=49;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;d;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=a+10;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d=a+b;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a,2,49
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b,1,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	d,1,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,49
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2,&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3,&amp;nbsp;l
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	[Practice]&amp;nbsp;//char&amp;nbsp;c1,c2;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c1=&amp;nbsp;a&amp;nbsp;;c2=&amp;nbsp;b&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c1=c1-32;c2=c2-32;&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c1,1,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c2,1,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vtable
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,随机;2,随机
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,&amp;nbsp;a&amp;nbsp;;2,&amp;nbsp;b
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1,&amp;nbsp;A&amp;nbsp;;2,&amp;nbsp;B
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Vupdate
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	of&amp;nbsp;Practice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符串常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符串常量是由一对双引号括起的字符序列。例如：&amp;nbsp;CHINA&amp;nbsp;，C&amp;nbsp;program:&amp;nbsp;，&amp;nbsp;$12.5&amp;nbsp;等都是合法的字符串常量。字符串常量和字符常量是不同的量。它们之间主要有以下区别：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.字符常量由单引号括起来，字符串常量由双引号括起来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.字符常量只能是单个字符，字符串常量则可以含一个或多个字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.可以把一个字符常量赋予一个字符变量，但不能把一个字符串常量赋予一个字符变量。在Ｃ语言中没有相应的字符串变量。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这是与BASIC&amp;nbsp;语言不同的。但是可以用一个字符数组来存放一个字符串常量。在数组一章内予以介绍。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.字符常量占一个字节的内存空间。字符串常量占的内存字节数等于字符串中字节数加1。增加的一个字节中存放字符\0(ASCII码为0)。这是字符串结束的标志。例如，字符串&amp;nbsp;C&amp;nbsp;program在内存中所占的字节为：C&amp;nbsp;program\0。字符常量&amp;nbsp;a&amp;nbsp;和字符串常量a虽然都只有一个字符，但在内存中的情况是不同的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a&amp;nbsp;在内存中占一个字节，可表示为：a
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a在内存中占二个字节，可表示为：a\0符号常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	符号常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在Ｃ语言中，可以用一个标识符来表示一个常量，称之为符号常量。符号常量在使用之前必须先定义，其一般形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#define&amp;nbsp;标识符&amp;nbsp;常量
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	其中#define也是一条预处理命令（预处理命令都?quot;#开头），称为宏定义命令（在第九章预处理程序中将进一步介绍），其功能是把该标识符定义为其后的常量值。一经定义，以后在程序中所有出现该标识符的地方均代之以该常量值。习惯上符号常量的标识符用大写字母，变量标识符用小写字母，以示区别。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#define&amp;nbsp;PI&amp;nbsp;3.14159
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;s,r;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	r=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=PI*r*r;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(s=%f\n,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由宏定义命令定义PI&amp;nbsp;为3.14159&amp;nbsp;s,r定义为实数　5-&amp;amp;gt;r　PI*r*r-&amp;amp;gt;s
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序结果&amp;nbsp;float&amp;nbsp;s,r;　r=5;　s=PI*r*r;&amp;nbsp;本程序在主函数之前由宏定义命令定义PI&amp;nbsp;为3.14159，在程序中即以该值代替PI&amp;nbsp;。s=PI*r*r等效于s=3.14159*r*r。应该注意的是，符号常量不是变量，它所代表的值在整个作用域内不能再改变。也就是说，在程序中，不能再用赋值语句对它重新赋值。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量的初值和类型转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量赋初值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在程序中常常需要对变量赋初值，以便使用变量。语言程序中可有多种方法，在定义时赋以初值的方法，这种方法称为初始化。在变量说明中赋初值的一般形式为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	类型说明符&amp;nbsp;变量1=&amp;nbsp;值1，变量2=&amp;nbsp;值2，……；&amp;nbsp;例如：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=b=c=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;x=3.2,y=3f,z=0.75;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;ch1=&amp;nbsp;K&amp;nbsp;,ch2=&amp;nbsp;P&amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	应注意，在说明中不允许连续赋值，如a=b=c=5是不合法的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=3,b,c=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=a+c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(a=%d,b=%d,c=%d\n,a,b,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;a&amp;amp;lt;---3,b&amp;amp;lt;--0,c&amp;amp;lt;---5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;amp;lt;--a+c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序运行结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量类型的转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	变量的数据类型是可以转换的。转换的方法有两种，&amp;nbsp;一种是自动转换，一种是强制转换。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	自动转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	自动转换发生在不同数据类型的量混合运算时，由编译系统自动完成。自动转换遵循以下规则：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.若参与运算量的类型不同，则先转换成同一类型，然后进行运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.转换按数据长度增加的方向进行，以保证精度不降低。如int型和long型运算时，先把int量转成long型后再进行运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.所有的浮点运算都是以双精度进行的，即使仅含float单精度量运算的表达式，也要先转换成double型，再作运算。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.char型和short型参与运算时，必须先转换成int型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.在赋值运算中，赋值号两边量的数据类型不同时，&amp;nbsp;赋值号右边量的类型将转换为左边量的类型。&amp;nbsp;如果右边量的数据类型长度左边长时，将丢失一部分数据，这样会降低精度，&amp;nbsp;丢失的部分按四舍五入向前舍入。图21表示了类型自动转换的规则。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	void&amp;nbsp;main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;PI=3.14159;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;s,r=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=r*r*PI;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(s=%d\n,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;nbsp;PI&amp;amp;lt;--3.14159
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s&amp;amp;lt;--0,r&amp;amp;lt;--5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s&amp;amp;lt;--r*r*PI
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	显示程序运行结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;PI=3.14159;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;s,r=5;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=r*r*PI;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本例程序中，PI为实型；s，r为整型。在执行s=r*r*PI语句时，r和PI都转换成double型计算，结果也为double型。但由于s为整型，故赋值结果仍为整型，舍去了小数部分。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强制类型转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	强制类型转换是通过类型转换运算来实现的。其一般形式为：&amp;nbsp;(类型说明符)&amp;nbsp;(表达式)&amp;nbsp;其功能是把表达式的运算结果强制转换成类型说明符所表示的类型。例如：&amp;nbsp;(float)&amp;nbsp;a&amp;nbsp;把a转换为实型(int)(x+y)&amp;nbsp;把x+y的结果转换为整型在使用强制转换时应注意以下问题：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.类型说明符和表达式都必须加括号(单个变量可以不加括号)，如把(int)(x+y)写成(int)x+y则成了把x转换成int型之后再与y相加了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.无论是强制转换或是自动转换，都只是为了本次运算的需要而对变量的数据长度进行的临时性转换，而不改变数据说明时对该变量定义的类型。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main(){
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;f=5.75;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf((int)f=%d,f=%f\n,(int)f,f);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	f&amp;amp;lt;--5.75
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	将float&amp;nbsp;f强制转换成int&amp;nbsp;f&amp;nbsp;float&amp;nbsp;f=5.75;printf((int)f=%d,f=%f\n,(int)f,f);&amp;nbsp;本例表明，f虽强制转为int型，但只在运算中起作用，&amp;nbsp;是临时的，而f本身的类型并不改变。因此，(int)f的值为&amp;nbsp;5(删去了小数)而f的值仍为5.75
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-06-26/1340713632.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

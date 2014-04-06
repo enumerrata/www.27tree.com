@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Just Spring</title>
+  <author>Mike Loukides</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-07 22:50:38</submit-date-time>
+  <img-link>c2ac20816038de5b3f2f34974af6fff2.png</img-link>
+  <book-area>java</book-area>
+  <book-intro>&lt;p&gt;
+	The Spring Framework has found a very strong user base over the years. Software&amp;nbsp;houses and enterprises found the framework to be the best fit for their plumbing needs.
+&lt;/p&gt;
+&lt;p&gt;
+	Surprisingly, the core principle that Spring has been built for—the Dependency Injec-tion (DI)—is very simple to understand. This chapter discusses the fundamentals of&amp;nbsp;the framework from a high ground. It helps the reader understand the dependency&amp;nbsp;injection principles. The chapter opens up with a simple problem of object coupling&amp;nbsp;and dependencies. It then explains how to solve the them using Spring Framework.
+&lt;/p&gt;</book-intro>
+</root>

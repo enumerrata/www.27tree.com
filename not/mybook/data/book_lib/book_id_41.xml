@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Python学习手册</title>
+  <author>（美）鲁特兹</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 23:00:23</submit-date-time>
+  <img-link>0d835424b0be70dd9bc5984978556b15.png</img-link>
+  <book-area>py</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Python可移植、功能强大、易于使用，是编写独立应用程序和脚本应用程序的理想选择。无论你是刚接触编程或者刚接触Python，通过学习《Python学习手册（第3版）》，你可以迅速高效地精通核心Python语言基础。读完《Python学习手册（第3版）》，你会对这门语言有足够的了解，从而可以在你所从事的任何应用领域中使用它。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Python学习手册（第3版）》是作者根据过去10年用于教学而广为人知的培训课程的材料编写而成的。除了有许多详实说明和每章小结之外，每章还包括一个头脑风暴：这是《Python学习手册（第3版）》独特的一部分，配合以实用的练习题和复习题，让读者练习新学的技巧并测试自己的理解程度。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Python学习手册（第3版）》包括：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类型和操作——深入讨论Python主要的内置对象类型：数字、列表和字典等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	语句和语法——在Python中输入代码来建立并处理对象，以及Python一般的语法模型。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	函数——Python基本的面向过程工具，用于组织代码和重用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	模块——封装语句、函数以及其他工具，从而可以组织成较大的组件。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	类和OOP——Python可选的面向对象编程工具，可用于组织程序代码从而实现定制和重用。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	异常和工具——异常处理模型和语句，并介绍编写更大程序的开发工具。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	讨论Python&amp;nbsp;3.0。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	《Python学习手册（第3版）》让你对Python语言有深入而完整的了解，从而帮助你理解今后遇到的任何Python应用程序实例。如果你准备探索Google和YouTube为什么选中了Python，《Python学习手册（第3版）》就是你入门的最佳指南。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

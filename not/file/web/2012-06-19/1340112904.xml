@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Dojo Toolkit 简介</title>
+<content>&amp;lt;p&amp;gt;
+	Dojo&amp;nbsp;于&amp;nbsp;2004&amp;nbsp;年创建，使开发&amp;nbsp;DHTML&amp;nbsp;和&amp;nbsp;JavaScript&amp;nbsp;web&amp;nbsp;应用程序开发流程更为容易，隐藏了很多现代&amp;nbsp;web&amp;nbsp;浏览器中普遍存在的跨浏览器矛盾。这使重点放在实现功能上，而不是调整代码使其在每个浏览器上运行。Dojo&amp;nbsp;属于&amp;nbsp;Dojo&amp;nbsp;基金会，该基金会是&amp;nbsp;Russell&amp;nbsp;和&amp;nbsp;Dylan&amp;nbsp;Schiemann&amp;nbsp;于&amp;nbsp;2005&amp;nbsp;年创建的。Dojo&amp;nbsp;是一个开源软件（OSS），有双重许可，Academic&amp;nbsp;Free&amp;nbsp;License&amp;nbsp;(AFL)&amp;nbsp;和一个修改的&amp;nbsp;BSD&amp;nbsp;许可，您可以选择遵守一个。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	特性一瞥
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dojo&amp;nbsp;Toolkit&amp;nbsp;的特性可以分到&amp;nbsp;4&amp;nbsp;个不同部分。这种划分使得开发人员可以将库大小保持到最小，确保应用程序性能不受大量&amp;nbsp;JavaScript&amp;nbsp;库下载的影响。例如，如果您只需要&amp;nbsp;Ajax&amp;nbsp;支持性能，您只需要包含&amp;nbsp;base&amp;nbsp;包；不需要包含扩展的&amp;nbsp;Dijit&amp;nbsp;UI&amp;nbsp;组件，在本系列中稍后您将学习更多关于&amp;nbsp;Dojo&amp;nbsp;加载不同模块的方法。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Base
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Base&amp;nbsp;包提供&amp;nbsp;Dojo&amp;nbsp;Toolkit&amp;nbsp;的基础，包括一些功能，比如&amp;nbsp;DOM&amp;nbsp;使用函数、CSS3&amp;nbsp;基于选择器的&amp;nbsp;DOM&amp;nbsp;查询、事件处理、基本的动画、以及&amp;nbsp;Dojo&amp;nbsp;基于类的面向对象特性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Core
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Core&amp;nbsp;包包含一些&amp;nbsp;Base&amp;nbsp;中没有包含的附加特性。通常，这些特性不像&amp;nbsp;Base&amp;nbsp;中的特性那样频繁使用；因此，它们单独加载减轻&amp;nbsp;Base&amp;nbsp;包的负担。从这一点上来讲，Core&amp;nbsp;包提供一些实际有用的组件，包括高级动画拖放、I/O、数据管理、国际化（i18n）、浏览器历史管理。Core&amp;nbsp;包不再本文范围之内。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dijit
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dijit&amp;nbsp;包包含&amp;nbsp;Dojo&amp;nbsp;小部件和组件的扩展&amp;nbsp;UI&amp;nbsp;库。这些小部件的一些示例包括对话框、日历、调色板、工具提示和树。它也包括一些表单控件，这比标准&amp;nbsp;HTML&amp;nbsp;表单控件提供更多的功能，还有一些完整的布局管理选项。本系列的第&amp;nbsp;3&amp;nbsp;部分将深入介绍&amp;nbsp;Dijit&amp;nbsp;特性。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DojoX
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Dojo&amp;nbsp;eXtensions&amp;nbsp;(DojoX)&amp;nbsp;包含工具箱的各个子项目。位于&amp;nbsp;DojoX&amp;nbsp;中的大多数是实验特性，但是也有一些稳定组件和特性。DojoX&amp;nbsp;将在本系列的第&amp;nbsp;3&amp;nbsp;部分做一简要介绍。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-19/1340112904.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

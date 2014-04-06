@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-05 10:00:22</datetime>
+  <title>32位jvm还是64位jvm？ 32位jvm还是64位jvm？ </title>
+  <content>&lt;p style=\"text-indent:2em;\"&gt;
+	在早期，JVM只有32位的，众所周知，32位有4G的内存限制。需要注意的是，32位jvm的堆内存实际可设的大小还受操作系统的限制。Hotspot VM，在Windows下，最大的堆内存大约在1.5G左右；在基于较新的linux kernel的Linux系统下，其限制在2.5到3G之间，在早前的linux kernel下，大约在2G左右；在Solaris下，为3.3G左右。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	64位的hotspot VM允许使用更大的堆内存。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	但是，64位JVM会有一些性能损失。主要在于普通对象指针（ordinary object pointers或oops）的size增大了，由32位增加到64位，这导致CPU cache中可用的oops减少，降低CPU缓存效率，相比32位，64位jvm的CPU缓存效率降低了8%到15%。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	Java 6 HotSpot VM开始提供了一个压缩的普通对象指针的特性，可通过命令行参数-XX:+UseCompressedOops启用，这样就能受益于64位VM带来的内存，也不会有太大的性能损失。当然，压缩与解压缩oops仍然有性能的损耗。
+&lt;/p&gt;
+&lt;p style=\"text-indent:2em;\"&gt;
+	FROM&lt;a href=\"http://www.ticmy.com/?p=182\" target=\"_blank\"&gt;http://www.ticmy.com/?p=182&lt;/a&gt;
+&lt;/p&gt;
+</content>
+  <contentx>在早期，JVM只有32位的，众所周知，32位有4G的内存限制。需要注意的是，32位jvm的堆内存实际可设的大小还受操作系统的限制。Hotspot VM，在Windows下，最大的堆内存大约在1.5G左右；在基于较新的linux kernel的Linux系统下，其限制在2.5到3G之间，在早前的linux kernel下，大约在2G左右；在Solaris下，为</contentx>
+  <tags>_null_</tags>
+</root>

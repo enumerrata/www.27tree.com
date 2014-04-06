@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>揭秘：C++编译器的函数编译流程</title>
+<content>&amp;lt;p&amp;gt;
+	C++中的类型查找过程相对简单，基本上就是名字查找，这里不再介绍。对于&amp;nbsp;.cpp&amp;nbsp;文件中调用的一个函数&amp;nbsp;（&amp;nbsp;或成员函数&amp;nbsp;），&amp;nbsp;编译器主要做了下面三件事情&amp;nbsp;：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1&amp;nbsp;、名字查找&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	先在所在编译单元中可见名字实体中进行名字查找&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（1）&amp;nbsp;类成员函数优先&amp;nbsp;（&amp;nbsp;对象所在的类&amp;nbsp;-》&amp;nbsp;基类&amp;nbsp;）。&amp;nbsp;一经找到就停止查找&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	（2&amp;nbsp;）如果没有&amp;nbsp;，在相应的名字空间中做进一步的搜索&amp;nbsp;;&amp;nbsp;（3）&amp;nbsp;如果还没有&amp;nbsp;，&amp;nbsp;会根据函数参数所在的名字空间中查找&amp;nbsp;（keoning&amp;nbsp;查找&amp;nbsp;）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2&amp;nbsp;、重载决议&amp;nbsp;。&amp;nbsp;根据所找到的名字进行重载决议&amp;nbsp;，&amp;nbsp;根据参数最匹配原则选择相应的函数&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3、可访问性检查&amp;nbsp;。&amp;nbsp;用以确定被选中的函数是否可被调用&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明&amp;nbsp;：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1）&amp;nbsp;根据第一条&amp;nbsp;，&amp;nbsp;显然&amp;nbsp;，&amp;nbsp;如果类型想和非成员函数一起工作&amp;nbsp;，&amp;nbsp;那么它们应该放在同一个名字空间中&amp;nbsp;。&amp;nbsp;比如&amp;nbsp;，&amp;nbsp;一般类型的重载运算符和参数类型放在同一个头文件中/或者同一个名字空间下&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2）&amp;nbsp;函数特化模板不参与重载决议&amp;nbsp;，&amp;nbsp;因此&amp;nbsp;，&amp;nbsp;如果想运用某个函数的特化&amp;nbsp;，&amp;nbsp;最好的方法是重载该函数&amp;nbsp;，&amp;nbsp;在实现中采用该特化来工作&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3）&amp;nbsp;重载决议发生在可访问性检查之前&amp;nbsp;。&amp;nbsp;因此&amp;nbsp;，&amp;nbsp;如果私有函数不幸参与了重载&amp;nbsp;，&amp;nbsp;并且被选中&amp;nbsp;，&amp;nbsp;最终也会出现无法访问的编译提示&amp;nbsp;。&amp;nbsp;这常常隐含二义性&amp;nbsp;，&amp;nbsp;这样的设计本身也不合理&amp;nbsp;。&amp;nbsp;换句话说&amp;nbsp;，&amp;nbsp;私有参数&amp;nbsp;，&amp;nbsp;在名字查找和重载时并非是&amp;nbsp;”&amp;nbsp;私有的&amp;nbsp;”。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以&amp;nbsp;c.Twice（&amp;nbsp;21&amp;nbsp;）的函数调用为例：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	a）&amp;nbsp;名字查找：编译器会首先寻找一个至少包含一个名字为&amp;nbsp;Twice
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	的实体作用域（类，文件，或者名字空间），并将候选函数放入候选实体列表。例子中，编译器首先从对象&amp;nbsp;c
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所在类实体中进行查找，找到就停止；如果没找到就会依次在其基类和外围的名字空间中查找，直到找到一个至少含有一个候选函数的作用域。两点需要注意：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1）&amp;nbsp;只要找到一个实体就停止查找，所以并非所有的同名函数都会被考虑；&amp;nbsp;2）&amp;nbsp;参数所在名字空间也属于查找范围（keoning&amp;nbsp;准则）&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b）&amp;nbsp;重载决议：从所找到的候选重载函数列表中选出唯一最佳匹配&amp;nbsp;。如不唯一，就存在二义性。注意：&amp;nbsp;1）&amp;nbsp;这是基于名字查找结果的；&amp;nbsp;2）&amp;nbsp;特化的模板函数不参与重载。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c）&amp;nbsp;可访问性检查：确定所选出的函数是否可访问。这是最后一步，晚于重载决议。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文章中的规则非常重要，理解后，很多C++的编译问题就自然解决了。后面将会有进一步的文章来介绍：如何确定C++每个编译单元（CPP文件）中的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可见名字（与名字查找相关）；Keoning查找详解；&amp;nbsp;重载&amp;nbsp;（Overload）&amp;nbsp;和虚函数的重实现&amp;nbsp;（override）.
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-05-16/1337143520.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-14+22%3A26%3A49</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-14+22%3A27%3A09</date-c>
+  <conf-c>s</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

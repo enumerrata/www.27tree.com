@@ -1,0 +1,1 @@
+{section name=dyi loop=$dy_list}{include file=$dy_list[dyi].tpl}{/section}

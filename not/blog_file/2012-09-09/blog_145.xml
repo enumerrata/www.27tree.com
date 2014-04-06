@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-09 09:09:10</datetime>
+  <title>SQL Server数据库存储过程的发展历史</title>
+  <content>&lt;p&gt;
+	SQL&amp;nbsp;Server存储过程可以是T-SQL语句，或者是.NET框架的CLR，它是专为方便数据库查询而设计的。它们接受输入参数，返回输出参数，可以在数据库中执行增删改查各种操作。存储过程提供了大量便利，从降低网络交通量到重用缓存执行计划，还增强了安全性，提升了易维护性。
+&lt;/p&gt;
+&lt;p&gt;
+	SQL&amp;nbsp;Server&amp;nbsp;2008版本引入了一批新功能，与早期的相同产品SQL&amp;nbsp;Server&amp;nbsp;2005相比，在存储过程性能方面提供了极大的提升。三年后，2008&amp;nbsp;R2推出，该版本对存储过程只有几处较小的调整。而即将在今年初发布的SQL&amp;nbsp;Server&amp;nbsp;2012将实现大量自身性能的提升。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;存储过程的发展&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	SQL&amp;nbsp;Server&amp;nbsp;2008和2008&amp;nbsp;R2中存储过程最大的提升之处是表值参数。这种参数类型可以把多行数据分组成数据集，然后把它们一次性送到数据库服务器，减少了客户端和服务器之间的往返交互，而且它不需要创建临时表或者大量参数。表值参数在提取数据时不需要施加任何锁。该功能还支持指定排序顺序。
+&lt;/p&gt;
+&lt;p&gt;
+	表值参数的结构很容易理解和使用，而且它可以适应复杂的业务逻辑。使用表值参数与使用传统的存储过程参数没有什么不同。首先，声明一个用户定义的表类型，并使用该表类型输入参数创建存储过程。接下来，声明表类型变量并引用它。使用“INSERT”语句给表变量赋值，而不是使用“SET”语句或者“SELECT”语句。最后，把填充后的表变量加到存储过程中作为输入参数。
+&lt;/p&gt;
+&lt;p&gt;
+	SQL&amp;nbsp;Server&amp;nbsp;2008还新增了“MERGE”语句，支持把多个数据操纵语言(DML)操作合并到一个T-SQL语句中。在连接表上使用合适的索引，你可以得到查询性能的提升。这是因为单个“MERGE”语句降低了数据在源表和目标表处理的时间。在SQL&amp;nbsp;Server&amp;nbsp;2005以及更早的版本中，每个“INSERT”，“DELETE”和“UPDATE”语句都必须一次处理完数据。“MERGE”非常有用，比如说当你做两个表的同步时就可以用它。
+&lt;/p&gt;
+&lt;p&gt;
+	在SQL&amp;nbsp;Server&amp;nbsp;2008和2008&amp;nbsp;R2存储过程中，分组操作的功能通过“GROUPING&amp;nbsp;SET”语法得到了增强。简单的“GROUP&amp;nbsp;BY”语句为所有列值的每个组合返回一行，而“GROUPING&amp;nbsp;SETS”为每列的每个唯一值返回一行。没有这个新功能的话，后者将要使用“UNION”结构为每列执行多次“GROUP&amp;nbsp;BY”语句。那样很明显会需要更多资源，比如：&lt;strong&gt;磁盘IO操作、内存以及运行时间&lt;/strong&gt;。
+&lt;/p&gt;
+&lt;p&gt;
+	在存储过程编程时，SQL&amp;nbsp;Server&amp;nbsp;2008和2008&amp;nbsp;R2还可以使用新行构造器在一行“INSERT”语句中插入多行。数据库管理员对这部分语法可能非常熟悉了：“INSERT&amp;nbsp;INTO&amp;nbsp;TABLE&amp;nbsp;(COLa,&amp;nbsp;COLb,&amp;nbsp;COLc)&amp;nbsp;…&amp;nbsp;VALUES&amp;nbsp;(V1a,&amp;nbsp;V1b,&amp;nbsp;V1c&amp;nbsp;…),&amp;nbsp;(V2a,&amp;nbsp;V2b,&amp;nbsp;V2c&amp;nbsp;…),&amp;nbsp;…&amp;nbsp;(V1000a,&amp;nbsp;V1000b,&amp;nbsp;V1000c&amp;nbsp;…)”。其中数字“1000”表示每个插入语句允许的最大行数。新的“INSERT”语法更简介，因为它去除了重复的字符串，并通过降低网络交通量，实现了与服务器更快的交互。
+&lt;/p&gt;
+&lt;p&gt;
+	在我的第三个试验中，我运行了10批语句，每批1000条新类型的插入，并行执行了一万条独立插入。每个测试算作一次交互，但是与旧式的“INSERT”相比，简化后的行构造削减了交易数量和服务器传送的字节数达1000倍，降低了客户端发送数据时间三倍，客户端处理时间300倍。整体执行时间下降超过一半。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;2012年的存储过程&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	在即将发布的新版本中，SQL&amp;nbsp;Server存储过程还会有一些调整。在SQL&amp;nbsp;Server&amp;nbsp;2012中，通过使用列存储索引，数据仓库中存储过程的性能可以加快十倍、百倍或者千倍，列存储索引是第三方社区技术预览流行的可扩展特性，该版本预计在今年夏季发布。列存储索引不像传统基于行的索引结构(也称为“行存储”索引)，它一次对一列进行分组并存储索引数据，因此极大地降低了查询执行时间。
+&lt;/p&gt;
+&lt;p&gt;
+	SQL&amp;nbsp;Server&amp;nbsp;2012还支持开发者对大对象数据类型联机重建索引。也就是说，在SQL&amp;nbsp;Server&amp;nbsp;2008&amp;nbsp;R2以及更早的版本中，用户不能对varchar(max)，nvarchar(max)或者varbinary(max)列，或者XML数据类型联机执行重建操作。现在，存储过程从这些数据类型提取数据也不必等待数据库维护窗口整理索引，因此提升了存储过程性能。
+&lt;/p&gt;
+&lt;p&gt;
+	另一项新功能是称为“FORCESCAN”的查询优化器提示。当SQL&amp;nbsp;Server查询优化器低估了返回行数并误选择了索引查找操作时，SQL&amp;nbsp;Server开发者可以让查询扫描替代索引。这样的话，该查询处理花更少时间久可以完成了。
+&lt;/p&gt;
+&lt;p&gt;
+	我这里只是对于SQL&amp;nbsp;Server&amp;nbsp;2008,2008&amp;nbsp;R2和2012各个版本关于存储过程性能的特性做了一点走马观花的介绍。在这些SQL&amp;nbsp;Server版本中还有大量细微的变化，这些变更也间接地位存储过程性能提升做贡献，比如：新的函数和语句，过滤索引和新的执行计划指南。但是这里列出的功能，不管你使用的是哪个版本，都肯定会给你的查询带来比以往更多的性能提升。
+&lt;/p&gt;</content>
+  <contentx>SQL Server存储过程可以是T-SQL语句，或者是.NET框架的CLR，它是专为方便数据库查询而设计的。它们接受输入参数，返回输出参数，可以在数据库中执行增删改查各种操作。存储过程提供了大量便利，从降低网络交通量到重用缓存执行计划，还增强了安全性，提升了易维护性。
+
+
+	SQL Server 2008版本引入了一批新功能，与早期的相同产品SQL Ser</contentx>
+  <tags>_null_</tags>
+</root>

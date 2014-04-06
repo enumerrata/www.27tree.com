@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JDBC调用MySQL5存储过程</title>
+<content>&amp;lt;p&amp;gt;
+	JDBC调用MySQL5存储过程，过程有入参和出参，执行存储过程，并获取出参。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一、环境
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	MySQL5.1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mysql-connector-java-5.1.10
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jdk1.5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	create&amp;amp;nbsp;table&amp;amp;nbsp;user&amp;amp;nbsp;(
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	id&amp;amp;nbsp;int(11)&amp;amp;nbsp;not&amp;amp;nbsp;null&amp;amp;nbsp;auto_increment,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	name&amp;amp;nbsp;varchar(50)&amp;amp;nbsp;not&amp;amp;nbsp;null,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pswd&amp;amp;nbsp;varchar(50)&amp;amp;nbsp;default&amp;amp;nbsp;null,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	pic&amp;amp;nbsp;longblob,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	remark&amp;amp;nbsp;longtext,
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	primary&amp;amp;nbsp;key&amp;amp;nbsp;(id)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、写存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DELIMITER&amp;amp;nbsp;$$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DROP&amp;amp;nbsp;PROCEDURE&amp;amp;nbsp;IF&amp;amp;nbsp;EXISTS&amp;amp;nbsp;testprocedure&amp;amp;nbsp;$$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CREATE&amp;amp;nbsp;DEFINER=`vcom`@`%`&amp;amp;nbsp;PROCEDURE&amp;amp;nbsp;testprocedure(in&amp;amp;nbsp;in_name&amp;amp;nbsp;varchar(20),in&amp;amp;nbsp;in_pswd&amp;amp;nbsp;varchar(20),out&amp;amp;nbsp;out_id&amp;amp;nbsp;bigint)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	BEGIN
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	insert&amp;amp;nbsp;into&amp;amp;nbsp;user(name,pswd)&amp;amp;nbsp;values(in_name,in_pswd);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	select&amp;amp;nbsp;last_insert_id()&amp;amp;nbsp;into&amp;amp;nbsp;out_id;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	END&amp;amp;nbsp;$$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DELIMITER&amp;amp;nbsp;;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、JDBC调用存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;lavasoft.common.DBToolkit;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;java.sql.CallableStatement;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;java.sql.Connection;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;java.sql.SQLException;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	import&amp;amp;nbsp;java.sql.Types;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/**
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;JDBC调用MySQL5存储过程
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*&amp;amp;nbsp;@author&amp;amp;nbsp;leizhimin&amp;amp;nbsp;2009-12-4&amp;amp;nbsp;10:33:12
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;amp;nbsp;class&amp;amp;nbsp;ProcedureTest&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;amp;nbsp;static&amp;amp;nbsp;void&amp;amp;nbsp;main(String[]&amp;amp;nbsp;args)&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	testExeProcedure();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	public&amp;amp;nbsp;static&amp;amp;nbsp;void&amp;amp;nbsp;testExeProcedure()&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Connection&amp;amp;nbsp;conn&amp;amp;nbsp;=&amp;amp;nbsp;DBToolkit.getConnection();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//创建调用存储过程的预定义SQL语句
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	String&amp;amp;nbsp;sql&amp;amp;nbsp;=&amp;amp;nbsp;\"{call&amp;amp;nbsp;testprocedure(?,?,?)}\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	try&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//创建过程执行器
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	CallableStatement&amp;amp;nbsp;cstmt&amp;amp;nbsp;=&amp;amp;nbsp;conn.prepareCall(sql);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//设置入参和出参
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cstmt.setString(1,&amp;amp;nbsp;\"wangwu\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cstmt.setString(2,&amp;amp;nbsp;\"111111\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cstmt.registerOutParameter(3,&amp;amp;nbsp;Types.BIGINT);&amp;amp;nbsp;//注册出参
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cstmt.executeUpdate();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//获取输出参数值（两种方式都行）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Long&amp;amp;nbsp;id&amp;amp;nbsp;=&amp;amp;nbsp;cstmt.getLong(3);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	//Long&amp;amp;nbsp;id&amp;amp;nbsp;=&amp;amp;nbsp;cstmt.getLong(\"out_id\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	System.out.println(\"本次插入数据的id=\"&amp;amp;nbsp;+&amp;amp;nbsp;id);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;amp;nbsp;catch&amp;amp;nbsp;(SQLException&amp;amp;nbsp;e)&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	e.printStackTrace();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}&amp;amp;nbsp;finally&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	DBToolkit.closeConnection(conn);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	运行后，控制台：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本次插入数据的id=1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Process&amp;amp;nbsp;finished&amp;amp;nbsp;with&amp;amp;nbsp;exit&amp;amp;nbsp;code&amp;amp;nbsp;0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Java调用存储过程很容易，但是开发存储过程比较困难
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-07-03/1341277620.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

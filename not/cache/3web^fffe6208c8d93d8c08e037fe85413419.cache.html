@@ -1,0 +1,491 @@
+<__cache@1389700648-@1389704248@3web__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            Web前端开发_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=web />
+                    <input type="hidden" id="pages" value=3/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/web/'>Web前端开发</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/web.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">web本意是蜘蛛网和网的意思。现广泛译作网络、互联网等技术领域。表现为三种形式，即超文本(Hypertext)、超媒体(Hypermedia)、超文本传输协议(Http)等。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-html5/>[HTML4/5]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-15/1339742777.html">
+        &nbsp;HTML发展历程    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;这篇文章...应该是用翻译器翻译的吧？还是...文章中的“得”频频出错，另外“欣赏器”这种说法，为什么不说是“浏览器”呢？</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-26/1340685984.html">
+        &nbsp;.Is() VS .HasClass()    </a><span class="Gray">(1)</span>
+    <ul>
+              </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/web-jquery/>[JQuery]</a>    <a class="hotCommA" href="http://www.27tree.com/art/web/content/2012-06-11/1339350787.html">
+        &nbsp;Jquery的自适应宽度圆角按钮    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/266">%E5%95%8A%E5%93%A6</a>:&nbsp;按钮我都没有看到哦？</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/web-css/" class="borderR15 sband">CSS2/3</a><a href="/art/web-html5/" class="borderR15 sband">HTML4/5</a><a href="/art/web-jquery/" class="borderR15 sband">JQuery</a><a href="/art/web-dojo/" class="borderR15 sband">Dojo</a><a href="/art/web-ext/" class="borderR15 sband">Ext</a><a href="/art/web-ajax/" class="borderR15 sband">RIA/AJAX</a><a href="/art/web-regex/" class="borderR15 sband">Regex正则</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-07/1339039237.html>什么是CSS伪类</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">CSS伪类选择符只能作用于超链接（&lt;a&gt;）
+
+
+	
+
+
+	CSS中用四个伪类来定义链接的样式，分别是：a:link、a:visited、a:hover和a : active，
+
+
+	例如：
+
+
+	a:link{font-weight : bold ;text-decoration : none ;color : #c00 ;}
+
+
+	a:visi...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(492)</span>
+                           <em>2012年6月7日 11:19</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-ajax/>[RIA/AJAX]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-07/1339026786.html>Javascript 实现页面模板化：JS也可以MVC</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">介绍
+
+
+	今天遇到一个问题，这个问题也是我以前遇到的问题，以前的方式，也是大多数人使用的方式。大家可以看看我的文章。
+
+
+	从前的方式——我估计也是大多数人使用的方式
+
+
+	比如以下的代码——摘自新浪首页的一段js代码，这种方式也是大多数人使用的方式。
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(537)</span>
+                           <em>2012年6月7日 07:52</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-css/>[CSS2/3]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338997671.html>AJAX实现web页面中级联菜单的设计 </a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">首先在eclipse中建一个项目，名称你自己做主了，这里为Easyjf-menu，对应的浏览器页面代码为：　　Easyjf-menu.jsp：
+
+&lt;@page contentType=”text/html;charser=UTF-8” language=”java”%&gt;
+
+&lt;head&gt;
+
+  ……..
+
+&lt;/head&gt;
+
+...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(534)</span>
+                           <em>2012年6月6日 23:46</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338996225.html>jQuery折叠层，默认闭合，点击收缩和展开效果</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">介绍一款利用jQuery实现的折叠层，点击收缩和展开效果，默认情况下是展开的，可能有的童鞋需要默认情况是闭合的，现在就来分享一下，这里主要是用JavaScript代码定义的，在此提示，第一次运行请刷新一下页面，让远程的jQuery插件载入。
+
+
+	第6行src应改为自己安装的jQuery版本
+
+
+&lt;!DOCTYPE html PUBLIC \"-//W3...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(881)</span>
+                           <em>2012年6月6日 23:22</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-regex/>[Regex正则]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338985999.html>匹配中文的正则表达式</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">以前在编写linux下的scim郑码码表时，就跟正则式的中文匹配问题打过交道。当时总结了这样一条经验，utf8编码格式下，中文正则式应该这样书写：
+
+
+[\\x80-\\xff]{3}
+	
+		当然，这与语言无关。在perl与python中，都是一样的。
+	
+	
+		现在，这条正则式又派上用场了。正在编写的一个小程序MiniBlogs Updater中，需要计算...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(528)</span>
+                           <em>2012年6月6日 20:32</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-regex/>[Regex正则]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338985416.html>笔记：如何写出高效率的正则表达式</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">如果纯粹是为了挑战自己的正则水平，用来实现一些特效（例如使用正则表达式计算质数、解线性方程），效率不是问题；如果所写的正则表达式只是为了满足一两次、几十次的运行，优化与否区别也不太大。但是，如果所写的正则表达式会百万次、千万次地运行，效率就是很大的问题了。我这里总结了几条提升正则表达式运行效率的经验（工作中学到的，看书学来的，自己的体会），贴在这里。如果您有...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(367)</span>
+                           <em>2012年6月6日 20:22</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338952797.html>淡出淡入的下拉菜单效果,使用jQuery+CSS实现</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">jQuery+CSS编写的下拉菜单，有简单带淡出动画效果，这个实例没有编写太复杂的CSS样式，比较简单，喜欢大家喜欢哦。
+
+
+ &lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transition...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(584)</span>
+                           <em>2012年6月6日 11:18</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-regex/>[Regex正则]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-06/1338951210.html>PHP中正则表达式的几则使用技巧归总</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">PCRE正则表达式函数： 
+
+preg_match()和preg_match_all()
+preg_quote()
+preg_split()
+preg_grep()
+preg_replace()
+
+	
+
+
+	匹配action属性 
+
+$str =   ;
+ $match =   ;
+ preg_match_all( /\\s+action=\\(?!http:)...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/16'>DANGTONG</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(447)</span>
+                           <em>2012年6月6日 10:52</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-04/1338768118.html>Web应用安全实现加速度发展</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">今天，我们步入了全面信息化网络时代，网络安全问题已经成为一个广受关注的社会问题，Web应用安全的重要性无论怎样强调也不过分。如果说，在以上网行为管理为代表的Web内容安全产品市场早已进入充分竞争阶段，那么在今天，Web应用安全产品市场也实现了加速度发展。
+
+
+	早在7年前，作为第一个登上美国黑帽子大会上的中国人，安恒信息创始人范渊曾就Web应用安全话题在会上...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(356)</span>
+                           <em>2012年6月4日 08:00</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-04/1338766810.html>Web设计者心声：成长虽可贵 健康价更高</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">作为一位web设计者，您一定经常为追赶进度而殚精竭虑，同时还必须保障作品的质量上乘；您大强度地奉献在工作岗位上，一定也经常同时经手好几个项目，手头上多任务并行已经是家常便饭。因为你是设计师，所以你必须对很多事情负责，有时候也被这些事务压得喘不过气来。在这样的情况下，您经常会追问自己何时能完成这个网站的框架，何时把那个项目的内容添加完，但也需要找点时间出来透透...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(366)</span>
+                           <em>2012年6月4日 07:40</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-regex/>[Regex正则]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-03/1338735104.html>收集一些实用高效的正则，以备不时之需。</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">正则表达式用于字符串处理、表单验证等场合，实用高效。现将一些常用的表达式收集于此，以备不时之需。
+
+
+	匹配中文字符的正则表达式： [\\u4e00-\\u9fa5]
+
+
+	评注：匹配中文还真是个头疼的事，有了这个表达式就好办了
+
+
+	匹配双字节字符(包括汉字在内)：[^\\x00-\\xff]
+
+
+	评注：可以用来计算字符串的长度（一个双字节字符长度计2，ASCI...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(375)</span>
+                           <em>2012年6月3日 22:51</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-01/1338542466.html>记录一下备查，很不错的一篇SQL语句总结。</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一、基础
+
+
+	1、说明：创建数据库
+
+
+	CREATE DATABASE database-name
+
+
+	2、说明：删除数据库
+
+
+	drop database dbname
+
+
+	3、说明：备份sql server
+
+
+	— 创建 备份数据的 device
+
+
+	USE master
+
+
+	EXEC sp_addumpdevice ‘disk’, ‘t...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(498)</span>
+                           <em>2012年6月1日 17:19</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-06-01/1338526927.html>互联网协议入门</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">我们每天使用互联网，你是否想过，它是如何实现的？
+
+
+	全世界几十亿台电脑，连接在一起，两两通信。上海的某一块网卡送出信号，洛杉矶的另一块网卡居然就收到了，两者实际上根本不知道对方的物理位置，你不觉得这是很神奇的事情吗？
+
+
+	互联网的核心是一系列协议，总称为互联网协议（Internet Protocol Suite）。它们对电脑如何连接和组网，做出了详尽的...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(354)</span>
+                           <em>2012年6月1日 13:01</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-31/1338422158.html>使用jQuery简化Ajax开发<5></a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">使用插件扩展 jQuery 
+
+
+	与大多数软件不同，使用一个复杂的 API 为 jQuery 编写插件并不是非常困难。事实上，jQuery 插件非常易于编写，您甚至希望编写一些插件来使代码更加简单。下面是可以编写的最基本的 jQuery 插件：
+
+
+	
+
+$.fn.donothing = function(){
+return this;
+};
+
+	
+
+
+	...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(432)</span>
+                           <em>2012年5月31日 07:54</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/web-jquery/>[JQuery]</a>&nbsp;<a href=http://www.27tree.com/art/web/content/2012-05-31/1338422140.html>使用jQuery简化Ajax开发<4></a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">释放 jQuery 选择器的强大能量 
+
+
+	我们经常会使用 ID 来选择元素，比如 #myid，或者通过类名，比如 div.myclass 来选择元素。然而，jQuery 提供了更为复杂和完整的选择器语法，允许我们在单个选择器中选择几乎所有的元素组合。
+
+
+	jQuery 的选择器语法主要是基于 CSS3 和 XPath 的。对 CSS3 和 XPath ...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(429)</span>
+                           <em>2012年5月31日 07:54</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>Web前端开发</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/25">
+    <img src="/not/mybook/data/book_image_lib/e902b73d2554e342ec9609a32a2685f8.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/25">
+    《程序员修炼之道——从小工到专家》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/283">
+    <img src="/not/mybook/data/book_image_lib/fdaee259db731c81c2043544915e9200.jpg" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/283">
+    《Professional WordPress, 2nd Edition》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/29">
+    <img src="/not/mybook/data/book_image_lib/f817fc429f964850a93541e93caea3da.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/29">
+    《搜索引擎优化高级编程》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/6">
+    <img src="/not/mybook/data/book_image_lib/676b894f0dd76063a85f080d18b28f44.gif" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/6">
+    《CSS权威指南》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/22">
+    <img src="/not/mybook/data/book_image_lib/c9c96ce96900a68dacd20fffe2c705e7.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/22">
+    《Web编程入门经典：HTML、XHTML和CSS》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=6 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/web/0'>1</a></li><li><a href='http://www.27tree.com/art/web/1'>2</a></li><li><a href='http://www.27tree.com/art/web/2'>3</a></li><li><a href='http://www.27tree.com/art/web/3'>4</a></li><li><a href='http://www.27tree.com/art/web/4'>5</a></li><li><a href='http://www.27tree.com/art/web/5'>6</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

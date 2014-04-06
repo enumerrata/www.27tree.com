@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /mod/
+Disallow: /jss/
+Disallow: /admin/
+Disallow: /inc/
+Disallow: /img/
+Disallow: /cache/
+Disallow: /tool/
+Disallow: /templates/
+Disallow: /phpMyAdmin/
+Sitemap: www.27tree.com/sitemap.xml

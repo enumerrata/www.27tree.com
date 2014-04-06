@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>线程池的简单构建</title>
+<content>&amp;lt;p&amp;gt;
+	现在服务器端的应用程序几乎都采用了“线程池”技术，这主要是为了提高系统效率。因为如果服务器对应每一个请求就创建一个线程的话，在很短的一段时间内就会产生很多创建和销毁线程动作，导致服务器在创建和销毁线程上花费的时间和消耗的系统资源要比花在处理实际的用户请求的时间和资源更多。线程池就是为了尽量减少这种情况的发生。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面我们来看看怎么用Java实现一个线程池。一个比较简单的线程池至少应包含线程池管理器、工作线程、任务队列、任务接口等部分。其中线程池管理器(ThreadPool&amp;nbsp;Manager)的作用是创建、销毁并管理线程池，将工作线程放入线程池中；工作线程是一个可以循环执行任务的线程，在没有任务时进行等待；任务队列的作用是提供一种缓冲机制，将没有处理的任务放在任务队列中；任务接口是每个任务必须实现的接口，主要用来规定任务的入口、任务执行完后的收尾工作、任务的执行状态等，工作线程通过该接口调度任务的执行。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一种就是以固定线程数目作为基准，让每一个线程的工作线程都处于无限循环中，利用Java中基类的nodify（）与wait（）进行协同工作。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	基本思想如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在构建线程池的时候创建所有工作线程，并且让所有工作线程开始运行。
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;&amp;nbsp;public&amp;nbsp;ThreadPool(int&amp;nbsp;nPoolSize)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(nPoolSize&amp;amp;lt;=0){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nPoolSize=DEFAULT_POOL_SIZE;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_ThreadList=new&amp;nbsp;ArrayList();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_RunList=new&amp;nbsp;LinkedList();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(int&amp;nbsp;i=0;i&amp;amp;lt;nPoolSize;i++){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;WorkerThread&amp;nbsp;temp=new&amp;nbsp;WorkerThread(i+1);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_ThreadList.add(temp);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;temp.start();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	在工作线程的run（）方法中用wait（）进行等待，当线程处于wait（）状态基本不占用CPU，这样所有工作线程都处于挂起状态，等待任务来唤醒。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;while&amp;nbsp;(true)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;synchronized&amp;nbsp;(m_RunList)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;while&amp;nbsp;(m_RunList.isEmpty())
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{//任务列表为空则进行等待，否则运行任务，并在本任务列表里面剔除任务
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;try{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_RunList.wait();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;catch&amp;nbsp;(InterruptedException&amp;nbsp;e)&amp;nbsp;{}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;r&amp;nbsp;=&amp;nbsp;(Runnable)&amp;nbsp;m_RunList.removeFirst();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//System.out.println(m_nThreadID&amp;nbsp;+&amp;nbsp;:Start);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(r&amp;nbsp;==&amp;nbsp;null)return;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;try&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;r.run();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;catch&amp;nbsp;(Exception&amp;nbsp;e)&amp;nbsp;{}
+}&amp;lt;/pre&amp;gt;
+以上代码就是一个工作线程主要代码。这个线程永远不会停止，只可能被挂起，或者运行任务
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-06-03/1338712462.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

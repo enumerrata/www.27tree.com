@@ -1,0 +1,10 @@
+<div class="sub-comm-item"><tx></tx><t></t>
+    <em class="ct-t-whw"><img src="<?php echo G::getHeadimg($subc['fu']); ?>_32x" width="32px"/></em>
+    <div style="margin-left:42px;line-height:18px;">
+        <a href="/user/<?php echo $subc['fu']; ?>"><?php echo urldecode($subc['fun']); ?></a> @<a href="/user/<?php echo $subc['2u'] ?>"><?php echo $subc['2un'] ?></a>&nbsp;：<?php echo G::article_content_conv($subc['ct']); ?>
+        <span style="display:block;color:#999;">
+            <?php echo $subc['dt']; ?> 
+            <?php if ($showRepButton) echo "<a href=\"javascript:;\" rel=\"{$subc['index']}\" actUID=\"{$subc['fu']}\" onclick=\"javascript:rep(this,2);\">回复</a>"; ?>
+        </span>
+    </div>
+</div>

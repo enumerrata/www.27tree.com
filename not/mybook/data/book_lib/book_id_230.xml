@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HBase The Definitive Guide]]></title>
+  <author>Lars George</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-01-05 00:29:47</submit-date-time>
+  <img-link>292c4f2281976be6db1aa6d741ddb450.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	If you\'re looking for a scalable storage solution to accommodate a virtually endless amount of data, this book shows you how Apache HBase can fulfill your needs. As the open source implementation of Google\'s BigTable architecture, HBase scales to billions of rows and millions of columns, while ensuring that write and read performance remain constant. Many IT executives are asking pointed questions about HBase. This book provides meaningful answers, whether you’re evaluating this non-relational database or planning to put it into practice right away.
+</p>
+<p>
+	<ul>
+		<li>
+			Discover how tight integration with Hadoop makes scalability with HBase easier
+		</li>
+		<li>
+			Distribute large datasets across an inexpensive cluster of commodity servers
+		</li>
+		<li>
+			Access HBase with native Java clients, or with gateway servers providing REST, Avro, or Thrift APIs
+		</li>
+		<li>
+			Get details on HBase’s architecture, including the storage format, write-ahead log, background processes, and more
+		</li>
+		<li>
+			Integrate HBase with Hadoop\'s MapReduce framework for massively parallelized data processing jobs
+		</li>
+		<li>
+			Learn how to tune clusters, design schemas, copy tables, import bulk data, decommission nodes, and many other tasks
+		</li>
+	</ul>
+	<p>
+		<strong>关于作者</strong>：
+	</p>
+	<p>
+		Lars George has been involved with HBase since 2007, and became a full HBase committer in 2009. He has spoken at various Hadoop User Group meetings, as well as large conferences such as FOSDEM in Brussels. He also started the Munich OpenHUG meetings. He now works closely with Cloudera to support Hadoop and HBase in and around Europe through technical support, consulting work, and training.
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

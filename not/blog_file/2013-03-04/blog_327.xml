@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[MySQL  索引操作小记]]></title>
+  <content><![CDATA[<p>
+	<strong>查看索引</strong> &nbsp;
+</p>
+<p>
+	show index from 数据库表名
+</p>
+<br>
+<p>
+	<strong>PRIMARY KEY（主键索引）</strong>
+</p>
+<p>
+	ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )
+</p>
+<br>
+<p>
+	<strong>UNIQUE(唯一索引)</strong>
+</p>
+<p>
+	ALTER TABLE `table_name` ADD UNIQUE (`column`)
+</p>
+<br>
+<p>
+	<strong>INDEX(普通索引)</strong>
+</p>
+<p>
+	mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column` )
+</p>
+<br>
+<p>
+	<strong>FULLTEXT(全文索引)</strong>
+</p>
+<p>
+	ALTER TABLE `table_name` ADD FULLTEXT ( `column` )
+</p>
+<br>
+<p>
+	<strong>多列索引</strong>
+</p>
+<p>
+	ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )
+</p>
+<br>
+<p>
+	1.普通索引。
+</p>
+<p>
+	这是最基本的索引，它没有任何限制。它有以下几种创建方式：
+</p>
+<p>
+	（1）创建索引：CREATE INDEX indexName ON tableName(tableColumns(length));如果是CHAR,VARCHAR类型，length可以小于字段实际长度;如果是BLOB 和 TEXT 类型，必须指定length，下同。
+</p>
+<p>
+	（2）修改表结构：ALTER tableName ADD INDEX [indexName] ON (tableColumns(length))
+</p>
+<p>
+	（3）创建表的时候直接指定：CREATE TABLE tableName ( [...], INDEX [indexName] (tableColumns(length)) ;
+</p>
+<br>
+<p>
+	2.唯一索引。
+</p>
+<p>
+	它与前面的\"普通索引\"类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。它有以下几种创建方式：
+</p>
+<p>
+	（1）创建索引：CREATE UNIQUE INDEX indexName ON tableName(tableColumns(length))
+</p>
+<p>
+	（2）修改表结构：ALTER tableName ADD UNIQUE [indexName] ON (tableColumns(length))
+</p>
+<p>
+	（3）创建表的时候直接指定：CREATE TABLE tableName ( [...], UNIQUE [indexName] (tableColumns(length));
+</p>
+<br>
+<p>
+	3.主键索引
+</p>
+<p>
+	它是一种特殊的唯一索引，不允许有空值。一般是在建表的时候同时创建主键索引：CREATE TABLE testIndex(i_testID INT NOT NULL AUTO_INCREMENT,vc_Name VARCHAR(16) NOT NULL,PRIMARY KEY(i_testID)); 当然也可以用ALTER命令。
+</p>]]></content>
+  <contentx><![CDATA[
+	查看索引 &nbsp;
+
+
+	show index from 数据库表名
+
+
+
+	PRIMARY KEY（主键索引）
+
+
+	ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )
+
+
+]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

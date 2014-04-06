@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>12</uid>
+  <datetime>2012-09-27 17:18:51</datetime>
+  <title>揭示八成技术人员数据库选型标准SQLServer用户接近50%</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用率占据榜首的数据库产品是微软的SQLServer，比例数达到了47.92%。与其余所有的数据库之和分庭抗衡，大有一览众山小之势。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	从调查得到的使用率来看，MySQL仍处于望MSSQLServer项背的阶段。调查显示，MySQL的使用数为1651，占总数的13.80%，不过排名第三。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	使用率排在第二位的是Oracle，比例达到24.21%。在前有SQLServer，后有MySQL的情况下，Oracle仍能达到四分之一的占有率，发展势头不可谓不强劲。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	虽然Orcale数据库的价格比SQLServer数据库要高，但Oracle采用开放的策略目标，可在所有主流平台上运行。而且有开发者认为Oracle的安全认证是获得最高认证级别的ISO标准认证，因此安全性高于SQLServer。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	排在第四位的是Access——5.59%；接着是DB2UDB，占总数的2.75%；至于FoxPro、Informix、PostgreSQL、Sybase得票数均仅在一百左右，还有待进一步的发展。
+&lt;/p&gt;</content>
+  <contentx>使用率占据榜首的数据库产品是微软的SQLServer，比例数达到了47.92%。与其余所有的数据库之和分庭抗衡，大有一览众山小之势。
+
+
+	从调查得到的使用率来看，MySQL仍处于望MSSQLServer项背的阶段。调查显示，MySQL的使用数为1651，占总数的13.80%，不过排名第三。
+
+
+	使用率排在第二位的是Oracle，比例达到24.21%。在前</contentx>
+  <tags>_null_</tags>
+</root>

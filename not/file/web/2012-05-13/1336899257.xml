@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JavaScript 模拟marquee效果</title>
+<content>&amp;lt;p&amp;gt;
+	这段代码主要实现了一个具有渐变滚动效果的marquee，当其获得焦点的时候会出现停顿效果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	javascript代码如下:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;/**
+&amp;nbsp;*@author&amp;nbsp;anwx&amp;nbsp;&amp;amp;lt;a&amp;nbsp;href=\"mailto:luckyanzi@china.com.cn\"&amp;amp;gt;An&amp;nbsp;Weixiao&amp;amp;lt;/a&amp;amp;gt;
+&amp;nbsp;*@version&amp;nbsp;$Id$
+&amp;nbsp;*/
+var&amp;nbsp;m_iInterval;
+var&amp;nbsp;m_Height;
+var&amp;nbsp;iScroll=0;
+
+var&amp;nbsp;SnowMarquee&amp;nbsp;=&amp;nbsp;function(){}
+SnowMarquee.prototype&amp;nbsp;=&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//其实其应该具有&amp;nbsp;timeout&amp;nbsp;count&amp;nbsp;objects
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;startRotate:function(){&amp;nbsp;//startRotate
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(&amp;nbsp;!this.count&amp;nbsp;){&amp;nbsp;//数据的总量
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.count&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(&amp;nbsp;!this.cursor&amp;nbsp;){&amp;nbsp;//当前元素
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.cursor&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(&amp;nbsp;!this.objects&amp;nbsp;){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alert(\"这个部分的数据容器信息出现了错误!\");&amp;nbsp;//{key:&amp;nbsp;&amp;nbsp;,&amp;nbsp;value:&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;self_&amp;nbsp;=&amp;nbsp;this;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_iInterval&amp;nbsp;=&amp;nbsp;setInterval(function(){self_.ontimer(self_);},&amp;nbsp;10);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;base&amp;nbsp;=&amp;nbsp;document.getElementById(\"marquee_base\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_Height&amp;nbsp;=&amp;nbsp;base.offsetHeight;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;divi&amp;nbsp;=&amp;nbsp;parseInt(m_Height/5);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_Height&amp;nbsp;=&amp;nbsp;divi*5;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;td1&amp;nbsp;=&amp;nbsp;document.getElementById(\"td1\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;td2&amp;nbsp;=&amp;nbsp;document.getElementById(\"td2\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;td3&amp;nbsp;=&amp;nbsp;document.getElementById(\"td3\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;td1.height&amp;nbsp;=&amp;nbsp;m_Height-5;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;td2.height&amp;nbsp;=&amp;nbsp;m_Height-5;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;td3.height&amp;nbsp;=&amp;nbsp;m_Height-5;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.count&amp;nbsp;=&amp;nbsp;this.objects.length-1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.setContents();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;setContents:function(){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;ilink&amp;nbsp;=&amp;nbsp;document.getElementById(\"marquee_contents\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;nextObj&amp;nbsp;=&amp;nbsp;this.objects[this.cursor];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;(&amp;nbsp;var&amp;nbsp;key&amp;nbsp;in&amp;nbsp;nextObj&amp;nbsp;)&amp;nbsp;{&amp;nbsp;//TODO
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ilink[key]&amp;nbsp;=&amp;nbsp;nextObj[key];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ontimer:function(o){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;self_&amp;nbsp;=&amp;nbsp;o;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;base&amp;nbsp;=&amp;nbsp;document.getElementById(\"marquee_base\");
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;iScroll&amp;nbsp;+=&amp;nbsp;1;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(iScroll&amp;amp;gt;(m_Height*2))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;iScroll=0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;self_.cursor++;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(self_.cursor&amp;nbsp;&amp;amp;gt;&amp;nbsp;self_.count)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;self_.cursor&amp;nbsp;=&amp;nbsp;0;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;self_.setContents();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(iScroll==m_Height)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;self_.pause();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_iInterval&amp;nbsp;=&amp;nbsp;setTimeout(function(){self_.resume(self_);},&amp;nbsp;4000);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;base.scrollTop=iScroll;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;pause:function(){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;clearInterval(m_iInterval);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;resume:function(o){
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;self_&amp;nbsp;=&amp;nbsp;o;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;m_iInterval&amp;nbsp;=&amp;nbsp;setInterval(function(){self_.ontimer(self_)},&amp;nbsp;10);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML页面代码:&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;div&amp;nbsp;id=\"marquee_base\"&amp;nbsp;class=\"news\"&amp;nbsp;onmouseover=\"mar__.pause()\"&amp;nbsp;onmouseout=\"mar__.resume(mar__)\"&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;table&amp;nbsp;class=\"areas_\"&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;tr&amp;amp;gt;&amp;amp;lt;td&amp;nbsp;id=\"td1\"&amp;nbsp;style=\"\"&amp;amp;gt;&amp;amp;lt;/td&amp;amp;gt;&amp;amp;lt;/tr&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;tr&amp;amp;gt;&amp;amp;lt;td&amp;nbsp;id&amp;nbsp;=&amp;nbsp;\"td2\"&amp;nbsp;valign=\"middle\"&amp;nbsp;align=\"center\"&amp;amp;gt;&amp;amp;lt;div&amp;nbsp;id=\"marquee_contents\"&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;amp;lt;/td&amp;amp;gt;&amp;amp;lt;/tr&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;tr&amp;amp;gt;&amp;amp;lt;td&amp;nbsp;id=\"td3\"&amp;amp;gt;&amp;amp;lt;/td&amp;amp;gt;&amp;amp;lt;/tr&amp;amp;gt;
+&amp;nbsp;&amp;nbsp;&amp;amp;lt;/table&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+&amp;amp;lt;/center&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;&amp;lt;/pre&amp;gt;
+CSS简单样式:&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"css\"&amp;gt;#marquee_base&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;overflow-y:hidden;
+&amp;nbsp;&amp;nbsp;width:&amp;nbsp;200px;
+&amp;nbsp;&amp;nbsp;height:&amp;nbsp;20px;
+&amp;nbsp;&amp;nbsp;border:&amp;nbsp;2px&amp;nbsp;dotted&amp;nbsp;#000099;
+&amp;nbsp;&amp;nbsp;margin:&amp;nbsp;auto;
+&amp;nbsp;&amp;nbsp;padding:&amp;nbsp;0&amp;nbsp;10px&amp;nbsp;0&amp;nbsp;10px;
+&amp;nbsp;&amp;nbsp;font-size:&amp;nbsp;.9em;
+&amp;nbsp;&amp;nbsp;font-family:&amp;nbsp;Verdana,&amp;nbsp;Arial,&amp;nbsp;sans-serif;
+}
+
+.areas_&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;background-color:&amp;nbsp;#DDDDDD;
+&amp;nbsp;&amp;nbsp;color:&amp;nbsp;inherit;
+&amp;nbsp;&amp;nbsp;line-height:22px;
+}
+&amp;lt;/pre&amp;gt;
+调用:&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;script&amp;nbsp;language=\"javascript\"&amp;nbsp;type=\"text/javascript\"&amp;amp;gt;
+var&amp;nbsp;mar__&amp;nbsp;=&amp;nbsp;new&amp;nbsp;SnowMarquee();
+mar__.objects&amp;nbsp;=&amp;nbsp;[
+{&amp;nbsp;innerHTML&amp;nbsp;:&amp;nbsp;data1&amp;nbsp;},{&amp;nbsp;innerHTML&amp;nbsp;:&amp;nbsp;data2&amp;nbsp;},{&amp;nbsp;innerHTML&amp;nbsp;:&amp;nbsp;data3&amp;nbsp;}&amp;nbsp;
+]
+mar__.startRotate();
+&amp;amp;lt;/script&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-13/1336899257.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

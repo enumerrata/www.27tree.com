@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-18 22:17:08</datetime>
+  <title><![CDATA[获取文件扩展名的三种方法]]></title>
+  <content><![CDATA[<p>
+	&lt;?php
+</p>
+<p>
+	//方法一:
+</p>
+<p>
+	function extend_1($file_name)
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp;$retval=\"\";
+</p>
+<p>
+	&nbsp;$pt=strrpos($file_name, \".\");
+</p>
+<p>
+	&nbsp;if ($pt) $retval=substr($file_name, $pt+1, strlen($file_name) - $pt);
+</p>
+<p>
+	&nbsp;return ($retval);
+</p>
+<p>
+	}
+</p>
+<p>
+	//方法二
+</p>
+<p>
+	function extend_2($file_name)
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp;$extend = pathinfo($file_name);
+</p>
+<p>
+	&nbsp;$extend = strtolower($extend[\"extension\"]);
+</p>
+<p>
+	&nbsp;return $extend;
+</p>
+<p>
+	}
+</p>
+<p>
+	//方法三
+</p>
+<p>
+	function extend_3($file_name)
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp;$extend =explode(\".\" , $file_name);
+</p>
+<p>
+	&nbsp;$va=count($extend)-1;
+</p>
+<p>
+	&nbsp;return $extend[$va];
+</p>
+<p>
+	}
+</p>
+<p>
+	?&gt;
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

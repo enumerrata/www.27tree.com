@@ -1,0 +1,85 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">HTML CSS</h1>
+</div>
+<div>
+<p><b>通过使用 HTML4.0，所有的格式化代码均可移出 HTML 文档，然后移入一个独立的样式表。</b></p>
+
+<h1>如何使用样式</h1>
+
+<p>当浏览器读到一个样式表，它就会按照这个样式表来对文档进行格式化。有以下三种方式来插入样式表：</p>
+
+<h2>外部样式表</h2>
+
+<p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。</p>
+
+<code>
+&lt;head&gt;<br />
+&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;<br />
+&lt;/head&gt;
+</code>
+
+<h2>内部样式表</h2>
+
+<p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在 head 部分通过 &lt;style&gt; 标签定义内部样式表。</p>
+
+<code>
+&lt;head&gt;<br />
+&lt;style type="text/css"&gt;<br />
+body {background-color: red}<br />
+p {margin-left: 20px}<br />
+&lt;/style&gt;<br />
+&lt;/head&gt;
+</code>
+
+<h2>内联样式</h2>
+
+<p>当特殊的样式需要应用到个别元素时，就可以使用内联样式。使用内联样式的方法是在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。以下实例显示出如何改变段落的颜色和左外边距。</p>
+
+<code>
+&lt;p style="color: red; margin-left: 20px"&gt;<br />
+This is a paragraph<br />
+&lt;/p&gt;
+</code>
+
+<table class="dataintable">
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+ 
+<tr>
+<td>&lt;style&gt;</td>
+<td>定义样式定义。</td>
+</tr>
+ 
+<tr>
+<td>&lt;link&gt;</td>
+<td>定义资源引用。</td>
+</tr>
+ 
+<tr>
+<td>&lt;div&gt;</td>
+<td>定义文档中的节或区域（块级）。</td>
+</tr>
+ 
+<tr>
+<td>&lt;span&gt;</td>
+<td>定义文档中的行内的小块或区域。</td>
+</tr>
+ 
+<tr>
+<td>&lt;font&gt;</td>
+<td class="deprecated">规定文本的字体、字体尺寸、字体颜色。不赞成使用。请使用样式。</td>
+</tr>
+ 
+<tr>
+<td>&lt;basefont&gt;</td>
+<td class="deprecated">定义基准字体。不赞成使用。请使用样式。</td>
+</tr>
+ 
+<tr>
+<td>&lt;center&gt;</td>
+<td class="deprecated">对文本进行水平居中。不赞成使用。请使用样式。</td>
+</tr>
+</table>
+</div>

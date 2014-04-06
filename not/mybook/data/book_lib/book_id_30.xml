@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>80X86汇编语言程序设计教程</title>
+  <author>杨季文</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 18:13:21</submit-date-time>
+  <img-link>b0716cc0fc659e2bfc0c49d03e23f0ce.png</img-link>
+  <book-area>hp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书的第一部分适合初学者，可作为学习汇编语言程序设计的教材。本书的第二部分适合已基本掌握8086/8088汇编语言的程序员，可作为学习保护方式编程技术的教材或参考书，也可作为其他人员了解高档微处理器和保护方式编程技术的参考书，还可作为程序员透彻地了解Windows程序设计技术的参考书。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书分为三部分。第一部分是基础部分，以8086/8088为背景，以DOS和PC兼容机为软硬件平台，以MASM和TASM为汇编器，介绍汇编语言的有关概念，讲解汇编语言程序设计技术。第二部分是提高部分，以80386为背景，以新一代微处理器Pentium为目标，细致和通俗地介绍了保护方式下的有关概念，系统和详细地讲解了保护方式下的编程技术，真实和生动地展示了保护方式下的编程细节。第三部分是上机实验指导。&amp;nbsp;本书的第一部分适合初学者，可作为学习汇编语言程序设计的教材。本书的第二部分适合已基本掌握8086/8088汇编语言的程序员，可作为学习保护方式编程技术的教材或参考书，也可作为其他人员了解高档微处理器和保护方式编程技术的参考书，还可作为程序员透彻地了解Windows程序设计技术的参考书。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

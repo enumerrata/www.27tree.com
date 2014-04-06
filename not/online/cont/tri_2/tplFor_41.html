@@ -1,0 +1,221 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 和 AJAX 请求</h1>
+</div>
+<div>
+	
+<h1>AJAX 请求</h1>
+
+<p>在下面的 AJAX 例子中，我们将演示当用户向 web 表单中输入数据时，网页如何与在线的 web 服务器进行通信。</p>
+
+<h1>在下面的文本框中输入名字：</h1>
+
+<p>First Name：</p>
+<p>Suggestions：</p>
+<p>这个例子包括三张页面：</p>
+
+<ul>
+<li>一个简单的 HTML 表单</li>
+<li>一段 JavaScript</li>
+<li>一张 PHP 页面</li>
+</ul>
+
+<h1>HTML 表单</h1>
+
+<p>这是 HTML 表单。它包含一个简单的 HTML 表单和指向 JavaScript 的链接：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script src="clienthint.js"&gt;&lt;/script&gt; <br />
+&lt;/head&gt;<br />
+<br />
+&lt;body&gt;<br />
+<br />
+&lt;form&gt; <br />
+First Name:<br />
+&lt;input type="text" id="txt1"<br />
+onkeyup="showHint(this.value)"&gt;<br />
+&lt;/form&gt;<br />
+<br />
+&lt;p&gt;Suggestions: &lt;span id="txtHint"&gt;&lt;/span&gt;&lt;/p&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p><b>例子解释 - HTML 表单</b></p>
+
+<p>正如您看到的，上面的 HTML 页面含有一个简单的 HTML 表单，其中带有一个名为 "txt1" 的输入字段。</p>
+<p>该表单是这样工作的：</p>
+<p>1.当用户在输入域中按下并松开按键时，会触发一个事件</p>
+<p>2.当该事件被触发时，执行名为 showHint() 的函数</p>
+<p>3.表单的下面是一个名为 "txtHint" 的 <span>。它用作 showHint() 函数所返回数据的占位符。</p>
+
+<h1>JavaScript</h1>
+
+<p>JavaScript 代码存储在 "clienthint.js" 文件中，它被链接到 HTML 文档：</p>
+
+<code>
+var&nbspxmlHttp<br />
+<br />
+function&nbspshowHint(str)<br />
+{<br />
+if&nbsp(str.length==0)<br />
+&nbsp&nbsp{&nbsp<br />
+&nbsp&nbspdocument.getElementById("txtHint").innerHTML=""<br />
+&nbsp&nbspreturn<br />
+&nbsp&nbsp}<br />
+xmlHttp=GetXmlHttpObject()<br />
+if&nbsp(xmlHttp==null)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspalert&nbsp("Browser&nbspdoes&nbspnot&nbspsupport&nbspHTTP&nbspRequest")<br />
+&nbsp&nbspreturn<br />
+&nbsp&nbsp}&nbsp<br />
+var&nbspurl="gethint.php"<br />
+url=url+"?q="+str<br />
+url=url+"&sid="+Math.random()<br />
+xmlHttp.onreadystatechange=stateChanged&nbsp<br />
+xmlHttp.open("GET",url,true)<br />
+xmlHttp.send(null)<br />
+}&nbsp<br />
+<br />
+function&nbspstateChanged()&nbsp<br />
+{&nbsp<br />
+if&nbsp(xmlHttp.readyState==4&nbsp||&nbspxmlHttp.readyState=="complete")<br />
+&nbsp{&nbsp<br />
+&nbspdocument.getElementById("txtHint").innerHTML=xmlHttp.responseText&nbsp<br />
+&nbsp}&nbsp<br />
+}<br />
+<br />
+function&nbspGetXmlHttpObject()<br />
+{<br />
+var&nbspxmlHttp=null;<br />
+try<br />
+&nbsp{<br />
+&nbsp//&nbspFirefox,&nbspOpera&nbsp8.0+,&nbspSafari<br />
+&nbspxmlHttp=new&nbspXMLHttpRequest();<br />
+&nbsp}<br />
+catch&nbsp(e)<br />
+&nbsp{<br />
+&nbsp//&nbspInternet&nbspExplorer<br />
+&nbsptry<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Msxml2.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbspcatch&nbsp(e)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspxmlHttp=new&nbspActiveXObject("Microsoft.XMLHTTP");<br />
+&nbsp&nbsp}<br />
+&nbsp}<br />
+return&nbspxmlHttp;<br />
+}
+</code>
+
+<h2>例子解释：</h2>
+
+<p><b>showHint() 函数</b></p>
+<p>每当在输入域中输入一个字符，该函数就会被执行一次。</p>
+<p>如果文本框中有内容 (str.length > 0)，该函数这样执行：</p>
+<p>1.定义要发送到服务器的 URL（文件名）</p>
+<p>2.把带有输入域内容的参数 (q) 添加到这个 URL</p>
+<p>3.添加一个随机数，以防服务器使用缓存文件</p>
+<p>4.调用 GetXmlHttpObject 函数来创建 XMLHTTP 对象，并在事件被触发时告知该对象执行名为 stateChanged 的函数</p>
+<p>5.用给定的 URL 来打开打开这个 XMLHTTP 对象</p>
+<p>6.向服务器发送 HTTP 请求</p>
+<p>如果输入域为空，则函数简单地清空 txtHint 占位符的内容。</p>
+<p><b>stateChanged() 函数</b></p>
+<p>每当 XMLHTTP 对象的状态发生改变，则执行该函数。</p>
+<p>在状态变成 4 （或 "complete"）时，用响应文本填充 txtHint 占位符 txtHint 的内容。</p>
+<p><b>GetXmlHttpObject() 函数</b></p>
+<p>AJAX 应用程序只能运行在完整支持 XML 的 web 浏览器中。</p>
+<p>上面的代码调用了名为 GetXmlHttpObject() 的函数。</p>
+<p>该函数的作用是解决为不同浏览器创建不同 XMLHTTP 对象的问题。</p>
+<p>这一点在上一节中已经解释过了。</p>
+
+<h1>PHP 页面</h1>
+
+<p>被 JavaScript 代码调用的服务器页面是一个名为 "gethint.php" 的简单服务器页面。</p>
+<p>"gethint.php" 中的代码会检查名字数组，然后向客户端返回对应的名字：</p>
+
+<code>
+&lt;?php<br />
+//&nbspFill&nbspup&nbsparray&nbspwith&nbspnames<br />
+$a[]="Anna";<br />
+$a[]="Brittany";<br />
+$a[]="Cinderella";<br />
+$a[]="Diana";<br />
+$a[]="Eva";<br />
+$a[]="Fiona";<br />
+$a[]="Gunda";<br />
+$a[]="Hege";<br />
+$a[]="Inga";<br />
+$a[]="Johanna";<br />
+$a[]="Kitty";<br />
+$a[]="Linda";<br />
+$a[]="Nina";<br />
+$a[]="Ophelia";<br />
+$a[]="Petunia";<br />
+$a[]="Amanda";<br />
+$a[]="Raquel";<br />
+$a[]="Cindy";<br />
+$a[]="Doris";<br />
+$a[]="Eve";<br />
+$a[]="Evita";<br />
+$a[]="Sunniva";<br />
+$a[]="Tove";<br />
+$a[]="Unni";<br />
+$a[]="Violet";<br />
+$a[]="Liza";<br />
+$a[]="Elizabeth";<br />
+$a[]="Ellen";<br />
+$a[]="Wenche";<br />
+$a[]="Vicky";<br />
+<br />
+//get&nbspthe&nbspq&nbspparameter&nbspfrom&nbspURL<br />
+$q=$_GET["q"];<br />
+<br />
+//lookup&nbspall&nbsphints&nbspfrom&nbsparray&nbspif&nbsplength&nbspof&nbspq&gt;0<br />
+if&nbsp(strlen($q)&nbsp&gt;&nbsp0)<br />
+{<br />
+$hint="";<br />
+for($i=0;&nbsp$i<count($a);&nbsp$i++)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspif&nbsp(strtolower($q)==strtolower(substr($a[$i],0,strlen($q))))<br />
+&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbspif&nbsp($hint=="")<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$hint=$a[$i];<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp&nbsp&nbspelse<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$hint=$hint."&nbsp,&nbsp".$a[$i];<br />
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp&nbsp&nbsp}<br />
+&nbsp&nbsp}<br />
+}<br />
+<br />
+//Set&nbspoutput&nbspto&nbsp"no&nbspsuggestion"&nbspif&nbspno&nbsphint&nbspwere&nbspfound<br />
+//or&nbspto&nbspthe&nbspcorrect&nbspvalues<br />
+if&nbsp($hint&nbsp==&nbsp"")<br />
+{<br />
+$response="no&nbspsuggestion";<br />
+}<br />
+else<br />
+{<br />
+$response=$hint;<br />
+}<br />
+<br />
+//output&nbspthe&nbspresponse<br />
+echo&nbsp$response;<br />
+?&gt;
+</code>
+
+<p>如果存在从 JavaScript 送来的文本 (strlen($q) > 0)，则：</p>
+
+<p>1.找到与 JavaScript 所传送的字符相匹配的名字</p>
+<p>2.如果找到多个名字，把所有名字包含在 response 字符串中</p>
+<p>3.如果没有找到匹配的名字，把 response 设置为 "no suggestion"</p>
+<p>4.如果找到一个或多个名字，把 response 设置为这些名字</p>
+<p>5.把 response 发送到 "txtHint" 占位符</p>
+
+</div>

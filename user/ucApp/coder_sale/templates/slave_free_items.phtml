@@ -1,0 +1,21 @@
+<span class="headwapper freeSlave-items" 
+      style="margin-right:4px;display:inline-block;position:relative;z-index:2;"
+      onmouseover="javascript:$('.info,al,ar').css('display','none');$(this).find('.buyFreer,.info,al,ar').css('display','block');"
+      onmouseout="javascript:;">
+    <input type="hidden" class="free-slave-uid" value="<?php echo $params['uid'] ?>" />
+    <div class="info borderR5" 
+         onmouseout="javascript:$(this).css('display','none');$('al,ar').css('display','none');"
+         style="display:none;position:absolute;background:url('/img/box-bj.png');height:100px;padding:5px;border:1px solid #ccc;z-index:-10;bottom:-122px;left:-50px;">
+        <a class="headwapper">
+            <img src="<?php echo $params['ush'] ?>" width="64px" height="64px"/>
+        </a>
+        <div style="margin-left:75px;padding-right:2px;text-align:center;">
+            <span class="block" style="white-space:nowrap;font-weight:bold;font-size:14px;"><?php echo $params['usn'] ?></span>
+            <span class="block" style="cursor:default;font-size:24px;color:#87843b;line-height:50px;font-weight:bold;"><?php echo $params['status']; ?></span>
+        </div>
+        <div class="clear"></div>
+        <a class="next-cp buyFreer" style="height:20px;line-height:20px;margin-top:5px;" rel="<?php echo $params['uid'] ?>" href="javascript:;">买入这个流浪汉</a>
+    </div>
+    <al></al><ar></ar>
+    <img src="<?php echo $params['ush'] ?>" width="45px" height="45px"/>
+</span>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[仿Google下拉菜单 - DEMO]]></title>
+  <author>koodo</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-05-13 18:50:18</submit-date-time>
+  <img-link>b3e675dfa2a2d883776472a2c7d2578e.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	仿Google下拉菜单
+</p>
+<p>
+	demo地址&nbsp;<a href="http://www.27tree.com/demo/ui-select/select.php">http://www.27tree.com/demo/ui-select/select.php</a>
+</p>
+<p>
+	支持两种调用方式&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p>
+		s1 = new Select({
+	</p>
+	<p>
+		&nbsp; &nbsp;name : 's',
+	</p>
+	<p>
+		&nbsp; &nbsp;node : 'sd-select-1',
+	</p>
+	<p>
+		&nbsp; &nbsp;data : {
+	</p>
+	<p>
+		&nbsp; &nbsp; &nbsp; &nbsp;编程技术:0,<span style="line-height:1.5;">新闻资讯:1,</span><span style="line-height:1.5;">心情日记:2,</span><span style="line-height:1.5;">职业生涯:3,</span><span style="line-height:1.5;">编程技术1:4,</span><span style="line-height:1.5;">新闻资讯2:5,</span><span style="line-height:1.5;">心情日记3:6,</span><span style="line-height:1.5;">职业生涯4:7</span>
+	</p>
+	<p>
+		&nbsp; &nbsp;},
+	</p>
+	<p>
+		&nbsp; &nbsp;width: 200
+	</p>
+	<p>
+		});
+	</p>
+	<p>
+		s2 = new Select({
+	</p>
+	<p>
+		&nbsp; &nbsp;name : '2',
+	</p>
+	<p>
+		&nbsp; &nbsp;node : 'sd-select-2',
+	</p>
+	<p>
+		&nbsp; &nbsp;data : ['编程技术','编程技术','编程技术','编程技术','编程技术','编程技术','编程技术','编程技术','编程技术','编程技术','编程技术'],
+	</p>
+	<p>
+		&nbsp; &nbsp;width: 200,
+	</p>
+	<p>
+		&nbsp; &nbsp;llong : 6
+	</p>
+	<p>
+		});
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

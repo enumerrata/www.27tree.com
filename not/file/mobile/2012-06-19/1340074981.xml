@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title> Android使用HttpGet访问php取回json数据</title>
+<content>&amp;lt;p&amp;gt;
+	下面是php&amp;nbsp;代码：
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;$array&amp;nbsp;=&amp;nbsp;array(
+&amp;nbsp;&amp;nbsp;&amp;nbsp;username&amp;nbsp;=&amp;amp;gt;&amp;nbsp;koodo&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;password&amp;nbsp;=&amp;amp;gt;&amp;nbsp;123456&amp;nbsp;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;user_id&amp;nbsp;=&amp;amp;gt;1
+);
+echo&amp;nbsp;json_encode($array);&amp;nbsp;&amp;lt;/pre&amp;gt;
+下面是android要运行的java代码：
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;private&amp;nbsp;void&amp;nbsp;startUrlCheck(String&amp;nbsp;username,String&amp;nbsp;password)
+{
+	HttpClient&amp;nbsp;client&amp;nbsp;=&amp;nbsp;new&amp;nbsp;DefaultHttpClient();
+	StringBuilder&amp;nbsp;builder&amp;nbsp;=&amp;nbsp;new&amp;nbsp;StringBuilder();
+
+	HttpGet&amp;nbsp;myget&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HttpGet(\"http://127.0.0.1/Android/index.php\");
+	try&amp;nbsp;{
+		HttpResponse&amp;nbsp;response&amp;nbsp;=&amp;nbsp;client.execute(myget);
+		BufferedReader&amp;nbsp;reader&amp;nbsp;=&amp;nbsp;new&amp;nbsp;BufferedReader(new&amp;nbsp;InputStreamReader(
+		response.getEntity().getContent()));
+		for&amp;nbsp;(String&amp;nbsp;s&amp;nbsp;=&amp;nbsp;reader.readLine();&amp;nbsp;s&amp;nbsp;!=&amp;nbsp;null;&amp;nbsp;s&amp;nbsp;=&amp;nbsp;reader.readLine())&amp;nbsp;{
+			builder.append(s);
+		}
+		JSONObject&amp;nbsp;jsonObject&amp;nbsp;=&amp;nbsp;new&amp;nbsp;JSONObject(builder.toString());
+		String&amp;nbsp;re_username&amp;nbsp;=&amp;nbsp;jsonObject.getString(\"username\");
+		String&amp;nbsp;re_password&amp;nbsp;=&amp;nbsp;jsonObject.getString(\"password\");
+		int&amp;nbsp;re_user_id&amp;nbsp;=&amp;nbsp;jsonObject.getInt(\"user_id\");
+		setTitle(\"用户id_\"+re_user_id);
+		Log.v(\"url&amp;nbsp;response\",&amp;nbsp;\"true=\"+re_username);
+		Log.v(\"url&amp;nbsp;response\",&amp;nbsp;\"true=\"+re_password);
+	}&amp;nbsp;catch&amp;nbsp;(Exception&amp;nbsp;e)&amp;nbsp;{
+		Log.v(\"url&amp;nbsp;response\",&amp;nbsp;\"false\");
+		e.printStackTrace();
+	}
+}&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/mobile/2012-06-19/1340074981.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-12-16 12:23:19</datetime>
+  <title><![CDATA[去掉 codeigniter URL 中的 index.php]]></title>
+  <content><![CDATA[<p>
+	在 CI 根目录（与index.php同级） 下新建立一个配置文件，命名为： .htaccess
+</p>
+<p>
+	在里面这样写：
+</p>
+<p>
+	RewriteEngine on &nbsp; &nbsp;
+</p>
+<p>
+	RewriteCond $1 !^(index\\.php|images|robots\\.txt) &nbsp; &nbsp;
+</p>
+<p>
+	RewriteRule ^(.*)$ /index.php/$1 [L] &nbsp;
+</p>
+<p>
+	就可以去掉 index.php 了。要注意 /index.php/$1 要根据你目录(Web 目录，比如 http://www.domain.com/index.php)的实际情况来定，比如网站根目录是 /ci/index.php 则要写成 /ci/index.php/$1
+</p>
+<p>
+	<p>
+		上面的代码意思是排除某些目录或文件，使得这些目录不会 rewrite 到 index.php 上，这一般用在图片、js、css 等外部资源上。也就是说非 PHP 代码都要排除出去。（这里我排除了 images 目录和 robots.txt 文件，当然 index.php 也应该被排除）
+	</p>
+	<p>
+		然后还要修改 /config/config.php 这个文件中的下列内容：
+	</p>
+$config[\'index_page\'] = \"index.php\"; &nbsp;
+</p>
+<p>
+	把其中的 \"index.php\" 改成 \"\" 就可以了。
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

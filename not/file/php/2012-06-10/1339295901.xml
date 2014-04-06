@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>.htaccess伪静态实例记录</title>
+<content>&amp;lt;p&amp;gt;
+	原始&amp;nbsp;index.php&amp;nbsp;伪静态&amp;nbsp;index.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RewriteRule&amp;nbsp;^index\.html$&amp;nbsp;index.php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	原始&amp;nbsp;news/detail.php?id=2&amp;nbsp;&amp;nbsp;伪静态&amp;nbsp;&amp;nbsp;news/detail_2.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RewriteRule&amp;nbsp;^news/detail_([0-9]{1,})\.html$&amp;nbsp;news/detail.php?id=$1
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	原始&amp;nbsp;index.php?cid=2&amp;amp;id=3&amp;nbsp;&amp;nbsp;伪静态&amp;nbsp;2-3.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	RewriteRule&amp;nbsp;([a-zA-Z]{1,})-([0-9]{1,})\.html$&amp;nbsp;index.php?cid=$1&amp;amp;id=$2
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	([a-zA-Z]{1,})-([0-9]{1,})\.html$是规则，index.php?action=$1&amp;amp;id=$2是要替换的格式，$1代表第一个括号匹配的值，$2代表第二个，如此类推！！
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-10/1339295901.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

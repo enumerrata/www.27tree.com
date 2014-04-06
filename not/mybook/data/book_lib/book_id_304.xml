@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Node.js for PHP Developers: Porting PHP to Node.js]]></title>
+  <author>Daniel Howard</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-19 18:44:03</submit-date-time>
+  <img-link>35090943bbfa665e5da3d332d2561395.jpg</img-link>
+  <book-area>php</book-area>
+  <book-intro><![CDATA[<p>
+	If you’re an experienced PHP developer, you already have a head start on learning how to write Node.js code. In this book, author Daniel Howard demonstrates the remarkable similarities between the two languages, and shows you how to port your entire PHP web application to Node.js. By comparing specific PHP features with their Node counterparts, you’ll also discover how to refactor and improve existing PHP 4 or PHP 5 source code.
+</p>
+<p>
+	At the end, you’ll have two fully functional codebases to provide to your users. You can update both of them simultaneously, using this book as a reference to important aspects of PHP and Node.js.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	Use a simple Node.js framework to convert individual PHP pages to Node.js files
+</p>
+<p>
+	Refactor blocking PHP source code to non-blocking Node.js source code that uses callbacks
+</p>
+<p>
+	Convert PHP syntax, variables, and types to Node.jsUse a step-by-step technique for implementing PHP classes and class inheritance in Node.js
+</p>
+<p>
+	Convert PHP file handling APIs into their Node.js equivalents
+</p>
+<p>
+	Compare approaches for using a MySQL database in Node.js and PHP
+</p>
+<p>
+	Convert PHP code for JSON or XML APIs into Node.js code for npm packages
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

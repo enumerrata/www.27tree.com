@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[【Hacks系列】Binary Hacks 黑客秘笈100选]]></title>
+  <author>（日）高林哲</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2012-11-09 07:56:39</submit-date-time>
+  <img-link>9774672d01dc8ee3395912a98244ef4e.png</img-link>
+  <book-area>other</book-area>
+  <book-intro><![CDATA[<p>
+	<p>
+		《Binary Hacks:黑客秘笈100选》的主题是关于底层程序的技术。说到底层，就是和“原始的”计算机很接近的意思。软件的世界是一个抽象化的积累，逐步演化到现在的阶段。抽象化就是隐藏底层的复杂部分，相比较来说是可以提高生产性、安全性的方法，并给开发者提供程序化的手段。但是，如果认为完全不依赖底层系统级的技术来进行编程，这是行不通的。追求性能上的最佳，尽可能提高可信赖性，想解决偶尔发生的“谜一样的错误”，在这些情况下，了解底层系统级的技术就显得尤为重要。遗憾的是，抽象化并不能代替所有的。
+	</p>
+	<p>
+		《Binary Hacks:黑客秘笈100选》的目的就是在上述的情况下，都能使用的大量Know-how的介绍。《Binary Hacks:黑客秘笈100选》Binary Hack定义为“能驱动软件的底层技术的Know-how”，从最基本的工具使用开始，安全编程，OS到提高处理器的处理性能的技术，在一个很宽泛的范围内都进行了说明。
+	</p>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

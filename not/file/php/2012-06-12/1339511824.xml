@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>一句代码：在Ubuntu中快速安装LAMP</title>
+<content>&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;sudo&amp;nbsp;apt-get&amp;nbsp;install&amp;nbsp;lamp-server^&amp;lt;/pre&amp;gt;
+哈哈，超级速度吧/。</content>
+<json-link>./file/php/2012-06-12/1339511824.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

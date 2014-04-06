@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[JavaScript框架高级编程  应用Prototype、YUI、Ext JS、Dojo、MooTools]]></title>
+  <author>（美）欧查德，（美）佩里瓦尼安</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-04-08 12:35:14</submit-date-time>
+  <img-link>8f786e28a1bd5c7e326293a15007929a.png</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[<p>
+	近年来开发人员的需要和要求已经发生变化，javascnpt也是如此，它可以提供高性能的、令人印象深刻的web用户体验。这个灵活的动态编程语言越来越多地用于正式的web开发中，而且它的多种工具和项目正以代码库和框架的形式分享。《javascript框架高级编程——应用prototype、yui、extjs、doio、mootools》涵盖了几个最流行的javascript框架，研究了这些框架如何采用独特的、各不相同的方式解决web开发中的各种问题，每个框架都有各自的优缺点。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	《javascript框架高级编程——应用prototype、yui、extjs、doio、mootools》的作者团队汇集了目前最活跃、最流行的几个javascript框架，详细讲解了每个框架解决的常见web开发问题，同时研究了每个框架如何解决特定的一组任务。此外，《javascript框架高级编程--应用prototype、yui、ext js、dojo、mootools》运用大量实用的示例和清晰的讲解来演示现代web开发涉及的众多方面，以及javascript框架提供了什么选项来帮助我们快速构建并运行应用程序。
+</p>
+<p>
+	<br />
+</p>
+<p>
+	◆ prototype框架：处理跨浏览器事件、操作常见的数据函数、简化ajax和动态数据处理以及其他方面
+</p>
+<p>
+	◆ yahoo! user interface(yul)库：使用动画和拖放、利用窗u部件构建用户界面、使用yuicss工具以及其他方面
+</p>
+<p>
+	◆ extjs框架：与服务器交互、使用数据视图和网格、处理表单控件和数据验证以及其他方面
+</p>
+<p>
+	◆ dojo框架：操作dom、编排动画、部署和扩展dojo以及其他方面
+</p>
+<p>
+	◆ mootools框架：运用mootools增强开发、构建用户界面、使用动画以及其他方面
+</p>
+<p>
+	《javascript框架高级编程--应用prototype、yui、ext js、dojo、mootools》适合于渴望探究javascript框架带来的各种益处的web开发人员。读者需要具备html、css和javascript的，应用知识。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

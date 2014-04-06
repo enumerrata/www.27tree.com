@@ -1,0 +1,48 @@
+<?php
+if(isset($_COOKIE['username']) && isset($_COOKIE['_uid']))
+{
+echo <<<LOGEOM
+	<div class="log" id="ucenterbar">
+	<span class="log-item">
+	<a href=/user/$_COOKIE[_uid] title='进入个人中心' id='namea'>
+	<img src='/img/go-home.png' height=32px width=32px align='absmiddle' />
+	</a>
+	</span>
+	<span class="log-item">
+	<a href="/user/$_COOKIE[_uid]/submitArticle" title='发表文章'>
+	<img src='/img/edit-copy.png' height=32px width=32px align='absmiddle' />
+	</a>
+	</span>
+        <span class="log-item">
+	<a href="/minbbs/" title='进入论坛'>
+	<img src='/img/forum.gif' height=29px width=31px align='absmiddle' />
+	</a>
+	</span>
+	<span class="log-item">
+	<a href='javascript:logout();' title='注销'>
+	<img src='/img/logout.png' height=32px width=32px align='absmiddle' />
+	</a>
+	</span>
+         <span class="log-item">
+	<a href='javascript:;' onclick="javascript:goTop(0.2,5);" title='顶部'>
+	<img src='/img/arrow-up.png' height=32px width=32px align='absmiddle' />
+	</a>
+	</span>
+	</div>
+LOGEOM;
+} else
+	echo <<<LOGSUGG
+	<div class="log" id="ucenterbar">
+	<span class="log-item">
+	<a href='/account/login/' title='登录'>
+	<img src='/img/login.png' height=32px width=32px align='absmiddle' /><span class="cRed">登录</span>
+	</a>
+	</span>
+         <span class="log-item">
+	<a href='javascript:;' onclick="javascript:goTop(0.2,5);" title='顶部'>
+	<img src='/img/arrow-up.png' height=32px width=32px align='absmiddle' /><span class="cRed">顶部</span>
+	</a>
+	</span>
+	</div>
+LOGSUGG;
+?>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-07 13:39:45</datetime>
+  <title>Mysql中的临时表使用方法讲解</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	当工作在非常大的表上时，你可能偶尔需要运行很多查询获得一个大量数据的小的子集，不是对整个表运行这些查询，而是让MySQL每次找出所需的少数记录，将记录选择到一个临时表可能更快些，然后多这些表运行查询。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	创建临时表很容易，给正常的CREATE&amp;nbsp;TABLE语句加上TEMPORARY关键字：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CREATE&amp;nbsp;TEMPORARY&amp;nbsp;TABLE&amp;nbsp;tmp_table&amp;nbsp;(
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	name&amp;nbsp;VARCHAR(10)&amp;nbsp;NOT&amp;nbsp;NULL,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	value
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	INTEGER&amp;nbsp;NOT&amp;nbsp;NULL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	临时表将在你连接MySQL期间存在。当你断开时，MySQL将自动删除表并释放所用的空间。当然你可以在仍然连接的时候删除表并释放空间。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	DROP&amp;nbsp;TABLE&amp;nbsp;tmp_table
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果在你创建名为tmp_table临时表时名为tmp_table的表在数据库中已经存在，临时表将有必要屏蔽（隐藏）非临时表tmp_table。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果你声明临时表是一个HEAP表，MySQL也允许你指定在内存中创建它：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	CREATE&amp;nbsp;TEMPORARY&amp;nbsp;TABLE&amp;nbsp;tmp_table&amp;nbsp;(
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	name&amp;nbsp;VARCHAR(10)&amp;nbsp;NOT&amp;nbsp;NULL,
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	value
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	INTEGER&amp;nbsp;NOT&amp;nbsp;NULL
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	)&amp;nbsp;TYPE&amp;nbsp;=&amp;nbsp;HEAP
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	因为HEAP表存储在内存中，你对它运行的查询可能比磁盘上的临时表快些。然而，HEAP表与一般的表有些不同，且有自身的限制。详见MySQL参考手册。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	正如前面的建议，你应该测试临时表看看它们是否真的比对大量数据库运行查询快。如果数据很好地索引，临时表可能一点不快。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>当工作在非常大的表上时，你可能偶尔需要运行很多查询获得一个大量数据的小的子集，不是对整个表运行这些查询，而是让MySQL每次找出所需的少数记录，将记录选择到一个临时表可能更快些，然后多这些表运行查询。
+
+
+	创建临时表很容易，给正常的CREATE TABLE语句加上TEMPORARY关键字：
+
+
+	CREATE TEMPORARY TABLE tmp_tab</contentx>
+  <tags>_null_</tags>
+</root>

@@ -1,0 +1,399 @@
+<__cache@1389731335-@1389731337@bl-9__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>博客广场 - 二叉树程序员社区</title>
+        <link rel="stylesheet" type="text/css" href="/sources-gz/core.css.php" />
+        <link rel="stylesheet" type="text/css" href="/not/css/blog_list.css?v=5-7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="author" content="itsrcs.com" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+    </head>
+    <body>
+        <input type="hidden" value="15" id="maxpagelite" />
+        <input type="hidden" value="0,15" id="pagelite" />
+        <input type="hidden" id="option_blogprom" value="0" />
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+        <div class="sdCenter">
+            <div class="blog-list-wapper-left">
+                <div style="border:1px solid #ccc;border-top:3px solid #6d9906;background-color:#fff;position:relative;padding:10px 15px;width:256px;background:url('/img/br_l.png') repeat-y right center #fff;">
+                    <div class="atr-bac-left"></div>
+
+                    <div class="blw-wapper">
+                        <a href="http://www.27tree.com/rss/" rel="nofollow" target="_blank">
+                            <img src="/not/sources/img/rss.png" class="borderR3 block Shadow"/>
+                        </a>
+                    </div>
+
+                    <div class="blw-wapper">
+                        <span class="RedBar">
+                            <span class="RedBar-in">热门<a href="/blog/index.html">博文</a></span>
+                        </span>
+                        <ul class="sdULpatch">
+                            <li class="Elipsis"><a href="/blog/2014-01-09/content_420.html" target="_blank">淘宝网禁售比特币等虚拟货币及软件教程</a></li>                        </ul>
+                    </div>
+                    <div class="blw-wapper">
+                        <span class="RedBar">
+                            <span class="RedBar-in">推荐<a>博主</a></span>
+                        </span>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/2" title="koodo - 的博客专栏">
+                                    <img src="/user/data/head-img/2_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/2">koodo</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-07-19/content_418.html">尿液燃料电池</a></div>
+                                    <div>访问量：3007</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/306" title="Fuck - 的博客专栏">
+                                    <img src="/user/data/head-img/306_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/306">Fuck</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-17/content_410.html">CodeIgniter Disallowed Key Characters 的解决方法</a></div>
+                                    <div>访问量：1880</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/276" title="我是机器人 - 的博客专栏">
+                                    <img src="/user/data/head-img/276_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/276">我是机器人</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-04-07/content_356.html">“Facebook手机”将杀死运营商</a></div>
+                                    <div>访问量：1409</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/32" title="mallocx - 的博客专栏">
+                                    <img src="/user/data/head-img/32_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/32">mallocx</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-02-17/content_306.html">WPS for Linux Beta 版发布</a></div>
+                                    <div>访问量：1359</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/19" title="Serria - 的博客专栏">
+                                    <img src="/user/data/head-img/19_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/19">Serria</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-19/content_413.html">2013年毕业大学生逼近700万 就业形势更严峻</a></div>
+                                    <div>访问量：1351</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/201" title="Firing - 的博客专栏">
+                                    <img src="/minbbs/default/headimg/default7.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/201">Firing</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-03/content_395.html">Apache Struts OGNL安全绕过漏洞</a></div>
+                                    <div>访问量：1330</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/318" title="resory - 的博客专栏">
+                                    <img src="/minbbs/default/headimg/default2.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/318">resory</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-01-17/content_292.html">Yii 多語言</a></div>
+                                    <div>访问量：1125</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/341" title="baby - 的博客专栏">
+                                    <img src="/user/data/head-img/341_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/341">baby</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-04-27/content_393.html">传阿里入股新浪微博即将揭晓 或全盘收购</a></div>
+                                    <div>访问量：1050</div>
+                                </div>
+                            </div>
+                                                <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- blog_list_right -->
+            <div class="blog-list-wapper Shadow">
+                <a class='toTopbtn' href='javascript:;' onclick='goTop()'></a>
+                <div>
+                    <div id="w-item-l">
+                        <span class="RedBar">
+                            <span class="RedBar-in">技术 - 推荐博文</span>
+                        </span>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-17/content_412.html" target="_blank">PHP 5.4 中的新特性全面详解 ​作者：Rasmus Lerdorf</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-07/content_397.html" target="_blank">使用阿里云低成本打造站内搜索引擎</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-02-26/content_321.html" target="_blank">Javascript实现继承</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-02-18/content_307.html" target="_blank">使用Jquery实现美观的滑动解锁</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-04-11/content_359.html" target="_blank">Nginx开启Gzip压缩大幅提高页面加载速度及相关测试</a></h1>
+                            </div>
+                                            </div>
+
+                    <div id="w-item-r">
+                        <span class="RedBar">
+                            <span class="RedBar-in">职场 - 推荐博文</span>
+                        </span>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-16/content_408.html" target="_blank">程序员你迷茫个鬼啊？你忧伤个毛啊？你寂寞个蛋啊？</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-01-06/content_286.html" target="_blank">揭秘误导个人站长的一些黑幕</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-01-06/content_283.html" target="_blank">2013 年最火和最有钱途的 6 个 IT 职位</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2012-12-08/content_259.html" target="_blank">码农创业，6年80万，有梦想才可能有机会</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-09/content_400.html" target="_blank">张朝阳：我们这代人实际是没价值观也没原则</a></h1>
+                            </div>
+                                            </div>
+                </div>
+
+                <div id="nblog-list-wapp">
+                    <span class="RedBar">
+                        <span class="RedBar-in">最新博文</span>
+                        <span class="Gray RedBar-in-mr">今天你博起了吗</span>
+                    </span>
+                    <div style="margin-top:10px;"><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">&#19978;&#19968;&#39029;</a><a href="/blog/1.html" class="s-pages-i borderR10 Shadow">1</a><a href="/blog/2.html" class="s-pages-i borderR10 Shadow">2</a><a href="/blog/3.html" class="s-pages-i borderR10 Shadow">3</a><a href="/blog/4.html" class="s-pages-i borderR10 Shadow">4</a><a href="/blog/5.html" class="s-pages-i borderR10 Shadow">5</a><a href="/blog/6.html" class="s-pages-i borderR10 Shadow">6</a><a href="/blog/7.html" class="s-pages-i borderR10 Shadow">7</a><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">8</a><a href="/blog/9.html" class="s-pages-i s-pages-cur borderR10 Shadow">9</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">10</a><a href="/blog/11.html" class="s-pages-i borderR10 Shadow">11</a><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">12</a><a href="/blog/13.html" class="s-pages-i borderR10 Shadow">13</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">14</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">&#19979;&#19968;&#39029;</a></div>
+                    <div class="blog-list-item"><div class="headwapper"><a href="/user/visit/32"><img src="/user/data/head-img/32_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-12-05/content_254.html" target="_blank">MySQL内存使用之线程独享</a></h1><p>对于任何一个数据库管理系统来说，内存的分配使用绝对可以算的上是其核心之一了，所以很多希望更为深入了解某数据库管理系统的人，都会希望一窥究竟，我也不例外。
+
+
+	从内存的使用方式MySQL 数据库的内存使用主要分为以下两类
+
+
+	线程独享内存
+
+
+	全局共享内存
+
+
+	今天这篇文章暂时先分析 MySQL 中主要的 “线程独享内存” 的。
+
+
+	在 MySQL </p><a href="/blog/2012-12-05/content_254.html" target="_blank">查看全文</a>&nbsp;2012年12月5日 00:49</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-12-04/content_253.html" target="_blank">Web前端开发人员使用的 Chrome Canary</a></h1><p>如果你已经将Chrome浏览器作为你前端开发的调试的浏览器，我强烈推荐你使用 Chrome Canary 。</p><a href="/blog/2012-12-04/content_253.html" target="_blank">查看全文</a>&nbsp;2012年12月4日 19:49</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-12-03/content_252.html" target="_blank">其实PHP比你想象的好得多</a></h1><p>有很多对于PHP的抱怨，甚至这些抱怨也出自很多聪明的人。当Jeff Atwood写下对于PHP的另一篇抱怨文章之后，我思考了下PHP的好的方面。
+
+
+	这些抱怨最大的问题是他们出自很多仍在使用旧版本PHP的人。他们或许是不愿意关心或许是不愿意承认PHP不管在语言层面还是在社区层面都在以很快的速度演变。实际上它比任何其他语言或者web平台都演变的快。尽管并不总</p><a href="/blog/2012-12-03/content_252.html" target="_blank">查看全文</a>&nbsp;2012年12月3日 20:56</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-26/content_251.html" target="_blank">百度融资15亿美元 准备扩展移动互联网</a></h1><p>百度于11月21日宣布完成发债融资15亿美元；而他账上目前还有现金及短投100多亿元人民币。百度发债后会将这些现金用在哪些方面？百度肯定是将这些现金用于对中国移动互联网企业的并购，而不是布局海外；
+
+
+	但是，百度最应该并购的两家企业：UCweb和奇虎360又基本不可能被他收购；因此最终百度可能还是会收一些小公司弥补不足。
+
+
+	以下为文章原文：
+
+
+	百度</p><a href="/blog/2012-11-26/content_251.html" target="_blank">查看全文</a>&nbsp;2012年11月26日 23:50</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/66"><img src="/user/data/head-img/66_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-19/content_250.html" target="_blank">转载： “好书”为什么会绝版？</a></h1><p>一年前，一直想找《C专家编程》的英文版来看一下，可是没想到的是在网上找了好久，发现这本书的英文版在大陆是买不到。当时就觉得奇怪，这样的经典居然会找不到！如果你也有过类似的经历，那下面这篇文章值得看一下。 
+
+
+	    （如需引用，请使用原文链接：http://www.ituring.com.cn/article/795） 
+
+
+	
+ 
+
+
+	“好书”为什么</p><a href="/blog/2012-11-19/content_250.html" target="_blank">查看全文</a>&nbsp;2012年11月19日 23:20</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-17/content_249.html" target="_blank">程度员成熟的标志</a></h1><p>程序员在经历了若干年编程工作之后，很想知道自己水平到底如何？自己是否已经成为成熟的程序员？虽然程序员会对自己有一个自我评价，但是，自己的评 价和社会的评价、专业的评价会有差异，所以程序员自己并不能肯定这个评价。现实中，除了各种证书之外，很少有人会专门给出一个程序员的成熟度的评价。人们 往往是偶发性地就事论事地对程序员的工作作出好与不好，行与不行的评论。因此，</p><a href="/blog/2012-11-17/content_249.html" target="_blank">查看全文</a>&nbsp;2012年11月17日 00:22</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-16/content_248.html" target="_blank">PHP ServerPush 数据推送技术 即反向Ajax</a></h1><p>随着人们对即时性应用需求的不断上升，服务推送技术在聊天、消息提醒尤其是社交网络服务技术开始兴起，成为实时应用的数据流核心。这篇文章试图探讨的便是各种适合于PHP的数据推送的实现方式以及其优劣。
+
+
+	1. 什么是Server Push
+
+
+	想象在聊天应用中，如果使用传统的ajax来承担消息的传入，那么一般是通过每隔一定时间拉取一次信息的方式实现，但是其实这</p><a href="/blog/2012-11-16/content_248.html" target="_blank">查看全文</a>&nbsp;2012年11月16日 18:19</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/29"><img src="/minbbs/default/headimg/default4.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-16/content_247.html" target="_blank">数据库系统的基本概念 </a></h1><p>数据：实际上就是描述事物的符号记录。
+
+
+	数据的特点：有一定的结构，有型与值之分，如整型、实型、字符型等。而数据的值给出了符合定型的值，如整型值15。
+
+
+	数据库：是数据的集合，具有统一的结构形式并存放于统一的存储介质内，是多种应用数据的集成，并可被各个应用程序共享。
+
+
+	数据库存放数据是按数据所提供的数据模式存放的，具有集成与共享的特点。
+
+
+	数据</p><a href="/blog/2012-11-16/content_247.html" target="_blank">查看全文</a>&nbsp;2012年11月16日 09:29</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-15/content_246.html" target="_blank">人人网第三季度净亏损1540万美元</a></h1><p>人人公司(NYSE:RENN)今天公布了截至9月30日的2012财年第三季度未经审计财务报告。报告显示，人人公司第三季度总净营业收入为5040万美元，较去年同期的3420万美元增长47.2%；第三季度净亏损为1540万美元，去年同期净亏损为120万美元。
+
+
+	2012年第三季度业绩要点
+
+
+	• 净营业收入为5040万美元，较去年同期增长47.2%
+
+
+	</p><a href="/blog/2012-11-15/content_246.html" target="_blank">查看全文</a>&nbsp;2012年11月15日 10:28</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-14/content_245.html" target="_blank">在学校教学Java是有争议的</a></h1><p>允许我稍微解释一下：
+
+
+	计算机科学太难了，所以只有带点神经质的书呆子才能掌握。
+
+
+	CS（计算机科学）这个专业吓倒了不少人。计算机很吓人，计算机很复杂，计算机是给那些盯着命令行一整天的神经质呆子。这是我从学其他非 CS 专业的人那里听来的全部。
+
+
+	除数学、化学、物理专业的人，才需要上 CS 课。
+
+
+	当我在学校的时候，有很多学科拿毕业证需要读过入</p><a href="/blog/2012-11-14/content_245.html" target="_blank">查看全文</a>&nbsp;2012年11月14日 21:35</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-14/content_244.html" target="_blank">JVM程序员的阅读清单</a></h1><p>前些天，我发现我和几个同行进行的一系列讨论中，有部分话题是关于在Linux系统JVM上运行大量线程的性能问题。我并不是说我是这个主题的专家，但我曾经以为掌握得很好的一些知识点却并没有我想的那么无懈可击。之后，我阅读了一些别人推荐的有关这个主题的书，我不得不承认我原来很多知识点都不知道。这样的情况经常发生，我通常会记下来少数一些我觉得值得研究的资源。
+
+
+	所</p><a href="/blog/2012-11-14/content_244.html" target="_blank">查看全文</a>&nbsp;2012年11月14日 21:22</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-14/content_243.html" target="_blank">雷军证实小米收购多看 正内测电视盒即将发售</a></h1><p><img src=\"http://upload.chinaz.com/2012/1113/1352767520359.jpg\" alt=\"\" />
+
+
+	
+		随着小米推出盒子的脚步日趋临近，担任小米电视盒研发任务的生产厂商多看科技也备受关注。小米科技董事长雷军近日证实小米已全资收购多看，并透露多看CEO王川已成为小米第八位联合创始人。
+	
+	
+		小米收购</p><a href="/blog/2012-11-14/content_243.html" target="_blank">查看全文</a>&nbsp;2012年11月14日 07:29</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-12/content_242.html" target="_blank">7个改变世界的Java项目</a></h1><p>Java的开源生态系统是强大而健康的，这是我们（Oreilly）创建OSCON Java（Open Source Convention Java）的主要原因之一。在过去10年中，一些项目已经被广泛接受，并且已经统治了Java软件开发世界，一些甚至影响到了用户的日常生活。
+
+
+	1. JUnit
+
+
+	Kent Beck先生关于Smalltalk的单元测试被K</p><a href="/blog/2012-11-12/content_242.html" target="_blank">查看全文</a>&nbsp;2012年11月12日 23:57</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-12/content_241.html" target="_blank">5个让人激动的Java项目</a></h1><p>每个Java/JVM领域的技术专家都应从那些项目中获益，他们中有2011在SanJose举办的Jax 会议中提名为最好的技术产品奖的。我之所以选择他们是因为他们可以广泛用于一系列的项目中解决真实问题。作为开发者，我们也不得不在每天都讨论这些，那么我们赶紧来看看究竟有哪些值得令人激动的项目。
+
+
+	1.Neo4j 图形数据库
+
+
+	Neo4j是一个高性能图形引</p><a href="/blog/2012-11-12/content_241.html" target="_blank">查看全文</a>&nbsp;2012年11月12日 23:31</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-12/content_240.html" target="_blank">Java恶意软件出现新变种 攻击手法略有不同 </a></h1><p>据美国科技资讯网站CNET报道，本周早些时候，安全厂商F-Secure发现了一种基于Web的恶意软件攻击新手段，这种攻击手段利用Java程序识别专门针对于操作平台的恶意软件二进制文件，然后发布至OS
+
+
+	X、Windows和Linux等操作系统。
+
+
+	在F-Secure最初的发现中，面向OS X发布的恶意软件是一个PowerPC二进制文件，令OS X无法</p><a href="/blog/2012-11-12/content_240.html" target="_blank">查看全文</a>&nbsp;2012年11月12日 13:58</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-12/content_239.html" target="_blank">Java编程中“为了性能”需做的26件事 </a></h1><p>最近的机器内存又爆满了，除了新增机器内存外，还应该好好review一下我们的代码，有很多代码编写过于随意化，这些不好的习惯或对程序语言的不了解是应该好好打压打压了。
+
+
+	下面是参考网络资源总结的一些在Java编程中尽可能要做到的一些地方。
+
+
+	1.尽量在合适的场合使用单例
+
+
+	使用单例可以减轻加载的负担，缩短加载的时间，提高加载的效率，但并不是所有地方</p><a href="/blog/2012-11-12/content_239.html" target="_blank">查看全文</a>&nbsp;2012年11月12日 13:57</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-10/content_238.html" target="_blank">Java编程中线程池的最大性能开发与风险规避</a></h1><p>虽然线程池能大大提高服务器的并发性能，但使用它也会存在一定风险。与所有多线程应用程序一样，用线程池构建的应用程序容易产生各种并发问题，如对共享资源的竞争和死锁。此外，如果线程池本身的实现不健壮，或者没有合理地使用线程池，还容易导致与线程池有关的死锁、系统资源不足和线程泄漏等问题。
+
+
+	1.死锁
+
+
+	任何多线程应用程序都有死锁风险。造成死锁的最简单的情形是</p><a href="/blog/2012-11-10/content_238.html" target="_blank">查看全文</a>&nbsp;2012年11月10日 01:21</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-10/content_237.html" target="_blank">深入研究线程池</a></h1><p>一.什么是线程池?
+
+
+	线程池就是以一个或多个线程[循环执行]多个应用逻辑的线程集合.注意这里用了线程集合的概念是我生造的,目的是为了区分执行一批应用逻辑的多个线程和线程组的区别.关于线程组的概念请参阅基础部分.
+
+
+	一般而言,线程池有以下几个部分:
+
+
+	1.完成主要任务的一个或多个线程.
+
+
+	2.用于调度管理的管理线程.
+
+
+	3.要求执行的任务队</p><a href="/blog/2012-11-10/content_237.html" target="_blank">查看全文</a>&nbsp;2012年11月10日 01:06</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-10/content_236.html" target="_blank">JVM一些相关问题</a></h1><p>问：堆和栈有什么区别 
+
+
+	答：堆是存放对象的，但是对象内的临时变量是存在栈内存中，如例子中的methodVar是在运行期存放到栈中的。 栈是跟随线程的，有线程就有栈，堆是跟随JVM的，有JVM就有堆内存。  
+
+
+	问：堆内存中到底存在着什么东西？
+
+
+	答：对象，包括对象变量以及对象方法。  
+
+
+	问：类变量和实例变量有什么区别？
+
+
+	答：静态变量</p><a href="/blog/2012-11-10/content_236.html" target="_blank">查看全文</a>&nbsp;2012年11月10日 00:30</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/73"><img src="/user/data/head-img/73_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-11-10/content_235.html" target="_blank">Java中内存分配策略及堆和栈的比较 </a></h1><p>内存分配策略
+
+
+	按照编译原理的观点,程序运行时的内存分配有三种策略,分别是静态的,栈式的,和堆式的.静态存储分配是指在编译时就能确定每个数据目标在运行时刻的存储空间需求,因而在编译时就可以给他们分配固定的内存空间.这种分配策略要求程序代码中不允许有可变数据结构(比如可变数组)的存在,也不允许有嵌套或者递归的结构出现,因为它们都会导致编译程序无法计算准确的</p><a href="/blog/2012-11-10/content_235.html" target="_blank">查看全文</a>&nbsp;2012年11月10日 00:08</div></div>                    <div style="margin-top:10px;"><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">&#19978;&#19968;&#39029;</a><a href="/blog/1.html" class="s-pages-i borderR10 Shadow">1</a><a href="/blog/2.html" class="s-pages-i borderR10 Shadow">2</a><a href="/blog/3.html" class="s-pages-i borderR10 Shadow">3</a><a href="/blog/4.html" class="s-pages-i borderR10 Shadow">4</a><a href="/blog/5.html" class="s-pages-i borderR10 Shadow">5</a><a href="/blog/6.html" class="s-pages-i borderR10 Shadow">6</a><a href="/blog/7.html" class="s-pages-i borderR10 Shadow">7</a><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">8</a><a href="/blog/9.html" class="s-pages-i s-pages-cur borderR10 Shadow">9</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">10</a><a href="/blog/11.html" class="s-pages-i borderR10 Shadow">11</a><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">12</a><a href="/blog/13.html" class="s-pages-i borderR10 Shadow">13</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">14</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">&#19979;&#19968;&#39029;</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- @blog_list_right -->
+            <div class="clear"></div>
+        </div>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script></span>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js?v=4-1"></script>
+        <script src="/common.config.js"></script>
+    </body>
+</html>

@@ -1,0 +1,482 @@
+<__cache@1389612611-@1389616211@0java__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            JAVA_二叉树社区_www.27tree.com</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+        <link rel="stylesheet" type="text/css" href="/jss/dojo/resources/dojo.css" />
+        <link rel="stylesheet" type="text/css" href="/core.css" />
+        <link rel="stylesheet" type="text/css" href="/not/not.css" />
+
+    </head>
+    <body>
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->        <div class="atr" style="margin-top:15px;"><div class="atr-bac-left"></div>
+            <div id="nav2">
+                <div id="nav-posi" class="borderR5">
+                    <!-- Pages_data -->
+                    <input type="hidden" id="content" value=0 />
+                    <input type="hidden" id="type" value=java />
+                    <input type="hidden" id="pages" value=0/>
+                    <!-- Pages_data -->
+                    <strong><a href="/">主页</a></strong>&nbsp;<strong>&gt;</strong>
+                    <em><a href='/art/java/'>JAVA</a></em>
+                </div>
+                <!-- Likethis IN log_f_js.js-->
+                <div id="like-this" style="display: none;">
+                    <input type="hidden" value="false" id="colok"/>
+                    <a style="width:32px;height:32px;background-image: url('/img/star.png');float:right;" title="收藏该板块" href="javascript:like_this()"></a>
+                </div>
+                <!-- Likethis -->
+                <div class="clear"></div>
+            </div>
+            <div style="margin:10px;">
+                <div style="margin:10px;width:512px;line-height:18px;padding:5px;background-color:#fff;border:1px solid #ccc;float:left;" class="borderR5" id="bandinfo">
+                    <em class="stdImgWapper" style="display:inline-block;padding:5px;margin:5px;float:left;">
+                        <img src="/img/java.png" width="55px" height="55px" />
+                    </em>
+                    <span style="border-left:2px solid #ccc;height:108px;overflow:hidden;text-overflow:ellipsis;padding-left:10px;display:inline-block;float:left;width:425px;text-indent:2em;">Java是一种可以撰写跨平台应用软件的面向对象的程序设计语言，是由Sun Microsystems公司于1995年5月推出的Java程序设计语言和Java平台（即JavaSE, JavaEE, JavaME）的总称。Java 技术具有卓越的通用性、高效性、平台移植性和安全性，广泛应用于个人PC、数据中心、游戏控制台、科学超级计算机、移动电话和互联网，同时拥有全球最大的开发者专业社群。在全球云计算和移动互联网的产业环境下，Java更具备了显著优势和广阔前景。</span>
+                    <span class="clear"></span>
+                </div>
+                <div class="hotComment">
+                    <span class="tipS">热门评论</span>
+                    <ul class="sdULPatch">
+                        <li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-19/1340075902.html">
+        &nbsp;JavaBean使用技巧    </a><span class="Gray">(2)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/73">%E5%90%8E%E8%A7%89%E3%82%9B</a>:&nbsp;怎么转载和分享</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-13/1339599144.html">
+        &nbsp;JVM内存分配机制    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;sdadasd</li>    </ul>
+</li><li class="hotcomm-items Elipsis">
+     <a class="stype" href=/art/java-basejava/>[开发基础]</a>    <a class="hotCommA" href="http://www.27tree.com/art/java/content/2012-06-27/1340804315.html">
+        &nbsp;利用URLConnection读取HTTP头信息    </a><span class="Gray">(1)</span>
+    <ul>
+          <li class="Elipsis"><a href="/user/-1">游客</a>:&nbsp;呵呵</li>    </ul>
+</li>                    </ul>
+                </div>
+                <div class="info-not"><!--@sub_band-->
+                    <a href="/art/java-basejava/" class="borderR15 sband">开发基础</a><a href="/art/java-netjava/" class="borderR15 sband">网络编程</a><a href="/art/java-jdbc/" class="borderR15 sband">JDBC/JDO</a><a href="/art/java-thread/" class="borderR15 sband">多线程</a>                    <span class="clear"></span>
+                </div>
+                <span class="clear"></span>
+            </div>
+            <div id="art-item-container">
+                                <div id="art-item-left">
+                                      <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-16/1353069068.html>Java中内存分配策略及堆和栈的比较 </a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">内存分配策略
+
+
+	按照编译原理的观点,程序运行时的内存分配有三种策略,分别是静态的,栈式的,和堆式的.静态存储分配是指在编译时就能确定每个数据目标在运行时刻的存储空间需求,因而在编译时就可以给他们分配固定的内存空间.这种分配策略要求程序代码中不允许有可变数据结构(比如可变数组)的存在,也不允许有嵌套或者递归的结构出现,因为它们都会导致编译程序无法计算准确的</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(702)</span>
+                           <em>2012年11月10日 00:08</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-16/1353069055.html>JVM程序员的阅读清单</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">前些天，我发现我和几个同行进行的一系列讨论中，有部分话题是关于在Linux系统JVM上运行大量线程的性能问题。我并不是说我是这个主题的专家，但我曾经以为掌握得很好的一些知识点却并没有我想的那么无懈可击。之后，我阅读了一些别人推荐的有关这个主题的书，我不得不承认我原来很多知识点都不知道。这样的情况经常发生，我通常会记下来少数一些我觉得值得研究的资源。
+
+
+	所</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(846)</span>
+                           <em>2012年11月14日 21:22</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-13/1352783040.html>Java编程中“为了性能”需做的26件事 </a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">最近的机器内存又爆满了，除了新增机器内存外，还应该好好review一下我们的代码，有很多代码编写过于随意化，这些不好的习惯或对程序语言的不了解是应该好好打压打压了。
+
+
+	下面是参考网络资源总结的一些在Java编程中尽可能要做到的一些地方。
+
+
+	1.尽量在合适的场合使用单例
+
+
+	使用单例可以减轻加载的负担，缩短加载的时间，提高加载的效率，但并不是所有地方</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(937)</span>
+                           <em>2012年11月12日 13:57</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-thread/>[多线程]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-13/1352782960.html>Java编程中线程池的最大性能开发与风险规避</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">虽然线程池能大大提高服务器的并发性能，但使用它也会存在一定风险。与所有多线程应用程序一样，用线程池构建的应用程序容易产生各种并发问题，如对共享资源的竞争和死锁。此外，如果线程池本身的实现不健壮，或者没有合理地使用线程池，还容易导致与线程池有关的死锁、系统资源不足和线程泄漏等问题。
+
+
+	1.死锁
+
+
+	任何多线程应用程序都有死锁风险。造成死锁的最简单的情形是</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(652)</span>
+                           <em>2012年11月10日 01:21</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-thread/>[多线程]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-13/1352782994.html>深入研究线程池</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">一.什么是线程池?
+
+
+	线程池就是以一个或多个线程[循环执行]多个应用逻辑的线程集合.注意这里用了线程集合的概念是我生造的,目的是为了区分执行一批应用逻辑的多个线程和线程组的区别.关于线程组的概念请参阅基础部分.
+
+
+	一般而言,线程池有以下几个部分:
+
+
+	1.完成主要任务的一个或多个线程.
+
+
+	2.用于调度管理的管理线程.
+
+
+	3.要求执行的任务队</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(625)</span>
+                           <em>2012年11月10日 01:06</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-11-13/1352783042.html>JVM一些相关问题</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">问：堆和栈有什么区别 
+
+
+	答：堆是存放对象的，但是对象内的临时变量是存在栈内存中，如例子中的methodVar是在运行期存放到栈中的。 栈是跟随线程的，有线程就有栈，堆是跟随JVM的，有JVM就有堆内存。  
+
+
+	问：堆内存中到底存在着什么东西？
+
+
+	答：对象，包括对象变量以及对象方法。  
+
+
+	问：类变量和实例变量有什么区别？
+
+
+	答：静态变量</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/73'>_后觉</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(631)</span>
+                           <em>2012年11月10日 00:30</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-08-10/1344568944.html>Java新手入门的30个基本概念</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">前言:
+
+
+	在我们学习Java的过程中,掌握其中的基本概念对我们的学习无论是J2SE,J2EE,J2ME都是很重要的,J2SE是Java的基础,所以有必要对其中的基本概念做以归纳,以便大家在以后的学习过程中更好的理解java的精髓,在此我总结了30条基本的概念。
+
+
+	Java概述:
+
+
+	目前Java主要应用于中间件的开发(middleware)---处</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/19'>Serria</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>2</strong>) / <img src='/img/read.png' align='absmiddle' />(713)</span>
+                           <em>2012年8月7日 13:48</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-08-07/1344350137.html>JDBC基础教程之CallableStatement</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">概述
+
+
+	CallableStatement 对象为所有的 DBMS
+
+
+	提供了一种以标准形式调用已储存过程的方法。已储存过程储存在数据库中。对已储存过程的调用是
+
+
+	CallableStatement对象所含的内容。这种调用是用一种换码语法来写的，有两种形式：一种形式带结果参，另一种形式不带结果参数。结果参数是一种输出
+
+
+	(OUT) 参数，是已储</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/19'>Serria</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>1</strong>) / <img src='/img/read.png' align='absmiddle' />(639)</span>
+                           <em>2012年8月7日 13:52</em>
+                        </span>
+                     </div>
+                  </div></div><div id="art-item-right">
+                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-08-07/1344350196.html>JDBC基础教程之PreparedStatement</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">概述
+
+
+	该 PreparedStatement 接口继承
+
+
+	Statement，并与之在两方面有所不同：
+
+
+	PreparedStatement 实例包含已编译的 SQL
+
+
+	语句。这就是使语句“准备好”。包含于 PreparedStatement 对象中的 SQL 语句可具有一个或多个 IN 参数。IN参数的值在 SQL
+
+
+	语句创建时未被指</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/19'>Serria</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(610)</span>
+                           <em>2012年8月7日 13:56</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-basejava/>[开发基础]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-06-03/1338735861.html>javaEE学习路线图</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp"> 
+
+
+	
+
+
+	javaEE学习路线图...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(924)</span>
+                           <em>2012年6月3日 23:03</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-06-03/1338712243.html>Java基础学习:jdbc小技巧</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">利用jdbc进行数据库操作，分为以下几步：
+
+
+	1.载入驱动&amp;nbsp;
+
+
+	格式：Class.forName&amp;nbsp;(&lt;JDBC&amp;nbsp;&amp;nbsp;Driver&amp;nbsp;Class&amp;nbsp;Name&gt;)
+
+
+	E.G.Class.forName(Weblogic.jdbc.mssq...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(966)</span>
+                           <em>2012年6月3日 16:29</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-07-03/1341277865.html>JDBC入门</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">1要学JDBC&amp;nbsp;你首先要有一点DBMS的基础。象我这样的低手低手低低手，首先拿了一个ACCESS做试验。用ACCESS建立一张TABLE之后就可以了。当然，你还要系统知道你有这样一张T&amp;nbsp;ABLE。这时候，你可以用控制面板里面的ODBC数据源来完成。（这也是许多教材上没写的）&amp;nbsp;或者是我笨，连这也烦了好多天。...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(681)</span>
+                           <em>2012年7月3日 09:10</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-07-03/1341277648.html>在JDBC设计中加速JSP访问数据库</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">Jsp程序序都是模块，并且具有强大的表达-请求(presentation-request)功能。建立一个完美的数据库访问是一个具有挑战的过程，而JDBC接口能够很好地完成这一过程。然而，嵌入于JSP代码中的JDBC代码，与SQL命令嵌入在JDBC一样，可以充分利用JSP的功能，为客户端建立一个整洁而简便的API。为了达到这一目的，我们可以考虑到使用JSP操作...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(667)</span>
+                           <em>2012年7月3日 09:06</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-07-03/1341277620.html>JDBC调用MySQL5存储过程</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">JDBC调用MySQL5存储过程，过程有入参和出参，执行存储过程，并获取出参。
+
+
+	一、环境
+
+
+	MySQL5.1
+
+
+	mysql-connector-java-5.1.10
+
+
+	jdk1.5
+
+
+	表
+
+
+	create table user (
+
+
+	id int(11) not null auto_increment,
+
+
+	name varc...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(430)</span>
+                           <em>2012年7月3日 09:05</em>
+                        </span>
+                     </div>
+                  </div>                  <div class="art-log borderR5">
+                     <div class="art-log-h"><h1><a class="stype" href=/art/java-jdbc/>[JDBC/JDO]</a>&nbsp;<a href=http://www.27tree.com/art/java/content/2012-07-03/1341277499.html>JDBC数据库连接驱动注册3种方法</a></h1></div>
+                     <div class="art-log-ct">
+                        <p class="art-log-ctp">ftp://121.10.143.43:3390/wwww/train/2009/index.htmlJDBC是使用Bridge模式进行设计的，DriverManager就是其中的Abstraction，java.sql.Driver是Implementor，com.mysql.jdbc.Driver是Implementor的一个具体实现（请参考GOF的Br...</p>
+                        <span class="art-log-ctif">
+                           <span>由&nbsp;<a href='/user/2'>koodo</a>&nbsp;发表于</span>
+                           <span><img src='/img/comm.png' align='absmiddle' />(<strong>0</strong>) / <img src='/img/read.png' align='absmiddle' />(692)</span>
+                           <em>2012年7月3日 09:04</em>
+                        </span>
+                     </div>
+                  </div>                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="border:1px solid #ccc;margin:10px 30px;border-top:3px solid #6397CB;background-color:#fff;">
+                    <span class="tipS" style="margin:0;border-top:none;">更多关于&nbsp;<strong>JAVA</strong>&nbsp;的好书</span><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/67">
+    <img src="/not/mybook/data/book_image_lib/6990b460387659bb6f7edb25dab49054.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/67">
+    《Java网络编程》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/51">
+    <img src="/not/mybook/data/book_image_lib/8272f920a375a28d17775430eb844fa8.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/51">
+    《Effective Java中文版》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/144">
+    <img src="/not/mybook/data/book_image_lib/4185312271afce9c77c70a5dc4926a0e.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/144">
+    《精通Spring——开发专家之Sun ONE》
+</a>
+</div><div style="float:left;padding:10px 32px;border-right:2px dotted #ccc;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/270">
+    <img src="/not/mybook/data/book_image_lib/1e85d5efb21b42df943bd1cb00967da9.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/270">
+    《Spring Data: The Definitive Guide》
+</a>
+</div><div style="float:left;padding:10px 32px;margin:20px 0;"><a style="padding:2px;border:1px solid #ccc;display:block;padding-bottom:0;" target="_black" href="http://www.27tree.com/bookLib/128">
+    <img src="/not/mybook/data/book_image_lib/f27e66290be0923683227b0bd81b7fef.png" style="width:128px;"/>
+</a>
+<a style="display:block;text-align:center;margin-top:5px;width:120px;" target="_black" class="autowarp" href="http://www.27tree.com/bookLib/128">
+    《Java消息服务》
+</a>
+</div><span class="clear"></span></div>            <div style="margin:10px;">
+                <a href='javascript:void(0)' class='next-cp' style='margin-top:5px;'>这么长的下一页，你总能点到的吧，点我下一页。。。</a><input type=hidden id=max-pages value=3 /><ul id='slide_ul'><li id='prev-c'><a id='prev-c'><img src='/img/prev.png' align='absmiddle' />&#19978;&#19968;&#39029;</a></li><li><a href='http://www.27tree.com/art/java/0'>1</a></li><li><a href='http://www.27tree.com/art/java/1'>2</a></li><li><a href='http://www.27tree.com/art/java/2'>3</a></li><li id='next-c'><a id='next-c'>&#19979;&#19968;&#39029;<img src='/img/next.png' align='absmiddle' /></a></li><li class='endofli'></li></ul>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js"></script>
+        <script src="/log/md5.js"></script>
+        <script src="/not/js/log_f_js.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(".nav-subBar").show();
+                $(".art-log").hover(function(){
+                    $(this).css("border-color","#F5AB00");
+                    $(this).addClass("Shadow");
+                },function(){$(this).css("border-color","#ccc");
+                    $(this).removeClass("Shadow");
+                });
+                ul = $('#slide_ul>li:not(.endofli):not(#prev-c):not(#next-c)');
+                var length = ul.length;
+                var curr = parseInt($('#pages').val());
+                ul.eq(curr).addClass('curr');
+                pages_ref(curr);
+                $('#next-c,.next-cp').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == length - 1) return;
+                    location.href = ul.eq(curr + 1).find('a').attr('href');
+                    curr=null;
+                });
+                $('#prev-c').click(function() {
+                    var curr = parseInt($('#pages').val());
+                    if (curr == 0) return;
+                    location.href = ul.eq(curr - 1).find('a').attr('href');
+                    curr=null;
+                });
+                if($.browser.msie) $(".hotcomm-items").css("list-style","none");
+                $(".hotcomm-items").mouseover(function(){
+                    $(this).find("ul").slideDown(300);
+                }).eq(0).find("ul").fadeIn(500);
+                load_ban_coll();
+            });
+        </script>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script><span>
+    </body>
+</html>

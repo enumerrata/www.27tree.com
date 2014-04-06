@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[HTML5 for .NET Developers]]></title>
+  <author>Jim Jackson II, Ian Gilman</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2013-02-04 11:48:55</submit-date-time>
+  <img-link>6824ffeb7f8c793a40e611d28445fa24.net_developers</img-link>
+  <book-area>csharp</book-area>
+  <book-intro><![CDATA[<p>
+	HTML5 for .NET Developers teaches you how to blend HTML5 with your current .NET tools and practices. You\'ll start with a quick overview of the new HTML5 features and the semantic markup model. Then, you\'ll systematically work through the JavaScript APIs as you learn to build single page web apps that look and work like desktop apps. Along the way, you\'ll get tips and learn techniques that will prepare you to build \"metro-style\" applications for Windows 8 and WP 8.
+</p>
+<p>
+	<strong>Single page web apps, JavaScript, and semantic markup</strong><strong></strong>
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

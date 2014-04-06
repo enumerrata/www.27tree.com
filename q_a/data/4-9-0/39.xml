@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Warning: ini_set() [function.ini-set]: A session is active. You cannot change the session module\'s ini settings at this time.]]></title>
+  <content><![CDATA[<p>
+	我就是在session_start()之前执行了
+</p>
+<p>
+	ini_set(\'session.save_handler\', \'user\');
+</p>
+<p>
+	然后就这个错误了,怎么办啊
+</p>]]></content>
+  <tags>技术问题|PHP|Eclipse</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

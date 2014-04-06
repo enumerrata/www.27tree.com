@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>139</uid>
+  <datetime>2012-10-05 09:38:44</datetime>
+  <title>oracle存储过程分页</title>
+  <content>&lt;pre id=\"prettyprint\" class=\"sql\" name=\"code\"&gt;--创建存储过程（startpoint 开始点、getnum 取出来数量）
+create or replace procedure copylimit(startpoint number,getnum number) as
+
+/*定义table*/
+type emp_tab is table of myemp%rowtype;
+emp_rd emp_tab;
+
+/*定义游标*/
+emp_cur sys_refcursor;
+--开启
+begin
+  --显示用户输入的开始点与要取出的数据量
+  dbms_output.put_line(\'开始点：\'||startpoint||\' 取出数量：\'||getnum);
+  --打开游标并且给游标赋值（执行分页查询）
+  open emp_cur for select * from myemp where rowid in (
+                   select rd from(
+                   select rownum rm,rd from(   
+                   select rowid rd from myemp order by empno) where rownum &lt; startpoint + getnum) where rm &gt;= startpoint);
+   --开启循环
+   loop  
+     --从游标里面取值bulk collect方式赋给emp_rd
+     fetch emp_cur bulk collect into emp_rd limit 2;
+     --循环遍历
+     for i in 1..emp_rd.count loop
+       dbms_output.put_line(\'员工名：\'||emp_rd(i).ename);
+     end loop;
+     exit when emp_cur%notfound; 
+    --结速循环 
+    end loop;
+    --关闭游标
+    close emp_cur;
+--结束
+end;&lt;/pre&gt;</content>
+  <state>0</state>
+</root>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Orange S:一个操作系统的实现</title>
+  <author>于渊</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-26 07:52:49</submit-date-time>
+  <img-link>49f72d52880240e56bed582c462ff022.png</img-link>
+  <book-area>system</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	翔实的文字，丰富的图表，清晰的代码，作者亲自用LAATEX排版，内容与形式并重。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	人性化的代码组织，帮读者关注每节重点，完备的行号标识，便于读者对照实际代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	专属网站和邮件列表（请访问http：//www.osfromscratch.org/），方便读者交流。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	立足实践层面，关注动于操作过程中的细节，一步一步熟读者完成自己的操作系统：最简单的Boot&amp;nbsp;Sector－由Boot&amp;nbsp;Sector和Loader加载的内核－实现一个和多个进程－多控制台－进程间通信－轻巧的FS－简单的MM－自己的C运行时库－运行自己的应用程序－在真机进行自己操作系统。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;p&gt;
+		本书从只有二十行的引导扇区代码出发，一步一步地向读者呈现一个操作系统框架的完成过程。书中不仅关注代码本身，同时关注完成这些代码的思路和过程。本书不同于其他的理论型书籍，而是提供给读者一个动手实践的路线图。读者可以根据路线图逐步完成各部分的功能，从而避免了一开始就面对整个操作系统数万行代码时的迷茫和挫败感。书中讲解了大量在开发操作系统中需注意的细节问题，这些细节不仅能使读者更深刻地认识操作系统的核心原理，而且使整个开发过程少走弯路。本书分上下两篇，共11章。其中每一章都以前一章的工作成果为基础，实现一项新的功能。而在章的内部，一项大的功能被分解成许多小的步骤，通过完成每个小的步骤，读者可以不断获得阶段性的成果，从而让整个开发过程变得轻松并且有趣。
+	&lt;/p&gt;
+	&lt;p&gt;
+		本书适合各类程序员、程序开发爱好者阅读，也可作为高等院校操作系统课程的实践参考书。
+	&lt;/p&gt;
+&lt;/p&gt;</book-intro>
+</root>

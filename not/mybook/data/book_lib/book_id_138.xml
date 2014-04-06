@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>OpenCV教程:基础篇</title>
+  <author>刘瑞祯，于仕琪</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-10-05 23:55:13</submit-date-time>
+  <img-link>878e1b622fdfcd665a1d6e5928634f99.png</img-link>
+  <book-area>other</book-area>
+  <book-intro>&lt;p&gt;
+	目前，OpenCV逐步成为一个通用的基础研究和产品开发平台。本书是国内第一本全面介绍OpenCV的中文版图书，对OpenCV开放源代码计算机视觉库进行了详细讲解。OpenCV由一系列C函数和C++类构成，功能涵盖图像处理、计算机视觉和模式识别等领域。OpenCV实现了大量通用算法，涉及到图像处理、结构分析、运动检测、摄像机定标、三维重建以及机器学习等方面，并有较高的运行效率。书中所有实例均提供了C／C++语言的源代码。
+&lt;/p&gt;
+&lt;p&gt;
+	本书附光盘1张，内容包括OpenCV 1.0分别在windows和Linux下的安装程序，以及书中所有实例的源代码。
+&lt;/p&gt;
+&lt;p&gt;
+	本书可作为信息、图像处理和模式识别等领域的高年级本科生、研究生的教学用书，也可作为学生课题项目、科研项目以及公司产品开发的参考手册。
+&lt;/p&gt;</book-intro>
+</root>

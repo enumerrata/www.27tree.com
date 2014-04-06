@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>JAVASE官方教程:接口之重写接口(5)</title>
+<content>&amp;lt;p&amp;gt;
+	考虑你曾经开发的某个接口DoIt:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;interface&amp;nbsp;DoIt&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;void&amp;nbsp;doSomething(int&amp;nbsp;i,&amp;nbsp;double&amp;nbsp;x);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;doSomethingElse(String&amp;nbsp;s);
+}&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	假如,在将来的某个时候,你想为接口增加第三个方法,所以接口变成了:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;interface&amp;nbsp;DoIt&amp;nbsp;{
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;void&amp;nbsp;doSomething(int&amp;nbsp;i,&amp;nbsp;double&amp;nbsp;x);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;doSomethingElse(String&amp;nbsp;s);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;boolean&amp;nbsp;didItWork(int&amp;nbsp;i,&amp;nbsp;double&amp;nbsp;x,&amp;nbsp;String&amp;nbsp;s);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+}&amp;lt;/pre&amp;gt;
+	&amp;lt;p&amp;gt;
+		如果你这样改写的话,所有实现了旧的DoIt接口的类都将不能正常工作,因为他们没有实现第三个方法.依赖这个接口的程序员肯定会大声抱怨.
+	&amp;lt;/p&amp;gt;
+	&amp;lt;p&amp;gt;
+		你可以创建一个新的接口DoItPlus接口继承DoIt:
+	&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"Java\"&amp;gt;public&amp;nbsp;interface&amp;nbsp;DoItPlus&amp;nbsp;extends&amp;nbsp;DoIt&amp;nbsp;{
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;boolean&amp;nbsp;didItWork(int&amp;nbsp;i,&amp;nbsp;double&amp;nbsp;x,&amp;nbsp;String&amp;nbsp;s);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;
+}&amp;lt;/pre&amp;gt;
+这样用户就可以选择是使用旧的接口还是升级到新的接口.
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/java/2012-05-12/1336780664.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

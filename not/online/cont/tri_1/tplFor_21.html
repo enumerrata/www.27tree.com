@@ -1,0 +1,58 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">为什么使用 HTML4.0？</h1>
+</div>
+<div>
+<h1>HTML 3.2 真的是特别糟糕！</h1>
+
+<p>最初的 HTML 绝没有打算要包含支持格式化文档的标签。HTML 标签原打算用于定义文档的的内容。</p>
+
+&lt;p&gt;This is a paragraph&lt;/p&gt;<br />
+&lt;h1&gt;This is a heading&lt;/h1&gt;
+
+<p>当诸如 &lt;font&gt; 这样的标签和 color 属性被加入 HTML3.2 的规范当中，它开始成为开发者的一场噩梦。那些不得不将字体和文字信息添加到每个单一网页的站点，其开发过程最终变成了漫长、昂贵和极其痛苦的过程。</p>
+
+<h1>HTML4.0 的优秀特性</h1>
+
+<p>通过使用 HTML4.0，所有的格式化信息都可以从 HTML 文件中剥离，并植入一个独立的样式表。</p>
+<p>因为 HTML4.0 将文档的表现与其结构分离，我们从而得到了我们一直需要的东西：在不把文档内容搞糟的情况下，对表现层进行完全的控制。</p>
+
+<h1>我们应该做些什么？</h1>
+
+<p>停止在 HTML 标签内部使用表现样式属性。</p>
+<p>我们的完整的 HTML 标签参考手册对 HTML4.0 标签和属性进行了简要的说明。</p>
+<p>请同时参阅我们的 CSS 教程，开始您崭新的开发生涯吧。</p>
+
+<h1>为 XHTML 做好准备</h1>
+
+<p>XHTML 是新的 HTML。你现在就应该为此做好准备。而您可以做的最重要的事情就是开始编写正确的 HTML4.01 代码。并且使用小写字母编写标签。记得关闭标签。决不要在没有 &lt;/p&gt; 标签的情况下结束一个段落。</p>
+<p><b>提示</b>：官方的 HTML4.01 标准推荐使用小写的标签。</p>
+<p>如果您希望学习如何将站点升级至 XHTML，请阅读我们的 XHTML 教程。</p>
+
+<h1>验证 HTML文件</h1>
+
+<p>HTML 文档是根据文档类型声明进行验证的。如果希望 HTML 文件被正确地验证，就要将恰当的 DTD 添加到文件的第一行。</p>
+<p>HTML 4.01 Strict DTD 包含没有被反对使用或者不出现在框架中的元素和属性：</p>
+
+<code>
+&lt;!DOCTYPE HTML PUBLIC<br />
+"-//W3C//DTD HTML 4.01//EN"<br />
+"http://www.w3.org/TR/html4/strict.dtd"&gt;
+</code>
+
+<p>HTML 4.01 Transitional DTD 包含 strict DTD 中所有的内容，外加被反对使用的元素和属性：</p>
+
+<code>
+&lt;!DOCTYPE HTML PUBLIC<br />
+"-//W3C//DTD HTML 4.01 Transitional//EN"<br />
+"http://www.w3.org/TR/html4/loose.dtd"&gt;
+</code>
+
+<p>HTML 4.01 Frameset DTD 包含 transitional DTD 中所有的内容，外加对框架的支持：</p>
+
+<code>
+&lt;!DOCTYPE HTML PUBLIC<br />
+"-//W3C//DTD HTML 4.01 Frameset//EN"<br />
+"http://www.w3.org/TR/html4/frameset.dtd"&gt;
+</code>
+
+</div>

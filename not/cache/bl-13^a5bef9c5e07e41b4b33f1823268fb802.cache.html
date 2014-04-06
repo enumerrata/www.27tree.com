@@ -1,0 +1,392 @@
+<__cache@1389759043-@1389759045@bl-13__><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>博客广场 - 二叉树程序员社区</title>
+        <link rel="stylesheet" type="text/css" href="/sources-gz/core.css.php" />
+        <link rel="stylesheet" type="text/css" href="/not/css/blog_list.css?v=5-7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta name="author" content="itsrcs.com" />
+        <meta name="Copyright" content="Copyright itsrcs.com All Rights Reserved." />
+    </head>
+    <body>
+        <input type="hidden" value="15" id="maxpagelite" />
+        <input type="hidden" value="0,15" id="pagelite" />
+        <input type="hidden" id="option_blogprom" value="0" />
+        <div class="Shadow" id="navWapper">
+    <div class="sdCenter nav-v3">
+        <div style="float:left;">
+            <a class="logo-v3" href="/" title="返回首页"></a>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/blog/index.html">博客广场</a></li>
+                    <li><a href="/bookLib/">好书分享</a></li>
+                    <li><a href="/minbbs/tech/">技术分享</a></li>
+                    <li style="border:none;"><a href="/minbbs/ques/">技术问答</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-right">
+            <div class="borderR15 tsearch-wapp">
+                <input type="text" class="borderR15" value="" id="search-inp"
+                       onfocus="$(this).css('width','105px').attr('placeholder','&#35831;&#36755;&#20837;&#25628;&#32034;&#20869;&#23481;');"
+                       onblur="$(this).css('width','35px').attr('placeholder','&#25628;&#32034;');"
+                       placeholder="&#25628;&#32034;"
+                       onkeydown="search_enter(event);"/>
+                <a class="tsearch-btn borderR10" href="javascript:;" onclick="Search($('#search-inp').val())"></a>
+            </div>
+            <div id="top-menu-wapp">
+                <a class="next-cp top-bm" id="gb-reg" href="/account/register/" style="color:green;">&#27880;&#20876;</a>&nbsp;
+                <a class="next-cp top-bm" id="gb-log" href="/account/login/">登录</a>&nbsp;
+                <div id="top-menu-bar">
+                    <div id="top-menu">
+                        <div class="top-menu-in">
+                            <a class="top-menu-btn" id="gb-ucc">个人中心</a>
+                            <a class="top-menu-btn" id="gb-usm">发表文章</a>
+                            <a class="top-menu-btn" id="gb-usa">修改头像</a>
+                            <a class="top-menu-btn" id="gb-ext" href="javascript:;">退出账号</a>
+                        </div>
+                    </div>
+                    <span style="display:inline-block;cursor:pointer;color:#444;" id="gb-usn"><a style="width:19px;height:13px;background:url('/img/loading_19_13.gif') bottom center no-repeat;display:inline-block;"></a></span>
+                    <span style="display:inline-block;width:10px;height:10px;background:url('/img/arrd-1.png') center no-repeat;" id="gb-arr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--<div id="usr-bar">
+    <div id="usr-bar-i">
+        <div class="ms-l"></div>
+        <div>
+            <a class="ms-btn" id="ms-btn-top" href="javascript:;" onclick="javascript:goTop();" title="页面顶部"></a>
+            <a class="ms-btn" id="ms-btn-ush"></a>
+            <a class="ms-btn" id="ms-btn-log" href="/account/login/" title="登录你的帐号">登陆</a>
+            <a class="ms-btn" id="ms-btn-reg" href="/account/register/" title="注册一个帐号"><b>注册</b></a>
+            <a class="ms-btn" id="ms-btn-dy" href="javascript:;" title="动态"><b id="ms-btn-dym">9+</b></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--[if lt IE 7]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+        <div class="sdCenter">
+            <div class="blog-list-wapper-left">
+                <div style="border:1px solid #ccc;border-top:3px solid #6d9906;background-color:#fff;position:relative;padding:10px 15px;width:256px;background:url('/img/br_l.png') repeat-y right center #fff;">
+                    <div class="atr-bac-left"></div>
+
+                    <div class="blw-wapper">
+                        <a href="http://www.27tree.com/rss/" rel="nofollow" target="_blank">
+                            <img src="/not/sources/img/rss.png" class="borderR3 block Shadow"/>
+                        </a>
+                    </div>
+
+                    <div class="blw-wapper">
+                        <span class="RedBar">
+                            <span class="RedBar-in">热门<a href="/blog/index.html">博文</a></span>
+                        </span>
+                        <ul class="sdULpatch">
+                            <li class="Elipsis"><a href="/blog/2014-01-09/content_420.html" target="_blank">淘宝网禁售比特币等虚拟货币及软件教程</a></li>                        </ul>
+                    </div>
+                    <div class="blw-wapper">
+                        <span class="RedBar">
+                            <span class="RedBar-in">推荐<a>博主</a></span>
+                        </span>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/2" title="koodo - 的博客专栏">
+                                    <img src="/user/data/head-img/2_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/2">koodo</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-07-19/content_418.html">尿液燃料电池</a></div>
+                                    <div>访问量：3007</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/306" title="Fuck - 的博客专栏">
+                                    <img src="/user/data/head-img/306_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/306">Fuck</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-17/content_410.html">CodeIgniter Disallowed Key Characters 的解决方法</a></div>
+                                    <div>访问量：1881</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/276" title="我是机器人 - 的博客专栏">
+                                    <img src="/user/data/head-img/276_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/276">我是机器人</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-04-07/content_356.html">“Facebook手机”将杀死运营商</a></div>
+                                    <div>访问量：1409</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/32" title="mallocx - 的博客专栏">
+                                    <img src="/user/data/head-img/32_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/32">mallocx</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-02-17/content_306.html">WPS for Linux Beta 版发布</a></div>
+                                    <div>访问量：1359</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/19" title="Serria - 的博客专栏">
+                                    <img src="/user/data/head-img/19_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/19">Serria</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-19/content_413.html">2013年毕业大学生逼近700万 就业形势更严峻</a></div>
+                                    <div>访问量：1351</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/201" title="Firing - 的博客专栏">
+                                    <img src="/minbbs/default/headimg/default7.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/201">Firing</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-05-03/content_395.html">Apache Struts OGNL安全绕过漏洞</a></div>
+                                    <div>访问量：1330</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/318" title="resory - 的博客专栏">
+                                    <img src="/minbbs/default/headimg/default2.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/318">resory</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-01-17/content_292.html">Yii 多語言</a></div>
+                                    <div>访问量：1125</div>
+                                </div>
+                            </div>
+                                                    <div style="margin-top:10px;">
+                                <a class="headwapper" href="/user/visit/341" title="baby - 的博客专栏">
+                                    <img src="/user/data/head-img/341_head.jpg" height="45px" width="45px"/>
+                                </a>
+                                <div style="margin-left:55px;line-height:18px;" class="Gray">
+                                    <a href="/user/visit/341">baby</a>
+                                    <div class="Elipsis">最新文章：<a href="/blog/2013-04-27/content_393.html">传阿里入股新浪微博即将揭晓 或全盘收购</a></div>
+                                    <div>访问量：1051</div>
+                                </div>
+                            </div>
+                                                <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- blog_list_right -->
+            <div class="blog-list-wapper Shadow">
+                <a class='toTopbtn' href='javascript:;' onclick='goTop()'></a>
+                <div>
+                    <div id="w-item-l">
+                        <span class="RedBar">
+                            <span class="RedBar-in">技术 - 推荐博文</span>
+                        </span>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-17/content_412.html" target="_blank">PHP 5.4 中的新特性全面详解 ​作者：Rasmus Lerdorf</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-07/content_397.html" target="_blank">使用阿里云低成本打造站内搜索引擎</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-02-26/content_321.html" target="_blank">Javascript实现继承</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-02-18/content_307.html" target="_blank">使用Jquery实现美观的滑动解锁</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-04-11/content_359.html" target="_blank">Nginx开启Gzip压缩大幅提高页面加载速度及相关测试</a></h1>
+                            </div>
+                                            </div>
+
+                    <div id="w-item-r">
+                        <span class="RedBar">
+                            <span class="RedBar-in">职场 - 推荐博文</span>
+                        </span>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-16/content_408.html" target="_blank">程序员你迷茫个鬼啊？你忧伤个毛啊？你寂寞个蛋啊？</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-01-06/content_286.html" target="_blank">揭秘误导个人站长的一些黑幕</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-01-06/content_283.html" target="_blank">2013 年最火和最有钱途的 6 个 IT 职位</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2012-12-08/content_259.html" target="_blank">码农创业，6年80万，有梦想才可能有机会</a></h1>
+                            </div>
+                                                    <div>
+                                <h1 class="Elipsis"><a href="/blog/2013-05-09/content_400.html" target="_blank">张朝阳：我们这代人实际是没价值观也没原则</a></h1>
+                            </div>
+                                            </div>
+                </div>
+
+                <div id="nblog-list-wapp">
+                    <span class="RedBar">
+                        <span class="RedBar-in">最新博文</span>
+                        <span class="Gray RedBar-in-mr">今天你博起了吗</span>
+                    </span>
+                    <div style="margin-top:10px;"><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">&#19978;&#19968;&#39029;</a><a href="/blog/1.html" class="s-pages-i borderR10 Shadow">1</a><a href="/blog/2.html" class="s-pages-i borderR10 Shadow">2</a><a href="/blog/3.html" class="s-pages-i borderR10 Shadow">3</a><a href="/blog/4.html" class="s-pages-i borderR10 Shadow">4</a><a href="/blog/5.html" class="s-pages-i borderR10 Shadow">5</a><a href="/blog/6.html" class="s-pages-i borderR10 Shadow">6</a><a href="/blog/7.html" class="s-pages-i borderR10 Shadow">7</a><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">8</a><a href="/blog/9.html" class="s-pages-i borderR10 Shadow">9</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">10</a><a href="/blog/11.html" class="s-pages-i borderR10 Shadow">11</a><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">12</a><a href="/blog/13.html" class="s-pages-i s-pages-cur borderR10 Shadow">13</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">14</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">&#19979;&#19968;&#39029;</a></div>
+                    <div class="blog-list-item"><div class="headwapper"><a href="/user/visit/69"><img src="/minbbs/default/headimg/default13.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-29/content_168.html" target="_blank">我要dojo的帮助文档</a></h1><p>站长哥哥，帮我找一下dojo的帮助文档，哥我要中文的，辛苦你啦。。。不辛苦</p><a href="/blog/2012-09-29/content_168.html" target="_blank">查看全文</a>&nbsp;2012年9月29日 01:00</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/12"><img src="/user/data/head-img/12_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-27/content_167.html" target="_blank">揭示八成技术人员数据库选型标准SQLServer用户接近50%</a></h1><p>使用率占据榜首的数据库产品是微软的SQLServer，比例数达到了47.92%。与其余所有的数据库之和分庭抗衡，大有一览众山小之势。
+
+
+	从调查得到的使用率来看，MySQL仍处于望MSSQLServer项背的阶段。调查显示，MySQL的使用数为1651，占总数的13.80%，不过排名第三。
+
+
+	使用率排在第二位的是Oracle，比例达到24.21%。在前</p><a href="/blog/2012-09-27/content_167.html" target="_blank">查看全文</a>&nbsp;2012年9月27日 17:18</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-27/content_166.html" target="_blank">HTTP_X_FORWARDED_FOR,HTTP_VIA,REMOTE_ADDR三者的区别</a></h1><p>一、没有使用代理服务器的情况：
+
+
+	REMOTE_ADDR = 您的 IP
+
+
+	HTTP_VIA = 没数值或不显示
+
+
+	HTTP_X_FORWARDED_FOR = 没数值或不显示
+
+
+	二、使用透明代理服务器的情况：Transparent Proxies
+
+
+	REMOTE_ADDR = 最后一个代理服务器 IP
+
+
+	HTTP_VIA = 代理服</p><a href="/blog/2012-09-27/content_166.html" target="_blank">查看全文</a>&nbsp;2012年9月27日 13:00</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-27/content_165.html" target="_blank">12306网站否认取消网售火车票排队功能</a></h1><p>9月20日以《12306订票难，是铁路部门内部留票?》为题，报道了长假前夕网友们的质疑。消息见报后，铁路部门表示了歉意，而后，有媒体报道，从前天开始，12306网站就取消了排队功能。记者昨天致电了12306客服，客服工作人员表示，目前没有接到“网站取消排队”的通知，业内人士也分析“不太可能”。
+
+
+	扬子晚报记者 徐媛园
+
+
+	记者试验：昨天有的排队了，有的</p><a href="/blog/2012-09-27/content_165.html" target="_blank">查看全文</a>&nbsp;2012年9月27日 07:14</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-25/content_164.html" target="_blank">PHP超级全局变量数组</a></h1><p>PHP超级全局变量数组（Super Global Array），又称为PHP预定义数组，是由PHP引擎内置的，不需要开发者重新定义。 在PHP脚本运行时，PHP会自动将一些数据放在超级全局数组中。
+
+
+	php超级全局变量列表
+
+
+	$_GET[] 获得以GET方法提交的变量数组
+
+
+	$_POST[] 获得以POST方法提交的变量数组
+
+
+	$_COOKI</p><a href="/blog/2012-09-25/content_164.html" target="_blank">查看全文</a>&nbsp;2012年9月25日 23:23</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-25/content_163.html" target="_blank">为什么 Node.js 很糟糕</a></h1><p>Node.JS是一个非常糟糕的平台，他的糟糕之处体现在非常简单而重要的一个方面，就是他的核心工作机制：基于I/O的回调。我想大家现在都知道。这种方式编写代码是很糟糕的。一段时间前我注意到了这个事情，在使用了Go语言几周后我喜欢上了他。使得，我承认Go语言比python少了一些动态特性，而导致做开发的时候可能会多出一些任务（主要是做一些样板）。Go比Pytho</p><a href="/blog/2012-09-25/content_163.html" target="_blank">查看全文</a>&nbsp;2012年9月25日 22:56</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-25/content_162.html" target="_blank">CSS 强制换行&强制不换行</a></h1><p>在CSS网页布局中，常常会遇到这样的问题，强制文字换行，而不是在一行内显示撑开容器影响布局。而有些时候可能会强制内容不换行，多出的部分隐藏掉即可，关于强制不换行与强制换行的一些CSS属性www.itsrcs.com作一些整理，希望能给大家的工作和学习提供参考。</p><a href="/blog/2012-09-25/content_162.html" target="_blank">查看全文</a>&nbsp;2012年9月25日 14:08</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-24/content_161.html" target="_blank">网站如何恰当地改版</a></h1><p>本文是来自CSDN的编辑陈秋歌对博文《How to Properly Redesign a Website》的编译，原文作者Christian Vasile 是罗马尼亚的一个年轻网页设计师，介绍了如何对网站进行改版的一些意见和建议，其最重要的是要保持与用户的交流，利用他们的反馈和建议来逐步进行网站改版。
+
+
+	内容如下：
+
+
+	在互联网时代的今天，网站改版十</p><a href="/blog/2012-09-24/content_161.html" target="_blank">查看全文</a>&nbsp;2012年9月24日 14:16</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-24/content_160.html" target="_blank">iOS与Android开发者谁挣的多</a></h1><p>最近投资银行Piper Jaffray的一篇调查文章称，Android的开发者所获得的收益仅占苹果iOS的开发者所获收益的7%。这篇文章的前提是开发者显然会去赚钱多的平台，因此Android想吸引更多的开发者仍需继续努力。这篇文章让我思索了半天……它说的是事实吗？如果是的话，用我公司广告服务的那些开发者又是谁？
+
+
+	你仔细研究这篇统计数据会很有趣。
+
+
+	</p><a href="/blog/2012-09-24/content_160.html" target="_blank">查看全文</a>&nbsp;2012年9月24日 14:12</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-24/content_159.html" target="_blank">如何避免SQL Server中的DBCC堵塞问题</a></h1><p>本文说明为何应该了解数据库一致性检测（DBCC），还解释如何运行DBCC及应用它的五个扩展。
+
+
+	在危急时刻，数据库一致性检测（DBCC）可能是你最重要的工具。本文向你简单介绍DBCC的功能，它们包括：
+
+
+	◆检测表和相关目录的完整性。
+
+
+	◆检测整个数据库。
+
+
+	◆检测数据库页的完整性。
+
+
+	◆重建任何指定表中的目录。
+
+
+	你为何需要学习DBC</p><a href="/blog/2012-09-24/content_159.html" target="_blank">查看全文</a>&nbsp;2012年9月24日 08:23</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-24/content_158.html" target="_blank">PHP中静态方法(static)与非静态方法的使用及区别</a></h1><p>static关键字用来修饰属性、方法，称这些属性、方法为静态属性、静态方法。
+
+
+	static关键字声明一个属性或方法是和类相关的，而不是和类的某个特定的实例相关，因此，这类属性或方法也称为“类属性”或“类方法”
+
+
+	如果访问控制权限允许，可不必创建该类对象而直接使用类名加两个冒号“::”调用。
+
+
+	static关键字可以用来修饰变量、方法。
+
+
+	不</p><a href="/blog/2012-09-24/content_158.html" target="_blank">查看全文</a>&nbsp;2012年9月24日 07:46</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-24/content_157.html" target="_blank">Zend Framework 2.0.1 发布了</a></h1><p>距离 Zend Framework 2 发布没有多久，很快就发布了，Zend Framework 2.0.1，官方没有给出太多说明，也许只是部分更新和补丁。zf2系列总归是第一次发布，有点细节补丁是预料中的事情。希望官方尽快完善补丁让大家受益</p><a href="/blog/2012-09-24/content_157.html" target="_blank">查看全文</a>&nbsp;2012年9月24日 07:45</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-20/content_156.html" target="_blank">iPhone 5存五大"风险" 消费者入手需三思</a></h1><p>据国外媒体报道，随着近段时间有关iPhone 5的表述和介绍铺天盖地涌向消费者，越来越多的人对使用iPhone 5充满期待。
+
+
+	当地时间9月12日美国苹果公司在美国旧金山的芳草地艺术中心揭开了iPhone 5的面纱。该款手机从研发阶段直到最终公布都吸引了全球众多业内人士以及普通消费者的关注，iPhone 5支持4G/LTE网络、拥有4英寸大屏以及搭载新版</p><a href="/blog/2012-09-20/content_156.html" target="_blank">查看全文</a>&nbsp;2012年9月20日 07:55</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-20/content_155.html" target="_blank">奇虎360中国搜索市场份额9月增长1%</a></h1><p>报告指出：“我们最近一轮的渠道调查显示，自我们在8月27日进行上一轮渠道调查以来，奇虎在(中国)搜索市场上所占份额已略有上升(1到2个百分点)。我们发现，奇虎360流量份额的增长主要是以百度份额下降为代价的。我们预计，目前百度和奇虎360所占市场份额分别为75%到80%和5%到10%；在奇虎360推出搜索引擎以前，分别为80%到85%和0%。”
+
+
+	报告进</p><a href="/blog/2012-09-20/content_155.html" target="_blank">查看全文</a>&nbsp;2012年9月20日 07:49</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-19/content_154.html" target="_blank">dojo.string.substitute 用法</a></h1><p>对一个字符串进行模板替换，如果什么参数都没有匹配到就会抛出一个异常。
+
+
+	dojo.string.substitute(template, map, transform, thisObject);
+
+
+	下面是参数说明：
+
+
+	template : 一个含有模板参数的字符串。参数格式 ${key}。
+
+
+	map : 对应模板参数要替换的字符串，类型是数组</p><a href="/blog/2012-09-19/content_154.html" target="_blank">查看全文</a>&nbsp;2012年9月19日 18:32</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-18/content_153.html" target="_blank">php中判断文件存在是用file_exists还是is_file的性能比较</a></h1><p>在写程序时发现在判断文件是否存在时，有两种写法，有的人用了is_file，有的人用了file_exists，用哪个更好或者说更合适呢
+
+
+	写程序验证一下：
+
+
+	分别执行1000次，记录所需时间。
+
+
+	文件存在(当前目录)
+
+
+	is_file:0.4570ms
+
+
+	file_exists:2.0640ms
+
+
+	文件存在(绝对路径3层/www/hx/</p><a href="/blog/2012-09-18/content_153.html" target="_blank">查看全文</a>&nbsp;2012年9月18日 10:46</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-18/content_152.html" target="_blank">SQL Server内存数据写入磁盘的三个方法</a></h1><p>众所周知，SQLServer增删改数据最先都是在内存中进行的，这可以大大加快数据操作的速度；当内存中的数据被修改了，而磁盘中的数据
+
+
+	还没有被修改时，就产生了所谓的”脏页“，SQLServer是如何同步内存和磁盘的数据的呢？以下三种方法就是为同步内存和磁盘数据而产生的。
+
+
+	LazyWrite（惰性写入器）:
+
+
+	
+		作用：
+	
+	
+		  1.管</p><a href="/blog/2012-09-18/content_152.html" target="_blank">查看全文</a>&nbsp;2012年9月18日 10:44</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-18/content_151.html" target="_blank">SQL Server 数据库中触发器的安全隐患</a></h1><p>1.触发器权限和所有权
+
+
+	create TRIGGER权限默认授予定义触发器的表所有者、sysadmin 固定服务器角色成员以及 db_owner 和 db_ddladmin 固定数据库角色成员，并且不可转让。
+
+
+	2.需要的环境
+
+
+	本文需要的环境是已经获取了sql服务器的以上其中一个权限，目的是为了留下隐蔽的后门，不被管理员发现。即使发现了也是加</p><a href="/blog/2012-09-18/content_151.html" target="_blank">查看全文</a>&nbsp;2012年9月18日 10:41</div></div><div class="blog-list-item"><div class="headwapper"><a href="/user/visit/2"><img src="/user/data/head-img/2_head.jpg?>_64x" width="64px" height="64px"/></a></div><div class="ItemContentx"><h1 class="bl-head1"><a class="bs-transmit" style="" href="/blog/2012-09-18/content_150.html" target="_blank">SQL Server插入记录后获取自动增长的列值</a></h1><p>在关系数据库中，我们经常会给一个表的主键设置为自增列，而在开发过程中，有时又会需要在插入一条记录后获得它的主键值，我们可以通过创建带有输出参数的 存储过程来完成这一任务。在T-SQL中，有三个函数可以用来检索标识列值：SCOPE_IDENTITY, @@IDENTITY, IDENT_CURRENT.
+
+
+	      其中，SCOPE_IDENTITY为微</p><a href="/blog/2012-09-18/content_150.html" target="_blank">查看全文</a>&nbsp;2012年9月18日 10:37</div></div>                    <div style="margin-top:10px;"><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">&#19978;&#19968;&#39029;</a><a href="/blog/1.html" class="s-pages-i borderR10 Shadow">1</a><a href="/blog/2.html" class="s-pages-i borderR10 Shadow">2</a><a href="/blog/3.html" class="s-pages-i borderR10 Shadow">3</a><a href="/blog/4.html" class="s-pages-i borderR10 Shadow">4</a><a href="/blog/5.html" class="s-pages-i borderR10 Shadow">5</a><a href="/blog/6.html" class="s-pages-i borderR10 Shadow">6</a><a href="/blog/7.html" class="s-pages-i borderR10 Shadow">7</a><a href="/blog/8.html" class="s-pages-i borderR10 Shadow">8</a><a href="/blog/9.html" class="s-pages-i borderR10 Shadow">9</a><a href="/blog/10.html" class="s-pages-i borderR10 Shadow">10</a><a href="/blog/11.html" class="s-pages-i borderR10 Shadow">11</a><a href="/blog/12.html" class="s-pages-i borderR10 Shadow">12</a><a href="/blog/13.html" class="s-pages-i s-pages-cur borderR10 Shadow">13</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">14</a><a href="/blog/14.html" class="s-pages-i borderR10 Shadow">&#19979;&#19968;&#39029;</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- @blog_list_right -->
+            <div class="clear"></div>
+        </div>
+        <span style="display:none;"><script src="http://s21.cnzz.com/stat.php?id=4991736&web_id=4991736" language="JavaScript"></script></span>
+        <script src="/jss/jquery-min.js"></script>
+        <script src="/jss/coref.js?v=4-1"></script>
+        <script src="/common.config.js"></script>
+    </body>
+</html>

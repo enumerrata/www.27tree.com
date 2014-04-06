@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+     <ug lev="0" creditR="0" name="软盘" />
+     <ug lev="1" creditR="30" name="优盘" />
+     <ug lev="2" creditR="120" name="CD刻录机" />
+     <ug lev="3" creditR="150" name="DVD刻录机" />
+     <ug lev="4" creditR="200" name="IDE硬盘" />
+     <ug lev="5" creditR="300" name="SCSI硬盘" />
+     <ug lev="6" creditR="400" name="SCSI磁盘阵列" />
+     <ug lev="7" creditR="600" name="光纤磁盘阵列" />
+     <ug lev="8" creditR="1000" name="梦幻银河储存器" />
+</root>

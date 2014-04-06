@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-13 06:54:06</datetime>
+  <title>谈新手对CString的使用</title>
+  <content>&lt;p&gt;
+	CString类功能强大,比STL的string类有过之无不及.新手使用CString时,都会被它强大的功能所吸引.然而由于对它内部机制的不了解,新手在将CString向C的字符数组转换时容易出现很多问题.因为CString已经重载了LPCTSTR运算符,所以CString类向const&amp;nbsp;char&amp;nbsp;*转换时没有什么麻烦,如下所示:
+&lt;/p&gt;
+&lt;p&gt;
+	char&amp;nbsp;a[100];
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	strncpy(a,(LPCTSTR)str,sizeof(a));
+&lt;/p&gt;
+&lt;p&gt;
+	或者如下:
+&lt;/p&gt;
+&lt;p&gt;
+	strncpy(a,str,sizeof(a));
+&lt;/p&gt;
+&lt;p&gt;
+	以上两种用法都是正确地.因为strncpy的第二个参数类型为const&amp;nbsp;char&amp;nbsp;*.所以编译器会自动将CString类转换成const&amp;nbsp;char&amp;nbsp;*.很多人对LPCTSTR是什么东西迷惑不解,让我们来看看:
+&lt;/p&gt;
+&lt;p&gt;
+	1.LP表示长指针,在win16下有长指针(LP)和短指针(P)的区别,而在win32下是没有区别的,都是32位.所以这里的LP和P是等价的.
+&lt;/p&gt;
+&lt;p&gt;
+	2.C表示const
+&lt;/p&gt;
+&lt;p&gt;
+	3.T是什么东西呢,我们知道TCHAR在采用UNICODE方式编译时是wchar_t,在普通时编译成char那么就可以看出LPCTSTR(PCTSTR)在UINCODE时是const&amp;nbsp;wchar_t&amp;nbsp;*,PCWSTR,LPCWSTR,在多字节字符模式时是const&amp;nbsp;char&amp;nbsp;*,&amp;nbsp;PCSTR,LPCSTR.接下来我们看在非UNICODE情况下,怎样将CString转换成char&amp;nbsp;*,很多初学者都为了方便采用如下方法:
+&lt;/p&gt;
+&lt;p&gt;
+	(char&amp;nbsp;*)(LPCSTR)str
+&lt;/p&gt;
+&lt;p&gt;
+	这样对吗?我们首先来看一个例子:
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aa\");
+&lt;/p&gt;
+&lt;p&gt;
+	strcpy((char&amp;nbsp;*)(LPCTSTR)str,\"aaaaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;(LPCTSTR)str&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	在Debug下运行出现了异常,我们都知道CString类内部有自己的字符指针,指向一个已分配的字符缓冲区.如果往里面写的字符数超出了缓冲区范围,当然会出现异常.但这个程序在Release版本下不会出现问题.原来对CString类已经进行了优化.当需要分配的内存小于64字节时,直接分配64字节的内存,以此类推,一般CString类字符缓冲区的大小为64,128,256,512...这样是为了减少内存分配的次数,提高速度.
+&lt;/p&gt;
+&lt;p&gt;
+	那有人就说我往里面写的字符数不超过它原来的字符数,不就不会出错了,比如
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aaaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	strcpy((char&amp;nbsp;*)(LPCTSTR)str,\"aa\");
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;(LPCTSTR)str&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	这样看起来是没什么问题.我们再来看下面这个例子:
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aaaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	strcpy((char&amp;nbsp;*)(LPCTSTR)str,\"aa\");
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;(LPCTSTR)str&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;str.GetLength()&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	我们看到str的长度没有随之改变,继续为7而不是2.还有更严重的问题:
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aaaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str1&amp;nbsp;=&amp;nbsp;str;
+&lt;/p&gt;
+&lt;p&gt;
+	strcpy((char&amp;nbsp;*)(LPCTSTR)str,\"aa\");
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;(LPCTSTR)str&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	cout&amp;lt;&amp;lt;(LPCTSTR)str1&amp;lt;&amp;lt;endl;
+&lt;/p&gt;
+&lt;p&gt;
+	按说我们只改变了str,str1应该没有改变呀,可是事实时他们都变成了\"aa\".难道str和str1里面的字符指针指向的缓冲区是一个.我们在Effective&amp;nbsp;C++里面得知,如果你的类内部有包含指针,请为你的类写一个拷贝构造函数和赋值运算符.不要让两个对象内部的指针指向同一区域,而应该重新分配内存.难道是微软犯了错?
+&lt;/p&gt;
+&lt;p&gt;
+	原来这里还有一个\"写时复制\"和\"引用计数\"的概念.CString类的用途很广,这样有可能在系统内部产生大量的CString临时对象.这时为了优化效率,就采用在系统软件内部广泛使用的\"写时复制\"概念.即当从一个CString产生另一个CString并不复制它的字符缓冲区内容,而只是将字符缓冲区的\"引用计数\"加1.当需要改写字符缓冲区内的内容时,才分配内存,并复制内容.以后我会给出一个\"写时复制\"和\"引用计数\"的例子我们回到主题上来,当我们需要将CString转换成char&amp;nbsp;*时,我们应该怎么做呢?其时只是麻烦一点,如下所示:
+&lt;/p&gt;
+&lt;p&gt;
+	CString&amp;nbsp;str(\"aaaaaaa\");
+&lt;/p&gt;
+&lt;p&gt;
+	strcpy(str.GetBuffer(10),\"aa\");
+&lt;/p&gt;
+&lt;p&gt;
+	str.ReleaseBuffer();
+&lt;/p&gt;
+&lt;p&gt;
+	当我们需要字符数组时调用GetBuffer(int&amp;nbsp;n),其中n为我们需要的字符数组的长度.使用完成后一定要马上调用ReleaseBuffer();还有很重要的一点就是,在能使用const&amp;nbsp;char&amp;nbsp;*的地方,就不要使用char&amp;nbsp;*
+&lt;/p&gt;</content>
+  <contentx>CString类功能强大,比STL的string类有过之无不及.新手使用CString时,都会被它强大的功能所吸引.然而由于对它内部机制的不了解,新手在将CString向C的字符数组转换时容易出现很多问题.因为CString已经重载了LPCTSTR运算符,所以CString类向const char *转换时没有什么麻烦,如下所示:
+
+
+	char a[100</contentx>
+  <tags>_null_</tags>
+</root>

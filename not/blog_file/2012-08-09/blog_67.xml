@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-08-09 15:17:41</datetime>
+  <title>使用 crypt() 进行简单的信息加密</title>
+  <content>&lt;p&gt;
+	假定您是一位新的&amp;nbsp;Web&amp;nbsp;应用程序开发人员，没有更多的机会使用安全功能。您创建了您的第一个应用程序，它可以在专用用户表中存储用户名和密码，但是，您没有对这些密码进行加密。这些密码以一眼就看明白的形式存在，任何人都可以使用它们访问数据库。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		PHP&amp;nbsp;的内置&amp;nbsp;crypt()&amp;nbsp;功能可实现单向加密&amp;nbsp;或单向散列。它只所以是单向的，是因为在对某内容进行加密后，您永远不能将其反转为明文。乍一看，此想法似乎很荒谬。使用加密主要是保护信息，随后能够使用该信息，后者通常意味着能够对它进行解密。
+	&lt;/p&gt;
+	&lt;p&gt;
+		不要绝望。单向加密方案和&amp;nbsp;crypt()&amp;nbsp;特别受欢迎。可以使保护信息的方法更安全。如果您的用户密码列表落入不法之徒之手，他们实际上没有将密码解密为明文的方法。
+	&lt;/p&gt;
+	&lt;p&gt;
+		让我们返回到密码示例。注释&amp;nbsp;(notational)&amp;nbsp;PHP&amp;nbsp;应用程序可能包括让系统管理员创建、编辑和删除用户的模块。例如，在将用户记录存储到用户表之前，PHP&amp;nbsp;脚本可以使用&amp;nbsp;crypt()&amp;nbsp;对密码加密。
+	&lt;/p&gt;
+&lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&gt;&amp;lt;?php
+	$user&amp;nbsp;=&amp;nbsp;strip_tags(substr($_POST[&amp;nbsp;user&amp;nbsp;],0,32));
+	$pw&amp;nbsp;=&amp;nbsp;strip_tags(substr($_POST[&amp;nbsp;password&amp;nbsp;],0,32));
+	
+	$cleanpw&amp;nbsp;=&amp;nbsp;crypt($pw);
+	
+	$sql&amp;nbsp;=&amp;nbsp;\"insert&amp;nbsp;into&amp;nbsp;users&amp;nbsp;(username,password)&amp;nbsp;
+	values(&amp;nbsp;\".mysql_real_escape_string($user).\"&amp;nbsp;,
+	&amp;nbsp;\".mysql_real_escape_string($cleanpw).\"&amp;nbsp;)\";
+	//.....etc....
+?&amp;gt;&lt;/pre&gt;
+crypt()&amp;nbsp;将一串明文作为它的第一个参数字，&lt;strong&gt;对它应用&amp;nbsp;salt&amp;nbsp;会影响加密算法的随机性&lt;/strong&gt;，并生成输入明文的单向暗文。如果不提供&amp;nbsp;salt，则&amp;nbsp;PHP&amp;nbsp;通常默认其系统&amp;nbsp;salt，它可以是以下值和长度之一：
+&lt;/p&gt;
+&lt;p&gt;
+	CRYPT_STD_DES&amp;nbsp;2&amp;nbsp;个字符（默认）
+&lt;/p&gt;
+&lt;p&gt;
+	CRYPT_EXT_DES&amp;nbsp;9&amp;nbsp;个字符
+&lt;/p&gt;
+&lt;p&gt;
+	CRYPT_MD5&amp;nbsp;12&amp;nbsp;个字符，以&amp;nbsp;$1$开头
+&lt;/p&gt;
+&lt;p&gt;
+	CRYPT_BLOWFISH&amp;nbsp;16&amp;nbsp;个字符，以&amp;nbsp;$2$开头
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		许多现代&amp;nbsp;PHP&amp;nbsp;安装使用&amp;nbsp;MD5&amp;nbsp;或更高的&amp;nbsp;salt，它们使用强大的&amp;nbsp;12&amp;nbsp;个字符的&amp;nbsp;salt，但是，不要对任何事情想当然。您最好知道系统正在使用哪一个值。您可以使用以下&amp;nbsp;PHP&amp;nbsp;代码片段检查服务器的设置：
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;lt;?php&amp;nbsp;echo&amp;nbsp;\"System&amp;nbsp;salt&amp;nbsp;size:&amp;nbsp;\".&amp;nbsp;CRYPT_SALT_LENGTH;&amp;nbsp;?&amp;gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		返回的答案将是&amp;nbsp;2、9、12&amp;nbsp;或&amp;nbsp;16，它告诉您系统正在使用的值。要使用&amp;nbsp;MD5&amp;nbsp;或更高版本的&amp;nbsp;salt，您可以显式调用明文和&amp;nbsp;salt&amp;nbsp;参数中的&amp;nbsp;crypt()&amp;nbsp;函数以及&amp;nbsp;md5()&amp;nbsp;函数，以获取随机暗文（参见清单&amp;nbsp;5）。md5()&amp;nbsp;函数可以散列反馈的任何字符串，并将其转变为固定长度为&amp;nbsp;32&amp;nbsp;个字符的字符串。您可能更喜欢其他方法，具体的使用取决于安全需求和个人爱好。
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>假定您是一位新的 Web 应用程序开发人员，没有更多的机会使用安全功能。您创建了您的第一个应用程序，它可以在专用用户表中存储用户名和密码，但是，您没有对这些密码进行加密。这些密码以一眼就看明白的形式存在，任何人都可以使用它们访问数据库。
+
+
+	
+		PHP 的内置 crypt() 功能可实现单向加密 或单向散列。它只所以是单向的，是因为在对某内容进行加密后，</contentx>
+  <tags>_null_</tags>
+</root>

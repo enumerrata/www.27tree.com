@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[WPF深入浅出]]></title>
+  <author>刘铁猛</author>
+  <submiter-uid>740</submiter-uid>
+  <submit-date-time>2013-06-25 16:18:55</submit-date-time>
+  <img-link>e8088eee94f7fc94ca75749be3be1be7.jpg</img-link>
+  <book-area>csharp</book-area>
+  <book-intro><![CDATA[<p>
+	&nbsp; WPF是微软新一代开发技术，涵盖了桌面应用程序开发、网络应用程序开发和移动应用程序开发，是微软开发技术未来十年的主要方向。《深入浅出WPF》的内容分为两大部分。第一部分是学习WPF开发的基础知识，包括XAML，语言的详细剖析、WPF控件的使用、用户界面布局的介绍。第二部分是作为优秀WPF程序员所应掌握的知识，包括依赖对象和数据关联、路由事件与命令、数据模板与控件模板、绘图与动画等。
+</p>
+<p>
+	&nbsp; &nbsp;《深入浅出WPF》作者具有多年WPF开发经验，历经多个大型项目，现任微软（美国）下载中心项目组高级开发工程师。《深入浅出WPF》是作者多年来学习和使用WPF的经验总结。
+</p>
+<p>
+	&nbsp; &nbsp;《深入浅出WPF》包含了众多WPF面试点，作者凭借书中的知识顺利通过微软（美国）的面试。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

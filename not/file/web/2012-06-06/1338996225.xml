@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>jQuery折叠层，默认闭合，点击收缩和展开效果</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	介绍一款利用jQuery实现的折叠层，点击收缩和展开效果，&amp;lt;strong&amp;gt;默认情况&amp;lt;/strong&amp;gt;下是展开的，可能有的童鞋需要默认情况是闭合的，现在就来分享一下，这里主要是用JavaScript代码定义的，在此提示，第一次运行请刷新一下页面，让远程的jQuery插件载入。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	第6行&amp;lt;strong&amp;gt;src&amp;lt;/strong&amp;gt;应改为自己安装的jQuery版本
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;amp;lt;!DOCTYPE&amp;nbsp;html&amp;nbsp;PUBLIC&amp;nbsp;\"-//W3C//DTD&amp;nbsp;XHTML&amp;nbsp;1.0&amp;nbsp;Transitional//EN\"&amp;nbsp;\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&amp;amp;gt;
+&amp;amp;lt;html&amp;nbsp;xmlns=\"http://www.w3.org/1999/xhtml\"&amp;amp;gt;
+&amp;amp;lt;head&amp;amp;gt;
+&amp;amp;lt;meta&amp;nbsp;http-equiv=\"Content-Type\"&amp;nbsp;content=\"text/html;charset=gbk\"&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;title&amp;amp;gt;jquery&amp;nbsp;收缩展开效果&amp;amp;lt;/title&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;nbsp;src=\"jquery-1.7.2.min.js\"&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;style&amp;amp;gt;
+/*&amp;nbsp;收缩展开效果&amp;nbsp;*/
+.text{line-height:22px;padding:0&amp;nbsp;6px;color:#666;}
+.box&amp;nbsp;h1{padding-left:10px;height:22px;line-height:22px;background:#f1f1f1;font-weight:bold;}
+.box{position:relative;border:1px&amp;nbsp;solid&amp;nbsp;#e7e7e7;}
+h1{font-size:16px;}
+&amp;amp;lt;/style&amp;amp;gt;
+&amp;amp;lt;/head&amp;amp;gt;
+&amp;amp;lt;body&amp;amp;gt;
+&amp;amp;lt;script&amp;nbsp;type=\"text/javascript\"&amp;amp;gt;
+//&amp;nbsp;收缩展开效果
+$(document).ready(function(){
+//&amp;nbsp;$(\".box&amp;nbsp;h1\").toggle(function(){
+//&amp;nbsp;&amp;nbsp;&amp;nbsp;$(this).next(\".text\").animate({height:&amp;nbsp;&amp;nbsp;toggle&amp;nbsp;,&amp;nbsp;opacity:&amp;nbsp;&amp;nbsp;toggle&amp;nbsp;},&amp;nbsp;\"slow\");
+//&amp;nbsp;&amp;nbsp;},function(){
+//$(this).next(\".text\").animate({height:&amp;nbsp;&amp;nbsp;toggle&amp;nbsp;,&amp;nbsp;opacity:&amp;nbsp;&amp;nbsp;toggle&amp;nbsp;},&amp;nbsp;\"slow\");
+//});
+$(\"div.text\").hide();//默认隐藏div，或者在样式表中添加.text{display:none}，推荐使用后者
+$(\".box&amp;nbsp;h1\").click(function(){
+$(this).next(\".text\").slideToggle(\"slow\");
+})
+});
+&amp;amp;lt;/script&amp;amp;gt;
+&amp;amp;lt;!--&amp;nbsp;收缩展开效果&amp;nbsp;--&amp;amp;gt;
+&amp;amp;lt;div&amp;nbsp;class=\"box\"&amp;amp;gt;
+&amp;amp;lt;h1&amp;amp;gt;收缩展开效果&amp;amp;lt;/h1&amp;amp;gt;
+&amp;amp;lt;div&amp;nbsp;class=\"text\"&amp;amp;gt;
+1&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+2&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+3&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+4&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+5&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;div&amp;nbsp;class=\"box\"&amp;amp;gt;
+&amp;amp;lt;h1&amp;amp;gt;收缩展开效果&amp;amp;lt;/h1&amp;amp;gt;
+&amp;amp;lt;div&amp;nbsp;class=\"text\"&amp;amp;gt;
+1&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+2&amp;amp;lt;br&amp;nbsp;/&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+&amp;amp;lt;/div&amp;amp;gt;
+
+&amp;amp;lt;/body&amp;amp;gt;
+&amp;amp;lt;/html&amp;amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-06/1338996225.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

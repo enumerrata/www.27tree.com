@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Twitter宣布开源其MySQL优化成果</title>
+<content>&amp;lt;p&amp;gt;
+	消息称，Twitter决定开放其MySQL数据库源代码。Twitter&amp;nbsp;DBA和DB开发组的成员Jeremy&amp;nbsp;Cole和Davi&amp;nbsp;Arnaut表示，大部分Twitter数据都采用了MySQL作为持久化存储，包括兴趣图、时间线、Tweets以及用户数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	由于Twitter的数据规模和访问规模，他们不得不对MySQL源码进行修改优化以适应这种级别的应用。为了回馈社区，他们决定在基于BSD许可证下开源MySQL。项目托管在GitHub上。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在该博客中，还列出了Twitter在MySQL上的主要改进工作，包括：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	增加状态变量，特别是在InnoDB引擎内。这样能更有效地监控系统负载和运行状态。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在非一致性内存访问系统中优化内存分配。在初始化时就分配InnoDB的缓存池，如果内存不足则可迅速获得错误报告，这样在服务器面临内存压力时也能保证性能稳定。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	减少查询超时中一些不必要的操作，这样服务器可以在毫秒级别主动取消耗时过长的查询。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	以一种轻量的方式导入导出InnoDB的缓存池。这样可以让我们以最小的代价执行回滚。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	针对SSD固态硬盘进行优化，包括page-flushing以及减少写操作以改善SSD硬盘寿命。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/database/2012-06-13/1339544559.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

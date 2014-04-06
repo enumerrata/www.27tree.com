@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTML5本地存储不完全指南</title>
+<content>&amp;lt;p&amp;gt;
+	编辑推荐：这篇文章来自于黑客志，对HTML5的本次存储方式进行了非常全面的介绍和分析，对于学习HTML5的开发者来说，不容错过哦。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在HTML5本地存储之前，如果我们想在客户端保存持久化数据，有这么几个选择：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;HTTP&amp;nbsp;cookie&amp;lt;/strong&amp;gt;。HTTP&amp;nbsp;cookie的缺点很明显，最多只能存储4KB的数据，每个HTTP请求都会被传送回服务器，明文传输（除非你使用SSL）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;IE&amp;nbsp;userData&amp;lt;/strong&amp;gt;。userData是微软在上世纪90年代的浏览器大战时推出的本地存储方
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	案，借助DHTML的behaviour属性来存储本地数据，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	允许每个页面最多存储64K数据，每个站点最多640K数据，userData的缺点显而易见，它不是Web标准的一部分，除非你的程序只需要支持IE，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	否则它基本没什么用处。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Flash&amp;nbsp;cookie&amp;lt;/strong&amp;gt;。Flash&amp;nbsp;cookie的名字有些误导，它实际上和HTTP
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cookie并不是一回事，或许它的名字应该叫做Flash本地存储”，Flash
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	cookie默认允许每个站点存储不超过100K的数据，如果超出了，Flash会自动向用户请求更大的存储空间，借助Flash的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ExternalInterface接口，你可以很轻松地通过Javascript操作Flash的本地存储。Flash的问题很简单，就是因为它是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Flash。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Google&amp;nbsp;Gears&amp;lt;/strong&amp;gt;。Gears是Google在07年发布的一个开源浏览器插件，旨在改进
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	各大浏览器的兼容性，Gears内置了一个基于SQLite的嵌入式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL数据库，并提供了统一API对数据库进行访问，在取得用户授权之后，每个站点可以在SQL数据库中存储不限大小的数据，Gears的问题就是
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Google自己都已经不用它了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	现状
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	我们现在通常所说的HTML5本地存储，一般指的是Web&amp;nbsp;Storage规范，这个标准曾经是HTML5规范的一部分，但后来因为种种原因从HTML5规范中分离了出来。但是除了Web&amp;nbsp;Storage，HTML5的本地存储标准还有另外2个竞争者：Web&amp;nbsp;SQL&amp;nbsp;Database和IndexedDB。下面就让我们依次来看看这3个规范吧。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Web&amp;nbsp;Storage&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Web&amp;nbsp;Storage是目前得到支持最广泛的HTML5本地存储规范：IE&amp;nbsp;8+、FF&amp;nbsp;3.5+、Safari&amp;nbsp;4+、Chrome
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4+、Opera&amp;nbsp;10.5+，以及iPhone&amp;nbsp;2+和Android&amp;nbsp;2+都已经支持Web&amp;nbsp;Storage，要判断你的浏览器是否支持Web
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Storage，可以使用下面这个函数：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;supports_html5_storage()&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;try&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;&amp;nbsp;localStorage&amp;nbsp;&amp;nbsp;in&amp;nbsp;window&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;window[&amp;nbsp;localStorage&amp;nbsp;]&amp;nbsp;!==&amp;nbsp;null;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;catch&amp;nbsp;(e)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5&amp;nbsp;Storage的使用非常简单：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;foo&amp;nbsp;=&amp;nbsp;localStorage.getItem(bar);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;...&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;localStorage.setItem(bar,&amp;nbsp;foo);&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	你也可以写成下面这样：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;var&amp;nbsp;foo&amp;nbsp;=&amp;nbsp;localStorage[bar];&amp;nbsp;&amp;nbsp;
+//&amp;nbsp;...&amp;nbsp;&amp;nbsp;
+localStorage[bar]&amp;nbsp;=&amp;nbsp;foo;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	如果要将某个key从存储空间删除，可以调用removeItem：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;localStorage.removeItem(&amp;nbsp;foo&amp;nbsp;);&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	你也可以像遍历数组那样遍历存储的所有键值对象：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for(var&amp;nbsp;i=0;&amp;nbsp;ivar&amp;nbsp;key&amp;nbsp;=&amp;nbsp;localStorage.key(i);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;console.log(key&amp;nbsp;+&amp;nbsp;:&amp;nbsp;+&amp;nbsp;localStorage[key]);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	如果你的程序需要在不同页面访问同一个值，你可能需要了解这个值是否已经被其他页面改变了，这可以通过向浏览器注册storage事件来实现：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;window.addEventListener(&amp;nbsp;storage&amp;nbsp;,&amp;nbsp;function(e)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;console.log(e.key&amp;nbsp;+&amp;nbsp;&amp;nbsp;s&amp;nbsp;value&amp;nbsp;is&amp;nbsp;changed&amp;nbsp;from&amp;nbsp;&amp;nbsp;&amp;nbsp;+&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;e.oldValue&amp;nbsp;+&amp;nbsp;&amp;nbsp;&amp;nbsp;to&amp;nbsp;&amp;nbsp;&amp;nbsp;+&amp;nbsp;e.newValue&amp;nbsp;+&amp;nbsp;&amp;nbsp;&amp;nbsp;by&amp;nbsp;&amp;nbsp;+&amp;nbsp;e.url);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},&amp;nbsp;false);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//A页面&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;localStorage[&amp;nbsp;foo&amp;nbsp;]&amp;nbsp;=&amp;nbsp;&amp;nbsp;bar&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//B页面&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;localStorage[&amp;nbsp;foo&amp;nbsp;]&amp;nbsp;=&amp;nbsp;&amp;nbsp;newBar&amp;nbsp;;&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这时你应该会在A页面的Console中看到：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	foo’s&amp;nbsp;value&amp;nbsp;is&amp;nbsp;changed&amp;nbsp;from&amp;nbsp;‘bar’&amp;nbsp;to&amp;nbsp;‘newbar’&amp;nbsp;by&amp;nbsp;http://localhost/test.html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要注意的是，storage事件仅仅只是通知你某个键对应的值已经发生了改变，你没有办法在回调中阻止这个改变发生。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTML5&amp;nbsp;Storage看起来不错，那它有没什么缺点呢？好问题。要说HTML5
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Storage的缺点，唯一的问题就是它默认的QUOTA只有5MB，并且你没办法通过程序自行或是提示用户来增加存储空间。唯一的办法就是用户自己打开
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	浏览器的设置，并手动修改QUOTA的大小，如果超出了5MB的限制，你将会遇到一个“QUOTA_EXCEEDED_ERR”的错误。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Web&amp;nbsp;SQL&amp;nbsp;Database&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Web&amp;nbsp;SQL&amp;nbsp;Database是一个已经废弃的规范，但是鉴于除了IE和Firefox，其他浏览器都已经实现了Web&amp;nbsp;SQL&amp;nbsp;Database，并且它还具有一些HTML5&amp;nbsp;Storage所不具有的特性，所以还是值得了解一下的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Web&amp;nbsp;SQL&amp;nbsp;Database就像它的名字那样，就是一个让你可以在Web上直接使用的SQL数据库，你要做的就是打开数据库，然后执行SQL，和你对Mysql做的事情没什么两样：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;openDatabase(&amp;nbsp;documents&amp;nbsp;,&amp;nbsp;&amp;nbsp;1.0&amp;nbsp;,&amp;nbsp;&amp;nbsp;Local&amp;nbsp;document&amp;nbsp;storage&amp;nbsp;,&amp;nbsp;5*1024*1024,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;(db)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;db.changeVersion(&amp;nbsp;&amp;nbsp;,&amp;nbsp;&amp;nbsp;1.0&amp;nbsp;,&amp;nbsp;function&amp;nbsp;(t)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t.executeSql(&amp;nbsp;CREATE&amp;nbsp;TABLE&amp;nbsp;docids&amp;nbsp;(id,&amp;nbsp;name)&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;},&amp;nbsp;error);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;});&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	关于Web&amp;nbsp;SQL&amp;nbsp;Database的更多介绍，可以参看这篇指南。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	但是它的缺点也同样明显。最大的问题就出在SQL上，实际上并不存在一种叫做SQL的标准结构化查询语言，我们平常使用的实际上是MS
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL、Oracle&amp;nbsp;SQL、MySQL&amp;nbsp;SQL、postgre&amp;nbsp;SQL或者SQLite
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL（尽管有一个叫做SQL-92的规范，但它基本形同虚设），更进一步，甚至都不存在SQLite&amp;nbsp;SQL，我们使用的实际上是SQLite
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	x.y.z&amp;nbsp;SQL，而这也就是Web&amp;nbsp;SQL&amp;nbsp;Database最大的问题，它无法统一各个浏览器厂商实现的SQL语言，如果你的某条Web
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	SQL查询只能在Chrome上运行，这还能叫做标准吗？
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所以，如果你现在访问Web&amp;nbsp;SQL&amp;nbsp;Database的规范页面，你会在顶部看到这样一则声明：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个规范已经陷入了一个僵局：目前的所有实现都是基于同一个SQL后端（SQLite），但是我们需要更多的独立实现来完成标准化，所以除非有厂商愿意独立实现这个规范，否则当前的SQL规范只能采用SQLite的SQL方言，而作为一个标准，这是不可接受的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;IndexedDB&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	最后我们要介绍的就是IndexedDB了，相比其他两个规范，目前只有Firefox实现了IndexedDB（顺便提一下，Mozilla表示它们永远不会去实现Web&amp;nbsp;SQL&amp;nbsp;Database），不过Google已经表示正在考虑在Chrome中加入IndexDB支持。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	IndexedDB引入了一个object&amp;nbsp;store的概念，这有点像是一个SQL
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Database，你可以在“数据库”中存储“记录”，并且每条“记录”可以拥有很多“字段，每个字段都有一个特定的数据类型，你可以选择记录的子集，
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	并使用“光标”进行遍历，同时object&amp;nbsp;store中的所有变更都是基于“事务”的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;request&amp;nbsp;=&amp;nbsp;window.indexedDB.open(CandyDB,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;My&amp;nbsp;candy&amp;nbsp;store&amp;nbsp;database);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;request.onsuccess&amp;nbsp;=&amp;nbsp;function(event)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;db&amp;nbsp;=&amp;nbsp;event.result;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(db.version&amp;nbsp;!=&amp;nbsp;1)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;User&amp;nbsp;s&amp;nbsp;first&amp;nbsp;visit,&amp;nbsp;initialize&amp;nbsp;database.&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;createdObjectStoreCount&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;objectStores&amp;nbsp;=&amp;nbsp;[&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;name:&amp;nbsp;kids,&amp;nbsp;keyPath:&amp;nbsp;id,&amp;nbsp;autoIncrement:&amp;nbsp;true&amp;nbsp;},&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;name:&amp;nbsp;candy,&amp;nbsp;keyPath:&amp;nbsp;id,&amp;nbsp;autoIncrement:&amp;nbsp;true&amp;nbsp;},&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;name:&amp;nbsp;candySales,&amp;nbsp;keyPath:&amp;nbsp;,&amp;nbsp;autoIncrement:&amp;nbsp;true&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;objectStoreCreated(event)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(++createdObjectStoreCount&amp;nbsp;==&amp;nbsp;objectStores.length)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;db.setVersion(1).onsuccess&amp;nbsp;=&amp;nbsp;function(event)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;loadData(db);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;};&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;(var&amp;nbsp;index&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;index&amp;nbsp;&amp;amp;lt;&amp;nbsp;objectStores.length;&amp;nbsp;index++)&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;params&amp;nbsp;=&amp;nbsp;objectStores[index];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;request&amp;nbsp;=&amp;nbsp;db.createObjectStore(params.name,&amp;nbsp;params.keyPath,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;params.autoIncrement);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;request.onsuccess&amp;nbsp;=&amp;nbsp;objectStoreCreated;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;User&amp;nbsp;has&amp;nbsp;been&amp;nbsp;here&amp;nbsp;before,&amp;nbsp;no&amp;nbsp;initialization&amp;nbsp;required.&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;loadData(db);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;};&amp;nbsp;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-18/1337298759.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

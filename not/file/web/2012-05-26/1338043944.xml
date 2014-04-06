@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Javascript：使用命名空间</title>
+<content>&amp;lt;p&amp;gt;
+	在引入命名空间之前，一个令开发人员头疼的问题就是如何防止函数名/类名和其他人的冲突，在一个公司内部项目组之间可以通过命名预定（比如加前缀等）解决这个问题，但是把视线放到整个软件开发领域，在当今协作开发相当盛行的时代，这个问题却依然存在。在使用多个第三方框架或类库的时候，你唯一能作的就是祈祷它们的命名不要冲突，如果真正发生这种灾难的话，你唯一能作的就是放弃其中一个（注：可能是我孤陋寡闻，呵呵）。命名空间的引入相当程度上解决了这个问题，当然，如果你使用的命名空间和其他公司不幸一样，而对方又是微软、SUN等大佬，那恭喜你，呵呵@_@!
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从事Web开发不可避免要接触JavaScript，目前最新版本的JavaScript还是不支持命名空间，所以命名冲突的问题凸显无疑，想象一下你引用了两个js文件，却发现由于命名问题导致你不得不放弃其中一个，从而导致多写了许多代码，无疑是十分令人沮丧的。在JavaScript新版本引入命名空间概念之前，发扬自立更生精神和创造性是我们程序员的基本义务;-)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现前提：与Delphi、C#等语言不同，JavaScript中的类并不是对象的定义，事实上JavaScript中并不存在真正的类，这里的类实际上是用函数模拟实现的，而JavaScript中的函数实际上是一个对象，因此在JavaScript中：一个类就是一个对象。这和传统概念概念极为不同，在JavaScript中，创建某个类的实例实际上就是将类（=对象，记住）复制了一份。看到这里，有点设计模式概念的应该就可以看出来了，在JavaScript中，类机制使用了原型（prototype）模式。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现原理：既然看清楚了类的本质，那么问题就简单了，如果将GEA项目组所有JS类和函数作为属性放在名为GEA的对象里面，然后将GEA对象以属性的方式放在名为Grandsoft对象里面不就可以达到我们的目的，比如Grandsoft.GEA.Person实际上是在Grandsoft对象的属性GEA（也是一个对象）中的类Person（还是一个对象）。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	实现非常简单，整个命名空间机制的实现不超过20行代码，分析如下：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;//&amp;nbsp;声明一个全局对象Namespace，用来注册命名空间
+Namespace&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Object();
+
+//&amp;nbsp;全局对象仅仅存在register函数，参数为名称空间全路径，如\"Grandsoft.GEA\"
+Namespace.register&amp;nbsp;=&amp;nbsp;function(fullNS)
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;将命名空间切成N部分,&amp;nbsp;比如Grandsoft、GEA等
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;nsArray&amp;nbsp;=&amp;nbsp;fullNS.split(&amp;nbsp;.&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;sEval&amp;nbsp;=&amp;nbsp;\"\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;sNS&amp;nbsp;=&amp;nbsp;\"\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for&amp;nbsp;(var&amp;nbsp;i&amp;nbsp;=&amp;nbsp;0;&amp;nbsp;i&amp;nbsp;&amp;amp;lt;&amp;nbsp;nsArray.length;&amp;nbsp;i++)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(i&amp;nbsp;!=&amp;nbsp;0)&amp;nbsp;sNS&amp;nbsp;+=&amp;nbsp;\".\";
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;sNS&amp;nbsp;+=&amp;nbsp;nsArray[i];
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;依次创建构造命名空间对象（假如不存在的话）的语句
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;比如先创建Grandsoft，然后创建Grandsoft.GEA，依次下去
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;sEval&amp;nbsp;+=&amp;nbsp;\"if&amp;nbsp;(typeof(\"&amp;nbsp;+&amp;nbsp;sNS&amp;nbsp;+&amp;nbsp;\")&amp;nbsp;==&amp;nbsp;&amp;nbsp;undefined&amp;nbsp;)&amp;nbsp;\"&amp;nbsp;+&amp;nbsp;sNS&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Object();\"
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(sEval&amp;nbsp;!=&amp;nbsp;\"\")&amp;nbsp;eval(sEval);
+}&amp;lt;/pre&amp;gt;
+上面就是在JavaScript中模拟命名空间机制的完整实现，使用方式如下：
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;//&amp;nbsp;注册命名空间Grandsoft.GEA,&amp;nbsp;Grandsoft.GCM
+Namespace.register(\"Grandsoft.GEA\");
+Namespace.register(\"Grandsoft.GCM\");
+
+//&amp;nbsp;在Grandsoft.GEA命名空间里面声明类Person
+Grandsoft.GEA.Person&amp;nbsp;=&amp;nbsp;function(name,&amp;nbsp;age)
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.name&amp;nbsp;=&amp;nbsp;name;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;this.age&amp;nbsp;=&amp;nbsp;age;
+}
+
+//&amp;nbsp;给类Person添加一个公共方法show()
+Grandsoft.GEA.Person.prototype.show&amp;nbsp;=&amp;nbsp;function()
+{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alert(this.name&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;is&amp;nbsp;\"&amp;nbsp;+&amp;nbsp;this.age&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;years&amp;nbsp;old!\");
+}
+
+//&amp;nbsp;演示如何使用类Person
+var&amp;nbsp;p&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Grandsoft.GEA.Person(\"yanglf\",&amp;nbsp;25);
+p.show();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-26/1338043944.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-26+23%3A19%3A30</date-c>
+  <conf-c>var&amp;nbsp;p&amp;nbsp;=&amp;nbsp;new&amp;nbsp;Grandsoft.GEA.Person(\"yanglf\",&amp;nbsp;25);&amp;nbsp;&amp;nbsp;
+p.show();&amp;nbsp;&amp;nbsp;</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

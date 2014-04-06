@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-10-10 00:16:50</datetime>
+  <title><![CDATA[jQuery 遍历 siblings 方法]]></title>
+  <content><![CDATA[<p>
+	查找每个 p 元素的所有类名为 \"selected\" 的所有同胞元素：
+</p>
+<p>
+	$(\"p\").siblings(\".somenode\")
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

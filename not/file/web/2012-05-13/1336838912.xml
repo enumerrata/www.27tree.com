@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>HTTP协议学习笔记</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;1.&amp;nbsp;HTTP协议：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.http协议是建立在tcp/ip协议基础上的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.http协议全程&amp;nbsp;超文本传输协议
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.http协议1.0&amp;nbsp;1.1版本，目前通用的是1.1版本
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;http1.0&amp;nbsp;称为短连接&amp;nbsp;&amp;nbsp;http1.1称为长连接
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	短连接和长连接指的是持续时间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;2.HTTP请求：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.Accept：text/html,image/*&amp;nbsp;[告诉服务器，可以接受文本，网页，图片]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.Accept-Charset:&amp;nbsp;ISO-8859-1&amp;nbsp;[接收字符编码是什么？&amp;nbsp;ISO-8859-1]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.Accept-Encoding：gzip,compress&amp;nbsp;[可以接收gzip,compress压缩后数据]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.Accept-Language：en-us,zh-cn&amp;nbsp;[浏览器支持的语言]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.Host：www.itsrcs.com:8080&amp;nbsp;[查找主机为www.xinran001.com:8080]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.If-Wodified-Since：Tue,&amp;nbsp;11&amp;nbsp;Jul&amp;nbsp;2000&amp;nbsp;18:23:51&amp;nbsp;GMT&amp;nbsp;[告诉服务器，我的缓存中
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有这个资源文件，该文件的时间是...]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.Referer：http://www.itsrcs.com&amp;nbsp;[告诉服务器，我来自哪里，该
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	消息头，常用于防止盗链]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.User-Agent：Mozilla/4.0&amp;nbsp;(compatible;&amp;nbsp;MSIE&amp;nbsp;5.5;&amp;nbsp;Windows&amp;nbsp;NT&amp;nbsp;5.0)&amp;nbsp;[告诉服务
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	器浏览器的内核为：Mozilla/4.0]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.Cookie：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.Connection：cloge/Keep-Alive&amp;nbsp;[保持长连接，发完数据后，我不关闭连接]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11.Date：tue,11,Jul&amp;nbsp;2000&amp;nbsp;18:23:51&amp;nbsp;GMT&amp;nbsp;[浏览器发送该http请求时间]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12.使用Referer防止盗链的案例：
+&amp;lt;/p&amp;gt;
+&amp;lt;div&amp;nbsp;style=\"text-align:left;\"&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;nbsp;/获取用户浏览器的Referer
+String&amp;nbsp;referer&amp;nbsp;=&amp;nbsp;request.getHeader(\"Referer\");
+if(referer&amp;nbsp;==&amp;nbsp;null&amp;brvbar;&amp;brvbar;!referer.startsWith(\"http://localhost:8080/servletPro\"))
+{
+response.sendRedirect(\"/servletPro/Error\");
+return;
+}//防盗链，通过HTTP中的referer
+&amp;lt;/pre&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;3.HTTP响应：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	HTTP/1.1&amp;nbsp;200&amp;nbsp;OK&amp;nbsp;&amp;nbsp;&amp;nbsp;状态行：描述服务器对请求的处理结果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Server：Microsoft-IIS/5.0
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Date：Thu&amp;nbsp;,13&amp;nbsp;Jul&amp;nbsp;2000&amp;nbsp;05:46:53&amp;nbsp;GMT
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Content-Length：2291
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Content-Type：text/html
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	Cache-Control：private
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	多个消息头：描述服务器的基本信息，以及数据的描述，服务器通过这些数据的描述信
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	息，可以通知客服端如何处理等一会儿它回送的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	空行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;html&amp;amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实体内容：代表服务器向客户端回送的数据。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;head&amp;amp;gt;…
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;4.http响应消息头详解：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	1.Location：http://www.itsrcs.com&amp;nbsp;[让浏览器重新定位到URL]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	2.Server：apache&amp;nbsp;tomcat&amp;nbsp;[告诉浏览器是什么类型的服务]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	3.Content-Encoding：gzip&amp;nbsp;[告诉浏览器我使用的gzip压缩数据]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	4.Content-Length：&amp;nbsp;80&amp;nbsp;[告诉浏览器回送的数据大小80个字节]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	5.Content-Language：zh-cn&amp;nbsp;[支持中文]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	6.Content-Type：text/html;charest=GB2312&amp;nbsp;[内容格式text/html;编码为：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	GB2312]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	7.Last-Modified：Tue,&amp;nbsp;11&amp;nbsp;Jul&amp;nbsp;2000&amp;nbsp;18:23:51&amp;nbsp;[告诉浏览器，该资源最近更新时间
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	是多少]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	8.Refres:1&amp;nbsp;ur;=http://www.itsrcs.com&amp;nbsp;[过多久，刷新到什么地方]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	9.Content-Disponsition：attachment;&amp;nbsp;filename=aaa.zip&amp;nbsp;&amp;nbsp;[告诉浏览器，有文件来
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	了，准备下载]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	10.Transfer-Encoding:&amp;nbsp;chunked&amp;nbsp;[传输的编码]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	11.Set-Cookie:ss=q0=5Lb_nq;&amp;nbsp;path=/search&amp;nbsp;&amp;nbsp;&amp;nbsp;[cookie信息]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	12.Expires:-1&amp;nbsp;[告诉浏览器如何缓存页面]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	13.Cache-Control:no-cache&amp;nbsp;[告诉浏览器如何缓存页面]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	14.Pragma:no-cache&amp;nbsp;&amp;nbsp;[同上]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	15.Connection:close/Keep-Alive&amp;nbsp;&amp;nbsp;[]
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	16.Date:Tue,11&amp;nbsp;Jul&amp;nbsp;2000&amp;nbsp;18:23:51&amp;nbsp;GMT
+&amp;lt;/p&amp;gt;
+&amp;lt;strong&amp;gt;5.不缓存页面代码：&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;//指定该页面不缓存
+response.setDateHeader(\"Expires\",-1);
+//为了保证兼容性.
+response.setHeader(\"Cache-Cintrol\",\"no-cache\");
+response.setHeader(\"Pragma\",&amp;nbsp;\"no-cache\");&amp;lt;/pre&amp;gt;
+&amp;lt;strong&amp;gt;6.有些网站要求网页缓存一定时间，比如网页缓存一个小时&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;response.setDateHeader(\"Expires\",System.currentTimeMillis()+3600*1000*24);
+//System.currentTimeMillis()&amp;nbsp;获取当前的毫秒数&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-13/1336838912.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

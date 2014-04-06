@@ -1,0 +1,161 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 数组</h1>
+</div>
+<div>
+
+<P><b>数组能够在单独的变量名中存储一个或多个值。</b></P>
+
+<h1>什么是数组？</h1>
+
+<p>在使用 PHP 进行开发的过程中，或早或晚，您会需要创建许多相似的变量。</p>
+<p>无需很多相似的变量，你可以把数据作为元素存储在数组中。</p>
+<p>数组中的元素都有自己的 ID，因此可以方便地访问它们。</p>
+
+<h2>有三种数组类型：</h2>
+
+<p><b>数值数组</b></p>
+<p>带有数字 ID 键的数组</p>
+<p><b>关联数组</b></p>
+<p>数组中的每个 ID 键关联一个值</p>
+<p><b>多维数组</b></p>
+<p>包含一个或多个数组的数组</p>
+
+<h1>数值数组</h1>
+
+<p>数值数组存储的每个元素都带有一个数字 ID 键。</p>
+<p>可以使用不同的方法来创建数值数组：</p>
+
+<p><b>例子 1</b></p>
+<p>在这个例子中，会自动分配 ID 键：</p>
+
+<code>$names = array("Peter","Quagmire","Joe");</code>
+
+<p><b>例子 2</b></p>
+<p>在这个例子中，我们人工分配的 ID 键：</p>
+
+<code>
+$names[0] = "Peter";<br />
+$names[1] = "Quagmire";<br />
+$names[2] = "Joe";
+</code>
+
+<p>可以在脚本中使用这些 ID 键：</p>
+
+<code>
+&lt;?php<br />
+<br />
+$names[0] = "Peter";<br />
+$names[1] = "Quagmire";<br />
+$names[2] = "Joe";<br />
+<br />
+echo $names[1] . " and " . $names[2] . " are ". $names[0] . "'s neighbors";<br />
+?&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>Quagmire and Joe are Peter's neighbors</code>
+
+<h1>关联数组</h1>
+
+<p>关联数组，它的每个 ID 键都关联一个值。</p>
+<p>在存储有关具体命名的值的数据时，使用数值数组不是最好的做法。</p>
+<p>通过关联数组，我们可以把值作为键，并向它们赋值。</p>
+
+<p><b>例子 1</b>
+
+<p>在本例中，我们使用一个数组把年龄分配给不同的人：</p>
+<code>$ages = array("Peter"=>32, "Quagmire"=>30, "Joe"=>34);</code>
+
+<p><b>例子 2</b></p>
+
+<p>本例与例子 1 相同，不过展示了另一种创建数组的方法：</p>
+
+<code>
+$ages['Peter'] = "32";<br />
+$ages['Quagmire'] = "30";<br />
+$ages['Joe'] = "34";
+</code>
+
+<p>可以在脚本中使用 ID 键：</p>
+
+<code>
+&lt;?php<br />
+<br />
+$ages['Peter'] = "32";<br />
+$ages['Quagmire'] = "30";<br />
+$ages['Joe'] = "34";<br />
+<br />
+echo "Peter is " . $ages['Peter'] . " years old.";<br />
+?&gt;
+</code>
+
+<p>以上脚本的输出：</p>
+
+<code>Peter is 32 years old.</code>
+
+<h1>多维数组</h1>
+
+<p>在多维数组中，主数组中的每个元素也是一个数组。在子数组中的每个元素也可以是数组，以此类推。</p>
+
+<p><b>例子 1</b></p>
+<p>在本例中，我们创建了一个带有自动分配的 ID 键的多维数组：</p>
+
+<code>
+$families&nbsp=&nbsparray<br />
+(<br />
+&nbsp&nbsp"Griffin"=>array<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp"Peter",<br />
+&nbsp&nbsp"Lois",<br />
+&nbsp&nbsp"Megan"<br />
+&nbsp&nbsp),<br />
+&nbsp&nbsp"Quagmire"=>array<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp"Glenn"<br />
+&nbsp&nbsp),<br />
+&nbsp&nbsp"Brown"=>array<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp"Cleveland",<br />
+&nbsp&nbsp"Loretta",<br />
+&nbsp&nbsp"Junior"<br />
+&nbsp&nbsp)<br />
+);
+</code>
+
+<p>如果输出这个数组的话，应该类似这样：</p>
+
+<code>
+Array<br />
+(<br />
+[Griffin]&nbsp=>&nbspArray<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp[0]&nbsp=>&nbspPeter<br />
+&nbsp&nbsp[1]&nbsp=>&nbspLois<br />
+&nbsp&nbsp[2]&nbsp=>&nbspMegan<br />
+&nbsp&nbsp)<br />
+[Quagmire]&nbsp=>&nbspArray<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp[0]&nbsp=>&nbspGlenn<br />
+&nbsp&nbsp)<br />
+[Brown]&nbsp=>&nbspArray<br />
+&nbsp&nbsp(<br />
+&nbsp&nbsp[0]&nbsp=>&nbspCleveland<br />
+&nbsp&nbsp[1]&nbsp=>&nbspLoretta<br />
+&nbsp&nbsp[2]&nbsp=>&nbspJunior<br />
+&nbsp&nbsp)<br />
+)
+</code>
+
+<p><b>例子 2</b></p>
+<p>让我们试着显示上面的数组中的一个单一的值：</p>
+
+<code>
+echo "Is " . $families['Griffin'][2] . <br />
+" a part of the Griffin family?"; 
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>Is Megan a part of the Griffin family?</code>
+</div>

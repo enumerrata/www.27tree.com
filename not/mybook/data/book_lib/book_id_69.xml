@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>UNIX初级教程</title>
+  <author>（美）阿夫扎尔 </author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-16 10:54:47</submit-date-time>
+  <img-link>1b399163c99805df9d8a5aaa7f8d16ab.png</img-link>
+  <book-area>system</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	UNIX是一类功能强大的主流操作系统。本书从初学者的角度介绍了UNIX的系统概念及其命令的使用。阐述的内容都是针对初学者完成日常工作所必需的各个方面，涉及UNIX系统的常用命令、UNIX文件系统、vi编辑器和Emacs编辑器、UNIX通信工具、shell命令和程序开发，以及一些更为深入的uNIx命令。书中还介绍了Linux操作系统以及Bourne&amp;nbsp;Again
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Shell命令等。本书帮助读者由浅入深、循序渐进地学习UNIX，形成清晰的概念，并且避免了直接罗列复杂的命令格式。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书可作为UNIX课程的教学用书或参考书，也可供使用UNIX的科技工作者阅读和参考。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

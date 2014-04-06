@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>添加到收藏夹和设为首页代码</title>
+<content>&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"html\"&amp;gt;&amp;amp;lt;a&amp;nbsp;href=#&amp;nbsp;onclick=this.style.behavior=&amp;nbsp;url(#default#homepage)&amp;nbsp;;this.setHomePage(&amp;nbsp;http://www.itsrcs.com/&amp;nbsp;);&amp;amp;gt;设为首页&amp;amp;lt;/a&amp;amp;gt;
+
+&amp;amp;lt;a&amp;nbsp;href=javascript:window.external.AddFavorite(&amp;nbsp;http://www.itsrcs.com/&amp;nbsp;,&amp;nbsp;itsrcs&amp;nbsp;)&amp;amp;gt;收藏本站&amp;amp;lt;/a&amp;amp;gt;
+
+&amp;amp;lt;p&amp;amp;gt;查找更多代码，请访问：&amp;amp;lt;a&amp;nbsp;href=http://www.itsrcs.com&amp;nbsp;target=_blank&amp;amp;gt;itsrcs&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;&amp;lt;/pre&amp;gt;</content>
+<json-link>./file/web/2012-06-12/1339491763.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Linux C编程</title>
+  <author>李玉波</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-05 18:31:12</submit-date-time>
+  <img-link>b5e41267f2ee780de1a5307d54eaf0b7.png</img-link>
+  <book-area>cocpp</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书通过列举大量的程序实例，系统地介绍了在Linux平台下用c语言进行程序开发的过程，以使读者快速掌握在Linux平台下进行c程序开发的方法和技巧，并具备开发大型应用程序的能力。本书除了示范各种Linux&amp;nbsp;c编程技术外，对于其中产生的关键程序代码也进行了详细分析，读者将从中更深一步地掌握Linux&amp;nbsp;c编程的相关知识。本书中的实例具有很强的代表性，都是目前Linux&amp;nbsp;c编程中经常用到的，对这些实例稍作修改，即可应用于实际Linux&amp;nbsp;c应用程序的开发。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书系统地介绍了在Linux平台下用C语言进行程序开发的过程，通过列举大量的程序实例，使读者很快掌握在Linux平台下进行C程序开发的方法和技巧，并具备开发大型应用程序的能力。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书内容翔实，主要包括：Linux平台下c语言及其编程环境的介绍，c语言编译器、调试工具和自动维护工具的使用方法，Linux系统提供的特有函数调用，在c程序中访问文件的方法，进程的概念、进程间通信及多进程同步运行的实现手段，c语言网络编程方法以及curses编程等。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书结构合理、概念清晰、实例丰富，并具有很强的启发性和实用性，适合于有一定的c语言基础，需要在Linux系统上编程的程序设计人员阅读。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

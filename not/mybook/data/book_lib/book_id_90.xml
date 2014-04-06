@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Android核心技术与实例详解</title>
+  <author>吴亚峰</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-08-21 16:11:00</submit-date-time>
+  <img-link>19ae63393c2957f278a2625abc0a42c4.png</img-link>
+  <book-area>android</book-area>
+  <book-intro>&lt;p&gt;
+	本书以Android应用程序的开发为主题，并结合真实的案例向读者详细介绍了Android的基本组件的使用及应用程序开发的整个流程。
+&lt;/p&gt;
+&lt;p&gt;
+	全书分为三篇共18章，第一篇以简单易懂的实例为依托，详细介绍了Android平台的基本控件、高级控件、常用界面布局及菜单对话框等相关知识；第二篇介绍了Android平台的高级知识，包括消息与广播服务、网络数据处理、手机通信功能、桌面组件、多媒体采集、Google服务及3D程序开发等；第三篇则对三个真实案例的开发步骤进行详细介绍，逐步向读者讲解Android手机应用程序的真实开发过程，同时在源代码中还包含了详细的注释，以尽量帮助读者掌握代码中的每一个细节，尽快掌握Android编程。
+&lt;/p&gt;
+&lt;p&gt;
+	本书的讲述由浅入深，从介绍Android平台的基本组件到带领读者开发大型应用程序，结构清晰、语言简洁，非常适合初学者和进阶开发者阅读参考。
+&lt;/p&gt;
+&lt;p&gt;
+	本书附赠DVD光盘1张，其中包含了大容量的手把手教学视频、电子教案(PPT)、实例源代码等。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

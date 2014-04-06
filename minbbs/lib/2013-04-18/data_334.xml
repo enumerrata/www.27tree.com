@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>451</uid>
+  <datetime>2013-04-18 17:43:02</datetime>
+  <title><![CDATA[FSO生成UTF-8编码文件的解决方法]]></title>
+  <content><![CDATA[<p>
+	昨天给aw写一个生成天气预报的xml文件的程序，考虑到通用性，于是选择utf-8编码，我也比较偏好这个编码。最先想到用FSO来写这个xml文件，后来却发现生成的xml文件不能正常显示，仅仅是因为编码的原因。用记事本打开生成的xml文件，另存为utf-8编码的xml文件即可正常显示。于是在网上搜索了一下，结果发现很多人说FSO只能写ANSI编码的文件，不能写utf-8格式的文件,并且只能读写文本文件。很多人都选择用ADODB.STREAM对象来替代FSO对象，因为STREAM类有LOADFROMFILE和SAVETOFILE方法.并且有一个至关重要的属性CHARSET,这是FSO没有的。有人给出了样例程序：
+</p>
+<p>
+	\'-------------------------------------------------
+</p>
+<p>
+	\'函数名称:ReadTextFile
+</p>
+<p>
+	\'作用:利用AdoDb.Stream对象来读取UTF-8格式的文本文件
+</p>
+<p>
+	\'----------------------------------------------------
+</p>
+<p>
+	Function ReadFromTextFile (FileUrl,CharSet)
+</p>
+<p>
+	&nbsp; &nbsp;dim str
+</p>
+<p>
+	&nbsp; &nbsp;set stm=server.CreateObject(\"adodb.stream\")
+</p>
+<p>
+	&nbsp; &nbsp; stm.Type=2 \'以本模式读取
+</p>
+<p>
+	&nbsp; &nbsp; stm.mode=3
+</p>
+<p>
+	&nbsp; &nbsp; stm.charset=CharSet
+</p>
+<p>
+	&nbsp; &nbsp; stm.open
+</p>
+<p>
+	&nbsp; &nbsp; stm.loadfromfile server.MapPath(FileUrl)
+</p>
+<p>
+	&nbsp; &nbsp; str=stm.readtext
+</p>
+<p>
+	&nbsp; &nbsp; stm.Close
+</p>
+<p>
+	&nbsp; &nbsp;set stm=nothing
+</p>
+<p>
+	&nbsp; &nbsp; ReadFromTextFile=str
+</p>
+<p>
+	End Function
+</p>
+<p>
+	\'-------------------------------------------------
+</p>
+<p>
+	\'函数名称:WriteToTextFile
+</p>
+<p>
+	\'作用:利用AdoDb.Stream对象来写入UTF-8格式的文本文件
+</p>
+<p>
+	\'----------------------------------------------------
+</p>
+<p>
+	Sub WriteToTextFile (FileUrl,byval Str,CharSet)
+</p>
+<p>
+	&nbsp; &nbsp;set stm=server.CreateObject(\"adodb.stream\")
+</p>
+<p>
+	&nbsp; &nbsp; stm.Type=2 \'以本模式读取
+</p>
+<p>
+	&nbsp; &nbsp; stm.mode=3
+</p>
+<p>
+	&nbsp; &nbsp; stm.charset=CharSet
+</p>
+<p>
+	&nbsp; &nbsp; stm.open
+</p>
+<p>
+	&nbsp; &nbsp; stm.WriteText str
+</p>
+<p>
+	&nbsp; &nbsp; stm.SaveToFile server.MapPath(FileUrl),2
+</p>
+<p>
+	&nbsp; &nbsp; stm.flush
+</p>
+<p>
+	&nbsp; &nbsp; stm.Close
+</p>
+<p>
+	&nbsp; &nbsp;set stm=nothing
+</p>
+<p>
+	End Sub
+</p>
+<p>
+	有这个样例程序，很轻松地搞定了生成utf-8编码的xml文件的问题。谁知一上传到服务器，访问这个页面居然显示为空白，所有的代码均没有执行，包括普通的HTML代码都不显示
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

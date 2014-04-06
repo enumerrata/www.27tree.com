@@ -1,0 +1,16 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">CSS3 渐变</h1>
+</div>
+<div>
+
+    <h1>background</h1>
+    <p>backgrou nd属性在 CSS3中被赋予非常强大的功能。其中一个非常重要的功能就是多重背景。在过去设置图片背景时，只能使用一张图片，而在 CSS3中，则可以设置多重背景图片，例如代码： </p>
+    <code>background:url (background1.png ) left top no-repeat, url(background2.png) left top no -repeat;  </code>
+    <p>Chrome浏览器和 Safari 浏览器都支持 background 属性的多重背景功能。由于它们都是基于Webki t 的浏览器，因此该功能也支持 Android和iOS 移动平台的移动 Web 浏览器。但鉴于采用图片的方式设置背景会严重影响在移动 We b 端的体验，因此可以使用Webkit 的其中一种特性对背景采用颜色渐变，而非采用图片方式。 </p>
+    <p>语法如下： </p>
+    <code>-webkit-gradient(&lt;type&gt;, &lt;port&gt; [, &lt;radius&gt;]?,&lt;point&gt; [, &lt;radius&gt;]? [, &lt;stop&gt;]* )  </code>
+    <p>上述语法比较复杂，对于入门新手的CSS3读者而言的确是一个门槛。不过不要紧，语法虽然复杂，但在实际使用时是极其简单的，甚至在一些网站上也提供该属性的可视化配置。 </p>
+    <p>ty pe 类型是指采用渐变类型，如线性渐变 linear 或径向渐变 radial。 </p>
+    <code>background:-webkit-gradient(linear,0 0,0 100%,form(#FFF),to(#000)); </code>
+    <p>上述代码的含义是定义一个渐变背景色，该渐变色是线性渐变并且是由白色向黑色渐变的。其中前两个 0 表示的是渐变开始 X 和Y 坐标位置；0 和100%表示的是渐变结束X 和Y 坐标位置。 </p>
+</div>

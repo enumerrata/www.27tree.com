@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[标题不短的提问]]></title>
+  <content><![CDATA[一支烟的时间可以写多少行代码？
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;div id=\"nav\"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/\"&gt;&lt;img src=\"/img/home-16.png\" align=\"absmiddle\"/&gt;&amp;#x4E3B;&amp;#x9875;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/not/news/\"&gt;IT前沿资讯&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/q_a/\"&gt;QA在线问答&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a style=\"cursor:default;\" onmouseover=\"javascript:$(\'.nav-subBar\').show();\"&gt;&lt;img src=\"/img/settings.png\" align=\"absmiddle\"/&gt;编程开发&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/bookLib/\"&gt;&lt;img src=\"/img/Book-16.png\" align=\"absmiddle\"/&gt;技术宅必备好书&lt;/a&gt;&lt;/li&gt;
+                    &lt;li style=\"border:none;\"&gt;&lt;a href=\"http://www.itsrcs.com/minbbs/\"&gt;&lt;img src=\"/img/bbs_ico_normal_new_16.png\" align=\"absmiddle\"/&gt;讨论区&lt;/a&gt;&lt;/li&gt;
+                    &lt;div class=\"clear\"&gt;&lt;/div&gt;
+                &lt;/ul&gt;
+                &lt;div&gt;
+                    &lt;ul class=\"nav-subBar\"&gt;
+                        &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/art/java/\"&gt;JAVA&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/art/php/\"&gt;PHP&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/art/c/\"&gt;C/C++&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/art/mobile/\"&gt;移动开发&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=\"http://www.itsrcs.com/art/database/\"&gt;数据库&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=\"border:none;\"&gt;&lt;a href=\"http://www.itsrcs.com/art/web/\"&gt;Web前端开发&lt;/a&gt;&lt;/li&gt;
+                        &lt;div class=\"clear\"&gt;&lt;/div&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;</pre>]]></content>
+  <tags>技术问题|Java技术|高性能Web开发</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

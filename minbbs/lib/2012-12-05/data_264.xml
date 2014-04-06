@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>201</uid>
+  <datetime>2012-12-05 11:49:03</datetime>
+  <title><![CDATA[忘记MySQL数据库密码了怎么办？]]></title>
+  <content><![CDATA[<p>
+	在实际操作中你是否遇到过忘记MySQL数据库密码的情况？不用着急我们这篇文章就是这一问题给出的答案，如果你对其解决方案的实际操作步骤有兴趣了解的话，你就可以通过以下的文章对其进行更好的了解。
+</p>
+<p>
+	破解本地MySQL数据库密码：
+</p>
+<p>
+	Windows:
+</p>
+<p>
+	1.用系统管理员登陆系统。
+</p>
+<p>
+	2.停止MySQL的服务。
+</p>
+<p>
+	3.进入命令窗口，然后进入 MySQL的安装目录，比如我的安装目录是c:\\mysql,进入C:\\mysql\\bin
+</p>
+<p>
+	4.跳过权限检查启动MySQL，
+</p>
+<p>
+	c:\\mysql\\bin&gt;mysqld-nt ––skip-grant-tables
+</p>
+<p>
+	或则：c:\\mysql\\bin&gt;mysqld ––skip-grant-tables
+</p>
+<p>
+	mysqld.exe是微软Windows MySQL server数据库服务器相关程序。mysqld-nt.exe是MySQL Daemon数据库服务相关程序。
+</p>
+<p>
+	5.[未验证]
+</p>
+<p>
+	重新打开一个窗口
+</p>
+<p>
+	进入c:\\mysql\\bin目录，设置root的新MySQL数据库密码
+</p>
+<p>
+	c:\\mysql\\bin&gt;mysqladmin -u root flush-privileges password \"newpassword\"
+</p>
+<p>
+	c:\\mysql\\bin&gt;mysqladmin -u root -p shutdown
+</p>
+<p>
+	将newpassword替换为你要用的root的密码，第二个命令会提示你输入新密码，重复第一个命令输入的密码。
+</p>
+<p>
+	5.[验证]或则:
+</p>
+<p>
+	重新开打一个命令提示符的窗口(CMD)
+</p>
+<p>
+	用空密码方式使用root用户登录 MySQL；
+</p>
+<p>
+	mysql -u root
+</p>
+<p>
+	修改root用户的MySQL数据库密码；
+</p>
+<p>
+	<br />
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">mysql&gt; update mysql.user set password=PASSWORD(\'新密码\') where User=\'root\';   
+mysql&gt; flush privileges;   
+mysql&gt; quit  </pre>
+<p>
+	6.停止MySQL Server，用正常模式启动Mysql
+</p>
+<p>
+	7．你可以用新的密码链接到Mysql 了。
+</p>
+<p>
+	Unix&amp;Linux：
+</p>
+<p>
+	1.用root或者运行mysqld 的用户登录系统；
+</p>
+<p>
+	2．利用kill命令结束掉mysqld的进程；
+</p>
+<p>
+	3．使用–skip-grant-tables参数启动MySQL Server
+</p>
+<p>
+	<span style=\"line-height:1.5;\">
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">shell&gt;mysqld_safe –skip-grant-tables &amp; </pre>
+</span>
+</p>
+<p>
+	4.为root@localhost设置新MySQL数据库密码
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">shell&gt;mysqladmin -u root flush-privileges password \"newpassword\" </pre>
+5．重启MySQL Server
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">shell&gt;sudo /etc/init.d mysqld restart</pre>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

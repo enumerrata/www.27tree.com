@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>pipe管道的应用</title>
+<content>&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	用linux的朋友一定知道shell提供的pipe（管道）功能吧，或许你还不知道他的全名，那你用没用过这样的命令：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	cat&amp;nbsp;INSTALL&amp;nbsp;&amp;brvbar;&amp;nbsp;more
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	这种类型的命令用法就是利用管道的技术着出来的，与重新定向（redirection)是不同的。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	PHP中提供popen函数来打开一个管道：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	int&amp;nbsp;popen(string&amp;nbsp;command,string&amp;nbsp;mode);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	popen()打开一个管道，也就是打开处理文件指针。打开一个管道后，返回一个文件指针，接下来的用法就和普通文件的读写一样了。看看下面吧：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;amp;lt;?php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	$fp=popen(\"/bin/ls&amp;nbsp;-l&amp;nbsp;-FN&amp;nbsp;/ect\",\"r\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	while(!feof($fp))
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	ehco&amp;nbsp;fgets($fp,4096).\"&amp;amp;lt;BR&amp;amp;gt;\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	pclose($fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	?&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	输出的结果你试试吧。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	管道的应用很广的，比如，我们可以打开一个sendmail的管道来传送电子邮件。利用管道比起用socket更简单易懂。因为利用socket必须懂得如何与sendmail作交握，而管道动作则预处理普通文件没什么区别了。看看下面的程序你就明白了，这个程序会传送一封电子邮件给yqqfgq@china.com:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	&amp;amp;lt;?php
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	$fp=popen(\"/usr/sbin/sendmail&amp;nbsp;yqqfgq@china.com\",\"w\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	$message=\"Hi!是我啊，我是yqqfgq啊!:)n\";
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	fputs($fp,\"Subject:$subjectn\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	fputs($fp,\"From:yqqfgqn\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	fputs($fp,\"Reply-to:yqqfgq@china.com\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	fputs($fp,$message);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	fputs($fp,\"
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	\");
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	pclose($fp);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;nbsp;style=\"text-indent:2em;\"&amp;gt;
+	?&amp;amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-06-14/1339660502.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

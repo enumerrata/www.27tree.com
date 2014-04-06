@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>使用jQuery简化Ajax开发&lt;3&gt;</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;为&amp;nbsp;HTML&amp;nbsp;添加动画&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以使用&amp;nbsp;jQuery&amp;nbsp;处理基本的动画和显示效果。animate()&amp;nbsp;函数是动画代码的核心，它用于更改任何随时间变化的数值型的&amp;nbsp;CSS&amp;nbsp;样式值。比方说，您可以变化高度、宽度、不透明度和位置。还可以指定动画的速度，定为毫秒或者预定义的速度：慢速，中速或快速。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面是一个同时变化某个元素高度和宽度的示例。请注意，这些参数没有开始值，只有最终值。开始值取自元素的当前尺寸。同时我也附加了一个回调函数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;#grow&amp;nbsp;).animate({&amp;nbsp;height:&amp;nbsp;500,&amp;nbsp;width:&amp;nbsp;500&amp;nbsp;},&amp;nbsp;slow,&amp;nbsp;function(){
+alert(&amp;nbsp;The&amp;nbsp;element&amp;nbsp;is&amp;nbsp;done&amp;nbsp;growing!&amp;nbsp;);
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	jQuery&amp;nbsp;的内置函数使更多常见的动画更容易完成。可以使用&amp;nbsp;show()&amp;nbsp;和&amp;nbsp;hide()&amp;nbsp;元素，立即显示或者以特定的速度显示。还可以通过使用&amp;nbsp;fadeIn()&amp;nbsp;和&amp;nbsp;fadeOut()，或者&amp;nbsp;slideDown()&amp;nbsp;和&amp;nbsp;slideUp()&amp;nbsp;显示和隐藏元素，这取决于您所需要的显示效果。下面的示例定义了一个下滑的导航菜单。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;#nav&amp;nbsp;).slideDown(&amp;nbsp;slow&amp;nbsp;);&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;&amp;lt;span&amp;nbsp;style=\"font-size:14px;\"&amp;gt;DOM&amp;nbsp;脚本和事件处理&amp;lt;/span&amp;gt;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	或许&amp;nbsp;jQuery&amp;nbsp;最擅长的就是简化&amp;nbsp;DOM&amp;nbsp;脚本和事件处理。遍历和处理&amp;nbsp;DOM&amp;nbsp;非常简单，同时附加、移除和调用事件也十分容易，且不像手动操作那样容易出错。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	从本质上说，jQuery&amp;nbsp;可以使&amp;nbsp;DOM&amp;nbsp;脚本中的常用操作变得更加容易。您可以创建元素并且使用&amp;nbsp;append()&amp;nbsp;函数把它们与其它的一些元素链接到一起，使用&amp;nbsp;clone()&amp;nbsp;复制元素，使用&amp;nbsp;html()&amp;nbsp;设置内容，使用&amp;nbsp;empty()&amp;nbsp;函数删除内容，使用&amp;nbsp;remove()&amp;nbsp;函数删除所有的元素，即便是使用&amp;nbsp;wrap()&amp;nbsp;函数，用其他元素将这些元素包装起来。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	通过遍历&amp;nbsp;DOM，一些函数可以用于更改&amp;nbsp;jQuery&amp;nbsp;对象本身的内容。可以获得元素所有的&amp;nbsp;siblings()、parents()&amp;nbsp;和&amp;nbsp;children()。还可以选择&amp;nbsp;next()&amp;nbsp;和&amp;nbsp;prev()&amp;nbsp;兄弟元素。find()&amp;nbsp;函数或许是功能最强大的函数，它允许使用&amp;nbsp;jQuery&amp;nbsp;选择器搜索&amp;nbsp;jQuery&amp;nbsp;对象中元素的后代元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果结合使用&amp;nbsp;end()&amp;nbsp;函数，那么这些函数将变得更加强大。这个函数的功能类似于&amp;nbsp;undo&amp;nbsp;函数，用于返回到调用&amp;nbsp;find()&amp;nbsp;或&amp;nbsp;parents()&amp;nbsp;函数（或者其它遍历函数）之前的&amp;nbsp;jQuery&amp;nbsp;对象。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果配合方法链接（method&amp;nbsp;chaining）一起使用，这些函数可以使复杂的操作看上去非常简单。清单&amp;nbsp;7&amp;nbsp;显示了一个示例，其中包含有一个登录表单并处理了一些与之有关的元素。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;7.&amp;nbsp;轻松地遍历和处理&amp;nbsp;DOM
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;$(&amp;nbsp;form#login&amp;nbsp;)
+//&amp;nbsp;hide&amp;nbsp;all&amp;nbsp;the&amp;nbsp;labels&amp;nbsp;inside&amp;nbsp;the&amp;nbsp;form&amp;nbsp;with&amp;nbsp;the&amp;nbsp;&amp;nbsp;optional&amp;nbsp;&amp;nbsp;class
+.find(&amp;nbsp;label.optional&amp;nbsp;).hide().end()
+//&amp;nbsp;add&amp;nbsp;a&amp;nbsp;red&amp;nbsp;border&amp;nbsp;to&amp;nbsp;any&amp;nbsp;password&amp;nbsp;fields&amp;nbsp;in&amp;nbsp;the&amp;nbsp;form
+.find(&amp;nbsp;input:password&amp;nbsp;).css(&amp;nbsp;border&amp;nbsp;,&amp;nbsp;&amp;nbsp;1px&amp;nbsp;solid&amp;nbsp;red&amp;nbsp;).end()
+//&amp;nbsp;add&amp;nbsp;a&amp;nbsp;submit&amp;nbsp;handler&amp;nbsp;to&amp;nbsp;the&amp;nbsp;form
+.submit(function(){
+return&amp;nbsp;confirm(&amp;nbsp;Are&amp;nbsp;you&amp;nbsp;sure&amp;nbsp;you&amp;nbsp;want&amp;nbsp;to&amp;nbsp;submit?&amp;nbsp;);
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	不管您是否相信，这个示例只是一行满是空白的被链接的代码。首先，选择登录表单。然后，发现其中含有可选标签，隐藏它们，并调用&amp;nbsp;end()&amp;nbsp;返回表单。然后，我创建了密码字段，将其边界变为红色，再次调用&amp;nbsp;end()&amp;nbsp;返回表单。最后，我在表单中添加了一个提交事件处理程序。其中尤为有趣的就是（除了其简洁性以外），jQuery&amp;nbsp;完全优化了所有的查询操作，确保将所有内容很好地链接在一起后，不需要对一个元素执行两次查询。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	处理常见事件就像调用函数（比方说&amp;nbsp;click()、submit()&amp;nbsp;或&amp;nbsp;mouseover()）和为其传递事件处理函数一样简单。此外，还可以使用&amp;nbsp;bind(&amp;nbsp;eventname&amp;nbsp;,&amp;nbsp;function(){})&amp;nbsp;指定自定义的事件处理程序。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	可以使用&amp;nbsp;unbind(&amp;nbsp;eventname&amp;nbsp;)&amp;nbsp;删除某些事件或者使用&amp;nbsp;unbind()&amp;nbsp;删除所有的事件。有关这些函数的使用方法的完整列表，请参阅&amp;nbsp;参考资料&amp;nbsp;中的&amp;nbsp;jQuery&amp;nbsp;应用程序编程接口（Application&amp;nbsp;Program&amp;nbsp;Interface，API）文档。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-05-31/1338422043.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

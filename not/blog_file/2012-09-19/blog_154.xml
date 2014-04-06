@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-09-19 18:32:15</datetime>
+  <title>dojo.string.substitute 用法</title>
+  <content>&lt;p&gt;
+	对一个字符串进行模板替换，如果什么参数都没有匹配到就会抛出一个异常。
+&lt;/p&gt;
+&lt;p&gt;
+	dojo.string.substitute(template,&amp;nbsp;map,&amp;nbsp;transform,&amp;nbsp;thisObject);&lt;span&amp;nbsp;style=\"display:none;\"&amp;nbsp;id=\"__kindeditor_bookmark_start_46__\"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	下面是参数说明：
+&lt;/p&gt;
+&lt;p&gt;
+	template&amp;nbsp;:&amp;nbsp;一个含有模板参数的字符串。参数格式&amp;nbsp;${key}。
+&lt;/p&gt;
+&lt;p&gt;
+	map&amp;nbsp;:&amp;nbsp;对应模板参数要替换的字符串，类型是数组Array或者对象Object
+&lt;/p&gt;
+&lt;p&gt;
+	transform&amp;nbsp;:&amp;nbsp;在所有替换操作之前调用的方法
+&lt;/p&gt;
+&lt;p&gt;
+	thisObject&amp;nbsp;:&amp;nbsp;额外的格式化方法
+&lt;/p&gt;
+&lt;p&gt;
+	例子1：
+&lt;/p&gt;
+&lt;p&gt;
+	//&amp;nbsp;返回一个字符串&amp;nbsp;\"File&amp;nbsp;&amp;nbsp;foo.html&amp;nbsp;&amp;nbsp;is&amp;nbsp;not&amp;nbsp;found&amp;nbsp;in&amp;nbsp;directory&amp;nbsp;&amp;nbsp;/temp&amp;nbsp;.\"
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	string.substitute(\"File&amp;nbsp;&amp;nbsp;${0}&amp;nbsp;&amp;nbsp;is&amp;nbsp;not&amp;nbsp;found&amp;nbsp;in&amp;nbsp;directory&amp;nbsp;&amp;nbsp;${1}&amp;nbsp;.\",[\"foo.html\",\"/temp\"]);
+&lt;/p&gt;
+&lt;p&gt;
+	//下面和上面结果一样，只不过用了&lt;strong&gt;对象参数&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	string.substitute(\"File&amp;nbsp;&amp;nbsp;${name}&amp;nbsp;&amp;nbsp;is&amp;nbsp;not&amp;nbsp;found&amp;nbsp;in&amp;nbsp;directory&amp;nbsp;&amp;nbsp;${info.dir}&amp;nbsp;.\",{&amp;nbsp;name:&amp;nbsp;\"foo.html\",&amp;nbsp;info:&amp;nbsp;{&amp;nbsp;dir:&amp;nbsp;\"/temp\"&amp;nbsp;}&amp;nbsp;});
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;strong&gt;使用&amp;nbsp;transform&amp;nbsp;方法进行替换加工&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		string.substitute(\"${0}&amp;nbsp;is&amp;nbsp;not&amp;nbsp;found&amp;nbsp;in&amp;nbsp;${1}.\",[\"foo.html\",\"/temp\"],
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;function(str){
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//&amp;nbsp;try&amp;nbsp;to&amp;nbsp;figure&amp;nbsp;out&amp;nbsp;the&amp;nbsp;type
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;prefix&amp;nbsp;=&amp;nbsp;(str.charAt(0)&amp;nbsp;==&amp;nbsp;\"/\")&amp;nbsp;?&amp;nbsp;\"directory\":&amp;nbsp;\"file\";
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;prefix&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;&amp;nbsp;\"&amp;nbsp;+&amp;nbsp;str&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;\";
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;br&amp;nbsp;/&gt;
+	&lt;/p&gt;
+&lt;strong&gt;使用&amp;nbsp;&lt;/strong&gt;&lt;strong&gt;&amp;nbsp;formatter&amp;nbsp;进行后续加工&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;p&gt;
+		//&amp;nbsp;返回&amp;nbsp;\"thinger&amp;nbsp;--&amp;nbsp;howdy\"
+	&lt;/p&gt;
+	&lt;p&gt;
+		string.substitute(
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;\"${0:postfix}\",&amp;nbsp;[\"thinger\"],&amp;nbsp;null,&amp;nbsp;{
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;postfix:&amp;nbsp;function(value,&amp;nbsp;key){
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;value&amp;nbsp;+&amp;nbsp;\"&amp;nbsp;--&amp;nbsp;howdy\";
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+	&lt;/p&gt;
+	&lt;p&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;});
+	&lt;/p&gt;
+&lt;/p&gt;</content>
+  <contentx>对一个字符串进行模板替换，如果什么参数都没有匹配到就会抛出一个异常。
+
+
+	dojo.string.substitute(template, map, transform, thisObject);
+
+
+	下面是参数说明：
+
+
+	template : 一个含有模板参数的字符串。参数格式 ${key}。
+
+
+	map : 对应模板参数要替换的字符串，类型是数组</contentx>
+  <tags>_null_</tags>
+</root>

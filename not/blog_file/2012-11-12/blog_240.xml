@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-12 13:58:16</datetime>
+  <title><![CDATA[Java恶意软件出现新变种 攻击手法略有不同 ]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">据美国科技资讯网站CNET报道，本周早些时候，安全厂商F-Secure发现了一种基于Web的恶意软件攻击新手段，这种攻击手段利用Java程序识别专门针对于操作平台的恶意软件二进制文件，然后发布至OS</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">X、Windows和Linux等操作系统。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">在F-Secure最初的发现中，面向OS X发布的恶意软件是一个PowerPC二进制文件，令OS X无法在许多采用Snow</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">Leopard和Lion等系统的Mac机上运营。但现在F-Secure发现该Java恶意软件出现了一个新变种，而这个变种此次成了一个x86二进制文件。它的工作机制基本上与F-Secure最初发现的一样。正如之前发现的结果，用户在访问运行小Java程序的钓鱼式网站时，恶意软件就会安装到他们的电脑上。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">这个小Java程序会检查用户正在使用平台的系统，接着通过OS</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">X的8080端口、Linux的8081和Windows的443端口(最初则是利用Windows的8082端口)与远程服务器建立联系，下载特定操作平台的恶意软件二进制文件。这个二进制文件会在系统建立后门，从而让攻击者可以远程访问。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">整体而言，这个新变种的攻击策略与之前相比没有什么变化，但手法稍有不同。在本周早些时候发现的攻击中，受害者下载的二进制文件必须继续下载更多的东西才能正常工作，但在最新发现中，这些步骤被一起打包，因此一旦用户下载了这个二进制文件，它就能立刻发挥后门的作用。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">这样一来，这个恶意软件感染更多Mac系统的几率便会增大，但总体而言Mac机用户面临的威胁仍然相对较低。由于苹果已经从OS X in</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">Lion中移除了Java程序，所以这些用户不会受到这个恶意软件的影响。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">此外，在苹果对Java的最新升级中，它执行了自动禁用机制，一旦某个Java互联网插件在30天内没有使用，就会被关闭。因此，除非用户经常使用Java，否则的话，即便碰巧运行了这个恶意软件，他们也会收到提醒，称一个Java程序正在其电脑上运行。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">F-Secure指出，尽管这种威胁对大多数用户而言相对较低，但用于发布这个恶意软件的服务器不同于之前发现的服务器，且可能还涉及更多的服务器。也就是说，即便恶意软件的威胁有可能会增大，不过暂时尚未对用户构成太大的威胁，而安全厂商会密切关注。</span>
+</p>]]></content>
+  <contentx><![CDATA[据美国科技资讯网站CNET报道，本周早些时候，安全厂商F-Secure发现了一种基于Web的恶意软件攻击新手段，这种攻击手段利用Java程序识别专门针对于操作平台的恶意软件二进制文件，然后发布至OS
+
+
+	X、Windows和Linux等操作系统。
+
+
+	在F-Secure最初的发现中，面向OS X发布的恶意软件是一个PowerPC二进制文件，令OS X无法]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

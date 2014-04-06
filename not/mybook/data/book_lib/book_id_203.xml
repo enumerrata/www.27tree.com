@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Spring 3.x企业应用开发实战]]></title>
+  <author>陈雄华，林开雄</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-18 19:35:18</submit-date-time>
+  <img-link>719392bbd4316b357caaccc39bba5672.png</img-link>
+  <book-area>java</book-area>
+  <book-intro><![CDATA[<p>
+	&nbsp; &nbsp; &nbsp;&nbsp;Spring 3.0是Spring在积蓄了3年之久后，隆重推出的一个重大升级版本，进一步加强了Spring作为Java领域第一开源平台的翘楚地位。
+</p>
+<p>
+	Spring 3.0引入了众多Java开发者翘首以盼的新功能和新特性，如OXM、校验及格式化框架、REST风格的Web编程模型等。这些新功能实用性强、易用性高，可大幅降低Java应用，特别是Java Web应用开发的难度，同时有效提升应用开发的优雅性。
+</p>
+<p>
+	《Spring3.x企业应用开发实战》是在《精通Spring 2.x——企业应用开发详解》的基础上，经过历时一年的重大调整改版而成的，本书延续了上一版本追求深度，注重原理，不停留在技术表面的写作风格，力求使读者在熟练使用Spring的各项功能的同时，还能透彻理解Spring的内部实现，真正做到知其然知其所以然。此外，本书重点突出了“实战性”的主题，力求使全书“从实际项目中来，到实际项目中去”。
+</p>
+<p>
+	<br />
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

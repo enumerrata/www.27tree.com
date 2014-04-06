@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>实战Nginx.取代Apache的高性能Web服务器</title>
+  <author>张宴</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-06 17:58:02</submit-date-time>
+  <img-link>0a212670bd452cebd0cb897cc2e7539a.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	剖析Nginx负载均衡和反向代理的配置与优化，介绍Nginx核心模块的使用方法和模块开发技巧，分享新浪播客、金山逍遥网使用Nginx的实战经验。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	内容简介
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Nginx是俄罗斯人Igor&amp;nbsp;Sysoev编写的一款高性能的HTTP和反向代理服务器。Nginx选择了epoll和kqueue作为网络I/O模型，在高连接并发的情况下，内存、CPU等系统资源消耗非常低，运行稳定。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书系统地介绍了Nginx与PHP、RUBY、Python结合的使用方法，Nginx作为反向代理与负载均衡的配置与优化，以及Nginx模块的开发方法，并给出了新浪播客、搜狐博客、六间房、Discuz!官方论坛、迅雷在线、赶集网使用Nginx的应用示例。最后全面地分析了Nginx的核心模块。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本书适合Nginx的初学者，以及有一定基础，希望深入掌握Nginx的网站架构师和Web开发人员。
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

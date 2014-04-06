@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Ubuntu 12.04 笔记本关闭独立显卡 ]]></title>
+  <content><![CDATA[<br>
+<p>
+	我的本子Lenovo Y460A ,I3核显，ATI HD5650独显。实在想不起来有什么地方能用到独显，又加上A卡驱动的悲剧性，所以禁用它。有兴趣的 FOLLOW ME！
+</p>
+<p>
+	代码:
+</p>
+<p>
+	sudo su
+</p>
+<p>
+	echo IGD &gt; /sys/kernel/debug/vgaswitcheroo/switch
+</p>
+<p>
+	echo OFF &gt; /sys/kernel/debug/vgaswitcheroo/switch
+</p>
+<p>
+	第一句是切换到集成显卡；
+</p>
+<p>
+	第二句是关闭没有连接的显卡。
+</p>
+<p>
+	如果这时你的独显指示灯熄灭，那么恭喜！你已经成功了一大半了。
+</p>
+<p>
+	然后把这两句加到/etc/rc.local里的exit 0之前保存；以便开机时禁用独立显卡。
+</p>
+<p>
+	最后验证一下：
+</p>
+<p>
+	代码：cat /sys/kernel/debug/vgaswitcheroo/switch
+</p>
+<p>
+	我的显示：
+</p>
+<p>
+	0:IGD:+:Pwr:0000:00:02.0
+</p>
+<p>
+	1:DIS: :Off:0000:01:00.0
+</p>
+<p>
+	其中的Off即表示关闭的独显。
+</p>
+<br>
+<p>
+	<strong>转自：http://www.linuxidc.com/Linux/2012-07/66667.htm</strong>
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+
+	我的本子Lenovo Y460A ,I3核显，ATI HD5650独显。实在想不起来有什么地方能用到独显，又加上A卡驱动的悲剧性，所以禁用它。有兴趣的 FOLLOW ME！
+
+
+	代码:
+
+
+	sudo su
+
+
+	echo IGD ]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

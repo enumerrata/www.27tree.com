@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Oracle SQL高级编程</title>
+  <author>[美] Karen Morton　Kerry Osborne　Robyn Sands</author>
+  <submiter-uid>19</submiter-uid>
+  <submit-date-time>2012-08-15 10:07:16</submit-date-time>
+  <img-link>046324078228309b2369fb0ea94a8d69.png</img-link>
+  <book-area>database</book-area>
+  <book-intro>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Oracle&amp;nbsp;数据库中的SQL是当今市场上功能最强大的SQL实现之一，而本书全面展示了这一工具的威力。如何才能让更多人有效地学习和掌握SQL呢？Karen&amp;nbsp;Morton及其团队在本书中提供了专业的方案：先掌握语言特性，再学习Oracle为提升语言效率而加入的支持特性，进而将两者综合考虑并在工作中加以应用。作者通过总结各自多年的软件开发和教学培训经验，与大家分享了掌握Oracle&amp;nbsp;SQL所独有的丰富功能的技巧所在，内容涵盖SQL执行、联结、集合、分析函数、子句、事务处理等多个方面。读者可以学习到以下几个方面的技巧：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	掌握Oracle数据库中独有的SQL强大特征；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	读取并理解SQL执行计划；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	快速分析并改进表现欠佳的SQL；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	通过提示及配置文件等来控制执行计划；
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在程序中优化查询而无需改动代码。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	作为Oracle&amp;nbsp;SQL经典著作之一，本书为SQL开发人员指明了前行的方向，赋予了他们不断开拓的动力。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+  <down-load-page></down-load-page>
+</root>

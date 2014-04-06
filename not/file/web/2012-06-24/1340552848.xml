@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>正则匹配php代码块</title>
+<content>&amp;lt;p&amp;gt;
+	/\&amp;amp;lt;\?php.*?\?\&amp;amp;gt;/g&amp;amp;nbsp;只能匹配单行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	/&amp;amp;lt;\?php[^\?]*\?\&amp;amp;gt;/g&amp;amp;nbsp;多行代码块都可以，亲测可用。
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-24/1340552848.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-06-25+16%3A34%3A33</date-c>
+  <conf-c>有时候拿php的模板就要用这个替换啦</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A11%3A44</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A15%3A05</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c><c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-07-07+10%3A18%3A27</date-c>
+  <conf-c>输入你的评论...</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

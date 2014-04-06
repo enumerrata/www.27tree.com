@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>32</uid>
+  <datetime>2012-10-24 22:23:09</datetime>
+  <title><![CDATA[mysql 批量删除表的脚本 你懂的]]></title>
+  <content><![CDATA[<pre name=\"code\" id=\"prettyprint\" class=\"PHP\">&lt;?php
+$hostname = \'localhost:3306\';
+$userid = \'root\'; //数据库用户名  
+$password = \'\'; //登录密码  
+$dbname = \'itsrcs\'; //数据库名称  
+
+$start = $_POST[\"s\"];
+if ($start == \"\")
+    die(\'&lt;form method=POST action=\"\"&gt;请输入要删除表的前缀：&lt;input type=\"text\" name=\"s\"&gt;&lt;input type=\"submit\" value=\"批量删除\"&gt;&lt;/form&gt;\');
+$connect = mysql_connect($hostname, $userid, $password);
+mysql_select_db($dbname);
+$result = mysql_query(\"show table status from $dbname\", $connect);
+while ($data = mysql_fetch_array($result)) {
+    if (substr($data[Name], 0, strlen($start)) == $start) {
+        mysql_query(\"drop table $data[Name]\");
+        echo \"&lt;font color=#ff0000&gt;已删除：&lt;/font&gt; $data[Name]&lt;br /&gt;\";
+    }
+}
+?&gt;  
+&lt;p&gt;&lt;a href=\"javascript:history.back();\" mce_href=\"javascript:history.back();\"&gt;返回!&lt;/a&gt;</pre>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

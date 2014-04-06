@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-18 13:10:35</datetime>
+  <title>PHP explode 函数的用法  </title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;定义和用法&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	explode()&amp;nbsp;函数把字符串分割为数组。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;语法&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	explode(separator,string,limit)参数&amp;nbsp;描述
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	separator&amp;nbsp;必需。规定在哪里分割字符串。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	string&amp;nbsp;必需。要分割的字符串。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	limit&amp;nbsp;可选。规定所返回的数组元素的最大数目。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;说明&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	本函数返回由字符串组成的数组，其中的每个元素都是由&amp;nbsp;separator&amp;nbsp;作为边界点分割出来的子字符串。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	separator&amp;nbsp;参数不能是空字符串。如果&amp;nbsp;separator&amp;nbsp;为空字符串（\"\"），explode()&amp;nbsp;将返回&amp;nbsp;FALSE。如果&amp;nbsp;separator
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	所包含的值在&amp;nbsp;string&amp;nbsp;中找不到，那么&amp;nbsp;explode()&amp;nbsp;将返回包含&amp;nbsp;string&amp;nbsp;中单个元素的数组。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果设置了&amp;nbsp;limit&amp;nbsp;参数，则返回的数组包含最多&amp;nbsp;limit&amp;nbsp;个元素，而最后那个元素将包含&amp;nbsp;string&amp;nbsp;的剩余部分。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	如果&amp;nbsp;limit&amp;nbsp;参数是负数，则返回除了最后的&amp;nbsp;-limit&amp;nbsp;个元素外的所有元素。此特性是&amp;nbsp;PHP&amp;nbsp;5.1.0
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	中新增的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;提示和注释&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	注释：参数&amp;nbsp;limit&amp;nbsp;是在&amp;nbsp;PHP&amp;nbsp;4.0.1&amp;nbsp;中加入的。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	注释：由于历史原因，虽然&amp;nbsp;implode()&amp;nbsp;可以接收两种参数顺序，但是&amp;nbsp;explode()&amp;nbsp;不行。你必须保证&amp;nbsp;separator&amp;nbsp;参数在&amp;nbsp;string
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	参数之前才行。
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;strong&gt;例子&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	在本例中，我们将把字符串分割为数组：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&amp;lt;?php
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	$str&amp;nbsp;=&amp;nbsp;\"Hello&amp;nbsp;world.&amp;nbsp;It&amp;nbsp;s&amp;nbsp;a&amp;nbsp;beautiful&amp;nbsp;day.\";
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	print_r
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	(explode(\"&amp;nbsp;\",$str));
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	?&amp;gt;输出：
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	Array
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	(
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[0]&amp;nbsp;=&amp;gt;&amp;nbsp;Hello
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[1]&amp;nbsp;=&amp;gt;&amp;nbsp;world.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[2]&amp;nbsp;=&amp;gt;&amp;nbsp;It&amp;nbsp;s
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[3]
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	=&amp;gt;&amp;nbsp;a
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[4]&amp;nbsp;=&amp;gt;&amp;nbsp;beautiful
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	[5]&amp;nbsp;=&amp;gt;&amp;nbsp;day.
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	)
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>定义和用法
+
+
+	explode() 函数把字符串分割为数组。
+
+
+	语法
+
+
+	explode(separator,string,limit)参数 描述
+
+
+	separator 必需。规定在哪里分割字符串。
+
+
+	string 必需。要分割的字符串。
+
+
+	limit 可选。规定所返回的数组元素的最大数目。
+
+
+	说明
+
+
+	本函数返回由字符串组成的数组</contentx>
+  <tags>_null_</tags>
+</root>

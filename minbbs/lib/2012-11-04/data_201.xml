@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>2</uid>
+  <datetime>2012-11-04 14:06:27</datetime>
+  <title><![CDATA[刚刚写的模板替换算法，重点在正则]]></title>
+  <content><![CDATA[<p>
+	分享了
+</p>
+<p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;script type=\"text/javascript\"&gt;
+		function templates_replace(_string, _key_array) {
+			function getHashValue(_hashKey) {
+				return typeof _key_array[_hashKey] !== \'undefined\' ? _key_array[_hashKey]	: \'\';
+			}
+			return _string.replace(/\\$\\{([^\\s\\:\\}]+)(?:\\:([^\\s\\:\\}]+))?\\}/g,
+					function(key, xs) {
+						return getHashValue(xs);
+					});
+		}
+		console.log(re(\'x${name}x${2}\', {
+			2 : \'_is\',
+			name:\'koodo\'
+		}));
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

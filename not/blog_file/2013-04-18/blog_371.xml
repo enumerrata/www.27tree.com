@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[关于PHP实现异步操作的研究]]></title>
+  <content><![CDATA[<p>
+	<span style=\"font-size:14px;\"><strong>1.为什么PHP需要异步操作？</strong></span>
+</p>
+<p>
+	一般来说PHP适用的场合是web页面展示等耗时比较短的任务，如果对于比较花时间的操作如resize图片、大数据导入、批量发送EDM、SMS等，就很容易出现操作超时情况。你可以说我可以设置无限超时时间，等等你也要知道PHP有一个工作模式是fastcgi，PHP无限不超时，不代表 fastcgi相应不超时……如果你还想说要fastcgi相应永不超时，我建议你应该跟你们的运维人员讨论去……
+</p>
+<p>
+	这个时候异步的操作就发挥他的作用了，由于是非阻塞操作，操作会即时返回，然后在后台再慢慢干活。管你超时不超时的，我就没有在当前的进程/线程下干活。看吧是不是很美好，不过其实这也是个坑……
+</p>
+<p>
+	<span style=\"font-size:14px;\"><strong>2.PHP可以实现异步操作吗？</strong></span>
+</p>
+<p>
+	答案是肯定的，不过网上各种的纯PHP实现得就有点别扭了。socket模式、挂起进程模式、有的还直接fork进程。很好，各路神仙各显神通。如果运维人员看到的话，一定会×××××你们的，不把web server跑死才怪……
+</p>
+<p>
+	那还有其他更好的方法去实现这个异步操作的可能么？有，现在我们只有想怎么开外挂了。查一下PECL主流的外挂方案有一堆的××MQ（消息队列），其中有个用于任务分配的外挂进入了我们的视线Gearman(其实这家伙才是角，我就不详细介绍了，点连接看介绍)。
+</p>
+<p>
+	<span style=\"font-size:14px;\"><strong>3.为什么选择Gearman?</strong></span>
+</p>
+<p>
+	别的不说，就说他的client多，支持很多语言的client，你可以使用大部分你喜欢的语言去写worker。我个人是很烦语言之争，你喜欢用神码语言写worker都随你喜欢。有数据持久化支持（就是把队列保存到数据库介质中，那故障恢复也好做），有群集支持（其实很多××MQ都有这些功能）。 PECL上有扩展，也有纯PHP实现扩展。反正这个Gearman也活了很久了，杂七杂八的问题都基本上解决了。
+</p>
+<p>
+	<strong><span style=\"font-size:14px;\">4.基本思路</span></strong>
+</p>
+<p>
+	有了Gearman这外挂就简单多了。就是向gearman发送一个任务，把执行的任务发出去，然后等待worker去调用PHP cli去运行我们的php代码。
+</p>
+<p>
+	我就写了一下一个python的worker（别问我为啥用python，1.我会python，2.linux下不用装runtime），你可以自己根据思路写一个PHP的worker，不过嘛，本人是不太信得过PHP跑的worker。其他语言饭可以用java、node.js 或者其他语言实现一个worker试试。对用Golang写worker有兴趣的朋友可以找我。
+</p>
+<p>
+	<a href=\"http://code.google.com/p/phpasync-for-gearman/downloads/detail?name=phpasync_worker_py.zip&amp;can=2&amp;q=\" target=\"_blank\">phpasync_worker_py</a>
+</p>
+<br>
+<p>
+	不好意思，里面是没有注释的。一个配置文件，一个py脚本。基本的功能也就是分析一下调用的参数，然后调用PHP Cli，就是那样子而已。要让py脚本跑起来请自行安装python的gearman模块。
+</p>
+<p>
+	然后到PHP的部分先上测试代码：
+</p>
+<pre name=\"code\" id=\"prettyprint\" class=\"javascript\">&lt;?php  
+require_once \'PHPAsyncClient.php\';  
+date_default_timezone_set(\'Asia/Shanghai\');  
+ 
+class AsyncTest {  
+ 
+    const 
+        LOG_FILE = \'/debug.log\';  
+ 
+    static public function run() {  
+        if (PHPAsyncClient::in_callback(__FILE__)) {  
+            self::log(\'php Async callback\');  
+            PHPAsyncClient::parse();  
+            return;  
+        }  
+        if (PHPAsyncClient::is_main(__FILE__)) {  
+            self::log(\'main run\');  
+            $async_call = PHPAsyncClient::getInstance();  
+            $async_call-&gt;AsyncCall(\'AsyncTest\', \'callback\', array(  
+                \'content\' =&gt; \'Hello World!!!\',  
+            ), array(  
+                \'class\' =&gt; \'AsyncTest\',  
+                \'method\' =&gt; \'callback\',  
+                \'params\' =&gt; array(  
+                    \'content\' =&gt; \'Hello Callback!\',  
+                ),  
+            ), __FILE__);  
+            return;  
+        }  
+    }  
+ 
+    static public function callback($args) {  
+        self::log(\'AsyncTest callback run\');  
+        self::log(\'AsyncTest callback args:\'.print_r($args, true));  
+    }  
+ 
+    static public function log($content) {  
+        $fullname = dirname(__FILE__).self::LOG_FILE;  
+        $content = date(\'[Y-m-d H:i:s]\').$content.\"\\n\";  
+        file_put_contents($fullname, $content, FILE_APPEND);  
+    }  
+}  
+ 
+AsyncTest::run(); </pre>
+<p>
+	就3个静态方法，一个是用于调试的log方法，其他都是字面意思。这个例子是对这种调用方式有个初步印象。然后直接上PHP的所有源码：
+</p>
+<p>
+	<a href=\"http://code.google.com/p/phpasync-for-gearman/downloads/detail?name=php_async.zip&amp;can=2&amp;q=\" target=\"_blank\">php_async.zip</a>
+</p>
+<br>]]></content>
+  <contentx><![CDATA[
+	1.为什么PHP需要异步操作？
+
+
+	一般来说PHP适用的场合是web页面展示等耗时比较短的任务，如果对于比较花时间的操作如resize图片、大数据导入、批量发送EDM、SMS等，就很容易出现操作超时情况。你可以说我可以设置无限超时时间]]></contentx>
+  <tags>_null_</tags>
+  <parseVersion>1.1</parseVersion>
+</root>

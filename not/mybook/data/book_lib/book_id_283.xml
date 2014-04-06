@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[Professional WordPress, 2nd Edition]]></title>
+  <author>Brad Williams, David Damstra, Hal Stern</author>
+  <submiter-uid>32</submiter-uid>
+  <submit-date-time>2013-02-04 11:25:14</submit-date-time>
+  <img-link>fdaee259db731c81c2043544915e9200.jpg</img-link>
+  <book-area>web</book-area>
+  <book-intro><![CDATA[WordPress is the most popular self-hosted open source website softwarein use today, and the latest version makes it even simpler to operate. Packed with real-world examples for load balancing and multiusers, this esteemed resource replaces some of the more basic material with more advanced content. Every single chapter has been reworked to provide the most current and proper methods for developing and designing in WordPress. Coverage of HTML5, CSS3, and JavaScript and new chapters on custom post types, custom taxonomies, Multisite, and extensions of themes bring the content of this book completely up-to-date and provides you with all you need to deploy successful WordPress sites.]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>19</uid>
+  <datetime>2012-08-18 12:27:58</datetime>
+  <title>IE7 img图片下存在间隙的解决方法</title>
+  <content>&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	对img标签用css代码\"display:block;\"即可。（不要用vertical-align:middle;这个不好）
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	顺便吐槽一下，有时IE6会有1px的误差，起因竟然是对象的宽或高的长度是奇数！
+&lt;/p&gt;
+&lt;p&amp;nbsp;style=\"text-indent:2em;\"&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</content>
+  <contentx>对img标签用css代码\"display:block;\"即可。（不要用vertical-align:middle;这个不好）
+
+
+	顺便吐槽一下，有时IE6会有1px的误差，起因竟然是对象的宽或高的长度是奇数！</contentx>
+  <tags>_null_</tags>
+</root>

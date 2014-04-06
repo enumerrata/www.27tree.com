@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>MFC实现全屏功能的代码</title>
+<content>&amp;lt;p&amp;gt;
+	很多的播放器都有快捷键控制窗口以全屏幕的方式显示。给应用程序加上全屏幕的功能，并不需要很多的代码，比如给一个基于对话框的应用程序加上全屏功能只需要以下少量代码就可以工作了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;void&amp;amp;nbsp;CFullScreenDlg::FullScreenView(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;RECT&amp;amp;nbsp;rectDesktop;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;WINDOWPLACEMENT&amp;amp;nbsp;wpNew;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(!IsFullScreen())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;We&amp;amp;nbsp;ll&amp;amp;nbsp;need&amp;amp;nbsp;these&amp;amp;nbsp;to&amp;amp;nbsp;restore&amp;amp;nbsp;the&amp;amp;nbsp;original&amp;amp;nbsp;state.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;GetWindowPlacement&amp;amp;nbsp;(&amp;amp;m_wpPrev);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//Adjust&amp;amp;nbsp;RECT&amp;amp;nbsp;to&amp;amp;nbsp;new&amp;amp;nbsp;size&amp;amp;nbsp;of&amp;amp;nbsp;window
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;::GetWindowRect&amp;amp;nbsp;(&amp;amp;nbsp;::GetDesktopWindow(),&amp;amp;nbsp;&amp;amp;rectDesktop&amp;amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;::AdjustWindowRectEx(&amp;amp;rectDesktop,&amp;amp;nbsp;GetStyle(),&amp;amp;nbsp;FALSE,&amp;amp;nbsp;GetExStyle());
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;Remember&amp;amp;nbsp;this&amp;amp;nbsp;for&amp;amp;nbsp;OnGetMinMaxInfo()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;m_rcFullScreenRect&amp;amp;nbsp;=&amp;amp;nbsp;rectDesktop;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;wpNew&amp;amp;nbsp;=&amp;amp;nbsp;m_wpPrev;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;wpNew.showCmd&amp;amp;nbsp;=&amp;amp;nbsp;&amp;amp;nbsp;SW_SHOWNORMAL;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;wpNew.rcNormalPosition&amp;amp;nbsp;=&amp;amp;nbsp;rectDesktop;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;m_bFullScreen=true;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;else
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;退出全屏幕时恢复到原来的窗口状态
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;m_bFullScreen=false;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;wpNew&amp;amp;nbsp;=&amp;amp;nbsp;m_wpPrev;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;SetWindowPlacement&amp;amp;nbsp;(&amp;amp;nbsp;&amp;amp;wpNew&amp;amp;nbsp;);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;void&amp;amp;nbsp;CFullScreenDlg::OnGetMinMaxInfo(MINMAXINFO*&amp;amp;nbsp;lpMMI)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;TODO:&amp;amp;nbsp;Add&amp;amp;nbsp;your&amp;amp;nbsp;message&amp;amp;nbsp;handler&amp;amp;nbsp;code&amp;amp;nbsp;here&amp;amp;nbsp;and/or&amp;amp;nbsp;call&amp;amp;nbsp;default
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;if&amp;amp;nbsp;(IsFullScreen())
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxSize.y&amp;amp;nbsp;=&amp;amp;nbsp;m_rcFullScreenRect.Height();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxTrackSize.y&amp;amp;nbsp;=&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxSize.y;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxSize.x&amp;amp;nbsp;=&amp;amp;nbsp;m_rcFullScreenRect.Width();
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxTrackSize.x&amp;amp;nbsp;=&amp;amp;nbsp;lpMMI-&amp;amp;gt;ptMaxSize.x;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;CDialog::OnGetMinMaxInfo(lpMMI);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;bool&amp;amp;nbsp;CFullScreenDlg::IsFullScreen(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;//&amp;amp;nbsp;记录窗口当前是否处于全屏状态
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;return&amp;amp;nbsp;m_bFullScreen;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;}
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-07-03/1341277225.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <uid>73</uid>
+  <datetime>2012-11-12 23:37:48</datetime>
+  <title><![CDATA[Ubuntu将从用户电脑移除Java]]></title>
+  <content><![CDATA[<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">Sun在2006年推出了Java操作系统发行版许可证，允许Linux发行版发行Java软件包。在甲骨文收购Sun接管Java之后，甲骨文决定撤销发行许可证，这意味着Linux发行版如Ubuntu将无权在操作系统中捆绑Java包。</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">Ubuntu的开发商Canonical将从软件仓库内移除Sun Java JDK，并从用户机器上卸载Java程序。安装了sun-java-6的用户将在未来的软件更新中看到卸载提示，用户可以选择甲骨文Java</span>
+</p>
+<p style=\"text-indent:2em;\">
+	<span style=\"font-size:14px;\">JDK的开源替代OpenJDK。受到影响的操作系统版本为10.04 LTs、 Ubuntu 10.10和11.04。</span>
+</p>]]></content>
+  <parseVersion>1.1</parseVersion>
+  <state>0</state>
+</root>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>Dojo 中 DOM操作比较常用的函数</title>
+<content>&amp;lt;p&amp;gt;
+	DOM&amp;nbsp;实用函数通过提供根据&amp;nbsp;ID&amp;nbsp;寻找条目的能力或者使用&amp;nbsp;CSS3&amp;nbsp;选择器，使得使用&amp;nbsp;DOM&amp;nbsp;中的元素比较容易。还有一些其他功能，可以创建和销毁元素，以及操作现有元素内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo.byId
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo.byId&amp;nbsp;函数使您可以通过&amp;nbsp;id&amp;nbsp;属性选择一个&amp;nbsp;DOM&amp;nbsp;节点。该函数是标准&amp;nbsp;JavaScript&amp;nbsp;document.getElementById&amp;nbsp;函数的一个别名，但是显然简短易书写，而且还解决了很多跨浏览器矛盾。现在，我们来使用&amp;nbsp;Firebug&amp;nbsp;控制台，通过&amp;nbsp;ID&amp;nbsp;“message”&amp;nbsp;获取&amp;nbsp;DOM&amp;nbsp;元素内容：dojo.byId(message).innerHTML;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在控制台左边您将看见清单&amp;nbsp;3&amp;nbsp;中显示的响应。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	清单&amp;nbsp;3.&amp;nbsp;响应
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;nbsp;dojo.byId(message).innerHTML;
+This&amp;nbsp;is&amp;nbsp;a&amp;nbsp;DIV&amp;nbsp;element&amp;nbsp;with&amp;nbsp;id&amp;nbsp;attribute&amp;nbsp;message1.&amp;lt;/pre&amp;gt;
+dojo.fadeOut&amp;nbsp;命令
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;dojo.fadeOut({
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;node:&amp;nbsp;dojo.byId(message),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;duration:&amp;nbsp;600
+}).play();&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	您可以看到元素逐渐淡出，从页面上消失了。要想使其再次渐显回来，在命令行中将&amp;nbsp;fadeOut&amp;nbsp;修改为&amp;nbsp;fadeIn，再次运行。很不错吧？这演示了如何使用&amp;nbsp;Firebug&amp;nbsp;控制台动态操控当前页面。当然，这些改进只适用于当前页面加载，并不是持久性的，如果您离开页面或者刷新了页面，这些更改将不再有效。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	dojo.query
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	在最后这一小节，您将学习如何通过使用其&amp;nbsp;id&amp;nbsp;属性获取对单个&amp;nbsp;DOM&amp;nbsp;元素的引用。虽然这很有用，但将这一属性添加到您想交互的每个元素并不可行。当然，id&amp;nbsp;必须是惟一的。那么如果您想一次引用几个元素呢？这就需要引入&amp;nbsp;dojo.query&amp;nbsp;函数了。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	如果您想一次引用&amp;nbsp;ID&amp;nbsp;为&amp;nbsp;“list”&amp;nbsp;的无序列表的所有&amp;nbsp;&amp;amp;lt;li&amp;amp;gt;&amp;nbsp;子元素，然后将每个元素的内容打印到控制台上。有了&amp;nbsp;dojo.query，这将非常简单（见清单&amp;nbsp;5）。
+&amp;lt;/p&amp;gt;
+清单&amp;nbsp;5.&amp;nbsp;dojo.query&amp;nbsp;命令
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"javascript\"&amp;gt;dojo.query(#list&amp;nbsp;li).forEach(function(item)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;console.log(item.innerHTML);
+});&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/web/2012-06-19/1340113210.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

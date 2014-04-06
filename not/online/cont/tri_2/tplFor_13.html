@@ -1,0 +1,51 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP $_GET</h1>
+</div>
+<div>
+
+<p><b>$_GET 变量用于收集来自 method="get" 的表单中的值。</b></p>
+
+<h1>$_GET 变量</h1>
+
+<p>$_GET 变量是一个数组，内容是由 HTTP GET 方法发送的变量名称和值。</p>
+<p>$_GET 变量用于收集来自 method="get" 的表单中的值。从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），并且对发送的信息量也有限制（最多 100 个字符）。</p>
+
+<h2>例子</h2>
+
+<code>
+&lt;form action="welcome.php" method="get"&gt;<br />
+Name: &lt;input type="text" name="name" /&gt;<br />
+Age: &lt;input type="text" name="age" /&gt;<br />
+&lt;input type="submit" /&gt;<br />
+&lt;/form&gt;
+</code>
+
+<p>当用户点击提交按钮时，发送的 URL 会类似这样：</p>
+
+<code>http://www.itsrcs.com/welcome.php?name=Peter&age=37</code>
+
+<p>"welcome.php" 文件现在可以通过 $_GET 变量来获取表单数据了（请注意，表单域的名称会自动成为 $_GET 数组中的 ID 键）：</p>
+
+<code>
+Welcome &lt;?php echo $_GET["name"]; ?&gt;.&lt;br /&gt;<br />
+You are &lt;?php echo $_GET["age"]; ?&gt; years old!
+</code>
+
+<h1>为什么使用 $_GET？</h1>
+
+<p><b>注释</b>：在使用 $_GET 变量时，所有的变量名和值都会显示在 URL 中。所以在发送密码或其他敏感信息时，不应该使用这个方法。不过，正因为变量显示在 URL 中，因此可以在收藏夹中收藏该页面。在某些情况下，这是很有用的。</p>
+<p><b>注释</b>：HTTP GET 方法不适合大型的变量值；值是不能超过 100 个字符的。</p>
+
+<h1>$_REQUEST 变量</h1>
+
+<p>PHP 的 $_REQUEST 变量包含了 $_GET, $_POST 以及 $_COOKIE 的内容。</p>
+<p>PHP 的 $_REQUEST 变量可用来取得通过 GET 和 POST 方法发送的表单数据的结果。</p>
+
+<h2>例子</h2>
+
+<code>
+Welcome &lt;?php echo $_REQUEST["name"]; ?&gt;.&lt;br /&gt;<br />
+You are &lt;?php echo $_REQUEST["age"]; ?&gt; years old!
+</code>
+
+</div>

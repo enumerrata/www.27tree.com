@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>php缓存技术详解</title>
+<content>&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;一、缓存技术:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	有些信息比方经常不变的,但是还是能变的信息放在缓存中以加快显示速度,这是很有价值的,所谓的缓存,通俗的理解就是一些保存在服务器端的共用信
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	息.它是于服务器同生死的,我们在保存缓存的时候可以指定下次更新的时间的判断,比方要在5分钟更新一次,可以记录上次更新的时间,和当前时间比较,如果
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	大于&amp;nbsp;5&amp;nbsp;分钟&amp;nbsp;,读取数据库,更新换成,否则直接读取缓存数据,当然,缓存需要客户端用户激活的,只需一次.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_start&amp;lt;/strong&amp;gt;:&amp;nbsp;打开输出缓冲区.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式&amp;nbsp;void&amp;nbsp;ob_start(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：当缓冲区激活时，所有来自PHP程序的非文件头信息均不会发送，而是保存在内部缓冲区。为了输出缓冲区的内容，可以使用ob_end_flush()或flush()输出缓冲区的内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;Flush&amp;lt;/strong&amp;gt;：刷新缓冲区的内容，输出。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：flush()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：这个函数经常使用,效率很高。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_get_contents&amp;lt;/strong&amp;gt;&amp;nbsp;：返回内部缓冲区的内容。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：string&amp;nbsp;ob_get_contents(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：这个函数会返回当前缓冲区中的内容，如果输出缓冲区没有激活,则返回&amp;nbsp;FALSE.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_get_length&amp;lt;/strong&amp;gt;：返回内部缓冲区的长度。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：int&amp;nbsp;ob_get_length(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：这个函数会返回当前缓冲区中的长度；和ob_get_contents一样，如果输出缓冲区没有激活,则返回&amp;nbsp;FALSE.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_end_clean&amp;lt;/strong&amp;gt;：删除内部缓冲区的内容，并且关闭内部缓冲区
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：void&amp;nbsp;ob_end_clean(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：这个函数不会输出内部缓冲区的内容而是把它删除
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_end_flush&amp;lt;/strong&amp;gt;:发送内部缓冲区的内容到浏览器，并且关闭输出缓冲区
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：void&amp;nbsp;ob_end_flush(void)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：这个函数发送输出缓冲区的内容（如果有的话）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;ob_implicit_flush&amp;lt;/strong&amp;gt;：打开或关闭绝对刷新
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;函数格式：void&amp;nbsp;ob_implicit_flush&amp;nbsp;([int&amp;nbsp;flag])
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;说明：默认为关闭缓冲区，打开绝对输出后，每个脚本输出都直接发送到浏览器，不再需要调用&amp;nbsp;flush()&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;二、文件写入:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;int&amp;nbsp;fwrite&amp;lt;/strong&amp;gt;&amp;nbsp;(&amp;nbsp;resource&amp;nbsp;handle,&amp;nbsp;string&amp;nbsp;string&amp;nbsp;[,&amp;nbsp;int&amp;nbsp;length]&amp;nbsp;)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fwrite()&amp;nbsp;把&amp;nbsp;string&amp;nbsp;的内容写入&amp;nbsp;文件指针&amp;nbsp;handle&amp;nbsp;处。&amp;nbsp;如果指定了&amp;nbsp;length，当写入了&amp;nbsp;length&amp;nbsp;个字节或者写完了&amp;nbsp;string&amp;nbsp;以后，写入就会停止，视乎先碰到哪种情况。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	fwrite()&amp;nbsp;返回写入的字符数，出现错误时则返回&amp;nbsp;FALSE&amp;nbsp;。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关参考官方网站:&amp;nbsp;文件参考
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;三、解决方案&amp;nbsp;&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	思路:开启&amp;nbsp;ob_start缓冲,当已经调出数据的时候获取&amp;nbsp;ob_get_contents,然后生成静态页,ob_end_clean清除缓冲.ok,就这么来,来看一个例子(php+mysql的结合):
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	创建数据库:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"sql\"&amp;gt;CREATE&amp;nbsp;TABLE&amp;nbsp;`bihtml`&amp;nbsp;(&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;`id`&amp;nbsp;int(11)&amp;nbsp;NOT&amp;nbsp;NULL&amp;nbsp;auto_increment,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;`szdtitle`&amp;nbsp;varchar(16)&amp;nbsp;NOT&amp;nbsp;NULL,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;`szdcontent`&amp;nbsp;text&amp;nbsp;NOT&amp;nbsp;NULL,&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;PRIMARY&amp;nbsp;KEY&amp;nbsp;&amp;nbsp;&amp;nbsp;(`id`)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+)&amp;nbsp;TYPE=MyISAM;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	获取当前的ID,并导入模板:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;strong&amp;gt;四、说明事项&amp;lt;/strong&amp;gt;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;ol&amp;gt;
+	&amp;lt;li&amp;gt;
+		一般建议管理员添加数据的时候就生成静态页面,可以考虑记录生成的文件名次和路径.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		php主要是&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ob_starts()和&amp;nbsp;ob_get_contents,生成静态页面的时候很有用,当然也可以考虑调出数据库直接替换模板里面的变量也是可以的.
+	&amp;lt;/li&amp;gt;
+	&amp;lt;li&amp;gt;
+		主要的模板使用smarty,phplib都是可以的,smarty使用比较简易.
+	&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;p&amp;gt;
+	一、引论
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	PHP,一门最近几年兴起的web设计脚本语言,由于它的强大和可伸缩性,近几年来得到长足的发展,php相比传统的asp网站,在速度上有绝对的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	优势,想mssql转6万条数据php如需要40秒,asp不下2分钟.但是,由于网站的数据越来越多,我们渴求能更快速的调用数据,不必要每次都从数据
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	库掉,我们可以从其他的地方,比方一个文件,或者某个内存地址,这就是php的缓存技术,也就是Cache技术.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	二、分析深入
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	一般来说,缓存的目的是把数据放在一个地方让访问的更快点,毫无疑问,内存是最快的,但是,几百M的数据能往内存放么?这不现实,当然,有的时候临
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	时放如服务器缓存,如ob_start()这个缓存页面开启的话在发送文件头之前页面内容都被缓存在内存中,知道等页面输出自动清楚或者等待
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ob_get_contents的返回,或者被ob_end_clean显示的清除,这在静态页面的生成中能很好的利用,在模板中能得到很好的体现,我的
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这篇文章深入的讨论了:谈PHP生成静态页面,这是一种方式,但这是临时性的,不是解决我们问题的好方法.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	另外,在asp中有一对象application,可以保存公用的参数,这也算点缓存,但在php,我至今没看到开发者产出这种对象,的确,没必
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	要.asp.net的页面缓存技术就用的是viewstate,而cache就是文件关联,(不一定准确),文件被修改,更新缓存,文件没被修改而且不超
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	时(注释1),就读取缓存,返回结果,就是这个思路,看看这个源码:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	下面我打断这个代码逐行解释.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	三、程序透析
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个缓存类(类没什么好怕的.请继续看)名称是cache,有2个属性:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;$cache_dir;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	private&amp;nbsp;$expireTime=180;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	$cache_dir是缓存文件所放的相对网站目录的父目录,&amp;nbsp;$expireTime(注释一)是我们缓存的数据过期的时间,主要是这个思路:
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	当数据或者文件被加载的时候,先判断缓存文件存在不,返回false&amp;nbsp;,文件最后修改时间和缓存的时间和比当前时间大不,大的话说明缓存还没到期,小的话返回false,当返回false的时候,读取原始数据,写入缓存文件中,返回数据.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	接着看程序:
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__construct($cache_dirname){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!@is_dir($cache_dirname)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!@mkdir($cache_dirname,0777)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warn(&amp;nbsp;缓存文件不存在而且不能创建,需要手动创建.&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;cache_dir&amp;nbsp;=&amp;nbsp;$cache_dirname;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+当类第一次被实例的时候构造默认函数带参数缓存文件名称,如文件不存在,创建一个有编辑权限的文件夹,创建失败的时候抛出异常.然后把cache类的&amp;nbsp;$cache_dir属性设置为这个文件夹名称,我们的所有缓存文件都是在这个文件夹下面的.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__destruct(){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;&amp;nbsp;Cache&amp;nbsp;class&amp;nbsp;bye.&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+这是class类的析构函数,为了演示,我们输出一个字符串表示我们释放cache类资源成功.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;warn($errorstring){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;\"&amp;amp;lt;b&amp;amp;gt;&amp;amp;lt;font&amp;nbsp;color=&amp;nbsp;red&amp;nbsp;&amp;amp;gt;发生错误:&amp;amp;lt;pre&amp;amp;gt;\".$errorstring.\"&amp;amp;lt;/pre&amp;amp;gt;&amp;amp;lt;/font&amp;amp;gt;&amp;amp;lt;/b&amp;amp;gt;\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这个方法输出错误信息.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	这个方法返回当前url的信息,这是我看国外很多人的cms系统这样做,主要是缓存x.php?page=1,x.php?page=2,等这种文件的,这里列出是为了扩展的这个cache类功能的.
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;cache_page($pageurl,$pagedata){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!$fso=fopen($pageurl,&amp;nbsp;w&amp;nbsp;)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法打开缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!flock($fso,LOCK_EX)){//LOCK_NB,排它型锁定&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法锁定缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!fwrite($fso,$pagedata)){//写入字节流,serialize写入其他格式&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法写入缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;flock($fso,LOCK_UN);//释放锁定&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fclose($fso);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;true;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	cache_page方法分别传入的是缓存的文件名称和数据,这是把数据写到文件里的方法,先用fopen打开文件,然后调用句柄锁定这个文件,然后用fwrite写入文件,最后释放这个句柄,任何一步发生错误将抛出错误.&amp;nbsp;您可能看到这个注释：
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	写入字节流,serialize写入其他格式
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	顺便一提的是如果我们要把一个数组,(可以从MySQL数据库里面select查询除了的结果)用serialize函数写入,用unserialize读取到原来的类型.
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;display_cache($cacheFile){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!file_exists($cacheFile)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warn(&amp;nbsp;无法读取缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;&amp;nbsp;读取缓存文件:&amp;nbsp;.$cacheFile;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//return&amp;nbsp;unserialize(file_get_contents($cacheFile));&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$fso&amp;nbsp;=&amp;nbsp;fopen($cacheFile,&amp;nbsp;&amp;nbsp;r&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data&amp;nbsp;=&amp;nbsp;fread($fso,&amp;nbsp;filesize($cacheFile));&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fclose($fso);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+这是由文件名称读取缓存的方法,直接打开文件,读取全部,如果文件不存在的或者无法读取的话返回false,当然,你感到不人性的话,可以重新生成缓存.
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;readData($cacheFile=&amp;nbsp;default_cache.txt&amp;nbsp;){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$cacheFile&amp;nbsp;=&amp;nbsp;$this-&amp;amp;gt;cache_dir.\"/\".$cacheFile;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(file_exists($cacheFile)&amp;amp;&amp;amp;filemtime($cacheFile)&amp;amp;gt;(time()-$this-&amp;amp;gt;expireTime)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data=$this-&amp;amp;gt;display_cache($cacheFile);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data=\"from&amp;nbsp;here&amp;nbsp;wo&amp;nbsp;can&amp;nbsp;get&amp;nbsp;it&amp;nbsp;from&amp;nbsp;mysql&amp;nbsp;database,update&amp;nbsp;time&amp;nbsp;is&amp;nbsp;&amp;amp;lt;b&amp;amp;gt;\".date(&amp;nbsp;l&amp;nbsp;dS&amp;nbsp;\\of&amp;nbsp;F&amp;nbsp;Y&amp;nbsp;h:i:s&amp;nbsp;A&amp;nbsp;).\"&amp;amp;lt;/b&amp;amp;gt;,过期时间是:\".date(&amp;nbsp;l&amp;nbsp;dS&amp;nbsp;\\of&amp;nbsp;F&amp;nbsp;Y&amp;nbsp;h:i:s&amp;nbsp;A&amp;nbsp;,time()+$this-&amp;amp;gt;expireTime).\"----------\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;cache_page($cacheFile,$data);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	这个函数是我们调用的方法,可以写成接口的方法,由传入参数判断文件存在不,文件最后修改时间+expireTime的时间是不是过了当前时间(大
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	于的话说明没有过期),如果文件不存在或者已经过期,重新加载原始数据,这里,为了简单期间,我们是直接源是字符串,您可以把cache类继承某类,取到
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	数据库的数据.(注释2)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	四、补充说明,结语
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注释一：这个缓存的时间您可以自己调,可以根据时间情况读取数组,xml,缓存等,请按照您的方便,值得一提的是缓存的时间(也就是缓存的key)也用缓存控制,.这在cms系统中被广泛使用,他们把要更新的key放在缓存中,非常容易控制全战.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	注释二：php5开始支持类继承,这是让人兴奋的,把网站全局休息写在一个配置的类里面,再写与数据层交互的类(如与MySQL交互的类),我们的这个cache类继承数据交互的类,可以非常容易的读取数据库,这是外话,此处不再展开,有时间和大家详谈.
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	特别说明,这个类文件针对的&amp;lt;strong&amp;gt;php5以上版本&amp;lt;/strong&amp;gt;,其他版本的请不要使用类.
+&amp;lt;/p&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;get_url()&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(!isset($_SERVER[&amp;nbsp;REQUEST_URI&amp;nbsp;]))&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;=&amp;nbsp;$_SERVER[&amp;nbsp;REQUEST_URI&amp;nbsp;];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;=&amp;nbsp;$_SERVER[&amp;nbsp;SCRIPT_NAME&amp;nbsp;];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;.=&amp;nbsp;(!emptyempty($_SERVER[&amp;nbsp;QUERY_STRING&amp;nbsp;]))&amp;nbsp;?&amp;nbsp;&amp;nbsp;?&amp;nbsp;&amp;nbsp;.&amp;nbsp;$_SERVER[&amp;nbsp;QUERY_STRING&amp;nbsp;]&amp;nbsp;:&amp;nbsp;&amp;nbsp;&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$url;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;amp;lt;?php&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;class&amp;nbsp;cache{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Class&amp;nbsp;Name:&amp;nbsp;cache&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Description:&amp;nbsp;control&amp;nbsp;to&amp;nbsp;cache&amp;nbsp;data,$cache_out_time&amp;nbsp;is&amp;nbsp;a&amp;nbsp;array&amp;nbsp;to&amp;nbsp;save&amp;nbsp;cache&amp;nbsp;date&amp;nbsp;time&amp;nbsp;out.&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Version:&amp;nbsp;1.0&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Author:&amp;nbsp;老农&amp;nbsp;cjjer&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Last&amp;nbsp;modify:2006-2-26&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Author&amp;nbsp;URL:&amp;nbsp;http://www.cjjer.com&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;*/&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;private&amp;nbsp;$cache_dir;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;private&amp;nbsp;$expireTime=180;//缓存的时间是&amp;nbsp;60&amp;nbsp;秒&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__construct($cache_dirname){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!@is_dir($cache_dirname)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!@mkdir($cache_dirname,0777)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warn(&amp;nbsp;缓存文件不存在而且不能创建,需要手动创建.&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;cache_dir&amp;nbsp;=&amp;nbsp;$cache_dirname;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;__destruct(){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;&amp;nbsp;Cache&amp;nbsp;class&amp;nbsp;bye.&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;get_url()&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(!isset($_SERVER[&amp;nbsp;REQUEST_URI&amp;nbsp;]))&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;=&amp;nbsp;$_SERVER[&amp;nbsp;REQUEST_URI&amp;nbsp;];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;=&amp;nbsp;$_SERVER[&amp;nbsp;SCRIPT_NAME&amp;nbsp;];&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$url&amp;nbsp;.=&amp;nbsp;(!emptyempty($_SERVER[&amp;nbsp;QUERY_STRING&amp;nbsp;]))&amp;nbsp;?&amp;nbsp;&amp;nbsp;?&amp;nbsp;&amp;nbsp;.&amp;nbsp;$_SERVER[&amp;nbsp;QUERY_STRING&amp;nbsp;]&amp;nbsp;:&amp;nbsp;&amp;nbsp;&amp;nbsp;;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$url;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;warn($errorstring){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;\"&amp;amp;lt;b&amp;amp;gt;&amp;amp;lt;font&amp;nbsp;color=&amp;nbsp;red&amp;nbsp;&amp;amp;gt;发生错误:&amp;amp;lt;pre&amp;amp;gt;\".$errorstring.\"&amp;amp;lt;/pre&amp;amp;gt;&amp;amp;lt;/font&amp;amp;gt;&amp;amp;lt;/b&amp;amp;gt;\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;cache_page($pageurl,$pagedata){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!$fso=fopen($pageurl,&amp;nbsp;w&amp;nbsp;)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法打开缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!flock($fso,LOCK_EX)){//LOCK_NB,排它型锁定&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法锁定缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!fwrite($fso,$pagedata)){//写入字节流,serialize写入其他格式&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warns(&amp;nbsp;无法写入缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;flock($fso,LOCK_UN);//释放锁定&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fclose($fso);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;true;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;display_cache($cacheFile){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!file_exists($cacheFile)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;warn(&amp;nbsp;无法读取缓存文件.&amp;nbsp;);//trigger_error&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;&amp;nbsp;读取缓存文件:&amp;nbsp;.$cacheFile;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//return&amp;nbsp;unserialize(file_get_contents($cacheFile));&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$fso&amp;nbsp;=&amp;nbsp;fopen($cacheFile,&amp;nbsp;&amp;nbsp;r&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data&amp;nbsp;=&amp;nbsp;fread($fso,&amp;nbsp;filesize($cacheFile));&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fclose($fso);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;readData($cacheFile=&amp;nbsp;default_cache.txt&amp;nbsp;){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$cacheFile&amp;nbsp;=&amp;nbsp;$this-&amp;amp;gt;cache_dir.\"/\".$cacheFile;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(file_exists($cacheFile)&amp;amp;&amp;amp;filemtime($cacheFile)&amp;amp;gt;(time()-$this-&amp;amp;gt;expireTime)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data=$this-&amp;amp;gt;display_cache($cacheFile);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}else{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$data=\"from&amp;nbsp;here&amp;nbsp;wo&amp;nbsp;can&amp;nbsp;get&amp;nbsp;it&amp;nbsp;from&amp;nbsp;mysql&amp;nbsp;database,update&amp;nbsp;time&amp;nbsp;is&amp;nbsp;&amp;amp;lt;b&amp;amp;gt;\".date(&amp;nbsp;l&amp;nbsp;dS&amp;nbsp;\\of&amp;nbsp;F&amp;nbsp;Y&amp;nbsp;h:i:s&amp;nbsp;A&amp;nbsp;).\"&amp;amp;lt;/b&amp;amp;gt;,过期时间是:\".date(&amp;nbsp;l&amp;nbsp;dS&amp;nbsp;\\of&amp;nbsp;F&amp;nbsp;Y&amp;nbsp;h:i:s&amp;nbsp;A&amp;nbsp;,time()+$this-&amp;amp;gt;expireTime).\"----------\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this-&amp;amp;gt;cache_page($cacheFile,$data);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$data;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;?&amp;amp;gt;&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;pre&amp;nbsp;name=\"code\"&amp;nbsp;id=\"prettyprint\"&amp;nbsp;class=\"PHP\"&amp;gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ob_start();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$id=_POST[&amp;nbsp;id&amp;nbsp;]&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!isset($id)&amp;amp;&amp;amp;is_integer($id))&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@$db=new&amp;nbsp;mysqli(&amp;nbsp;localhost&amp;nbsp;,&amp;nbsp;root&amp;nbsp;,&amp;nbsp;admin&amp;nbsp;,&amp;nbsp;bihtml&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$result=$db-&amp;amp;gt;fetch_one_array(\"select&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;from&amp;nbsp;szd_bi&amp;nbsp;where&amp;nbsp;id=&amp;nbsp;$id&amp;nbsp;\");&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(!emptyempty($result))&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$tmp-&amp;amp;gt;assign(array(&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\"Szdtitle\",htmlspecialchars($result[&amp;nbsp;titles&amp;nbsp;]),&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;\"Szdcontent\",$result[&amp;nbsp;titles&amp;nbsp;]));&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$tpl-&amp;amp;gt;display(&amp;nbsp;default_1.tpl&amp;nbsp;);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$this_my_f=&amp;nbsp;ob_get_contents();&amp;nbsp;//此处关键&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ob_end_clean();&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$filename&amp;nbsp;=&amp;nbsp;\"$id.html\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if(tohtmlfile_cjjer($filename,$this_my_f))&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;\"生成成功&amp;nbsp;$filename\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;else&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;echo&amp;nbsp;\"生成识别\";&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//把生成文件的过程写出函数&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;function&amp;nbsp;tohtmlfile_cjjer($file_cjjer_name,$file_cjjer_content)&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(is_file&amp;nbsp;($file_cjjer_name)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;@unlink&amp;nbsp;($file_cjjer_name);&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$cjjer_handle&amp;nbsp;=&amp;nbsp;fopen&amp;nbsp;($file_cjjer_name,\"w\");&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(!is_writable&amp;nbsp;($file_cjjer_name)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(!fwrite&amp;nbsp;($cjjer_handle,$file_cjjer_content)){&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;false;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fclose&amp;nbsp;($cjjer_handle);&amp;nbsp;//关闭指针&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;$file_cjjer_name;&amp;nbsp;&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&amp;nbsp;&amp;lt;/pre&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;lt;br&amp;nbsp;/&amp;gt;
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/php/2012-05-13/1336840078.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+</comment-list>
+</root>

@@ -1,0 +1,2786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<title>C语言强制类型转换精讲范例</title>
+<content>&amp;lt;p&amp;gt;
+	C类型转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*a=”-100.23”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*b=”200e-2”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atof(a)+atof(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%.2f\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=-98.23
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”-100”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”456”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atoi(a)+atoi(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=356
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”&amp;nbsp;234567890”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atol(a)+atol(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=1234567890
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;a=123.45;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b=-1234.56;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*ptr;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;decpt,sign;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt(a,5,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ptr=gcvt(b,6,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a&amp;nbsp;value=123.45
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;value=-1234.56
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;参考atof()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a，b，c&amp;nbsp;分别采用10，2，16&amp;nbsp;进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtod(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtod(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtod(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a，b，c&amp;nbsp;分别采用10，2，16进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtol(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtol(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtol(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;参考strtol()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=217;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toascii&amp;nbsp;()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,a,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=toascii(a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,b,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=217()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=89(Y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tolower（将大写字母转换成小写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，toupper
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;tolower(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为大写字母则将该对应的小写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的小写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的大写字母转换成小写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=tolower(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;abcdefgh12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toupper（将小写字母转换成大写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toupper(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为小写字母则将该对映的大写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的大写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的小写字母转换成大写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=toupper(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;ABCDEFGH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	字符串和数字之间的转换函数(glibc)&amp;nbsp;收藏
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*a=”-100.23”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*b=”200e-2”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atof(a)+atof(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%.2f\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=-98.23
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”-100”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”456”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atoi(a)+atoi(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=356
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”&amp;nbsp;234567890”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atol(a)+atol(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=1234567890
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;a=123.45;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b=-1234.56;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*ptr;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;decpt,sign;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt(a,5,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ptr=gcvt(b,6,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a&amp;nbsp;value=123.45
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;value=-1234.56
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;参考atof()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a，b，c&amp;nbsp;分别采用10，2，16&amp;nbsp;进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtod(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtod(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtod(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a，b，c&amp;nbsp;分别采用10，2，16进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtol(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtol(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtol(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;参考strtol()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=217;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toascii&amp;nbsp;()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,a,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=toascii(a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,b,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=217()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=89(Y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tolower（将大写字母转换成小写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，toupper
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;tolower(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为大写字母则将该对应的小写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的小写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的大写字母转换成小写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=tolower(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;abcdefgh12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toupper（将小写字母转换成大写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toupper(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为小写字母则将该对映的大写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的大写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的小写字母转换成大写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=toupper(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;ABCDEFGH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	C++中字符串与整型浮点型间的转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*a=”-100.23”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*b=”200e-2”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atof(a)+atof(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%.2f\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=-98.23
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”-100”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”456”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atoi(a)+atoi(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=356
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10)；结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”&amp;nbsp;234567890”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atol(a)+atol(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;c=1234567890
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;a=123.45;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b=-1234.56;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*ptr;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;decpt,sign;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt(a,5,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ptr=gcvt(b,6,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b&amp;nbsp;value=%s\\n”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a&amp;nbsp;value=123.45
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;value=-1234.56
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;参考atof()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*将字符串a，b，c&amp;nbsp;分别采用10，2，16&amp;nbsp;进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtod(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtod(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtod(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a，b，c&amp;nbsp;分别采用10，2，16进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d\\n”,strtol(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d\\n”,strtol(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d\\n”,strtol(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	说明：strtol如果值太大且为负数，返回LONG_MIN，如果值太大且为正数，返回LONG_MAX;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;x=strtol(\"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;590bear\",next&amp;nbsp;,12);返回值为9947，并把一个指向字母e的指针保存在next所指向的变量中。转换在b处终止，因为基数为12是e不是合法的数字。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;\\0&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;参考strtol()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=217;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toascii&amp;nbsp;()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,a,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=toascii(a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)\\n”,b,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=217()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=89(Y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tolower（将大写字母转换成小写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，toupper
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;tolower(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为大写字母则将该对应的小写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的小写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的大写字母转换成小写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=tolower(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;abcdefgh12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toupper（将小写字母转换成大写字母）&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数&amp;nbsp;&amp;nbsp;isalpha，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数&amp;nbsp;&amp;nbsp;int&amp;nbsp;toupper(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明&amp;nbsp;&amp;nbsp;若参数c为小写字母则将该对映的大写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值&amp;nbsp;&amp;nbsp;返回转换后的大写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明&amp;nbsp;&amp;nbsp;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的小写字母转换成大写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s[i]=toupper(s[i]);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s\\n”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行&amp;nbsp;&amp;nbsp;before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;ABCDEFGH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi,atol,strtod,strtol,strtoul实现类型转换&amp;nbsp;收藏
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi,atol,strtod,strtol,strtoul实现类型转换
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	所属类别：C/C++
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	推荐指数：★★★☆
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	文档人气：3371
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	本周人气：41
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;amp;lt;&amp;nbsp;src=\"loaddocinfo.js\"&amp;nbsp;type=text/javascript&amp;amp;gt;&amp;nbsp;&amp;amp;lt;&amp;nbsp;type=text/javascript&amp;amp;gt;&amp;nbsp;loadDocInfo(2897);&amp;nbsp;发布日期：2007-6-6
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atof（将字符串转换成浮点型数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;nbsp;&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;double&amp;nbsp;atof(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)才结束转换，并将结果返回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分，如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof()与使用strtod(nptr,(char**)NULL)结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*a=”-100.23”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*b=”200e-2”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	float&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atof(a)+atof(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%.2f&amp;nbsp;”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;c=-98.23
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atoi（将字符串转换成整型数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atol，atrtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;atoi(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi()与使用strtol(nptr，(char**)NULL，10);结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a&amp;nbsp;与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”-100”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”456”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atoi(a)+atoi(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(c=%d&amp;nbsp;”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;c=356
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	atol（将字符串转换成长整型数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;long&amp;nbsp;atol(const&amp;nbsp;char&amp;nbsp;*nptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)才结束转换，并将结果返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atol()与使用strtol(nptr,(char**)NULL,10);结果相同。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*将字符串a与字符串b转换成数字后相加*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”&amp;nbsp;234567890”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	long&amp;nbsp;c;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=atol(a)+atol(b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d&amp;nbsp;”,c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;c=1234567890
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt（将浮点型数转换为字符串，取四舍五入）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ecvt，fcvt，sprintf
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;char&amp;nbsp;*gcvt(double&amp;nbsp;number，size_t&amp;nbsp;ndigits，char&amp;nbsp;*buf);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;gcvt()用来将参数number转换成ASCII码字符串，参数ndigits表示显示的位数。gcvt()与ecvt()和fcvt()不同的地方在于，gcvt()所转换后的字符串包含小数点或正负符号。若转换成功，转换后的字符串会放在参数buf指针所指的空间。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回一字符串指针，此地址即为buf指针。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;a=123.45;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	double&amp;nbsp;b=-1234.56;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;*ptr;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;decpt,sign;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	gcvt(a,5,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a&amp;nbsp;value=%s&amp;nbsp;”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	ptr=gcvt(b,6,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b&amp;nbsp;value=%s&amp;nbsp;”,ptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a&amp;nbsp;value=123.45
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b&amp;nbsp;value=-1234.56
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtod（将字符串转换成浮点数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atoi，atol，strtod，strtol，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;double&amp;nbsp;strtod(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;strtod()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，到出现非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)才结束转换，并将结果返回。若endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr传回。参数nptr字符串可包含正负号、小数点或E(e)来表示指数部分。如123.456或123e-2。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的浮点型数。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;参考atof()。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*将字符串a，b，c&amp;nbsp;分别采用10，2，16&amp;nbsp;进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	mian()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d&amp;nbsp;”,strtod(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d&amp;nbsp;”,strtod(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d&amp;nbsp;”,strtod(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtol（将字符串转换成长整型数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtoul
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtol(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;strtol()会将参数nptr字符串根据参数base来转换成长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如&amp;nbsp;base值为10则采用10进制，若base值为16则采用16进制等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用&amp;nbsp;16进制做转换。一开始strtol()会扫描参数nptr字符串，跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将字符串a，b，c&amp;nbsp;分别采用10，2，16进制转换成数字*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;a[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b[]=”1000000000”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;c[]=”ffff”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“a=%d&amp;nbsp;”,strtol(a,NULL,10));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“b=%d&amp;nbsp;”,strtol(b,NULL,2));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“c=%d&amp;nbsp;”,strtol(c,NULL,16));
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a=1000000000
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=512
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	c=65535
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	strtoul（将字符串转换成无符号长整型数）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atof，atoi，atol，strtod，strtol
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;unsigned&amp;nbsp;long&amp;nbsp;int&amp;nbsp;strtoul(const&amp;nbsp;char&amp;nbsp;*nptr,char&amp;nbsp;**endptr,int&amp;nbsp;base);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;strtoul()会将参数nptr字符串根据参数base来转换成无符号的长整型数。参数base范围从2至36，或0。参数base代表采用的进制方式，如base值为10则采用10进制，若base值为16则采用16进制数等。当base值为0时则是采用10进制做转换，但遇到如&amp;nbsp;0x&amp;nbsp;前置字符则会使用16进制做转换。一开始strtoul()会扫描参数nptr字符串，跳过前面的空格字符串，直到遇上数字或正负符号才开始做转换，再遇到非数字或字符串结束时(&amp;nbsp;&amp;nbsp;)结束转换，并将结果返回。若参数endptr不为NULL，则会将遇到不合条件而终止的nptr中的字符指针由endptr返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的长整型数，否则返回ERANGE并将错误代码存入errno中。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ERANGE指定的转换字符串超出合法范围。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;参考strtol()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toascii（将整型数转换成合法的ASCII&amp;nbsp;码字符）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;isascii，toupper，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;toascii(int&amp;nbsp;c)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;toascii()会将参数c转换成7位的unsigned&amp;nbsp;char值，第八位则会被清除，此字符即会被转成ASCII码字符。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;将转换成功的ASCII码字符值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;a=217;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;b;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toascii&amp;nbsp;()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)&amp;nbsp;”,a,a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	b=toascii(a);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=%d(%c)&amp;nbsp;”,b,b);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;before&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=217()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toascii()&amp;nbsp;:&amp;nbsp;a&amp;nbsp;value&amp;nbsp;=89(Y)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	tolower（将大写字母转换成小写字母）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;isalpha，toupper
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;stdlib.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;tolower(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;若参数c为大写字母则将该对应的小写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的小写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的大写字母转换成小写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s&amp;nbsp;”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=tolower(s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;%s&amp;nbsp;”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;before&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;tolower()&amp;nbsp;:&amp;nbsp;abcdefgh12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	toupper（将小写字母转换成大写字母）
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	相关函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;isalpha，tolower
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	表头文件
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	定义函数
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;int&amp;nbsp;toupper(int&amp;nbsp;c);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	函数说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;若参数c为小写字母则将该对映的大写字母返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	返回值
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;返回转换后的大写字母，若不须转换则将参数c值返回。
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	附加说明
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	范例
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;/*&amp;nbsp;将s字符串内的小写字母转换成大写字母*/
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	#include&amp;amp;lt;ctype.h&amp;amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	main()
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	{
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	char&amp;nbsp;s[]=”aBcDeFgH12345;!#$”;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	int&amp;nbsp;i;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s&amp;nbsp;”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	for(i=0;I&amp;amp;lt;sizeof(s);i++)
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	s=toupper(s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	printf(“after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;%s&amp;nbsp;”,s);
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	}
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	执行
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;before&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;aBcDeFgH12345;!#$
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+	after&amp;nbsp;toupper()&amp;nbsp;:&amp;nbsp;ABCDEFGH12345;!#$
+&amp;lt;/p&amp;gt;</content>
+<json-link>./file/c/2012-05-06/1336310230.json</json-link>
+<comment-link>4</comment-link>
+<tags>5</tags>
+<imghref/>
+<comment-list>
+ <c>
+  <author-c>1</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2</date-c>
+  <conf-c>3</conf-c>
+  <locked>true</locked>
+ </c>
+<c>
+  <author-c>koodo</author-c>
+  <uid-c>2</uid-c>
+  <date-c>2012-05-06+21%3A18%3A50</date-c>
+  <conf-c>这么长的啊</conf-c>
+  <locked>false</locked>
+ </c></comment-list>
+</root>

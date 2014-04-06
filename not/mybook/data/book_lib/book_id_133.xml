@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Microsoft .NET企业级应用架构设计</title>
+  <author>（美）埃斯波西托</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-09-30 11:38:08</submit-date-time>
+  <img-link>34ae16a1c9fd1b832524249554338e90.png</img-link>
+  <book-area>web</book-area>
+  <book-intro>&lt;p&gt;
+	本书主要介绍了.NET平台下企业级架构设计开发的指导原则、最佳实践和模式等。书中第一部分介绍了软件设计基本原则以及架构的相关概念；第二部分按照业务逻辑层、数据访问层、表现层和服务层进行了说明，并详细分析了各层中的常见模式。
+&lt;/p&gt;
+&lt;p&gt;
+	作者Dino曾撰写多部.NET相关的畅销著作，虽然本书涉及架构这个高端主题，但其文字生动活泼，行文一气呵成。本书适合中高级.NET开发人员、软件架构师以及有志于成为软件架构师的读者阅读。
+&lt;/p&gt;
+&lt;p&gt;
+	&lt;br&amp;nbsp;/&gt;
+&lt;/p&gt;</book-intro>
+</root>

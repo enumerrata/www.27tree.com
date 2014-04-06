@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[关于Java包应用的问题]]></title>
+  <content><![CDATA[<p>	//Base.java 文件的内容如下
+</p>
+<p>
+	package Base; &nbsp; &nbsp; &nbsp; &nbsp; //将Base类存放在D：\\myjava\\Base包中
+</p>
+<p>
+	public class Base &nbsp; &nbsp; &nbsp;//该类定义了多种类型的成员
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;int default_data=1; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;//默认类型成员
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;public int public_data=2; &nbsp; &nbsp;//public成员
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;private int private_data=3 &nbsp;//private成员
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;protected int protected_data=4 &nbsp; //protected成员
+</p>
+<p>
+	}
+</p>
+<p>
+	<br />
+</p>
+<p>
+	//Derived.java 文件的内容如下
+</p>
+<p>
+	package Derived; &nbsp; &nbsp; //将Derived类存放在D：\\myjava\\Derived包中
+</p>
+<p>
+	import Base.*; &nbsp; &nbsp; &nbsp; &nbsp; //需要使用Base包中的类
+</p>
+<p>
+	public class Derived extends Base
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; Base a=new Base();
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //为了让D：\\myjava包中的textData类能调用该方法，修改为public
+</p>
+<p>
+	&nbsp; public void dataUse()
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;//System.out.println(\"data=\"+a.default_data); &nbsp; &nbsp; &nbsp; //该行编译有错
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;System.out.println(\"data_pub=\"+a.public_data);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//下面两行编译都有错误：不能访问父类中的私有成员和保护成员
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;// System.out.println(\"data_pri=\"+a.private_data);
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp;// System.out.println(\"data_pro=\"+a.protected_data);
+</p>
+<p>
+	}
+</p>
+<p>
+	}
+</p>
+<p>
+	<br />
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;//textData.java 文件的内容如下：
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;//下面testData类位于当前目录myjava
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp;//即位于缺省包中，因此不需要用package
+</p>
+<p>
+	import Derived.*;
+</p>
+<p>
+	public class testData
+</p>
+<p>
+	{
+</p>
+<p>
+	&nbsp;public static void main(String args[])
+</p>
+<p>
+	&nbsp; &nbsp; {
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Derived d=new Derived();
+</p>
+<p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;d.dataUse();
+</p>
+<p>
+	&nbsp; &nbsp; }
+</p>
+<p>
+	}&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	程序运行结果
+</p>
+<p>
+	data_pub=2
+</p>
+<p>
+	<br />
+</p>
+<p>
+	我就是对dataUse()方法中的语句有疑问，为什么不能输出一个保护成员
+</p>
+<p>
+	System.out.println(\"data_pro=\"+a.protected_data);
+</p>
+<p>
+	上述语句是通过对象a输出其保护成员，如果将上述语句修改如下：
+</p>
+<p>
+	System.out.println(\"data_pro=\"+this.protected_data);
+</p>
+<p>
+	采用当前对象，即main()方法中的对象d,程序就完全正确。
+</p>
+<p>
+	为什么采用a对象输出保护成员就是错误呢？我想是因为对象a是在Derived类中定义的，而Derived和父类Base处在不同的包中，这样的情况下用父类对象访问其得保护成员是不行的，而是要通过子类Derived对象来访问父类的保护成员，也就是对象d。我的理解就是这样，不知道是不是正确，大家来讨论一下吧！！
+</p>]]></content>
+  <tags></tags>
+  <parseVersion>1.1</parseVersion>
+</root>

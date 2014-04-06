@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title><![CDATA[循序渐进Oracle：数据库管理、优化与备份恢复]]></title>
+  <author>盖国强</author>
+  <submiter-uid>2</submiter-uid>
+  <submit-date-time>2012-12-25 10:15:10</submit-date-time>
+  <img-link>0140bfef42d140742efdf4a477614da1.png</img-link>
+  <book-area>database</book-area>
+  <book-intro><![CDATA[<p>
+	<strong>《循序渐进Oracle：数据库管理、优化与备份恢复》</strong>从基础知识入手，详细讨论了Oracle数据库的创建、从OEM到Grid Control、Oracle的字符集、用户的创建与管理、表空间和数据文件、自动存储管理（ASM）、临时表空间和临时文件、备份与恢复、备份方案与特例恢复、Oracle的闪回特性、Oracle的数据加载与卸载、从Statspack到ADDM、故障诊断及分析方法等热点问题，并通过大量取自实际工作现场的实例，力图将Oracle知识全面、系统、深入地展现给读者。
+</p>
+<p>
+	<strong>《循序渐进Oracle：数据库管理、优化与备份恢复》</strong>在分析实例的过程中，兼顾深度与广度，不仅对实际问题的现象、产生原因和相关的原理进行了深入浅出的讲解，更主要的是，结合实际应用环境，提供了一系列解决问题的思路和方法，包括详细的操作步骤，具有很强的实战性和可操作性。
+</p>
+<p>
+	<strong>《循序渐进Oracle：数据库管理、优化与备份恢复》</strong>适用于数据库管理人员、数据库开发人员、系统维护人员、数据库初学者及其他数据库从业人员，也可以作为各大中专院校相关专业的参考用书和相关培训机构的培训教材。
+</p>]]></book-intro>
+  <parseVersion>1.1</parseVersion>
+</root>

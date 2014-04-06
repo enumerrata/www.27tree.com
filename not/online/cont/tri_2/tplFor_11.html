@@ -1,0 +1,186 @@
+<div style="background:url('/img/content_text_line.png')bottom no-repeat;">
+    <h1 class="header">PHP 函数</h1>
+</div>
+<div>
+
+<P><b>PHP 的真正威力源自于它的函数。</b></P>
+<p><b>在 PHP 中，提供了超过 700 个内建的函数。</b></P>
+
+<h1>PHP 函数</h1>
+
+<p>在本教程中，我们将为您讲解如何创建自己的函数。</p>
+<p>如需内建函数的参考和实例，请访问我们的 PHP 参考手册。</p>
+
+<h1>创建 PHP 函数</h1>
+
+<p>函数是一种可以在任何被需要的时候执行的代码块。</p>
+
+<h2>创建 PHP 函数：</h2>
+
+<p>1.所有的函数都使用关键词 "function()" 来开始</p>
+<p>2.命名函数 - 函数的名称应该提示出它的功能。函数名称以字母或下划线开头。</p>
+<p>3.添加 "{" - 开口的花括号之后的部分是函数的代码。</p>
+<p>4.插入函数代码</p>
+<p>5.添加一个 "}" - 函数通过关闭花括号来结束。</p>
+
+<h2>例子</h2>
+
+<p>一个简单的函数，在其被调用时能输出我的名称的：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+function&nbspwriteMyName()<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"David&nbspYang";<br />
+&nbsp&nbsp}<br />
+<br />
+writeMyName();<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<h1>使用 PHP 函数</h1>
+
+<p>现在，我们要在 PHP 脚本中使用这个函数了：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+function&nbspwriteMyName()<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp"David&nbspYang";<br />
+&nbsp&nbsp}<br />
+<br />
+echo&nbsp"Hello&nbspworld!&lt;br&nbsp/&gt;";<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName();<br />
+echo&nbsp".&lt;br&nbsp/&gt;That's&nbspright,&nbsp";<br />
+writeMyName();<br />
+echo&nbsp"&nbspis&nbspmy&nbspname.";<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>
+Hello world!<br />
+My name is David Yang.<br />
+That's right, David Yang is my name.
+</code>
+
+<h1>PHP 函数 - 添加参数</h1>
+
+<p>我们的第一个函数是一个非常简单的函数。它只能输出一个静态的字符串。</p>
+<p>通过可以添加参数，我们向函数添加更多的功能。参数类似一个变量。</p>
+<p>您可能注意到了，函数名称后面有一个括号，比如 writeMyName()。参数就是在括号中规定的。</p>
+
+<h2>例子 1</h2>
+
+<p>下面的例子讲输出不同的名字，但姓是相同的：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+function&nbspwriteMyName($fname)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp$fname&nbsp.&nbsp"&nbspYang.&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("David");<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("Mike");<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("John");<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>上面的代码的输出：</p>
+
+<code>
+My name is David Yang.<br />
+My name is Mike Yang.<br />
+My name is John Yang.
+</code>
+
+<h2>例子 2</h2>
+
+<p>下面的函数有两个参数：</p>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+function&nbspwriteMyName($fname,$punctuation)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbspecho&nbsp$fname&nbsp.&nbsp"&nbspYang"&nbsp.&nbsp$punctuation&nbsp.&nbsp"&lt;br&nbsp/&gt;";<br />
+&nbsp&nbsp}<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("David",".");<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("Mike","!");<br />
+<br />
+echo&nbsp"My&nbspname&nbspis&nbsp";<br />
+writeMyName("John","...");<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>上面的代码的输出：</p>
+
+<code>
+My name is David Yang.<br />
+My name is Mike Yang!<br />
+My name is John Yang...
+</code>
+
+<h1>PHP 函数 - 返回值</h1>
+
+<p>函数也能用于返回值。</p>
+
+<h2>例子</h2>
+
+<code>
+&lt;html&gt;<br />
+&lt;body&gt;<br />
+<br />
+&lt;?php<br />
+function&nbspadd($x,$y)<br />
+&nbsp&nbsp{<br />
+&nbsp&nbsp$total&nbsp=&nbsp$x&nbsp+&nbsp$y;<br />
+&nbsp&nbspreturn&nbsp$total;<br />
+&nbsp&nbsp}<br />
+<br />
+echo&nbsp"1&nbsp+&nbsp16&nbsp=&nbsp"&nbsp.&nbspadd(1,16);<br />
+?&gt;<br />
+<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;
+</code>
+
+<p>以上代码的输出：</p>
+
+<code>1 + 16 = 17</code>
+</div>
